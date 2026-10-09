@@ -58,7 +58,8 @@ jobs:
 
   deploy:
     needs: validate-build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # GitHub Pages only serves private repositories on paid plans; skip the deploy while private.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.event.repository.visibility == 'public'
     runs-on: ubuntu-latest
     permissions: { pages: write, id-token: write }
     environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
