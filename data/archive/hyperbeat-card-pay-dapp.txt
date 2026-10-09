@@ -1,0 +1,11 @@
+Archived 2026-10-07 by AI research agent (seed). Excerpts copied verbatim from files served by hyperbeat.org for the Hyperbeat Pay web app.
+
+1. https://hyperbeat.org/dapp/pay (HTML), script tag excerpt:
+link rel=preload href=https://www.googletagmanager.com/gtag/js?id=AW-17122504444 as=script (Google tag, loaded with strategy afterInteractive by gtag-init)
+
+2. https://hyperbeat.org/_next/static/chunks/97b00ce1712acb99.js, contract config excerpt:
+c={WRAPPER_SERVICE:"0x4c70eCA9Dd537f9D4c14900Aa848b80A1F7e445a",MORPHO_SERVICE:"0xb90759Ff9fa858D6621c0386E4322840Ee3EeEb6",MORPHO_REPAY_SERVICE:"0xb4a0380252181FcCedFc7f9A7dc919adE829e0dA",OPERATOR:"0xd9CcDB269f41046Df5783cf17B24084B752aDf76"}
+
+3. Datadog browser SDK and Intercom are bundled in the dapp chunks (strings 'pci.browser-intake-datadoghq.com' and 'Please ensure Intercom is setup and running').
+   datadog in https://hyperbeat.org/_next/static/chunks/721833647186910a.js
+   intercom in https://hyperbeat.org/_next/static/chunks/c00a916bff534162.js

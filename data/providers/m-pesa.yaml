@@ -1,0 +1,373 @@
+slug: m-pesa
+name: M-Pesa
+type: incumbent
+website: https://developer.safaricom.co.ke
+repos:
+  - url: https://github.com/safaricom/mpesa-node-library
+    role: sdk
+    license: Apache-2.0
+  - url: https://github.com/safaricom/LNMOnlineAndroidSample
+    role: sdk
+    license: Apache-2.0
+  - url: https://github.com/safaricom/mpesa_c2b_php_confirmation_validation
+    role: sdk
+    license: GPL-3.0
+  - url: https://github.com/safaricom/mpesa_listener
+    role: sdk
+    license: none
+  - url: https://github.com/safaricom/mpesa-php-sdk
+    role: sdk
+    license: none
+  - url: https://github.com/safaricom/mpesa-java-sdk
+    role: sdk
+    license: none
+  - url: https://github.com/safaricom/mpesa-api-C-Sharp
+    role: sdk
+    license: none
+contracts: []
+components:
+  - name: M-Pesa core platform (e-money ledger and transaction processing)
+    role: ledger
+    public: false
+    license: proprietary
+    operator: Safaricom PLC
+    required: true
+  - name: M-Pesa customer register (identity behind each wallet)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Safaricom PLC
+    required: true
+  - name: Daraja API gateway and OAuth token service (api.safaricom.co.ke)
+    role: api
+    public: false
+    license: proprietary
+    operator: Safaricom PLC
+    required: false
+  - name: Customer channels (SIM Toolkit, USSD, M-Pesa app, Safaricom app)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Safaricom PLC
+    required: false
+  - name: M-PESA Org portal (org.ke.m-pesa.com)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Safaricom PLC
+    required: false
+  - name: Trust fund holding e-money balances (trustees, banks not named)
+    role: other
+    public: false
+    license: proprietary
+    operator: Trustees and Kenyan commercial banks (unnamed)
+    required: false
+  - name: mpesa-node-library
+    role: sdk
+    public: true
+    license: Apache-2.0
+    operator: github.com/safaricom (attribution is a judgment call, see notes)
+    required: false
+    repo: https://github.com/safaricom/mpesa-node-library
+  - name: LNMOnlineAndroidSample
+    role: sdk
+    public: true
+    license: Apache-2.0
+    operator: github.com/safaricom (attribution is a judgment call, see notes)
+    required: false
+    repo: https://github.com/safaricom/LNMOnlineAndroidSample
+  - name: mpesa_c2b_php_confirmation_validation
+    role: sdk
+    public: true
+    license: GPL-3.0
+    operator: github.com/safaricom (attribution is a judgment call, see notes)
+    required: false
+    repo: https://github.com/safaricom/mpesa_c2b_php_confirmation_validation
+  - name: mpesa_listener
+    role: sdk
+    public: true
+    license: none
+    operator: github.com/safaricom (attribution is a judgment call, see notes)
+    required: false
+    repo: https://github.com/safaricom/mpesa_listener
+  - name: mpesa-php-sdk
+    role: sdk
+    public: true
+    license: none
+    operator: github.com/safaricom (attribution is a judgment call, see notes)
+    required: false
+    repo: https://github.com/safaricom/mpesa-php-sdk
+  - name: mpesa-java-sdk
+    role: sdk
+    public: true
+    license: none
+    operator: github.com/safaricom (attribution is a judgment call, see notes)
+    required: false
+    repo: https://github.com/safaricom/mpesa-java-sdk
+  - name: mpesa-api-C-Sharp
+    role: sdk
+    public: true
+    license: none
+    operator: github.com/safaricom (attribution is a judgment call, see notes)
+    required: false
+    repo: https://github.com/safaricom/mpesa-api-C-Sharp
+context: >-
+  Authorisation: the Central Bank of Kenya (CBK) Directory of Authorized Payment Service Providers as at August 10, 2026 (centralbank.go.ke, PDF read 2026-10-07) lists Safaricom PLC, first licensed January 1, 2016, approved "to issue, process, store, send and facilitate mobile money payments". Safeguarding: the National Payment System Regulations, 2014 (CBK copy: https://www.centralbank.go.ke/wp-content/uploads/2018/12/NPSRegulationsNew2014-1.pdf) require a provider to hold all monies received in a Trust Fund never less than what is owed to customers, not move them to its operating account or commingle them, and place them in licensed commercial banks or Government of Kenya securities (reg 25(3)); to file separate audited statements for the Trust accounts and an independent system security audit (reg 29); and on revocation let CBK take over the business to distribute Trust Fund balances, with any shortfall recoverable from each trustee (reg 10). The same Regulations require a register of customers with ID or passport numbers verified against the Integrated Population Registration System (reg 12) and transaction screening for AML and counter-terrorism laws (reg 31). These are legal requirements; no document confirming Safaricom's own trust arrangement or screening was read, because safaricom.co.ke returned 403.
+notes: >-
+  Incumbent. M-Pesa is a closed, custodial mobile-money ledger run by Safaricom; the repos listed are sample clients and callback listeners for the Daraja REST API, not code that runs the rail. Attribution of github.com/safaricom is a judgment call: the org is not GitHub-verified and developer.safaricom.co.ke does not link to it, but the org profile links to developer.safaricom.co.ke and commits in mpesa-php-sdk and mpesa-java-sdk come from safaricom.net addresses, and the mpesa-php-sdk composer.json author uses a safaricom.co.ke address. Forks in that org (android-daraja-sdk, mpesa-py, mpesa-api-go, Mpesa.Net), unrelated repos (kubernetes, kubespray, cisco-anyconnect) and the empty mpesa-perl-sample are excluded. www.safaricom.co.ke, including the data privacy statement and M-Pesa terms, returned HTTP 403 (bot protection) to every non-browser request on 2026-10-07, so neither document could be read or cited; the website field therefore points at the Daraja developer portal, which does resolve. Daraja pages are a client-rendered app: page URLs return 200 and their content loads from the portal's /api/graphql populateApi query, which is how the docs were read. The static Postman collection is the one fully fetchable interface artifact.
+scores:
+  C1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/collections/Safaricom%20APIs.postman_collection.json
+        detail: "Daraja Postman collection (v2.1): every M-Pesa operation (stkpush, c2b registerurl/simulate, b2c, b2b, reversal, transactionstatus, accountbalance) is a POST to sandbox/api.safaricom.co.ke carrying 'Authorization: Bearer <Access-Token>' from Safaricom's /oauth/v1/generate."
+        checked_at: "2026-10-07"
+        quote: "sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+    finding: >-
+      Settlement happens only inside Safaricom's M-Pesa platform, reached through Safaricom's authenticated API or its own channels (SIM toolkit, USSD, app). No direct settlement path exists.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/apis/CustomerToBusiness
+        detail: "C2B docs (loaded via the portal's populateApi query): production endpoints are api.safaricom.co.ke; access needs a Safaricom-issued OAuth token; enabling external validation requires emailing apisupport@safaricom.co.ke."
+        checked_at: "2026-10-07"
+        quote: "C2B Transaction Validation is optional and must be activated by emailing"
+        archive: data/archive/m-pesa-daraja-c2b.txt
+    finding: >-
+      Every integration depends on Safaricom's hosted API and on Safaricom provisioning shortcodes and credentials. No intermediary code is public and no fallback exists, so the dependency is closed and single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C4:
+    unknown: true
+    finding: >-
+      Re-assessed under the updated anchors on 2026-10-07; still unknown. The NPS Regulations require transaction screening (reg 31, see context), but no Safaricom document read discloses what M-Pesa filters: a search of all 31 Daraja API docs (populateApi) for sanction, AML, blacklist, watchlist and KYC found only KYC fields for organisation operators and a C2B error code "Invalid KYC Details", and the customer terms and privacy statement returned 403. Settlement runs in Safaricom's closed ledger, so neither disclosure nor its absence could be shown.
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/safaricom/mpesa-node-library/tree/678e3c33b20c1447c209eb88eded89f1bb751e11/src
+        commit: "678e3c33b20c1447c209eb88eded89f1bb751e11"
+        path: src
+        detail: "github.com/safaricom has 15 public repos; the non-fork M-Pesa ones are client libraries (Node, PHP, Java, C#), an Android STK sample, and callback-listener samples. None contains the M-Pesa backend, an indexer, or deploy scripts."
+        checked_at: "2026-10-07"
+    finding: >-
+      Only client SDKs and samples are public. The platform itself (ledger, API gateway, USSD/STK services) is closed.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/collections/Safaricom%20APIs.postman_collection.json
+        detail: "Public Postman v2.1 collection 'Safaricom APIs' (_postman_id 21f972ff-40aa-439e-a906-e52cff4bcf63) with request schemas for M-Pesa Express, C2B, B2C, B2B, reversal, transaction status, account balance and Pull Transactions."
+        checked_at: "2026-10-07"
+        quote: "21f972ff-40aa-439e-a906-e52cff4bcf63"
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/apis/CustomerToBusiness
+        detail: "C2B docs define the callback payload fields (TransactionType, TransID, TransTime, TransAmount, BusinessShortCode, BillRefNumber, MSISDN, FirstName, MiddleName, LastName, ...); merchants recover missed notifications through the Pull Transaction API or the M-PESA Org portal."
+        checked_at: "2026-10-07"
+        quote: "For failed notifications, use Pull Transaction API or check the"
+        archive: data/archive/m-pesa-daraja-c2b.txt
+    finding: >-
+      API and callback schemas are documented on a hosted portal, with a Postman collection in place of OpenAPI. None of this is versioned in a repo, and no payee export format is specified, so the score is 1 (documented only).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/safaricom/mpesa-java-sdk/blob/0a3667515b2d8b4abff7a454e8d2934cdb3c1d18/pom.xml
+        commit: "0a3667515b2d8b4abff7a454e8d2934cdb3c1d18"
+        path: pom.xml
+        detail: "mpesa-java-sdk at this commit: pom.xml has no <licenses> element and the repo root (.idea, MpesaMaven.iml, README.md, out, pom.xml, src, target) has no LICENSE file. mpesa-api-C-Sharp (7f3d6e9e9c979c79e4c5bedd43de646623a4d6cd) likewise has no LICENSE file and no license statement in its README."
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/safaricom/mpesa_listener/blob/ccc202b610f5cda15d3efae90501f84bc11e1208/package.json#L10
+        commit: "ccc202b610f5cda15d3efae90501f84bc11e1208"
+        path: package.json
+        detail: "mpesa_listener has no LICENSE file; package.json L10 carries the npm-init default license: ISC. mpesa-php-sdk (5effb808e79ba6b3d8631ef83c2b9b31fa450152) has no LICENSE file; composer.json L10 declares license: mit with no license text."
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/safaricom/mpesa-node-library/blob/678e3c33b20c1447c209eb88eded89f1bb751e11/LICENSE
+        commit: "678e3c33b20c1447c209eb88eded89f1bb751e11"
+        path: LICENSE
+        detail: "mpesa-node-library LICENSE is Apache License 2.0; LNMOnlineAndroidSample (74eced63f0cd5fd2f9869f9fcaf9b14823dcadb8) is Apache-2.0; mpesa_c2b_php_confirmation_validation (96a55227d6191c0717edb0293bbd4c3bde1709c1) is GPL-3.0."
+        checked_at: "2026-10-07"
+    finding: >-
+      Two of the seven listed SDK repos (Java, C#) carry no license at all, so they cannot legally be forked. Two more (listener, PHP) declare ISC/MIT only in a package manifest, with no license text; they are recorded as "none" in repos. The platform needed to run the rail has no public code at all. Judgment call: scored on the listed SDK repos because no repo can run the product.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  F3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/apis/CustomerToBusiness
+        detail: "C2B v2 callback payload sent to the merchant includes the payer's FirstName, MiddleName and LastName 'as per the M-Pesa register' and a masked MSISDN (C2B v1 sends a SHA-256 hash of the MSISDN, which is not anonymising for phone-number inputs)."
+        checked_at: "2026-10-07"
+        quote: "Customer's first name as per the M-Pesa register."
+        archive: data/archive/m-pesa-daraja-c2b.txt
+    finding: >-
+      Each C2B payment sends the payee the payer's name as held in the M-Pesa register and a partial phone number (v2) or an enumerable SHA-256 of it (v1); settlement does not need either. Re-assessed under the updated anchors: 1 needs collection beyond settlement needs "disclosed in a policy", and 0 covers undisclosed collection or collection beyond the stated legal requirement. The only disclosure read is the integrator documentation; Safaricom's data privacy statement returned 403, so no payer-facing disclosure and no stated legal basis for passing the name to payees was read. The National Payment System Regulations, 2014 (see context) require Safaricom to keep a register of customer ID details (reg 12), not to pass customer names to payees. Score lowered from 1 to 0. Judgment call: between 1 and 0 the lower anchor is taken because the evidence for 1 (policy disclosure within a stated legal requirement) was not seen; a reviewer who can read the privacy statement and finds a disclosed legal basis for this sharing could restore 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/apis/CustomerToBusiness
+        detail: "C2B docs: 'Funds originate from the customer wallet and are transferred to the merchant's short code'; the confirmation payload's OrgAccountBalance is the shortcode's balance held on M-PESA."
+        checked_at: "2026-10-07"
+        quote: "Funds originate from the customer wallet and are transferred to the merchant"
+        archive: data/archive/m-pesa-daraja-c2b.txt
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/apis/AccountBalance
+        detail: "Account Balance API docs: organizations query 'their M-PESA account balances' through Safaricom's endpoint."
+        checked_at: "2026-10-07"
+        quote: "enables organizations to programmatically check their M-PESA account balances"
+        archive: data/archive/m-pesa-daraja-account-balance.txt
+    finding: >-
+      Payer and payee funds sit in M-Pesa accounts on Safaricom's platform, so the provider holds custody, and the API docs disclose this. Neither the trust arrangement behind the e-money nor any limit on redirecting funds could be read (the terms returned 403).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/collections/Safaricom%20APIs.postman_collection.json
+        detail: "All settlement, balance and reversal operations are Safaricom-hosted endpoints (see C2, C3); no exit path outside Safaricom's platform is documented."
+        checked_at: "2026-10-07"
+        quote: "sandbox.safaricom.co.ke/mpesa/reversal/v1/request"
+    finding: >-
+      Derived. S1 = 1 (provider custody), C2 = 0 (no direct settlement), C3 = 0 (closed single-vendor API), O3 unknown (nothing to self-host). Both funds and the ability to settle depend on Safaricom's liveness.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S5:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/apis/CustomerToBusiness
+        detail: "C2B docs: M-PESA POSTs confirmation/validation results as application/json to the registered URLs; the documented payload and URL requirements (public IP/domain, HTTPS in production) include no signature, HMAC, or shared-secret field or header."
+        checked_at: "2026-10-07"
+        quote: "The result is posted with a POST request method in application/json format."
+        archive: data/archive/m-pesa-daraja-c2b.txt
+      - tier: verified
+        kind: repo
+        url: https://github.com/safaricom/mpesa_listener/blob/ccc202b610f5cda15d3efae90501f84bc11e1208/listener.js#L66-L82
+        commit: "ccc202b610f5cda15d3efae90501f84bc11e1208"
+        path: listener.js
+        detail: "Reference C2B ConfirmationURL handler logs req.body and returns ResultCode 0 with no authenticity check; the B2C/B2B result handlers in the same file (L18-L29, L88-L99) do the same."
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/safaricom/mpesa_c2b_php_confirmation_validation/blob/96a55227d6191c0717edb0293bbd4c3bde1709c1/confirm.php#L1-L33
+        commit: "96a55227d6191c0717edb0293bbd4c3bde1709c1"
+        path: confirm.php
+        detail: "Reference PHP confirmation handler reads php://input, logs it and acknowledges, with no signature or source verification."
+        checked_at: "2026-10-07"
+    finding: >-
+      Payment callbacks are unsigned per the Daraja docs, and the reference handlers accept them without verification, so a party who learns a merchant's callback URL can forge payment confirmations unless the merchant re-queries Transaction Status. Handling of API credentials (consumer key/secret, SecurityCredential) in client bundles was not assessed.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending

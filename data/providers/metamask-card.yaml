@@ -1,0 +1,671 @@
+slug: metamask-card
+name: MetaMask Card
+type: card
+website: https://metamask.io/card
+primary_chain:
+  name: Linea
+  chain_id: 59144
+  basis: >-
+    Linea is the chain with the fullest card config in the MetaMask Mobile defaults (metamask-mobile b513a4b, app/selectors/featureFlagController/card/defaults.ts#L37-L102: FoxConnect spender addresses, a balance scanner and eight spendable tokens), and Crypto Life's product page says cardholders spend USDC, USDT and WETH from their wallet on Linea. Unit: the Global FoxConnect spender 0x9dd23A4a... at Linea block 32253699. Excluded: the US FoxConnect 0xA90b298d... (noted in C1 and S2), the Base, Monad and Solana configs, and the Immersve-run UK card on Base.
+
+repos:
+  - url: https://github.com/MetaMask/metamask-mobile
+    role: frontend
+    license: source-available
+
+contracts:
+  - address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+    chain_id: 59144
+    role: FoxConnect (Global) card spender, non-upgradeable
+    verified: sourcify
+  - address: "0xA90b298d05C2667dDC64e2A4e17111357c215dD2"
+    chain_id: 59144
+    role: FoxConnect (US) card spender, non-upgradeable
+    verified: sourcify
+  - address: "0x1b7A8fF58B58Ad2ABFd731A164298A06A82D9c99"
+    chain_id: 59144
+    role: FoxConnect (Global) owner, Safe 1.4.1 2-of-4
+    verified: none
+  - address: "0x8dFE562Cbb4E93D5029f39DA26BB6B501a8d1D3e"
+    chain_id: 59144
+    role: FoxConnect (Global) beneficiary, Safe 1.4.1 2-of-13
+    verified: none
+  - address: "0x576371678e97DfE55f60577cDe2905A1768b5cb6"
+    chain_id: 59144
+    role: FoxConnect (Global) treasury, Safe 1.4.1 2-of-10
+    verified: none
+  - address: "0xED9f04F2da1B42Ae558d5E688fe2Ef7080931C9A"
+    chain_id: 59144
+    role: Card balance scanner (read-only helper)
+    verified: none
+  - address: "0xacA92E438df0B2401fF60dA7E4337B687a2435DA"
+    chain_id: 59144
+    role: MetaMask USD (mUSD) token proxy
+    verified: sourcify
+
+components:
+  - name: FoxConnect (Global) spender contract
+    role: contracts
+    public: true
+    license: none
+    operator: Baanx / Crypto Life (owner Safe 0x1b7A...9c99)
+    required: true
+  - name: Cardholder's own MetaMask account (EOA) holding the spendable tokens
+    role: wallet
+    public: true
+    license: source-available
+    operator: Cardholder
+    required: true
+    repo: https://github.com/MetaMask/metamask-mobile
+  - name: Spendable tokens on Linea (USDC, USDT, WETH, EURe, GBPe, aUSDC, mUSD, amUSD)
+    role: contracts
+    public: true
+    license: source-available
+    operator: Each token's issuer (mUSD source is BUSL-1.1; USDC is Circle FiatToken)
+    required: true
+  - name: FoxConnect withdraw operators (33 EOAs) and multiSend signer EOA
+    role: relayer
+    public: false
+    license: proprietary
+    operator: Baanx / Crypto Life
+    required: true
+  - name: Crypto Life (Baanx) API and card authorisation backend (api.baanx.com)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Baanx Group / Crypto Life (program manager)
+    required: true
+  - name: Baanx beneficiary Safe (receives every card pull)
+    role: contracts
+    public: true
+    license: LGPL-3.0
+    operator: Baanx / Crypto Life
+    required: true
+    repo: https://github.com/safe-global/safe-smart-account
+  - name: KYC and eligibility screening (vendor not named)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Crypto Life
+    required: true
+  - name: Monavate (card issuer, e-money institution)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: UAB Monavate
+    required: true
+  - name: Mastercard (card network)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Mastercard
+    required: true
+  - name: MetaMask Mobile card screens (onboarding, spending limit, card details)
+    role: frontend
+    public: true
+    license: source-available
+    operator: Consensys
+    required: false
+    repo: https://github.com/MetaMask/metamask-mobile
+  - name: Infura RPC (card reads on Linea, Base, Monad)
+    role: other
+    public: false
+    license: proprietary
+    operator: Consensys (Infura)
+    required: false
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0x9dd23A4a0845f10d65D293776B792af1131c7B30
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32253699
+        detail: FoxConnect (Global) getWithdrawOperators() returns 33 addresses (all sampled ones are EOAs, e.g. 0x4C893CF4... nonce 166378); withdraw() pulls from any approving wallet to the beneficiary and only an operator can call it; owner() is Safe 0x1b7A8fF5...9c99, which can add or remove operators.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000001b7a8ff58b58ad2abfd731a164298a06a82d9c99"
+        recheck: cast call 0x9dd23A4a0845f10d65D293776B792af1131c7B30 "getWithdrawOperators()(address[])" --rpc-url https://rpc.linea.build --block 32253699
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0x1b7A8fF58B58Ad2ABFd731A164298A06A82D9c99
+        address: "0x1b7A8fF58B58Ad2ABFd731A164298A06A82D9c99"
+        block_number: 32253699
+        detail: Owner Safe (v1.4.1) getThreshold() = 2 with 4 owners (0xce5ff475..., 0x3707C120..., 0x71144589..., 0xE9701D60...); getModulesPaginated(0x1,10) returns no modules and the guard slot is zero. No timelock sits in front of it.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xe75235b8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000002"
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0xA90b298d05C2667dDC64e2A4e17111357c215dD2
+        address: "0xA90b298d05C2667dDC64e2A4e17111357c215dD2"
+        block_number: 32253699
+        detail: The US FoxConnect's owner() is 0x0AB5e068fA215bA0A317c93DCaF73fcdDF9c814A, an address with no code (EOA, nonce 41), and its single withdraw operator is EOA 0x4C893CF4....
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000000ab5e068fa215ba0a317c93dcaf73fcddf9c814a"
+      - tier: documented
+        kind: document
+        url: https://public.withcl.com/Monavate-Issuer-Terms-2023-Nov.pdf
+        detail: Monavate's cardholder terms (linked from Crypto Life's legal page) let the issuer close the card or suspend access immediately, including where it believes continued use could damage its reputation.
+        quote: "We may close your Card and E-wallet or otherwise suspend access to the Services immediately"
+        archive: data/archive/metamask-card-monavate-issuer-terms.txt
+        checked_at: "2026-10-07"
+    finding: >-
+      FoxConnect has no pause or blacklist, but every card settlement is a withdraw() that only an allowlisted operator can call, and the operators are EOAs run by Baanx. Any one of them can stop or selectively skip settlement, which meets anchor 0 on its own. The operator list is set by a 2-of-4 Safe with undisclosed signers, no modules, no guard and no timelock. On the excluded US deployment the owner is a single EOA. On the card side, Monavate's terms allow it to close or suspend a card immediately. Both the EOA-held settlement role (verified) and the documented card suspension meet anchor 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/59144/0x9dd23A4a0845f10d65D293776B792af1131c7B30
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32253699
+        detail: Verified FoxConnect.sol has two entry points that move tokens. withdraw() requires withdrawOperatorMap[msg.sender]. multiSend() requires multiSendOperatorMap[msg.sender] and an EIP-712 signature from signerAddress (EOA 0x11084c82...56CB).
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/tx/0xdd18b6eaa171dcf4974129304f80c9550040ce57be64785a175184d054cab7c7
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32250700
+        detail: Sample card pull. Operator EOA 0x2AcFE192... called withdraw() (selector 0xf7ece0cf), moving 68,698 base units of mUSD from cardholder 0x0edC0eA6... to beneficiary Safe 0x8dFE562C....
+        checked_at: "2026-10-07"
+    finding: >-
+      The merchant is paid by Mastercard and Monavate offchain. The only onchain step is a pull from the cardholder's wallet that only Baanx's operator keys can execute. Neither payer nor payee can complete a card payment by calling the contract directly.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/core/Engine/controllers/card-controller/services/baanx-config.ts#L13-L20
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/core/Engine/controllers/card-controller/services/baanx-config.ts
+        detail: The card provider's base URL and API key come from build-time env (BAANX_API_URL, MM_CARD_BAANX_API_CLIENT_KEY); builds.yml#L44 sets production to https://api.baanx.com. No Baanx backend code is public.
+        checked_at: "2026-10-07"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://support.metamask.io/trade/metamask-card/card-faq/
+        detail: MetaMask's FAQ names Crypto Life as the card provider, Monavate (spelled Monovate) as issuer and Mastercard as network.
+        quote: "Crypto Life is the provider of the MetaMask Card"
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card payment needs Baanx's closed authorisation backend and its operator keys, plus Monavate and Mastercard. None of these is public and none has a fallback, so the card path is closed and single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/components/Onboarding/SignUp.tsx#L139-L170
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/components/UI/Card/components/Onboarding/SignUp.tsx
+        detail: Sign-up preselects the country from device geolocation, and eligibility comes from registrationSettings fetched from the Baanx API. The client contains no sanctions list; screening runs server-side.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://cdn.prod.website-files.com/679758c14272c334b6975a26/67ed139f59c727d6e69de3ea_CL%20Platform%20Terms%20of%20Use%20-%20Monavate%202025.pdf
+        detail: Crypto Life's platform terms require users not to be on UK, EU, US OFAC or UN sanctions lists and reserve the right to restrict service by country.
+        quote: "restrict or deny the provision of Services in certain countries"
+        archive: data/archive/metamask-card-cl-platform-terms.txt
+        checked_at: "2026-10-07"
+    finding: >-
+      FoxConnect itself has no address or country filter. Sanctions and country screening exist and are disclosed in the terms, but they run in the closed Baanx backend and cannot be bypassed, because there is no direct settlement path (C2 = 0). Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/selectors/featureFlagController/card/defaults.ts#L37-L102
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/selectors/featureFlagController/card/defaults.ts
+        detail: The Linea card config enumerates eight tokens by address (USDC, USDT, WETH, EURe, GBPe, aUSDC, mUSD, amUSD). Base, Monad and Solana are enumerated in the same file.
+        checked_at: "2026-10-07"
+        recheck: curl -s https://raw.githubusercontent.com/MetaMask/metamask-mobile/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/selectors/featureFlagController/card/defaults.ts | sed -n 37,102p
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0x176211869cA2b568f2A7D4EE941E073a821EE1ff
+        address: "0x176211869cA2b568f2A7D4EE941E073a821EE1ff"
+        block_number: 32253699
+        detail: Linea USDC (FiatToken proxy) has blacklister() 0x349570f5Dab10ba630FCd4050FBFcdffCdA42bA5 and pauser() 0xa537b946f3baB9453F664AAF6876F4a29260A02b.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xbd102430"
+          expect: "0x000000000000000000000000349570f5dab10ba630fcd4050fbfcdffcda42ba5"
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/59144/0x58a3a9c561591bab0dd11110eca755ea455f1841
+        address: "0xacA92E438df0B2401fF60dA7E4337B687a2435DA"
+        block_number: 32253699
+        detail: The mUSD proxy points to implementation 0x58a3a9c5... (Sourcify exact match, BUSL-1.1), which exposes freeze, freezeAccounts, forceTransfer and pause under FREEZE_MANAGER_ROLE, FORCED_TRANSFER_MANAGER_ROLE and PAUSER_ROLE.
+        checked_at: "2026-10-07"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x00000000000000000000000058a3a9c561591bab0dd11110eca755ea455f1841"
+    finding: >-
+      Tokens and chains are enumerated in code. The tokens carry issuer controls: USDC has a blacklister and a pauser, and mUSD can freeze accounts and force transfers. Linea also runs a centralised sequencer. None of these assumptions appears in the MetaMask support pages or the Crypto Life terms I read. Enumerated in code, assumptions not stated, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/59144/0x9dd23A4a0845f10d65D293776B792af1131c7B30
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32253699
+        detail: Sourcify v2 returns match (partial, not exact_match) for FoxConnect Global and US; Lineascan shows "Source Code Verified (Exact Match)" for FoxConnect Global, compiler 0.8.23, license None.
+        checked_at: "2026-10-07"
+        recheck: curl -s https://sourcify.dev/server/v2/contract/59144/0x9dd23A4a0845f10d65D293776B792af1131c7B30 | jq .match
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0xED9f04F2da1B42Ae558d5E688fe2Ef7080931C9A
+        address: "0xED9f04F2da1B42Ae558d5E688fe2Ef7080931C9A"
+        block_number: 32253699
+        detail: The balance scanner the app reads through is not on Sourcify (match null). It is read-only and holds no funds.
+        checked_at: "2026-10-07"
+    finding: >-
+      The settlement contract is verified: an exact match on the explorer and a partial match on Sourcify. Its source exists only in verification metadata. No public repository or build script reproduces it, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/tree/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/components/UI/Card
+        detail: The card client (onboarding, spending limit, delegation, card details) is public in metamask-mobile. No Baanx organisation or repo exists on GitHub, and no FoxConnect, backend, operator or API-schema repo was found.
+        checked_at: "2026-10-07"
+    finding: >-
+      Public: the app-side card client (source-available) and the verified FoxConnect source on Sourcify and Lineascan. Closed: the Baanx API (no published schema), the authorisation backend and the operator service. Judgment call: this is more than "SDK or contracts only", but without the backend or an API schema it does not reach 2, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/README.md#L35-L81
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: README.md
+        detail: The README covers building the app (Infura key, .js.env, Expo, yarn setup). The card needs MM_CARD_BAANX_API_CLIENT_KEY and the hosted Baanx API, which the README does not provide.
+        checked_at: "2026-10-07"
+    finding: >-
+      Build docs exist for the client. Reproduction not attempted. The README alone shows blockers: card features need a Baanx-issued client key and Baanx's hosted API, and there is no self-host path for the card backend.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/59144/0x9dd23A4a0845f10d65D293776B792af1131c7B30
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32253699
+        detail: FoxConnect's ABI and events (WithdrawalStatus, MultiSendStatus, operator and treasury events) are available from Sourcify metadata. No repo versions them.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/sdk/balanceScannerAbi.json
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/components/UI/Card/sdk/balanceScannerAbi.json
+        detail: The only card ABI committed in the client repo is the read-only balance scanner's. No Baanx API schema or cardholder export was found in the repo.
+        checked_at: "2026-10-07"
+    finding: >-
+      Interfaces are available only through verification metadata, not versioned in a provider repo. There is no API schema, and I found no payee or cardholder export in the repo. Judgment call: between "documented only" and "none"; ABIs are recoverable, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/LICENSE#L1-L7
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: LICENSE
+        detail: The metamask-mobile LICENSE grants only a "limited non-exclusive license to inspect and study the code", with no right to modify or redistribute.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/59144/0x9dd23A4a0845f10d65D293776B792af1131c7B30
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32253699
+        detail: The verified FoxConnect.sol carries SPDX-License-Identifier UNLICENSED.
+        checked_at: "2026-10-07"
+    finding: >-
+      Nothing in the payment path is under an OSI license. The client is inspect-only, the settlement contract is UNLICENSED, and the backend, operator keys, issuer and network are closed. Closed required components alone set F1 to 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/.github/workflows/cla.yml#L18-L24
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: .github/workflows/cla.yml
+        detail: A CLA bot enforces the MetaMask CLA (metamask.io/cla), which grants MetaMask a perpetual, sublicensable copyright license to contributions.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/LICENSE#L1-L3
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: LICENSE
+        detail: The LICENSE says Consensys is "still working through licensing considerations" and wishes to "preserve our licensing options".
+        checked_at: "2026-10-07"
+    finding: >-
+      A CLA permits relicensing, and the LICENSE itself reserves future licensing choices instead of committing to stability. That meets anchor 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/core/Engine/controllers/card-controller/services/baanx-config.ts#L13-L20
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/core/Engine/controllers/card-controller/services/baanx-config.ts
+        detail: The card controller cannot run without a Baanx API key and base URL; the Baanx service has no open implementation.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card payments cannot run without Baanx's proprietary backend and operators, Monavate and Mastercard.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/util/sentry/utils.ts#L657-L750
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/util/sentry/utils.ts
+        detail: Sentry initialises with enabled = forceEnabled || hasConsent. captureExceptionForced() turns it on without consent for critical errors.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/hooks/useSpendingLimit.ts#L549-L563
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/components/UI/Card/hooks/useSpendingLimit.ts
+        detail: Card screens emit MetaMetrics events (e.g. CARD_BUTTON_CLICKED via trackEvent), which go through MetaMask's consent-gated analytics.
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics (MetaMetrics) and error reporting (Sentry) ship in the app and are consent-gated, but a forced Sentry path reports critical errors before consent. The Baanx-hosted KYC and web dashboard were not inspected, and no trace was run. Judgment call: mostly opt-in (2), but the forced pre-consent path and the unseen hosted flows put this between anchors, so I took the lower one, 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://cdn.prod.website-files.com/679758c14272c334b6975a26/67ed139f59c727d6e69de3ea_CL%20Platform%20Terms%20of%20Use%20-%20Monavate%202025.pdf
+        detail: Crypto Life's platform terms list identity data requested at registration (name, email, contact details, phone, username, government ID, date of birth), state that it is a regulatory requirement, and set a five-year retention period.
+        quote: "This information required is a regulatory requirement and used in the prevention and detection"
+        archive: data/archive/metamask-card-cl-platform-terms.txt
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://public.withcl.com/Monavate-Issuer-Terms-2023-Nov.pdf
+        detail: Monavate's terms say the card is not issued until identity is verified, and that data may be passed to fraud prevention and credit reference agencies.
+        quote: "We are required by law to verify certain details about you."
+        archive: data/archive/metamask-card-monavate-issuer-terms.txt
+        checked_at: "2026-10-07"
+    finding: >-
+      Full KYC is required and is disclosed with a legal basis in the terms, but only in policy documents, not in a code or repo document. Collection goes well beyond settlement needs. Disclosed in policy, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/tx/0xdd18b6eaa171dcf4974129304f80c9550040ce57be64785a175184d054cab7c7
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32250700
+        detail: A card pull emits only an ERC-20 Transfer (cardholder 0x0edC0eA6... to beneficiary 0x8dFE562C..., amount) and WithdrawalStatus(result, batchSize). It carries no merchant or order data.
+        checked_at: "2026-10-07"
+        recheck: cast receipt 0xdd18b6eaa171dcf4974129304f80c9550040ce57be64785a175184d054cab7c7 --rpc-url https://rpc.linea.build
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://www.withcl.com/products/metamask
+        detail: Crypto Life tells cardholders that each payment is recorded onchain.
+        quote: "Every payment creates a blockchain record."
+        checked_at: "2026-10-07"
+    finding: >-
+      No merchant or order data goes onchain. Every card spend is still a public transfer from the cardholder's everyday wallet to a known Baanx address, and the FoxConnect approval flags the wallet as a MetaMask Card holder. Anyone can read spend amounts and timing. There are no fresh addresses. Minimal linkage that the provider discloses, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/constants.ts#L6-L19
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/components/UI/Card/constants.ts
+        detail: Card reads go to Infura URLs built from MM_INFURA_PROJECT_ID (Linea falls back to rpc.linea.build). These are hardcoded constants, not user settings.
+        checked_at: "2026-10-07"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://support.metamask.io/trade/metamask-card/security-privacy/
+        detail: MetaMask's support page says Crypto Life runs KYC and processes personal data under its own privacy policy, and that MetaMask does not see it.
+        quote: "Crypto Life manages this step"
+        checked_at: "2026-10-07"
+    finding: >-
+      A card payment is seen by Baanx/Crypto Life, Monavate and Mastercard; the app also reads through Infura. These parties are named in docs and code but cannot be swapped. The KYC vendor behind Crypto Life is not named. No trace was run. Present and disclosed, not swappable, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/constants.ts#L6-L19
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/components/UI/Card/constants.ts
+        detail: Card RPC URLs are constants. Linea uses Infura or rpc.linea.build, and Base and Monad use Infura only.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/core/Engine/controllers/card-controller/services/baanx-config.ts#L13-L20
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/core/Engine/controllers/card-controller/services/baanx-config.ts
+        detail: Card transaction history and balances come from the Baanx API, set at build time.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card module's RPC endpoints are hardcoded constants. Card data comes from Baanx's closed API, which is fixed at build time and has no public indexer. A user cannot point the card at their own endpoints.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/59144/0x9dd23A4a0845f10d65D293776B792af1131c7B30
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32253699
+        detail: Verified withdraw(tokens, sources, amounts) calls transferFrom(source, beneficiary, amount) for arbitrary sources, with no cardholder signature and no per-payment authorisation; setBeneficiary() is onlyOwner.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0x9dd23A4a0845f10d65D293776B792af1131c7B30
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32253699
+        detail: getBeneficiary() = Safe 0x8dFE562C...1D3e (v1.4.1, 2-of-13, no modules, no guard).
+        checked_at: "2026-10-07"
+        check:
+          call: "0x565a2e2c"
+          expect: "0x0000000000000000000000008dfe562cbb4e93d5029f39da26bb6b501a8d1d3e"
+        recheck: cast call 0x9dd23A4a0845f10d65D293776B792af1131c7B30 "getBeneficiary()(address)" --rpc-url https://rpc.linea.build --block 32253699
+    finding: >-
+      At rest, tokens stay in the cardholder's own wallet. Any of 33 Baanx operator EOAs can pull up to the full approved allowance from any approving wallet at any time, without a cardholder signature. The owner Safe can change where pulled funds go. Pulled funds then sit in a Baanx-held Safe and settle offchain. The provider can redirect funds within the allowance, which meets anchor 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0x9dd23A4a0845f10d65D293776B792af1131c7B30
+        address: "0x9dd23A4a0845f10d65D293776B792af1131c7B30"
+        block_number: 32253699
+        detail: The EIP-1967 implementation and admin slots are zero. The verified FoxConnect source (Ownable2Step, EIP712) has no delegatecall, proxy or selfdestruct path, so the code is immutable.
+        checked_at: "2026-10-07"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        recheck: cast storage 0x9dd23A4a0845f10d65D293776B792af1131c7B30 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://rpc.linea.build --block 32253699
+    finding: >-
+      FoxConnect is not upgradeable, and the same holds for the US deployment. Its owner can still change operators, signer, treasury and beneficiary, which is scored under C1 and S1, not here. The tokens are upgradeable by their issuers (USDC and mUSD are proxies), which is covered under C5.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/hooks/useSpendingLimit.ts#L156-L160
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/components/UI/Card/hooks/useSpendingLimit.ts
+        detail: Limit type defaults to 'full'; at L516-L520 'full' maps to BAANX_MAX_LIMIT = '2199023255551' tokens (constants.ts#L43). 'restricted' (a custom amount) is opt-in. The UI labels the full option "Full access".
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/hooks/useCardDelegation.ts#L104-L136
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/components/UI/Card/hooks/useCardDelegation.ts
+        detail: The amount is sent as a plain ERC-20 approve(delegationContract, amount); there is no expiry and no permit.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0xacA92E438df0B2401fF60dA7E4337B687a2435DA
+        address: "0xacA92E438df0B2401fF60dA7E4337B687a2435DA"
+        block_number: 32253699
+        detail: Sample cardholder 0x0edC0eA6...De3E's mUSD allowance to FoxConnect is 2199023255543896596 base units, about 2.2 trillion mUSD, i.e. the full-access default less spends.
+        checked_at: "2026-10-07"
+    finding: >-
+      The default approval is effectively unbounded (2.2 trillion tokens), with no expiry, to a spender that operator EOAs can pull from. A restricted amount is available as an opt-in. The default is labelled "Full access" in the UI, and the support page tells users they set a spending cap. Judgment call: labelled in the UI, so "unbounded by default, disclosed" (1) rather than 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://lineascan.build/address/0x0edC0eA676C5e608D628ecc659a13A213476De3E
+        address: "0x0edC0eA676C5e608D628ecc659a13A213476De3E"
+        eoa: true
+        block_number: 32253699
+        detail: The sample cardholder is an EOA (no code) holding 29.451877 mUSD in its own balance. The tokens never leave the wallet until an operator pull, so the holder can transfer them, or approve(FoxConnect, 0), with their own key.
+        checked_at: "2026-10-07"
+        recheck: cast call 0xacA92E438df0B2401fF60dA7E4337B687a2435DA "balanceOf(address)(uint256)" 0x0edC0eA676C5e608D628ecc659a13A213476De3E --rpc-url https://rpc.linea.build --block 32253699
+    finding: >-
+      Chain of reasoning. By S1, funds at rest stay in the cardholder's own EOA and Baanx holds no key over it, so the holder can move funds or revoke the allowance through the token contract without Baanx. By C2 = 0 and C3 = 0, card settlement stops if Baanx disappears. By O3 = 1, no self-host path is proven. Funds already pulled to the beneficiary Safe stay with Baanx. A standing unbounded allowance also stays live until the user revokes it, so a compromised operator key could drain it (see S1 and S3). Funds retained and retrievable, settlement stops, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/core/Engine/controllers/card-controller/providers/BaanxProvider.ts#L421-L439
+        commit: "b513a4b65ab0a9f84ff0913108a19deb43003e98"
+        path: app/core/Engine/controllers/card-controller/providers/BaanxProvider.ts
+        detail: The build-time MM_CARD_BAANX_API_CLIENT_KEY is sent as both client_id and client_secret, and elsewhere as an x-secret-key header, from the mobile app. The OAuth flow uses PKCE (S256) and user email, password and OTP.
+        checked_at: "2026-10-07"
+    finding: >-
+      A key labelled as a secret ships in every app bundle. What it authorises on Baanx's side is not visible. The code shows a mitigation: PKCE plus per-user credentials, so the key works as a public client identifier. There are no webhooks in the client. Judgment call: "secrets in client with a mitigation" (1). Whether the mitigation is disclosed beyond the code is unknown.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. Monavate's cardholder terms, linked from Crypto Life's legal page, state that UAB Monavate is authorised and regulated by the Bank of Lithuania (authorisation code LB002139) and is required by law to verify cardholder identity (https://public.withcl.com/Monavate-Issuer-Terms-2023-Nov.pdf). Crypto Life's platform terms state that its cryptocurrency-based services are not regulated financial services and are not covered by the Financial Ombudsman Service or the FSCS, and that KYC and transaction records are kept five years after account closure. US cards run under separate Baanx US terms with Cross River Bank (privacy notice linked in metamask-mobile constants.ts), and UK cards are moving to Immersve on Base (cards issued before 28 Sep 2026 stop on 29 Dec 2026); neither was assessed.
+
+notes: >-
+  Scored the Global FoxConnect spender on Linea at block 32253699, from the MetaMask Mobile card defaults at metamask-mobile b513a4b. MetaMask Card is run by Crypto Life (Baanx), issued by Monavate, on Mastercard. Funding works by an ERC-20 approval from the cardholder's own wallet; Baanx operator EOAs pull through FoxConnect.withdraw. No Baanx or FoxConnect repository exists; contract source comes from Sourcify and Lineascan only. The Baanx global privacy policy (secure.baanx.co.uk) timed out from this network and is not cited. No audit of FoxConnect was found, so S6 is unknown.

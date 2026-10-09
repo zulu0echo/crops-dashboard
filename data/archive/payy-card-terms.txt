@@ -1,0 +1,307 @@
+﻿Payy Terms of Service 
+THESE TERMS OF SERVICE ARE A LEGAL AGREEMENT BETWEEN THE SERVICE USER AND ZEPLO, INC. d/b/a PAYY, AND GOVERNS YOUR USE OF THE SERVICES. CAREFULLY READ THIS AGREEMENT, THE PAYY PRIVACY POLICY, AND PRODUCT-SPECIFIC DISCLOSURES, ALL OF WHICH ARE PART OF AND GOVERNED BY THIS AGREEMENT. 
+
+BY USING OR ACCESSING THE SERVICES YOU ARE BOUND BY THIS AGREEMENT. IF YOU DO NOT AGREE, OR ARE BELOW THE AGE OF MAJORITY IN THE JURISDICTION YOU ARE LOCATED, YOU ARE NOT PERMITTED TO USE THE SERVICES.  PAYY IS NOT LIABLE SERVICE USE, OR CONTENT VIEWED BY, MINOR CHILDREN, IN VIOLATION OF THIS AGREEMENT.
+
+WE WILL USE THE FOLLOWING DEFINITIONS THROUGHOUT THE TERMS OF SERVICE: 
+
+“AGREEMENT” MEANS THE LEGAL AGREEMENT ENTITLED “TERMS OF SERVICE” ENTERED INTO BETWEEN PAYY AND USER AND INCLUDES THE PAYY PRIVACY POLICY AND PRODUCT-SPECIFIC DISCLOSURES. 
+
+
+“PAYY,” “WE,” “US” and “OUR” MEANS ZEPLO, INC. d/b/a PAYY.  
+“USER,” “YOU” and “YOUR” MEANS THE PERSON USING THE SERVICES. 
+
+“SERVICE(S)” MEANS USE OF THE SITE, INCLUDING THE ASSOCIATED SITES, SERVICES, APPLICATIONS, FEATURES AND INFORMATION AVAILABLE ON THE SITE AND MOBILE APPLICATIONS WE OFFER. 
+
+“SITE” MEANS https://payy.link/ AND RELATED SUBDOMAINS.
+
+“PRIVACY POLICY” MEANS THE PAYY PRIVACY POLICY. 
+
+"YOUR INFORMATION” IS DEFINED AS INFORMATION YOU PROVIDED TO PAYY, OR PROVIDED PAYY ACCESS TO, INCLUDING INFORMATION RELATED TO: THE REGISTRATION OR TRANSACTION PROCESS, YOUR USER ACCOUNT, AND SERVICE-RELATED EMAIL OR FEATURE. 
+
+1. Changes to this Agreement. Payy reserves the right to modify these terms, with a limited exception for certain Arbitration provisions. Payy will use reasonable efforts to provide notification of material changes by email, website posting, or in-service notice. Payy will determine what changes are material in its sole discretion. Visit this page to learn if terms have changed.  Your continued use of the Service constitutes acceptance of changes. 
+
+2. Access to the Service.
+‍
+2.1. Payy grants to you a non-exclusive, non-transferable, revocable limited license to use the Service for personal non-commercial use. You agree not to use the Service for any other purpose, or to download, save, copy or distribute content on the Service not owned by you.
+‍
+2.2. Payy may change, modify, suspend, or discontinue Service(s) at any time. Payy may also impose limits on features, or restrict all or part of your access to Service(s) at any time, in our own discretion, without notice or liability.
+
+
+2.3 Control. You control the assets held in your digital wallet.  Payy incurs no obligation whatsoever with regard to unsupported Digital Assets sent to or from Payy, including Digital Assets sent to an incompatible Digital Asset wallet address. If you send unsupported Digital Assets to a Payy Account or Supported Digital Assets to an incompatible Digital Asset wallet address, then you will lose those Digital Assets. You acknowledge and agree that you may be required to pay network or miner’s fees in order for a transaction to be successful. Insufficient network fees may cause an Inbound Transfer to remain in a pending state on a decentralized network outside of Payy’s control.  Payy is not responsible for delays or loss incurred as a result of an error in the initiation of the transaction and cannot reverse such transactions.
+
+
+Transfers to a Recipient. Payy allows you to initiate a Digital Asset Transfer to an individual by link or QR code.  Payy also allows you to withdraw funds through an inputted Wallet address. If you initiate a Digital Asset Transfer, and the recipient does not have an existing Payy Account, the link will invite that individual to download Payy. 
+
+
+2.4. Your use of the Service is conditioned upon compliance with this Agreement.  Use of Payy Service(s) in violation of this Agreement may constitute infringement of Payy’s copyright. Payy reserves the right to terminate your access to the Service without notice if you violate this Agreement or for any reason, at Payy’s discretion. Payy or its vendors may require proof of identity to access or use the Service. You agree that you may be denied access if you refuse to provide proof of identity.
+
+2.5.  Access to Payy Services may become degraded or unavailable during times of significant volatility, volume or technological interruption. This could result in significant support response time delays. Although we strive to provide you with excellent service, we do not represent that the Payy Services will be available without interruption. Payy shall not be liable for any losses resulting from or arising out of delays in processing transactions, inability to execute or process transactions, or the lack of timely response from Payysupport. Payy shall not be liable for any alleged losses that you suffer from a drop in values or prices during any delay or interruption.  
+
+
+2.6.  Payy Card
+
+
+When you hold Supported Digital Assets [currently USDC] on Payy, you may be given the option to apply for a Payy Card (“Card”) issued by Rain, through issuing partners in various jurisdictions. To use the Payy Card, you must agree to the eSign Consent and Payy Card terms (“Payy Card Terms”) set out below. You must also agree to the Payy Card Agreement (“Cardholder Agreement”). If you are located in the United States, you must additionally agree to the GLBA Disclosures. You also certify that the information you provide to apply for Payy Card is accurate and that you will abide by the rules and requirements related to the Payy Card. You acknowledge that applying for Payy Card does not constitute unauthorized solicitation.
+
+
+2.6.1  Role of the Payy Card Terms. These Payy Card Terms govern the basis upon which Payy will provide you with the Card and your use of the Card, including within the Payy App and/or Site. The Card is issued to you by Rain, and should be read in conjunction with the Cardholder Agreement and this User Agreement.
+
+
+2.6.2.  Role of the Card. The Card can be used to purchase goods and services from merchants at point of sale terminals, over the telephone, online, or on payment platforms, or withdraw cash from automated teller machines (“ATMs”) that accept Visa cards (“Card Transactions”).The Card account at Rain (“Card Account”) will be linked to your USD Wallet and Digital Asset Wallet. You may elect USD in your USD Wallet or a Supported Digital Asset in your Digital Asset Wallet as your default spending currency (“Preferred Spending Currency”).
+
+
+2.6.3. Card Services. Pursuant to the terms of your Cardholder Agreement, you may use the Card to make various Card Transactions. 
+
+
+2.6.4.  Supported Digital Asset as Preferred Spending Currency. When you select a Supported Digital Asset as your Preferred Spending Currency and use your Card, you authorize direct transfer to Rain to convert said Preferred Spending Currency to fiat.  
+
+
+2.6.5. Role of Payy. Payy will assist, at your election, your push of USDC in your account from the Payy Network to Rain (“Digital Asset Services”) to enable payments to merchants for the purchase of goods and services, and to you for ATM withdrawals, in USD in the amount authorized by the Card Transaction (the “Purchase Price”).
+
+
+2.6.6.  When you select a Supported Digital Asset as your Preferred Spending Currency and use your Card to make a Card Transaction, you authorize the:
+
+
+2.6.7. Sale of your Preferred Digital Asset [currently USDC] in the amount of the Purchase Price plus the accompanying fees and charges described in the Cardholder Agreement if applicable; 
+and
+
+
+2.6.8.   Transfer of the Total Purchase Price in Fiat Currency from your Payy USD Wallet to the Card Account so that Rain can facilitate the transfer of: (i) the Purchase Price to the merchant (i.e., for the purchase of goods and services) or to you (i.e., for ATM withdrawals); and (ii) any fees and charges described in the Cardholder Agreement, except for any fees and charges described in this User Agreement.
+
+
+2.6.9.  Applying for the Card. If you apply for a Card, you may be required to provide certain personal information. You agree that we may share personal information you previously provided to us under our Privacy Policy to verify your identity, with Rain and with service providers acting on our behalf or on Rain’s behalf solely to verify your identity or address, and/or to manage risk as required under applicable law. Personal information shared with Rain will be treated in accordance with its Privacy Policy. If you do not provide this information, or if Rain is unable to verify your identity with the information provided by Payy, your application for a Card will not be considered. We may refuse to facilitate processing of your application through Rain if we determine in our sole discretion that you are in breach of the terms of the User Agreement.
+
+
+
+
+CIP notice:  
+Important Information About Procedures for Opening a New Account
+To help the government fight the funding of terrorism and money laundering activities, Federal law requires the obtaining, verification, and recording of information that identifies each person who opens an account. What this means for you: When you open an account, we may ask for your name, address, date of birth, and other information that will allow us to identify you. We may also ask to see your driver’s license or other identifying documents.
+	
+
+2.6.10. Activating the Card. As applicable, you must sign a physical Card as soon as you receive it and must activate the Card to be able to use it. Activation instructions are set out on the packaging that the Card is attached to and within the Payy Site. A virtual Card can be used immediately upon receipt and does not need to be activated.
+
+
+2.6.11. Using the Card. 
+1.7.1. You agree that you will use the Card in accordance with these Payy Card Terms, this User Agreement, and the Cardholder Agreement.
+
+
+2.6.12.  Your consent will be required in order to use the Card to make a Card Transaction. You may give your consent in the following ways depending on the type of Card Transaction that you are trying to make and the information required by the merchant or ATM:
+
+
+2.6.13.  Purchase of goods and services from a merchant on the merchant’s premises from a point of sale terminal or withdrawing cash from an ATM: You may be required to enter the personal identification number (“PIN”) that we will arrange for you to receive from Rain (or that you may choose) from time to time unless the Card Transaction is being made via a contactless card reader in which case the presentation of the Card will be sufficient to demonstrate consent.
+
+
+2.6.14. Purchase of goods and services from a merchant by telephone, online, or on a payments platform: You may be required to provide Card details such as the Card number, expiration date, and three digit security code from the reverse side of the Card.
+
+
+2.6.15.  Errors or Unauthorized Transactions. If you believe your Card has been lost or stolen, or that an error or unauthorized transaction has occurred, you should contact Payy Customer Service immediately by phone at +1 510 600 3004 or card@payy.link. Payy will not be liable for unauthorized transactions. See Section 3 of the Cardholder Agreement for more information regarding your liability for unauthorized transactions. See Section 8 of the Cardholder Agreement for information regarding Error Resolution.
+
+
+2.6.16.  Maximum Execution Time. The maximum execution time of the Card Transaction itself is dependent on actions being taken by the merchant, ATM owner, Card Scheme and/or other service providers. Payy will use commercially reasonable endeavors to comply with and adhere to the Card Scheme’s settlement timing requirements.
+
+
+2.6.17.  Usage Limits. The usage limits for the Card are set out in your Cardholder Agreement.
+
+
+2.6.18.  Fees and Charges. When we perform the Digital Asset Services, Payy will not charge transaction  fees but may include a spread, in accordance with this User Agreement. You can find a list of our fees and charges on our Pricing and Fees Disclosures page which are separate from any fees and charges included in your Cardholder Agreement. You are at all times responsible for the Total Purchase Price in Fiat Currency and the Total Transaction Price in Supported Digital Asset when you make a Card Transaction.
+
+
+2.6.19.  Refunds. If you are entitled to a refund for any reason for goods or services obtained with your Card, the refund shall be processed in accordance with the terms set out in Section 9(b) of your Cardholder Agreement. Once a refund has been posted by the merchant, we will arrange for it to be refunded to your USD Wallet in USDC.  
+
+
+2.6.20. Right to Charge Exchange Rates for Hold Returns. If your Card Transaction is subject to a preauthorization hold as described in Section 7(f) of your  Cardholder Agreement, once the amount of the Total Purchase Price is received, we will arrange for any remaining amount to be refunded to your USD Wallet or Digital Asset Wallet (as applicable) in your Preferred Spending Currency, which shall be calculated using the Exchange Rate applicable at the time of refund.
+
+
+2.6.21. Information Regarding Card Transactions. You may find details regarding Card Transactions that you have executed in the Payy Card portal of the Payy App (“Payy Card Portal”).
+
+
+2.6.22. Restriction, Suspension, and Termination. Card Transactions or your Card use may be restricted, suspended or terminated with immediate effect in situations where:
+
+
+2.6.23. We are, in our reasonable opinion, required to do so by contract or by applicable law or any court or other authority to which we are subject in any jurisdiction;
+2.6.24. We reasonably suspect you of acting in breach of these Payy Card Terms (including any provision of this User Agreement), or the Cardholder Agreement;
+2.6.25. We have concerns that a Card Transaction is erroneous or about the security of your Card or your Payy Account or we suspect the Payy Services are being used in a fraudulent or unauthorized manner;
+2.6.26.  We suspect money laundering, terrorist financing, fraud, or any other financial crime.  2.6.27.  Use of your Payy Account is subject to any pending litigation, investigation, or government proceeding and/or we perceive a heightened risk of legal or regulatory non-compliance associated with your Payy Account activity; or
+2.6.28.  You have insufficient USDC in your Payy Wallet or Supported Digital Assets in your Digital Asset Wallet to cover the Total Transaction Price of a relevant Card Transaction.
+
+
+If Card Transactions, your Card use and/or any or all Payy Services are restricted, suspended or terminated in this way, we will (unless it would be unlawful for us to do so), provide you with notice of our actions and the reasons for refusal, restriction, suspension, or termination where appropriate, with the procedure for correcting any factual errors that led to the refusal, suspension or termination. In the event that we decline a card transaction and/or restrict, suspend, or terminate your use of the Card and any/or any or all Payy Services, we will reinstate the Card Transaction and/or lift the restriction, suspension, or termination as soon as reasonably practicable once the reasons for decline and/or restriction, suspension, or termination cease to exist.
+
+
+2.6.29.  These Payy Card Terms and the Cardholder Agreement. In the event of a conflict between this User Agreement, including these Payy Card Terms and the Cardholder Agreement, the provisions of the Cardholder Agreement shall prevail.
+
+
+2.6.30.  Payy Liability. This section operates in addition to any limitation of liability expressed elsewhere in this User Agreement.              
+   
+2.6.31.  Payy will not be liable to you for any loss arising from:
+2.6.32. A merchant refusing to accept a Card;
+2.6.33. Any breach by Payy of the User Agreement due to abnormal or unforeseen circumstances beyond Payy’s reasonable control, which would have been unavoidable despite Payy’s efforts to stop it;
+2.6.34. Rain restricting, suspending, or terminating a Card or refusing to issue or replace a Card in accordance with these Payy Card Terms;
+2.6.35. Rain declining a Card Transaction that you make or attempt to make using a Card;
+2.6.36. Payy restricting, suspending, or terminating your USD Wallet, Digital Asset Wallet, or any related Payy Services; or
+2.6.37. Payy’s compliance with any applicable laws and regulations.
+
+
+2.6.38. Payy will not be liable for the goods or services that you purchase from a merchant using a Card.
+
+
+2.6.39. Where a Card is faulty, Payy’s liability shall be limited to assisting with the replacement of the Card.
+
+
+See https://www.raincards.xyz/legal/docs/privacy-policy for Rain Cards privacy policy.
+
+
+2.7. To access certain features and services, you may be required to pay a fee. Payy reserves the right to change fee amounts at any time without notice, and such fees will be displayed at the time of your transaction.   
+
+3. Ownership of Intellectual Property.
+
+3.1. The Service and all associated materials are owned, controlled, or licensed by Payy and its licensors, and are protected from unauthorized use. The Service(s) are copyrighted under the U.S. copyright laws and/or similar laws of other jurisdictions. Payy, and the Payy logos, are trademarks of Payy, and may not be used without the express written permission.
+
+3.2. You do not acquire ownership rights by using the Service, or by copying or downloading material from the Service.
+
+3.3. You agree not to copy, redistribute, publish or otherwise exploit the Service without the express prior written permission of Payy.
+
+3.4. You hereby grant to Payy a limited, non-exclusive, worldwide, perpetual, irrevocable, royal-free, sublicensable (through multiple tiers), and transferable right and license to use all comments, feedback, suggestions, ideas, emails, and other submissions disclosed or submitted to Payy in connection with your use of the Service (collectively, “Submissions”) in any manner Payy may desire, including, but not limited to, to make, have made, use, sell, offer to sell, import, reproduce, modify, create derivative versions of, distribute, publicly display and publicly perform the Submissions, in any and all forms and media now known or hereafter devised, without compensation to you and without identifying you as the creator. You agree that the provisions in this Section 3 will survive any termination of your account(s), the Service, or this Agreement.
+
+3.5. You hereby waive and release any claims you may have against Payy for any damages, costs or liabilities you incur from Payy's use of Your Information, including but not limited to damages caused by any distortion, alteration, composite use, whether intentional or otherwise, that may occur in making, processing, duplicating, distributing or displaying Your Information. 
+
+3.6. You agree to include, and to not remove or alter, Payy’s trademark, copyright or other proprietary rights notices, as provided by Payy on or in connection with the Service, when using or sharing content, or otherwise using the Service, and you agree to comply with usage guidelines that may be provided by Payy from time to time. You agree that all goodwill that arises in connection with your use of Payy trademarks inures exclusively to Payy, and you agree not to challenge Payy’s ownership or control of Payy trademarks, nor use or adopt trademarks that might be confusingly similar to the Payy trademarks.
+
+4. Terms for App Store Apps
+
+4.1. If you accessed or downloaded the App from the Apple Store, you agree to use the App only: (1) on an Apple-branded product or device that runs iOS (Apple’s proprietary operating system software); and (2) as permitted by the “Usage Rules” set forth in the Apple Store Terms of Service as of the effective date of this Agreement. You further acknowledge and agree that:
+
+4.2. This Agreement is between you and Payy, and not with App Provider, and that, as between Payy and the App Provider, Payy is solely responsible for the App.
+
+4.3. The App Provider has no obligation to provide App maintenance and support services.
+
+4.4. In the event of App failure to conform to applicable warranties, you may notify App Provider and App Provider will refund to you purchase price you paid for the App (if applicable) and, to the maximum extent permitted by applicable law, App Provider will have no other warranty obligation whatsoever with respect to the App. Other claims, losses, liabilities, damages, costs or expenses attributable to failure of the App to conform to warranty will be Payy’s responsibility.
+
+4.5. App Provider is not responsible for addressing claims you or third party may have relating to the App, including, but not limited to: (1) product liability claims; (2) claim(s) that the App fails to conform to applicable legal or regulatory requirement; and (3) claims arising under consumer protection or similar legislation.
+
+4.6. In the event of a third-party claim that the App infringes third party’s intellectual property rights, Payy will be responsible for the investigation and defense of such intellectual property infringement claim to the extent required by this Agreement.
+
+4.7. App Provider and its subsidiaries are third-party beneficiaries of this Agreement as related to your license of the App, and, upon your acceptance of this Agreement, App Provider will have the right (and will be deemed to have accepted the right) to enforce this Agreement as related to your license.
+
+4.8. You agree to comply with U.S. and foreign export laws and regulations to ensure that neither the App nor technical data related thereto is exported or re-exported directly or indirectly in violation of, or used for purposes prohibited by, the laws and regulations. By using the App you represent and warrant that: (1) you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a “terrorist supporting” country; and (2) you are not listed on any U.S. Government list of prohibited or restricted parties.
+
+5. Private Keys. Payy allows you to record and store certain information in your account. You are responsible for actions on the Service under your private keys, password, and/or account. You must take reasonable steps to ensure that no unauthorized person accesses your private keys, password or account. You are responsible for all actions taken by individuals who use the Service through your private keys, password, or account. It is your sole responsibility to (1) control the dissemination and use of any private keys,  code and/or password; (2) authorize, monitor, and control access to and use of your Service account, private keys, and password; (3) promptly inform Payy of any need to deactivate an account or password.
+
+6. Information Related to Service. You grant Payy and those involved in the operation of the Service the right to transmit, monitor, retrieve, store, and use information recorded and/or stored in your account to operate the Service.
+
+7.  Usage Rules. You agree to comply with application-, tool-, or content-specific rules published within the Service. You agree that you will not, related to the Service:
+‍
+(a) Copy, adapt, reverse engineer, decompile, reverse assemble, modify or attempt to discover software (source code or object code) that the Service creates to generate web pages or software or other products or processes accessible through the Service;
+‍
+(b) use or launch, develop or distribute automated systems, including, without limitation, spider, robot (or "bot"), cheat utility, scraper or offline reader that accesses the Service, or use or launch unauthorized script or other software;
+
+(c) distribute virus, time bomb, trap door, Trojan horse, worm, malware, ransomware or harmful, or malicious computer code, mechanism, software, script, agent or program;
+
+(d) obscure notices, legends, warnings, banners or advertisements on the Service;
+
+(e) interfere with or circumvent security features of the Service or features that restrict or enforce limitations on use of or access to the Service;
+
+(f) sell the Service or any part thereof;
+
+(g) violate applicable law, including export laws;
+
+(h) infringe or violate the rights of third-parties including intellectual property rights or rights of privacy or publicity;
+
+(i) engage in conduct that is obscene, offensive, pornographic, fraudulent, deceptive, defamatory, threatening, harassing, abusive, slanderous, hateful, or causes embarrassment to any other person;
+
+(j) further chain letters or pyramid schemes, transmit unsolicited messages, or engage in “spam;”
+
+(k) deliberately mislead anyone as to your identity, impersonate another, falsely identify the source of any Submissions, or allow another person or entity to use your identity to access the Service or post or view Submissions;
+
+(l) engage in conduct that conflicts with the spirit or intent of the Service, including without limitation, exposing Payy or another to any liability or detriment; or
+
+(m) use automated queries, including screen and database scraping, spiders, robots, crawlers, information harvesting, and other automated activity with the purpose of obtaining information or data from the Service.
+
+Payy may modify the usage rules at its discretion and will notify you as required by the Agreement.
+
+9. Privacy and Protection of Personal Information. Payy respects the privacy of visitors to and users of the Service. Information collected from you  by Payy is subject to the Payy Privacy Policy. You acknowledge and agree that the Payy Privacy Policy is part of and governed by this Agreement. You agree to all terms of the Payy Privacy Policy. You agree to comply with applicable laws on information you receive from Payy.
+
+10. Communications Decency Act Notification. Pursuant to 47 U.S.C. § 230(d) as amended, Payy hereby notifies you that parental control protections (such as computer hardware, software, or filtering services) are commercially available that may assist you in limiting access to material that is harmful to minors. Information identifying providers of the protection is available at the following links:
+‍
+http://staysafeonline.org/stay-safe-online/;  
+https://www.consumer.ftc.gov/features/feature-0038-onguardonline. 
+
+Please note that Payy is not affiliated with these sites. Payy does not endorse these sites.
+
+11. Disclaimers; Limitations; Waivers of Liability.
+
+11.1. YOU EXPRESSLY AGREE THAT USE OF THE SERVICE IS AT YOUR SOLE RISK AND IS PROVIDED "AS IS" AND WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE (EXCEPT ONLY TO THE EXTENT THIS DISCLAIMER IS PROHIBITED UNDER APPLICABLE LAWS, AND WITH ANY LEGALLY REQUIRED WARRANTY PERIOD LIMITED TO THE SHORTER OF 30 DAYS FROM FIRST USE OR THE MINIMUM PERIOD REQUIRED BY APPLICABLE LAW). WITHOUT LIMITING THE FOREGOING, NEITHER PAYY NOR ITS AFFILIATES OR SUBSIDIARIES, OR ANY OF THEIR DIRECTORS, EMPLOYEES, AGENTS, ATTORNEYS, THIRD-PARTY CONTENT PROVIDERS, DISTRIBUTORS, LICENSEES OR LICENSORS (COLLECTIVELY, "PAYY PARTIES") WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, UNCORRUPTED, TIMELY, OR ERROR-FREE.
+
+
+OUR SERVICES RELY ON EMERGING TECHNOLOGIES. SOME SERVICES ARE SUBJECT TO INCREASED RISK THROUGH YOUR POTENTIAL MISUSE OF THINGS SUCH AS PUBLIC/PRIVATE KEY CRYPTOGRAPHY, OR FAILING TO PROPERLY UPDATE OR RUN SOFTWARE TO ACCOMMODATE PROTOCOL UPGRADES, LIKE THE TRANSITION TO PROOF OF STAKE CONSENSUS. BY USING THE SERVICES YOU EXPLICITLY ACKNOWLEDGE AND ACCEPT THESE HEIGHTENED RISKS.  YOU REPRESENT THAT YOU ARE FINANCIALLY AND TECHNICALLY SOPHISTICATED ENOUGH TO UNDERSTAND THE INHERENT RISKS ASSOCIATED WITH USING CRYPTOGRAPHIC AND BLOCKCHAIN-BASED SYSTEMS AND UPGRADING YOUR SOFTWARE AND PROCESSES TO ACCOMMODATE OFFERING AND PROTOCOL UPGRADES, AND THAT YOU HAVE A WORKING KNOWLEDGE OF THE USAGE AND INTRICACIES OF DIGITAL ASSETS SUCH AS ETHER (ETH) AND OTHER DIGITAL TOKENS, SUCH AS THOSE FOLLOWING THE ERC-20 TOKEN STANDARD.  IN PARTICULAR, YOU UNDERSTAND THAT WE DO NOT OPERATE THIRD PARTY PROTOCOLS OR ANY OTHER BLOCKCHAIN PROTOCOL, COMMUNICATE OR EXECUTE PROTOCOL UPGRADES, OR APPROVE OR PROCESS BLOCKCHAIN TRANSACTIONS ON BEHALF OF YOU.  YOU FURTHER UNDERSTAND THAT BLOCKCHAIN PROTOCOLS PRESENT THEIR OWN RISKS OF USE, THAT SUPPORTING OR PARTICIPATING IN THE PROTOCOL MAY RESULT IN LOSSES IF YOUR PARTICIPATION VIOLATES CERTAIN PROTOCOL RULES, THAT  BLOCKCHAIN-BASED TRANSACTIONS ARE IRREVERSIBLE, THAT YOUR PRIVATE KEY AND SECRET RECOVERY PHRASE MUST BE KEPT SECRET AT ALL TIMES, THAT PAYY WILL NOT STORE A BACKUP OF, NOR WILL BE ABLE TO DISCOVER OR RECOVER, YOUR PRIVATE KEY OR SECRET RECOVERY PHRASE, THAT DIGITALLY COPYING AND STORING YOUR SECRET RECOVERY PHRASE ON A CLOUD STORAGE SYSTEM OR OTHER THIRD PARTY SUPPORTED DATA STORAGE, INCLUDING YOUR PERSONAL DEVICE, MAY INCREASE THE RISK OF LOSS OR THEFT, AND THAT YOU ARE SOLELY RESPONSIBLE FOR ANY APPROVALS OR PERMISSIONS YOU PROVIDE BY CRYPTOGRAPHICALLY SIGNING BLOCKCHAIN MESSAGES OR TRANSACTIONS, ESPECIALLY THOSE RESPONDING TO SOLICITATIONS AND OTHER PROMPTS FROM THIRD PARTIES.
+YOU FURTHER UNDERSTAND AND ACCEPT THAT DIGITAL TOKENS PRESENT MARKET VOLATILITY RISK, TECHNICAL SOFTWARE RISKS, REGULATORY RISKS, AND CYBERSECURITY RISKS.  YOU UNDERSTAND THAT THE COST AND SPEED OF A BLOCKCHAIN-BASED SYSTEM IS VARIABLE, THAT COST MAY INCREASE DRAMATICALLY AT ANY TIME, AND THAT COST AND SPEED IS NOT WITHIN THE CAPABILITY OF PAYY TO CONTROL.  YOU UNDERSTAND THAT PROTOCOL UPGRADES MAY INADVERTENTLY CONTAIN BUGS OR SECURITY VULNERABILITIES THAT MAY RESULT IN LOSS OF FUNCTIONALITY AND ULTIMATELY FUNDS.
+YOU UNDERSTAND AND ACCEPT THAT PAYY DOES NOT CONTROL ANY BLOCKCHAIN PROTOCOL, NOR DOES PAYY CONTROL ANY SMART CONTRACT THAT IS NOT OTHERWISE OFFERED BY PAYY AS PART OF THE SERVICES AND IS NOT ITSELF A THIRD PARTY SERVICE.  YOU UNDERSTAND AND ACCEPT THAT PAYY DOES NOT CONTROL AND IS NOT RESPONSIBLE FOR THE TRANSITION OF ANY BLOCKCHAIN PROTOCOL FROM PROOF OF WORK TO PROOF OF STAKE CONSENSUS OR THE FUNCTIONING OF ANY PROTOCOL AFTER IT UNDERGOES A TECHNICAL UPGRADE.  YOU UNDERSTAND AND ACCEPT THAT PAYY DOES NOT CONTROL AND IS NOT RESPONSIBLE FOR ANY THIRD PARTY SERVICE.  YOU AGREE THAT YOU ALONE, AND NOT PAYY, IS RESPONSIBLE FOR ANY TRANSACTIONS THAT YOU ENGAGE IN WITH REGARD TO SUPPORTING ANY BLOCKCHAIN PROTOCOL WHETHER THROUGH TRANSACTION VALIDATION OR OTHERWISE, OR ANY TRANSACTIONS THAT YOU ENGAGE IN WITH ANY THIRD-PARTY-DEVELOPED SMART CONTRACT OR TOKEN, INCLUDING TOKENS THAT WERE CREATED BY A THIRD PARTY FOR THE PURPOSE OF FRAUDULENTLY MISREPRESENTING AFFILIATION WITH ANY BLOCKCHAIN PROJECT.  YOU AGREE THAT PAYY IS NOT RESPONSIBLE FOR THE REGULATORY STATUS OR TREATMENT IN ANY JURISDICTION OF ANY DIGITAL ASSETS THAT YOU MAY ACCESS OR TRANSACT WITH USING PAYY SERVICES.  YOU EXPRESSLY ASSUME FULL RESPONSIBILITY FOR ALL OF THE RISKS OF ACCESSING AND USING THE SERVICES TO INTERACT WITH BLOCKCHAIN PROTOCOLS.
+
+11.2. THE PAYY PARTIES FURTHER MAKE NO REPRESENTATIONS OR WARRANTIES THAT THE SERVICE OR THE PROXY-BASED OR ENCRYPTED IDENTIFIERS GENERATED BY THE SERVICE WILL BE ACCURATE, RELIABLE, COMPLETE, CURRENT, OR TIMELY. THE SERVICE MAY BE TEMPORARILY UNAVAILABLE FROM TIME TO TIME FOR MAINTENANCE OR OTHER REASONS. PAYY IS NOT RESPONSIBLE FOR TECHNICAL MALFUNCTIONS OR OTHER PROBLEMS OF INTERNET NETWORKS OR SERVICES, COMPUTER SYSTEMS, MOBILE PHONE EQUIPMENT, SOFTWARE, OR EMAIL, INCLUDING TECHNICAL PROBLEMS OR TRAFFIC CONGESTION ON THE INTERNET OR AT ANY SITE OR COMBINATION THEREOF, INCLUDING INJURY OR DAMAGE TO A USER'S OR TO ANY OTHER PERSON'S COMPUTER, MOBILE PHONE, OR OTHER HARDWARE OR SOFTWARE, RELATED TO OR RESULTING FROM USING OR DOWNLOADING MATERIALS IN CONNECTION WITH THE INTERNET AND/OR IN CONNECTION WITH THE SERVICE.
+
+11.3. THE PAYY PARTIES DO NOT ENDORSE OR WARRANT ANY PRODUCT, SERVICE, OPINION, OR OTHER INFORMATION THAT MAY BE REFERENCED ON OR THROUGH THE SERVICE.  THE SERVICE HEREUNDER IS DESIGNED FOR INFORMATIONAL AND TRANSACTIONAL PURPOSES ONLY. THE PAYY PARTIES HAVE NO RESPONSIBILITY FOR OR INVOLVEMENT WITH ANY RELATIONSHIP THAT EXISTS OR COMES TO EXIST BETWEEN A USER OF THE SERVICE AND ANY THIRD PARTY (INCLUDING ANY THIRD PARTY WITH WHOM A USER MAY COMMUNICATE USING THE SERVICE). 
+
+11.4. THE PAY PARTIES WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES, PERSONAL INJURY/WRONGFUL DEATH, LOST PROFITS, LOST DATA, OR BUSINESS INTERRUPTION, THE USE OR MISUSE OF SUBMISSIONS IN ANY WAY WHATSOEVER ARISING OUT OF THE USE OF, OR INABILITY TO USE, THE SERVICE, WHETHER OR NOT THE PAYY PARTIES ARE ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN THE EVENT THAT THE FOREGOING EXCLUSION OF LIABILITY IS FOUND BY A COURT OF COMPETENT JURISDICTION TO BE UNENFORCEABLE, AND A DETERMINATION IS MADE THAT PAYY IS LIABLE, UNDER NO CIRCUMSTANCES WILL THE PAYY PARTIES BE LIABLE TO YOU FOR MORE THAN THE LESSER OF (A) THE AMOUNT YOU HAVE PAID PAYY IN THE 90 DAYS IMMEDIATELY PRECEDING THE DATE ON WHICH YOU FIRST ASSERT THE CLAIM OR (B) $100.
+
+11.5. TO THE FULLEST EXTENT PERMITTED BY LAW, THESE DISCLAIMERS OF LIABILITY CONTAINED HEREIN APPLY TO ANY AND ALL DAMAGES OR INJURY WHATSOEVER CAUSED BY OR RELATED TO USE OF, OR INABILITY TO USE, THE SERVICE UNDER ANY CAUSE OR ACTION WHATSOEVER OF ANY JURISDICTION, INCLUDING, WITHOUT LIMITATION, ACTIONS FOR BREACH OF WARRANTY, BREACH OF CONTRACT OR TORT (INCLUDING NEGLIGENCE). 
+
+11.6. Release. You forever release, discharge, and covenant not to sue the Payy Parties from any and all liability, claims, actions, and expenses that may arise, whether caused by the negligence of the Payy Parties or otherwise, in connection with your use of the Service or your interaction with any party through or as a result of the Service. In other words, you cannot sue the Payy Parties if anything happens to you or your property from using the Service or interacting with any party through the Service.  You agree that the provisions in this Section 9 will survive any termination of your account(s), the Service, or this Agreement.
+
+12. Indemnification. You agree to defend, indemnify and hold harmless the Payy Parties from and against all liability, claims, actions and expenses, including attorneys' fees and costs, arising out of your use of the Service or your breach or alleged breach of any term, condition, obligation, representation or warranty in this Agreement. You agree that the provisions in this paragraph will survive any termination of your account(s) the Service, or this Agreement.
+
+13. Third Party Sites and Products. We may include links to third-party sites or services, or information about third-party products or services, which are typically subject to service terms and policies that differ from ours. Therefore, you should review the terms of use and privacy policies of all sites and services linked to from or referred to by our Service. We do not endorse or take responsibility for these third-party SERVICES, nor do we vet or take responsibility for third-party sites, services or products or for the postings or communications of other users.
+
+14. Governing Law/Waiver of Injunctive Relief/Dispute Resolution.
+
+14.1. This Agreement and all aspects of the Service will be governed by laws of the U.S. and contracts are entered into and performed in Delaware (thus, without regard to conflict of laws provisions) regardless of your location, except that the arbitration provision set forth in sections 14.4, 14.5, and 14.6 will be governed by the Federal Arbitration Act, 9 U.S.C. § 1, et seq. With respect to any disputes or claims not subject to informal dispute resolution or arbitration (as set forth below), you agree not to commence or prosecute any action in connection therewith other than in the state or federal courts located in Delaware, and you hereby consent to, and waive all defenses of lack of personal jurisdiction and forum non conveniens with respect to, venue and jurisdiction in the state and federal courts located in Delaware..
+
+14.2. You acknowledge that the rights granted and obligations made hereunder to Payy are of a unique and irreplaceable nature, the loss of which will irreparably harm Payy and which cannot be replaced by monetary damages alone, so that Payy will be entitled to injunctive or other equitable relief (without the obligations of posting any bond or surety) in the event of any breach or anticipatory breach by you. You irrevocably waive all rights to seek injunctive or other equitable relief and agree to limit your claims to claims for monetary damages (if any).
+
+14.3. To expedite resolution and control the cost of any dispute, controversy or claim related to this Agreement ("Dispute"), you and Payy agree to first attempt to negotiate any Dispute (except those Disputes expressly provided below) informally for at least thirty (30) days before initiating any arbitration or court proceeding. The informal negotiations commence upon written notice from one person to the other. You will send your notice to Payy, 169 Madison Avenue STE 2680, New York, NY 10016.  In this Agreement, the term “Dispute” is to have the broadest possible meaning.
+
+14.4. Arbitration. If you and Payy are unable to resolve a Dispute through informal negotiations within 30 days, either you or Payy may elect to have the Dispute (except those Disputes expressly excluded below) finally and exclusively resolved by binding arbitration. Either party may elect arbitration at any time, including after a lawsuit is filed.  Any election to arbitrate by one party will be final and binding on the other. YOU UNDERSTAND THAT ABSENT THIS PROVISION, YOU WOULD HAVE THE RIGHT TO SUE IN COURT AND HAVE A JURY TRIAL. BY AGREEING TO THESE TERMS, YOU ARE WAIVING YOUR RIGHT TO HAVE JURIES RESOLVE DISPUTES, TO HAVE COURTS (OTHER THAN SMALL CLAIMS COURTS) SOLVE DISPUTES, TO SERVE AS A PRIVATE ATTORNEY GENERAL OR IN A REPRESENTATIVE CAPACITY, AND TO PARTICIPATE IN A CLASS ACTION LAWSUIT.  The arbitration will be commenced and conducted under the Streamlined Arbitration Rules and Procedures (the “Rules”) of JAMS, which is available at the JAMS website www.jamsadr.com. The determination of whether a Dispute is subject to arbitration will be governed by the Federal Arbitration Act and determined by a court rather than an arbitrator. Your arbitration fees and your share of arbitrator compensation will be governed by the Rules. The arbitration may be conducted in person, through the submission of documents, by phone or online. Any in-person hearing will be conducted at a location that is reasonably convenient to you.  The arbitrator will make a decision in writing but need not provide a statement of reasons unless requested by a party. The arbitrator must follow applicable law, and any award may be challenged if the arbitrator fails to do so.
+
+14.5. Notwithstanding the above, you and Payy agree that arbitration will be limited to the Dispute between Payy and you individually. To the full extent permitted by law, (a) no arbitration will be joined with any other; (b) there is no right or authority for any Dispute to be arbitrated on a class-action basis or to utilize class action procedures; and (c) there is no right or authority for any Dispute to be brought in a purported representative capacity on behalf of the general public or any other persons.  If a claim seeks public injunctive relief and a court determines that this arbitration provision’s restrictions on serving in a representative capacity or on behalf of the general public are unenforceable with respect to such claim, then after all appeals have been exhausted the claim for public injunctive relief will be determined in court. All individual claims seeking monetary relief will be arbitrated. The parties agree to stay claims for public injunctive relief until the arbitration award pertaining to individual relief has been entered in court. The parties agree that class claims and claims for public injunctive relief will not be arbitrated.
+
+14.6. You and Payy agree that the following Disputes are not subject to the above provisions concerning informal negotiations and binding arbitration: (a) Disputes seeking to enforce or protect, or concerning the validity of, your or Payy’s intellectual property rights; (b) Dispute related to, or arising from, allegations of theft, piracy, invasion of privacy or unauthorized use; (c) compel arbitration, stay proceedings pending arbitration, or to confirm, modify, vacate or enter judgment on the award entered by the arbitrator; and (d) claim brought on an individual basis in a state court of limited jurisdiction that does not have authority to hear class action litigation (“Small Claims Court”).
+
+
+14.7 Force Majeure. Payy shall not be liable for delays, failure in performance or interruption of service which result directly or indirectly from any cause or condition beyond our reasonable control, including but not limited to, significant market volatility, act of God, act of civil or military authorities, act of terrorists, civil disturbance, war, strike or other labor dispute, fire, interruption in telecommunications or Internet services or network provider services, failure of equipment and/or software, pandemic, other catastrophe or any other occurrence which is beyond our reasonable control and shall not affect the validity and enforceability of any remaining provisions.
+
+
+14.8. Non-Waiver of Rights. This Agreement shall not be construed to waive rights that cannot be waived under applicable laws, including applicable  state money transmission laws in the state where you are located. In addition, our failure to insist upon or enforce strict performance by you of any provision of this Agreement or to exercise any right under this Agreement will not be construed as a waiver or relinquishment to any extent of our right to assert or rely upon any such provision or right in that or any other instance.
+
+
+14.9. Relationship of the Parties. Payy is an independent contractor for all purposes. Nothing in this Agreement is intended to or shall operate to create a partnership or joint venture between you and Payy, or authorize you to act as agent of Payy.
+
+15. Waiver/Severability.
+
+15.1. Payy’s failure to enforce strict performance or exercise any right under this Agreement will not be construed as a waiver of Payy’s right to assert or rely upon the provision or right in that or any other instance.
+
+15.2. You and Payy agree that if any part of this Agreement is declared invalid, the rest of the Agreement remains valid. If any part of this Agreement conflicts with any law, that law will control. The part of the Agreement that conflicts with any law will be modified to comply with the law. The rest of the Agreement remains valid." If Section 12.4 is found to be illegal or unenforceable then neither you nor Payy will elect to arbitrate any Dispute falling within that portion of Section 12.4 found to be illegal or unenforceable and the Dispute will be decided by a court of competent jurisdiction within State of Delaware, and you and Payy agree to submit to the personal jurisdiction of that court.
+
+16. Term and Termination. This Agreement will remain in effect as long as your account is up-to-date and you remain in compliance with the Agreement, unless it has been voluntarily suspended or terminated by you or Payy. The privileges granted to you under this Agreement will terminate immediately and automatically without notice from Payy if, in our sole discretion, you fail to comply with any term or provision of this Agreement or for any reason.  Following the termination of this Agreement, your account(s), or the Service, Payy will retain all rights to the Submissions under this Agreement.
+
+17. Miscellaneous. Payy operates and controls the Service from its offices in the United States. Payy makes no representation that the Service is appropriate, lawful or available in other locations, outside of those made available by Payy. The information provided on the Service is not intended for distribution to or use by any person or entity in any jurisdiction or country where the distribution or use would be contrary to law or regulation or which would subject Payy to any registration requirement within the jurisdiction or country. Accordingly, those persons who choose to access the Service from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable. Neither the course of conduct between the parties nor trade practice will act to modify this Agreement. Payy may assign this Agreement to any party at any time without any notice to you.  You may not assign this Agreement without Payy’s prior written consent. This Agreement (including the Payy Privacy Policy) contains the entire understanding of you and Payy’s, and supersedes all prior understandings between the parties concerning its subject matter, and cannot be changed or modified by you. Upon Payy’s request, you will furnish Payy with any documentation, substantiation or releases necessary to verify your compliance with this Agreement. You agree that this Agreement will not be construed against Payy by virtue of having drafted it. You hereby waive any and all defenses you may have based on the electronic form of this Agreement and the lack of signing by the parties hereto to execute this Agreement.
+
+18. Construction.  In this Agreement, unless a clear contrary intention appears: (i) where not inconsistent with the context, words used in the present tense include the future tense and vice versa and words in the plural number include the singular number and vice versa; (ii) reference to any person includes the person’s successors and assigns but, if applicable, only if the successors and assigns are not prohibited by this Agreement; (iii) reference to any gender includes each other gender; (iv) reference to any agreement, document or instrument means the agreement, document or instrument as amended or modified and in effect from time to time accordin the terms thereof and includes all addenda, exhibits and schedules thereto; (v) the titles and subtitles used in this Agreement are used for convenience only and are not to be considered in construing or interpreting this Agreement; (vi) “hereunder,” “hereof,” “hereto,”  and words of similar import will be deemed references to this Agreement as a whole and not to any particular Section or Subsection of this Agreement; (vii) “including” (and with correlative meaning, “include”) means including without limiting the generality of any description preceding the term; (viii) all references to “days” means calendar days; and (x) the word "or" is not exclusive. This Agreement has been executed in English and the English language version will control notwithstanding any translations of this Agreement.  Unless otherwise expressly permitted under this Agreement, all deliverables will be in English.
+
+19. Statute of Limitations. You and Payy both agree that regardless of any statute or law to the contrary, any claim or cause of action arising out of or related to use of the Service or this Agreement (including the Privacy Policy) must be filed within ONE (1) YEAR after the claim or cause of action arose (or, if longer, within the shortest statute of limitations for the claim which the parties may establish by agreement) or the claim will be forever barred.
+
+20. Export and Sanctions Compliance. In connection with this Agreement, you will comply with all applicable import, re-import, sanctions, anti-boycott, export, and re-export control laws and regulations, including all such laws and regulations that prohibit certain transactions. For clarity, you are solely responsible for compliance related to the manner in which you choose to use the Services. You may not use any Service if you are the subject of U.S. sanctions or of sanctions consistent with U.S. law imposed by the governments of the country where you are using the Service.
+21 No Third-Party Beneficiaries. Except as otherwise set forth herein, this Agreement does not create any third-party beneficiary rights in any individual or entity that is not a party to this Agreement.
+22. Questions? If you have any questions about this Agreement, its terms, your account or your rights hereunder, please contact hello@payy.link. 
+
+23.. Payment. Use of the Service may require payment(s) (“Charges”).  Payy will process payment using the preferred payment method designated.  Charges will be inclusive of applicable taxes where required by law. Charges paid by you are final and non-refundable, unless otherwise determined by Payy.  Questions about charges should be addressed to hello@payy.link.
+
+We reserve the right to establish, remove and/or revise Charges for Service(s) at any time in our sole discretion, by posting or otherwise delivering notice to you.  Use of the Service after new or revised Charges will be deemed your acceptance of new or revised Charges.
+
+Payy may provide promotional offers and discounts that may result in different Charges for the same or similar Service. You agree that the promotional offers and discounts, will have no bearing on your use of the Service or the Charges applied to you.
+
+
+
+
+© Copyright 2022-2025 Zeplo, Inc. d/b/a PAYY
+Payy is a financial technology company. Payy is not a bank, exchange, asset custodian, or credit card issuer. Cards are issued by partners licensed in their respective jurisdictions. Other fiat services are provided by partners licensed in their respective jurisdictions.

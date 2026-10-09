@@ -1,0 +1,33 @@
+Source: https://about.tuyo.com/Privacy-Policy-ab80528d2dfa4860854dee593fbad459 (Notion page rendered in a browser; text copied 2026-10-07)
+
+Privacy Policy
+Last updated: July 17th, 2024
+1. Introduction
+Welcome to Tuyo! This Privacy Policy describes how Tuyo ("we," "us," or "our") collects, uses, stores, and protects your information when you use our mobile application and related services ("Services"). By using Tuyo, you agree to the collection and use of your information as described in this policy.
+2. Information We Collect
+Personal Information:
+Your Tuyo account address and transactions may be recorded on a public blockchain, visible to the public.
+We collect personal information such as your name, email, and bank account information for on and offramp services.
+Technical Information:
+We collect technical information related to API usage, including your device's IP address, operating system version, app configuration, usage statistics, and timestamps of app usage. These logs are retained for a limited period for diagnostic and security purposes.
+3. How We Use Your Information
+We process your information for the following purposes:
+To provide and improve our Services
+To communicate with you, including sending necessary service updates and notifications
+For security monitoring, fraud prevention, and investigation
+To comply with legal obligations
+To analyze usage trends and enhance the user experience of our app
+4. Sharing Your Information
+We may share technical information related to API usage with specific third parties for analytics and security purposes.
+We do not sell your personal information to third parties for marketing purposes.
+We share your personal information with our partner Bridge which provides you with on and offramp services. Your relationship with Bridge is governed by their own terms and privacy policy.
+5. Data Security
+We implement appropriate technical and organizational measures to protect your information. However, no method of transmission over the internet or electronic storage is completely secure.
+6. Your Rights
+Depending on your jurisdiction, you may have certain rights regarding your personal information. You can contact us at legal@tuyo.com to exercise these rights.
+7. Children's Privacy
+Our Services are not directed to individuals under the age of 18. We do not knowingly collect personal information from minors. If we become aware of such data being collected inadvertently, we will take steps to delete it.
+8. Changes to This Privacy Policy
+We may update this Privacy Policy from time to time to reflect changes in our practices or for legal reasons. We will notify you of any material changes by posting the updated policy on our website or app.
+9. Contact Us
+If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at legal@tuyo.com.

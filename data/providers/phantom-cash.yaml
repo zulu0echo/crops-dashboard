@@ -1,0 +1,356 @@
+slug: phantom-cash
+name: Phantom Cash
+type: incumbent
+website: https://phantom.com/cash
+repos: []
+contracts: []
+
+components:
+  - name: Phantom mobile app and Cash account (Phantom profile sign-in)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Phantom Technologies, Inc.
+    required: true
+  - name: Phantom backend (prompt-free Cash swaps and transfers, card UI)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Phantom Technologies, Inc.
+    required: true
+  - name: CASH stablecoin (Token-2022; freeze authority, permanent delegate)
+    role: ledger
+    public: false
+    license: proprietary
+    operator: Bridge Building Inc.
+    required: true
+  - name: Bridge card programme and debit-card contract (program manager; draws CASH)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Bridge Ventures LLC (Stripe)
+    required: true
+  - name: Lead Bank (card issuer)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Lead Bank
+    required: true
+  - name: Visa card network
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Galileo card processing and disputes
+    role: other
+    public: false
+    license: proprietary
+    operator: Galileo
+    required: true
+  - name: Link (Stripe) identity verification
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Stripe
+    required: true
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.bridge.xyz/card-agreements/phantom-card
+        quote: "We reserve the right to block, suspend or cancel your Card at any time, with or without notice"
+        detail: Lead Bank Prepaid Visa Cardholder Agreement (Bridge Ventures as Program Manager, Phantom as Platform Provider), fraud prevention clause.
+        checked_at: "2026-10-07"
+    finding: >-
+      The bank and the program manager can block or cancel an individual card with or without notice. That meets anchor 0. No settlement contract was identified to assess further.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/use-your-virtual-phantom-debit-card-us-only-44800221533459
+        quote: "Stripe (our partner) draws CASH from your Cash account, converts it to USD"
+        detail: The debit card article says Stripe/Bridge pulls CASH from the Cash account at payment time and the merchant is paid like a standard Visa transaction.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card payments are pulled by Bridge and settled over Visa by Lead Bank. No direct payer or payee contract path is documented or published.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/understanding-your-cash-account-44799497237395
+        quote: "Link handles identity verification (KYC) for Cash."
+        detail: The Partners section lists Link (KYC), Stripe (funding), Bridge (card, bank transfers), Lead Bank (issuer) and Galileo (processing, disputes).
+        checked_at: "2026-10-07"
+    finding: >-
+      The card depends on Phantom's closed app and on Stripe, Bridge, Lead Bank and Galileo. None is public and none has a fallback. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/privacy
+        quote: "comply with legal obligations related to financial crimes and sanctions"
+        detail: The Privacy Policy says Phantom uses IP address and other data for sanctions compliance; the card is offered only in the US except New York after Link KYC, and some merchant categories are declined.
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions and geographic gating is disclosed in policy and help pages. It runs in closed services and cannot be bypassed (C2 = 0). 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/address/CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH
+        address: "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 454207323
+        detail: CASH mint (Token-2022, owner TokenzQdB...) has freezeAuthority AyCP3oW19DHZKvx8oU6mvseW2qn7XfmQ5STrXPa6prY5 and a permanentDelegate extension set to E7JdFMP5AqdndJKstZV2mHdekLwAQbNWRHMpoozyB3qw (both system-owned keypair accounts), which can freeze any CASH account and transfer or burn CASH from any holder.
+        checked_at: "2026-10-07"
+        recheck: "curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"getAccountInfo\",\"params\":[\"CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH\",{\"encoding\":\"jsonParsed\"}]}'"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://help.phantom.com/articles/cash-faq-44800866087443
+        quote: "Only you can move funds using your wallet credentials."
+        detail: The Cash FAQ answers "Can anyone pull CASH out of my Cash account?" with No, saying Phantom, Stripe, Link or any partner cannot access or withdraw funds.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://docs.phantom.com/cash
+        quote: "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH"
+        detail: Phantom's developer docs enumerate the CASH mint on Solana as the Cash token.
+        checked_at: "2026-10-07"
+    finding: >-
+      The token and chain are enumerated in docs (CASH on Solana). The issuer's powers are misstated: the FAQ says no partner can pull CASH out of a Cash account, but the mint carries a permanent delegate that can move or burn any holder's CASH, and a freeze authority. Solana has no sequencer, which is not stated either. Misstated, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/understanding-your-cash-account-44799497237395
+        quote: "Link handles identity verification (KYC) for Cash."
+        detail: Cash runs in the closed Phantom mobile app (not the extension) and on partner services; no Cash, card or Cash-account program repository exists in github.com/phantom.
+        checked_at: "2026-10-07"
+    finding: >-
+      Nothing needed to run Phantom Cash is public. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/understanding-your-cash-account-44799497237395
+        quote: "Link handles identity verification (KYC) for Cash."
+        detail: Every required component (app, backend, CASH issuer, card programme, KYC) is closed.
+        checked_at: "2026-10-07"
+    finding: >-
+      Required components are closed, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/use-your-virtual-phantom-debit-card-us-only-44800221533459
+        quote: "Stripe (our partner) draws CASH from your Cash account, converts it to USD"
+        detail: The card cannot work without Stripe/Bridge pulling CASH and Lead Bank settling over Visa.
+        checked_at: "2026-10-07"
+    finding: >-
+      The product cannot run without proprietary hosted services. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/privacy
+        quote: "We use third-party analytics to evaluate usage of our Functionality."
+        detail: The Privacy Policy discloses third-party analytics and says users may opt out, so it is on by default; the vendor is not named.
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics is present, on by default and disclosed in the policy. The app is closed and no trace was run. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/privacy
+        quote: "Social Security number, government-issued identification"
+        detail: The Privacy Policy says KYC for opt-in features covers legal name, date of birth, SSN, government ID and contact data, processed by third parties under the Bank Secrecy Act; for Phantom Cash it also collects merchant location data and the last four digits of bank and card numbers.
+        checked_at: "2026-10-07"
+    finding: >-
+      KYC is legally required and its basis is disclosed, but only in a hosted policy, and Phantom also keeps merchant location data for card transactions. Documented cap, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/understanding-your-cash-account-44799497237395
+        quote: "Bridge rotates the addresses it uses."
+        detail: The Privacy section says card payments appear onchain as transfers from the Cash account to Bridge's debit card smart contract, without merchant data, and bank flows as transfers to rotating Bridge wallets.
+        checked_at: "2026-10-07"
+    finding: >-
+      Each card payment is a public transfer from a long-lived Cash address, so amounts and timing are visible; merchant data is not onchain. Judgment call: this is "minimal linkage, documented" (2), but no sample transaction could be tied to the debit-card contract, so it rests on documentation and is capped at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/understanding-your-cash-account-44799497237395
+        quote: "Link handles identity verification (KYC) for Cash."
+        detail: Help pages name Link, Stripe, Bridge, Lead Bank and Galileo as partners in Cash and card flows.
+        checked_at: "2026-10-07"
+    finding: >-
+      Third parties in the card flow are named in docs and not swappable. No trace was run. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/address/CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH
+        address: "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 454207323
+        detail: CASH permanentDelegate = E7JdFMP5AqdndJKstZV2mHdekLwAQbNWRHMpoozyB3qw, a key controlled by the issuer side; Token-2022 lets a permanent delegate transfer or burn from any CASH account without the holder's signature.
+        checked_at: "2026-10-07"
+        recheck: "curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"getAccountInfo\",\"params\":[\"CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH\",{\"encoding\":\"jsonParsed\"}]}'"
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/understanding-your-cash-account-44799497237395
+        quote: "transfers from your Cash account to Bridge"
+        detail: At payment time CASH moves from the Cash account to Bridge's debit card smart contract (address not published).
+        checked_at: "2026-10-07"
+    finding: >-
+      The balance is held as CASH in the user's Cash account, then moved to a Bridge contract when the card is used. Bridge is both CASH issuer and card program manager, and the CASH mint's permanent delegate lets it move any holder's CASH. Phantom's FAQ says no partner can. Judgment call: although the criteria put token-issuer powers under C5, here the issuer is also the card program manager and CASH is the only asset a Cash account holds, so "the provider can redirect funds" applies. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. Per phantom.com/cash and the Lead Bank Prepaid Visa Cardholder Agreement, the card is issued by Lead Bank under licence from Visa, with Bridge Ventures LLC as Program Manager and Phantom as Platform Provider. usecash.xyz says CASH is issued by Bridge Building Inc., a FinCEN-registered MSB with state money-transmission licences (NMLS #2450917), with reserves in segregated accounts; it expects to move CASH under the GENIUS Act regime.
+
+notes: >-
+  Eligibility: no verified contract and no public repository needed to run the product, so type is incumbent. Searched 2026-10-07: phantom.com/cash, terms, privacy; help.phantom.com Cash section (FAQ, Understanding your Cash account, debit card, recovery, compromise, KYC); docs.phantom.com/cash; bridge.xyz Phantom card agreement; usecash.xyz; github.com/phantom (no Cash, card or Cash-account program). Onchain: the CASH mint (read above) and a sample of 60 recent CASH transactions, which use only SPL Token-2022, ATA, swap and prediction programs; no Squads or other smart-account program appeared, and the "self-custodial smart-contract wallet" and "debit-card smart contract" the help pages mention could not be identified. One candidate program, 99vQwtBw... (ExecuteTransfer with an ed25519 voucher), turned out to be a single-vault payout program unrelated to Cash accounts and was excluded. Re-assess as type card if Phantom or Bridge publishes the Cash account or debit-card program.

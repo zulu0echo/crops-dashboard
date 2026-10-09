@@ -1,0 +1,618 @@
+slug: ethena-pay
+name: Ethena Pay
+type: card
+website: https://pay.ethena.fi
+primary_chain:
+  name: Avalanche C-Chain
+  chain_id: 43114
+  basis: >-
+    Ethena Pay names no chain or contract in any document, so the unit rests on onchain evidence plus its own terms. The FAQ pays cashback in AVAX and the boost daily in USDe; the Card Terms name Rain as program manager. On Avalanche, Rain collateral 0x6070848b... (receiving per-wallet USDe card spends) and wallet factory 0xAc66ca9A... (12335 passkey wallets with USDe/USDC daily limits) share owner Safe 0xdD2332Ca... (block 96949020). Judgment call: attribution is inferred, not stated by Ethena Pay. Excluded: the Card Terms' generic Supported Blockchains list.
+
+repos: []
+
+contracts:
+  - address: "0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f"
+    chain_id: 43114
+    role: Wallet factory proxy (facet registry, executor)
+    verified: explorer
+  - address: "0x5fe7e734378d1f531cDaeC42b6592EeF55c0810a"
+    chain_id: 43114
+    role: Wallet factory implementation (unverified)
+    verified: none
+  - address: "0xdDaFfdB1c5f0774ee734cF3491AaFd4f0A678127"
+    chain_id: 43114
+    role: ProxyAdmin of the wallet factory
+    verified: explorer
+  - address: "0xc831Ea25DEB7654679a438C78c4C5D1C313c8448"
+    chain_id: 43114
+    role: UpgradeableBeacon for user wallets (owner = factory)
+    verified: sourcify
+  - address: "0xb4446DA2e3970776DCfD44e78b034C8243F91C75"
+    chain_id: 43114
+    role: WalletDiamond implementation (user wallet)
+    verified: explorer
+  - address: "0x74bd26adac5661dc02a7ecBFfEB2dEfd3E928ee4"
+    chain_id: 43114
+    role: AllowanceFacet (executor-signed daily spends)
+    verified: explorer
+  - address: "0xbAdea7a22BC59E4E17DE82fbfD476a02057ca56f"
+    chain_id: 43114
+    role: WithdrawalFacet (executor and direct-mode withdrawals)
+    verified: explorer
+  - address: "0x6c6c8FF5c03C1774e8d781038be77A901d2CC5Ce"
+    chain_id: 43114
+    role: DirectModeFacet (user takeover after 1h)
+    verified: explorer
+  - address: "0xea1a564bc943986b5682b4CdaAad917372D0cbd8"
+    chain_id: 43114
+    role: RecoveryFacet
+    verified: explorer
+  - address: "0x8B6b0fBd3a27641343a73f4da8Cdb14b69eE2dFd"
+    chain_id: 43114
+    role: AuthFacet (signer management)
+    verified: explorer
+  - address: "0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28"
+    chain_id: 43114
+    role: BatchExecutor (relays card spends; pause, blocklist)
+    verified: explorer
+  - address: "0x6070848bd19C37488d0516058f2933Dd992733dE"
+    chain_id: 43114
+    role: Rain collateral (BeaconProxy) receiving card spends
+    verified: explorer
+  - address: "0xD71Fd74187f81a42e322E0A33945F9C263E37624"
+    chain_id: 43114
+    role: RainCollateral implementation
+    verified: explorer
+  - address: "0xdD2332Ca4A4f8842EF7a4722ec087A236732b985"
+    chain_id: 43114
+    role: Owner Safe 1.4.1 (5-of-10) of factory and executor
+    verified: explorer
+  - address: "0x6455888e603177016cb1B266CFe86A0f7898C623"
+    chain_id: 43114
+    role: Sample user wallet (BeaconProxy)
+    verified: none
+  - address: "0xD0Ec8CC7414f27CE85f8dEce6B4a58225F273311"
+    chain_id: 43114
+    role: USDe payout Safe (3-of-10), presumed daily boost
+    verified: explorer
+
+components:
+  - name: User wallet contracts (WalletDiamond beacon proxies and facets)
+    role: contracts
+    public: true
+    license: MIT
+    operator: Ethena Pay (owner Safe 0xdD2332Ca...)
+    required: true
+  - name: Wallet factory implementation (facet registry, executor, global pause)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Ethena Pay (owner Safe 0xdD2332Ca...)
+    required: true
+  - name: BatchExecutor (relays executor-signed card spends)
+    role: contracts
+    public: true
+    license: MIT
+    operator: Ethena Pay (owner Safe 0xdD2332Ca...)
+    required: true
+  - name: Ethena Pay executor co-signer (EOA 0xe0EcdCc8...)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Ethena Pay
+    required: true
+  - name: Ethena Pay relayer (authorized caller EOA 0x3219FAe3... and others)
+    role: relayer
+    public: false
+    license: proprietary
+    operator: Ethena Pay
+    required: true
+  - name: Ethena Pay app and backend (iOS/Android app, card authorisation, rewards)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Ethena Pay Ltd (Malta)
+    required: true
+  - name: Rain program management and collateral controller
+    role: other
+    public: false
+    license: proprietary
+    operator: Signify Holdings, Inc. d/b/a Rain
+    required: true
+  - name: RainCollateral contracts (collateral proxy and implementation)
+    role: contracts
+    public: true
+    license: Unlicense
+    operator: Rain (controller) / Ethena Pay (owner Safe)
+    required: true
+  - name: Third National (card issuer)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Third National
+    required: true
+  - name: Visa (card network)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Sumsub (identity verification and screening)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Sumsub Tech Ltd.
+    required: true
+  - name: Privy (authentication, login, embedded wallet)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Horkos, Inc. d.b.a. Privy
+    required: true
+  - name: Iron (fiat IBAN and on/off ramp; not in the card path)
+    role: other
+    public: false
+    license: proprietary
+    operator: Iron
+    required: false
+
+context: >-
+  Per its legal hub, Ethena Pay Ltd. is a Maltese private limited company (C 114576) that says it is not a bank or money services business and does not hold customer funds. The Card Terms say the card is issued by Third National under license from Visa and the program is managed by Signify Holdings, Inc. d/b/a Rain; the card is offered only to non-U.S. persons. The site states digital assets are not covered by the FDIC, the UK FSCS, the Maltese Depositor Compensation Scheme or any investor compensation scheme. A complaints procedure with external escalation routes is published.
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0x74bd26adac5661dc02a7ecBFfEB2dEfd3E928ee4
+        address: "0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f"
+        block_number: 96949020
+        detail: Factory getFacet(spendDailyAllowance 0x764c53bd) = AllowanceFacet 0x74bd26ad..., whose verified source requires an executor co-signature (LibAuth.verifyExecutorSignature against factory.executor() = EOA 0xe0EcdCc8185A392baB2E23721eAdb65c8cC90fFC) for every allowance spend; the executor can withhold it for any wallet.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x112b6a67764c53bd00000000000000000000000000000000000000000000000000000000"
+          expect: "0x00000000000000000000000074bd26adac5661dc02a7ecbffeb2defd3e928ee4"
+        recheck: cast call 0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f "executor()(address)" --block 96949020 --rpc-url https://api.avax.network/ext/bc/C/rpc
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/address/0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28
+        address: "0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28"
+        block_number: 96949020
+        detail: BatchExecutor (source verified on Routescan) has owner-only pause(), addBlocked() recipient blocklist and approvedRecipients allowlist; owner() = Safe 0xdD2332Ca4A4f8842EF7a4722ec087A236732b985, threshold 5 of 10 EOAs, no modules, no guard, no timelock.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x000000000000000000000000dd2332ca4a4f8842ef7a4722ec087a236732b985"
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/address/0xdD2332Ca4A4f8842EF7a4722ec087A236732b985
+        address: "0xdD2332Ca4A4f8842EF7a4722ec087A236732b985"
+        block_number: 96949020
+        detail: Owner Safe (v1.4.1) getThreshold() = 5, ten EOA owners (0xe5721209..., 0x62c0273B..., 0x20FB64B5..., 0x7be65cdC..., 0x12F97475..., 0x07b39671..., 0x3F117002..., 0x8740c944..., 0x467f264F..., 0x91660Fbb...), getModulesPaginated(0x1,10) empty, guard slot zero.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xe75235b8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000005"
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/card-terms
+        quote: reserve the right to block and terminate transactions and suspend access to your Account
+        detail: Card Terms s5 let Ethena Pay and the Issuer block and terminate transactions and suspend account access at any time and for any reason.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card spend needs a co-signature from Ethena Pay's executor EOA, and the BatchExecutor that relays spends has an owner pause and recipient blocklist held by a 5-of-10 Safe with undisclosed signers and no timelock. The Card Terms let Ethena Pay and the issuer block transactions for any reason, so an individual cardholder can be cut off with no notice. The user's own funds are not frozen by these powers (direct mode, see S4), but the payment path is. Judgment call: as for other card products, the documented per-account block meets anchor 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/tx/0xec33bce0ee908346478eff573fac1f9263c591333fa9b2996d561137e823de9e
+        address: "0x6455888e603177016cb1B266CFe86A0f7898C623"
+        block_number: 96938483
+        detail: Sample card spend tx 0xec33bce0...de9e was sent by relayer EOA 0x3219FAe3e8b2E6AF9a482937dE752b2Af656B78b to BatchExecutor 0x27f6358a... (batchExecute 0x80c3da8d) and moved 2.25 USDe from wallet 0x6455888e... to Rain collateral 0x6070848b... via spendDailyAllowance.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0x74bd26adac5661dc02a7ecBFfEB2dEfd3E928ee4
+        address: "0x74bd26adac5661dc02a7ecBFfEB2dEfd3E928ee4"
+        block_number: 96949020
+        detail: AllowanceFacet.spendDailyAllowance (verified source, L113-L153) checks LibAuth.verifyExecutorSignature over (token, to, amount, nonce, deadline); without the Ethena Pay executor's signature no spend can occur.
+        checked_at: "2026-10-07"
+    finding: >-
+      Merchants are paid by Visa and the issuer offchain. The only onchain settlement step, moving USDe from the cardholder's wallet to the Rain collateral, requires an Ethena Pay executor signature and is relayed by Ethena Pay. Neither payer nor payee can settle a card payment by calling the contracts directly. The direct-mode withdrawal is an exit, not settlement.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/address/0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28
+        address: "0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28"
+        block_number: 96949020
+        detail: BatchExecutor authorizedCallers(0x3219FAe3...) = true and approvedRecipients(0x6070848b...) = true; batchExecute reverts NotAuthorized for any other caller.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xdead610a0000000000000000000000006070848bd19c37488d0516058f2933dd992733de"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/card-terms
+        quote: The card program is managed by Signify Holdings, Inc. d/b/a Rain
+        detail: Card Terms name Rain as program manager and Third National as issuer under license from Visa.
+        checked_at: "2026-10-07"
+    finding: >-
+      A card payment needs Ethena Pay's closed backend (authorisation, executor co-signer, relayer), Rain, Third National and Visa. No component of that path is public or has a fallback. Ethena Pay publishes no repository at all.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/terms
+        quote: identity verification, sanctions screening, transaction monitoring, fraud screening
+        detail: Terms of Use s4.8 subject access to identity verification, sanctions screening and transaction monitoring; s4.6 lists Restricted Jurisdictions and lets Ethena Pay refuse access for any reason.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28
+        address: "0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28"
+        block_number: 96949020
+        detail: BatchExecutor source carries an owner-managed recipient blocklist (addBlocked) and allowlist (approvedRecipients) applied to spend destinations; it does not screen the paying wallet.
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions and jurisdiction screening exists and is disclosed in the Terms; it runs in Ethena Pay's closed backend and at Sumsub, so the neutrality of the settlement layer cannot be shown from code. The relayer contract's recipient allowlist restricts where card spends can go, not who can pay. Screening cannot be bypassed because there is no direct settlement path (C2 = 0). Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/address/0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f
+        address: "0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f"
+        block_number: 96949020
+        detail: Factory getDefaultDailyLimits() returns tokens [USDe 0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34, USDC 0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E] with 10000e18 and 10000e6 per day; the same limits are set on sample wallet 0x6455888e....
+        checked_at: "2026-10-07"
+        recheck: cast call 0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f "getDefaultDailyLimits()(address[],uint256[])" --block 96949020 --rpc-url https://api.avax.network/ext/bc/C/rpc
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/address/0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E
+        address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E"
+        block_number: 96949020
+        detail: Avalanche USDC blacklister() = 0x00fEC99eF111911F4C84e8a3C0BBa93f3891D572 and pauser() = 0x303F2f7D963d13C12bA3a03FdAdbb88277b106Dd.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xbd102430"
+          expect: "0x00000000000000000000000000fec99ef111911f4c84e8a3c0bba93f3891d572"
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/card-terms
+        quote: means the Ethereum Blockchain, Polygon Blockchain, Optimism Blockchain, Arbitrum Blockchain
+        detail: The Card Terms' Supported Blockchains list omits Avalanche, where the collateral actually sits; neither the Terms nor the FAQ state issuer freeze powers or chain assumptions.
+        checked_at: "2026-10-07"
+    finding: >-
+      Spendable tokens (USDe and USDC) are enumerated in verified onchain factory config. USDC carries Circle's blacklister and pauser, and payees are not told about these powers or about Avalanche's validator set. The Card Terms' Supported Blockchains list does not name Avalanche (it reserves the right to add others). Judgment call: onchain config read from a verified-source factory counts as "enumerated in code"; the generic chain list is not treated as a misstatement because it is explicitly open-ended. 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0x5fe7e734378d1f531cDaeC42b6592EeF55c0810a
+        address: "0x5fe7e734378d1f531cDaeC42b6592EeF55c0810a"
+        block_number: 96949020
+        detail: The factory implementation (EIP-1967 implementation slot of 0xAc66ca9A...) returns no source on Routescan, no Sourcify match, and Snowscan shows it Unverified.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0xb4446DA2e3970776DCfD44e78b034C8243F91C75
+        address: "0xb4446DA2e3970776DCfD44e78b034C8243F91C75"
+        block_number: 96949020
+        detail: WalletDiamond, all ten facets returned by getAllSelectors()/getFacet(), BatchExecutor and RainCollateral are verified on Routescan (Snowtrace) only; Sourcify has only the UpgradeableBeacon 0xc831Ea25... (match); Snowscan shows them Unverified.
+        checked_at: "2026-10-07"
+    finding: >-
+      The wallet logic is verified on one explorer (Routescan), but the factory implementation, which maps every wallet selector to its facet and holds the executor and global pause, is unverified anywhere. Nothing is on Sourcify apart from the beacon, and there is no public repo or build script. Some contracts verified, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0xb4446DA2e3970776DCfD44e78b034C8243F91C75
+        address: "0xb4446DA2e3970776DCfD44e78b034C8243F91C75"
+        block_number: 96949020
+        detail: The only public code is explorer-verified contract source (wallet diamond, facets, BatchExecutor); gh search for ethenapay/ethena-pay/pay.ethena.fi and the ethena-labs org (13 repos) found no Ethena Pay SDK, app, backend or contract repository.
+        checked_at: "2026-10-07"
+    finding: >-
+      Contract source is public through explorer verification; the app, backend, executor, relayer, API and indexer are not, and no API schema is published. Judgment call: explorer-verified source counts as "contracts only" (1) rather than "nothing" (0).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0xb4446DA2e3970776DCfD44e78b034C8243F91C75
+        address: "0xb4446DA2e3970776DCfD44e78b034C8243F91C75"
+        block_number: 96949020
+        detail: No repository, README or deploy instructions exist; the verified sources depend on an unverified factory implementation.
+        checked_at: "2026-10-07"
+    finding: >-
+      There is no README, repo or deploy script, and the factory that wires the wallets together is unverified, so no self-host path exists. Reproduction not attempted.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0x74bd26adac5661dc02a7ecBFfEB2dEfd3E928ee4
+        address: "0x74bd26adac5661dc02a7ecBFfEB2dEfd3E928ee4"
+        block_number: 96949020
+        detail: Facet ABIs and events (AllowanceSpent, DirectWithdrawal, DirectModeInitiated) are available only from explorer verification; there is no repo, no API schema and no payee export.
+        checked_at: "2026-10-07"
+    finding: >-
+      ABIs and event definitions can be pulled from the explorer for the wallet facets, but nothing is versioned in a repo, there is no API schema, and no export format is published. Judgment call: explorer ABIs are more than "none" but less than repo files, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0x5fe7e734378d1f531cDaeC42b6592EeF55c0810a
+        address: "0x5fe7e734378d1f531cDaeC42b6592EeF55c0810a"
+        block_number: 96949020
+        detail: Factory implementation source is unpublished; executor, relayer, backend and app are closed; there is no repository carrying any license.
+        checked_at: "2026-10-07"
+    finding: >-
+      Explorer-verified facets carry SPDX MIT headers, but required components (factory implementation, executor co-signer, relayer, backend, Rain, issuer) are closed and there are no repos. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0x74bd26adac5661dc02a7ecBFfEB2dEfd3E928ee4
+        address: "0x74bd26adac5661dc02a7ecBFfEB2dEfd3E928ee4"
+        block_number: 96949020
+        detail: spendDailyAllowance, executorTokenWithdrawal, executorExternalCall and externalApprove all require LibAuth.verifyExecutorSignature from the factory's executor, an Ethena Pay key.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card product cannot run without Ethena Pay's proprietary executor service, backend and Rain's program; there is no open alternative.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/privacy
+        quote: government-issued photo identification and related information
+        detail: Privacy Policy lists name, address, date of birth, government ID, taxpayer ID, proof of address, source of funds and biometric or liveness data, plus device and usage data, shared with KYC/AML providers, card issuers and networks.
+        checked_at: "2026-10-07"
+    finding: >-
+      Collection goes well beyond settlement needs (identity, biometrics, source of funds, device data). It is disclosed in the privacy policy, with GDPR lawful bases for EEA/UK users, but not in any code or versioned repo document, so the documented cap applies: 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/tx/0xec33bce0ee908346478eff573fac1f9263c591333fa9b2996d561137e823de9e
+        address: "0x6455888e603177016cb1B266CFe86A0f7898C623"
+        block_number: 96938483
+        detail: The card spend emits Transfer and AllowanceSpent(token, to, amount) from the long-lived user wallet to the shared Rain collateral 0x6070848b...; no merchant or order data appears onchain.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/privacy
+        quote: identity verification and KYC/AML service providers
+        detail: The privacy policy describes collecting public wallet addresses from public blockchain networks but does not tell users that card spends are publicly visible and linkable to their wallet.
+        checked_at: "2026-10-07"
+    finding: >-
+      No merchant data goes onchain, but every card spend is a public transfer from one long-lived wallet to a known Ethena Pay/Rain collateral address, so anyone can read a cardholder's spend amounts and timing; daily USDe boost payouts from a single Safe tag the wallet further. No fresh addresses. Judgment call: linkage is minimal but not documented to users, so below 2; it is not plaintext metadata, so 1 rather than 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/terms
+        quote: The Sumsub Identity Verification Services Terms
+        detail: Terms incorporate third-party terms for Sumsub (identity verification), Privy (authentication and embedded wallet) and Iron (fiat), and the Card Terms name Rain, Third National and Visa.
+        checked_at: "2026-10-07"
+    finding: >-
+      Rain, Third National, Visa, Sumsub and Privy all see payment or identity data; they are disclosed in the Terms only and cannot be swapped by the user. The app is closed, so further third parties (analytics, RPC) cannot be inventoried.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/address/0x6455888e603177016cb1B266CFe86A0f7898C623
+        address: "0x6455888e603177016cb1B266CFe86A0f7898C623"
+        block_number: 96949020
+        detail: Sample wallet dailyLimit(USDe) = 10000e18 (and USDC 10000e6); AllowanceFacet.spendDailyAllowance transfers up to that amount per UTC day to any `to` address on the executor's signature alone, with no user signature.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xf3f514150000000000000000000000005d3a1ff2b6bab83b63cd9ad0787074081a52ef34"
+          expect: "0x00000000000000000000000000000000000000000000021e19e0c9bab2400000"
+        recheck: cast call 0x6455888e603177016cb1B266CFe86A0f7898C623 "dailyLimit(address)(uint256)" 0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34 --block 96949020 --rpc-url https://api.avax.network/ext/bc/C/rpc
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0xD71Fd74187f81a42e322E0A33945F9C263E37624
+        address: "0x6070848bd19C37488d0516058f2933Dd992733dE"
+        block_number: 96949020
+        detail: Card spends land in Rain collateral 0x6070848b... (holding 372898.73 USDe); RainCollateral.withdrawAsset is onlyController (Rain), and owner() is Safe 0xdD2332Ca....
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x000000000000000000000000dd2332ca4a4f8842ef7a4722ec087a236732b985"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://pay.ethena.fi/faq
+        quote: Ethena Pay does not hold, manage, custody, or have access to your funds
+        detail: The FAQ states Ethena Pay has no access to user funds.
+        checked_at: "2026-10-07"
+    finding: >-
+      Balances sit in the user's own wallet contract, but the Ethena Pay executor key can move up to 10,000 USDe and 10,000 USDC per wallet per day to an arbitrary address without the user's signature; the relayer contract's recipient allowlist does not bind direct calls to the wallet. At spend, funds pass to a Rain-controlled collateral pool. This contradicts the FAQ's "no access" statement. The provider can redirect funds (bounded per day), so 0.
+    disputed: true
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/address/0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f
+        address: "0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f"
+        block_number: 96949020
+        detail: Factory is a TransparentUpgradeableProxy whose EIP-1967 admin slot holds ProxyAdmin 0xdDaFfdB1c5f0774ee734cF3491AaFd4f0A678127; ProxyAdmin owner() = Safe 0xdD2332Ca... (5-of-10, no modules, no guard). The factory's own UPGRADE_DELAY() = 172800 s covers its scheduleUpgrade path only; ProxyAdmin.upgradeAndCall has no delay.
+        checked_at: "2026-10-07"
+        check:
+          slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+          expect: "0x000000000000000000000000ddaffdb1c5f0774ee734cf3491aafd4f0a678127"
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/43114/0xc831Ea25DEB7654679a438C78c4C5D1C313c8448
+        address: "0xc831Ea25DEB7654679a438C78c4C5D1C313c8448"
+        block_number: 96949020
+        detail: Wallet beacon owner() = factory 0xAc66ca9A..., implementation() = WalletDiamond 0xb4446DA2...; every wallet's fallback resolves facets through factory.getFacet(), so replacing the factory implementation changes all 12335 wallets at once.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x5c60da1b"
+          expect: "0x000000000000000000000000b4446da2e3970776dcfd44e78b034c8243f91c75"
+    finding: >-
+      All wallet logic is upgradeable through the factory, which a 5-of-10 Safe with undisclosed EOA signers can upgrade instantly via its ProxyAdmin; the 48-hour UPGRADE_DELAY inside the factory does not bind that path. The factory implementation is unverified. Multisig admin, no effective timelock, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://snowscan.xyz/address/0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f
+        address: "0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f"
+        block_number: 96949020
+        detail: getDefaultDailyLimits() sets 10000 USDe and 10000 USDC per UTC day on every new wallet at initialization (WalletDiamond._applyDefaultAllowances); the allowance is not bound to a receiver.
+        checked_at: "2026-10-07"
+    finding: >-
+      There are no ERC-20 approvals; the wallet grants Ethena Pay's executor a refilling daily allowance of 10,000 USDe and 10,000 USDC by default, spendable to any address. Judgment call: bounded and refilling, but not limited to one receiver and not disclosed to users outside verified source, so the lower anchor 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0xbAdea7a22BC59E4E17DE82fbfD476a02057ca56f
+        address: "0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f"
+        block_number: 96949020
+        detail: Factory getFacet(directTokenWithdrawal 0x35f48b04) = WithdrawalFacet 0xbAdea7a2..., which transfers tokens on a wallet-owner signature alone once direct mode is active; DirectModeFacet.initiateDirectMode (owner signature only) activates after 1 hour and is not blocked by global pause.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x112b6a6735f48b0400000000000000000000000000000000000000000000000000000000"
+          expect: "0x000000000000000000000000badea7a22bc59e4e17de82fbfd476a02057ca56f"
+    finding: >-
+      S1: funds sit in the user's wallet contract. C2: no direct settlement path (0). C3: closed single-vendor backend (0). O3: no self-host path. If Ethena Pay disappears, the card stops, but a user can enter direct mode and withdraw with their own key after 1 hour, by calling the verified facets manually (no public frontend or documented procedure exists). The path depends on facet mappings the admin Safe can change instantly (S2). Judgment call: a working exit exists only as a manual contract call, so 1, not 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+notes: >-
+  Ethena Pay launched on 2026-09-03. It publishes no repository, contract address or chain; the Avalanche deployment was found from USDe Transfer logs (Ethena Pay's FAQ pays boost in USDe daily and cashback in AVAX) and tied together through shared owner Safe 0xdD2332Ca.... Attribution to Ethena Pay is an inference, recorded as a judgment call in primary_chain.basis. All reads pinned to Avalanche block 96949020. Explorer citations use the Routescan API (snowtrace.io and routescan.io pages return 403 to curl). A third-party audit list (crypticdefense/audits) mentions private Guardian audits of an "EthenaPay Wallet" and "EthenaSafeGuard"; no report is public, so S6 is unknown.

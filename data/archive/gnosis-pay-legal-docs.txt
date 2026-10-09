@@ -1,0 +1,20 @@
+Source: https://help.gnosispay.com/articles/6763083779-legal-documents-and-fees
+Retrieved: 2026-10-07 with curl (user-agent crops-dashboard-validator); visible text extracted from the HTML, tags removed.
+
+Legal documents and fees | Gnosis Pay (legacy)
+Collections
+What to expect
+Your money
+Getting help
+Legal
+All Collections › Legal
+Legal documents and fees
+Last updated 22 days ago
+These documents remain published and apply to your Gnosis Pay account. Terms of Service Gnosis Pay Privacy and Cookies Policy Gnosis Pay Website Terms of Use Monavate Cardholder Terms (EEA) Monavate Cardholder Terms (Non-EEA) Understanding Your Card's Fees and Limits the fees that applied to your Gnosis Pay card. Kept published for reference if you need to check a historical charge. Gnosis Pay Referral Program Terms & Conditions the programme has ended; terms kept for reference. Cashback Terms & Conditions Your Gnosis Pay card is issued by Monavate Limited pursuant to licence by VISA Europe Limited.
+Related Articles
+Complaints handling procedure
+What happens to your data
+Formal notice — closure of the Gnosis Pay web app and card (21 September 2026)
+Tags
+Legal
+Powered by Pylon

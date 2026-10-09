@@ -1,0 +1,32 @@
+Archive: Nethermind NM-0585 "Daimo Universal Address" security review, final report (July 31, 2025).
+Source: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/audit/NM-0585-Daimo-final-report.pdf
+Retrieved: 2026-10-07. Text extracted from the PDF at that commit with pypdf (pages 2-3 of the report: audit summary, audited files, summary of issues).
+Reason for archive: the cited URL is a PDF rendered by GitHub; its text is not in the page HTML, so the quote is checked against this copy.
+Excerpt follows verbatim (extraction whitespace as produced by pypdf).
+
+Summary of the Audit
+Audit Type Security Review
+Initial Report July 21, 2025
+Final Report July 31, 2025
+Repository Daimo
+Initial Commit ef97c77fe68f8ff12a98087f2f74e2cd12fc39c1
+Final Commit 80312d47e98a21b7daa4078d89ffe0e43bf8b1eb
+Documentation Universal Address Audit
+Documentation Assessment Medium
+Test Suite Assessment Medium
+2
+NM-0585 - Daimo Universal Address - SECURITY REVIEW
+2 Audited Files
+Contract LoC Comments Ratio Blank Total
+1 packages/contract/src/UniversalAddressBridger.sol 86 25 29.1% 18 129
+2 packages/contract/src/UniversalAddressFactory.sol 56 15 26.8% 7 78
+3 packages/contract/src/UniversalAddressManager.sol 407 186 45.7% 75 668
+4 packages/contract/src/SharedConfig.sol 44 51 115.9% 23 118
+5 packages/contract/src/UniversalAddress.sol 50 30 60.0% 14 94
+6 packages/contract/src/TokenUtils.sol 87 14 16.1% 10 111
+Total 730 321 44.0% 147 1198
+3 Summary of Issues
+Finding Severity Update
+1 Malicious relayer can cause user to lose MIN_START_TOKEN_OUT - 1 tokens Low Fixed
+2 Stablecoin UA intents can fail and cannot be refunded Low Fixed
+3 BridgeReceiver immutable ua has misleading name Best Practices Fixed

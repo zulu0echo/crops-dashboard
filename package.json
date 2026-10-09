@@ -1,0 +1,22 @@
+{
+  "name": "crops-dashboard",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "validate:offline": "node scripts/validate.mjs --offline",
+    "build": "node scripts/build.mjs",
+    "recheck": "node scripts/recheck.mjs",
+    "test": "node scripts/rollup.mjs --self-check && node scripts/validate.mjs --self-check && node scripts/recheck.mjs --self-check",
+    "review-list": "node scripts/review-list.mjs"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.4.0",
+    "ajv": "8.20.0",
+    "yaml": "2.9.1"
+  }
+}

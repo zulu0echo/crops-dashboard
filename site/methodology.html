@@ -1,0 +1,81 @@
+<h1>Methodology</h1>
+<p>This dashboard scores payment rails against the Ethereum Foundation's CROPS properties: Censorship Resistance, Open Source and Free, Privacy, Security. It is built for institutions choosing a rail, so every rule below is chosen so that a score can be defended to a risk committee by pointing at an artifact anyone can re-check.</p>
+
+<h2 id="unit">2.1 Unit of assessment</h2>
+<p>One row is one provider, scored on its primary (flagship) chain or settlement path. The chain used is named in the provider file and shown in the row header. Notes about other deployments may be recorded; they do not affect the score.</p>
+<p class="why"><strong>Why:</strong> onchain evidence is chain-specific. Scoring every deployment separately is more honest but multiplies maintenance; scoring the flagship keeps one verifiable target per provider while stating plainly which deployment was checked. If you are evaluating a different deployment, treat the score as unverified for it.</p>
+
+<h2 id="scale">2.2 Scale</h2>
+<p>Each criterion is scored 0–3 or <em>unknown</em>:</p>
+<ul>
+  <li><strong>3</strong>: property fully held and verified from code or chain.</li>
+  <li><strong>2</strong>: property substantially held, with a bounded, disclosed compromise and a working user escape.</li>
+  <li><strong>1</strong>: property weakly held, or held only on documented (non-code) evidence.</li>
+  <li><strong>0</strong>: property absent, only claimed, or disproven by evidence.</li>
+  <li><strong>unknown</strong>: no admissible evidence submitted yet.</li>
+</ul>
+<p>Each <a href="../criteria/C1/index.html">criterion page</a> gives the anchors for every level.</p>
+<p class="why"><strong>Why:</strong> four levels are enough to separate "holds", "holds with a disclosed escape hatch", "weak or paper-only" and "absent", which are the distinctions a risk reader acts on. Finer scales invite false precision.</p>
+
+<h2 id="tiers">2.3 Evidence tiers and caps</h2>
+<table>
+  <caption>Evidence tiers</caption>
+  <thead><tr><th scope="col">Tier</th><th scope="col">What qualifies</th><th scope="col">Caps score at</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">verified</th><td>Onchain state anyone can read (contract address plus role, function or storage slot, and the block number at check time); source in a public repository at a pinned commit SHA and file path; or deployed bytecode matched to source on Sourcify or an explorer.</td><td>3</td></tr>
+    <tr><th scope="row">documented</th><td>Terms of service, privacy policy, audit report, technical docs, or an observed network trace with written reproduction steps. Must be URL-linked and dated.</td><td>1</td></tr>
+    <tr><th scope="row">claimed</th><td>Vendor statements, blog posts, marketing, support replies, third-party articles.</td><td>0</td></tr>
+  </tbody>
+</table>
+<p>A criterion's cap is the highest tier among its evidence items. Evidence that <em>lowers</em> a score is admissible when it is verified, documented, or the provider's own statement (a privacy policy disclosing data sharing, a trace showing an analytics call, a vendor's admission). A third party's claim cannot lower a score on its own: it is recorded in the finding and may mark the cell <em>disputed</em> until someone supplies admissible evidence.</p>
+<p class="why"><strong>Why:</strong> institutions need scores they can defend to a risk committee. Only artifacts a third party can re-check without trusting the provider or the contributor meet that bar. Documents are useful but describe intent, not behaviour: they may establish that something exists and surface problems, never that a property holds. Claims are inadmissible because they cannot be re-checked.</p>
+
+<h2 id="rollup">2.4 Pillar rollup</h2>
+<p>Pillar score = the <strong>minimum</strong> of its criterion scores, with unknown counting as 0. The grid shows the limiting criterion next to each pillar score. There is no overall composite score and no leaderboard.</p>
+<p class="why"><strong>Why:</strong> a single unbounded freeze key or an unverifiable custody path is disqualifying however well the rest scores. Means and medians hide exactly the finding a risk reader needs. Counting unknown as 0 keeps the burden of proof on the evidence, not the reader, and gives providers and contributors a direct incentive to fill gaps. No composite exists because the weights between pillars are a judgment for the reader, not the dashboard.</p>
+
+<h2 id="categories">2.5 Categories</h2>
+<p>Each provider has a type: <em>checkout</em>, <em>card</em>, <em>remittance</em>, or <em>incumbent</em>. An incumbent is a rail with no public chain settlement and no public code (for example M-Pesa). Incumbents are scored with the identical rubric and caps and shown in a separate, labelled baseline group, never interleaved with onchain rails.</p>
+<p class="why"><strong>Why:</strong> readers use incumbents daily and will dismiss an unexplained 0. Stated as a verifiability gap (rails whose behaviour can be inspected versus rails whose behaviour must be trusted), the comparison is accurate and defensible. It is not a claim that the incumbent is unsafe.</p>
+
+<h2 id="freshness">2.6 Freshness</h2>
+<p>Every evidence item records when it was checked (<code>checked_at</code>), plus the block number for onchain items and the commit for repository items. A nightly job re-reads recorded onchain roles and repository license and lockfile facts. Cells whose newest evidence is older than 180 days show a <span class="badge stale">stale</span> badge. Drift found by the nightly job opens an issue and marks the cell <span class="badge drift">under review</span>. Until a human re-checks it, the cell counts as unknown in the pillar rollup, because a changed fact can no longer support the old rating. The job never edits a score.</p>
+<p class="why"><strong>Why:</strong> roles get rotated and licenses get changed. A score is only as good as the date it was checked, so the date is shown and machine-checkable facts are re-read automatically.</p>
+
+<h2 id="reply">2.7 Right of reply</h2>
+<p>Each criterion on each provider has an optional provider response, submitted by pull request like any other change. It is shown beside the score and never changes it. A response that links new admissible evidence should come with a score change in the same pull request, reviewed as normal.</p>
+<p class="why"><strong>Why:</strong> providers know things contributors miss, and readers should see their side. Keeping responses separate from scores means the only way to move a score is the same way anyone else does: with an artifact.</p>
+
+<h2 id="review">2.8 Review</h2>
+<p>All changes land by pull request. <code>CODEOWNERS</code> names the maintainers for <code>data/</code>. A pull request that touches a score must pass CI and one maintainer review; one that sets a score of 2 or 3 needs two reviewers, at least one not affiliated with the contributor. Contributors and reviewers declare conflicts of interest in the pull request, and nobody affiliated with a provider approves changes to that provider's ratings. Every rating records who assessed it and whether, by whom and when it was reviewed. A provider's dispute gets a maintainer response within 30 days and can be appealed to a second maintainer.</p>
+<p class="why"><strong>Why:</strong> CI enforces the mechanical rules (tiers, caps, commits that exist, URLs that resolve). It cannot tell whether an artifact actually supports the score, so a human re-runs the check before merging.</p>
+
+<h2 id="integrity">2.9 Evidence integrity rules</h2>
+<p>CI cannot judge whether an artifact supports a rating, so the rules make that judgment cheap for a human and hard to fake:</p>
+<ul>
+  <li>Any rating of 2 or 3 carries a re-check command that reproduces the fact, and code evidence behind it cites exact line ranges, which CI confirms exist at the pinned commit.</li>
+  <li>Onchain evidence must point at an address that has code, unless it is marked as an account.</li>
+  <li>A 3 on a contract-behaviour criterion (admin powers, direct settlement, custody, upgrades) needs onchain evidence about the deployed contracts, not only source at a commit. A 3 on a client-behaviour criterion (filtering, telemetry, third parties, approvals, secrets) needs the distributed package version and hash, or a network trace.</li>
+  <li>Each provider lists every component in its payment path, public or closed. A closed required component cannot be forked, so the licensing criterion is 0, and criteria that reward the absence of a problem cannot reach 3 while part of the request path is hidden.</li>
+  <li>Document evidence quotes the passage relied on. CI checks the live page still contains it; pages that block automated access or render in the browser are cited through a committed copy.</li>
+  <li>The unit of assessment (which chain and deployment) is stated with its evidence, so it cannot be chosen to flatter.</li>
+</ul>
+<p class="why"><strong>Why:</strong> a red team of the first version found that CI checked only that artifacts existed, that closing code could raise a score, and that the deployment, the package, and the quoted text could all drift from what was cited. Each rule closes one of those gaps.</p>
+
+<h2 id="scope">2.10 What this does not assess</h2>
+<p>CROPS rates inspectability, admin powers, licensing, data flows and custody. It does not rate regulation and supervision, safeguarding of customer funds, deposit or e-money protection, legal recourse, operational track record, liquidity, or cost. A risk assessment should weigh all of these. Where a provider's file records such protections, they are shown as context under "Outside this assessment" and never scored.</p>
+<p class="why"><strong>Why:</strong> without this statement a low rating on custody could be read as a claim that a regulated, safeguarded rail is unsafe. The ratings measure what can be verified from code and chain, nothing more.</p>
+
+<h2 id="dependencies">2.11 Criterion dependencies</h2>
+<p>Some criteria share causes. A required closed relayer fails direct settlement (C2), hosted dependence (C3), open-core dependence (F3), full stack public (O2), self-hosting (O3) and the walkaway test (S4) at once. The walkaway test is derived from custody, direct settlement, hosted dependence and self-hosting, and is marked as derived. Count a shared cause once when comparing providers.</p>
+
+<h2 id="limits">2.12 Known limits</h2>
+<ul>
+  <li>The nightly job re-reads %AUTO_CHECKED% of %EVIDENCE_TOTAL% evidence items (%AUTO_PCT%%): recorded onchain roles and parameters, licence files and lockfiles. Other code evidence is pinned to a commit and may be out of date; the checked date is shown on every rating.</li>
+  <li>Pillars have different numbers of criteria (%PER_PILLAR%). A pillar with more criteria has more chances to hit its minimum, so compare a pillar across providers, not pillars against each other.</li>
+  <li>Anchors still require judgment in borderline cases. Findings say "Judgment call" where one was made.</li>
+  <li>Non-EVM chains (currently Solana) are supported for evidence, but the nightly job does not re-read their state and CI does not confirm that cited accounts exist. Solana programs are recorded as verified only through a reproducible-build registry.</li>
+  <li>Where a provider publishes no contract addresses, contracts may be attributed from onchain activity (token flows, shared owners). The provider file says so in its basis; such attributions are judgment calls and are re-done if the provider publishes addresses.</li>
+  <li>Many card products run on a shared card-issuing platform (for example Rain). Shared platform contracts that cannot be tied to one provider are not attributed to it, which is why several cards appear in the incumbent baseline.</li>
+  <li>%PENDING% of %CELLS% ratings are awaiting human review; each rating shows its status.</li>
+</ul>

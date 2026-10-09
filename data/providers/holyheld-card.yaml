@@ -1,0 +1,593 @@
+slug: holyheld-card
+name: Holyheld Card
+type: card
+website: https://holyheld.com
+primary_chain:
+  name: Ethereum
+  chain_id: 1
+  basis: >-
+    The card top-up contract is the only onchain component. Its Ethereum deployment 0x6fC79dDD... (TransparentUpgradeableProxy, Sourcify exact match) emits CardTopup events continuously from block 16810662 to a top-up at block 26074697 (28 Sep 2026), found via the CardTopup topic on eth.blockscout.com. Excluded: Base (an unverified, non-proxy contract with the same address and the same CardTopup event; no event in the last 5,000 blocks read), Arbitrum (no code at that address, no CardTopup event in 240,000 blocks) and Solana, which the SDK also supports.
+
+repos:
+  - url: https://github.com/holyheld/hh-v1-sdk
+    role: sdk
+    license: source-available
+
+contracts:
+  - address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+    chain_id: 1
+    role: Card top-up proxy (TransparentUpgradeableProxy)
+    verified: sourcify
+  - address: "0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a"
+    chain_id: 1
+    role: Card top-up implementation (unverified)
+    verified: none
+  - address: "0xaf3d7e4cbB718Ec026d88B330dd68abBbDC6E5C3"
+    chain_id: 1
+    role: OpenZeppelin ProxyAdmin of the top-up proxy
+    verified: sourcify
+
+components:
+  - name: Holyheld card top-up contract (proxy + unverified implementation)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Holyheld Labs AG
+    required: true
+  - name: Holyheld SDK (@holyheld/sdk)
+    role: sdk
+    public: true
+    license: source-available
+    operator: Holyheld Labs AG
+    required: false
+    repo: https://github.com/holyheld/hh-v1-sdk
+  - name: "@holyheld/web-app-shared (private library bundled into the SDK)"
+    role: sdk
+    public: false
+    license: proprietary
+    operator: Holyheld Labs AG
+    required: false
+  - name: Holyheld app and web app
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Holyheld Labs AG
+    required: true
+  - name: Holyheld API (apicore, apiassets, apiview) and top-up signer
+    role: backend
+    public: false
+    license: proprietary
+    operator: Holyheld Labs AG
+    required: true
+  - name: Card settlement wallet (EOA receiving top-ups)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Holyheld Labs AG
+    required: true
+  - name: Card issuer and e-money partner (not named in the Terms)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: undisclosed licensed issuer
+    required: true
+  - name: Card network (not named in the Terms)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+  - name: KYC vendors Sumsub and Idenfy
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Sumsub, Idenfy
+    required: true
+  - name: Wallet and transaction screening vendors (unnamed)
+    role: other
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+  - name: Settlement token (USDC by Circle in the sample top-up)
+    role: contracts
+    public: true
+    license: proprietary
+    operator: Circle
+    required: true
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x6fC79dDD0379Fd11d67dD73056465e822b843d13
+        address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+        block_number: 26139997
+        detail: hasRole(DEFAULT_ADMIN_ROLE, 0xa1391419CC2fEc5235161d7A6Deb988cB9A1d043) returns true; that address has no code (EOA), is the proxy deployer, and is the admin of TRUSTED_PAUSER_ROLE (getRoleAdmin returns 0x00). The only other RoleGranted event since deployment gives TRUSTED_EXETUTOR_ROLE to EOA 0x4C18D1aF4261DBb9E497E3DD883024e5eb51272b; no RoleRevoked events.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x91d148540000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a1391419cc2fec5235161d7a6deb988cb9a1d043"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        recheck: cast call 0x6fC79dDD0379Fd11d67dD73056465e822b843d13 "hasRole(bytes32,address)(bool)" 0x0000000000000000000000000000000000000000000000000000000000000000 0xa1391419CC2fEc5235161d7A6Deb988cB9A1d043 --rpc-url https://ethereum-rpc.publicnode.com; cast code 0xa1391419CC2fEc5235161d7A6Deb988cB9A1d043 --rpc-url https://ethereum-rpc.publicnode.com
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a
+        address: "0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a"
+        block_number: 26139997
+        detail: The deployed implementation bytecode contains the selectors for setPaused(bool) 0x16c38b3c, pauseOperation() 0xc9d07020, emergencyTransfer(address,address,uint256) 0x1e84c725 and setCardSettleAddress(address) 0x4b0dea4d, matching the top-up ABI shipped in @holyheld/sdk 4.1.5; paused() reads false.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/terms-and-conditions
+        detail: The Terms let Holyheld suspend Services and account access when requested information is not provided.
+        quote: may be grounds for suspending the provision of Services to you
+        checked_at: "2026-10-07"
+    finding: >-
+      The top-up contract has a pause (setPaused, pauseOperation) and an emergencyTransfer, and the role that controls them (DEFAULT_ADMIN_ROLE, which also administers TRUSTED_PAUSER_ROLE) is held by a single EOA. There is no multisig and no timelock. The implementation is unverified, so the exact scope of each function cannot be read from source; the selectors are present in the deployed bytecode. On the card side, the Terms let Holyheld suspend service and account access.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x6fC79dDD0379Fd11d67dD73056465e822b843d13
+        address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+        block_number: 26140011
+        detail: backendSignatureCheck() (0xc52a188d) returns true, and the latest top-up (tx 0x34972db6...2472a, block 26074697) called CardTopupPermitSigned (0xd88a0d43), which carries a backend signature argument.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xc52a188d"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/evm/offRamp/sdkEVMOffRamp.ts#L290-L300
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/evm/offRamp/sdkEVMOffRamp.ts
+        detail: Before a top-up the SDK fetches the receiver tag code for the holytag from the Holyheld API (getTagTopUpCode); the contract addresses themselves come from the API at init.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card payments to merchants settle offchain through the card issuer and network. The only onchain step, the top-up into the card balance, requires a Holyheld backend signature (the signature check is switched on) and a receiver code issued by the Holyheld API. Nobody can settle a card payment by calling the contract directly.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/constants.ts#L1-L3
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/constants.ts
+        detail: The SDK hardcodes apicore.holyheld.com, apiassets.holyheld.com and apiview.holyheld.com as its service base URLs; the constructor (src/sdk.ts) passes them to every service with no override option.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/sdk.types.ts#L36-L39
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/sdk.types.ts
+        detail: HolyheldSDKOptions takes only apiKey and logger; there is no endpoint option.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every top-up needs the Holyheld API (configuration, quotes, receiver code, backend signature), and the card itself needs the issuer and network. None of it is public, there is no self-host path and no fallback. Closed, single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/privacy-policy
+        detail: The privacy policy says Holyheld screens identity data against sanctions and PEP lists and screens blockchain data through third-party wallet and transaction screening providers.
+        quote: third party transaction and wallet screening service providers
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a
+        address: "0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a"
+        block_number: 26139997
+        detail: The top-up implementation is not verified on Sourcify or Etherscan, so whether it filters addresses cannot be read from source.
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions, PEP and wallet screening are disclosed in the privacy policy and run in Holyheld's closed backend and its vendors. Whether the settlement contract itself filters cannot be shown, because its implementation is unverified, and the screening cannot be bypassed (C2 = 0). Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/sdk.ts#L135-L141
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/sdk.ts
+        detail: init() loads the EVM and Solana network configuration (tokens, contract addresses) from the Holyheld API (/v4/external/client/references); no token list is in the repo.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/llms-full.txt
+        detail: Holyheld's own site text says the list of supported stablecoins and networks keeps changing and names networks (Ethereum, Arbitrum, Base, Solana) but no tokens or issuer freeze powers.
+        quote: the list of supported stablecoins and networks is constantly expanding
+        checked_at: "2026-10-07"
+    finding: >-
+      Supported tokens exist only in a hosted API response, and no document lists them with their issuers' freeze powers. The sample top-up used USDC, whose issuer can blacklist addresses; that is not stated to users. Not enumerated, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/1/0x6fC79dDD0379Fd11d67dD73056465e822b843d13
+        address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+        block_number: 26139997
+        detail: Sourcify v2 reports exact_match for the proxy (OpenZeppelin TransparentUpgradeableProxy) and for ProxyAdmin 0xaf3d7e4cbB718Ec026d88B330dd68abBbDC6E5C3; the implementation in the EIP-1967 slot, 0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a, has no Sourcify match.
+        checked_at: "2026-10-07"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000001fd0fb3f9931a820ce63d6f4caefea30ee18a94a"
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a
+        address: "0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a"
+        block_number: 26139997
+        detail: Etherscan shows no verified source for the implementation (the code tab offers "Verify and Publish"), and eth.blockscout.com reports is_verified false.
+        checked_at: "2026-10-07"
+    finding: >-
+      Only the stock OpenZeppelin proxy and ProxyAdmin are verified. The implementation that holds the top-up logic, roles and pause is unverified everywhere checked, and no contract source is public. Some contracts verified, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/package.json#L45-L48
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: package.json
+        detail: The SDK builds against @holyheld/web-app-shared 4.3.21, which is not on the public npm registry (npm view returns 404) and supplies every API service and the contract ABIs.
+        checked_at: "2026-10-07"
+        recheck: npm view @holyheld/web-app-shared version
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/constants.ts#L1-L3
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/constants.ts
+        detail: The SDK is a client for three hosted Holyheld APIs; the holyheld org's other repos (erc1271, erc6492, gaelogrus, gointernals, BRRR, a web3-modal wrapper, a yearn-exporter fork) contain no contracts, backend, app or indexer for the card.
+        checked_at: "2026-10-07"
+    finding: >-
+      The public part is the SDK source, and it cannot even be built from the repo because its core library is private. Contracts, backend, app and indexer are closed. Judgment call: this is a client shell that cannot run without private services (0), rather than "SDK only" (1).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/README.md#L1-L32
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: README.md
+        detail: The README covers npm install and links hosted docs; it has no build, deployment, contract address or backend instructions.
+        checked_at: "2026-10-07"
+    finding: >-
+      There is nothing to self-host: no contracts, backend or app are public, and the README only explains installing the client SDK. No path, so 0. Reproduction not attempted.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/tree/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src
+        detail: The repo tree at this commit has no ABI files, event schemas, OpenAPI spec or export code; the top-up ABI exists only inside the compiled npm bundle (dist/index.js of @holyheld/sdk 4.1.5).
+        checked_at: "2026-10-07"
+    finding: >-
+      No ABI, event schema, API schema or data export is versioned in a repo. The holyheld.com/documentation link in the README returns 404. Judgment call: an ABI embedded in a minified npm bundle is not a documented interface, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/LICENSE
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: LICENSE
+        detail: The SDK is Business Source License 1.1 (Licensor Holyheld Labs; additional use grant excludes hosted or embedded use competitive with Holyheld; change to GPL-2.0-or-later after four years).
+        checked_at: "2026-10-07"
+    finding: >-
+      The only public repo is source-available (BUSL-1.1), and the contracts, backend, app, issuer and network are closed. A closed required component cannot be forked, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/LICENSE
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: LICENSE
+        detail: LICENSE has one commit in its history (f2ca8cb, "Initial commit", 2023-10-27); the repo has no CLA, CONTRIBUTING or .github directory and no license-stability statement.
+        checked_at: "2026-10-07"
+        recheck: gh api "repos/holyheld/hh-v1-sdk/commits?path=LICENSE" --jq '.[].sha'; gh api "repos/holyheld/hh-v1-sdk/contents/.github?ref=c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+    finding: >-
+      No CLA and no commitment; the license has not changed since the first commit. That is the anchor for 2. It scores relicensing risk only; the license itself is BUSL (see F1).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/sdk.ts#L135-L141
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/sdk.ts
+        detail: The SDK cannot initialise without the hosted Holyheld API and a Holyheld-issued apiKey (sent as X-Api-Key).
+        checked_at: "2026-10-07"
+    finding: >-
+      The product cannot run without Holyheld's hosted services, its private library and its card partners.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/sdk.ts#L229-L251
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/sdk.ts
+        detail: sendAudit posts event data with the user's wallet address and operation id to the Holyheld audit API; the off-ramp flows call it at each step with no opt-out. Sentry breadcrumbs from the bundled library are routed to the integrator's logger (L99-L107), not to Sentry.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/privacy-policy
+        detail: The privacy policy discloses cookies and tracking technologies on the platform.
+        quote: our servers automatically record information using cookies and other tracking technologies
+        checked_at: "2026-10-07"
+    finding: >-
+      The SDK ships no third-party analytics library in its dependencies, but it sends first-party audit telemetry (wallet address, transfer data) to Holyheld on by default. The Holyheld app is closed and the privacy policy discloses cookies and tracking. Present, on by default, disclosed in docs, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/privacy-policy
+        detail: The privacy policy lists identity, government ID, sanctions/PEP status, credit-reference and blockchain screening data, collected through KYC partners.
+        quote: ID verification partners like Sumsub and Idenfy
+        checked_at: "2026-10-07"
+    finding: >-
+      Card use requires full KYC and screening beyond settlement needs. It is disclosed in the privacy policy, not in code or a versioned repo document, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/tx/0x34972db6c6224bf12c0e26aec6a32f59bcdcba584ec865c328d02f022492472a
+        address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+        block_number: 26074697
+        detail: The sample top-up passes receiver code 0x5bd0f55e...979b1f as the last calldata argument; the CardTopup event (in the SDK bundle ABI) emits the payer account (indexed), token, amounts and _receiverHash, and USDC moves straight from payer 0x9D4BCa30F4De569e66eC01d7bb567F1D592933c0 to Holyheld wallet 0x6D2d1659B23C81Caf9DC59930609217AE65b866a.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every top-up publishes a per-account receiver code next to the payer's address, so all top-ups to one Holyheld account can be linked onchain, and all top-ups visibly go to a single Holyheld wallet. I found no user-facing disclosure of this. Judgment call: the receiver code is a payee tag; with no disclosure found, this takes the lower anchor (0) rather than 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/privacy-policy
+        detail: Names Sumsub and Idenfy for identity verification and unnamed wallet and transaction screening providers, credit-reference and anti-fraud agencies.
+        quote: Sanction screening and politically exposed persons (PEP) listings
+        checked_at: "2026-10-07"
+    finding: >-
+      KYC vendors, screening vendors and the card issuer and network all see payment or identity data. They are disclosed in the privacy policy (some only by category) and cannot be swapped. Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/constants.ts#L1-L3
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/constants.ts
+        detail: API and indexer endpoints (apicore, apiassets, apiview .holyheld.com) are constants with no override; RPC goes through the integrator's own wallet client.
+        checked_at: "2026-10-07"
+    finding: >-
+      RPC follows the integrator's wallet client, but the Holyheld API, which serves balances, quotes and configuration, is hardcoded and its code is closed. Hardcoded, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x6D2d1659B23C81Caf9DC59930609217AE65b866a
+        address: "0x6D2d1659B23C81Caf9DC59930609217AE65b866a"
+        block_number: 26139997
+        detail: The receiver of the sample top-up's USDC (tx 0x34972db6...2472a) has no code, so it is an EOA controlled by Holyheld.
+        checked_at: "2026-10-07"
+        eoa: true
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a
+        address: "0x1Fd0FB3F9931a820cE63d6f4caefeA30EE18A94a"
+        block_number: 26139997
+        detail: The implementation exposes setCardSettleAddress(address) and emergencyTransfer(address,address,uint256), callable by the EOA admin (see C1).
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/terms-and-conditions
+        detail: The Terms describe a top-up as a sale of crypto-assets to Holyheld, with the resulting fiat held by a licensed partner.
+        quote: Holyheld does not provide any custodial services
+        checked_at: "2026-10-07"
+    finding: >-
+      A top-up sells the user's tokens to Holyheld: they go straight to a Holyheld EOA, and the card balance is fiat at the issuing partner. A single admin EOA can change the settle address. The provider holds the funds and can redirect them, so 0. Judgment call: the sale is disclosed, which alone would fit 1, but the redirect power sets 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x6fC79dDD0379Fd11d67dD73056465e822b843d13
+        address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+        block_number: 26139997
+        detail: EIP-1967 admin slot holds ProxyAdmin 0xaf3d7e4cbB718Ec026d88B330dd68abBbDC6E5C3; seven Upgraded events since deployment.
+        checked_at: "2026-10-07"
+        check:
+          slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+          expect: "0x000000000000000000000000af3d7e4cbb718ec026d88b330dd68abbbdc6e5c3"
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0xaf3d7e4cbB718Ec026d88B330dd68abBbDC6E5C3
+        address: "0xaf3d7e4cbB718Ec026d88B330dd68abBbDC6E5C3"
+        block_number: 26139997
+        detail: ProxyAdmin owner() is 0xa1391419CC2fEc5235161d7A6Deb988cB9A1d043, an EOA (no code).
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x000000000000000000000000a1391419cc2fec5235161d7a6deb988cb9a1d043"
+    finding: >-
+      The top-up contract can be upgraded at any time by one EOA through the ProxyAdmin, with no timelock and no multisig. EOA admin, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/tx/0x34972db6c6224bf12c0e26aec6a32f59bcdcba584ec865c328d02f022492472a
+        address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+        block_number: 26074697
+        detail: The sample top-up of 3,474.158634 USDC carries an EIP-2612 permit for 3,647.866565 USDC (about 5% above the amount) to spender 0x6fC79dDD... with deadline 0x6aba3040; no standing approve transaction was needed.
+        checked_at: "2026-10-07"
+        recheck: cast calldata-decode "CardTopupPermitSigned(address,uint256,uint256,bytes,bytes,uint256,bytes,bytes32)" $(cast tx 0x34972db6c6224bf12c0e26aec6a32f59bcdcba584ec865c328d02f022492472a input --rpc-url https://ethereum-rpc.publicnode.com)
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/src/evm/offRamp/sdkEVMOffRamp.ts#L380-L405
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: src/evm/offRamp/sdkEVMOffRamp.ts
+        detail: The SDK picks between permit, Permit2 and approve flows via the private library; the allowance amount comes from that library, so the default for approve-only tokens is not visible in public source.
+        checked_at: "2026-10-07"
+    finding: >-
+      The observed default is a permit with an expiry for slightly more than the top-up amount. That is a bounded allowance, not exact-amount. The approve fallback's amount is set inside the private library and cannot be checked. Judgment call: 2 (bounded) rather than 3, because the permit exceeds the amount and the fallback is unverifiable.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x6D2d1659B23C81Caf9DC59930609217AE65b866a
+        address: "0x6D2d1659B23C81Caf9DC59930609217AE65b866a"
+        block_number: 26139997
+        detail: Topped-up funds leave the user's wallet for a Holyheld EOA (S1); the card balance exists only at the issuing partner.
+        checked_at: "2026-10-07"
+        eoa: true
+    finding: >-
+      Derived: S1 = 0 (funds held by Holyheld, redirectable), C2 = 0 (no direct path), C3 = 0 (closed single-vendor API), O3 = 0 (nothing to self-host). A card balance can be spent or withdrawn only through Holyheld and its partner. Tokens never topped up stay in the user's own wallet, but that is outside the rail.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/holyheld/hh-v1-sdk/blob/c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516/examples/example-wagmi-off-ramp/index.js#L112-L120
+        commit: "c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"
+        path: examples/example-wagmi-off-ramp/index.js
+        detail: The reference browser example reads the API key from VITE_HOLYHELD_SDK_API_KEY, which Vite inlines into the client bundle, and passes it to the SDK, which sends it as X-Api-Key on every request.
+        checked_at: "2026-10-07"
+        package:
+          name: "@holyheld/sdk"
+          version: 4.1.5
+          integrity: sha512-cGXKqPpp5sSh9biKzlyYO8rUhjja7U+hPu8rGUDSy9qMTSfQK0hRoMSCi0kkBI+mFzr34H070N/zRihzqXPmXg==
+    finding: >-
+      The SDK is built for the browser and authenticates with a partner API key, so the key ships to the client; no scoping, rotation or webhook verification is documented in the repo. Judgment call: what the key authorises is not documented, so it may be a publishable ID; with no evidence that it is scoped, this takes the lower anchor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The Terms (last updated 01.07.2026) say Holyheld is operated by Holyheld Labs AG, Zug (CHE-207.939.735), a member of a Swiss Self-Regulatory Organisation supervised for AML/CFT under the Swiss Anti-Money Laundering Act, and that e-money services are provided by regulated partners; the card is issued by a licensed payment-instrument issuer that the Terms do not name (https://holyheld.com/legal/terms-and-conditions). Personal data is processed under the Swiss FADP (https://holyheld.com/legal/privacy-policy). I found no primary source naming the issuer, its regulator or safeguarding arrangements.
+
+notes: >-
+  Eligibility: the public SDK repo holyheld/hh-v1-sdk (BUSL-1.1) and the Sourcify-verified top-up proxy on Ethereum make this a card provider, not an incumbent, although the logic contract is unverified. The top-up proxy address is not in the SDK source (it comes from the API at init); it was found by searching the CardTopup event topic 0x9ceec115... on eth.blockscout.com. Onchain reads pinned to Ethereum block 26139997 (backendSignatureCheck at 26140011). Holyheld now markets itself as an invitation-only membership for accounts and payments; the Terms still define the card. The README's documentation link (holyheld.com/documentation) returns 404.

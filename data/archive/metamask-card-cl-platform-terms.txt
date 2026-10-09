@@ -1,0 +1,525 @@
+Source: https://cdn.prod.website-files.com/679758c14272c334b6975a26/67ed139f59c727d6e69de3ea_CL%20Platform%20Terms%20of%20Use%20-%20Monavate%202025.pdf (linked as 'General Terms & Conditions' from https://www.withcl.com/legal)
+Retrieved: 2026-10-07 with curl; text extracted from the PDF with pypdf 6.14.2 (extraction artefacts such as split words kept as-is).
+
+BAANX GENERAL TERMS & CONDITIONS 
+If you continue to browse and use this website and subscribe to our products & services, 
+you are agreeing to the following terms and conditions of our Privacy Policy. 
+Please also be aware that we may amend our Privacy Policy periodically, which will be 
+reflected in the latest date and version on our website. 
+If we do make any material changes, we will notify you by email, as received by law and/or 
+prior to these changes becoming effective. 
+To enable us to provide our products & services to you, we require consent from you, when 
+processing your personal information and we will ask you for this in collecting, using and 
+disclosing this as described below. For further details on how we process your data, please 
+refer to our Privacy Policy located HERE. 
+  
+1. USER / CUSTOMER AGREEMENT 
+The Cryptocurrency-based services provided by Baanx Group as set out below are not regulated 
+financial services which means that they are not subject to the Financial Ombudsman Service 
+or the Financial Services Compensation Scheme. Therefore, and in general, You should carefully 
+consider whether purchasing, holding, or in any way dealing with or in Cryptocurrencies and 
+related products is suitable for You, bearing in mind Your overall financial circumstances and 
+Your risk appetite. 
+By transferring an amount of Cryptocurrency into a Baanx Wallet, possession and ownership 
+of that cryptocurrency passes to Us and You shall have no proprietary title in it. You have 
+a continuing right to request the Restoration of any amount of Cryptocurrency shown in the 
+Wallet in accordance with, and subject to any deductions made pursuant to, these terms. 
+By transferring Cryptocurrency in a Baanx Wallet, You acknowledge that there shall be no 
+custody relationship between You and Us in respect of the Cryptocurrency deposited. You 
+also acknowledge that in the event that any of Us becomes insolvent and / or en ters 
+liquidation, You may not be able to have the full value of Your transfers restored to You, 
+and other than Your rights as a creditor of the relevant entity under any applicable laws, 
+You may not have any legal remedies or rights in connection with Our obligations to You. 
+Any monetary value that You request to be transferred to the CL Debit Card (“CL Card”) is 
+identified as electronic money (“E -Money) and therefore regulated by the Financial Conduct 
+Authority (“FCA”), and / or within the European Union by the Bank of Lithuania. 
+The CL Card and underlying Account holding those relevant funds, are maintained and operated 
+by Monavate Ltd, an authorised electronic money institution authorised and regulated by the 
+FCA. 
+The CL Card and underlying Account for EU customers holding those relevant funds, are 
+maintained and operated by UAB Monavate , an entity registered and regulated in Lithuania 
+under legal entity code 305628001.    
+ 
+Baanx offers products & services in partnership with particular entities as follows below: 
+ 
+  
+Residence Product Entities Company Details 
+UK/EU Crypto Wallet Bitgo Europe Ltd UK Registered 
+Company Number 
+11279395 
+UK/EU Cryptodraft Baanx.com UK Registered 
+Company Number 
+11155611 
+UK/EU Stableloan Baanx.com UK Registered 
+Company Number 
+11155611 
+UK Bank Transfer 
+Funding 
+BCB Payments Ltd 
+Clearbank Ltd 
+UK Registered 
+Company Number 
+11313622 Financial 
+Conduct Authority 
+Number 807377 
+UK Registered 
+Company Number 
+11155611 Financial 
+Services Register 
+Number 754568 
+UK Card Issuing Monavate Ltd UK Registered 
+Company Number 
+12472532 
+EU Card Issuing UAB Monavate Lithuania Legal 
+Entity Code: 
+305628001 
+ 
+2. DEFINITIONS 
+“Assets” refers to amounts of Cryptocurrency and / or Fiat Currency, as applicable. Assets 
+supported by Us are listed in Section 8. 
+“Baanx” or “Baanx.com” refers to the owner of the website whose registered office is 
+Baanx.com Ltd, Mansion House, 33 Queen Street, London, England, London EC4R 1AP and whose 
+United Kingdom company registration number is 11155611. 
+“Baanx Account” or “Account” refers to the account You have created on the App. 
+“Baanx App” or “App” refers to the Baanx mobile application and a web app in instances where 
+we offer one. 
+“Baanx Platform” or “Platform” refers to the information technology infrastructure We use to 
+provide Services. 
+“Baanx User” or “User” refer to the holder of a Baanx Account and / or the authorised user of the CL™ 
+account and Visa debit card and any additional cardholder (as applicable). 
+“CL Card” refers to the card that has been issued to you in accordance with the CL Card terms, 
+referred to in Section 5.3. 
+“Cryptocurrency” means a digital representation of value in which encryption techniques are 
+used to regulate the generation of units of currency and verify the transfer of funds, operating 
+independently from a central bank.  
+“Cryptodraft” or “Better than a Loan” refers to the Cryptocurrency deposit-based Crypto Swap 
+financing service referred to in Section 5.5. 
+“E-money Safeguarded Account” refers to funds added to an electronic money institution’s 
+account, held on your behalf. 
+“Fiat Currency” means any money that is backed by a central bank, is designated as legal 
+tender, circulates, and is customarily used and accepted as a medium of exchange. 
+“Restoration” means the payment, or making available, by Us to You of the equivalent value 
+in Cryptocurrency of an amount of Cryptocurrency showing in Your Wallet. 
+“Services” refers to the services provided by Us pursuant to these terms as well as any terms 
+to which these terms refer. 
+“Wallet” refers to an on-Blockchain virtual address owned by Baanx on which You can deposit 
+Cryptocurrencies and to which access is provided to You. 
+“Wallet Rate” refers to the market rate of Cryptocurrencies; determined by integration to 
+leading Exchanges. 
+“We”, “Us” or “Our” refer to Baanx or Baanx Group Ltd, as the case may be. 
+“You” or “Your” refer to the user or viewer of our website, App, and platform or, as the case may be, 
+the named Baanx User, being the authorised user of the CL ™ account and Visa debit card and any 
+additional cardholder. 
+  
+3. ELIGIBILITY 
+By registering to become a Baanx User, You confirm that You: 
+●   Are at least 18 years old (or of legal age to form a binding contract under applicable 
+law) and have the capacity to sign a binding contract. 
+●   Reside in a country where Baanx products & services are available. 
+●   Are an individual, legal person or other organisation  with full legal capacity and 
+authority to enter these Terms. 
+●   Have not previously been suspended or removed from using our products/and or 
+Services. 
+●   Do not have an existing Baanx Account. 
+●   Will ensure that all information You provide to us is complete and accurate and You 
+commit to keeping all information complete and accurate at all times. 
+●   Will ensure that the information about Your address and residency is correct and 
+that You will notify Us if it changes. 
+●   Will provide Us with Your legal identity and any supporting information and 
+documents that We may request, including but not limited to a copy of Your driver’s 
+license and a copy of Your passport. 
+●   Reside in, and will only access the Platform from, a country where We permit the 
+Platform to be accessed. 
+●   Will use the Platform in compliance with all applicable laws and regulations, 
+including all export controls and economic sanctions requirements. 
+●   If You are entering into these Terms on behalf of a legal entity of which You are an 
+employee or agent, represent and warrant that You have all necessary rights and 
+authority to bind such legal entity. 
+  
+4. USER ACCOUNT AND PLATFORM 
+To use the Baanx Platform, You must register and become a fully verified User and set up an 
+Account through the Baanx App.   
+To register for an Account, You must provide Your full name, email address, and create a 
+password, as well as accept the Terms of Use, Privacy Policy and Consent Form. 
+Baanx may, in its sole discretion, refuse to open an Account for You. 
+You agree to provide complete and accurate information when opening an Account and agree 
+to update any information You provide to Baanx, so that such information is complete and 
+accurate at all times. 
+Each registration is for a single User only and each User may only maintain one Account with 
+Baanx. 
+Subject to these terms, Your Account will give you access to Wallets showing a balance of 
+Cryptocurrency you have deposited on the Platform earning a return equivalent to interest at 
+a minimum of 1% per annum, payable yearly unless in a high yield account whereupon interest 
+is paid weekly, and available to be restored to you on request in a corresponding Fiat or 
+Cryptocurrency value. Such balances can also be utilised as BTC Deposit for your Flexible, or 
+Fixed Term Cryptodraft “Better than a Loan” products. 
+You are aware that Fiat Currency value representing Assets that You place or deposit on the 
+Platform in a Wallet (and is not within the E-money Safeguarded Account within the Platform) 
+is not e -money and therefore not safeguarded or protected under the Fin ancial Services 
+Compensation Scheme or the Financial Ombudsman Service in the UK. Consequently, Your funds 
+could be at risk if something were to change or happen to any one of Us. 
+If You do not convert Fiat Currency held on the Platform into Cryptocurrency within 30 days of 
+transfer to the Platform, We reserve the right either move the funds to the E -money 
+Safeguarded Account available to You within the Platform, to return the Fiat Currency back to 
+Your designated bank account, or, if no bank account is linked, to convert such funds to an 
+equivalent amount of EURT stablecoin shown in a Wallet accessible through your Account 
+subject to these terms. We will notify You by email before W e undertake this conversion. For 
+the avoidance of doubt, no interest is payable on any Fiat Currency held on the Platform. 
+  
+5. SERVICES 
+We may partner with other third -party service providers to facilitate different methods of 
+providing Services to You, including Account funding, and therefore You agree that You have 
+read, understand, and accept all relevant terms and conditions that apply. 
+If We suspect or form any suspicion that Your use of any of Services involves illicit activity of 
+any kind, We reserve the right to suspend and / or terminate Your Account which may include 
+refusing to process inbound or outbound transactions. 
+ 
+5.1.  WALLETS – GENERAL 
+Wallets on the Baanx Platform belong to Us as do any Assets they hold. When you are provided 
+access to a Wallet through your Account, the amounts of Cryptocurrency visible to You are 
+those in respect of which you can request Restoration. 
+When You deposit any amount of Cryptocurrency into a Wallet, You authorise Us to charge the 
+full amount to the chosen funding method and You also authorise Us to collect and store that 
+method and other related transaction information. 
+We will attempt to reflect and credit the Fiat Currency value You have sent to a Wallet(s) via 
+Your funding method as quickly as possible, normally within 1 business day but this can take up 
+to three (3) business days. 
+You are responsible for ensuring that You have deposited sufficient Assets in the relevant 
+Wallet(s) at all times for us to provide Services under these terms, and We reserve the right to 
+refuse to process a transaction if insufficient Assets are available for Restoration at the relevant 
+time. 
+5.2. CRYPTO WALLET 
+You may deposit Cryptocurrency to Wallet(s) accessible through Your Account and earn a return 
+according to the applicable Wallet Rate, which shall be equivalent to a minimum annualised 
+interest of 1%, payable yearly. In certain circumstances We may agree with You to open a high 
+yield account where the Wallet Rate will be equivalent to a higher annualised interest rate, 
+payable weekly.     
+The Wallet Rate on any amount of Cryptocurrency shown in Your Wallet will be calculated on 
+the basis of the number of full days between initial deposit and Restoration of that amount. 
+We reserve the right to vary the Wallet Rate at any time. The Wallet Rat e due to You will be 
+automatically added to the amount shown in Your Wallet on an annual, or, if You have a high 
+yield account, weekly, basis. 
+By depositing an amount of Cryptocurrency into a Wallet possession and ownership of that 
+Cryptocurrency passes to Us and You shall have no proprietary title in it. You have a continuing 
+right to request the Restoration of any amount of Cryptocurrency shown  in the Wallet in 
+accordance with, and subject to any deductions made pursuant to, these terms. 
+By depositing Cryptocurrency in a Wallet, You acknowledge that there shall be no custody 
+relationship between You and Us in respect of the Cryptocurrency deposited. You also 
+acknowledge that in the event that any of Us becomes insolvent and / or enters liq uidation, 
+You may not be able to have the full value of Your deposits restored to You, and other than 
+Your rights as a creditor of the relevant entity under any applicable laws, You may not have 
+any legal remedies or rights in connection with Our obligations to You. 
+You may at any time request the Restoration of the equivalent value of any amount of 
+Cryptocurrency in a Wallet accessible through Your Account, up to the entire amount of any 
+Cryptocurrency or Cryptocurrencies shown. Restoration requests are made on the A pp. In 
+relation to any Restoration request, You may choose for the Restoration to be effected by 
+means of, either,  payment to a wallet held with a third party in the Cryptocurrency initially 
+deposited (You will need to provide Us with details in advance), or credit to a CL Card. 
+For the avoidance of doubt, if You request Restoration by means of payment in the 
+Cryptocurrency initially deposited to a wallet held by a third party, We will pay in the same 
+type of Cryptocurrency deposited by You, but not the actual same Cryptocurrency originally 
+deposited by You. In the event that the details of the third party wallet provided by You when 
+making the Restoration request are inaccurate, incomplete or misleading, the amount of 
+Cryptocurrency concerned may be permanently lost. We will not b e liable for any loss that 
+results from inaccurate, incomplete or misleading details that You may provide for such 
+Restoration. If the third party wallet You specify for Restoration is one to which We are unable 
+to process transfers, We will have no liabil ity for any resulting failure or delay in processing 
+Your requested Restoration. 
+Whenever possible, we will initiate the Restoration process immediately following receipt of a 
+Restoration request; however, we may require a longer period from Your Restoration request 
+to effect it. The Wallet Rate will cease to be calculated from the date on which the Restoration 
+is effected, at which point the corresponding amount of Cryptocurrency will be deducted from 
+the amount shown in the relevant Wallet. If the Restoration request concerns the entire amount 
+of any Cryptocurrency deposited in a Wallet, the Restoration will include any Wallet Rate due 
+up to the date of the Restoration. 
+5.3.  CL CARD 
+Where You load your CL Card with a monetary value, You are requesting Us to restore and 
+convert a corresponding amount of Cryptocurrency previously deposited by You into a Wallet 
+and credit Your CL card in settlement of this. The CL Card service is offered , and subject to 
+terms established, by Monavate Ltd (“Monavate”), UAB Monavate (“Monavate”) or the Baanx 
+Group Ltd acting on behalf of the issuing partners. 
+Please refer to the separate CL Card T&Cs for further details. 
+5.4. CRYPTODRAFT 
+By depositing an amount of BTC with Us, You can obtain a stablecoin facility from Us.  Please 
+see the detailed terms and conditions here. 
+ 
+5.5.  FIAT WITHDRAWALS 
+We may use third parties, detailed within the entity table in Section 1 to process any 
+withdrawals requested in the platform in GBP or EUR. 
+When requesting withdrawal, the name on your linked bank account must match the name 
+verified on your Account. 
+You may be subject to limits on transactions or withdrawals, to which the details can be found 
+within your profile page in the platform.  
+5.6.  LOYALTY PROGRAM 
+When You sign up to the loyalty program on the platform, you become eligible to receive 
+cashback on certain transactions made with your CL Card. 
+The available rates and currencies for the loyalty program cashback are as follows: 
+BXX - 2% 
+BTC - 1% 
+USDT - 1% 
+ 
+6. CONVERSION AND FX RATES 
+Any conversion between a Cryptocurrency and another Cryptocurrency, or between a 
+Cryptocurrency and a Fiat Currency (as applicable), necessary for the provision of Services, 
+shall be made by Us in accordance with the rates and prices applicable at the actu al time of 
+conversion. Applicable rates are currently indexed to those used by the following industry 
+leading platforms: 
+●   Coinbase Prime 
+●   BitPanda 
+●   Binance 
+●   LMAX 
+●   Finery Markets 
+We may by 30 days’ prior written notice change these rate sources. The sources We use from 
+time to time will be published on the Baanx website, and You shall not have any claims 
+regarding Our choice of rate sources or rates made available by any third party. 
+  
+7. PROHIBITION OF USE & RESTRICTIONS 
+By accessing and using Your Account, You represent and warrant that You are not (directly or 
+indirectly) on any list of sanctioned individuals and entities maintained by the UK’s Office of 
+Financial Sanctions Control, the European Commission, the U.S. Offi ce of Foreign Assets 
+Control, the UN Security Council, or any equivalent list maintained by any governmental 
+authority. 
+We maintain the right to select the markets and jurisdictions in which to operate and may, at 
+Our discretion, restrict or deny the provision of Services in certain countries, or if required by 
+law. 
+You agree and covenant to observe the following: 
+●   Your use of the Services will be in compliance with applicable laws and regulations. 
+Your use of the Services will not be in violation of another’s legitimate interests, including 
+taking any action that would interfere with, disrupt, negatively affect, or inhibit other Users 
+from using the Services. 
+ 
+By accessing the Services, You agree that We have the right to investigate any suspected 
+violation of these Terms, unilaterally determine whether You have violated these Terms, and 
+take appropriate action to ensure the integrity of the Services and to comp ly with applicable 
+laws without seeking or receiving Your prior consent. 
+Examples of such actions include, but are not limited to: 
+●   Freezing Your Account, 
+●   Reporting the incident to authorities / law enforcement, 
+●   Publishing the alleged violations and actions that have been taken. 
+In using the Services, You will not engage in any of the following uses or activities: 
+●   The provision of certain restricted financial services, including debt collection; 
+●   Intellectual Property or proprietary rights infringement, including the sale and 
+distribution of, or access to counterfeit music, movies, software, or other unlicensed 
+materials; 
+●   The provision of counterfeit or unauthorised goods or services, including the 
+unauthorised sale or resale of brand name or designer products or services that are 
+illegally imported or exported or stolen; 
+●   Marijuana dispensaries / online prescription or pharmaceutical services / weapons 
+and munitions / gunpowder and other explosives / fireworks and related goods / 
+radioactive materials or other dual use goods; 
+●   Drugs and related paraphernalia, including the sale of narcotics, controlled 
+substances, including any equipment designed for making or using drugs, such as 
+bongs, and vaporisers; 
+●   Pseudo-pharmaceuticals, i.e. pharmaceuticals that make health claims but have not 
+been approved, licensed or verified by a regulatory body; 
+●   Substances designed to imitate illegal drugs; 
+●   Adult content & pornography, including other obscene materials (including literature 
+and other media) and sites offering any sexually explicit services such as 
+prostitution, escorts, or pay-per view; 
+●   Pyramid schemes and similar marketing and deceptive investment opportunities or 
+other services that promise high rewards; or 
+●   Any other high -risk businesses that may violate the CL Card scheme or other 
+requirements set by our regulated partners.   
+  
+8. ASSETS SUPPORTED BY BAANX   
+Please refer to the list of Assets that are currently supported by Baanx or soon will be. 
+  
+8.1  Cryptocurrencies 
+  
+BTC 
+Currently Available 
+ETH 
+Currently Available 
+EURT 
+Currently Available 
+USDT 
+Currently Available 
+USDC 
+Currently Available 
+BXX 
+Currently Available 
+  
+8.2  Fiat Currencies 
+  
+GBP 
+Currently Available 
+EUR 
+Currently Available 
+USD 
+Currently Available 
+9. PERSONAL DATA & RECORD RETENTION 
+You agree to share personal information with Us as requested for the purposes of opening Your 
+account and identifying and verifying You. 
+We also collect information when You interact with Us both via Our App and website, including 
+information We collect from trusted third parties about You in order to allow Us to supply 
+Services. 
+This information required is a regulatory requirement and used in the prevention and detection 
+of money laundering, terrorist financing, fraud, and other financial criminality.     
+Baanx is required by law to retain Your information (including Account & Transactional) for five 
+years after the closure of Your Account. 
+We have the right to keep and use and/share the transaction data or other information related 
+to such accounts under the following circumstances: 
+●   Your Account is subject to law enforcement, governmental proceeding, criminal 
+investigation, 
+●   We detect unusual activity on the Account, 
+●   We detect unauthorised access to the Account, or 
+●   We are required to do so by a court order or command by a regulatory/government 
+authority. 
+Note that if a transaction is unfinished during the Account termination process, We reserve the 
+right to notify Your counterparty of the situation at that time. 
+We will not share Your information unless required to do so by law and / or unless We have 
+Your consent to do so or to enable Us to supply Services. 
+You also authorise Us to make enquiries, either directly or through third parties, to verify Your 
+identity or to protect You and / or Us against financial crime such as fraud. 
+The identity verification information we request may include, but is not limited to, Your: 
+●   Name, 
+●   Email address, 
+●   Contact details, 
+●   Telephone number, 
+●   Username, 
+●   Government issued ID, 
+●   Date of birth, and 
+●   Other information collected at the time of Account registration. 
+In providing this information, You confirm that it is accurate and up to date.  If there is any 
+reasonable doubt that any information provided by You is wrong, untruthful, outdated or 
+incomplete, We have the right to request that You update this in a timel y manner or We may 
+suspend or terminate Your Account. 
+You shall be solely and fully responsible for any loss or expenses incurred during the use of the 
+Baanx App if You cannot be reached through the contact information provided. 
+You hereby acknowledge and agree that You have the obligation to keep all information 
+provided up to date if there are any changes. 
+You authorise Us to make inquiries, whether directly or through third parties, that we consider 
+necessary to verify Your identity or protect You and / or Us against fraud or other financial 
+crimes, and to take action Baanx reasonably deems necessary based on the results of such 
+inquiries. 
+You also acknowledge and agree that Your personal information may be disclosed to credit 
+reference and fraud prevention or financial crime prevention or law enforcement if requested.   
+We generally process Your information through Our servers in the UK and the EEA and will 
+ensure that any processing outside these regions is as minimal as possible and subject to 
+appropriate safeguards. 
+  
+10. USAGE REQUIREMENTS 
+Your Account can only be used by You as the named User. You may not transfer or sell any 
+claims or rights You may have under these terms to any third party. 
+We reserve the right to suspend, freeze or cancel access to Your account if We suspect that 
+Your account is being used by persons other than You.     
+You must immediately notify Us if You suspect or become aware of any unauthorised use of 
+Your username and password. 
+We will not be liable for any loss or damage arising from any use of Your Account by   You or 
+by any third party (whether authorised by You or not). 
+  
+11. INACTIVE / DORMANT ACCOUNTS 
+Baanx regards an Account to be inactive if there is no record of You depositing or requesting 
+restoration of Assets on to the Platform for a period exceeding 365 days.     
+We will attempt to contact You, using the email address We hold on file and if We are unable 
+to contact You, We will block Your Account and consider any associated rights (in particular 
+to Restoration) as not having been exercised. We will close inactive Accounts   with no 
+associated Assets. 
+We will endeavour to communicate with You prior to Your Account becoming inactive. 
+  
+12.      TAX 
+You are responsible for paying any applicable taxes that apply to activities in relation to  
+ Your Account. 
+  
+13.      ACCOUNT CANCELLATION 
+If You wish to can cancel Your Account, please ensure You have requested the Restoration of 
+all Assets deposited by you and email admin@baanx.com giving 30 days’ notice. 
+We may terminate the services provided by Baanx with 60 days’ notice by email or through the 
+App, in which circumstances we will make full Restoration together with any accrued return at 
+the applicable Wallet Rate. 
+We may exercise the right immediately to suspend, restrict or terminate Your Account (and any 
+related Account owned by related entities or affiliates) if We suspect any of the following: 
+●   You have violated any applicable Terms & Conditions, 
+●   Use of Your Account may have breached applicable laws and / regulations, or 
+●   Not doing so would create loss and / or fail to protect Your Account or Assets.  
+You agree that We shall not be liable for any permanent or temporary modification, suspension 
+or termination of Your Account or access to all or any portion of the Services. 
+In any of the following circumstances, We shall have the right to directly terminate this 
+agreement by cancelling Your Account, and shall have the right permanently to freeze (cancel) 
+the authorisations for Your Account:     
+●   After Baanx terminates Services to You, You allegedly register or register in any 
+other person’s name as a Baanx User again, directly, or indirectly, 
+●   The information that You have provided is untruthful, inaccurate, outdated, or 
+incomplete, 
+●   When these terms are amended, You expressly state and notify Baanx of Your 
+unwillingness to accept the amended terms, or 
+●   You request that the Services be terminated. 
+  
+If We receive notice that any Assets transferred by You to a Baanx Account are alleged to have 
+been stolen or otherwise were not lawfully possessed by You, We may, place an administrative 
+hold on the affected Assets and Your Account and work with any other  financial institution or 
+party in returning them to the rightful owner. 
+If We place an administrative hold on some or all of the Assets deposited by You, or Your 
+Account as a whole, We may continue such hold until such time as any dispute over the 
+ownership of the Assets has been resolved and evidence of the resolution accepta ble to  
+ Us has been provided. 
+If Your Account is then closed, further to the dispute or due to the investigation being 
+conducted relating to financial crime, terrorism or money laundering, Baanx will liquidate all 
+Assets into the equivalent value in GBP Fiat Currency to protect their v alue, awaiting 
+instructions relating to transmission to the winner of the ownership dispute; or instruction 
+related to sending of the funds to the relevant authorities fighting financial crime, terrorism or 
+money laundering. 
+ 
+Other than complying with lawful demands from authorities of competent jurisdiction, Baanx 
+will not involve itself in any such dispute or the resolution of the dispute. 
+You agree that We will have no liability or responsibility for any such hold, or for Your inability 
+to request Restoration or execute trades during the period of any such hold. 
+Baanx maintains full custody of the Assets and User data / information which may be given to 
+governmental authorities in the event of Account suspension/closure arising from fraud 
+investigations, violation of law investigations, or violation of these Terms. 
+  
+14.      COMPLAINTS 
+If You are unhappy with Your Account or any related Baanx products or services, You can 
+complain to admin@baanx.com. 
+Please detail the cause of Your complaint, how You would like Us to resolve the complaint and 
+any other relevant information which would assist Us in responding to Your complaint. 
+We will acknowledge receipt of Your complaint within three working days. We will endeavour 
+to provide a written response to all points raised in Your complaint within 15 business days of 
+receipt of your complaint, and if We require longer than 15 days We will notify You and provide 
+a written response to your complaint within 35 business days of receipt of Your complaint. 
+  
+15.      SECURITY 
+You will be required to create or will be given security details, including a username and 
+password when establishing an Account. 
+You are responsible for keeping any electronic device through which You access Baanx safe and 
+maintaining adequate security and control of all security details that You use to access  
+ Services. 
+This includes taking all reasonable steps to avoid the loss, theft or misuse of such electronic 
+device and ensuring that such electronic device is both encrypted and password protected. 
+Baanx offers two factor authentications via Your registered mobile device (SMS Service or a 
+supported time-based one time password application). 
+You must ensure that You keep Us updated with Your latest verified phone number. 
+     
+16. LIMITS / RESTRICTIONS   
+Baanx will from time to time impose limits and/or restrictions on both the value and volume of 
+transactions if the thresholds are exceeded. These may change (up or down) if deemed as 
+appropriate and/or an industry recommendation and / or to protect Your Account. 
+     
+17. FEES    
+All fees for the platform can be found under https://withcl.com/legal/  
+ 
+18. AUTHORISATIONS / REVERSALS / CANCELLATIONS 
+Once You confirm a transaction to restore an amount of Cryptocurrency previously deposited 
+into a Wallet which requires a conversion of Assets, Baanx is unable to reverse this and 
+therefore You must check all details before proceeding. If You are unsure do not proceed. 
+     
+19. LIABILITY / INDEMNIFICATION 
+Baanx aims to provide all Users with an excellent service. In the unlikely event that Our services 
+are interrupted with impacts or delays to transactions, We will not be held responsible for any 
+losses, but will work hard to rectify any disruptions. 
+Where We are responsible for any losses due to failure to supply any Services in accordance 
+with these terms, We will only be liable for the transaction amounts and related fees. 
+Baanx will not be responsible for losses You may suffer following any data or related security 
+breach where it is not Baanx’ fault and where You have not adhered to action requested by  
+ Us or in any applicable terms & conditions. 
+     
+20. WEBSITE ACCURACY 
+Baanx endeavours to ensure all the information on Our website is accurate and is subject to 
+updates. Under no circumstances shall Baanx be liable for losses incurred because of the use of 
+this website or reliance on any information contained on it. Any use  You make will be at Your 
+own risk including any external link to other websites that do not belong to Baanx and will have 
+their own individual privacy policy. 
+  
+*** 
+  
+ 

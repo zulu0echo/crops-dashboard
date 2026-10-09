@@ -1,0 +1,73 @@
+Source: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Quantstamp%20Exa%20App%20Plugin%20(Mar-25).pdf
+Retrieved: 2026-10-07 via raw.githubusercontent.com at that commit; text of the summary pages extracted with pypdf 6.14.2 (excerpt: first 70 lines only).
+
+Exa App Plugin (Exact.Ly)
+Executive Summary
+This audit report was prepared by Quantstamp, the leader in blockchain security.
+Type ERC-6900 Plugin
+Timeline 2025-01-14 through 2025-01-27
+Language Solidity
+Methods
+Architecture Review, Unit Testing, Functional
+Testing, Computer-Aided Verification, Manual
+Review
+Specification README.md
+Source Code exactly/mobile #b262356
+Auditors
+Hytham Farah Auditing Engineer
+Nikita Belenkov Senior Auditing Engineer
+Ruben Koch Senior Auditing Engineer
+Documentation quality Medium
+Test quality High
+Total Findings 11
+Fixed: 11
+High severity findings 3Fixed: 3
+Medium severity findings 3Fixed: 3
+Low severity findings 5Fixed: 5
+Undetermined severity
+findings 0
+Informational findings 0
+Summary of Findings
+The ExaPlugin is a modular system designed to integrate on-chain lending with off-chain credit card issuers, enabling seamless payments
+backed by decentralized collateral. All users are required to deposit on-chain collateral that is used to fund the card transactions. The card offers
+2 modes of payment, either credit or debit. The debit method takes the collateral as payment, whilst the credit takes a borrow position against
+the collateral. The account is modified for these transactions via a signed message from the payment processor, ie the issuer in this protocol. The
+protocol has a Proposal mechanism for withdrawals so that sufficient collateral exists and remains locked during normal operation of the system.
+The plugin interacts with Exactly Protocol for core lending functionality, leveraging its markets and oracles to evaluate collateral and enforce
+liquidity requirements.
+The scope of the audit was limited to the plugin itself, excluding the underlying Exactly Protocol’s backend components, such as oracles,
+liquidation logic, and debt management, which were assumed to function correctly (see "Operational Considerations"). Our core concern was
+validating the integrity of the plugin’s interactions to prevent any unintended consequences of state updates or design flaws. Some significant
+vulnerabilities have been identified, which we strongly recommend to address. These issues revolve around insufficient restrictions on
+interactions with the core protocol, enabling credit card purchases to be unbacked on-chain with malicious interactions by end-users.
+The Exactly team has been being very communicative and helpful in providing context around the core protocol. We would also like to highlight
+the thorough test suite.
+Fix-Review Update
+The fix-review process went through four rounds in total, concluding at 368df25. Some new issues were introduced in earlier rounds, which
+have been communicated to the Exactly team and have now been sufficiently fixed. Due to the time-constrained nature of the audit, a proper
+writeup of these issues is not part of this report.
+ID DESCRIPTION SEVERITY STATUS
+EXA-1 executeBatch() Can Bypass the Created Execution Hook Restrictions • High Fixed
+EXA-2 Plugin Can Be Uninstalled, Removing All Checks on Plugin-Side • High Fixed
+EXA-3 Incorrect Assumptions Enable Numerous Credit Card Purchase Race
+Conditions • High Fixed
+ID DESCRIPTION SEVERITY STATUS
+EXA-4 Proposal Time Lock Is Skipped in the Case of Ether Withdrawal With No Swap • Medium Fixed
+EXA-5 More Selectors Need Restrictions to Ensure Correct Plugin Behaviour • Medium Fixed
+EXA-6 Hashes are not invalidated properly • Medium Fixed
+EXA-7 Refunding Signature Should Differ From the Collecting Signature • Low Fixed
+EXA-8 Malicious Plugin Can Add User Op Validation Functions to the Newly Added
+Selector • Low Fixed
+EXA-9 Incorrect operationExpiry Is Used to Update the Expiry Window • Low Fixed
+EXA-10 _depositApprovedUnspent() Not Necessarily Paired With
+IMarket.enterMarket() • Low Fixed
+EXA-11 Approvals Should Be Reset After Each _approveFromSender() and Related
+Execution • Low Fixed
+Assessment Breakdown
+Quantstamp's objective was to evaluate the repository for security-related issues, code quality, and adherence to specification and best
+practices.
+DisclaimerDiscl
+Only features that are contained within the repositories at the commit hashes specified on the front page of the report are within the 
+scope of the audit and fix review. All features added in future revisions of the code are excluded from consideration in this report.
+The fixes included significant changes in logic outside of the identified issues. For example, a plugin replacement flow has been added, 
+the flow of token transfers for some operations has been changed, and the execution hooks have been refactored. These additional 

@@ -1,0 +1,583 @@
+slug: wirex-one
+name: Wirex One
+type: card
+website: https://www.wirexapp.com/legal/one/terms
+primary_chain:
+  name: Base
+  chain_id: 8453
+  basis: >-
+    The Wirex One web app bundle (archived) sets companyName "Wirex One", calls the Wirex BaaS API and registers chain 8453; Wirex's BaaS repo (7dff6ea) names Base and production ContractRegistry 0xAFa697eb..., whose FundsManagement runs card debits (Card-Debit-POS). Reads pinned to Base block 52290735. Excluded: legacy Wirex Pay chain 31415 (not in the RPC list), Stellar, chain 5042.
+
+repos:
+  - url: https://github.com/wirexapp/wirex-baas-agent-skills
+    role: docs
+    license: Apache-2.0
+
+contracts:
+  - address: "0xAFa697ebC7919998AF5CdE325Fbe990dC926aae4"
+    chain_id: 8453
+    role: ContractRegistry (owner and admin EOA; unverified)
+    verified: none
+  - address: "0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a"
+    chain_id: 8453
+    role: FundsManagement proxy (wallet executor; card debits)
+    verified: sourcify
+  - address: "0x9D56758B772CA389802E97D832D0DAf6b8E47703"
+    chain_id: 8453
+    role: FundsManagement implementation
+    verified: sourcify
+  - address: "0x51ca975555B547f9E3224d60e97292360f1f9DB7"
+    chain_id: 8453
+    role: Accounts proxy
+    verified: sourcify
+  - address: "0x780c27ece1037B65553A306317780fD4Ecf571a3"
+    chain_id: 8453
+    role: ExecutionDelayPolicy proxy (withdrawal delay)
+    verified: sourcify
+  - address: "0x8CE61167f79aae19a528C30f5ebfcf7FC2242890"
+    chain_id: 8453
+    role: ExecutionDelayPolicy implementation
+    verified: sourcify
+  - address: "0xfb7Fb83C837b0AD724DfeDB02D45a82c053647cF"
+    chain_id: 8453
+    role: TokensRegistry proxy (implementation unverified)
+    verified: sourcify
+  - address: "0xbFACe6Ad3c7f07714F2Cc0a2651436f897537a95"
+    chain_id: 8453
+    role: FundsBuffer proxy (receives card debits)
+    verified: sourcify
+  - address: "0xED22eA8be14bea1dd70fD0A770D2498117cfE0fF"
+    chain_id: 8453
+    role: ProxyAdmin of FundsManagement (owner EOA)
+    verified: none
+  - address: "0x7a55A64c4527A2fD8e423F4c0F684C14FDe774c1"
+    chain_id: 8453
+    role: Sample user wallet (Kernel v3.1 proxy)
+    verified: none
+
+components:
+  - name: Wirex BaaS contracts on Base (registry, FundsManagement, policies)
+    role: contracts
+    public: true
+    license: none
+    operator: Wirex (owner EOA 0x8b72...e0ab)
+    required: true
+  - name: Kernel v3.1 smart account (ZeroDev)
+    role: wallet
+    public: true
+    license: MIT
+    operator: user, with Wirex executor module installed
+    required: true
+  - name: Wirex One app (web and mobile)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Wirex
+    required: true
+  - name: Wirex BaaS API (api-baas.wirexapp.com)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Wirex
+    required: true
+  - name: FundsManagementOracle (EOA that executes card debits)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Wirex
+    required: true
+  - name: Privy key management (user signer)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Privy
+    required: true
+  - name: ERC-4337 bundler and paymaster (operator for Base not identified)
+    role: bundler
+    public: false
+    license: proprietary
+    operator: undisclosed (repo docs show bundler.wirexpay.com for Polygon)
+    required: true
+  - name: Card issuer (Wirex Limited; Novatti in AU/NZ)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Wirex Limited, Novatti Group
+    required: true
+  - name: Visa or Mastercard
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa, Mastercard
+    required: true
+  - name: Identity verification provider (not named)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+  - name: Crossmint Europe (EEA crypto-asset services, SEPA off-ramp)
+    role: other
+    public: false
+    license: proprietary
+    operator: Crossmint Europe S.L.
+    required: false
+  - name: Web app analytics (Sentry, Amplitude, Google Tag Manager, GrowthBook)
+    role: other
+    public: false
+    license: proprietary
+    operator: Sentry, Amplitude, Google, GrowthBook
+    required: false
+  - name: Settlement tokens (USDC, USDT, EURC, DAI; Wirex synthetics WUSD, WEUR)
+    role: contracts
+    public: true
+    license: proprietary
+    operator: Circle, Tether, Sky, Wirex
+    required: true
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/address/0xAFa697ebC7919998AF5CdE325Fbe990dC926aae4
+        address: "0xAFa697ebC7919998AF5CdE325Fbe990dC926aae4"
+        block_number: 52290735
+        detail: ContractRegistry owner() and admin() both return 0x8b72904e3685448E6f890d65a15D2aA206C1e0ab, which has no code (EOA); contractByName("FundsManagementOracle") returns 0x467F3ACD346A3Aa56F612820367023B94dC73d3f, also an EOA.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xf851a440"
+          expect: "0x0000000000000000000000008b72904e3685448e6f890d65a15d2aa206c1e0ab"
+        recheck: cast call 0xAFa697ebC7919998AF5CdE325Fbe990dC926aae4 "admin()(address)" --rpc-url https://mainnet.base.org; cast code 0x8b72904e3685448E6f890d65a15D2aA206C1e0ab --rpc-url https://mainnet.base.org
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/8453/0x9D56758B772CA389802E97D832D0DAf6b8E47703
+        address: "0x9D56758B772CA389802E97D832D0DAf6b8E47703"
+        block_number: 52290735
+        detail: FundsManagement (Sourcify match) processOutgoingTransaction (L293-L346) is onlyOracle and moves any amount of a token out of a named user wallet via executeFromExecutor; the oracle and admin addresses are read from the registry, which the owner EOA can repoint.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/terms
+        detail: Terms 4.17 let Wirex restrict or block addresses through Wirex One for sanctions or risk policy.
+        quote: Wirex may restrict or block access, through Wirex One, to certain On-Chain Infrastructure, digital assets, or blockchain addresses
+        checked_at: "2026-10-07"
+    finding: >-
+      There is no pause flag, but there is a stronger power. A single oracle EOA, set in a registry whose owner and admin is one EOA, both decides and executes every debit from user wallets, and the Terms let Wirex block addresses. No multisig, no timelock, and it can target individual wallets. The Terms' statement that Wirex cannot move a user's assets does not match FundsManagement's oracle path.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/tx/0x38f4c152e86d59aadd0fb72242575ddd1a25deeb4890e2fb75db380f44aa013b
+        address: "0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a"
+        block_number: 52290735
+        detail: A card purchase (OutgoingTransactionProcessed, transactionType "Card-Debit-POS", currency EUR) debited WUSD from wallet 0x7a55A64c4527A2fD8e423F4c0F684C14FDe774c1; 392 such events were emitted in the 200 blocks before 52290735, all through the onlyOracle path.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card payments settle through the issuer and card network offchain. The onchain debit can only be run by Wirex's oracle EOA. A user can withdraw their own tokens directly (see S4), but that is exit, not settlement.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://one.wirexapp.com
+        detail: The production web app config hardcodes externalApiUrl https://api-baas.wirexapp.com and loads its runtime config from it.
+        quote: externalApiUrl:rc("https://api-baas.wirexapp.com")
+        archive: data/archive/wirex-one-web-app-config.txt
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-onboarding/references/WALLET-DEPLOYMENT.md#L122-L131
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: skills/wirex-baas-onboarding/references/WALLET-DEPLOYMENT.md
+        detail: The wallet example sends user operations through Wirex-run bundler and paymaster endpoints (bundler.wirexpay.com, paymaster.wirexpay.com).
+        checked_at: "2026-10-07"
+    finding: >-
+      Card debits need Wirex's API and oracle key, wallet signing goes through Privy, and user operations are sponsored by a Wirex paymaster. None of it is public or has a fallback. Closed, single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/terms
+        detail: The Terms disclose that Wirex may block blockchain addresses for sanctions, regulation or its own risk policy.
+        quote: Wirex may restrict or block access, through Wirex One, to certain On-Chain Infrastructure, digital assets, or blockchain addresses
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/8453/0x8CE61167f79aae19a528C30f5ebfcf7FC2242890
+        address: "0x8CE61167f79aae19a528C30f5ebfcf7FC2242890"
+        block_number: 52290735
+        detail: ExecutionDelayPolicy classifies every user operation and rejects "Restricted" types (L118-L131, L355-L368); the classification follows admin-set registry entries and whitelists (setApprovedCall, onlyAdmin).
+        checked_at: "2026-10-07"
+    finding: >-
+      The contracts let the admin decide which user operations are allowed, and the Terms disclose address blocking for sanctions or risk policy, without naming a list. The filtering is disclosed in the Terms, and the settlement layer is not shown to be neutral, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/address/0xfb7Fb83C837b0AD724DfeDB02D45a82c053647cF
+        address: "0xfb7Fb83C837b0AD724DfeDB02D45a82c053647cF"
+        block_number: 52290735
+        detail: TokensRegistry retrieveAllTokensV2() lists USDC, USDT, DAI, EURC, OUSD, OEUR and the Wirex synthetics WUSD (base USDC) and WEUR (base EURC).
+        checked_at: "2026-10-07"
+        recheck: cast call 0xfb7Fb83C837b0AD724DfeDB02D45a82c053647cF "retrieveAllTokensV2()((address,string,uint256,bool,address)[])" --rpc-url https://mainnet.base.org
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-overview/references/ENVIRONMENTS.md#L163-L171
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: skills/wirex-baas-overview/references/ENVIRONMENTS.md
+        detail: The repo doc enumerates the Base production tokens (USDC, USDT, EURC, WUSD, WEUR) with addresses; no file in the repo mentions issuer freeze or blacklist powers or Base's sequencer.
+        checked_at: "2026-10-07"
+    finding: >-
+      Tokens are enumerated onchain and in a versioned repo document. Users are not told about the issuers' freeze powers (Circle and Tether blacklists), Wirex's own control of the upgradeable WUSD/WEUR synthetics, or Base's centralized sequencer. Enumerated, assumptions not stated, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/8453/0x9D56758B772CA389802E97D832D0DAf6b8E47703
+        address: "0x9D56758B772CA389802E97D832D0DAf6b8E47703"
+        block_number: 52290735
+        detail: Sourcify v2 gives exact_match for the Accounts, FundsManagement, ExecutionDelayPolicy, TokensRegistry and FundsBuffer proxies, and match (partial) for the FundsManagement, Accounts, ExecutionDelayPolicy and FundsBuffer implementations; the ContractRegistry 0xAFa697eb... and the TokensRegistry implementation 0x6098927a... have no Sourcify match.
+        checked_at: "2026-10-07"
+    finding: >-
+      Most logic contracts are verified as partial matches, but the registry that routes every role and address is unverified, and so is one implementation. No build script is public. Some contracts verified, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/README.md#L1-L16
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: README.md
+        detail: The only Wirex repo for this stack is a set of agent skills (Markdown docs and tests) describing the BaaS REST API and contracts; the wirexapp and wirexpay orgs hold no SDK, app, backend or indexer source (wirexpay has forks of rundler, ultra-relay and Argo CD only).
+        checked_at: "2026-10-07"
+    finding: >-
+      Contract source is visible only through Sourcify verification. The app, API, oracle, indexer and SDK are closed. Contracts only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/README.md#L1-L16
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: README.md
+        detail: The README installs agent skills for calling Wirex's hosted API; there are no build or deploy instructions for any component.
+        checked_at: "2026-10-07"
+    finding: >-
+      There is no self-host path: no deployable code is public. Reproduction not attempted.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-crypto/references/ABI-REFERENCE.md#L1-L13
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: skills/wirex-baas-crypto/references/ABI-REFERENCE.md
+        detail: ABI fragments for ContractRegistry, Accounts, TokensRegistry, Kernel and ERC20 only; nothing for FundsManagement, ExecutionDelayPolicy or FundsBuffer. The REST API is described in Markdown, with no OpenAPI file and no export format.
+        checked_at: "2026-10-07"
+    finding: >-
+      Partial ABIs and prose API docs for BaaS integrators are in a repo. There is no machine-readable API schema, no ABI for the contracts that move funds, and no user data export. Judgment call: partial coverage fits "documented only" (1) better than 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/8453/0x9D56758B772CA389802E97D832D0DAf6b8E47703
+        address: "0x9D56758B772CA389802E97D832D0DAf6b8E47703"
+        block_number: 52290735
+        detail: The verified FundsManagement and ExecutionDelayPolicy sources carry SPDX-License-Identifier UNLICENSED.
+        checked_at: "2026-10-07"
+    finding: >-
+      The contracts are published as UNLICENSED, and the app, API, oracle, issuer and Privy are closed. Nothing needed to run the product can be forked.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://one.wirexapp.com
+        detail: The app requires the hosted BaaS API at startup.
+        quote: externalApiUrl:rc("https://api-baas.wirexapp.com")
+        archive: data/archive/wirex-one-web-app-config.txt
+        checked_at: "2026-10-07"
+    finding: >-
+      The product cannot run without Wirex's hosted API, oracle key, Privy and card partners.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://one.wirexapp.com
+        detail: The production web app bundle configures a Sentry DSN (ingest.de.sentry.io) and ships an Amplitude HTTP client, a Google Tag Manager loader and a GrowthBook client key.
+        quote: https://api2.amplitude.com/2/httpapi
+        archive: data/archive/wirex-one-web-app-config.txt
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/privacy
+        detail: The privacy policy says data is shared with providers for analytics, among other purposes, without naming them.
+        quote: support account creation, identity verification, wallet infrastructure, blockchain connectivity, transaction monitoring, fraud prevention, customer support, analytics and communications
+        checked_at: "2026-10-07"
+    finding: >-
+      Error reporting, product analytics and tag management are on by default in the web app. The privacy policy discloses analytics only by category. Judgment call: category-level disclosure counts as "disclosed in docs" (1) rather than undisclosed (0); no trace was run.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/privacy
+        detail: The privacy policy lists identity, KYC, wallet and account-abstraction addresses, transaction data and device data among the data processed.
+        quote: account abstraction wallet addresses
+        checked_at: "2026-10-07"
+    finding: >-
+      KYC and profile data go well beyond settlement needs. This is disclosed in the privacy policy, not in code or a versioned repo document, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/tx/0x38f4c152e86d59aadd0fb72242575ddd1a25deeb4890e2fb75db380f44aa013b
+        address: "0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a"
+        block_number: 52290735
+        detail: Each card debit emits OutgoingTransactionProcessed with transaction and operation IDs, the plaintext type "Card-Debit-POS", fiat currency "EUR", amounts and the user's wallet; Accounts events carry the partner's parentEntity.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/privacy
+        detail: The privacy policy says public blockchain records hold wallet addresses, amounts and timestamps that can be linked to the user through off-chain records.
+        quote: We do not intend to write direct personal identifiers
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card purchase is published onchain against the user's wallet, with its type, currency and amount and a stable wallet address, so anyone can rebuild a cardholder's spending history. The linkage is disclosed in the privacy policy, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/privacy
+        detail: The privacy policy names categories of recipients (identity verification, wallet infrastructure, blockchain infrastructure, card and payment partners, analytics); the Terms name Privy, Crossmint and the card issuers.
+        quote: support account creation, identity verification, wallet infrastructure, blockchain connectivity, transaction monitoring, fraud prevention, customer support, analytics and communications
+        checked_at: "2026-10-07"
+    finding: >-
+      Privy, the issuer, the card network, Crossmint, KYC and analytics vendors all see user or payment data. They are disclosed in the Terms and privacy policy (some only by category) and cannot be swapped. Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://one.wirexapp.com
+        detail: The API URL is baked in at build time and the Base chain is defined with https://mainnet.base.org as its RPC; the app exposes no setting to change either.
+        quote: rpcUrls:{default:{http:["https://mainnet.base.org"]}
+        archive: data/archive/wirex-one-web-app-config.txt
+        checked_at: "2026-10-07"
+    finding: >-
+      Endpoints are hardcoded in the app and the indexer is closed. Hardcoded, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/8453/0x9D56758B772CA389802E97D832D0DAf6b8E47703
+        address: "0x9D56758B772CA389802E97D832D0DAf6b8E47703"
+        block_number: 52290735
+        detail: processOutgoingTransaction (L293-L346) sends a wallet's tokens to FundsBuffer or to a destination set by configureTokenDestination (L1061-L1071, onlyAdmin); both are reachable only by Wirex EOAs.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/address/0x7a55A64c4527A2fD8e423F4c0F684C14FDe774c1
+        address: "0x7a55A64c4527A2fD8e423F4c0F684C14FDe774c1"
+        block_number: 52290735
+        detail: The sample user wallet (Kernel v3.1 proxy, accountId kernel.advanced.v0.3.1) has FundsManagement installed as executor (isModuleInstalled(2, FundsManagement) = true; FundsManagement.status = Live).
+        checked_at: "2026-10-07"
+    finding: >-
+      Between the user's wallet and the merchant, funds move into Wirex's FundsBuffer, and the oracle can send them to any destination the admin EOA sets. The Terms call the wallet self-custodial and say Wirex cannot move user assets, while the installed executor lets Wirex's oracle move them. The provider can redirect funds, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/address/0xED22eA8be14bea1dd70fD0A770D2498117cfE0fF
+        address: "0xED22eA8be14bea1dd70fD0A770D2498117cfE0fF"
+        block_number: 52290735
+        detail: The FundsManagement proxy's EIP-1967 admin is this ProxyAdmin, whose owner() is EOA 0x8b72904e3685448E6f890d65a15D2aA206C1e0ab; the Accounts, ExecutionDelayPolicy, TokensRegistry and FundsBuffer ProxyAdmins have the same owner.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000008b72904e3685448e6f890d65a15d2aa206c1e0ab"
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/address/0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a
+        address: "0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a"
+        block_number: 52290735
+        detail: EIP-1967 admin slot of the FundsManagement proxy.
+        checked_at: "2026-10-07"
+        check:
+          slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+          expect: "0x000000000000000000000000ed22ea8be14bea1dd70fd0a770d2498117cfe0ff"
+    finding: >-
+      One EOA can upgrade every BaaS contract (implementations were redeployed around block 52.04M, days before this read) with no timelock. EOA admin, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/address/0x7a55A64c4527A2fD8e423F4c0F684C14FDe774c1
+        address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+        block_number: 52290735
+        detail: USDC allowance(sample wallet 0x7a55A64c..., FundsManagement) is 2^256-1; the WUSD allowance is also unlimited. FundsManagement.setApprovalsForRegistryTokens (L146-L163) grants type(uint256).max on every registry token at onboarding.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xdd62ed3e0000000000000000000000007a55a64c4527a2fd8e423f4c0f684c14fde774c1000000000000000000000000fb384a73e9b89b01749c1127cde4fea20fb9f06a"
+          expect: "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    finding: >-
+      Onboarding gives the Wirex FundsManagement contract unlimited allowances on every supported token, and I found no user-facing disclosure. Unbounded, undisclosed, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-crypto/SKILL.md#L132-L161
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: skills/wirex-baas-crypto/SKILL.md
+        detail: ERC-20 withdrawals use a request-then-execute pattern enforced by ExecutionDelayPolicy; the policy storage at block 52290735 gives a 3-second normal delay and a 1-day delay for account changes.
+        checked_at: "2026-10-07"
+    finding: >-
+      Derived: S1 = 0 (the oracle and admin can move funds), C2 = 0, C3 = 0, O3 = 0. The contracts let a wallet owner withdraw through request-and-execute without Wirex's oracle, but the signing key is a Privy embedded wallet reached through the Wirex One app, and I could not verify an export path. Admin EOAs can also reclassify operations or upgrade the policy. Judgment call: access depends on the provider, so 0, not 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://one.wirexapp.com
+        detail: The production web app config contains a literal OAuth client secret for the wirexone SSO client (redacted in the archive copy).
+        quote: wxSsoClientSecret:rc(
+        archive: data/archive/wirex-one-web-app-config.txt
+        checked_at: "2026-10-07"
+    finding: >-
+      A client secret ships in the browser bundle. What it authorises was not tested and nothing was called with it. Secrets in client, no mitigation found, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. Per the Wirex One Terms (https://www.wirexapp.com/legal/one/terms), card-based regulated services are provided by Wirex Limited (England and Wales 09334596), authorised and regulated by the FCA as an electronic money institution (FRN 902025); card programme management in the EEA is by UAB Wirex (Lithuania 305118023); in Australia and New Zealand the card is provided by Novatti Group Limited; EEA crypto-asset services are provided by Crossmint Europe S.L., authorised by the Spanish CNMV as a crypto-asset service provider and by the Bank of Spain as a payment institution. The Terms describe the wallet as self-custodial, with keys generated and managed through Privy. Complaints go to the national ombudsman (FOS in the UK, AFCA in Australia).
+
+notes: >-
+  Wirex One (launched May 2026; replaced crypto in the classic Wirex app for EEA and AU users) runs on Wirex's BaaS stack on Base: Kernel v3.1 smart accounts with a Wirex FundsManagement executor and an ExecutionDelayPolicy. The link comes from the one.wirexapp.com production bundle (archived and redacted in data/archive/wirex-one-web-app-config.txt) together with Wirex's own BaaS repo, which publishes the Base registry. The legacy Wirex Pay chain (chain 31415, a Polygon CDK validium with "Card" contracts verified on its Blockscout) is not assessed: it is not in the dashboard RPC list and showed only bridge transactions in Sep-Oct 2026. The web bundle also contains an SSO client secret; it was not used.

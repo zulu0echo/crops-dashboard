@@ -1,0 +1,342 @@
+slug: hesabpay
+name: HesabPay
+type: incumbent
+website: https://hesab.com
+repos: []
+contracts: []
+components:
+  - name: HesabPay custodial wallet ledger and transaction backend
+    role: ledger
+    public: false
+    license: proprietary
+    operator: HesabPay
+    required: true
+  - name: Partner banks holding customer funds 1:1 (not named in sources read)
+    role: other
+    public: false
+    license: proprietary
+    operator: Licensed partner banks
+    required: false
+  - name: HesabPay mobile app
+    role: wallet
+    public: false
+    license: proprietary
+    operator: HesabPay
+    required: false
+  - name: USSD *580# service
+    role: frontend
+    public: false
+    license: proprietary
+    operator: HesabPay
+    required: false
+  - name: web.hesab.com web wallet and enterprise web platform
+    role: frontend
+    public: false
+    license: proprietary
+    operator: HesabPay
+    required: false
+  - name: Merchant REST API (api.hesab.com) and developer portal (developers.hesab.com)
+    role: api
+    public: false
+    license: proprietary
+    operator: HesabPay
+    required: false
+  - name: HesabPOS terminals and mPOS devices
+    role: other
+    public: false
+    license: proprietary
+    operator: HesabPay
+    required: false
+  - name: Identity verification (KYC) via verification services and government databases
+    role: kyc
+    public: false
+    license: proprietary
+    operator: HesabPay and unnamed identity verification services
+    required: false
+  - name: HesabPay Visa Card (issued with partner banks)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Licensed partner banks (not named in sources read)
+    required: false
+  - name: Visa card network
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: false
+  - name: Cash-out agent network (1,200+ agents per terms s2.4)
+    role: other
+    public: false
+    license: proprietary
+    operator: HesabPay agents
+    required: false
+context: >-
+  Licensing: Da Afghanistan Bank's public list of licensed electronic money institutions (https://www.dab.gov.af/non-banking-financial-institutions, read 2026-10-07) lists HesabPay under the legal name Zinzir Ltd, licence No EMI101005, licence date 5 June 2023, website https://hesab.com/. The terms and privacy policy name the contracting entity as HesabPay, Inc. (Delaware); how that entity relates to the licensee Zinzir Ltd is not stated in the sources read. Funds: HesabPay's terms s2.3 state that it holds user funds 1:1 in the banking system, and privacy policy s3 says licensed banks hold the funds; these are HesabPay's own statements, and no regulator or auditor document confirming a safeguarding arrangement was read (Da Afghanistan Bank's regulation page links a payment-system licensing regulation whose PDF returned 404 on 2026-10-07). KYC/AML: privacy policy s2 cites Know Your Customer and Anti-Money Laundering rules "as required by Da Afghanistan Bank". Recourse: terms s9 put the agreement under the laws of Delaware, with negotiation or mediation before litigation.
+notes: >-
+  Eligibility: no public repository owned by HesabPay and no verified contract found, so type is incumbent. Searched 2026-10-07: gh search repos hesabpay / hesab; gh search code hesabpay; GitHub users/orgs hesabpay, HesabPay, hesab-pay, hesabpay-official, hesabpayglobal (all 404) and user search "hesabpay" (two unrelated accounts: HesabPayZinzir with 0 repos, habib-studio). Every hesabpay repo found is a third-party merchant integration (WooCommerce, Laravel, Django, Flutter) calling HesabPay's hosted API, not code needed to run the product. Blockscout search "hesab" on Ethereum returned nothing; hesab.com, its privacy policy, terms and the developer-portal bundle contain no EVM address or contract reference. hesabpay.com returns a Cloudflare 403 to non-browser clients; the operating site is hesab.com, which the privacy policy names as the website. HesabPay is described on hesab.com and in an Algorand Foundation case study (claimed tier) as running on Algorand. Algorand ASAs named "HesabPay" exist (e.g. 1258542524, 3561304383) whose self-asserted url field points at hesab.com, but no HesabPay document links to them, ASAs carry no verifiable source, and the schema does not represent Algorand; they are logged in docs/research/hesabpay.md and not used. Scores rest on the terms and privacy policy (documented tier, cap 1) and one reproducible page fetch.
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms and Conditions (effective 2026-04-06) s5.1: failure to provide government ID 'may result in account suspension or termination'; s7 lists termination grounds including 'Court or government orders mandating termination'. No notice period is stated."
+        checked_at: "2026-10-07"
+        quote: "Failure to provide documentation may result in account suspension or termination."
+    finding: >-
+      HesabPay can suspend or terminate individual accounts, including on government order, and the terms state no notice period or appeal path. There are no settlement contracts; the role holder is HesabPay itself. Judgment call: anchor 0 ("can target individual addresses with no notice") applied to account-level suspension in a custodial ledger.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s2.3: 'HesabPay functions as a custodial wallet service that holds user funds at a 1:1 ratio in the banking system'; s3.1 transfers run between HesabPay accounts, bank accounts, or cash-out agents."
+        checked_at: "2026-10-07"
+        quote: "HesabPay functions as a custodial wallet service that holds user funds at a 1:1 ratio in the banking system"
+    finding: >-
+      Settlement is a book entry on HesabPay's custodial ledger. The terms describe no path for a payer or payee to settle without HesabPay's app, USSD service, or API.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s1.2, s2.7, s2.8: every listed flow (app, USSD *580#, HesabPOS, REST API and WooCommerce plugins at developers.hesab.com) runs through HesabPay-operated services; s6 reserves all IP to HesabPay, Inc."
+        checked_at: "2026-10-07"
+        quote: "Using the USSD *580# service for payments without internet access on any mobile phone."
+    finding: >-
+      Every payment flow requires HesabPay's hosted services. No intermediary code is public (see notes for the search), so the dependency is closed and single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        detail: "Privacy Policy s2 'Identity Verification': data is used for KYC and AML compliance 'as required by Da Afghanistan Bank and applicable laws'; s4.2 lists automated fraud detection and real-time transaction monitoring."
+        checked_at: "2026-10-07"
+        quote: "Automated fraud detection and real-time transaction monitoring."
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s7 lists 'Court or government orders mandating termination' as a termination ground; s3.1 says transaction limits may apply based on jurisdictional regulations; s5.2 says suspicious activities are referred to the authorities."
+        checked_at: "2026-10-07"
+        quote: "Limits on transaction amounts may apply based on jurisdictional regulations."
+    finding: >-
+      HesabPay discloses, in its terms and privacy policy only, that it monitors transactions for AML and fraud, applies jurisdiction-based limits, and terminates accounts on court or government order. It names no screening list. There is no separate settlement layer: filtering and settlement both happen in HesabPay's closed ledger, so the neutrality of settlement cannot be shown from code, and no direct path bypasses the filtering (C2 = 0). Judgment call: anchor 1 ("edge filtering disclosed in docs only, or the neutrality of the settlement layer cannot be shown from code") rather than 0, because the filtering read is disclosed and nothing read shows undisclosed filtering; the ledger is closed, so undisclosed filtering cannot be ruled out either, and a trace or internal document showing it would lower this to 0. Documented tier caps the cell at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s6: all intellectual property in the application and website is owned by HesabPay, Inc.; users get 'a limited, non-transferable license for personal, authorized use'."
+        checked_at: "2026-10-07"
+        quote: "All intellectual property associated with HesabPay, including the application, website"
+    finding: >-
+      No part of the stack is public. GitHub searches found no HesabPay-owned organisation or repository (search log in docs/research/hesabpay.md), and the terms reserve all IP.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s2.8: 'HesabPay provides RESTful APIs, WooCommerce/WordPress plugins, and split payment capabilities', governed by a Developer Agreement at developers.hesab.com; s2.2 statements are downloadable."
+        checked_at: "2026-10-07"
+        quote: "HesabPay provides RESTful APIs, WooCommerce/WordPress plugins, and split payment capabilities"
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        detail: "Privacy Policy s5 'Data Portability': users may download transaction history and account statements 'in standard formats'."
+        checked_at: "2026-10-07"
+        quote: "Download your transaction history and account statements in standard formats"
+    finding: >-
+      A REST API and a statement export are documented. Nothing is versioned in a public repo, and the export format is not named. Judgment call: the API reference at developers.hesab.com is a client-rendered app whose docs routes appear to sit behind login, so this score rests on the terms and policy text, not on a published API schema.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s6: 'Users are granted a limited, non-transferable license for personal, authorized use. Unauthorized use is strictly prohibited.'"
+        checked_at: "2026-10-07"
+        quote: "Users are granted a limited, non-transferable license for personal, authorized use."
+    finding: >-
+      The product is proprietary. No public repository exists, and the only license offered is a limited, non-transferable use license, so a third party cannot fork or run it.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  F3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: trace
+        url: https://hesab.com
+        detail: "Reproduction: curl -sL https://hesab.com | grep -o 'googletagmanager.com/gtag/js?id=[A-Z0-9-]*' returns G-GMHMD0CKK3 (Google Analytics, loaded unconditionally); the same page preloads google.com/recaptcha/api.js. Run 2026-10-07."
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        detail: "Privacy Policy s6: the website uses 'analytics cookies to understand visitor behavior'; s1.2 lists automatically collected device identifiers, IP address and app usage patterns."
+        checked_at: "2026-10-07"
+        quote: "analytics cookies to understand visitor behavior"
+    finding: >-
+      Google Analytics loads by default on hesab.com and the privacy policy discloses analytics in general terms without naming Google. Google reCAPTCHA also loads on the page and is not named in the policy. The mobile app and web.hesab.com were not inspected at a pinned source, so the score covers the website plus the policy. Judgment call: 1 (present, on by default, disclosed) rather than 0, because analytics collection is disclosed even though the vendor is not named.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        detail: "Privacy Policy s1.1: registration collects full name, phone, email, date of birth, and national ID or passport for KYC; s1.2 collects device identifiers, IP, usage data and location; s1.3 adds data from identity-verification services and government databases. s2 states the KYC basis: AML/KYC regulations 'as required by Da Afghanistan Bank and applicable laws'."
+        checked_at: "2026-10-07"
+        quote: "national ID or passport details for identity verification (KYC)"
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        detail: "Privacy Policy s1.2 'Usage Data': app usage patterns, features accessed, transaction frequency, session duration and interaction with notifications are collected automatically; s2 'Improvement' uses them to improve app performance and develop new features, a purpose with no stated legal basis."
+        checked_at: "2026-10-07"
+        quote: "Analyzing usage patterns to improve app performance, develop new features, and enhance user experience."
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s1.1: account creation needs only a mobile number; s5.1: HesabPay 'may require' government-issued ID, and refusal may lead to suspension."
+        checked_at: "2026-10-07"
+        quote: "HesabPay may require users to authenticate their identity using government-issued identification documents."
+    finding: >-
+      KYC collection (name, date of birth, national ID or passport) is disclosed in the privacy policy with a stated legal basis (Da Afghanistan Bank KYC/AML rules); on its own that would score 1, since the basis is disclosed in a policy, not in code or a versioned repo document. But the same policy discloses automatic collection of app usage data (features accessed, transaction frequency, session duration) for product improvement, which goes beyond the stated legal requirement, and the updated anchor 0 covers "collection beyond the stated legal requirement". Score lowered from 1 to 0 on HesabPay's own policy text. Judgment call: usage data is read as collection by the payment flow because the policy ties it to the app that runs payments; device and location data for fraud prevention and the agent finder were not counted against the score.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        detail: "Privacy Policy s3 names recipients: banking partners, card networks (Visa, Mastercard, American Express), payment processors, Duffel and other booking/delivery partners, AI language-model providers, regulators, and agents/merchants."
+        checked_at: "2026-10-07"
+        quote: "Flight booking (Duffel), hotel reservations, food delivery, and gift card partners"
+    finding: >-
+      Third parties see transaction data and are disclosed only in the policy. Most are named by category, a few by name. Nothing shows whether they can be swapped.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s2.3: custodial wallet holding user funds 1:1 in the banking system; HesabPay 'does not invest, transfer, or use your funds ... without your explicit consent'; s3.4 reversals are run by HesabPay's team with recipient consent."
+        checked_at: "2026-10-07"
+        quote: "HesabPay does not invest, transfer, or use your funds under any circumstances without your explicit consent."
+    finding: >-
+      HesabPay holds funds in flight and at rest, and the terms disclose this. The terms limit HesabPay's use of those funds to cases with user consent; no onchain artifact confirms this.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        detail: "Terms s2.3 (custodial wallet) and s3.1 (all transfers via HesabPay accounts, banks or agents); no exit path independent of HesabPay is described."
+        checked_at: "2026-10-07"
+        quote: "Users can transfer funds to other users via HesabPay accounts, bank accounts, or cash-out agents."
+    finding: >-
+      Derived. S1 = 1 (provider custody), C2 = 0 (no direct settlement), C3 = 0 (closed single-vendor services), O3 unknown (no public code to self-host). If HesabPay stopped operating, both funds and the ability to settle would depend on HesabPay and its partner banks.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending

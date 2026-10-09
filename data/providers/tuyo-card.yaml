@@ -1,0 +1,365 @@
+slug: tuyo-card
+name: Tuyo Card
+type: card
+website: https://tuyo.com
+primary_chain:
+  name: Base
+  chain_id: 8453
+  basis: >-
+    Tuyo's FAQ says "The Tuyo Card and account services operate on Base" and the card guide says the card is powered by USDC on Base. Tuyo's recovery guide names the account contracts on Base: Kernel 3.2 implementation 0xD830D15D... and ECDSA validator 0x845ADb2C... (ZeroDev). Excluded: Ethereum, Arbitrum, BSC and Polygon, which are deposit and withdraw networks only. I could not identify a sample Tuyo account or its card collateral contract, so per-account onchain cells are unknown.
+
+repos:
+  - url: https://github.com/zerodevapp/kernel
+    role: contracts
+    license: MIT
+
+contracts:
+  - address: "0xD830D15D3dc0C269F3dBAa0F3e8626d33CFdaBe1"
+    chain_id: 8453
+    role: ZeroDev Kernel 3.2 implementation (Tuyo smart accounts)
+    verified: sourcify
+  - address: "0x845ADb2C711129d4f3966735eD98a9F09fC4cE57"
+    chain_id: 8453
+    role: ZeroDev ECDSA validator (root validator)
+    verified: sourcify
+
+components:
+  - name: ZeroDev Kernel 3.2 smart account and ECDSA validator
+    role: contracts
+    public: true
+    license: MIT
+    operator: ZeroDev (code); account owned by the user
+    required: true
+    repo: https://github.com/zerodevapp/kernel
+  - name: Card collateral contracts (not identified)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: card provider (not named by Tuyo)
+    required: true
+  - name: Tuyo mobile app (signer key, card UI)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Tuyo, Inc.
+    required: true
+  - name: Tuyo backend
+    role: backend
+    public: false
+    license: proprietary
+    operator: Tuyo, Inc.
+    required: true
+  - name: Card provider and issuer (unnamed third-party issuer)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+  - name: Visa card network
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: KYC by the card provider
+    role: kyc
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+  - name: Bridge (fiat on and off ramp, virtual accounts)
+    role: other
+    public: false
+    license: proprietary
+    operator: Bridge Ventures LLC
+    required: false
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Terms-of-Service-1f5bde14709281b2a8fff4a20910b4ed
+        archive: data/archive/tuyo-card-terms.txt
+        quote: "Tuyo may suspend or terminate your access to the Service at any time if it determines, in its sole discretion, that you do not meet these eligibility requirements"
+        detail: Terms of Service (updated 28 July 2026) s2.1; s3.4 also reserves the right to restrict transaction submission; card use is subject to the unnamed Issuer's terms.
+        checked_at: "2026-10-07"
+    finding: >-
+      Tuyo can suspend an individual's access at its sole discretion, with no notice period stated. The card issuer's own terms were not public to me. The FAQ says withdrawals to the user's own wallet still work when an account is restricted, but that is exit, not payment. Judgment call: per-user suspension with no stated notice meets anchor 0. The account contracts would not support a pause.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Terms-of-Service-1f5bde14709281b2a8fff4a20910b4ed
+        archive: data/archive/tuyo-card-terms.txt
+        quote: "which is issued by a third party card issuer"
+        detail: Terms s3.1; card payments are authorised and settled by the issuer over Visa, funded from USDC on Base.
+        checked_at: "2026-10-07"
+    finding: >-
+      Merchants are paid by the issuer over Visa. Nothing documents a way to complete a card payment by calling contracts directly.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.tuyo.com/guides/tuyo-card-availability.html
+        quote: "The card provider has additional country, U.S. state, and territory restrictions"
+        detail: Card issuance runs through an unnamed card provider and the Tuyo app; neither has public code.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card requires Tuyo's closed app and backend, an unnamed card provider and issuer, and Visa. All are closed and single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.tuyo.com/guides/tuyo-card-availability.html
+        quote: "The card provider has additional country, U.S. state, and territory restrictions"
+        detail: The guide tabulates country and U.S. state exclusions; Terms s2.1 require OFAC and SDN eligibility.
+        checked_at: "2026-10-07"
+    finding: >-
+      Geographic and sanctions filtering is disclosed in docs. The card settlement contracts could not be inspected, so the neutrality of the settlement layer cannot be shown. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.tuyo.com/guides/card.html
+        quote: "The card is powered by USDC on Base"
+        detail: The card token and chain are stated in docs; Circle's freeze powers and Base's sequencer are not mentioned.
+        checked_at: "2026-10-07"
+    finding: >-
+      USDC on Base is enumerated in docs only. Issuer freeze and sequencer assumptions are not stated. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/8453/0xD830D15D3dc0C269F3dBAa0F3e8626d33CFdaBe1
+        address: "0xD830D15D3dc0C269F3dBAa0F3e8626d33CFdaBe1"
+        block_number: 52290868
+        detail: Sourcify reports match (partial, not exact) for the Kernel 3.2 implementation and for the ECDSA validator 0x845ADb2C...; both have code at this block.
+        checked_at: "2026-10-07"
+    finding: >-
+      The account contracts are partially verified. The card collateral contracts that hold spendable funds were not identified, so not every settlement contract is verified. Some contracts verified, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/src/Kernel.sol#L1-L2
+        commit: "cfedcb9b047838f72491baaadef8fe7a95b2c837"
+        path: src/Kernel.sol
+        detail: The smart-account contracts (ZeroDev Kernel, tag v3.2) are public; no Tuyo-owned public repo exists (GitHub user "tuyo" has 0 repos; searches found none).
+        checked_at: "2026-10-07"
+    finding: >-
+      Only third-party account contracts are public. Tuyo's app, backend and card integration are closed. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/LICENSE.txt
+        commit: "cfedcb9b047838f72491baaadef8fe7a95b2c837"
+        path: LICENSE.txt
+        detail: Kernel is MIT (Copyright 2023 ZeroDev, Inc.).
+        checked_at: "2026-10-07"
+    finding: >-
+      The account contracts are MIT, but the required app, backend and card services are closed. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Terms-of-Service-1f5bde14709281b2a8fff4a20910b4ed
+        archive: data/archive/tuyo-card-terms.txt
+        quote: "which is issued by a third party card issuer"
+        detail: The card depends on the Issuer and Tuyo's Mobile Apps.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card cannot run without proprietary services.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Privacy-Policy-ab80528d2dfa4860854dee593fbad459
+        archive: data/archive/tuyo-card-privacy.txt
+        quote: "We may share technical information related to API usage with specific third parties for analytics and security purposes."
+        detail: The Privacy Policy (17 July 2024) discloses usage statistics, IP and device data and sharing with analytics third parties.
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics are disclosed but the vendors are not named. The app is closed and no trace was run. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.tuyo.com/guides/tuyo-card-availability.html
+        quote: "The card provider has additional country, U.S. state, and territory restrictions"
+        detail: The guide says identity verification and the card provider's review apply; the Privacy Policy lists name, email and bank details for ramps but predates the card and does not describe card KYC.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card KYC is required and its existence is disclosed, but the policy does not list the card KYC fields or a legal basis. Judgment call: disclosed in docs, so 1. It could be 0 because the policy is stale.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Terms-of-Service-1f5bde14709281b2a8fff4a20910b4ed
+        archive: data/archive/tuyo-card-terms.txt
+        quote: "which is issued by a third party card issuer"
+        detail: Neither the Terms, the Privacy Policy nor the help guides name the card provider, issuer or KYC vendor; only Bridge (ramps) is named.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card provider, issuer, KYC vendor and analytics vendors that see each payment are not named in any Tuyo document I found. Card Map names Rain, but that is a third-party claim. Undisclosed third parties in the flow, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/src/Kernel.sol#L80-L95
+        commit: "cfedcb9b047838f72491baaadef8fe7a95b2c837"
+        path: src/Kernel.sol
+        detail: execute and upgradeTo are guarded by onlyEntryPointOrSelfOrRoot, which lets a direct caller through when the root validator's hook accepts it; the ECDSA validator accepts its recorded owner.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://help.tuyo.com/guides/recover-kernel-assets.html
+        quote: "This direct transaction route does not require a bundler or paymaster"
+        detail: Tuyo's guide walks the user through calling execute on their Kernel 3.2 account with the mnemonic-derived signer, and warns that funds in collateral contracts need separate release rules.
+        checked_at: "2026-10-07"
+    finding: >-
+      Chain of reasoning. S1 is unknown: the collateral contract was not identified. C2 = 0 and C3 = 0: the card stops without Tuyo and its provider. O3 is unknown: there is no public frontend. Funds in the user's Kernel account are retrievable through a documented manual contract call with the user's own signer, and the Terms say the same. Funds already moved to card collateral may follow the provider's release rules. Documented manual call, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. Tuyo, Inc. operates the app; the Terms of Service (28 July 2026) say the card is issued by an unnamed third-party issuer, and fiat ramps and virtual accounts are provided by licensed Financial Services Providers (Bridge is named in the Privacy Policy). The Terms state that Tuyo never holds the user's private key and that a suspended user can still withdraw through a block explorer. I found no primary source naming the issuer or its regulator.
+
+notes: >-
+  Scored from Tuyo's Terms (Notion, client-rendered, archived), Privacy Policy (archived), the help.tuyo.com guides (curl-readable), the ZeroDev Kernel source at tag v3.2, and Sourcify for the two Base contracts that Tuyo names. I could not identify a sample Tuyo account or its card collateral. base.blockscout.com is behind a Cloudflare challenge (not bypassed), Base public RPC refuses USDC log scans over 300 blocks, and Rain's docs need a login. As a result S1, S2, S3, P3 and the card-path onchain facts are unknown. Card Map (third party) lists Rain as issuer; no Tuyo document confirms it.

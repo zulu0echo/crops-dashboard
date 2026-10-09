@@ -1,0 +1,20 @@
+Source: https://help.gnosispay.com/articles/7752555767-what-happens-to-your-data
+Retrieved: 2026-10-07 with curl (user-agent crops-dashboard-validator); visible text extracted from the HTML, tags removed.
+
+What happens to your data | Gnosis Pay (legacy)
+Collections
+What to expect
+Your money
+Getting help
+Legal
+All Collections › Legal
+What happens to your data
+Last updated 18 days ago
+If you only read one thing Closing your account doesn't delete everything. We're legally required to keep certain records for a set period, whatever you ask us to do. Requesting a copy of your data You have the right to ask for a copy of the personal information we hold about you - a Data Subject Access Request. Email help@gnosispay.com and say clearly that you'd like to make a Data Subject Access Request We'll ask you to confirm your identity We'll compile and send your data securely, within the legal time frame You can do this now, and after your account closes, for as long as we hold the records below. Export your transaction history before 20 December 2026 You have a right to export your own data, and it's much easier to do it on the webapp than on-chain. You'll want it for tax, expenses or a future dispute. In the web app, go to your main page and use the Download Card Transactions button above your transaction list. How to prepare After 20 December you can't download your history yourself. You can still request a copy of your data from us, but it's a formal Data Subject Access Request and takes longer. Download it while you can. Your on-chain transactions stay permanently visible on Gnosis Chain - look up your Safe address on a block explorer. That shows the movement of funds, but not merchant names or card-level detail. Closing your account and deleting your data Email us and request account closure and data deletion Confirm your identity Give final confirmation - this is irreversible Your card is deactivated and your account permanently closed Your funds aren't affected. Your Safe is self-custodial, so closing your account doesn't move your money - and app.gnosispay.com/withdraw keeps working regardless. Withdrawing after your card stops What we have to keep, and for how long We're legally required to keep certain records after your account closes. This applies even if you ask us to delete everything. Once the required period expires, the data is securely deleted. Record Kept for Identity and verification records (KYC) 5 years from account closure Transaction records 5 years from account closure Support correspondence 6 years Anything not covered by a legal retention requirement is deleted once the service ends. Your support history Your past conversations with our support team are kept, and you can request a copy at any time while we hold them - see Requesting a copy of your data above. Who to contact For anything about your data, email help@gnosispay.com .
+Related Articles
+Complaints handling procedure
+Legal documents and fees
+Formal notice — closure of the Gnosis Pay web app and card (21 September 2026)
+Tags
+Legal
+Powered by Pylon

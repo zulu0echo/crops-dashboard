@@ -1,0 +1,317 @@
+slug: oobit-card
+name: Oobit Card
+type: incumbent
+website: https://www.oobit.com
+repos: []
+contracts: []
+
+components:
+  - name: Oobit mobile app and DePay wallet connection
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Oobit
+    required: true
+  - name: Oobit backend and settlement layer (DePay engine, gas abstraction)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Oobit
+    required: true
+  - name: Rain card programme
+    role: other
+    public: false
+    license: proprietary
+    operator: Rain
+    required: true
+  - name: Third National (card issuer per Card Terms)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Third National
+    required: true
+  - name: Visa card network
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: KYC and fraud-prevention processors (not named)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+  - name: Plug & Pay partner SDK (npm @oobit/react-native-sdk; repo private)
+    role: sdk
+    public: false
+    license: MIT
+    operator: Oobit
+    required: false
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/card-terms
+        quote: "reserve the right to block and terminate transactions and suspend access to your Account"
+        detail: Card Terms s4 let Oobit and the Issuer block transactions and suspend account access; the terms may also be changed "with or without notice".
+        checked_at: "2026-10-07"
+    finding: >-
+      Oobit and the issuer can block transactions and suspend an individual account. No notice period or appeal is stated. No settlement contract was found to assess. Judgment call: anchor 0 ("can target individual addresses with no notice"), applied to account-level suspension as for HesabPay.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/faq
+        quote: "directly from your wallet to Oobit’s settlement layer"
+        detail: The FAQ says a DePay payment moves crypto from the user's wallet to Oobit's settlement layer, and Oobit then pays the merchant over Visa.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every payment settles into Oobit's own settlement layer and reaches the merchant through Visa and the issuer. Nothing describes a path that bypasses Oobit.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/depay
+        quote: "Choose how much Oobit can use for payments"
+        detail: DePay runs through the Oobit app, Oobit's wallet connection layer and its gas abstraction module; no self-host path is documented.
+        checked_at: "2026-10-07"
+    finding: >-
+      All flows depend on Oobit-run services, Rain, the issuer and Visa. None is public. Closed and single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/card-terms
+        quote: "You are not a person who is blocked or sanctioned by the United States Government"
+        detail: Card Terms require OFAC eligibility; Terms of Use exclude residents of embargoed countries; the DePay page says payments are monitored with blockchain intelligence.
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions and geography screening, plus blockchain-analytics monitoring, is disclosed in the terms and on the product pages, but not in code. The settlement layer cannot be inspected. Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/faq
+        quote: "You can pay today using assets on Ethereum (ERC-20)"
+        detail: The FAQ lists DePay networks (Ethereum, BNB Smart Chain, Solana, Polygon) and over 20 supported assets; the Card Terms list Ethereum, Polygon, Optimism and Arbitrum as Supported Blockchains. Neither states issuer freeze powers.
+        checked_at: "2026-10-07"
+    finding: >-
+      Tokens and chains are enumerated in docs only, and the two lists disagree. Freeze powers of USDT and USDC issuers are not stated. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/oobit-tech/oobit-plugins/blob/f156820b262387f1c2f703b758d4e917d0362bb3/README.md
+        commit: "f156820b262387f1c2f703b758d4e917d0362bb3"
+        path: README.md
+        detail: The only public repo in the oobit-tech org is oobit-plugins (an AI-agent plugin manifest); the npm SDK's declared repo oobit-tech/react-native-SDK returns 404.
+        checked_at: "2026-10-07"
+    finding: >-
+      Nothing needed to run the product is public. The partner SDK is published to npm with an MIT tag, but it is a client shell around Oobit's hosted widget and its source repo is private. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/oobit-tech/oobit-plugins/blob/f156820b262387f1c2f703b758d4e917d0362bb3/README.md
+        commit: "f156820b262387f1c2f703b758d4e917d0362bb3"
+        path: README.md
+        detail: oobit-plugins has no LICENSE file (GitHub reports none); no repo of the app, backend or settlement layer is public.
+        checked_at: "2026-10-07"
+    finding: >-
+      Required components are closed, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/faq
+        quote: "directly from your wallet to Oobit’s settlement layer"
+        detail: Payments require Oobit's settlement layer and card programme.
+        checked_at: "2026-10-07"
+    finding: >-
+      The product cannot run without Oobit's proprietary services, Rain, the issuer and Visa.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/privacy-notice
+        quote: "such as cookies and personal device identifiers"
+        detail: The Privacy Notice discloses automated collection through cookies and device identifiers and links a Cookie Policy.
+        checked_at: "2026-10-07"
+    finding: >-
+      Automated tracking is disclosed in the policy. The app is closed and no trace was run. Judgment call: disclosed, presumed on by default, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/privacy-notice
+        quote: "passport number, and tax identification"
+        detail: The Privacy Notice lists name, age, passport number, tax ID, addresses, phone, education, job title and source-of-funds data, and special categories for AML checks; the FAQ requires a government photo ID.
+        checked_at: "2026-10-07"
+    finding: >-
+      KYC plus profile data (education, job title) goes beyond settlement needs. It is disclosed in the policy, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/privacy-notice
+        quote: "may share your Personal Data with third parties acting as Personal Data processors"
+        detail: Processors for payment processing, identity verification, fraud prevention and cloud storage are described by category only; Rain and Third National appear only in the Card Terms.
+        checked_at: "2026-10-07"
+    finding: >-
+      The KYC, fraud-prevention and blockchain-intelligence vendors in the payment flow are not named anywhere I found. Judgment call: disclosure by category only is closer to "undisclosed third parties" than to named ones, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/terms-of-use
+        quote: "All cryptoassets You hold in Your account are assets held by Oobit for Your benefit on a custodial basis"
+        detail: Terms of Use s7.19 make in-app balances custodial; DePay moves funds to Oobit's settlement layer at payment time.
+        checked_at: "2026-10-07"
+    finding: >-
+      Funds in flight, and any in-app balance, are held by Oobit. This is disclosed. Provider-held wallet, disclosed, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The Card Terms (titled Rain Card Terms on oobit.com) name Third National as issuer of the card programme under licence from Visa and describe the card as credit funded by the issuer. The Terms of Use say in-app crypto is held by Oobit on a custodial basis for the user's benefit. I found no primary source naming Oobit's own licences or regulator.
+
+notes: >-
+  Eligibility: no verified contract and no public repository needed to run the product, so type is incumbent. Searched 2026-10-07: GitHub org oobit-tech (only oobit-plugins, an AI-agent plugin manifest with no licence); gh search repos and code "oobit" (unrelated or third-party repos); npm @oobit/react-native-sdk and @oobit/react-web (MIT tag, declared repo oobit-tech/react-native-SDK is 404); docs.oobit.com (Plug & Pay widget and Partner API, testnet token addresses only); oobit.com FAQ, DePay page, Card Terms, Terms of Use and Privacy Notice (no contract addresses). eth.blockscout.com search "oobit" found only the OBT token, copycat OOB tokens and Oobit-tagged EOAs dormant since 2023; no DePay spender contract was identified. DePay mentions a "smart contract engine" and one-time spending approvals (provider claim); if the spender or Rain collateral contracts can be identified, this provider should be re-evaluated as a card. Card Map was used only to find the product.

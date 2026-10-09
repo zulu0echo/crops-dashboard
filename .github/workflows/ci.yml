@@ -1,0 +1,71 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npm test
+      # Online checks (URLs, quotes, commits, contract code) gate pull requests. Deploys from main use the
+      # offline rules so a provider's website timing out cannot block publishing already-reviewed data.
+      - name: Validate data (schema, evidence rules, URLs, commits)
+        if: github.event_name == 'pull_request'
+        run: npm run validate
+        env: { GITHUB_TOKEN: "${{ github.token }}" }
+      - name: Validate data (schema and evidence rules, offline)
+        if: github.event_name != 'pull_request'
+        run: npm run validate:offline
+      - run: npm run build
+      - name: No third-party scripts or fonts in the build
+        run: |
+          ! grep -rEn '<script|<link[^>]+href="https?://|@import|fonts\.(googleapis|gstatic)' dist --include='*.html' --include='*.css'
+      - name: Rollup diff
+        if: github.event_name == 'pull_request'
+        run: |
+          node scripts/rollup.mjs > /tmp/after.json
+          git worktree add /tmp/base "${{ github.event.pull_request.base.sha }}"
+          (cd /tmp/base && node "$GITHUB_WORKSPACE/scripts/rollup.mjs" data > /tmp/before.json) || echo '{}' > /tmp/before.json
+          { echo '### Pillar rollup changes'; echo; node scripts/rollup.mjs --diff /tmp/before.json /tmp/after.json; } > /tmp/rollup.md
+          cat /tmp/rollup.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with: { name: site, path: dist }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: github.event_name == 'pull_request'
+        with: { name: rollup-diff, path: /tmp/rollup.md }
+
+  # Separate job so only this step holds a write token, and only on same-repo PRs.
+  # ponytail: fork PRs get the diff in the job summary only (their token is read-only).
+  # Upgrade path: a workflow_run job that comments from the base repo context.
+  comment:
+    needs: validate-build
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions: { pull-requests: write }
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with: { name: rollup-diff }
+      - run: gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --body-file rollup.md --edit-last || gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --body-file rollup.md
+        env: { GH_TOKEN: "${{ github.token }}" }
+
+  deploy:
+    needs: validate-build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions: { pages: write, id-token: write }
+    environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with: { name: site, path: dist }
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with: { path: dist }
+      - id: d
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

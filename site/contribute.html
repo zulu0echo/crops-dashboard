@@ -1,0 +1,13 @@
+<h1>Contribute</h1>
+<p>Every score on this site comes from a YAML file in the repository. To add a provider or change a score, open a pull request against <a href="%REPO%">the repository</a>. The full rules are in <a href="%REPO%/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>; the short version:</p>
+<ol>
+  <li>Copy <a href="%REPO%/blob/main/data/providers/daimo-pay.yaml">the reference provider file</a> to <code>data/providers/&lt;slug&gt;.yaml</code>.</li>
+  <li>List every criterion. Anything you have not evidenced is <code>unknown: true</code>.</li>
+  <li>Each score needs evidence: a score above 0 needs a <em>verified</em> or <em>documented</em> item, a score above 1 needs a <em>verified</em> item. Repository evidence pins a full commit SHA and file path; onchain evidence names the address and block number.</li>
+  <li>Run <code>npm run validate</code>, then open the pull request and say which artifact you inspected and how a reviewer re-checks it.</li>
+</ol>
+<p>Vendor statements, blog posts, and marketing never raise a score. Evidence that lowers a score is welcome if it is verified, documented, or the provider's own admission; a third party's claim is recorded and can mark a rating disputed, but cannot lower it alone.</p>
+<h2>Providers</h2>
+<p>You have a right of reply on every cell through the <code>provider_response</code> field. It is shown beside the score and does not change it. To change the score, add the artifact.</p>
+<h2>Fork it</h2>
+<p>The site, data, and scripts are MIT-licensed. The <a href="%REPO%#readme">README</a> covers building, deploying your own copy, and pinning a build to IPFS.</p>

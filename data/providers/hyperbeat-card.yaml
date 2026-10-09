@@ -1,0 +1,404 @@
+slug: hyperbeat-card
+name: Hyperbeat Card
+type: incumbent
+website: https://hyperbeat.org
+repos: []
+contracts: []
+
+components:
+  - name: Liquid Bank contracts (ManagementAccount, factory, registries; source private)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Hyperbeat (Zoeion Ltd Corporation)
+    required: true
+  - name: Hyperbeat Operator (settlement contract and backend)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Hyperbeat
+    required: true
+  - name: Hyperbeat Pay app and backend (web dapp, iOS app, card authorisation)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Zoeion Ltd Corporation (Panama)
+    required: true
+  - name: Turnkey (owner key management)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Turnkey
+    required: true
+  - name: Card issuer and program manager (not named in public documents)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: unknown
+    required: true
+  - name: Visa (card network)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: KYC and screening provider (not named)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: unknown
+    required: true
+  - name: Morpho (credit-mode borrowing)
+    role: other
+    public: true
+    license: GPL-2.0-or-later
+    operator: Morpho
+    required: false
+
+context: >-
+  The Terms of Use say the Platform is provided and operated by Zoeion Ltd Corporation; the Privacy Policy gives a Panama City address. The Terms refer to a separate "Hyperbeat Pay Cardholder Agreement", which is not published on hyperbeat.org or docs.hyperbeat.org, so the card issuer and its regulator are not named publicly.
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hyperbeat.org/terms
+        quote: The Company may suspend or block your access to the Platform and/or any Services, whether for a period of time or indefinitely
+        detail: Terms of Use (updated 1 Mar 2026) let the Company suspend or block access, for a period or indefinitely, on a breach finding; no notice period is stated.
+        checked_at: "2026-10-07"
+    finding: >-
+      Hyperbeat can block an individual user's access to the card and Platform with no stated notice. The settlement and operator contracts are not verified, so who holds any onchain pause or role cannot be read. Judgment call: documented per-account blocking with no notice meets anchor 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+        quote: the Operator calls
+        detail: The architecture doc says card swipes are settled when the Hyperbeat Operator calls settle() on the user's ManagementAccount.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card settlement requires Hyperbeat's Operator; there is no documented direct path for payer or payee.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+        quote: Withdrawing the settlement token requires a cooldown and operator approval
+        detail: The Operator role is required for settlement, settlement-token withdrawals and collateral withdrawals.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card path depends on Hyperbeat's closed Operator and backend, an unnamed card issuer and Visa. None is public and there is no fallback.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hyperbeat.org/terms
+        quote: subject to sanctions or otherwise designated on any list of prohibited or restricted parties
+        detail: Terms exclude Restricted Jurisdictions and sanctioned persons (UN, Panama, UK, US lists).
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions and jurisdiction screening is disclosed in the Terms only; the contracts are unverified, so settlement-layer neutrality cannot be shown. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        chain_id: 999
+        url: https://hyperevmscan.io/address/0xd9CcDB269f41046Df5783cf17B24084B752aDf76
+        address: "0xd9CcDB269f41046Df5783cf17B24084B752aDf76"
+        block_number: 47900593
+        detail: The Operator contract named in Hyperbeat's own Pay dapp bundle (OPERATOR in chunk 97b00ce1712acb99.js) has 11107 bytes of code on HyperEVM, shows "Verify and Publish" (unverified) on HyperEVMScan, and has no Sourcify match; MORPHO_SERVICE 0xb90759Ff..., MORPHO_REPAY_SERVICE 0xb4a03802... and WRAPPER_SERVICE 0x4c70eCA9... are likewise unverified.
+        checked_at: "2026-10-07"
+        recheck: curl -s https://sourcify.dev/server/v2/contract/999/0xd9CcDB269f41046Df5783cf17B24084B752aDf76
+      - tier: documented
+        kind: document
+        url: https://hyperbeat.org/_next/static/chunks/97b00ce1712acb99.js
+        archive: data/archive/hyperbeat-card-pay-dapp.txt
+        quote: OPERATOR:"0xd9CcDB269f41046Df5783cf17B24084B752aDf76"
+        detail: The Pay dapp's contract config names the Operator and service addresses.
+        checked_at: "2026-10-07"
+    finding: >-
+      Hyperbeat Pay's contracts are deployed but not verified on HyperEVMScan or Sourcify, and the audited Liquid-Bank repository is private. Unverified, so 0. Judgment call: the provider has contracts, so O1 is scored rather than left unknown.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xhyperbeat/Audits/tree/990f60173c016971a4c910e1378f20bb472e37d8/liquid-bank
+        commit: "990f60173c016971a4c910e1378f20bb472e37d8"
+        path: liquid-bank
+        detail: The only Hyperbeat-owned non-fork repo is Audits (PDFs only); the Zellic report's scope names github.com/0xhyperbeat/Liquid-Bank at 431de44b, which returns 404 (private).
+        checked_at: "2026-10-07"
+    finding: >-
+      No part of the card stack is public: contracts unverified, Liquid-Bank repo private, app and backend closed. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xhyperbeat/Audits/tree/990f60173c016971a4c910e1378f20bb472e37d8/liquid-bank
+        commit: "990f60173c016971a4c910e1378f20bb472e37d8"
+        path: liquid-bank
+        detail: No public source, README or deploy script exists for the card stack.
+        checked_at: "2026-10-07"
+    finding: >-
+      There is no public code, so no self-host path. Reproduction not attempted.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        chain_id: 999
+        url: https://hyperevmscan.io/address/0xd9CcDB269f41046Df5783cf17B24084B752aDf76
+        address: "0xd9CcDB269f41046Df5783cf17B24084B752aDf76"
+        block_number: 47900593
+        detail: Unverified contracts publish no ABI; no repo or API schema exists.
+        checked_at: "2026-10-07"
+    finding: >-
+      No ABIs, event schemas, API schema or export are published. The docs name functions (settle, approveService) in prose only. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xhyperbeat/Audits/tree/990f60173c016971a4c910e1378f20bb472e37d8/liquid-bank
+        commit: "990f60173c016971a4c910e1378f20bb472e37d8"
+        path: liquid-bank
+        detail: The repo needed to run the product (Liquid-Bank) is private; no licence applies to any public code.
+        checked_at: "2026-10-07"
+    finding: >-
+      All required components are closed. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+        quote: Withdrawals of collateral in Credit Mode require Operator approval
+        detail: Settlement and withdrawals depend on the Hyperbeat Operator.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card cannot run without Hyperbeat's proprietary Operator and backend. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hyperbeat.org/dapp/pay
+        archive: data/archive/hyperbeat-card-pay-dapp.txt
+        quote: googletagmanager.com/gtag/js?id=AW-17122504444
+        detail: The Pay dapp page loads a Google Ads tag (AW-17122504444) after interaction, and its bundles include the Datadog browser SDK and Intercom.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://hyperbeat.org/privacy
+        quote: know-your-customer and screening service providers
+        detail: The Privacy Policy lists categories of processors (including "data analytics service providers") but names no analytics or advertising vendor and does not mention Google tags.
+        checked_at: "2026-10-07"
+    finding: >-
+      The Pay web app ships Google Ads tagging, Datadog browser monitoring and Intercom. The privacy policy mentions analytics providers only as a category and does not disclose advertising tags. Judgment call: present and not specifically disclosed, so 0. No network trace was run; this rests on the served page and bundles.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hyperbeat.org/privacy
+        quote: know-your-customer and screening service providers
+        detail: The Privacy Policy covers identity verification data shared with KYC and screening providers.
+        checked_at: "2026-10-07"
+    finding: >-
+      Collection beyond settlement needs (identity verification) is disclosed in the privacy policy only. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+        quote: Liquid Banking uses Turnkey to provide secure, non-custodial key management
+        detail: Docs name Turnkey; the privacy policy names processor categories (KYC, analytics, hosting); the card issuer is not named.
+        checked_at: "2026-10-07"
+    finding: >-
+      Third parties (Turnkey, KYC provider, card issuer, Visa, analytics) are in the flow and disclosed only partly, in documents. Judgment call: 1, because the main ones are disclosed by name or category; the unnamed issuer keeps it from anything higher.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+        quote: Withdrawing the settlement token requires a cooldown and operator approval
+        detail: Docs say assets sit in a user-owned UUPS-upgradeable ManagementAccount; the Operator settles up to a user-set limit, and withdrawing the settlement token needs Operator approval.
+        checked_at: "2026-10-07"
+    finding: >-
+      Per the docs, funds sit in an upgradeable smart account the user owns, with the Operator able to settle up to a spending limit and to gate settlement-token and collateral withdrawals. Upgradeable escrow-like account, disclosed: 1 (documented cap). The contracts are unverified, so none of this can be checked.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+        quote: upgrades are strictly gated by the
+        detail: Docs say accounts are UUPS proxies upgradeable by an UPGRADER_ROLE limited to factory-whitelisted implementations; the role holder and any timelock are not disclosed.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every account is upgradeable and the upgrade authority is undisclosed (and unverifiable, since the contracts are unverified). Undisclosed proxy admin, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+        quote: the Operator calls
+        detail: Docs say the Operator settles from the account up to a spending limit the user sets.
+        checked_at: "2026-10-07"
+    finding: >-
+      A user-set spending limit bounds what the Operator can settle, per the docs. Judgment call: bounded allowance would be 2, but documented-only evidence caps at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+        quote: Withdrawals of collateral in Credit Mode require Operator approval
+        detail: Settlement-token and collateral withdrawals need Operator approval per the docs.
+        checked_at: "2026-10-07"
+    finding: >-
+      S1 documented only, C2 = 0, C3 = 0, O3 = 0. Per the docs, withdrawing the settlement token or collateral needs the Operator, so funds depend on Hyperbeat's liveness. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xhyperbeat/Audits/blob/990f60173c016971a4c910e1378f20bb472e37d8/liquid-bank/Zellic.pdf
+        commit: "990f60173c016971a4c910e1378f20bb472e37d8"
+        path: liquid-bank/Zellic.pdf
+        detail: Zellic "Hyperbeat Pay Smart Contract Security Assessment" (6 Nov 2025) scopes Liquid-Bank at 431de44b (1 critical, 3 medium, 7 low); Nethermind NM-0697 (Management Account) lists fix commits such as d527b144 and 8489657e.
+        checked_at: "2026-10-07"
+    finding: >-
+      Two audit reports are public and pin commits, but the audited repo is private and the deployed contracts are unverified, so neither the audited commit nor the fixes can be matched to what runs. No bug bounty found. Judgment call: audit report only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+notes: >-
+  Eligibility: no verified contract and no public repository needed to run the card, so type is incumbent. Searched 2026-10-07: GitHub orgs 0xhyperbeat (Audits plus forks; Liquid-Bank named in the Zellic scope returns 404) and hyperbeat (unrelated 2015 user); docs.hyperbeat.org (Liquid Banking architecture, Hyperbeat Pay, addresses, audits, legal pages; no card contract addresses); hyperbeat.org terms, privacy, sitemap; the Pay dapp at hyperbeat.org/dapp/pay and its 61 JS chunks (Operator and service addresses found, factory not); HyperEVMScan and Sourcify for the Operator, Morpho service, repay service, wrapper service, a beatUSD batchSettle contract 0xFc29c432... and a sample ERC1967 account 0xd9c6a70b... with implementation 0x6e209362... (all unverified). The Hyperbeat Pay Cardholder Agreement referenced in the Terms is not published, so the card issuer is unknown. HyperEVM onchain reads pinned to block 47900593.

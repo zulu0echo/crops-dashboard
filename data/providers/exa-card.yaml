@@ -1,0 +1,774 @@
+slug: exa-card
+name: Exa Card
+type: card
+website: https://www.exactly.app
+primary_chain:
+  name: OP Mainnet
+  chain_id: 10
+  basis: >-
+    Production app builds default to Optimism (exactly/exa 4fba32b, common/wagmi.config.ts#L18: CHAIN_ID falls back to optimism.id for EAS builds), and the Exa help center says the protocol behind the card "works on Optimism". Unit: the ExaPlugin, IssuerChecker and ProposalManager deployed by contracts/broadcast/*/10/run-latest.json at commit aceb1b5 (Sourcify exact match), the exaUSDC market they settle from, and a live collectDebit at block 157882808. Excluded: the Base deployment and its Firewall-gated markets, Exa Business, and ramp partners.
+
+repos:
+  - url: https://github.com/exactly/exa
+    role: backend
+    license: none
+  - url: https://github.com/exactly/webauthn-owner-plugin
+    role: contracts
+    license: GPL-3.0
+  - url: https://github.com/exactly/protocol
+    role: contracts
+    license: BUSL-1.1
+  - url: https://github.com/exactly/docs
+    role: docs
+    license: none
+
+contracts:
+  - address: "0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e"
+    chain_id: 10
+    role: ExaPlugin (ERC-6900 account plugin), non-upgradeable
+    verified: sourcify
+  - address: "0x59A644E490E48235adF8ba9b814A4f666C4fEb3A"
+    chain_id: 10
+    role: IssuerChecker (Exa issuer signature check)
+    verified: sourcify
+  - address: "0x6817974CA2c354F2FA40d8349b725B5bF81c8338"
+    chain_id: 10
+    role: ProposalManager (60 s delay on user withdrawals)
+    verified: sourcify
+  - address: "0xd5f8C9D87b7691449dEc453d041D9054e0Fdd228"
+    chain_id: 10
+    role: Refunder
+    verified: sourcify
+  - address: "0x6926B434CCe9b5b7966aE1BfEef6D0A7DCF3A8bb"
+    chain_id: 10
+    role: Exactly exaUSDC market (TransparentUpgradeableProxy)
+    verified: sourcify
+  - address: "0x3a73880ff21ABf9cA9F80B293570a3cBD846eFc5"
+    chain_id: 10
+    role: Card collector, Rain collateral BeaconProxy
+    verified: none
+  - address: "0xD71Fd74187f81a42e322E0A33945F9C263E37624"
+    chain_id: 10
+    role: RainCollateral implementation behind the collector beacon
+    verified: sourcify
+  - address: "0x6561b09d5d6012D416dfDf9BeFe37228Ae89434C"
+    chain_id: 10
+    role: Exa contracts admin, Safe 1.4.1 3-of-4
+    verified: none
+  - address: "0xC0d6Bc5d052d1e74523AD79dD5A954276c9286D3"
+    chain_id: 10
+    role: Exactly Safe 3-of-6 (PAUSER_ROLE, timelock proposer)
+    verified: none
+  - address: "0x92024C4bDa9DA602b711B9AbB610d072018eb58b"
+    chain_id: 10
+    role: TimelockController (1 day) owning the market ProxyAdmin
+    verified: sourcify
+  - address: "0x8cC05394eD714073758E9bEf8073a83d79F6F2A3"
+    chain_id: 10
+    role: Exactly Pauser (EMERGENCY_ADMIN_ROLE), owned by an EOA
+    verified: sourcify
+  - address: "0x8f498c8240E621f8050249D1C2F5f2AAeE484ca0"
+    chain_id: 10
+    role: WebauthnOwnerPlugin (passkey owner of each account)
+    verified: sourcify
+  - address: "0x973ccce386F99bd7a32Eec2DF192A030d8f214b8"
+    chain_id: 10
+    role: Sample user account (ERC-1967 proxy, modular account)
+    verified: none
+
+components:
+  - name: User's modular smart account (Alchemy UpgradeableModularAccount v1)
+    role: wallet
+    public: true
+    license: GPL-3.0
+    operator: User (passkey owner via WebauthnOwnerPlugin)
+    required: true
+    repo: https://github.com/alchemyplatform/modular-account
+  - name: WebauthnOwnerPlugin
+    role: contracts
+    public: true
+    license: GPL-3.0
+    operator: Exa Labs (code); user (owner)
+    required: true
+    repo: https://github.com/exactly/webauthn-owner-plugin
+  - name: ExaPlugin, IssuerChecker and ProposalManager
+    role: contracts
+    public: true
+    license: GPL-3.0
+    operator: Exa Labs (admin Safe 0x6561...434C)
+    required: true
+    repo: https://github.com/exactly/exa
+  - name: Exactly Protocol exaUSDC market (card collateral and credit)
+    role: contracts
+    public: true
+    license: source-available
+    operator: Exactly (timelock, protocol Safe, Pauser)
+    required: true
+    repo: https://github.com/exactly/protocol
+  - name: USDC (Circle) on OP Mainnet
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: Circle
+    required: true
+  - name: Exa server (card authorisation webhooks, KYC orchestration, collection signing)
+    role: backend
+    public: true
+    license: none
+    operator: Exa Labs
+    required: true
+    repo: https://github.com/exactly/exa
+  - name: Keeper EOA and issuer signing key
+    role: signer
+    public: false
+    license: proprietary
+    operator: Exa Labs
+    required: true
+  - name: Card collector (Rain collateral BeaconProxy; implementation RainCollateral)
+    role: contracts
+    public: true
+    license: none
+    operator: Rain (beacon owner Safe 0x6454...Bf15, 2-of-5)
+    required: true
+  - name: Rain (card program and issuing API, "panda" in code)
+    role: api
+    public: false
+    license: proprietary
+    operator: Rain
+    required: true
+  - name: Third National (card issuer)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Third National
+    required: true
+  - name: Visa (card network)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Persona (KYC)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Persona
+    required: true
+  - name: Sardine (transaction risk scoring in card authorisation)
+    role: other
+    public: false
+    license: proprietary
+    operator: Sardine
+    required: true
+  - name: Exa App (mobile and web frontend)
+    role: frontend
+    public: true
+    license: none
+    operator: Exa Labs
+    required: false
+    repo: https://github.com/exactly/exa
+  - name: Alchemy (RPC, bundler, gas manager for the app)
+    role: bundler
+    public: false
+    license: proprietary
+    operator: Alchemy
+    required: false
+  - name: Exa substreams indexer
+    role: indexer
+    public: true
+    license: none
+    operator: Exa Labs
+    required: false
+    repo: https://github.com/exactly/exa
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/10/0x8cC05394eD714073758E9bEf8073a83d79F6F2A3
+        address: "0x8cC05394eD714073758E9bEf8073a83d79F6F2A3"
+        block_number: 157885618
+        detail: The Exactly Pauser holds EMERGENCY_ADMIN_ROLE on exaUSDC; its pause() and pauseProtocol() are onlyOwner, and owner() is 0xEa2127b14D05229CB3d4b75b42052e556AB7391F (no code, nonce 0). A paused market blocks every withdraw, including card debits and user exits (Market.sol beforeWithdraw whenNotPaused).
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x000000000000000000000000ea2127b14d05229cb3d4b75b42052e556ab7391f"
+        recheck: cast call 0x8cC05394eD714073758E9bEf8073a83d79F6F2A3 "owner()(address)" --rpc-url https://mainnet.optimism.io --block 157885618
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/10/0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e
+        address: "0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e"
+        block_number: 157885618
+        detail: ExaPlugin hasRole(KEEPER_ROLE, 0xcDdB23654595C224A563f62943D9Ff189138c04e) = true. The keeper is an EOA (nonce 417500) and the only party allowed to call collectDebit/collectCredit on accounts.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x91d14854fc8737ab85eb45125971625a9ebdb75cc78e01d5c1fa80c4c6e5203f47bc4fab000000000000000000000000cddb23654595c224a563f62943d9ff189138c04e"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0xC0d6Bc5d052d1e74523AD79dD5A954276c9286D3
+        address: "0xC0d6Bc5d052d1e74523AD79dD5A954276c9286D3"
+        block_number: 157885618
+        detail: The market's PAUSER_ROLE (pause and unpause) is held by Safe 1.3.0 0xC0d6Bc5d... with getThreshold() = 3 and 6 owners; no modules and a zero guard slot.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xe75235b8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
+        detail: The Exa Card terms let Exa Labs and the issuer block transactions and suspend account access.
+        quote: "Exa Labs and Issuer reserve the right to block and terminate transactions and suspend access to your Account"
+        checked_at: "2026-10-07"
+    finding: >-
+      Three things can stop card settlement. A single EOA owns the Pauser, which can pause the exaUSDC market and so freeze every card debit and every user withdrawal, with no notice or timelock. Card collections run only through Exa's keeper EOA. The card terms let Exa and the issuer block transactions and suspend accounts. The longer-standing PAUSER_ROLE sits with a 3-of-6 Safe (undisclosed signers, no timelock). An EOA-held pause meets anchor 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/src/ExaPlugin.sol#L203-L226
+        commit: "aceb1b5be29a84cb2a37742e2204647d249443ab"
+        path: contracts/src/ExaPlugin.sol
+        detail: collectCredit and collectDebit first call ISSUER_CHECKER.checkIssuer (an Exa issuer signature) and then withdraw or borrow to the collector. The manifest at L403 binds collectDebit to keeper-only runtime validation (L553-L560). This source is identical to the Sourcify exact match for 0x3d73D0fb....
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/tx/0x906cb58684b9445dcbad6ab80c636d1d65799110782a8a1f4fda96821976e79b
+        address: "0x973ccce386F99bd7a32Eec2DF192A030d8f214b8"
+        block_number: 157882808
+        detail: A sample card debit. Keeper EOA 0xcDdB2365... called collectDebit (0x8980d703) on account 0x973ccce3...; IssuerChecker emitted Collected and exaUSDC emitted Withdraw to collector 0x3a73880f....
+        checked_at: "2026-10-07"
+    finding: >-
+      Merchants are paid by Visa, Third National and Rain offchain. The only onchain step is a debit or borrow that needs both Exa's issuer signature and Exa's keeper. Neither payer nor payee can settle a card payment by calling the contracts.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/index.ts#L60-L82
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/index.ts
+        detail: The public server requires PANDA_API_KEY/URL (Rain issuing API), PERSONA_API_KEY/URL and SARDINE_API_KEY/URL to start.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/the-exa-tech-stack.md#L18-L18
+        commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+        path: exa-app/the-exa-tech-stack.md
+        detail: Exa's docs say KYC (Persona), card issuing (Rain) and support (Intercom) are integrated in the Exa App's backend.
+        checked_at: "2026-10-07"
+    finding: >-
+      Exa publishes its own backend, which is unusual for a card. A card payment still requires Rain's closed issuing platform, Third National and Visa, plus Exa's own keeper and issuer keys. The deployed IssuerChecker accepts only Exa's issuer key, so a self-hosted server could not settle against the deployed contracts. The required issuer path is closed and single-vendor, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/hooks/panda.ts#L188-L200
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/hooks/panda.ts
+        detail: Card authorisation calls Sardine risk scoring before approving. KYC goes through Persona. No sanctions list, list source or country blocklist is defined in the public code; screening happens inside those vendors and Rain.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
+        detail: The card terms require that the cardholder is not blocked or sanctioned by the US Government, including OFAC listings.
+        quote: "You are not a person who is blocked or sanctioned by the United States Government"
+        checked_at: "2026-10-07"
+    finding: >-
+      The Optimism settlement contracts (ExaPlugin and the standard exaUSDC market) have no address or country filter; the Firewall allowlist exists only on Base. Edge screening is disclosed in the terms, but it runs inside closed vendors with no named list source in code, and it cannot be bypassed because C2 = 0. Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/contracts/deploy.json#L84-L121
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: contracts/deploy.json
+        detail: The ProposalManager allowlist enumerates the OP Mainnet tokens the account can interact with. The card itself settles from the exaUSDC market (EXA_USDC immutable in ExaPlugin).
+        checked_at: "2026-10-07"
+        recheck: curl -s https://raw.githubusercontent.com/exactly/exa/4fba32be1803f15c0db9f39a055bda4740c1fdf1/contracts/deploy.json | sed -n 84,121p
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85
+        address: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85"
+        block_number: 157885618
+        detail: Native USDC on OP Mainnet has blacklister() 0x551e855b7355C98534175879A300972856C04D7C.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xbd102430"
+          expect: "0x000000000000000000000000551e855b7355c98534175879a300972856c04d7c"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://help.exactly.app/en/articles/9071732-which-blockchain-does-exa-app-work-on
+        detail: The help article names Optimism and explains rollups, but says nothing about the sequencer, forced inclusion, or issuer freeze powers.
+        quote: "works on Optimism"
+        checked_at: "2026-10-07"
+    finding: >-
+      Chain and tokens are enumerated in code. USDC carries a Circle blacklister, the exaUSDC market can be paused (C1), and OP Mainnet has a single sequencer. None of this is stated to cardholders in the help center or the terms I read. Enumerated in code, assumptions not stated, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/10/0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e
+        address: "0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e"
+        block_number: 157885618
+        detail: Sourcify v2 returns exact_match for ExaPlugin, IssuerChecker, ProposalManager, Refunder, Pauser, WebauthnOwnerPlugin, the account implementation 0x00460000...a61e and the market proxy. It returns null for the exaUSDC implementation 0xEBd58C87... and for the collector proxy 0x3a73880f.... The collector is a BeaconProxy whose beacon is RainCollateralBeacon 0xE84110fF... (exact) and whose implementation is RainCollateral 0xD71Fd741... (exact).
+        checked_at: "2026-10-07"
+        recheck: for a in 0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e 0xEBd58C87A63689B9DEa6690aD76BDBCd44d9eB19 0x3a73880ff21ABf9cA9F80B293570a3cBD846eFc5; do curl -s https://sourcify.dev/server/v2/contract/10/$a | jq -r .match; done
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/broadcast/ExaPlugin.s.sol/10/run-latest.json
+        commit: "aceb1b5be29a84cb2a37742e2204647d249443ab"
+        path: contracts/broadcast/ExaPlugin.s.sol/10/run-latest.json
+        detail: The Foundry broadcast for the OP Mainnet deployment is committed, and ExaPlugin.sol at this commit matches the Sourcify source apart from a trailing newline.
+        checked_at: "2026-10-07"
+    finding: >-
+      Exa's own contracts and Rain's collateral beacon and implementation are exact matches, and Exa has a committed Foundry deploy. The exaUSDC market implementation that holds all card collateral is not on Sourcify, and the Optimism Blockscout API returned no verification record for it. Some settlement contracts are verified, so 1. Judgment call: the unverified market implementation sits in the settlement path, so I did not go higher.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/tree/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server
+        detail: The exa monorepo contains the backend (server/, with Dockerfile and deploy workflows), the mobile and web app (src/), contracts with deploy scripts and broadcasts (contracts/), and the substreams indexer (substreams/).
+        checked_at: "2026-10-07"
+        recheck: gh api repos/exactly/exa/git/trees/4fba32be1803f15c0db9f39a055bda4740c1fdf1 --jq '.tree[].path'
+    finding: >-
+      Exa's own stack is public: SDK and contracts, frontend, backend, indexer and deploy scripts. The closed parts are third parties (Rain, Third National, Visa, Persona, Sardine, Alchemy) and Exa's operating keys; they are scored under C3, F1 and F3. Judgment call: O2 counts what the provider runs, and all of that is published.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/README.md#L1-L50
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: README.md
+        detail: The README lists toolchain requirements and install, run and e2e commands for the app, and links to the server and contracts.
+        checked_at: "2026-10-07"
+    finding: >-
+      Build docs exist. Reproduction not attempted. Visible blockers: the server needs Rain, Persona and Sardine API keys, and a working card needs an issuer key that the deployed IssuerChecker accepts.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/script/openapi.ts#L1-L40
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/script/openapi.ts
+        detail: An OpenAPI spec is generated from the server routes (hono-openapi generateSpecs).
+        checked_at: "2026-10-07"
+        recheck: curl -s https://raw.githubusercontent.com/exactly/exa/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/script/openapi.ts | sed -n 1,40p
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/src/IssuerChecker.sol#L114-L122
+        commit: "aceb1b5be29a84cb2a37742e2204647d249443ab"
+        path: contracts/src/IssuerChecker.sol
+        detail: Event schemas (Collected, Refunded, IssuerSet...) are in the contract source; ABIs come from the Foundry build.
+        checked_at: "2026-10-07"
+    finding: >-
+      ABIs, events and an API schema generator are versioned with the code. The cardholder export is a PDF statement (server/api/activity.ts); there is no payee export, since merchants are paid through Visa. Judgment call: the API schema is generated rather than committed, and there is no payee export, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/README.md#L1-L50
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: README.md
+        detail: The exa monorepo has no LICENSE file at the root or in any package, and the package.json files have no license field. Contract files carry SPDX GPL-3.0 headers only. GitHub reports no license.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/protocol/blob/0d1ca2a6b753f40c4a0c5a442ee25246122594f7/LICENSE#L1-L22
+        commit: "0d1ca2a6b753f40c4a0c5a442ee25246122594f7"
+        path: LICENSE
+        detail: Exactly Protocol (the exaUSDC market) is under BUSL-1.1, changing to GPL-3.0-or-later two years after each release.
+        checked_at: "2026-10-07"
+    finding: >-
+      The backend and app repo has no license. The market contracts are source-available (BUSL-1.1). The issuer, network and Rain are closed. Closed required components alone set F1 to 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/tree/4fba32be1803f15c0db9f39a055bda4740c1fdf1/.github/workflows
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: .github/workflows
+        detail: There is no CLA workflow, no CONTRIBUTING file or license-stability commitment, and the LICENSE path has no history (gh api 'repos/exactly/exa/commits?path=LICENSE' returns none).
+        checked_at: "2026-10-07"
+    finding: >-
+      There is no CLA, but there is also no license, so Exa Labs holds every right in its code and can license future versions however it likes. Judgment call: the anchors assume a license exists. "No CLA, no commitment" (2) would credit stability that an unlicensed repo does not have, so I took the lower anchor, 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/index.ts#L60-L82
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/index.ts
+        detail: The server will not start without Rain (panda), Persona and Sardine credentials.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card cannot run without Rain's issuing platform, the issuer and Visa, and Persona and Sardine. These are hosted-only proprietary services.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/src/utils/segment.ts#L11-L30
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: src/utils/segment.ts
+        detail: The web app loads Segment with hardcoded write keys per domain, with no consent check, and identify() sends the account address. package.json also ships @sentry/react-native, @sentry/browser, Intercom, OneSignal and expo-insights.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/9945134-privacy-policy
+        detail: The privacy policy discloses usage analytics, including third-party analysis.
+        quote: "we analyze (and may engage third parties to analyze) this information"
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics (Segment, keyed to the wallet address) and error reporting (Sentry) are on by default, with no opt-in in code. The privacy policy discloses analytics in general terms. Present, on by default, disclosed, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/9945134-privacy-policy
+        detail: The privacy policy lists the KYC data collected through Persona, including ID document, photo and biometric face scans, plus IP and wallet address.
+        quote: "identification document information, personal photo, biometric face scans"
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/credit-and-debit-modes.md#L11-L11
+        commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+        path: exa-app/credit-and-debit-modes.md
+        detail: Exa's docs repo says KYC is required to comply with Visa regulations.
+        checked_at: "2026-10-07"
+    finding: >-
+      Full KYC, including biometrics, is collected for the card. The basis is given only loosely ("Visa regulations") in a versioned doc, and the field list is disclosed in the privacy policy. Collection goes well beyond settlement needs. Judgment call: a stated basis without a field-level limit to the legal requirement does not reach 2, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/tx/0x906cb58684b9445dcbad6ab80c636d1d65799110782a8a1f4fda96821976e79b
+        address: "0x59A644E490E48235adF8ba9b814A4f666C4fEb3A"
+        block_number: 157882808
+        detail: A card debit emits IssuerChecker Collected(account, amount, timestamp) and an exaUSDC Withdraw to the collector. No merchant or order data is emitted.
+        checked_at: "2026-10-07"
+        recheck: cast receipt 0x906cb58684b9445dcbad6ab80c636d1d65799110782a8a1f4fda96821976e79b --rpc-url https://mainnet.optimism.io
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/exa-plugin.md#L42-L72
+        commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+        path: exa-app/exa-plugin.md
+        detail: The docs describe the keeper-run collectDebit and collectCredit and the IssuerChecker that signs them.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card spend is publicly tied to the user's long-lived Exa account (amount and time), and the Collected event marks the account as an Exa cardholder. No merchant data goes onchain, and there are no fresh addresses. Minimal linkage that is documented, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/hooks/panda.ts#L188-L200
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/hooks/panda.ts
+        detail: Each card authorisation is sent to Sardine for risk scoring and tracked to Segment (L816). Rain sends the authorisation webhook. The endpoints are env-set, but each integration is vendor-specific code.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/the-exa-tech-stack.md#L18-L18
+        commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+        path: exa-app/the-exa-tech-stack.md
+        detail: Persona, Rain and Intercom are named in the docs.
+        checked_at: "2026-10-07"
+    finding: >-
+      A payment is seen by Rain, Third National, Visa, Sardine and Segment, plus Alchemy on the app side. All of them are named in public code or docs, but none can be swapped without code changes. No trace was run. Judgment call: named in code (2) but not swappable by config (1); I took the lower anchor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/common/alchemyAPIKey.ts#L5-L15
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: common/alchemyAPIKey.ts
+        detail: The app reads through Alchemy (src/utils/publicClient.ts#L7-L10), with per-chain keys hardcoded and an env override for the key only. The RPC vendor is fixed in code.
+        checked_at: "2026-10-07"
+    finding: >-
+      The RPC endpoint is fixed to Alchemy; only the key can be overridden at build time. The indexer (substreams) is public, but users cannot point the app at their own endpoints. Judgment call: changing the key is not changing the endpoint, so this is "hardcoded" (0).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/src/IssuerChecker.sol#L37-L71
+        commit: "aceb1b5be29a84cb2a37742e2204647d249443ab"
+        path: contracts/src/IssuerChecker.sol
+        detail: check() verifies only an Exa issuer signature over (account, amount, timestamp) with replay protection. There is no per-account limit and no user signature.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/10/0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e
+        address: "0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e"
+        block_number: 157885618
+        detail: ExaPlugin collector() = 0x3a73880f...efc5, a BeaconProxy to RainCollateral whose beacon owner is Safe 0x6454cf01... (2-of-5). setCollector is DEFAULT_ADMIN_ROLE, held by Safe 0x6561b09d... (3-of-4, no modules, no guard, no timelock).
+        checked_at: "2026-10-07"
+        check:
+          call: "0x913e77ad"
+          expect: "0x0000000000000000000000003a73880ff21abf9ca9f80b293570a3cbd846efc5"
+        recheck: cast call 0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e "collector()(address)" --rpc-url https://mainnet.optimism.io --block 157885618
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/10/0x59A644E490E48235adF8ba9b814A4f666C4fEb3A
+        address: "0x59A644E490E48235adF8ba9b814A4f666C4fEb3A"
+        block_number: 157885618
+        detail: IssuerChecker issuer() = 0x3Ed5B7C4F0406b0D5afbe8ccFd1BD845f8F9D415, a key with no code and nonce 0 (a signing-only EOA).
+        checked_at: "2026-10-07"
+        check:
+          call: "0x1d143848"
+          expect: "0x0000000000000000000000003ed5b7c4f0406b0d5afbe8ccfd1bd845f8f9d415"
+    finding: >-
+      At rest, funds sit in the user's own account as exaUSDC shares in an upgradeable lending market. Exa's issuer key plus its keeper can debit any amount from any account to the collector without a user signature, and the admin Safe can repoint the collector without a timelock. Card debits land in Rain's upgradeable collateral contract (beacon owned by a 2-of-5 Safe). The provider can redirect funds, which meets anchor 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0xfBa759BCd1a99a7724c5068FEddb4F5b844b941A
+        address: "0xfBa759BCd1a99a7724c5068FEddb4F5b844b941A"
+        block_number: 157885618
+        detail: The exaUSDC proxy admin (EIP-1967 admin slot) is ProxyAdmin 0xfBa759BC..., whose owner() is TimelockController 0x92024C4b... (getMinDelay 86400 s). The timelock's PROPOSER_ROLE includes Safe 0xC0d6Bc5d... (3-of-6).
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x00000000000000000000000092024c4bda9da602b711b9abb610d072018eb58b"
+        recheck: cast call 0x92024C4bDa9DA602b711B9AbB610d072018eb58b "getMinDelay()(uint256)" --rpc-url https://mainnet.optimism.io --block 157885618
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x6561b09d5d6012D416dfDf9BeFe37228Ae89434C
+        address: "0x6561b09d5d6012D416dfDf9BeFe37228Ae89434C"
+        block_number: 157885618
+        detail: The ExaPlugin admin Safe has getThreshold() = 3 with 4 owners, no modules and no guard. Through setProposalManager, setSwapper, setFlashLoaner and allowPlugin it can replace, with no timelock, the contracts that gate every user withdrawal.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xe75235b8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/src/ExaPlugin.sol#L308-L330
+        commit: "aceb1b5be29a84cb2a37742e2204647d249443ab"
+        path: contracts/src/ExaPlugin.sol
+        detail: The admin-only setters for flashLoaner, collector, proposalManager and swapper, and the plugin allowlist.
+        checked_at: "2026-10-07"
+    finding: >-
+      ExaPlugin itself is immutable, and each account's implementation can be upgraded only by its owner. The market holding user funds is upgradeable behind a 1-day timelock driven by a 3-of-6 Safe, which on its own would score 2 (signers and notice channel undisclosed). The plugin admin, a 3-of-4 Safe with no timelock, can also swap the ProposalManager and swapper contracts that every withdrawal passes through, which amounts to changing the rules with no notice. Judgment call: that is "multisig admin, no timelock", so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/src/ExaPlugin.sol#L553-L565
+        commit: "aceb1b5be29a84cb2a37742e2204647d249443ab"
+        path: contracts/src/ExaPlugin.sol
+        detail: There is no ERC-20 approval. Instead, the installed plugin gives KEEPER_ROLE runtime validation over collectDebit, collectCredit and collectInstallments on every account, bounded only by the issuer signature and the account's balance or credit.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/exa-plugin.md#L42-L72
+        commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+        path: exa-app/exa-plugin.md
+        detail: The docs disclose the keeper's collect functions and the issuer's role.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card's spending authority is an unbounded keeper permission built into the account, not a capped allowance. It is disclosed in docs and code. Unbounded by default, disclosed, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/10/0x6817974CA2c354F2FA40d8349b725B5bF81c8338
+        address: "0x6817974CA2c354F2FA40d8349b725B5bF81c8338"
+        block_number: 157885618
+        detail: ProposalManager delay() = 60 s (code caps it at 1 hour, L317-L318 at aceb1b5). A user proposes a withdrawal through propose (self-validated) and runs executeProposal after the delay; neither step needs the keeper.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x6a42b8f8"
+          expect: "0x000000000000000000000000000000000000000000000000000000000000003c"
+        recheck: cast call 0x6817974CA2c354F2FA40d8349b725B5bF81c8338 "delay()(uint256)" --rpc-url https://mainnet.optimism.io --block 157885618
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x973ccce386F99bd7a32Eec2DF192A030d8f214b8
+        address: "0x973ccce386F99bd7a32Eec2DF192A030d8f214b8"
+        block_number: 157885618
+        detail: The sample account's installed plugins are ExaPlugin and WebauthnOwnerPlugin, and its implementation is UpgradeableModularAccount 0x00460000...a61e (Sourcify exact). Only the user's passkey owns it.
+        checked_at: "2026-10-07"
+    finding: >-
+      Chain of reasoning. By S1, funds sit in the user's own account, though in an upgradeable, pausable market. By the evidence above, the user can withdraw through a verified two-step path after 60 s without Exa's keeper, using any ERC-4337 bundler and the public app source. By C2 = 0 and C3 = 0, card settlement stops without Exa. By O3 = 1, self-hosting is unproven. Caveats: a market pause (C1) would block the exit, and the admin can swap the ProposalManager (S2). Funds retained and retrievable, settlement stops, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/hooks/panda.ts#L109-L118
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/hooks/panda.ts
+        detail: Card webhooks are verified with HMAC-SHA256 and timingSafeEqual (server/utils/verifySignature.ts#L9-L15) against a comma-separated key list, so keys can rotate. Persona webhooks need PERSONA_WEBHOOK_SECRET.
+        checked_at: "2026-10-07"
+        recheck: curl -s https://raw.githubusercontent.com/exactly/exa/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/utils/verifySignature.ts
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/common/alchemyAPIKey.ts#L5-L15
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: common/alchemyAPIKey.ts
+        detail: The client bundle ships Alchemy keys and Segment write keys (src/utils/segment.ts#L11-L18). Both are publishable client identifiers; Rain, Persona and Sardine secrets stay server-side.
+        checked_at: "2026-10-07"
+    finding: >-
+      No issuing or KYC secrets are in the client, and webhooks are signature-verified with rotation support. The client ships publishable Alchemy and Segment keys, which authorise metered RPC use and analytics writes. Judgment call: minor, so 2. A 3 is not possible while required components are closed.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Quantstamp%20Exa%20App%20Plugin%20(Mar-25).pdf
+        detail: The Quantstamp ExaPlugin audit (Mar 2025) reports 11 findings, all fixed, each with an "Addressed in" commit, and a fix review ending at commit 368df25.
+        quote: "The fix-review process went through four rounds in total, concluding at 368df25."
+        archive: data/archive/exa-card-quantstamp-plugin-mar25.txt
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/src/ExaPlugin.sol#L1-L5
+        commit: "aceb1b5be29a84cb2a37742e2204647d249443ab"
+        path: contracts/src/ExaPlugin.sol
+        detail: The deployed source (aceb1b5) is 23 commits after 368df25, and ExaPlugin.sol changed in between (gh api repos/exactly/exa/compare/368df25...aceb1b5). The Oct-25 update audit covers later code that is not deployed on OP Mainnet.
+        checked_at: "2026-10-07"
+    finding: >-
+      Audits exist, with pinned commits and per-finding fix commits, but the deployed OP Mainnet plugin is not the audited commit. I found no bug bounty in any exactly repo. Judgment call: an audit of a neighbouring version does not cover the deployed contract, so this is held at "audit report only" (1).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The Exa Card terms name Third National as issuer of the card program, "issued by the Issuer under license from Visa" (https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions). The help center says the card is issued in the United States and gives a legal address "provided by Rain" (https://help.exactly.app/en/articles/10209480-where-is-the-exa-card-issued). The app operator is EXA LABS S.A.S., incorporated in Uruguay (app terms and privacy policy), and the app terms let it suspend or terminate access with or without notice. Card terms for US citizens and Exa Business cards are separate documents, not assessed.
+
+notes: >-
+  Scored the OP Mainnet card on contracts pinned at exactly/exa aceb1b5 (which matches Sourcify), the backend and app at HEAD 4fba32b, and onchain reads at OP block 157885618. The card is issued by Third National through Rain, on Visa. Collateral sits in the user's own Alchemy modular account as exaUSDC in the Exactly Protocol market; Exa's keeper debits it with an Exa issuer signature. Explorer verification could not be checked because Optimistic Etherscan and Blockscout block automated requests.

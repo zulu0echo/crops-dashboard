@@ -1,0 +1,43 @@
+name: recheck
+on:
+  schedule: [{ cron: "17 3 * * *" }]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with: { node-version: 22 }
+      - run: npm ci
+      # Public RPCs by default; override per chain with repo variables RPC_<chainId>. No secrets.
+      - id: run
+        run: npm run recheck || echo "read_failed=1" >> "$GITHUB_OUTPUT"
+        env:
+          RPC_1: ${{ vars.RPC_1 }}
+          RPC_100: ${{ vars.RPC_100 }}
+          RPC_8453: ${{ vars.RPC_8453 }}
+      - name: One issue per drifted provider
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          for slug in $(jq -r 'keys[]' drift-report.json); do
+            title="Drift: $slug"
+            body=$(jq -r --arg s "$slug" '"The nightly re-check found these evidence items changed since they were recorded. Scores have not been changed; a human must re-check and update the cell.\n\n" + (.[$s] | map("- " + .) | join("\n"))' drift-report.json)
+            n=$(gh issue list --state open --search "\"$title\" in:title" --json number,title --jq ".[] | select(.title==\"$title\") | .number" | head -1)
+            if [ -n "$n" ]; then gh issue edit "$n" --body "$body"; else gh issue create --title "$title" --body "$body"; fi
+          done
+      - name: Bot PR marking drift
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          git diff --quiet data/ && exit 0
+          git config user.name "crops-recheck-bot"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B bot/drift
+          git commit -am "Mark drifted evidence (nightly re-check)"
+          git push -f origin bot/drift
+          gh pr view bot/drift --json state --jq .state 2>/dev/null | grep -q OPEN || gh pr create --head bot/drift --title "Mark drifted evidence" --body "Automated: sets \`drift: true\` on evidence the nightly re-check found changed. Does not change any score. See the Drift issues."
+      - if: steps.run.outputs.read_failed == '1'
+        run: echo "::error::Some onchain or repo reads failed; see the recheck step log." && exit 1

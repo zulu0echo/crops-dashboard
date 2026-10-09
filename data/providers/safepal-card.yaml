@@ -1,0 +1,579 @@
+slug: safepal-card
+name: SafePal Card
+type: card
+website: https://www.safepal.com/en/bank
+primary_chain:
+  name: Arbitrum One
+  chain_id: 42161
+  basis: >-
+    SafePal's card page says the card and IBAN are offered with Fiat24 and that transactions are made on Arbitrum. Onchain, Fiat24Account.walletProviderMap(8026) = "SafePal", and SafePal-referred accounts (e.g. #75546) are debited by Fiat24CardAuthorization 0xe2e3B88B... on Arbitrum. Reads pinned to block 512546136. Excluded: Fiat24's Mantle deployment (SafePal names only Arbitrum) and the SafePal wallet app (closed).
+
+repos: []
+
+contracts:
+  - address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+    chain_id: 42161
+    role: Fiat24CardAuthorization proxy (card debits)
+    verified: sourcify
+  - address: "0x96AA3D05755C54D2745d0Dc98Ea55E163DA5Bb16"
+    chain_id: 42161
+    role: Fiat24CardAuthorizationMarqeta implementation
+    verified: sourcify
+  - address: "0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA"
+    chain_id: 42161
+    role: EUR24 cash token proxy
+    verified: sourcify
+  - address: "0xbE00f3db78688d9704BCb4e0a827aea3a9Cc0D62"
+    chain_id: 42161
+    role: USD24 cash token proxy
+    verified: sourcify
+  - address: "0xd41F1f0cf89fD239ca4c1F8E8ADA46345c86b0a4"
+    chain_id: 42161
+    role: CHF24 cash token proxy
+    verified: sourcify
+  - address: "0x7288Ac74d211735374A23707D1518DCbbc0144fd"
+    chain_id: 42161
+    role: CNH24 cash token proxy
+    verified: none
+  - address: "0x133CAEecA096cA54889db71956c7f75862Ead7A0"
+    chain_id: 42161
+    role: Fiat24Account NFT proxy (account status, limits)
+    verified: sourcify
+  - address: "0x4582f67698843Dfb6A9F195C0dDee05B0A8C973F"
+    chain_id: 42161
+    role: Fiat24 crypto top-up and FX proxy
+    verified: sourcify
+  - address: "0x50873C8501143e55349f9938795f69A2BB64b6ca"
+    chain_id: 42161
+    role: ProxyAdmin for all Fiat24 proxies (owner is an EOA)
+    verified: sourcify
+  - address: "0x40C57923924B5c5c5455c48D93317139ADDaC8fb"
+    chain_id: 42161
+    role: SanctionsList oracle read by the cash tokens
+    verified: sourcify
+
+components:
+  - name: Fiat24CardAuthorization contract (debits the cardholder's cash tokens)
+    role: contracts
+    public: true
+    license: MIT
+    operator: SR Saphirstein AG (Fiat24); admin EOA 0x1272...9D59
+    required: true
+  - name: Fiat24 cash tokens EUR24, USD24, CHF24, CNH24 and Fiat24Account NFT
+    role: ledger
+    public: true
+    license: MIT
+    operator: SR Saphirstein AG (Fiat24)
+    required: true
+  - name: Fiat24 card authorizer key (sole AUTHORIZER_ROLE holder, an EOA)
+    role: signer
+    public: false
+    license: proprietary
+    operator: SR Saphirstein AG (Fiat24)
+    required: true
+  - name: Fiat24 backend and API (api.fiat24.com; KYC, status, payouts)
+    role: backend
+    public: false
+    license: proprietary
+    operator: SR Saphirstein AG (Fiat24)
+    required: true
+  - name: Marqeta card processing (named in the authorizer contract)
+    role: other
+    public: false
+    license: proprietary
+    operator: Marqeta
+    required: true
+  - name: Fiat24 (SR Saphirstein AG) as card issuer and account provider
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: SR Saphirstein AG
+    required: true
+  - name: Mastercard (card network)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Mastercard
+    required: true
+  - name: Fiat24 KYC and onboarding (vendor not named)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: SR Saphirstein AG (Fiat24)
+    required: true
+  - name: SafePal wallet app (Bank tab, card screens, top-up)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: SafePal
+    required: false
+  - name: Cardholder's Arbitrum address holding the account NFT and cash tokens
+    role: wallet
+    public: true
+    license: none
+    operator: Cardholder
+    required: true
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA
+        address: "0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA"
+        block_number: 512546136
+        detail: EUR24 hasRole(OPERATOR_ROLE, 0x1272c99bEFa7a70f935Edca81BF9a6E85C6D9D59) = true; that address is an EOA (no code, nonce 1350) and also holds DEFAULT_ADMIN_ROLE, which can pause() the token. In the Sourcify-verified Fiat24Token source, transfers require the Fiat24Account status to be Live, and an operator can sendToSundry() any holder's balance.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x91d1485497667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b9290000000000000000000000001272c99befa7a70f935edca81bf9a6e85c6d9d59"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        recheck: cast call 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA "hasRole(bytes32,address)(bool)" $(cast keccak OPERATOR_ROLE) 0x1272c99bEFa7a70f935Edca81BF9a6E85C6D9D59 --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: Fiat24CardAuthorization hasRole(DEFAULT_ADMIN_ROLE, 0x1272...9D59) = true and the same EOA holds OPERATOR_ROLE, which can pause() every card authorization; paused() = false at this block.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x91d1485400000000000000000000000000000000000000000000000000000000000000000000000000000000000000001272c99befa7a70f935edca81bf9a6e85c6d9d59"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0x1272c99bEFa7a70f935Edca81BF9a6E85C6D9D59
+        address: "0x1272c99bEFa7a70f935Edca81BF9a6E85C6D9D59"
+        block_number: 512546136
+        eoa: true
+        detail: The admin and operator address 0x1272...9D59 has no code (an EOA, not a Safe) and nonce 1350.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/payment-card-terms-and-conditions
+        detail: Fiat24's card terms let it block the card on suspicion, on breach, or on other grounds in the agreement or legislation.
+        quote: "Fiat24 has the right to block the use of the Card until the circumstances have been verified"
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: The account terms let Fiat24 suspend or close an account without notice on breach.
+        quote: "We may at any time suspend or close your Fiat24 Account and/or end the agreement with you without notice"
+        checked_at: "2026-10-07"
+    finding: >-
+      A single EOA holds the admin and operator roles on the card authorizer and the cash tokens. It can pause card authorizations or all transfers of a currency, and Fiat24 operators can set an individual account to Soft- or Hard-Blocked, which the token contract enforces on every transfer. The terms allow card blocks and account suspension without notice. EOA-held role that can target individual accounts with no notice, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/42161/0x96AA3D05755C54D2745d0Dc98Ea55E163DA5Bb16
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: authorize(), increment(), advice() and reverse() in the verified Fiat24CardAuthorizationMarqeta implementation each revert unless msg.sender has AUTHORIZER_ROLE; hasRole(AUTHORIZER_ROLE, 0xec659e857089E301C87965ED4839B74Ea835755a) = true, and that address is an EOA with nonce 7130096.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x91d1485414dd327f3834be9d0f7cf44f6cf11c96ded83bd68d1a1b3926d35739e7bb88d0000000000000000000000000ec659e857089e301c87965ed4839b74ea835755a"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        recheck: cast call 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 "hasRole(bytes32,address)(bool)" $(cast keccak AUTHORIZER_ROLE) 0xec659e857089E301C87965ED4839B74Ea835755a --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/tx/0x568b9d28f19fb3363d2a278bd5ef0463998df007cb89b862ec103a2248dde21f
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: A sample card payment (tx 0x568b9d28...e21f, within the 100,000 blocks before the pinned block) is authorize() sent by the authorizer EOA, carrying a Marqeta card id ("MQ-730612-CARD-...") and moving USD24 from account #730612 to the card-booking account #9110.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card settlement is a pull executed only by Fiat24's authorizer key after the card network authorizes the payment. Neither the cardholder nor the merchant can settle a card payment by calling the contract. Plain token transfers between Fiat24 accounts are a separate P2P feature, not card settlement.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xec659e857089E301C87965ED4839B74Ea835755a
+        address: "0xec659e857089E301C87965ED4839B74Ea835755a"
+        block_number: 512546136
+        eoa: true
+        detail: The only observed caller of authorize() is this EOA (nonce 7130096), Fiat24's card authorizer; no code for the service that drives it is public.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-2-api-reference
+        detail: Fiat24's API reference (hosted, not in a repo) uses a custom wallet-signature header for its closed API at api.fiat24.com.
+        quote: "Fiat24 does NOT use any standard protocol for authentication and authorisation"
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card payment needs Fiat24's closed authorization service and key, Marqeta processing and Mastercard. None is public, and there is no fallback operator. Closed and single-vendor, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA
+        address: "0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA"
+        block_number: 512546136
+        detail: EUR24 sanctionCheck() = true and sanctionContract() = 0x40C57923924B5c5c5455c48D93317139ADDaC8fb (Sourcify-verified SanctionsList); the verified tokenTransferAllowed() reverts any transfer to or from a listed address and requires Live account status for the sender.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xb5c9ee0f"
+          expect: "0x00000000000000000000000040c57923924b5c5c5455c48d93317139addac8fb"
+        recheck: cast call 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA "sanctionContract()(address)" --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: The terms disclose sanctions compliance as a duty of Fiat24, but not that the token contracts screen addresses onchain against an oracle.
+        quote: "the Swiss sanctions regulations, as well as other sanctions regulations deemed appropriate by us"
+        checked_at: "2026-10-07"
+    finding: >-
+      Address filtering sits inside the settlement layer itself: the cash tokens check an onchain sanctions oracle and the account's KYC status on every transfer, including the card pull. Judgment call: the check is visible in Sourcify-verified source, but no Fiat24 or SafePal document discloses contract-level screening or its list source, so this takes the lower anchor, 0, rather than 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: validXXX24Tokens() returns true for USD24 0xbE00f3db..., CHF24 0xd41F1f0c..., EUR24 0x2c5d06f5... and CNH24 0x7288Ac74...; these are the card's settlement currencies.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x1b7238770000000000000000000000002c5d06f591d0d8cd43ac232c2b654475a142c7da"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        recheck: cast call 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 "validXXX24Tokens(address)(bool)" 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
+      - tier: documented
+        kind: document
+        url: https://safepalsupport.zendesk.com/hc/en-us/articles/22646856800027-FAQs-about-the-SafePal-Fiat-Gateway-and-Mastercard
+        detail: SafePal's FAQ tells users that cash tokens sent to an unregistered wallet are frozen; it does not mention operator freezes, sanctions screening or Arbitrum sequencer assumptions.
+        quote: "these assets will be frozen"
+        checked_at: "2026-10-07"
+    finding: >-
+      The four cash tokens are enumerated in the contract and in Fiat24's developer docs. Users are told about one freeze case (sending tokens to an unregistered address) but not about the issuer's operator powers, the sanctions oracle or Arbitrum's sequencer. Judgment call: a partial freeze statement does not meet "stated to payees", so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/42161/0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: "Sourcify: card authorizer proxy exact_match, implementation 0x96AA3D05... match (partial); EUR24 and USD24 proxies and implementations (0x7aFe16b7..., 0x98BEC5F5...) match (partial); Fiat24Account proxy exact_match, implementation 0x78726B1e... match; ProxyAdmin 0x50873C85... match. Implementation slots read at the pinned block."
+        checked_at: "2026-10-07"
+        recheck: for a in 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 0x96AA3D05755C54D2745d0Dc98Ea55E163DA5Bb16 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA 0x7aFe16b7d1A2F4C106E49FD0C2BE852a3a536E96; do curl -s https://sourcify.dev/server/v2/contract/42161/$a | jq -c '{address,match}'; done
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x00000000000000000000000096aa3d05755c54d2745d0dc98ea55e163da5bb16"
+    finding: >-
+      The settlement contracts are verified on Sourcify, mostly as partial (metadata) matches; CHF24 is a partial match and the CNH24 proxy is not on Sourcify. No public repository or build script reproduces the bytecode. Partial match without a build script, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/SafePalWallet/safepal-app/tree/319a2f85a69b5f6582183e30de1d704cce267fde/lib
+        commit: "319a2f85a69b5f6582183e30de1d704cce267fde"
+        path: lib
+        detail: SafePal's only public app repo (a 2024 "core version" Flutter app) has no Fiat24, bank or card code; GitHub users fiat24, Fiat24, fiat24-ag and fiat24ag return 404.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/42161/0x96AA3D05755C54D2745d0Dc98Ea55E163DA5Bb16
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: The contract source is public only as Sourcify-verified files.
+        checked_at: "2026-10-07"
+    finding: >-
+      Only the contracts are public (through Sourcify). The SafePal card screens, Fiat24's backend, the authorizer and the API are closed, and no SDK is published. Contracts only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
+        detail: Fiat24's developer guide documents contract addresses and functions (approve, authorize flow, payouts, top-up) on a hosted docs site, with the API reference on a separate hosted page.
+        quote: "needs to approve a certain limit amount for future card spendings"
+        checked_at: "2026-10-07"
+    finding: >-
+      Interfaces are documented on a hosted docs site, not versioned in a repo. No payee export format is specified. Documented only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: Fiat24 grants users only a limited, non-transferable licence to its web app and API; the backend, authorizer and card processing have no published source.
+        quote: "non-transferable, non-sub-licensable, worldwide, non-exclusive license to use the Fiat24 Web-App"
+        checked_at: "2026-10-07"
+    finding: >-
+      Required components (authorizer, backend, card processing, issuer) are closed, so F1 is 0. The verified contracts carry MIT SPDX headers, but they are not in any public repo.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/42161/0x96AA3D05755C54D2745d0Dc98Ea55E163DA5Bb16
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: Card debits only run through authorize() called by Fiat24's AUTHORIZER_ROLE key; the contracts alone cannot process a card payment.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card cannot run without Fiat24's hosted authorizer, backend and card processor, none of which has an open alternative. Core cannot run without proprietary components, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: Fiat24's privacy policy discloses Google Analytics and Google Tag Manager on its site and web app.
+        quote: "We use Google Analytics, a web analysis service of Google Ireland Limited"
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics is disclosed for Fiat24's web surfaces. The SafePal app, where SafePal users manage the card, is closed and was not traced, and SafePal's own privacy policy names no analytics vendor. Documented cap, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: Fiat24 collects identity documents, contact data and transaction data for onboarding.
+        quote: "Passport and/or photo ID for identity verification purposes"
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://safepalsupport.zendesk.com/hc/en-us/articles/22646856800027-FAQs-about-the-SafePal-Fiat-Gateway-and-Mastercard
+        detail: SafePal says KYC (and location permission) is required for the card and run by Fiat24.
+        quote: "The KYC and onboarding process are conducted by Fiat24 for compliance"
+        checked_at: "2026-10-07"
+    finding: >-
+      Full KYC is required and disclosed in Fiat24's policy and SafePal's FAQ; the legal basis (Swiss AML) is stated in the terms but not limited in code or a repo document. Disclosed in policy, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/tx/0x568b9d28f19fb3363d2a278bd5ef0463998df007cb89b862ec103a2248dde21f
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: The Authorized event indexes the account number (#730612) and holder address, and logs the card id, currency and amount; the calldata also carries the transaction currency and amount. Fiat24 account numbers map to Swiss IBANs.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: The terms tell users that balances and transactions are public on a blockchain and that they waive Swiss bank secrecy.
+        quote: "you waive the Swiss bank secrecy to this extent"
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card spend is public and linked to the cardholder's account number, address, card id and amount, though not to the merchant. The linkage is disclosed in the terms. Account tags in events, disclosed, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: The policy discloses sharing with service providers (payment processing, customer service and others) and for KYC and AML compliance, by category; Marqeta appears only in the contract name, and the sanctions oracle is not mentioned.
+        quote: "We may share information to comply with laws, including KYC, AML, and tax law requirements."
+        checked_at: "2026-10-07"
+    finding: >-
+      Third parties in the card flow (Fiat24, Marqeta, Mastercard, the KYC vendor) are disclosed by category in Fiat24's policy, and none can be swapped. No trace was run. Docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/42161/0x7aFe16b7d1A2F4C106E49FD0C2BE852a3a536E96
+        address: "0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA"
+        block_number: 512546136
+        detail: In the verified Fiat24Token source, sendToSundry(from, amount) lets any OPERATOR_ROLE holder move a holder's balance to the sundry account #9103 (owner EOA 0x7089581e4E9512F890fc762cE5A66a6e8a8e464e); OPERATOR_ROLE is held by EOA 0x1272...9D59. Card pulls go to account #9110 (owner EOA 0x084d5c2AA5Ce9F6142821A86bEd91BDC43853D22).
+        checked_at: "2026-10-07"
+        recheck: cast call 0x133CAEecA096cA54889db71956c7f75862Ead7A0 "ownerOf(uint256)(address)" 9103 --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
+        detail: Fiat24 describes the tokens as bank-issued claims on cash deposits.
+        quote: "These tokens are issued by SR Saphirstein AG, a Swiss licensed deposit-taking institution."
+        checked_at: "2026-10-07"
+    finding: >-
+      The card balance is a Fiat24 deposit represented by tokens in the user's address, not an asset the user controls: the issuer's operator EOA can move any balance, and card pulls land in Fiat24-held EOAs. "Self-custody" here means only that the wallet key signs; the provider can redirect funds, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0x50873C8501143e55349f9938795f69A2BB64b6ca
+        address: "0x50873C8501143e55349f9938795f69A2BB64b6ca"
+        block_number: 512546136
+        detail: The EIP-1967 admin slot of the card authorizer, EUR24, USD24 and Fiat24Account proxies all hold ProxyAdmin 0x50873C85...; its owner() is EOA 0x1272c99bEFa7a70f935Edca81BF9a6E85C6D9D59. No timelock or Safe sits in between.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000001272c99befa7a70f935edca81bf9a6e85c6d9d59"
+        recheck: cast call 0x50873C8501143e55349f9938795f69A2BB64b6ca "owner()(address)" --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 512546136
+        detail: Card authorizer EIP-1967 admin slot = ProxyAdmin 0x50873C85....
+        checked_at: "2026-10-07"
+        check:
+          slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+          expect: "0x00000000000000000000000050873c8501143e55349f9938795f69a2bb64b6ca"
+    finding: >-
+      Every settlement contract is upgradeable at once by a single EOA, with no timelock. EOA admin, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xbE00f3db78688d9704BCb4e0a827aea3a9Cc0D62
+        address: "0xbE00f3db78688d9704BCb4e0a827aea3a9Cc0D62"
+        block_number: 512546136
+        detail: USD24 allowance(0x259bB9f8b01C7C818dFfe2d998b93c2Ef6b0fC1B, card authorizer) = 2^256-1 for SafePal-referred account #75546 (walletProvider(75546) = 8026 = "SafePal"). Of 12 SafePal-referred accounts that paid by card in the 100,000 blocks before the pinned block, 10 had a near-maximum USD24 or EUR24 allowance to the authorizer.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xdd62ed3e000000000000000000000000259bb9f8b01c7c818dffe2d998b93c2ef6b0fc1b000000000000000000000000e2e3b88b9893e18d0867c08f9ca93f8ab5935b14"
+          expect: "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        recheck: cast call 0x133CAEecA096cA54889db71956c7f75862Ead7A0 "walletProvider(uint256)(uint256)" 75546 --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
+        detail: Fiat24's guide shows a bounded approval and says it must be repeated once used; this does not match what SafePal users hold.
+        quote: "Once the approved amount is used, the approval needs to be repeated."
+        checked_at: "2026-10-07"
+    finding: >-
+      Most SafePal cardholders have an unlimited allowance to the authorizer, which only Fiat24's key can spend through. Neither SafePal nor Fiat24 discloses that. Judgment call: the app's default is inferred from onchain allowances, not from SafePal code (closed); 10 of 12 sampled accounts are unbounded, so "unbounded, undisclosed", 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/42161/0x7aFe16b7d1A2F4C106E49FD0C2BE852a3a536E96
+        address: "0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA"
+        block_number: 512546136
+        detail: Cash-token transfers require a Live sender status set by Fiat24 operators, and cash payouts to a bank account need Fiat24's CASH_OPERATOR_ROLE to complete (cashPayoutOK).
+        checked_at: "2026-10-07"
+    finding: >-
+      Derived. S1 = 0 (operator can move balances), C2 = 0 (only Fiat24's key settles), C3 = 0 (closed single-vendor backend), O3 unknown. The balance is a deposit claim on Fiat24; turning it back into money needs Fiat24's payout operator, and even token transfers depend on Fiat24-set account status. Funds depend on provider liveness, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. Per Fiat24's terms (https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients), Fiat24 is SR Saphirstein AG, Zurich (CHE-256.014.995), holding a FINMA fintech licence under Article 1b of the Swiss Banking Act; the terms state that the Swiss deposit protection scheme does not apply to Fiat24 client deposits and that no interest is paid. The card is a Mastercard debit card issued by Fiat24 (payment card terms). SafePal's page says Fiat24 "solely handles the compliance and licensing aspect" of the IBAN account and card.
+
+notes: >-
+  SafePal Card is the Fiat24 Mastercard and Swiss IBAN account offered inside the SafePal app. The "self-custody" framing is a claim: the card spends Fiat24 cash tokens (EUR24, USD24, CHF24, CNH24) that sit in the user's Arbitrum address but are issued, gated and movable by Fiat24, and card debits are pulled by Fiat24's authorizer key. The SafePal link is onchain: Fiat24Account.walletProviderMap(8026) returns "SafePal", and SafePal-referred accounts appear among card payers. All reads are pinned to Arbitrum block 512546136; Arbiscan returns 403 to scripted requests, so explorer links point to Blockscout and Sourcify. Neither SafePal nor Fiat24 publishes a repo for the card. No browser trace was run.

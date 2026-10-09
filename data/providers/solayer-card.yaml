@@ -1,0 +1,311 @@
+slug: solayer-card
+name: Solayer Card (Emerald Card / Solayer Pay)
+type: incumbent
+website: https://solayer.org
+repos: []
+contracts: []
+
+components:
+  - name: Solayer app (Card tab, wallet connection, deposits)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Solayer Labs, Inc.
+    required: true
+  - name: Solayer Pay backend with hot and cold wallets
+    role: backend
+    public: false
+    license: proprietary
+    operator: Solayer Labs, Inc.
+    required: true
+  - name: Third National (card issuer per Card Terms)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Third National
+    required: true
+  - name: Visa card network
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Sumsub identity verification
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Sumsub
+    required: true
+  - name: Solayer docs repo (card terms, guides; not needed to run)
+    role: other
+    public: true
+    license: none
+    operator: Solayer Labs
+    required: false
+    repo: https://github.com/solayer-labs/solayer_docs
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+        quote: "with or without cause and with or without giving you notice"
+        detail: International Card Terms s9 let Solayer or the Issuer suspend, revoke or cancel the account or card, or deny any transaction, at any time in their sole discretion.
+        checked_at: "2026-10-07"
+    finding: >-
+      Solayer and the issuer can suspend an individual account or card, or deny any transaction, without cause or notice. Anchor 0. No settlement contract was found to assess.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+        quote: "Issuer is the creditor responsible for funding your payments for goods and services"
+        detail: Card Terms s2 make the issuer (Third National, s1) fund each purchase; Solayer then recovers it from the user's balance or collateral.
+        checked_at: "2026-10-07"
+    finding: >-
+      The issuer pays the merchant over Visa and Solayer recovers the amount. There is no direct payer or payee contract path.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/solayer-pay/security
+        quote: "Hot wallets are what make your Solayer Pay feel instant."
+        detail: The Security page says card swipes and merchant payments go through Solayer's hot-wallet layer, backed by Solayer-run cold storage.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every payment depends on Solayer's closed wallet layer and backend, the issuer and Visa. None is public; no fallback. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/solayer-pay/eligibility
+        quote: "Countries subject to economic or trade sanctions that prevent financial services from being offered."
+        detail: The Eligibility page lists 17 restricted US states and 96 restricted countries and territories (residents or citizens), with sanctions, regulation and security as the reasons; the Card Terms require that the user is not OFAC-sanctioned.
+        checked_at: "2026-10-07"
+    finding: >-
+      Geographic and sanctions filtering is disclosed in docs (also versioned in the public solayer_docs repo) and enforced in closed services. It cannot be bypassed (C2 = 0). 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+        quote: "means the Solana Blockchain and other blockchain networks"
+        detail: Card Terms define Supported Blockchains as Solana plus networks the Issuer may add; the Overview says the card spends USDC and is "built on Solayer Chain". Neither names USDC's issuer freeze powers or Solayer Chain's operator assumptions.
+        checked_at: "2026-10-07"
+    finding: >-
+      The token (USDC) and chains are named in docs only, and the docs disagree on the chain: the Card Terms say Solana, the product pages say Solayer Chain. Freeze powers are not stated. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/solayer-labs/solayer_docs/tree/b9c496574409c9e8ef9250296db189661208dba5/solayer-pay
+        commit: "b9c496574409c9e8ef9250296db189661208dba5"
+        path: solayer-pay
+        detail: The only Solayer Pay material on GitHub is documentation in solayer_docs; none of the 15 solayer-labs repos (agave fork, solayer-rpc, solayer-cli, token-metadata and others) contains card, deposit or wallet code.
+        checked_at: "2026-10-07"
+    finding: >-
+      Nothing needed to run the card is public. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/solayer-pay/security
+        quote: "Hot wallets are what make your Solayer Pay feel instant."
+        detail: The payment path runs on Solayer's closed wallet and backend; the public solayer_docs repo has no LICENSE file and is not needed to run the product.
+        checked_at: "2026-10-07"
+    finding: >-
+      Required components are closed, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/solayer-pay/security
+        quote: "Hot wallets are what make your Solayer Pay feel instant."
+        detail: Card payments need Solayer's hot-wallet layer and the issuer.
+        checked_at: "2026-10-07"
+    finding: >-
+      The product cannot run without proprietary hosted services. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/solayer-pay/tutorials/kyc
+        quote: "redirected to our verification partner"
+        detail: The KYC guide (Sumsub) collects country, state, city, address, postal code, occupation, annual salary, email, an identity document (front and back) and a liveness check.
+        checked_at: "2026-10-07"
+    finding: >-
+      KYC plus occupation and salary goes beyond settlement needs. It is disclosed in the guide, with no stated legal basis. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+        quote: "The issuer for this card program is Third National."
+        detail: The Card Terms name the issuer and the KYC guide names Sumsub; the FAQ says personal information is handled per the card provider's privacy policy.
+        checked_at: "2026-10-07"
+    finding: >-
+      The issuer, Visa and Sumsub are named in docs and are not swappable. No Solayer privacy policy was found (solayer.org/privacy returns 404). Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/solayer-pay/security
+        quote: "the majority of your assets live in"
+        detail: The Security page says card funds sit in Solayer-run hot wallets (operational balance) and multi-signature cold storage; the US Card Terms instead say collateral is held in the user's custody in smart contracts, with no address given.
+        checked_at: "2026-10-07"
+    finding: >-
+      Solayer's own Security page describes provider-held hot and cold wallets. The Card Terms template's user-custody smart-contract claim names no contract and contradicts that page. Judgment call: taking the lower reading, provider-held and disclosed, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/us-card-terms
+        quote: "To withdraw your Collateral, you must provide Solayer at least (3) business days prior notice."
+        detail: US Card Terms make withdrawal a request to Solayer with three business days' notice; the Security page puts balances in Solayer-run wallets.
+        checked_at: "2026-10-07"
+    finding: >-
+      Derived: funds are provider-held (S1 = 1), there is no direct settlement path (C2 = 0), every service is closed and single-vendor (C3 = 0), and nothing can be self-hosted. Withdrawal is a request to Solayer. Funds depend on Solayer being live. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The Card Terms name Third National as issuer under licence from Visa, and the US terms describe a credit card with no set line of credit secured by collateral. The account-opening notice is Third National's GLBA privacy notice. I found no primary source naming Solayer's own licences or regulator.
+
+notes: >-
+  Eligibility: no verified contract and no public repository needed to run the card, so type is incumbent. Chain: the Card Terms define Supported Blockchains as Solana; product pages say the card is "built on Solayer Chain" (InfiniSVM). Neither names a deposit address or program, so I could not decide between them from evidence and recorded both. Searched 2026-10-07: docs.solayer.org llms.txt and every solayer-pay page (overview, card, portfolio, security, eligibility, fees, register, KYC, top-up, FAQ) and legal pages; github.com/solayer-labs (15 repos; card material only in solayer_docs); solayer.org/terms (website terms); solayer.org/privacy (404). The Card Terms are Rain's template (Third National, collateral, Supported Blockchains); Rain's Solana collateral program id is not published (SignifyHQ examples repo has IDLs only). Re-assess as type card if a deposit or collateral program is published.

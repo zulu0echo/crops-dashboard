@@ -1,0 +1,333 @@
+slug: avalanche-card
+name: Avalanche Card
+type: incumbent
+website: https://www.avalanchecard.com
+
+repos: []
+
+contracts: []
+
+components:
+  - name: Avalanche Card app (mobile)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Rain Liquidity LLC
+    required: true
+  - name: Rain card platform, collateral and authorisation backend
+    role: backend
+    public: false
+    license: proprietary
+    operator: Rain (Signify Holdings, Inc.)
+    required: true
+  - name: Collateral contract (chain and address not disclosed)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Rain Liquidity / Issuer
+    required: true
+  - name: Third-party non-custodial smart wallet (provider not named)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Not disclosed
+    required: true
+  - name: Price oracle for collateral value (not named)
+    role: oracle
+    public: false
+    license: proprietary
+    operator: Not disclosed
+    required: true
+  - name: Third National (card issuer; Nimbus LLC, a Rain affiliate)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Nimbus LLC d/b/a Third National
+    required: true
+  - name: Visa (card network)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Identity verification and sanctions screening (vendor not named)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Rain
+    required: true
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-card-international-card-agreement-94211945
+        detail: The card agreement lets Rain Liquidity and the issuer suspend the card or account with or without notice, and deny any purchase for any reason.
+        quote: "We may terminate or suspend your use of the Card or the Account, with or without notice"
+        checked_at: "2026-10-07"
+    finding: >-
+      There are no assessable settlement contracts. The card agreement lets the provider and issuer suspend an individual card or account with or without notice, which meets anchor 0 ("can target individual addresses with no notice").
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-terms-conditions-4b62a44e
+        detail: The app terms say an outside oracle and Rain Liquidity set the cardholder's spending power against collateral. Merchants are paid through Visa by the issuer.
+        quote: "Rain Liquidity uses that price in determining how much spending power you have"
+        checked_at: "2026-10-07"
+    finding: >-
+      Card settlement runs through Rain Liquidity, the issuer and Visa. No published contract or ABI lets a payer or payee settle directly.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7
+        detail: The privacy policy assigns the app, card services and collateral functionality to Rain Liquidity LLC, and Visa card issuance and settlement to Third National. Both are Rain entities.
+        quote: "Visa card issuance, licensed lending, licensed money transmission"
+        checked_at: "2026-10-07"
+    finding: >-
+      Every step of a card payment (app, collateral accounting, authorisation, issuing, settlement) runs on closed Rain-group services with no public code and no fallback.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-card-international-card-agreement-94211945
+        detail: The cardholder must not be blocked or sanctioned by the US Government (OFAC).
+        quote: "You are not a person who is blocked or sanctioned by the United States Government"
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7
+        detail: The privacy policy names sanctions screening among the purposes for sharing data across Rain entities and partners.
+        quote: "conduct sanctions screening"
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions screening is disclosed in the card agreement and privacy policy. The settlement layer cannot be inspected, so its neutrality cannot be shown. Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-card-international-card-agreement-94211945
+        detail: The card agreement's "Supported Blockchains" are Ethereum, Polygon, Optimism and Arbitrum, plus others at the issuer's discretion. Avalanche is not listed.
+        quote: "means the Ethereum Blockchain, Polygon Blockchain, Optimism Blockchain, Arbitrium Blockchain"
+        checked_at: "2026-10-07"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://www.avalanchecard.com/
+        detail: The homepage says the card supports USDC, USDT, AVAX and WAVAX.
+        quote: "Currently supporting USDC, USDT, AVAX and WAVAX."
+        checked_at: "2026-10-07"
+    finding: >-
+      The binding card agreement lists supported blockchains that omit Avalanche, while marketing names Avalanche-native collateral (AVAX, WAVAX). No issuer freeze or sequencer assumptions are stated. Judgment call: the chain enumeration in the terms is wrong for this product, which meets "misstated" (0).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/SignifyHQ/rain-sdk-android/blob/49301504673b9814d5ef9e781a48c642c43259cb/README.md#L440-L470
+        commit: "49301504673b9814d5ef9e781a48c642c43259cb"
+        path: README.md
+        detail: Rain (Signify Holdings, GitHub SignifyHQ) publishes integrator SDKs, such as this Android SDK for Rain collateral on EVM chains and Solana. No Avalanche Card app, backend or collateral contract repository exists, and nothing ties these SDKs to the Avalanche Card app.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-terms-conditions-4b62a44e
+        detail: The app licence forbids decompiling or reverse engineering the app.
+        quote: "decompile, reverse engineer, disassemble"
+        checked_at: "2026-10-07"
+    finding: >-
+      Nothing in the Avalanche Card payment path is public. Rain's open SDKs serve other integrators and are not shown to run this product. Judgment call: 0 rather than 1, because no public SDK or contract is evidenced as part of this card.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-terms-conditions-4b62a44e
+        detail: The app is licensed for use only; modification and reverse engineering are forbidden.
+        quote: "decompile, reverse engineer, disassemble"
+        checked_at: "2026-10-07"
+    finding: >-
+      All required components are closed and proprietary, so F1 is 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7
+        detail: Rain entities provide the app, collateral functionality, issuing and settlement.
+        quote: "Rain is a financial technology provider. We are not a bank and do not hold deposits."
+        checked_at: "2026-10-07"
+    finding: >-
+      The product is entirely hosted, proprietary Rain-group services. Nothing can run without them.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7
+        detail: The privacy policy discloses SDKs, analytics tools and advertising technologies, and says third parties may process the data under their own notices.
+        quote: "analytics tools, advertising technologies"
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics and advertising SDKs are disclosed in the policy. The app is closed and no trace was run, so their presence and default state are not confirmed. Judgment call: disclosed in policy, so 1 (the documented cap).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7
+        detail: The policy discloses collection of identifiers, government IDs, financial data, wallet addresses and biometric identifiers (facial geometry) for KYC.
+        quote: "biometric identifiers, including facial geometry"
+        checked_at: "2026-10-07"
+    finding: >-
+      Full KYC, including biometrics, is collected and disclosed in policy only. Collection goes well beyond settlement needs. Disclosed in policy, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7
+        detail: The policy lists data sharing among Rain entities and partners for identity verification, card issuing, transaction processing, settlement and sanctions screening.
+        quote: "conduct sanctions screening"
+        checked_at: "2026-10-07"
+    finding: >-
+      Rain entities, Third National, Visa and unnamed verification, analytics and oracle providers see payment data. They are disclosed in docs only and are not swappable. No trace was run, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The Avalanche Card is offered by Rain Liquidity LLC, which the site describes as "a financial technology company and not a bank", and is issued by Third National. Rain's privacy policy defines Rain as Signify Holdings, Inc. and affiliates, including Nimbus LLC d/b/a Third National, which provides Visa card issuance, licensed lending and licensed money transmission (https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7). The card agreement states that Rain Liquidity and the issuer never hold custody of collateral, and that a liquidation event (an unpaid balance after one calendar day, or collateral value below charges) lets them liquidate collateral.
+
+notes: >-
+  Classified as incumbent: I found no verified contract or public repository shown to be needed to run this card. Searched: avalanchecard.com and legal.avalanchecard.com (terms, card agreements, privacy policy); GitHub for Rain orgs, where SignifyHQ (Signify Holdings, i.e. Rain) publishes integrator SDKs and a collateral-examples repo; GitHub code search for RainCollateral; Avalanche C-Chain via cast and Routescan. Rain's v1 RainCollateralController 0x753Fb325... and RainCollateral 0xD71Fd741... are live on Avalanche and verified on Routescan. Their controllerAdmin can liquidate any collateral, and user withdrawals need a Rain signature. But 1000 recent Withdrawal events show only USDe, USDC and USDT, with no AVAX or WAVAX, and the card agreement does not list Avalanche as a supported chain, so I could not tie them to this card. Re-assess as type card if Rain discloses the card's collateral contract.

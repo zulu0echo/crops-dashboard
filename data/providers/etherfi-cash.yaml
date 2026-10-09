@@ -1,0 +1,765 @@
+slug: etherfi-cash
+name: ether.fi Cash
+type: card
+website: https://etherfi.gitbook.io/etherfi/products/cash
+primary_chain:
+  name: Optimism
+  chain_id: 10
+  basis: >-
+    Optimism is the Cash core chain: ether.fi's deployed-contracts page says Cash v3 contracts are deployed on Optimism, the technical docs name it the core chain, and the April 2026 account upgrade moved Safes from Scroll. cash-v3 a5024d0 keeps the live roles and timelocks for chain 10 only (deployments/mainnet/10/roles.json#L1-L80); every read is pinned to OP block 157880645. Excluded: Scroll (534352, legacy core, no Spend events in the last 50,000 blocks) and the top-up chains (Ethereum, Base, Arbitrum, HyperEVM).
+
+repos:
+  - url: https://github.com/etherfi-protocol/cash-v3
+    role: contracts
+    license: none
+  - url: https://github.com/etherfi-protocol/cash-v3/tree/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/scripts
+    role: deploy
+    license: none
+
+contracts:
+  - address: "0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0"
+    chain_id: 10
+    role: CashModule (UUPS proxy; spend, withdraw)
+    verified: sourcify
+  - address: "0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B"
+    chain_id: 10
+    role: RoleRegistry (UUPS proxy; all roles)
+    verified: sourcify
+  - address: "0xF4e147Db314947fC1275a8CbB6Cde48c510cd8CF"
+    chain_id: 10
+    role: EtherFiSafeFactory (UUPS proxy; owns Safe beacon)
+    verified: sourcify
+  - address: "0x48e1630278D8310c86650405ebfbc110CdF3D1ec"
+    chain_id: 10
+    role: UpgradeableBeacon for all user Safes
+    verified: sourcify
+  - address: "0x79A6d20280e4b564ea1d8f5369C6544887F7397e"
+    chain_id: 10
+    role: EtherFiSafe implementation (beacon target)
+    verified: sourcify
+  - address: "0xDC515Cb479a64552c5A11a57109C314E40A1A778"
+    chain_id: 10
+    role: EtherFiDataProvider (default modules, recovery signers)
+    verified: sourcify
+  - address: "0x5D3c4f5CF2208bB54e8fd129730d01D82d4611b3"
+    chain_id: 10
+    role: EtherFiHook (pre/post module hook)
+    verified: sourcify
+  - address: "0x50A233C4a0Bb1d7124b0224880037d35767a501C"
+    chain_id: 10
+    role: SettlementDispatcherRain (card settlement)
+    verified: sourcify
+  - address: "0x9623e86Df854FF3b48F7B4079a516a4F64861Db2"
+    chain_id: 10
+    role: SettlementDispatcherReap (card settlement)
+    verified: sourcify
+  - address: "0x0078C5a459132e279056B2371fE8A8eC973A9553"
+    chain_id: 10
+    role: DebtManager (legacy credit; impl explorer-only)
+    verified: explorer
+  - address: "0x380B2e96799405be6e3D965f4044099891881acB"
+    chain_id: 10
+    role: CashEventEmitter (impl explorer-only)
+    verified: explorer
+  - address: "0x9106cD76E10Ac60D1dd16144243416EbD2C64434"
+    chain_id: 10
+    role: Upgrade timelock (2 days), RoleRegistry owner
+    verified: sourcify
+  - address: "0x9AEb8eaa982084219d1A938D8F7B5040a1d47849"
+    chain_id: 10
+    role: Operating timelock (8 h), ADMIN_TIMELOCK_ROLE
+    verified: explorer
+  - address: "0xA6cf33124cb342D1c604cAC87986B965F428AAC4"
+    chain_id: 10
+    role: Cash governance Safe (3-of-6), ADMIN_ROLE
+    verified: explorer
+  - address: "0x1DcE164910A972F8AD755cb737E280143d593e76"
+    chain_id: 10
+    role: Sample user Safe (beacon proxy)
+    verified: none
+
+components:
+  - name: cash-v3 contracts (Safe, CashModule, modules, dispatchers)
+    role: contracts
+    public: true
+    license: none
+    operator: ether.fi (upgradeable via 2-day timelock)
+    required: true
+    repo: https://github.com/etherfi-protocol/cash-v3
+  - name: ether.fi app and web app (Cash tab)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: ether.fi
+    required: true
+  - name: ether.fi card authorisation backend (ETHER_FI_WALLET_ROLE EOAs)
+    role: backend
+    public: false
+    license: proprietary
+    operator: ether.fi
+    required: true
+  - name: Turnkey owner-key enclave (user signer)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Turnkey
+    required: true
+  - name: Settlement bridger (SETTLEMENT_DISPATCHER_BRIDGER_ROLE)
+    role: relayer
+    public: false
+    license: proprietary
+    operator: ether.fi
+    required: true
+  - name: Rain / Reap card programme (BIN sponsors named in code)
+    role: other
+    public: false
+    license: proprietary
+    operator: Rain, Reap
+    required: true
+  - name: Third National (card issuer per cardholder agreements)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Third National
+    required: true
+  - name: Visa card network
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: KYC vendor (not named in any policy found)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+  - name: Price oracles (Chainlink and others in config)
+    role: oracle
+    public: true
+    license: proprietary
+    operator: Chainlink and others
+    required: false
+  - name: Aave v4 lend market (credit mode)
+    role: contracts
+    public: true
+    license: source-available
+    operator: ether.fi deployment of Aave v4
+    required: false
+  - name: Settlement tokens (USDC by Circle, USDT, EURC)
+    role: contracts
+    public: true
+    license: proprietary
+    operator: Circle, Tether
+    required: true
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B
+        address: "0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B"
+        block_number: 157880645
+        detail: RoleRegistry roleHolders(PAUSER) = governance Safe 0xA6cf...AAC4 (3-of-6), EOA 0x9AF1298993DC1f397973C62A5D47a284CF76844D, and Safe 0x427989Bb12f4A390D11e7647d467DeA02b9d2eE3 with threshold 1 of 6; hasRole(PAUSER, 0x9AF1...844D) returns true.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x91d14854539440820030c4994db4e31b6b800deafd503688728f932addfe7a410515c14c0000000000000000000000009af1298993dc1f397973c62a5d47a284cf76844d"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        recheck: cast call 0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B "roleHolders(bytes32)(address[])" $(cast keccak PAUSER) --rpc-url https://mainnet.optimism.io --block 157880645
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x9AF1298993DC1f397973C62A5D47a284CF76844D
+        address: "0x9AF1298993DC1f397973C62A5D47a284CF76844D"
+        block_number: 157880645
+        eoa: true
+        detail: The PAUSER key 0x9AF1...844D has no code at block 157880645 (an EOA).
+        checked_at: "2026-10-07"
+        recheck: cast codesize 0x9AF1298993DC1f397973C62A5D47a284CF76844D --rpc-url https://mainnet.optimism.io --block 157880645
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/utils/UpgradeableProxy.sol#L89-L101
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/utils/UpgradeableProxy.sol
+        detail: pause() needs only PAUSER and unpause() needs UNPAUSER; CashModuleCore.spend (L391) and SettlementDispatcherV2.settle/bridge are whenNotPaused, so one pauser key halts every card settlement at once.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/modules/cash/CashModuleSetters.sol#L109-L163
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/modules/cash/CashModuleSetters.sol
+        detail: ADMIN_ROLE (the 3-of-6 Safe, no timelock) can remove an asset from the withdrawable list (configureWithdrawAssets) and set the withdrawal delay to any value (setDelays) in one transaction.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international
+        detail: Cardholder terms let ether.fi and the issuer suspend or cancel the card or deny any transaction at their discretion.
+        checked_at: "2026-10-07"
+        quote: "with or without cause and with or without giving you notice"
+    finding: >-
+      A pause key that halts all card settlement is held by an EOA (and by a 1-of-6 Safe) with no timelock. No contract role can blacklist a single Safe onchain; per-card blocking happens offchain, where the cardholder terms let ether.fi and the issuer deny transactions without notice. ADMIN_ROLE, a 3-of-6 Safe with no timelock, can also de-list a withdrawable asset or raise the withdrawal delay at once. An EOA-held role scores 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/modules/cash/CashModuleCore.sol#L391-L407
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/modules/cash/CashModuleCore.sol
+        detail: spend() is onlyEtherFiWallet (role check at CashModuleStorageContract.sol L223-L226), so only an ether.fi key can move funds from a Safe to a settlement dispatcher.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/tx/0xdb50399e77874358090b384be2d0057478ad32a2c777a2a2eda922ef05b4f565
+        address: "0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0"
+        block_number: 157880145
+        detail: Sample card spend, tx 0xdb50399e...f565, was sent by EOA 0xdC45DB93c3fC37272f40812bBa9C4Bad91344b46 (an ETHER_FI_WALLET_ROLE holder) to CashModule.spend, which borrowed USDT through the Aave v4 spoke and sent it to SettlementDispatcherRain 0x50A2...501C.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/settlement-dispatcher/SettlementDispatcherV2.sol#L941-L977
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/settlement-dispatcher/SettlementDispatcherV2.sol
+        detail: The dispatcher pays the issuer-side recipient only through settle() and bridge(), which are restricted to SETTLEMENT_DISPATCHER_BRIDGER_ROLE.
+        checked_at: "2026-10-07"
+    finding: >-
+      Merchants are paid by Visa and the issuer offchain. Both onchain steps are role-gated: spend() needs an ether.fi wallet key, and settle()/bridge() need the bridger role. Neither payer nor payee can settle a card payment by calling the contracts. The user's own withdrawal path is exit, not settlement (see S4).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B
+        address: "0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B"
+        block_number: 157880645
+        detail: roleHolders(ETHER_FI_WALLET_ROLE) = EOAs 0xdC45DB93c3fC37272f40812bBa9C4Bad91344b46 and 0xB42833d6edd1241474D33ea99906fD4CBE893730 (both without code); these keys submit every spend.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x91d14854182c09b9a75f816507b9c63a8f7abb8b772664ed74508c2e3b084f4a604e2067000000000000000000000000dc45db93c3fc37272f40812bba9c4bad91344b46"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/README.md#L32-L85
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: README.md
+        detail: The only public repo is the contracts repo (Forge tests and deploy scripts). The etherfi-protocol and ether-fi GitHub orgs publish no app, backend, card authorisation or relayer code.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/cash-modules
+        detail: The Cash Modules docs say spend requires the caller to hold ether.fi's wallet role.
+        checked_at: "2026-10-07"
+        quote: "Requires the caller to have the ETHER_FI_WALLET_ROLE"
+    finding: >-
+      Each card payment needs ether.fi's closed authorisation backend and wallet keys, its settlement bridger, the Turnkey enclave that holds the user's key, the Rain or Reap card programme, the issuer Third National, and Visa. None of these is public, and none has a fallback. The payment path is closed and single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/modules/cash/CashModuleCore.sol#L409-L436
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/modules/cash/CashModuleCore.sol
+        detail: Spend validation checks only token, amounts, txId reuse and the spending limit. A search of src/ found no blacklist, sanctions or country logic; the only "frozen" hits are Aave reserve states.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international
+        detail: The cardholder agreement excludes persons blocked or sanctioned by the US (OFAC). The Terms of Use exclude UN-sanctioned and listed jurisdictions.
+        checked_at: "2026-10-07"
+        quote: "You are not a person who is blocked or sanctioned by the United States Government"
+    finding: >-
+      The settlement contracts contain no address or geographic filtering. Sanctions and country screening is disclosed in the Terms and cardholder agreements, and it runs in the closed KYC/backend and at the issuer. It cannot be bypassed, since C2 = 0, and it is not disclosed in code or a versioned repo document. Edge filtering disclosed in docs only = 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/deployments/mainnet/10/config.json#L17-L46
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: deployments/mainnet/10/config.json
+        detail: Collateral, borrow and withdrawable tokens for OP are enumerated in config, among them usdc, usdt, eurc, weth, weETH, fraxusd, the liquid vault tokens and op.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85
+        address: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85"
+        block_number: 157880645
+        detail: Native USDC on OP (the main spend/borrow token) has blacklister() = 0x551e855B7355C98534175879A300972856C04d7C and pauser() = 0xb8015408bcBA72BCBb34775c81361FB496051c9B.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xbd102430"
+          expect: "0x000000000000000000000000551e855b7355c98534175879a300972856c04d7c"
+        recheck: cast call 0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85 "blacklister()(address)" --rpc-url https://mainnet.optimism.io --block 157880645
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/resources/ether.fi-whitepaper/risks
+        detail: The risks page mentions only generic "restrictions on a specific token" and chain outages. It does not name issuer freeze powers or Optimism's single sequencer.
+        checked_at: "2026-10-07"
+        quote: "Card payments and transfers depend on third-party payment infrastructure"
+    finding: >-
+      Tokens and the chain are enumerated in versioned config. USDC carries Circle's blacklist and pause powers, and Optimism runs a single sequencer. Neither is stated to cardholders; the risks page stays generic. Enumerated in code, assumptions not stated = 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://repo.sourcify.dev/10/0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0
+        address: "0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0"
+        block_number: 157880645
+        detail: "Sourcify v2 gives match (partial, not exact_match) for the proxies and current implementations of CashModule (impl 0xea20f2df...), RoleRegistry, SafeFactory, DataProvider, Hook, both settlement dispatchers, the Safe beacon, the Safe impl 0x79A6...397e and the upgrade timelock. Not on Sourcify: DebtManager impl 0xec2215..., CashEventEmitter impl 0xeffdcf... and the operating timelock, which are explorer-verified (Blockscout is_verified true)."
+        checked_at: "2026-10-07"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x000000000000000000000000ea20f2dfab46f80b75c12bf0795045aee1438b33"
+        recheck: curl -s https://sourcify.dev/server/v2/contract/10/0xea20f2dfab46f80b75c12bf0795045aee1438b33 | jq .match
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/scripts/VerifyOptimismProdBytecode.s.sol#L30-L40
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: scripts/VerifyOptimismProdBytecode.s.sol
+        detail: A Forge script redeploys each implementation locally with the production constructor args and compares the bytecode to OP mainnet.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every settlement-path contract is verified on Sourcify or the explorer, but the Sourcify results are partial matches, not exact ones, and three contracts are explorer-only. The repo ships bytecode-comparison scripts, which is close to the reproducible-build bar, but I did not run them. Partial match = 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/README.md#L12-L31
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: README.md
+        detail: cash-v3 holds the contracts, deploy scripts and audits. The 23 etherfi-protocol repos and the ether-fi org (0 public repos) include no Cash app, web frontend, SDK, backend, indexer or API schema.
+        checked_at: "2026-10-07"
+    finding: >-
+      Only the contracts and their deploy scripts are public. The app, web frontend, card backend, settlement bridger and indexer are closed, and no API schema is published. "SDK or contracts only" = 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/README.md#L32-L85
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: README.md
+        detail: The README gives env vars, forge test and a Setup.s.sol deploy command for the contracts. Addresses are in deployments/mainnet/<chain>/deployments.json.
+        checked_at: "2026-10-07"
+    finding: >-
+      Contract build and deploy docs exist; reproduction was not attempted. Blockers visible from the repo alone: a working card product also needs the closed app, the card backend, a BIN sponsor and an issuer, and none of these can be self-hosted.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/modules/cash/CashEventEmitter.sol#L52-L149
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/modules/cash/CashEventEmitter.sol
+        detail: Event definitions (WithdrawalRequested, WithdrawalProcessed, Spend, and others) and interfaces under src/interfaces are in source. No ABI JSON, API schema or export format is committed.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/cash-modules
+        detail: The hosted docs list CashModule write/read methods and events.
+        checked_at: "2026-10-07"
+        quote: "Identifier of the bin sponsor (Rain or Reap)"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://help.ether.fi/en/articles/685844-how-to-download-your-card-transaction-history
+        detail: The help centre says cardholders can download card history as CSV from the closed app.
+        checked_at: "2026-10-07"
+        quote: "is a CSV (.csv) file"
+    finding: >-
+      Event schemas and interfaces exist in source, so ABIs can be rebuilt. The method reference lives only on the hosted docs. There is no API schema, and the only export is a cardholder CSV from the closed app, with no payee export. Judgment call: ABIs are derivable but not committed and the API schema is absent, so this does not reach 2; it is "documented only" = 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/README.md#L1-L31
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: README.md
+        detail: The tree at a5024d0 has no LICENSE or COPYING file (GitHub license API returns 404). Source files carry SPDX MIT headers (164 files), with BUSL-1.1 on 6 vendored files (Aave CAPO adapters, IStargate).
+        checked_at: "2026-10-07"
+        recheck: gh api repos/etherfi-protocol/cash-v3/license
+    finding: >-
+      The only public repo has no LICENSE file. Per-file SPDX headers are MIT, except six vendored BUSL-1.1 files. Required components (app, card backend, Turnkey, issuer, Visa, KYC) are closed, so F1 is 0 regardless.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/README.md#L28-L85
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: README.md
+        detail: At a5024d0 the repo has no CLA, CONTRIBUTING, CLA workflow (only certora-prover, recovery-hash and test workflows) or license-stability statement, and LICENSE has no commit history.
+        checked_at: "2026-10-07"
+        recheck: gh api "repos/etherfi-protocol/cash-v3/git/trees/a5024d0b6e81ac0e6f40335a08f697fc7aafde52?recursive=1" --jq '.tree[].path' | grep -iE '^(LICEN|CONTRIB|CLA)|workflows/'
+    finding: >-
+      There is no CLA and no commitment, so 2 under the anchor. Judgment call: with no LICENSE at all, "relicensing" adds little risk on top of the F1 gap. I found no prior relicense event.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/modules/cash/CashModuleCore.sol#L391-L407
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/modules/cash/CashModuleCore.sol
+        detail: Card spends only run through ether.fi wallet keys driven by its closed card backend.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international
+        detail: The card is issued by Third National under a Visa licence.
+        checked_at: "2026-10-07"
+        quote: "issued by Third National pursuant to a license from Visa"
+    finding: >-
+      The core product, card payment, cannot run without ether.fi's proprietary backend and keys, the Turnkey signer, the issuer and Visa.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/privacy-policy
+        detail: The Privacy Policy lists collection of a device fingerprint, network telemetry, typing and swiping biometric data, and behavioural signals such as copy/paste and mouse movements. It also lists analytics and marketing cookies.
+        checked_at: "2026-10-07"
+        quote: "typing and swiping biometric data"
+    finding: >-
+      The app and web frontend are closed, so their manifests cannot be inspected. The provider's own privacy policy, however, discloses device fingerprinting and behavioural biometrics. The anchor puts fingerprinting at 0 whether disclosed or not. No trace was run.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/privacy-policy
+        detail: Policy table maps KYC/AML data (identification, IP, geolocation, transaction data) to the legal-obligation basis; it also lists fraud and personalisation data (device data, fingerprint, behavioural biometrics) and marketing use, under the contract basis.
+        checked_at: "2026-10-07"
+        quote: "Ensuring compliance with legal obligations, including Know-Your-Customer (KYC) and Anti-Money Laundering (AML) checks"
+    finding: >-
+      KYC is legally required for the card and is disclosed with its basis, but only in the hosted policy, not in code or a repo document. Collection also goes beyond the KYC requirement (behavioural biometrics, device fingerprint, marketing). Disclosed in policy only = 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/modules/cash/CashEventEmitter.sol#L149
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/modules/cash/CashEventEmitter.sol
+        detail: Spend emits safe, txId (indexed card-transaction id), binSponsor, tokens, amounts, USD amounts and mode. Cashback and ReferrerCashback events link safes to spender and referrer addresses.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/tx/0xdb50399e77874358090b384be2d0057478ad32a2c777a2a2eda922ef05b4f565
+        address: "0x380B2e96799405be6e3D965f4044099891881acB"
+        block_number: 157880145
+        detail: The sample Spend log has safe 0x1DcE...3e76, txId 0x72cd6c00...f7d4, and USDT moving to SettlementDispatcherRain.
+        checked_at: "2026-10-07"
+    finding: >-
+      No merchant or order data goes onchain. Every purchase is still a public event from a long-lived Safe, carrying a per-transaction card id, the BIN sponsor and USD amounts. Referral cashback events publicly link two users' Safes. Judgment call: the txId works like an invoice id that the issuer side can join to merchant data; it is disclosed in the docs' event list. Disclosed tags = 1, not 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/interfaces/ICashModule.sol#L55-L60
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/interfaces/ICashModule.sol
+        detail: BinSponsor enum names Reap, Rain, PIX and CardOrder; settlement dispatchers per sponsor are set only by the upgrade timelock.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/vault
+        detail: The docs name Turnkey as the signer that owns every Vault.
+        checked_at: "2026-10-07"
+        quote: "Turnkey signer is automatically created for your account"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international
+        detail: Issuer Third National and Visa receive transaction and personal data under the cardholder agreement.
+        checked_at: "2026-10-07"
+        quote: "issued by Third National pursuant to a license from Visa"
+    finding: >-
+      A card payment is seen by ether.fi's backend, Rain or Reap, Third National and Visa. Signing goes through Turnkey, and the KYC vendor is not named. These parties are disclosed in docs or code, but none can be swapped by the user. No trace was run. Present and disclosed, not swappable = 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/settlement-dispatcher/SettlementDispatcherV2.sol#L783-L787
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/settlement-dispatcher/SettlementDispatcherV2.sol
+        detail: The settlement dispatcher holds spent funds until bridged. withdrawFunds() lets ADMIN_TIMELOCK_ROLE (the 8 h operating timelock) send them to any recipient.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x50A233C4a0Bb1d7124b0224880037d35767a501C
+        address: "0x50A233C4a0Bb1d7124b0224880037d35767a501C"
+        block_number: 157880645
+        detail: SettlementDispatcherRain is a UUPS proxy (implementation slot 0x759fdbf7...4097), upgradeable by the RoleRegistry owner (upgrade timelock 0x9106...4434).
+        checked_at: "2026-10-07"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x000000000000000000000000759fdbf74f34f66e0d1991e6edf55d1b828a4097"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x1DcE164910A972F8AD755cb737E280143d593e76
+        address: "0x1DcE164910A972F8AD755cb737E280143d593e76"
+        block_number: 157880645
+        detail: Sample Safe has 1 owner, EOA 0xcb99F1F2D80141A0c8672EB0F99e50019Bbab20D (the Turnkey key). Recovery signers are the ether.fi governance Safe and 0x4F5eB42edEce3285B97245f56b64598191b5A58E, threshold 2, recovery delay 259200 s.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x96a5d35b000000000000000000000000a6cf33124cb342d1c604cac87986b965f428aac4"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+    finding: >-
+      At rest, funds sit in the user's beacon-proxy Safe. When a card payment is made they move to an ether.fi-controlled, upgradeable settlement dispatcher, which the operating timelock can drain to any address. This is a provider-held escrow disclosed in code, so 1. Judgment call: the dispatcher's redirect power reads like the 0 anchor, but the funds are already the card payment owed to the issuer; scored 1 for consistency with Gnosis Pay's settlement Safe. By default, ether.fi plus an ether.fi-chosen third party can also take over a Safe through recovery after 3 days, unless the owner cancels.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B
+        address: "0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B"
+        block_number: 157880645
+        detail: RoleRegistry owner() = upgrade timelock 0x9106...4434. That address is the sole upgrader for every UUPS proxy (RoleRegistry.onlyUpgrader L270-L272) and for the Safe beacon, via SafeFactory.upgradeBeaconImplementation. EIP-1967 admin slots are zero (UUPS).
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000009106cd76e10ac60d1dd16144243416ebd2c64434"
+        recheck: cast call 0x5C1E3D653fcbC54Ae25c2AD9d59548D2082C687B "owner()(address)" --rpc-url https://mainnet.optimism.io --block 157880645
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x9106cD76E10Ac60D1dd16144243416EbD2C64434
+        address: "0x9106cD76E10Ac60D1dd16144243416EbD2C64434"
+        block_number: 157880645
+        detail: getMinDelay() = 172800 s (2 days). The proposer is governance Safe 0xA6cf...AAC4, and the executor role is not open.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xf27a0c92"
+          expect: "0x000000000000000000000000000000000000000000000000000000000002a300"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0xA6cf33124cb342D1c604cAC87986B965F428AAC4
+        address: "0xA6cf33124cb342D1c604cAC87986B965F428AAC4"
+        block_number: 157880645
+        detail: Governance Safe (Safe 1.4.1) has getThreshold() = 3 of 6 owners. getModulesPaginated(0x1,10) returns none, and the guard slot is zero. Three owners (0xE63794CF..., 0x566E58ac..., 0x5c8c76F2...) appear in ether.fi's published Ethereum signer list; 0x4024380A..., 0x781C3EF0... and 0xD3107493... are not disclosed anywhere I found.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xe75235b8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
+        recheck: cast call 0xA6cf33124cb342D1c604cAC87986B965F428AAC4 "getModulesPaginated(address,uint256)(address[],address)" 0x0000000000000000000000000000000000000001 10 --rpc-url https://mainnet.optimism.io --block 157880645; cast storage 0xA6cf33124cb342D1c604cAC87986B965F428AAC4 0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8 --rpc-url https://mainnet.optimism.io --block 157880645
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x48e1630278D8310c86650405ebfbc110CdF3D1ec
+        address: "0x48e1630278D8310c86650405ebfbc110CdF3D1ec"
+        block_number: 157880645
+        detail: All user Safes are beacon proxies of this beacon. implementation() = 0x79A6...397e, and owner() = EtherFiSafeFactory 0xF4e1...d8CF (so the upgrade timelock controls it).
+        checked_at: "2026-10-07"
+        check:
+          call: "0x5c60da1b"
+          expect: "0x00000000000000000000000079a6d20280e4b564ea1d8f5369c6544887f7397e"
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/data-provider/EtherFiDataProvider.sol#L220-L223
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/data-provider/EtherFiDataProvider.sol
+        detail: Default modules, which are enabled on every Safe (ModuleManager.sol L187-L191) and can call execTransactionFromModule, are set by ADMIN_TIMELOCK_ROLE, the operating timelock with getMinDelay() = 28800 s (8 h).
+        checked_at: "2026-10-07"
+    finding: >-
+      Every contract, including every user Safe through the beacon, can be upgraded by a 2-day timelock fed by a 3-of-6 Safe with no modules or guard. Default modules that act on all Safes change behind an 8 h timelock. Both delays exceed the 10 s withdrawal delay (S4), but half the Safe signers are undisclosed and no notice channel is named in the repo. Multisig plus timelock, with undisclosed signers and no notice channel = 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0
+        address: "0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0"
+        block_number: 157880645
+        detail: getData(0x1DcE...3e76) gives spendingLimit dailyLimit 100000e6 and monthlyLimit 1000000e6 (USD, 6 decimals). getDelays() = (10, 10, 10) s for withdrawal, spend-limit and mode changes.
+        checked_at: "2026-10-07"
+        recheck: cast call 0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0 "getDelays()(uint64,uint64,uint64)" --rpc-url https://mainnet.optimism.io --block 157880645
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/modules/cash/CashModuleCore.sol#L409-L436
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/modules/cash/CashModuleCore.sol
+        detail: No ERC-20 approve is used. Each spend decrements the Safe's user-set daily and monthly limit, and funds go only to the settlement dispatcher for the chosen BIN sponsor.
+        checked_at: "2026-10-07"
+    finding: >-
+      There is no token approval. Instead, ether.fi's wallet role can pull up to a refilling daily/monthly limit that the user sets, routed only to the settlement dispatchers. Judgment call: this is bounded and narrowly routed but not exact-amount, so 2 (the bounded-allowance anchor). The sample limit ($100k/day) is high, and any default module can move Safe funds outside this limit.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/src/modules/cash/CashModuleSetters.sol#L248-L260
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: src/modules/cash/CashModuleSetters.sol
+        detail: requestWithdrawal is callable by anyone with Safe-owner signatures, is not whenNotPaused, and only allows whitelisted withdraw assets. processWithdrawal (CashModuleCore L309-L311) is open to anyone after the delay.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/address/0xDC515Cb479a64552c5A11a57109C314E40A1A778
+        address: "0xDC515Cb479a64552c5A11a57109C314E40A1A778"
+        block_number: 157880645
+        detail: getRecoveryDelayPeriod() = 259200 s (3 days). The withdrawal delay on CashModule is 10 s, and 27 OP tokens are whitelisted for withdrawal.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xd42de6a2"
+          expect: "0x000000000000000000000000000000000000000000000000000000000003f480"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/vault
+        detail: The Vault owner key is a Turnkey signer reached through ether.fi app login.
+        checked_at: "2026-10-07"
+        quote: "Turnkey signer is automatically created for your account"
+    finding: >-
+      Chain of reasoning: by S1, funds at rest stay in the user's Safe. By C2 = 0 and C3 = 0, card settlement stops if ether.fi disappears. By O3 = 1, there is no self-hostable frontend. The contract withdrawal path exists in verified source and works while paused. But it needs a signature from the Turnkey-held owner key, which is reached through ether.fi's app, and I found no documented key export. ADMIN_ROLE can also de-list assets instantly. Judgment call: retrieval without ether.fi is a manual contract call that depends on getting the key out of Turnkey, so 1, not 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/tree/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit
+        commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+        path: audit
+        detail: 30 audit PDFs (Certora, Paladin, Nethermind). The Certora "Cash Module + Safe" report scopes cash-v3 PR 3 (45dc3ee to d6aa4845, final 12cbd745e029d1941f6f60b8e4ad9ff3d2528d4a) and names a fix commit per finding (e.g. 34546ae, ef608f4); the SettlementDispatcherV2 report cites fix commit 54150cc.
+        checked_at: "2026-10-07"
+        recheck: gh api repos/etherfi-protocol/cash-v3/commits/12cbd745e029d1941f6f60b8e4ad9ff3d2528d4a --jq .sha
+      - tier: verified
+        kind: repo
+        url: https://github.com/etherfi-protocol/cash-v3/tree/34546ae1136fbc2c175976d917084f771042a133/src
+        commit: "34546ae1136fbc2c175976d917084f771042a133"
+        path: src
+        detail: The fix commit cited for M-01 in the Cash Module + Safe audit exists in the repo, titled "fix hooks == address(0) case and CONFIGURE_MODULE_TYPEHASH to include moduleSetupData".
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/security/security-and-risks/audits
+        detail: The docs point to an Immunefi bounty for the protocol's contracts. The bounty scope is not in the cash-v3 repo.
+        checked_at: "2026-10-07"
+        quote: "runs a public bug bounty on"
+    finding: >-
+      Audits are pinned to commits and name per-finding fix commits; a live bounty exists. Two things are missing for 3: the bounty scope is not in the repo, and the deployed implementations (Oct 2026) are far past the audited commits, with later modules covered by separate reports I did not map one by one. Lower anchor taken = 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The cardholder agreements (Inc. U.S. and International) say the card is issued by Third National under a licence from Visa, and that the issuer does not hold or control the user's wallet. For Nigeria the card is marketed by BANEX Microfinance Bank, licensed by the Central Bank of Nigeria. ether.fi's own risks page states that ether.fi is not a regulated financial institution and that card use is governed by the cardholder agreement and the issuer's terms (https://etherfi.gitbook.io/etherfi/resources/ether.fi-whitepaper/risks, https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international). I found no primary source stating Third National's regulator.
+
+notes: >-
+  Scored the Optimism core-chain deployment from cash-v3 at a5024d0 (2026-10-05); onchain reads are pinned to OP block 157880645, with a sample spend at 157880145. www.ether.fi sits behind a Vercel bot checkpoint (HTTP 429 to curl), so website and legal citations use ether.fi's GitBook (etherfi.gitbook.io), which serves the same Terms, Privacy Policy and cardholder agreements. The ether.fi app, card backend and Turnkey integration are closed, so P5 and S5 are unknown.

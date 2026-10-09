@@ -1,0 +1,404 @@
+slug: xplace-card
+name: XPlace Card
+type: card
+website: https://x.place
+primary_chain:
+  name: Solana
+  caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+  basis: >-
+    XPlace Terms s1 and s5.4 say Collateral and Credit Mode run through Kamino Finance smart contracts on Solana, and the homepage FAQ says XPlace runs on Solana. Kamino's lending program KLend2g3... is an OtterSec-verified build of Kamino-Finance/klend at a08760976f. The unit is that program as used for XPlace collateral. Excluded: Rain's card collateral and any XPlace-owned program (FYEO-audited per marketing), because no address could be found; no other chain is named.
+
+repos:
+  - url: https://github.com/Kamino-Finance/klend
+    role: contracts
+    license: BUSL-1.1
+
+contracts:
+  - address: "KLend2g3cP87fffoy8q1mQqGKjrxjC8boSyAYavgmjD"
+    caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+    role: Kamino Lending program (upgradeable; collateral and credit)
+    verified: verified-build
+  - address: "6hhBGCtmg7tPWUSgp3LG6X2rsmYWAc4tNsA6G4CnfQbM"
+    caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+    role: Kamino upgrade multisig (Squads v4, 5-of-10, 24 h lock)
+    verified: none
+
+components:
+  - name: Kamino Lending program (klend)
+    role: contracts
+    public: true
+    license: BUSL-1.1
+    operator: Kamino (upgrade key held by a Squads 5-of-10 multisig)
+    required: true
+    repo: https://github.com/Kamino-Finance/klend
+  - name: XPlace mobile app and embedded wallet sign-in (email, Google, Apple)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Pontech Group L.L.C-FZ (XPlace)
+    required: true
+  - name: XPlace backend (credit mode, card funding, XP, membership)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Pontech Group L.L.C-FZ (XPlace)
+    required: true
+  - name: XPlace smart contracts (claimed, address not published)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Pontech Group L.L.C-FZ (XPlace)
+    required: false
+  - name: Rain card programme (Card Partner; authorization, clearing, fiat settlement)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Signify Holdings, Inc. (Rain)
+    required: true
+  - name: Visa card network
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Sumsub identity verification
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Sumsub
+    required: true
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+        quote: "XPlace may freeze, restrict, or block your account, wallet interactions, or card without prior notice"
+        detail: Terms s12.3 let XPlace freeze or block an account, wallet interactions or the card without notice; s12.4 says it need not give a reason.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/address/KLend2g3cP87fffoy8q1mQqGKjrxjC8boSyAYavgmjD
+        address: "KLend2g3cP87fffoy8q1mQqGKjrxjC8boSyAYavgmjD"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 454205453
+        detail: klend is a BPF upgradeable program (programData 9uSbGW1y9H5Av6H5TKxQ1wnFApSq2t3oEpfF2YfjDQGA); the Kamino lending market XPlace uses was not identified, so its market-owner powers could not be read.
+        checked_at: "2026-10-07"
+    finding: >-
+      XPlace can freeze or block an individual account, its wallet interactions, or the card without prior notice, and it need not say why. That meets anchor 0. The lending market behind XPlace collateral could not be identified onchain, so the market owner's powers inside Kamino were not assessed. Card blocking by Rain sits offchain.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+        quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
+        detail: Terms s5.1 say card settlement is done by the Card Partner (Rain, s1) through licensed financial infrastructure; XPlace does not issue cards.
+        checked_at: "2026-10-07"
+    finding: >-
+      A merchant is paid over Visa by Rain. Neither payer nor payee can complete a card payment by calling a contract. Kamino calls (deposit, borrow, repay) are direct, but they fund the card; they do not settle it.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+        quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
+        detail: The card path runs through the XPlace app and backend, Rain and Visa; no XPlace repository or self-host path exists (gh search for xplace / x.place found no XPlace-owned org).
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card payment depends on XPlace's closed app and backend and on Rain. None is public or has a fallback. Closed and single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+        quote: "XPlace may employ IP geolocation, KYC data, and screening tools to enforce these restrictions"
+        detail: Terms s3 list prohibited countries and s3.4 bars persons on OFAC, UN or UAE sanctions lists, enforced by IP geolocation, KYC data and screening tools.
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions and geographic screening is disclosed in the Terms and runs in XPlace's closed services, not in public code. The card path cannot bypass it (C2 = 0). Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/xplace/collateral.md
+        quote: "SOL – 65% LTV, ETH (wETH) – 70% LTV, BTC (cbBTC) – 70% LTV"
+        detail: The Collateral page enumerates SOL, wETH, cbBTC, USDT and jitoSOL with LTVs; Credit is issued in USDC; the homepage says XPlace runs on Solana. No page states the freeze or blacklist powers of the USDC, USDT, cbBTC or wETH issuers.
+        checked_at: "2026-10-07"
+    finding: >-
+      Tokens and the chain are listed in docs only, and issuer freeze powers are not stated to cardholders. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://verify.osec.io/status/KLend2g3cP87fffoy8q1mQqGKjrxjC8boSyAYavgmjD
+        address: "KLend2g3cP87fffoy8q1mQqGKjrxjC8boSyAYavgmjD"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 454205453
+        detail: OtterSec verify registry reports is_verified true, on-chain hash = executable hash b1344d19...c22d9, built from Kamino-Finance/klend commit a08760976f51a3a58c4a0c6ea27b4a0e565bca79 (last verified 2026-08-20).
+        checked_at: "2026-10-07"
+        recheck: "curl -s https://verify.osec.io/status/KLend2g3cP87fffoy8q1mQqGKjrxjC8boSyAYavgmjD"
+      - tier: verified
+        kind: repo
+        url: https://github.com/Kamino-Finance/klend/tree/a08760976f51a3a58c4a0c6ea27b4a0e565bca79/programs
+        commit: "a08760976f51a3a58c4a0c6ea27b4a0e565bca79"
+        path: programs
+        detail: The verified build's source tree (Anchor workspace) at the pinned commit.
+        checked_at: "2026-10-07"
+    finding: >-
+      The Kamino lending program is a reproducible verified build of a pinned public commit. The rest of the payment path is not: XPlace's own contracts (claimed as FYEO-audited) and Rain's card collateral program have no published address, so their bytecode cannot be matched. Some contracts verified, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/Kamino-Finance/klend/tree/a08760976f51a3a58c4a0c6ea27b4a0e565bca79/programs
+        commit: "a08760976f51a3a58c4a0c6ea27b4a0e565bca79"
+        path: programs
+        detail: The only public code in the payment path is Kamino's klend program; no XPlace repository exists on GitHub (searches for xplace and x.place returned only unrelated projects).
+        checked_at: "2026-10-07"
+    finding: >-
+      Only third-party contracts are public. The XPlace app, backend, any XPlace contracts and the card integration are closed, with no API schema published. Contracts only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+        quote: "XPlace grants you a limited, non-exclusive, non-transferable, revocable license to access and use the Platform"
+        detail: The Platform is licensed for personal use only; no XPlace code, build or deploy instructions are published.
+        checked_at: "2026-10-07"
+    finding: >-
+      There is no path for a third party to run the XPlace product. Kamino's program can be built, but the card product around it cannot. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/Kamino-Finance/klend/blob/a08760976f51a3a58c4a0c6ea27b4a0e565bca79/LICENSE
+        commit: "a08760976f51a3a58c4a0c6ea27b4a0e565bca79"
+        path: LICENSE
+        detail: klend is under Business Source License 1.1 (Licensor StroudGlobal S.A.), a source-available licence.
+        checked_at: "2026-10-07"
+    finding: >-
+      The only public repo is source-available (BUSL-1.1), and the XPlace app, backend and Rain card programme are closed. Required components are closed, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+        quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
+        detail: The card cannot run without XPlace's closed platform and Rain.
+        checked_at: "2026-10-07"
+    finding: >-
+      The core card product cannot run without proprietary hosted services. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-card-privacy-policy
+        quote: "Portions of the Sites may use Google Analytics"
+        detail: The Card Privacy Policy discloses analytics services including Google Analytics; the Platform Privacy Policy s6 mentions analytics and application performance monitoring providers without naming them.
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics is disclosed in the policies. The app is closed and no trace was run. Judgment call: disclosed and presumed on by default, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-privacy-policy
+        quote: "XPlace collects Biometric Data as part of identity verification through Sumsub"
+        detail: The Privacy Policy lists government ID, proof of address, selfie and liveness biometrics, wallet addresses, transaction history and device data, each with a stated lawful basis.
+        checked_at: "2026-10-07"
+    finding: >-
+      KYC and biometric data are collected beyond settlement needs. Their legal basis is disclosed, but only in a hosted policy, not in code or a versioned repo document. Documented cap, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-privacy-policy
+        quote: "We use third-party infrastructure providers including cloud hosting services, database providers, and application performance monitoring tools"
+        detail: The policy names Sumsub, the Card Partner and Kamino, but cloud, database, monitoring and analytics processors are described by category only.
+        checked_at: "2026-10-07"
+    finding: >-
+      Rain, Sumsub and Kamino are named; the infrastructure, monitoring and analytics vendors that see app traffic are not. None is swappable. Judgment call: between 1 (disclosed in docs) and 0 (undisclosed third parties) I take the lower, because some processors are named only by category.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/address/9uSbGW1y9H5Av6H5TKxQ1wnFApSq2t3oEpfF2YfjDQGA
+        address: "9uSbGW1y9H5Av6H5TKxQ1wnFApSq2t3oEpfF2YfjDQGA"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 454205477
+        detail: klend programData upgrade authority = GzFgdRJXmawPhGeBsyRCDLx4jAKPsvbUqoqitzppkzkW (bytes 13-45 of the account), last deployed at slot 440486775.
+        checked_at: "2026-10-07"
+        recheck: "curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"getAccountInfo\",\"params\":[\"9uSbGW1y9H5Av6H5TKxQ1wnFApSq2t3oEpfF2YfjDQGA\",{\"encoding\":\"jsonParsed\",\"dataSlice\":{\"offset\":0,\"length\":0}}]}'"
+      - tier: documented
+        kind: document
+        url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+        quote: "Collateral and Credit Mode functionality is provided through Kamino Finance smart contracts operating on the Solana blockchain"
+        detail: Terms s5.4; s10 discloses Protocol exploit, multisig compromise and liquidation risk.
+        checked_at: "2026-10-07"
+    finding: >-
+      Collateral sits in Kamino lending reserves, an upgradeable program, and the user holds the obligation; this is disclosed. Card spending is funded and settled by Rain offchain, and how USDC reaches Rain could not be observed. Upgradeable escrow, disclosed, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/address/6hhBGCtmg7tPWUSgp3LG6X2rsmYWAc4tNsA6G4CnfQbM
+        address: "6hhBGCtmg7tPWUSgp3LG6X2rsmYWAc4tNsA6G4CnfQbM"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 454205583
+        detail: Squads v4 multisig account (owner SQDS4ep6...) has config_authority = default (autonomous), threshold 5, time_lock 86400 s and 10 members, all with full permissions; its vault GzFgdRJX... is the klend upgrade authority (it signs VaultTransactionExecute tx uH9cTFjr...xun at slot 453889271).
+        checked_at: "2026-10-07"
+        recheck: "curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"getAccountInfo\",\"params\":[\"6hhBGCtmg7tPWUSgp3LG6X2rsmYWAc4tNsA6G4CnfQbM\",{\"encoding\":\"base64\"}]}'  # decode: threshold u16 at byte 72, time_lock u32 at 74, member count u32 at 99"
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/address/9uSbGW1y9H5Av6H5TKxQ1wnFApSq2t3oEpfF2YfjDQGA
+        address: "9uSbGW1y9H5Av6H5TKxQ1wnFApSq2t3oEpfF2YfjDQGA"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 454205477
+        detail: klend programData upgrade authority = Squads vault GzFgdRJXmawPhGeBsyRCDLx4jAKPsvbUqoqitzppkzkW.
+        checked_at: "2026-10-07"
+    finding: >-
+      The program that holds XPlace collateral can be upgraded by a Kamino Squads multisig, 5 of 10, after a 24-hour time lock. The members are bare keys with no published identities, and no notice channel is named in the klend repo. That is anchor 2. Judgment call: XPlace's own claimed contracts and the Rain collateral path were not found, so this score covers only the identified program; finding either could lower it.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The Terms name Pontech Group L.L.C-FZ (UAE) as operator and Signify Holdings, Inc. (Rain) as Card Partner, "a licensed card program manager and issuing sponsor". The Card Terms describe the card as issued by an unnamed Issuer under licence from Visa. I found no primary source naming XPlace's own licences or regulator.
+
+notes: >-
+  Type card: Kamino's klend program is a verified build of a public repo, and XPlace's Terms make it the protocol through which Collateral and Credit Mode run. Judgment call: klend is third-party and no XPlace user position was found onchain, so the link rests on XPlace's Terms; Cash Mode (plain USDC balance) may not touch Kamino at all. XPlace's own "smart contracts audited by FYEO" (homepage) and Rain's Solana collateral program have no published address; Rain's integration repo SignifyHQ/collateral-contract-integration-examples has IDLs but no mainnet program id. The Kamino market XPlace uses was not identified (none of the 44 markets in api.kamino.finance is named for XPlace). Solana items carry no `check` because the nightly re-check reads EVM words only.

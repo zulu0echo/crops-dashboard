@@ -1,0 +1,305 @@
+slug: jupiter-card
+name: Jupiter Card
+type: incumbent
+website: https://docs.jup.ag/user-docs/global/spend/jupiter-card
+repos: []
+contracts: []
+
+components:
+  - name: Jupiter app (Spend tab) and Global ID account (email, Google or Apple sign-in)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Jupiter
+    required: true
+  - name: Jupiter Spend backend and per-user deposit address
+    role: backend
+    public: false
+    license: proprietary
+    operator: Jupiter
+    required: true
+  - name: Rain card programme (issuer outside APAC; collateral claimed onchain)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Rain (Signify Holdings, Inc.)
+    required: true
+  - name: DCS card programme (issuer for nine APAC countries)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: DCS
+    required: false
+  - name: Visa card network
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: SumSub identity verification (Global ID)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Sumsub
+    required: true
+  - name: Noah off-ramp (card balance to bank)
+    role: other
+    public: false
+    license: proprietary
+    operator: Noah
+    required: false
+
+scores:
+  C1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/jupiter-card
+        quote: "Purchases go through the Visa network and are settled in fiat."
+        detail: The Jupiter Card page says deposits fund a USD-denominated Spend balance and purchases settle over Visa in fiat through the issuer (Rain or DCS by country).
+        checked_at: "2026-10-07"
+    finding: >-
+      Merchants are paid by the issuer over Visa. No contract path for payer or payee is documented or published.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/risks-and-security
+        quote: "Jupiter Spend relies on regulated financial partners to issue cards, process payments, and handle transfers."
+        detail: Risks & Security lists Rain and DCS (card), Noah (off-ramp and remittance) and DCS (QR Pay) as the partners each product runs through.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card payment needs Jupiter's closed Spend backend plus Rain or DCS and Visa. None is public and there is no fallback. Closed and single-vendor per user (each user gets one issuer, assigned by country).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/jupiter-card
+        quote: "Eligibility is reviewed case by case during KYC"
+        detail: The card page lists supported countries and US states, says eligibility is by country of residence and reviewed during KYC; the FAQ says some merchant categories are declined for compliance and risk reasons.
+        checked_at: "2026-10-07"
+    finding: >-
+      Geographic and KYC gating is disclosed in the docs; where and how it runs (Jupiter backend, SumSub, issuer) is not inspectable, and it cannot be bypassed because there is no direct path (C2 = 0). Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/jupiter-card
+        quote: "Users deposit USDC (on Solana, Ethereum, Sui, Arbitrum, or Base) or USDT (on Solana)"
+        detail: Deposit tokens and chains are enumerated on the card page and the Fees & Limits page; neither states the USDC or USDT issuers' freeze powers or any L2 sequencer assumption.
+        checked_at: "2026-10-07"
+    finding: >-
+      Tokens and chains are listed in docs only, with no statement of issuer freeze powers or sequencer assumptions for Arbitrum and Base. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/risks-and-security
+        quote: "Jupiter Spend relies on regulated financial partners to issue cards, process payments, and handle transfers."
+        detail: The card stack is Jupiter's app and backend plus partner services; none of the 202 repositories in github.com/jup-ag relates to Spend or the card (searched names and descriptions for spend, card, global, pay, rain, kyc, offramp).
+        checked_at: "2026-10-07"
+    finding: >-
+      No part of the card stack is public. The Solana-pay repos in jup-ag are unrelated forks. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/risks-and-security
+        quote: "Users are subject to the terms, conditions, and operational stability of these partners."
+        detail: The product runs on Jupiter's closed app and backend and on partner programmes; no repository needed to run it is public.
+        checked_at: "2026-10-07"
+    finding: >-
+      Required components are closed, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/risks-and-security
+        quote: "Jupiter Spend relies on regulated financial partners to issue cards, process payments, and handle transfers."
+        detail: The card cannot work without Jupiter's Spend service and the Rain or DCS card programme.
+        checked_at: "2026-10-07"
+    finding: >-
+      The product cannot run without proprietary hosted services. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/faq
+        quote: "Identity verification is required by law to help prevent fraud, money laundering, and misuse of financial services."
+        detail: Global ID verification requires an identity document, phone number, liveness check, personal information and a questionnaire, plus proof of address in APAC; verification data is handled by SumSub and a Global ID cannot be deleted once created.
+        checked_at: "2026-10-07"
+    finding: >-
+      KYC data beyond settlement needs is collected and its legal purpose is stated, but only in hosted docs; no privacy policy for Jupiter Spend was found. Documented cap, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend
+        quote: "All verification is handled by SumSub."
+        detail: The Spend overview names SumSub for identity verification; Risks & Security names Rain, DCS and Noah for card, QR Pay, off-ramp and remittance.
+        checked_at: "2026-10-07"
+    finding: >-
+      The third parties that see a card payment (issuer, Visa, SumSub, Noah for withdrawals) are named in docs and are not swappable; each user gets one issuer by country. No trace was run. Present, disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend
+        quote: "Spend balances are managed by the regulated financial partners."
+        detail: Deposits go to a per-user Spend deposit address and credit a USD balance; with a Rain card the docs say the stablecoins stay onchain as collateral, but no address or contract is published.
+        checked_at: "2026-10-07"
+    finding: >-
+      Between deposit and merchant, funds are held by Jupiter's partners, which is disclosed. The Rain "onchain collateral" statement could not be checked, because no collateral address or program id is published. Provider-held, disclosed, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/faq
+        quote: "With a Rain-issued card, a refund is added to your spend balance so you can keep using it, but it cannot be withdrawn."
+        detail: The FAQ says withdrawals from the card balance go to a bank account via Noah, are region-dependent, are not possible for USDT deposits, and refunds on Rain cards cannot be withdrawn; no crypto withdrawal path is documented.
+        checked_at: "2026-10-07"
+    finding: >-
+      Derived: custody is with partners (S1 = 1), there is no direct settlement path (C2 = 0), every service is closed and single-vendor (C3 = 0), and nothing can be self-hosted. The only documented exit is a partner-run, region-dependent bank withdrawal, so funds depend on the provider and its partners being live. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The docs say the card is issued through regulated partners, Rain outside APAC and DCS for Australia, Japan, Malaysia, the Philippines, Singapore, South Korea, Taiwan, Thailand and Vietnam, and that off-ramp and remittance run through Noah. I found no Jupiter Spend terms, cardholder agreement or privacy policy that names an issuing bank, licence or regulator.
+
+notes: >-
+  Eligibility: no verified contract and no public repository needed to run the card, so type is incumbent. Searched 2026-10-07: docs.jup.ag (llms.txt index; Spend overview, Jupiter Card, Risks & Security, Fees & Limits, FAQ); github.com/jup-ag (202 repos; none for Spend, card, Global ID or Rain); jupiter.global and jup.ag for terms or privacy pages (404); Rain's GitHub org SignifyHQ, whose collateral-contract-integration-examples repo has Solana IDLs (v2.00-2.05) but no mainnet program id, and whose Android SDK test fixtures name only a devnet program (A7oUtbpm..., absent on mainnet). The docs say Rain-card deposits stay onchain as collateral; if Rain or Jupiter publishes the collateral program or a user's collateral account, re-assess as type card. Deposits are also accepted on Ethereum, Sui, Arbitrum and Base. Card Map was not used.

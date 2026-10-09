@@ -1,0 +1,507 @@
+# Single source of truth for criteria. The site renders these; validate.mjs
+# reads the IDs from here, so adding a criterion here makes it required in
+# every provider file.
+pillars:
+  - id: C
+    name: Censorship Resistance
+    question: Who can block valid use, and can users route around them?
+  - id: O
+    name: Open
+    question: Is the whole stack visible?
+  - id: F
+    name: Free
+    question: Does the license actually let a third party fork, modify, and run it?
+  - id: P
+    name: Privacy
+    question: What can an observer learn, and did the user knowingly choose it?
+  - id: S
+    name: Security
+    question: Who can cause loss, lock users in, or change the rules?
+
+criteria:
+  - id: C1
+    pillar: C
+    title: Admin pause, freeze, or blacklist over the payment path
+    short: Admin pause or freeze powers
+    question: Can any privileged role stop, freeze, or block payments through the settlement contracts, and how is that role constrained?
+    why_it_matters: >-
+      A pause or blacklist key is a single point at which a third party can halt your receivables or single out your counterparties. The question for a risk committee is not whether such a key exists but who holds it, how many signers it takes, and how much notice you get before it is used.
+    anchors:
+      "3": No pause, freeze, blacklist, or relayer/allowlist role that can stop settlement exists in the settlement contracts.
+      "2": Such a role exists and is held by a Safe of at least 2-of-3 with disclosed signers, no enabled module or guard that bypasses the threshold, behind a timelock at least as long as the documented user exit, with its scope documented in code or NatSpec.
+      "1": Role held by a multisig that misses one of those conditions (no timelock, undisclosed signers, bypass modules), or the constraints are documented only.
+      "0": Role is EOA-held or undisclosed, or can target individual addresses with no notice.
+    verify_with:
+      - artifact: Role holders read onchain (owner(), AccessControl role members, pauser/guardian storage)
+        tier: verified
+      - artifact: Safe threshold and owners read onchain
+        tier: verified
+      - artifact: Timelock contract and its delay read onchain
+        tier: verified
+      - artifact: Source at a pinned commit showing what the role can reach
+        tier: verified
+      - artifact: Safe modules (getModulesPaginated) and guard (storage slot 0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8) read onchain
+        tier: verified
+    common_failures:
+      - Pauser is a single EOA described as "the team".
+      - Multisig threshold is 1-of-N, which is an EOA with extra steps.
+      - Blacklist inherited from a token is mistaken for a provider role (score that under C5).
+    provenance: contract
+
+  - id: C2
+    pillar: C
+    title: Direct settlement path
+    short: Settle without the provider
+    question: Can a payer or payee complete settlement by calling the public contracts directly, without the provider's API, signer, or relayer?
+    why_it_matters: >-
+      If settlement only works through the provider's servers, the provider can refuse service to anyone and an outage stops your cash flow. A documented direct path means the contracts, not the company, are the rail.
+    anchors:
+      "3": A payer or payee can complete settlement by calling the public contract directly, with the ABI and addresses documented.
+      "2": Possible but undocumented; reconstructable from verified source.
+      "1": Partial (for example settle but not refund or withdraw), or documented only.
+      "0": Settlement requires the provider's API, signer, or relayer.
+    verify_with:
+      - artifact: Contract entrypoints and modifiers at a pinned commit
+        tier: verified
+      - artifact: A reproduced direct call with written steps
+        tier: documented (trace)
+    common_failures:
+      - Entry point is public but checks a provider signature, so it is not really direct.
+      - Refund path is owner-only.
+    provenance: contract
+
+  - id: C3
+    pillar: C
+    title: Hosted intermediary dependence
+    short: Reliance on hosted services
+    question: Does the payment flow require a relayer, paymaster, bundler, or API that only the provider runs?
+    why_it_matters: >-
+      Every required hosted service is a place where access can be withdrawn. Self-hostable code plus a default fallback turns a vendor outage or refusal into an inconvenience rather than a stoppage.
+    anchors:
+      "3": No required relayer, paymaster, bundler, or API; or each has a documented self-host path with code in the repo and a fallback provider.
+      "2": Required intermediaries exist and their self-host code is public, but no fallback is configured by default.
+      "1": Intermediaries required, only documented, no public code.
+      "0": Required, closed, single-vendor.
+    verify_with:
+      - artifact: SDK source at a pinned commit showing hardcoded endpoints
+        tier: verified
+      - artifact: Repository containing the intermediary's code
+        tier: verified
+      - artifact: Config files showing configurable endpoints
+        tier: verified
+    common_failures:
+      - Relayer code is public but the SDK hardcodes the vendor URL with no override.
+
+  - id: C4
+    pillar: C
+    title: Settlement-layer neutrality and disclosed edge filtering
+    short: Neutral settlement, disclosed filtering
+    question: Is the settlement layer free of address or geographic filtering, and is any filtering at the edge disclosed and avoidable?
+    why_it_matters: >-
+      Regulated providers often must screen sanctions lists, and an institution should expect them to. What matters is where the screening sits: filtering at the edge, disclosed, with a neutral settlement layer underneath, leaves the rail usable by anyone the law allows. Filtering hidden in the settlement contracts, or undisclosed anywhere, does not.
+    anchors:
+      "3": Settlement contracts contain no address or geographic filtering, and any filtering in the SDK, frontend, or backend is disclosed in code or a versioned repo document, names its list source, and is bypassed by the direct settlement path (C2 at least 2). Requires every required component in the request path to be public, or a trace.
+      "2": Settlement contracts are neutral and edge filtering is disclosed, but it cannot be bypassed (C2 below 2).
+      "1": Edge filtering is disclosed in docs only, or the neutrality of the settlement layer cannot be shown from code.
+      "0": Undisclosed filtering anywhere, or filtering in the settlement contracts without disclosure (also lowers C1).
+    verify_with:
+      - artifact: Search of SDK and frontend at a pinned commit for sanctions lists, IP geolocation calls, country gates
+        tier: verified
+      - artifact: Network trace from a running instance
+        tier: documented (trace)
+    common_failures:
+      - Screening happens in a closed backend the SDK calls, so the code search finds nothing (score unknown, not 3).
+    provenance: client
+    absence: true
+
+  - id: C5
+    pillar: C
+    title: Inherited freeze exposure disclosed
+    short: Token and chain freeze risks disclosed
+    question: Are the tokens and chains the rail depends on enumerated, with their issuers' freeze powers and sequencer assumptions stated to payees?
+    why_it_matters: >-
+      A censorship-resistant contract settling in a freezable stablecoin on a centralized sequencer inherits both of those controls. Payees should be told which ones they are accepting.
+    anchors:
+      "3": Supported tokens and chains enumerated in code and docs, with issuer freeze/blacklist powers and sequencer or forced-inclusion assumptions stated to payees.
+      "2": Enumerated in code, assumptions not stated.
+      "1": Enumerated in docs only.
+      "0": Not enumerated, or misstated.
+    verify_with:
+      - artifact: Token allowlist in contracts or SDK config at a pinned commit
+        tier: verified
+      - artifact: L2BEAT entry for the primary chain (sequencer assumptions)
+        tier: documented
+    common_failures:
+      - Token list lives only in a hosted API response.
+
+  - id: O1
+    pillar: O
+    title: Contracts verified and matching
+    short: Contracts verified onchain
+    question: Does the deployed bytecode match public source, and can a third party rebuild it?
+    why_it_matters: >-
+      Unverified bytecode means every other onchain finding is a guess. A full Sourcify match plus a build script lets an auditor confirm that what was reviewed is what is running.
+    anchors:
+      "3": All settlement contracts verified on Sourcify (full match) and on an explorer, and the repo contains a build script reproducing the deployed bytecode from a pinned commit.
+      "2": Verified on an explorer only, or partial match.
+      "1": Some contracts verified.
+      "0": Unverified. Incumbents are unknown unless they have contracts.
+    verify_with:
+      - artifact: Sourcify API response for each address
+        tier: verified
+      - artifact: Explorer verification page
+        tier: verified
+      - artifact: Build script at a pinned commit
+        tier: verified
+    common_failures:
+      - Implementation verified but proxy not, or the reverse.
+
+  - id: O2
+    pillar: O
+    title: Full stack public
+    short: Whole stack published
+    question: Are the SDK, frontend, backend or API, indexer, and deploy scripts all public?
+    why_it_matters: >-
+      Open contracts with a closed backend still leave you trusting the backend. The public share of the stack is the share you can inspect, fork, or run without asking.
+    anchors:
+      "3": SDK, frontend/widget, backend or API, indexer, and deploy scripts all public.
+      "2": Everything except the backend, with the API schema published.
+      "1": SDK or contracts only.
+      "0": Nothing, or a client shell that cannot run without private services.
+    verify_with:
+      - artifact: The provider's repos list with roles; absence is the finding
+        tier: verified
+    common_failures:
+      - Archived or stale repos counted as the live stack.
+
+  - id: O3
+    pillar: O
+    title: Reproducible self-host
+    short: Can be self-hosted
+    question: Can a stranger reach a working deployment from the README?
+    why_it_matters: >-
+      Code you cannot run is documentation. A recorded self-host attempt is the only evidence that the walkaway option exists in practice.
+    anchors:
+      "3": A stranger can reach a working deployment from the README (build steps, env vars, ABIs, addresses, schemas), shown either by a recorded attempt (trace) or by a deploy script in the repo that completes a test payment and has a recorded successful run.
+      "2": Reproducible with minor undocumented steps, recorded.
+      "1": Docs exist; reproduction not attempted, or failed with blockers listed.
+      "0": No path.
+    verify_with:
+      - artifact: The reproduction attempt with steps
+        tier: documented (trace)
+      - artifact: README at a pinned commit, for presence of each required element
+        tier: verified
+    common_failures:
+      - Scoring 3 from a README without attempting it. Without a recorded attempt the cap is 1.
+
+  - id: O4
+    pillar: O
+    title: Documented interfaces and export
+    short: Interfaces and data export
+    question: Are ABIs, event schemas, an API schema, and a payee data export in a non-proprietary format all in the repo?
+    why_it_matters: >-
+      Interfaces and exports are what let you integrate without the vendor's SDK and leave with your records intact.
+    anchors:
+      "3": ABIs, event schemas, API schema (OpenAPI or equivalent), and a payee data export in a non-proprietary format, all in the repo.
+      "2": ABIs and API schema; export absent or proprietary.
+      "1": Documented only.
+      "0": None.
+    verify_with:
+      - artifact: Files at a pinned commit
+        tier: verified
+    common_failures:
+      - API reference only on a hosted docs site, not versioned with the code.
+
+  - id: F1
+    pillar: F
+    title: License of every repo needed to run the product
+    short: Open-source licences
+    question: Does every repository needed to run the product carry an OSI-approved license?
+    why_it_matters: >-
+      Visible code without a license is not legally forkable. Source-available licenses (BUSL, SSPL, ELv2, Commons Clause) keep the vendor's permission in the loop for exactly the scenario where you need to run without them.
+    anchors:
+      "3": OSI-approved license on every repo in repos.
+      "2": OSI-approved on contracts and SDK; one non-critical repo missing a license or source-available.
+      "1": Source-available (BUSL, SSPL, ELv2, Commons Clause, custom) on a critical repo.
+      "0": No license, or terms requiring provider permission to run a fork.
+    verify_with:
+      - artifact: LICENSE file at a pinned commit, per repo
+        tier: verified
+    common_failures:
+      - README says "open source" with no LICENSE file. That is a claim.
+
+  - id: F2
+    pillar: F
+    title: Relicensing risk and license stability
+    short: Protection against relicensing
+    question: Can the provider unilaterally relicense future versions, and has it committed not to?
+    why_it_matters: >-
+      A permissive license today can become source-available tomorrow if a CLA assigns the rights. Past relicensing events are the best predictor.
+    anchors:
+      "3": No CLA, or a CLA that does not permit unilateral relicensing, plus a written license-stability commitment in the repo.
+      "2": No CLA, no commitment.
+      "1": CLA permits relicensing; commitment exists in docs.
+      "0": CLA permits relicensing with no commitment, or a prior relicense event.
+    verify_with:
+      - artifact: CLA file and CONTRIBUTING at a pinned commit
+        tier: verified
+      - artifact: Git history of the LICENSE file
+        tier: verified
+    common_failures:
+      - CLA enforced by a bot configured outside the repo.
+
+  - id: F3
+    pillar: F
+    title: Open-core dependence
+    short: No proprietary dependencies
+    question: Does a production deployment need a proprietary plugin or hosted-only service?
+    why_it_matters: >-
+      Open core with a closed production path means the license on the open part does not buy the freedom to run the product.
+    anchors:
+      "3": A production deployment needs no proprietary plugin or hosted-only service.
+      "2": Optional proprietary components; core works without them.
+      "1": Documented that production needs a hosted service with no open alternative.
+      "0": Core cannot run without proprietary components.
+    verify_with:
+      - artifact: Dependency manifests and config at a pinned commit
+        tier: verified
+      - artifact: The O3 reproduction attempt
+        tier: documented (trace)
+    common_failures:
+      - Hosted API key required at runtime for a "self-hosted" deployment.
+
+  - id: P1
+    pillar: P
+    title: Telemetry, analytics, and error-reporting SDKs
+    short: Tracking and analytics
+    question: Do the SDK, widget, or frontend ship analytics, telemetry, error reporting, or fingerprinting?
+    why_it_matters: >-
+      Analytics in a payment widget sends your customers' browsing and payment behaviour to a third party you have no contract with. It is also an undisclosed data-processing relationship for most compliance regimes.
+    anchors:
+      "3": None in SDK, widget, or frontend manifests and lockfiles, confirmed by trace.
+      "2": Present, off by default, opt-in visible in code.
+      "1": Present, on by default, disclosed in docs.
+      "0": Present and undisclosed, or fingerprinting libraries present.
+    verify_with:
+      - artifact: package.json, lockfile, and initialization code at a pinned commit
+        tier: verified
+      - artifact: Network trace from a running instance
+        tier: documented (trace)
+    common_failures:
+      - Sentry or PostHog initialised in the hosted frontend but not in the SDK; score covers both.
+    provenance: client
+    absence: true
+
+  - id: P2
+    pillar: P
+    title: Data collected beyond settlement needs
+    short: Data collected beyond payment
+    question: Does the flow collect anything beyond addresses, amounts, token, and chain?
+    why_it_matters: >-
+      Every extra field collected is a field that can leak, be subpoenaed, or be sold. Settlement needs very little. Regulated rails must collect identity data; the rubric credits collection limited to the legal requirement and disclosed with its basis, and marks down anything beyond it.
+    anchors:
+      "3": Only what settlement requires (addresses, amounts, token, chain).
+      "2": Additional fields are either optional and clearly optional in code, or legally required, limited to that requirement, and disclosed with their legal basis in code or a versioned repo document.
+      "1": Collection beyond settlement needs, disclosed in a policy only.
+      "0": Undisclosed collection, or collection beyond the stated legal requirement.
+    verify_with:
+      - artifact: API schema and form code at a pinned commit
+        tier: verified
+      - artifact: Privacy policy (may only lower the score)
+        tier: documented
+    common_failures:
+      - Treating a regulated card or mobile-money flow's KYC as undisclosed when the policy discloses it.
+
+  - id: P3
+    pillar: P
+    title: Onchain linkability
+    short: Payments linkable onchain
+    question: What do calldata and events reveal about who paid whom for what?
+    why_it_matters: >-
+      Public chains are permanent. Invoice IDs or payee tags in events let anyone reconstruct a merchant's revenue and customer list.
+    anchors:
+      "3": No payee identifiers, invoice metadata, or payer-payee linkage in calldata or events beyond what settlement needs; fresh addresses or stealth/privacy patterns available.
+      "2": Minimal linkage, documented.
+      "1": Invoice IDs or payee tags in events, disclosed.
+      "0": Plaintext metadata (emails, order contents) onchain, or undisclosed linkage.
+    verify_with:
+      - artifact: Event definitions and calldata encoding at a pinned commit
+        tier: verified
+      - artifact: Sample transactions on an explorer
+        tier: verified
+    common_failures:
+      - Treating a direct transfer as private; the transfer itself links payer and payee.
+
+  - id: P4
+    pillar: P
+    title: Third-party calls in the payment flow
+    short: Third parties in the payment flow
+    question: Which third parties see a request during a payment, and can they be swapped out?
+    why_it_matters: >-
+      Indexers, price oracles, and risk vendors in the critical path each see payer addresses and amounts. They are data processors whether or not anyone calls them that.
+    anchors:
+      "3": Only the configured RPC; no third-party indexer, risk-scoring, or pricing vendor in the critical path.
+      "2": Third parties present, named in code, swappable by config.
+      "1": Present, disclosed in docs only.
+      "0": Undisclosed third parties in the flow.
+    verify_with:
+      - artifact: SDK source for endpoints at a pinned commit
+        tier: verified
+      - artifact: Network trace
+        tier: documented (trace)
+    common_failures:
+      - Wallet-connect relays and RPC providers forgotten in the inventory.
+    provenance: client
+    absence: true
+
+  - id: P5
+    pillar: P
+    title: Configurable endpoints and self-hostable data layer
+    short: Endpoints can be changed
+    question: Can RPC and indexer URLs be changed, and is the indexer code public?
+    why_it_matters: >-
+      A hardcoded endpoint is both a privacy leak and a censorship point. Configurable endpoints plus public indexer code let an institution keep payment data inside its own perimeter.
+    anchors:
+      "3": RPC and indexer URLs configurable in the UI or SDK, and indexer code public.
+      "2": Configurable via code or env only.
+      "1": Documented workaround.
+      "0": Hardcoded.
+    verify_with:
+      - artifact: Config surface at a pinned commit
+        tier: verified
+    common_failures:
+      - RPC configurable but indexer hardcoded.
+
+  - id: S1
+    pillar: S
+    title: Custody of funds in flight
+    short: Who holds funds in transit
+    question: Who holds funds between payer and payee, and can the provider redirect them?
+    why_it_matters: >-
+      Custody in flight is where counterparty risk lives. A direct transfer has none; a provider wallet has all of it.
+    anchors:
+      "3": Direct payer-to-payee transfer, or payee-controlled non-upgradeable escrow.
+      "2": Escrow contract with a provider role bounded by a timelock and a documented exit.
+      "1": Provider-held wallet or upgradeable escrow, disclosed.
+      "0": Provider-held, undisclosed, or the provider can redirect funds.
+    verify_with:
+      - artifact: Fund flow in verified source at a pinned commit
+        tier: verified
+      - artifact: Balances and roles read onchain
+        tier: verified
+    common_failures:
+      - Bridged or swapped flows where an intermediate contract briefly holds funds and has a sweep function.
+    provenance: contract
+
+  - id: S2
+    pillar: S
+    title: Upgrade authority
+    short: Who can upgrade the code
+    question: Who can change the contract code, and with how much notice?
+    why_it_matters: >-
+      An upgrade key can replace every other guarantee on this page in one transaction. Its holder and delay are the ceiling on how much the rest can be trusted.
+    anchors:
+      "3": Non-upgradeable; or the upgrade admin is a Safe of at least 2-of-3 with disclosed signers and no threshold-bypassing module or guard, behind a timelock at least as long as the documented user exit, with a user notice channel named in the repo.
+      "2": Multisig admin with a timelock, but the timelock is shorter than the user exit, signers are undisclosed, or no notice channel is named.
+      "1": Multisig admin, no timelock.
+      "0": EOA admin, or undisclosed proxy admin.
+    verify_with:
+      - artifact: EIP-1967 admin and implementation slots read onchain
+        tier: verified
+      - artifact: Safe threshold read onchain
+        tier: verified
+      - artifact: Timelock contract read onchain
+        tier: verified
+      - artifact: Safe modules and guard of the admin Safe read onchain
+        tier: verified
+    common_failures:
+      - Checking the proxy admin contract but not who owns it.
+    provenance: contract
+
+  - id: S3
+    pillar: S
+    title: Token approval scope requested by the SDK
+    short: Token approval scope
+    question: How large an allowance does the SDK ask users to grant, and for how long?
+    why_it_matters: >-
+      Unbounded approvals turn any future bug or key compromise in the spender into a drain of every approving wallet.
+    anchors:
+      "3": Exact-amount approvals, or Permit2/EIP-2612 with expiry, by default.
+      "2": A bounded allowance by default (capped or refilling, limited to one receiver), or exact-amount with an unbounded opt-in clearly labelled in code.
+      "1": Unbounded by default, disclosed.
+      "0": Unbounded, undisclosed.
+    verify_with:
+      - artifact: Approval call sites in the SDK at a pinned commit
+        tier: verified
+      - artifact: A sample approval transaction
+        tier: verified
+    common_failures:
+      - Flows that avoid approvals entirely (plain transfers to a deposit address) scored as unknown rather than assessed.
+    provenance: client
+
+  - id: S4
+    pillar: S
+    title: Walkaway test
+    short: Funds safe if provider disappears
+    question: If the provider disappears tomorrow, do payees keep their funds and the ability to keep settling?
+    why_it_matters: >-
+      This is the question a treasury actually needs answered. It is derived from custody, direct settlement, intermediary dependence, and self-hosting, so it repeats facts scored elsewhere; it is kept in the Security minimum because it is the single question institutions ask first.
+    anchors:
+      "3": If the provider disappears, payees retain funds and can keep settling via the C2 path with a public frontend build.
+      "2": Funds retained and retrievable by the user through a verified direct path without the provider; settlement stops.
+      "1": Funds retrievable only through a documented manual contract call.
+      "0": Funds or access depend on provider liveness.
+    verify_with:
+      - artifact: Derived from S1, C2, C3, O3 evidence; the chain of reasoning is stated in the finding
+        tier: verified
+    common_failures:
+      - Scoring above what the S1, C2, C3, and O3 evidence supports. A score of 2 needs funds provably retrievable without the provider even when settlement stops; state each step.
+    derived_from:
+      - S1
+      - C2
+      - C3
+      - O3
+
+  - id: S5
+    pillar: S
+    title: Secret handling in the SDK
+    short: Secrets and webhook handling
+    question: Are secrets kept out of client bundles and are webhooks signed and verified?
+    why_it_matters: >-
+      Browser-shipped API keys and unsigned webhooks let an attacker impersonate the merchant or forge payment confirmations.
+    anchors:
+      "3": No secrets in client bundles, webhook signatures verified in reference code, keys scoped and rotatable.
+      "2": Minor issues documented.
+      "1": Secrets in client with a disclosed mitigation.
+      "0": API keys shipped to the browser, or unsigned webhooks.
+    verify_with:
+      - artifact: SDK and example code at a pinned commit
+        tier: verified
+      - artifact: Network trace
+        tier: documented (trace)
+    common_failures:
+      - Publishable "app IDs" mistaken for secrets; check what they authorise.
+    provenance: client
+    absence: true
+
+  - id: S6
+    pillar: S
+    title: Audits and bug bounty
+    short: Audits and bug bounty
+    question: Has the code been audited at a pinned commit, were findings fixed traceably, and is there a live bounty?
+    why_it_matters: >-
+      An audit tells you what a competent reviewer found at one commit. Its value depends on whether the deployed code is that commit and whether findings were fixed.
+    anchors:
+      "3": Audit report linked, audited commit pinned, each finding's resolution linked to a commit, live bounty program with scope in the repo.
+      "2": Audit pinned to a commit, resolutions not individually linked.
+      "1": Audit report only (documented tier cap).
+      "0": None.
+    verify_with:
+      - artifact: Audit report PDF
+        tier: documented
+      - artifact: Commit matching the audited hash
+        tier: verified
+      - artifact: Fix commits
+        tier: verified
+    common_failures:
+      - Audit of a previous version presented as covering the deployed contracts.

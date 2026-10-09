@@ -1,0 +1,17 @@
+Wirex One web app (https://one.wirexapp.com/) - excerpts of the production JavaScript bundle as served on 2026-10-07.
+Fetched with curl from the Next.js chunks referenced by https://one.wirexapp.com/ (read-only). Excerpts are verbatim except one redaction marked below: the bundle ships a literal OAuth client secret for the 'wirexone' SSO client, which is not reproduced here.
+
+== /_next/static/chunks/2etx4y2t9ozs4.js (app environment config) ==
+function rd(){return rs||(rs={appEnv:rc("prod"),appVersion:rc(""),externalApiUrl:rc("https://api-baas.wirexapp.com"),localStorageKey:rc("wirex-pay-one-uad-local"),sentryDsn:rc("https://06182988b9ee309c2deaaf0f1606f114@o4510555614019584.ingest.de.sentry.io/4510555724775504"),sentryProj:rc(""),privacyUrl:rc("NEXT_PUBLIC_PRIVACY_URL"),termsUrl:rc("NEXT_PUBLIC_TERMS_URL"),wirexAcquringCardUrl:rc("NEXT_PUBLIC_WIREXAPP_API_URL"),solverApiUrl:rc("NEXT_PUBLIC_SOLVER_API_URL"),configResourcesUrl:rc("https://resourses.wirexapp.com/api/config"),companyName:rc("Wirex One"),chainTestnet:"true"===rc("NEXT_PUBLIC_CHAIN_TESTNET"),sdkTestEnabled:"true"===rc("NEXT_PUBLIC_SDK_TEST_ENABLED"),wxSsoClientId:rc("wirexone"),wxSsoClientSecret:rc("[REDACTED by archiver: 15-character literal present in the served bundle]"),wxSsoRedirectUri:rc("https://one.wirexapp.com/"),debugTools:"true"===rc("NEXT_PUBLIC_APP_DEBUG_TOOLS"),debugClientId:rc(""),debugClientSecret:rc(""),multiLanguage:"true"===rc("NEXT_PUBLIC_MULTI_LANGUAGE"),crossmintSepa:"true"===rc("true"),trxCryptoStableSplit:"true"===rc("true"),backupMfaPromptIntervalDays:ru("NEXT_PUBLIC_BACKUP_MFA_PROMPT_INTERVAL_DAYS",3),growthbookClientKey:rc("sdk-YaMjlyEQc3CMmby"),growthbookApiHost:rc("https://cdn.growthbook.io"),secondaryChainId:ru("NEXT_PUBLIC_SECONDARY_CHAIN_ID",0)})}
+
+== /_next/static/chunks/0rny08nczhimp.js (crypto chain registration) ==
+,secondaryWalletManager:m,yieldManager:c}}}rg=(0,n._)([(0,o.CryptoChain)([84532,8453,5042002,5042]),(0,i._)("design:type",Function),(0,i._)("design:paramtypes"
+
+== /_next/static/chunks/1of3-t3m0rw2h.js (Amplitude analytics client) ==
+r&&SuppressedError,"".concat("AMP","_unsent")),J="$default_instance",K="https://api2.amplitude.com/2/httpapi",G="https://api.eu.amplitude.
+
+== /_next/static/chunks/35-_1w0wvvuqb.js (Google Tag Manager loader) ==
+,r.GoogleTagManager=function(e){let{gtmId:t,gtmScriptUrl:r="https://www.googletagmanager.com/gtm.js",dataLayerName:i="d
+
+== Base chain definition (same bundle set) ==
+defineChain)({...rr,id:8453,name:"Base",nativeCurrency:{name:"Ether",symbol:"ETH",decimals:18},rpcUrls:{default:{http:["https://mainnet.base.org"]}

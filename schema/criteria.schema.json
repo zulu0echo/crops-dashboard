@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "criteria.schema.json",
+  "title": "Criteria",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pillars",
+    "criteria"
+  ],
+  "properties": {
+    "pillars": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "question"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z]$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "pillar",
+          "title",
+          "short",
+          "question",
+          "why_it_matters",
+          "anchors",
+          "verify_with",
+          "common_failures"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z][0-9]+$"
+          },
+          "pillar": {
+            "type": "string",
+            "pattern": "^[A-Z]$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "short": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "question": {
+            "type": "string"
+          },
+          "why_it_matters": {
+            "type": "string"
+          },
+          "anchors": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "properties": {
+              "0": {
+                "type": "string"
+              },
+              "1": {
+                "type": "string"
+              },
+              "2": {
+                "type": "string"
+              },
+              "3": {
+                "type": "string"
+              }
+            }
+          },
+          "verify_with": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "artifact",
+                "tier"
+              ],
+              "properties": {
+                "artifact": {
+                  "type": "string"
+                },
+                "tier": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "common_failures": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "provenance": {
+            "enum": [
+              "contract",
+              "client"
+            ],
+            "description": "contract: a score of 3 needs onchain evidence about the deployed address. client: a score of 3 needs evidence naming the distributed package (name, version, integrity)."
+          },
+          "absence": {
+            "const": true,
+            "description": "Anchor 3 rewards the absence of a problem; 3 needs every required component public, or a trace."
+          },
+          "derived_from": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z][0-9]+$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

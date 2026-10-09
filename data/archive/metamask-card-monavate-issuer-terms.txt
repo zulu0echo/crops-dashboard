@@ -1,0 +1,582 @@
+Source: https://public.withcl.com/Monavate-Issuer-Terms-2023-Nov.pdf (linked as 'Crypto Life Card Cardholder Terms and Condition' from https://www.withcl.com/legal)
+Retrieved: 2026-10-07 with curl; text extracted from the PDF with pypdf 6.14.2 (extraction artefacts such as split words kept as-is).
+
+  
+MONAVATE CARD TERMS & 
+CONDITIONS 
+ 
+ 
+FROZEN TIME UNIPESSOAL 
+ 
+Monavate Business Debit Card Terms  
+ 
+1. Introduction  
+This Agreement contains the terms on which we provide the Services to you.   
+Please read this Agreement in full before you start using the Services; it contains important 
+information about us, the Services we will provide to you, the circumstances under which this 
+Agreement may be changed or ended, what to do and how to access help from us in the event 
+there is a problem as well as other relevant information.  
+Please contact us at support@cl-cards.com if you wish to discuss.  
+This Agreement refers to other documents that apply to the use of the Services as follows:  
+CL Platform Terms of Use 
+Privacy Policy 
+These additional documents are not part of the Framework Contract.  
+By starting to use the Services (including, for example, downloading the app, logging into your 
+secure personal log in area on our website, loading your E-wallet with funds or otherwise using the 
+Card to transact) you confirm that you accept and agree to this Agreement (including any updates 
+to this Agreement and the other documents referred to above).  
+2. Who we are and how to contact us 
+Our company information: UAB Monavate is a company incorporated in Lithuania under Legal 
+Entity Code: 305628001 with registered offices at Konstitucijos av. 21A, Vilnius, LT -08130m, 
+Lithuania. UAB Monavate is authorised and regulated by the Bank of Lithuania under Authorisation 
+Code: LB002139 
+We are authorised by the Bank of Lithuania: UAB Monavate is authorised and regulated by the 
+Bank of Lithuania under Authorisation Code: LB002139 
+How to contact us: You can contact us:  
+By phone: 01223 626 580 
+By email: info@monavate.com 
+By writing to:  
+ 
+Monavate Cambridge 
+The Officers' Mess 
+Royston Road 
+Duxford 
+Cambridge 
+CB22 4QH 
+By instant messaging / chat: When logged into your secure personal log in area of our website.  
+3. Glossary 
+ 
+Card means the payment card issued by us to you that is connected to your E-wallet and may be 
+used to transact.   
+ 
+E-wallet means an e-money account issued to you by us that you may load with funds and use to 
+transact.  
+ 
+Framework Contract means a contract for payment services which governs the future execution 
+of individual and successive payment transactions and which may contain the obligation and 
+conditions for setting up a payment account as defined in the UK Payment Services Regulations 
+2017. 
+ 
+Funding Source means a payment instrument (such as a credit card, debit card or bank account) 
+that you can link to your E-wallet by entering its credentials and subsequently use for Top-Ups from 
+time to time.  
+ 
+Services means the Card, E-wallet and other services provided by us to you  in connection with 
+the Card and the E-wallet.  
+ 
+Supported Currencies means those foreign currencies that we support and can be loaded onto 
+a E-wallet for spending.  
+ 
+Top-Up means loading “topping up” your E-wallet with funds.  
+ 
+ 
+4. Getting started 
+ 
+4.1. Corporate customer: By entering into this Agreement, you, the corporate customer, 
+confirm that you are not a consumer, micro-enterprise or a charity within the meaning of 
+the Payment Services Regulations 2017 (“PSR”) and agree:  
+ 
+a. none of the provisions of Part 6 of the PSR apply to this Agreement; and 
+b. regulations 61(1), 67(3), 67(4), 75, 77, 79, 80, 83, 91, 92 and 94 of the PSR do not apply 
+to this Agreement and a different time limit may be applied to this Agreement as to the 
+timeline set out in regulation 74(1) of the PSR.  
+ 
+4.2. Verification: We are required by law to verify certain details about you. We will not issue 
+the Card or open an E-wallet until we have verified your identity and performed such other 
+checks as we may in our discretion deem appropriate. 
+ 
+4.3. The information you provide must be accurate: The information you provide to us must 
+be accurate, complete and truthful at all times. If your personal information changes, then 
+you must update the information we hold about you. We may require additional information 
+from you from time to time and you  must cooperate by providing such information upon 
+request.  
+ 
+4.4. Electronic checks with third parties: We may share information which we receive from 
+you with other associated organisations or carry out checks on you electronically as is 
+necessary for the purposes of providing the Services. When we perform electronic checks, 
+we may disclose personal data about you to fraud prevention and credit reference 
+agencies who may keep a record of that information. By applying for  our Services, you 
+agree to certain personal data about you being passed to such agencies for this purpose. 
+You have the right of access to the personal records held by such fraud prevention 
+agencies. We will supply the names and addresses of the agencies we use upon written 
+request. 
+ 
+4.5. You must comply with laws applicable to you at all times. You must comply with laws 
+applicable to you at all times. This means when you must comply with all laws applicable 
+to you during time in which you are applying with us for Services, throughout the term of 
+this Agreement and for as long as we hold a balance of funds for you after this Agreement 
+ends.  
+ 
+ 
+5. About the Card and E-wallet  
+ 
+5.1. Description 
+ 
+The Card and the E-wallet are issued by us – Movavate Limited. Please see our company’s 
+details in Section 2 (Who we are and how to contact us).  
+ 
+Card 
+ 
+The Card is a payment card that can be used for online and in-store purchases worldwide at 
+merchants who accept Mastercard/Visa payment cards as a form of payment for goods and 
+services. The Card is not a credit card or a charge card . Transactions made using the Card 
+will be debited from the balance of funds held in the E-wallet.  
+ 
+E-wallet  
+ 
+The E-wallet is an e-money account. You may load the E-wallet with e-money using different 
+payment methods (see Section 5.3).   
+ 
+No interest is payable to you on the balance of funds held in the E-wallet; nor does the balance 
+of funds held in the E-wallet constitute a deposit.  
+ 
+The E-wallet may be used to transact. In order to use the E-wallet to transact, you must first 
+load funds onto the E-wallet (please see Section 5.3).  
+ 
+Once loaded with funds, you may send funds from the E-wallet to another payment account.  
+ 
+Each time you transact using the E-wallet or the Card , the balance of funds held in the E-
+wallet will be debited by the amount of the transaction plus any applicable fees.  
+ 
+In addition to GBP, you may load your E-wallet with funds in different Supported Currencies. 
+We do not support all foreign currencies. Please see the list of on website for those currencies 
+that we do support.  
+Please note that the funds held in your E-wallet are NOT protected by the Financial 
+Services Compensation Scheme ; however, we follow the requirements of the Electronic 
+Money Regulations 2011 which are designed to ensure the safety of funds held on accounts 
+such as this. 
+ 
+5.2. What happens in cases where there are insufficient funds in my E-wallet? 
+ 
+If you attempt to send money from the E-wallet or pay for a purchase using the Card and you 
+have an insufficient balance of funds held in your E-wallet to make that payment, the payment 
+will be declined.  
+ 
+You must have a sufficient balance of funds held in your E-wallet to make a payment. The 
+balance of funds held in your E-wallet must not be negative.  
+ 
+If you attempt to make a payment using the E-wallet or Card in a particular currency and you 
+do not hold a sufficient balance of that currency in the E-wallet or the payment otherwise 
+anticipates a currency that we do not support , the payment will be automatically processed 
+using a balance of another currency that you do hold in your E-wallet  and a currency 
+conversion rate will be applied (please see section 9.2 for currency conversion rates).  
+ 
+If you do not hold a balance in another currency upon which to draw funds to cover a 
+payment, your payment will be declined.  
+  
+  
+5.3. Loading funds into your E-wallet with Top-Up  
+ 
+5.3.1. Top-Up: You can load funds into your E-wallet by linking a Funding Source to your 
+E-wallet. You can link a Funding Source to your  E-wallet  by entering the Funding 
+Source’s credentials in the secure personal of in area of our website.   
+ 
+5.3.2. You may link up to three debit or credit cards or one bank account to your E-wallet  
+as a Funding Source. You must have no less than one valid Funding Source linked 
+to your E-wallet at all times; payments made from the E-wallet may be declined if you 
+do not have a valid Funding Source linked to the E-wallet. In order to Top-Up your E-
+wallet using your Funding Source, you must follow the applicable steps in the secure 
+personal log in area of our website.   
+ 
+5.3.3. When we receive a payment from your Funding Source, we may hold the funds for 
+so long as we determine that there is no risk that the issuer of the Funding Source 
+(i.e. your card-issuing or account-issuing bank) may reverse the transfer due to there 
+being insufficient funds in your bank account. 
+ 
+5.3.4.  In order to ensure you receive good outcomes from your use of our Services, we 
+may limit the Funding Sources available for a transaction. If we limit a Funding 
+Source, we will alert you that there is a higher -than-normal level of risk associated 
+with the payment (for example, a risk that the payment may be challenged for some 
+reason). If we contact you for this reason, we are not asserting that you or the 
+merchant who you seek to pay is acting in a dishonest or fraudulent manner. It means 
+that we consider there may be a higher-than-normal risk associated with the payment 
+and we are investigating to ensure you receive a good outcome, in as far as possible.   
+ 
+ 
+ 
+6. Use of the E-wallet and the Card  
+ 
+6.1. How to authorise a payment 
+ 
+You will need to authorise a transaction before we can charge it to your E-wallet.   
+ 
+6.1.1. Authorising payments made using your E-wallet: To authorise a payment to 
+another payment account from your E-wallet, you will need to enter the IBAN or 
+account number and sort code of the person you wish to pay (the payee). You must 
+then follow the relevant steps displayed on the screen in the secure personal log in 
+area of our website at the time of transacting in order to authorise the payment.  
+ 
+6.1.2. Authorising payments made using your Card : To authorise a payment made 
+using the Card, you will need to use the Card or the Card number. You may need to 
+take additional steps to authorise a transaction at the time you are paying, for 
+example, you may need to enter details on a merchant’s online payment page, tap 
+your Card at the point of sale in-store or enter your PIN on the key pad. Depending 
+on the circumstances, you may be required to undergo some further security checks 
+at the time such as providing biometric data (e.g. a fingerprint).  
+ 
+If the Card, card number and PIN, biometric data or other security details have been 
+used, we will assume you have authorised the transaction. You must therefore tell 
+us immediately if you do not recognise a transaction that has been charged to your 
+Card and is listed as a transaction in your secure personal log in area of our website.  
+ 
+6.1.3. You cannot cancel a transaction after it has been authorised.  
+ 
+ 
+6.2. Situations where we may refuse to authorise a transaction 
+ 
+There are certain situations in which we may refuse to authori se a transaction and/or where we 
+may suspend your use of your Card and/or the E-wallet. These situations are: 
+ 
+• if legal or regulatory requirements prevent us from making the payment or mean that we 
+need to carry out further checks; 
+• if you have infringed this Agreement in a way that we reasonably believe justifies our 
+refusing or delaying your payment; 
+• if we believe that processing your transaction would break this Agreement or that you have 
+not provided all the information we need to make the payment properly; 
+• if the amount is over, or would take you over, any limit that applies to your E-wallet  and/or 
+Card.  
+• if there are not enough funds loaded into your E-wallet  to make the payment and cover 
+any fees; 
+• if a bankruptcy order is made against you or you have entered into an individual voluntary 
+arrangement with your creditors; 
+• if, even after doing everything reasonably possible, we will not be able to make the payment 
+on time; 
+• if a third party prevents us from making the payment (for example, a card scheme); 
+• if you owe us money; 
+• if we have asked you for important information we reasonably need and you have not given 
+us that information; or 
+• if we have suspended your account. 
+ 
+6.3. Time we will receive the payment order 
+ 
+If your payment order is received by us after 4pm on a business day or not on a business day, 
+your payment order will be deemed received on the following business day. 
+ 
+ 
+6.4. Execution times 
+ 
+6.4.1. Within the EEA and UK, we will execute any transaction: 
+a. in euro; 
+b. executed wholly in the UK in sterling; or 
+c. involving only one currency conversion between the euro and sterling, provided that: 
+i. the required currency conversion is carried out in the UK; and 
+ii.in the case of cross-border transactions, the cross-border transfer takes place in euro, 
+by transferring the amount of the transaction to the payment service provider of the payee 
+by the end of the next business day following the receipt of the payment order. 
+ 
+6.4.2. Any other transactions within the UK will be executed no later than four business 
+days following the receipt of the payment order. 
+ 
+6.4.3. If the payment service provider of the merchant is located outside the EEA, we will 
+execute the transaction as soon as possible. 
+ 
+6.5. Limits placed on the E-wallet   
+ 
+There may be limits on the amount of funds you can load in to the E-wallet. We may also place 
+limits on using the E-wallet and/or the Card for payments above a certain amount, from time to 
+time. For further information relating to the limits placed on the E-wallet and/or the Card, you can 
+view our website www.withcl.com/legal.  
+ 
+6.6. Accounting for service charges or tips when using the Card 
+ 
+When using your Card at certain merchants (such as, for example,  hotels or car rentals), an 
+additional amount (typically 10% -20%) may be added to anticipated service charges or tips, 
+temporarily reducing the balance of funds held on the E-wallet. This is to ensure there are sufficient 
+funds available to cover the final cost of the transaction and to reduce the risk of a negative balance 
+arising on the E-wallet. If your actual service charge or tip is less than the additional amount added, 
+it may take up to seven (7) days from the date of the transaction before the difference is available 
+to spend. Only the actual amount of the final bill agreed between you and the merchant will be 
+deducted from the funds held on the E-wallet. 
+ 
+6.7. Shortfall 
+ 
+In the unlikely event, a transaction is completed when there are insufficient funds in the E-wallet 
+for that transaction (a "Shortfall"), the Shortfall shall be reimbursed by you unless it is due to an 
+error on the part of the Merchant where the Card was presented, in this circumstance we may seek 
+the Shortfall from the Merchant.  
+ 
+You agree that once we make this Shortfall known to you, we may charge you for the Shortfall 
+amount and deduct the amount from the balance of funds loaded into the E-wallet or from your 
+linked Funding Source. We may also charge the amount of the Shortfall from any other Cards that 
+you hold with us, or any other payment method which you may designate at that time, or against 
+any funds which you may subsequently load into the E-wallet. Until we are reimbursed the Shortfall 
+amount, we may suspend the E-wallet and the Card. In addition, we reserve the right to charge 
+you an administration fee for each transaction that you make using the E-wallet and/or Card that 
+results in a Shortfall or increases the Shortfall amount on the E-wallet. 
+ 
+7. The Card will expire 
+ 
+You may only use your Card up until the expiry date which is printed on the front of the physical 
+Card. We will aim to send you a new Card prior to your Card expiring; we may ask you to confirm 
+some details prior to our sending you a new Card. 
+ 
+Fees may apply in certain cases where we send you a new Card. Please see the fees set out on 
+our website www.withcl.com/legal.  
+ 
+ 
+ 
+8. Withdrawing funds held in your E-wallet  
+ 
+8.1. How to withdraw the funds held in your E-wallet  
+ 
+You may withdraw funds held in your E-wallet by first logging into the secure personal log in area 
+of our website and following the relevant prompts on the screen at the time of transacting. You may 
+only withdraw the balance of the funds held in the E-wallet at any point in time minus the amount 
+of any pending transactions.  
+ 
+8.2. Fees will apply to withdrawing funds 
+ 
+You may be charged a fee for withdrawing funds. Please see the fees page on our website 
+www.withcl.com/legal.  
+ 
+ 
+8.3. Withdrawing all funds will not mean that your E-wallet is closed 
+ 
+Withdrawing all of your funds from your E-wallet does not automatically close the E-wallet, the 
+Card or otherwise end this Agreement. If you would like to end this Agreement, you must follow 
+the steps in section 15 (closing your E-wallet and ending this Agreement).  
+ 
+ 
+9. How much will you pay 
+ 
+Fees: You must pay the fees in connection with your use of the Services. We will not process your 
+payment until we have received the relevant fees from you. You can see all fees applicable to you 
+on our website www.withcl.com/legal.  
+ 
+ 
+9.1. Interest: The funds loaded on to your Card will not earn any interest.  
+ 
+9.2. Exchange rates: You may hold balances of funds in different currencies in your E-wallet. 
+If you are making a payment or withdrawing funds in a currency you hold in the E-wallet, 
+the payment will be made from that balance. If you make a payment or withdrawal funds 
+in a currency you do not hold in your E-wallet, we will convert the amount applying the 
+relevant rate and a fee to the balance or currency that you do hold.  
+ 
+For transactions made using the Card, we will use the relevant exchange rate published 
+by Mastercard or Visa For making payments from the E-wallet, we will use the relevant 
+exchange rate provided by our third-party provider. 
+ 
+We will also apply  our margin which is available on the fees pages of our website 
+www.withcl.com/legal. Any change in the relevant exchange rate will be applied 
+immediately and without notice to you. We may also change our exchange rate provider 
+at our discretion, without notice to you.  
+ 
+10. Communicating with you 
+ 
+10.1. How we will contact you: We may contact you by telephone, letter, SMS or 
+email using the details that you have provided to us in your secure personal log in area 
+of our website. You must keep your contact details in the secure personal log in area up-
+to-date at all times.  
+ 
+10.2. Information: Where we are required to provide information to you on a durable 
+medium, we will either send you a notification in your secure personal log in area of our 
+website pointing you to information in the personal log in area in a way that enables you 
+to keep that information, unchanged, and refer to it in the future, such as pdf. Please keep 
+copies of information provided by us to you. If you would like us to provide information in 
+a different manner than agreed, then we may charge you a reasonable administration fee 
+to cover our costs. 
+ 
+10.3. Language: We will communicate with you in English.  
+ 
+10.4. Your right to receive a copy of this Agreement: A copy of this Agreement is 
+always available in a form to download on our website. Please visit www.withcl.com/legal. 
+Alternatively, please contact us support@cl-cards.com if you need assistance in obtaining 
+a copy.  
+ 
+ 
+ 
+11. Keeping your card safe 
+ 
+11.1. Steps you must take to keep your E-wallet and Card safe 
+ 
+You must take adequate measures and use best efforts to prevent unauthorized 
+access/use of the Services: To help you keep your E-wallet and Card secure, you are required 
+to: 
+− keep your Card, Card number, CCV, login codes and other security features used to access 
+the E-wallet strictly to yourself; do not share your security credentials to access the E-wallet  
+with any other person or otherwise allow another person to use the Services; 
+− not permit any other person to use your E-wallet and/or Card; 
+− make sure all your devices are properly protected (set at least one form of access 
+protection, for example a login code); 
+− keep the operating systems of your devices clean (no illegal software) and up-to-date; 
+− frequently review the list of transactions in your E-wallet to confirm they are as expected 
+as per your spending; 
+− inform yourself about common scams, such as phishing;  
+− always immediately report irregularities by contacting us support@cl-cards.com and follow 
+our instructions.  
+ 
+11.2. How to notify us if there is a problem 
+ 
+If you lose the security credentials used to access your E-wallet  or your Card details or if they are 
+stolen, or you suspect that the E-wallet  and/or Card has been used by someone other than you, 
+you must tell us immediately by contacting us at support@cl-cards.com, so we can block your Card 
+and/ or access to your E-wallet . If possible, you must also log into your secure personal log in 
+area of our website and suspend use of your Card.  
+ 
+Please note that we may require you to provide some information in relation to your security 
+credentials and/ or Card being lost, theft or misuse in writing. You must assist us with any related 
+enquiries.  
+ 
+11.3. How we will contact you if there is a problem 
+ 
+In the event we suspect there is an issue with the E-wallet and/or Card (for example, such as fraud 
+or security threats) we will contact you, in the first instance, by phone. If we cannot get through to 
+you by phone, we will send you an email.  
+ 
+For this reason, you must maintain a current phone number and email address in your secure 
+personal log in area of our website.   
+ 
+ 
+12. Unauthorised or incorrectly executed transactions  
+ 
+In case of an unauthorised payment or where we have incorrectly executed a transaction , upon 
+your request, we will refund to you the amount of the transaction  including all fees that we have 
+charged for that particular transaction. You will not be entitled to a refund under this section: 
+12.1. if you have acted fraudulently, in which case we will not refund you in any 
+circumstances; 
+ 
+12.2. if the payment transaction was unauthorised but you have with intent or gross 
+negligence compromised the security of your Card or E-wallet or otherwise failed to 
+comply with your obligations to use your Card or E-wallet on the terms of this Agreement. 
+In such a case you shall be solely liable for all losses. We will treat any payment instruction 
+given using your Card and/or E-wallet as evidence that you authorised the transaction or 
+did not otherwise keep your security credentials safe; or 
+ 
+12.3. If you do not  let us know about the unauthorised or incorrectly completed 
+transaction without undue delay, and in any event, no later than 1 month from the date of 
+the payment transaction. 
+ 
+12.4. We may require you to provide us with information relating to the transaction and/ 
+or your claim for a refund under this sectio n. We may carry out an investigation prior to 
+issuing you with any refund and you agree to cooperate with our investigation.  
+ 
+ 
+13. Our right to make changes to the Agreement 
+ 
+We may, at our discretion, amend the Agreement at any time (including amendments and 
+additions to our fees) without notice to you.  
+ 
+14. Our right to suspend access to the Services and/or close the Card and E-wallet  
+ 
+We may close your Card and E-wallet or otherwise suspend access to the Services immediately 
+in the following circumstances:  
+ 
+• if we consider, acting reasonably, that you are behaving fraudulently or otherwise 
+criminally; 
+• if you have not given us any information we have requested from you, or we have good 
+reason to believe that information you have provided is incorrect or not true; 
+• if you have broken this Agreement in a serious or persistent way and you have refrained 
+from putting the matter right within a reasonable time of us asking you to do so; 
+• if we have good reason to believe that you continuing to use your Card and/or E-wallet  
+could damage our reputation or goodwill; 
+• if we have asked you to repay money you owe us and you have not done so within a 
+reasonable period of time; 
+• if you have been declared bankrupt; or 
+• if we have to do so under any law, regulation, court order or the FCA or FOS’s 
+instructions. 
+ 
+ 
+15. Closing your Card and ending this Agreement 
+ 
+15.1. You may close your Card and E -Wallet and end this Agreement by providing us 
+with one month’s notice in writing and paying the relevant fees.  
+ 
+15.2. You must withdraw your funds from your E-wallet within a reasonable 
+timeframe following notifying us of your intention to close your E-wallet by following the 
+steps as to how to withdraw the funds held in your E-wallet as set out in section 8. After a 
+certain period of time, you may no longer have access to your secure personal log in area 
+of our website in order to follow the steps to withdraw the funds remaining in your E-wallet 
+after closure. You may still, however, withdraw this money for up to six years following the 
+date this Agreement ends (see Section 16 on how to redeem your funds).    
+ 
+ 
+16. Redeeming the funds held in your E-wallet  
+ 
+16.1. If you have funds held in your E-wallet after this Agreement has ended, you may 
+withdraw these funds for up to six years following the date the Agreement ends.  
+ 
+16.2. If there are still funds held in your E-wallet 12 months following the end of this 
+Agreement, we will start deducting a fee from your account that will cover our costs in 
+order to maintain this balance for you until such time as you redeem your funds.  
+ 
+16.3. If you wish to redeem your funds after this Agreement has ended and you no longer 
+have access to your secure personal area of our website, please contact us on 
+support@cl-cards.com so we can help.  
+ 
+16.4. If you request to redeem your funds after this Agreement ends, we may need to 
+carry out some checks prior to sending the funds to you. We may therefore ask you to 
+provide some information to us at this time, such as identity documents and so on. 
+ 
+16.5. You must pay the relevant fees for redeeming your funds. 
+ 
+ 
+17. Liability  
+ 
+17.1. We will not be liable for: 
+ 
+17.1.1. any fault or failure relating to the use of the Services that is a result of abnormal 
+and unforeseeable circumstances beyond our control which would have been 
+unavoidable despite all our efforts to the contrary, including but not limited to, a fault 
+in or failure of data processing systems; 
+ 
+17.1.2. the goods or services that you purchase with using the Services (unless otherwise 
+agreed); 
+ 
+17.1.3. any loss of profits, loss of business, or any indirect, consequential, special or 
+punitive losses;  
+ 
+17.1.4. a merchant refusing to honour a transaction or refusing a payment; or 
+ 
+17.1.5. any acts or omissions that are a consequence of our compliance with any UK law 
+or any other laws to which we are subject.  
+ 
+17.2. In any event, our liability will be limited to the balance of funds held in your E-wallet 
+at the time that the event occurs. 
+ 
+ 
+17.3. Nothing in this Agreement shall exclude or limit any regulatory responsibilities we 
+have which we are not permitted to exclude or limit, or our liability for death or personal 
+injury. 
+ 
+17.4. If you have used the Services or allowed the Services we provide to you to be used 
+fraudulently, in a manner that does not comply with this Agreement, for illegal purposes, 
+or if you have allowed access to the Services  to be compromised due to your gross 
+negligence, you will be held responsible for the use and misuse of the Services.   
+ 
+ 
+18. Law governing this Agreement and jurisdiction 
+ 
+The law governing this Agreement is the law of England and Wales. The courts of England and 
+Wales have jurisdiction to adjudicate any dispute between you and us in connection with this 
+Agreement.   
+ 
+19. Dispute resolution 
+ 
+If you are not satisfied with the service  you receive from us you should contact us support@cl-
+cards.com.  Correspondence may be monitored or recorded.  
+ 
+ 
+20. Data protection  
+ 
+We need to collect information about you to provide you with the Services under this Agreement. 
+For information on how we use your personal data, please refer to our privacy notice at 
+www.withcl.com/legal..  
+ 
+By entering into this Agreement, you acknowledge and agree that we may collect, process and 
+store your personal information for the purpose s of providing our Services to you. This does not 
+affect any rights and obligations you or we have under data protection law.  
+ 
+ 
+21. Other legal terms  
+ 
+21.1. We may transfer this Agreement to someone else 
+ 
+We may assign or otherwise transfer any of our rights and obligations under the Agreement, without 
+your prior consent, to any other person or business, subject to such party continuing the obligations 
+in the Agreement to you. 
+21.2. Third parties  
+This Agreement is between you and us only. Except for any party to whom we transfer this 
+Agreement (under section 21.1), nothing in the Agreement gives any third party any benefit or right 
+(including any enforcement right). 
+ 
+ 

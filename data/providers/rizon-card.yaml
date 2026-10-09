@@ -1,0 +1,276 @@
+slug: rizon-card
+name: Rizon Card
+type: incumbent
+website: https://www.getrizon.com
+repos: []
+contracts: []
+
+components:
+  - name: Rizon app (iOS, Android)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Rizon Global, Inc. (agent Rizon Technologies, UAB)
+    required: true
+  - name: Rizon backend
+    role: backend
+    public: false
+    license: proprietary
+    operator: Rizon Global, Inc.
+    required: true
+  - name: Privy embedded wallet (user signer)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Privy
+    required: true
+  - name: Rain collateral smart contract per user (addresses not published)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Signify Holdings (Rain)
+    required: true
+  - name: Rain card platform (program management, collateral, liquidation)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Signify Holdings, Inc. / Nimbus LLC (Rain)
+    required: true
+  - name: Third National (card issuer)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Third National
+    required: true
+  - name: Visa
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Identity verification partner (not named)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://intercom.help/rizon/en/articles/11822548-rizon-global-inc-spend-card-terms
+        detail: The Rizon Global card terms let Rizon and the issuer block transactions and suspend account access for activity that does not fit consumer patterns.
+        quote: reserve the right to block and terminate transactions and suspend access to your Account
+        checked_at: "2026-10-07"
+    finding: >-
+      Rizon and the issuer can block individual cardholders' transactions and suspend accounts at their discretion. No contract-level role could be read, because no Rizon contract address is published (see notes).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.getrizon.com/terms-of-service
+        detail: The Terms say each user is assigned a smart contract managed in part by Rain to enable the card off-ramp; card spending converts collateral to fiat through Rain and its licensed partners.
+        quote: which is managed in part by Rain to enable Card Off-Ramp service
+        checked_at: "2026-10-07"
+    finding: >-
+      Card payments settle through Rain, the issuer Third National and Visa. Users cannot settle a card payment themselves.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.getrizon.com/privacy-policy
+        detail: Card issuance, smart contract wallets and digital asset transfers are provided solely by Rain, and wallet functionality by Privy.
+        quote: are provided solely by Signify Holdings Inc. and its subsidiary Nimbus LLC (Rain)
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card payment depends on Rain's closed platform, Privy and the issuer. No code is public and there is no fallback. Closed, single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.getrizon.com/terms-of-service
+        detail: The Terms exclude users in jurisdictions sanctioned under EU, OFAC or UN law and require KYC through Rain.
+        quote: Users in jurisdictions subject to sanctions or restrictions under EU, OFAC, or UN laws are not allowed to access the App
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions and geographic screening is disclosed in the Terms, with the list sources named. Whether the settlement contracts filter cannot be checked, because no contract is identified. Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://intercom.help/rizon/en/articles/11822548-rizon-global-inc-spend-card-terms
+        detail: The card terms define Supported Blockchains as Polygon, Optimism and Arbitrum plus any the issuer adds, and let the issuer choose which digital assets count as collateral; no tokens or freeze powers are listed.
+        quote: means the Polygon Blockchain, Optimism Blockchain, Arbitrium Blockchain
+        checked_at: "2026-10-07"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://intercom.help/rizon/en/articles/13441229-which-blockchains-are-supported
+        detail: Rizon's help centre lists a different set (Arbitrum, Solana, Base, Polygon, Optimism, Avalanche, BSC).
+        checked_at: "2026-10-07"
+    finding: >-
+      The card terms name chains but not tokens, and Rizon's own help centre gives a different chain list. Neither states the issuers' freeze powers or the sequencer assumptions. Judgment call: tokens are not enumerated and the chain lists conflict, so 0, not 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.getrizon.com/privacy-policy
+        detail: Wallet functionality is powered by Privy and the card, smart contract wallets and transfers by Rain; both are closed third-party services.
+        quote: All wallet functionality is powered by Privy
+        checked_at: "2026-10-07"
+    finding: >-
+      The required components (Rain, Privy, the issuer, the Rizon app) are closed, so nothing needed to run the product can be forked.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  F3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.getrizon.com/privacy-policy
+        detail: The privacy policy describes identity verification data from partners, sanctions and PEP database checks and AML retention of up to eight years under Lithuanian law.
+        quote: we collaborate with identity verification partners who provide us with access to specific personal data
+        checked_at: "2026-10-07"
+    finding: >-
+      KYC and screening data are collected beyond settlement needs and disclosed in the privacy policy only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.getrizon.com/privacy-policy
+        detail: Names Rain (Signify Holdings, Nimbus LLC) and Privy as providers in the payment path; the identity verification partner is not named.
+        quote: are provided solely by Signify Holdings Inc. and its subsidiary Nimbus LLC (Rain)
+        checked_at: "2026-10-07"
+    finding: >-
+      Rain, Privy, the issuer and an unnamed KYC partner all see user and payment data. They are disclosed in docs and cannot be swapped, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. The app is operated by Rizon Global, Inc. (Delaware), with Rizon Technologies, UAB (Lithuania) as commercial agent; the Terms present Rizon as a non-custodial software interface that provides no regulated financial services (https://www.getrizon.com/terms-of-service). The card is issued by Third National under licence from Visa, with Rain (Signify Holdings, Inc. and Nimbus LLC) running the card and collateral services; the card terms say neither Rizon nor the issuer holds custody of the collateral, but a fall in collateral value can trigger liquidation (https://intercom.help/rizon/en/articles/11822548-rizon-global-inc-spend-card-terms). Personal data is processed under GDPR and Lithuanian law, with AML records kept up to eight years (https://www.getrizon.com/privacy-policy). I found no primary source naming Third National's regulator.
+
+notes: >-
+  Incumbent: no verified contract or public repository needed to run the product was found. Searched: GitHub (repo search "rizon" returns only unrelated projects such as the RIZON Cosmos chain and the Rizon IRC network; orgs rizonapp, rizon-app, rizonmoney, rizonfi and others do not exist); getrizon.com pages, Terms, privacy policy and card terms; the Intercom help centre (legal, deposit, card and wallet collections); dashboard.getrizon.com (business login shell, no contract or chain config). The Terms say each user gets a Rain-managed collateral smart contract, but no Rizon or Rain document gives an address, factory or team id for this program. The card terms' Supported Blockchains (Polygon, Optimism, Arbitrum) are Rain boilerplate and conflict with the help centre's list, and Rain's shared collateral contracts serve many programs, so no onchain contract can be attributed to Rizon (same reasoning as the Avalanche Card file). Card Map and review sites were not used as evidence.

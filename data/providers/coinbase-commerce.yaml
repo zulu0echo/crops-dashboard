@@ -1,0 +1,784 @@
+slug: coinbase-commerce
+name: Coinbase Commerce (Onchain Payment Protocol)
+type: checkout
+website: https://beta.commerce.coinbase.com
+primary_chain:
+  name: Base
+  chain_id: 8453
+  basis: >-
+    Base Transfers deployments of the Commerce Onchain Payment Protocol. OnchainKit Checkout, the only public Commerce checkout SDK, forces base.id and USDC on Base (CheckoutProvider.tsx L297-L300, constants.ts L49 at 3ecbd8fd). Sampled Transferred logs put Base payments on 0x0305…b7a8 until 2026-04-01; 0xeADE…4971 is the README address. Excluded: Ethereum 0x1DAe…b25C, Polygon 0xc225…28FB, older Base deployments, testnets.
+
+repos:
+  - url: https://github.com/coinbase/commerce-onchain-payment-protocol
+    role: contracts
+    license: Apache-2.0
+  - url: https://github.com/coinbase/onchainkit
+    role: sdk
+    license: MIT
+  - url: https://github.com/coinbase/coinbase-commerce-php
+    role: sdk
+    license: MIT
+
+contracts:
+  - address: "0x03059433BCdB6144624cC2443159D9445C32b7a8"
+    chain_id: 8453
+    role: Transfers (Oct 2024 build; carried Base payments to 2026-04)
+    verified: sourcify
+  - address: "0xeADE6bE02d043b3550bE19E960504dbA14A14971"
+    chain_id: 8453
+    role: Transfers (README-documented Base address, repo HEAD)
+    verified: sourcify
+
+components:
+  - name: Transfers settlement contract (Base)
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: Coinbase (owner EOA 0x8899…428C)
+    required: true
+    repo: https://github.com/coinbase/commerce-onchain-payment-protocol
+  - name: Coinbase Commerce operator signer (TransferIntent signing key)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Coinbase Bermuda Technologies Limited
+    required: true
+  - name: Coinbase Commerce Charge API (api.commerce.coinbase.com)
+    role: api
+    public: false
+    license: proprietary
+    operator: Coinbase Bermuda Technologies Limited
+    required: true
+  - name: Commerce merchant account, onboarding and dashboard
+    role: backend
+    public: false
+    license: proprietary
+    operator: Coinbase Bermuda Technologies Limited
+    required: true
+  - name: Hosted checkout page (commerce.coinbase.com/pay)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Coinbase
+    required: false
+  - name: OnchainKit Checkout component (deprecated 2026-09-22)
+    role: sdk
+    public: true
+    license: MIT
+    operator: Coinbase
+    required: false
+    repo: https://github.com/coinbase/onchainkit
+  - name: CDP JSON-RPC endpoint serving cdp_hydrateCharge and cdp_createProductCharge
+    role: api
+    public: false
+    license: proprietary
+    operator: Coinbase Developer Platform
+    required: false
+  - name: Commerce API client libraries (PHP, Ruby)
+    role: sdk
+    public: true
+    license: MIT
+    operator: Coinbase
+    required: false
+    repo: https://github.com/coinbase/coinbase-commerce-php
+  - name: Permit2 (SignatureTransfer)
+    role: contracts
+    public: true
+    license: MIT
+    operator: Uniswap Labs (immutable deployment)
+    required: false
+    repo: https://github.com/Uniswap/permit2
+  - name: Uniswap Universal Router (swap-and-pay paths)
+    role: contracts
+    public: true
+    license: GPL-2.0-or-later
+    operator: Uniswap Labs
+    required: false
+    repo: https://github.com/Uniswap/universal-router
+  - name: Hosted checkout analytics (Amplitude, Sprig, Bugsnag, as.coinbase.com)
+    role: other
+    public: false
+    license: proprietary
+    operator: Coinbase and named vendors
+    required: false
+  - name: Base mainnet (chain 8453)
+    role: ledger
+    public: true
+    license: MIT
+    operator: Base network (sequencer operator not verified here)
+    required: true
+    repo: https://github.com/ethereum-optimism/optimism
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/transfers/Transfers.sol#L800-L808
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/transfers/Transfers.sol
+        detail: pause() and unpause() are onlyOwner; every payment entrypoint (transferNative L147-L155, transferToken L172, transferTokenPreApproved L224, wrapAndTransfer L271, unwrapAndTransfer L298, swap paths L389/L417/L463, subsidizedTransferToken L512) carries whenNotPaused.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x03059433BCdB6144624cC2443159D9445C32b7a8
+        address: "0x03059433BCdB6144624cC2443159D9445C32b7a8"
+        chain_id: 8453
+        block_number: 52285285
+        detail: owner() of the Transfers contract that carried Base payments is 0x8899CECFD929504414696C734eAf6300FDbB428C at block 52285285; paused() returns false.
+        checked_at: "2026-10-07"
+        recheck: cast call 0x03059433BCdB6144624cC2443159D9445C32b7a8 "owner()(address)" --rpc-url https://mainnet.base.org --block 52285285
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000008899cecfd929504414696c734eaf6300fdbb428c"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xeADE6bE02d043b3550bE19E960504dbA14A14971
+        address: "0xeADE6bE02d043b3550bE19E960504dbA14A14971"
+        chain_id: 8453
+        block_number: 52285285
+        detail: owner() of the README-documented Base Transfers contract is the same 0x8899CECFD929504414696C734eAf6300FDbB428C at block 52285285.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000008899cecfd929504414696c734eaf6300fdbb428c"
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/address/0x8899CECFD929504414696C734eAf6300FDbB428C
+        address: "0x8899CECFD929504414696C734eAf6300FDbB428C"
+        chain_id: 8453
+        block_number: 52285285
+        eoa: true
+        detail: The owner has no code at block 52285285 (cast codesize returns 0, nonce 22); getThreshold() and getOwners() revert, so it is an EOA and not a Safe. It is also the deployer of both Transfers contracts (Sourcify deployment data).
+        checked_at: "2026-10-07"
+    finding: >-
+      One externally owned account can pause every payment method of both Base Transfers contracts at once, with no multisig and no timelock. The same key can appoint a sweeper (see S1). Pause is global; the contract has no per-address blacklist. A second control sits outside the contract: every payment needs a TransferIntent signed by its operator, and for Commerce payments that operator is Coinbase, which can decline to sign for any payer or merchant without notice (README L60-L65). The contracts were not paused at block 52285285.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/README.md#L35-L42
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: README.md
+        detail: README states that registering as an operator is permissionless and that Coinbase controls only the operator address used for Coinbase Commerce; L10-L24 lists the deployed addresses, including Base 0xeADE6bE02d043b3550bE19E960504dbA14A14971, and L81-L104 documents each payment method.
+        checked_at: "2026-10-07"
+        recheck: gh api repos/coinbase/commerce-onchain-payment-protocol/contents/README.md?ref=d891289bd1f41bb95f749af537f2b6a36b17f889 --jq .content | base64 -d | sed -n 35,42p
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/transfers/Transfers.sol#L780-L798
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/transfers/Transfers.sol
+        detail: registerOperator and registerOperatorWithFeeDestination have no access modifier; validIntent (L79-L124) only requires the intent to be signed by the intent's own operator, so a payee registered as its own operator can sign intents for its payers.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xeADE6bE02d043b3550bE19E960504dbA14A14971
+        address: "0xeADE6bE02d043b3550bE19E960504dbA14A14971"
+        chain_id: 8453
+        block_number: 52285285
+        detail: Sourcify reports exact_match (creation and runtime) for the README Base address, and its Transfers.sol, ITransfers.sol and Sweepable.sol are byte-identical to the repo at d891289; paused() returns false at block 52285285.
+        checked_at: "2026-10-07"
+        recheck: curl -s https://sourcify.dev/server/v2/contract/8453/0xeADE6bE02d043b3550bE19E960504dbA14A14971 && cast call 0xeADE6bE02d043b3550bE19E960504dbA14A14971 "paused()(bool)" --rpc-url https://mainnet.base.org --block 52285285
+        check:
+          call: "0x5c975abb"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      A payee can settle without Coinbase. It registers its own address as an operator, signs a TransferIntent for each payer, and the payer calls a documented method on the deployed contract. The README documents the ABI-level methods, the addresses and the permissionless operator role, and the deployed code matches the repo exactly. Refunds have no onchain path because payments are atomic; nothing is held to refund. The direct path still depends on the owner not pausing the contract (C1). Judgment call: we read "payer or payee completes settlement" as satisfied when the payee acts as its own operator, because the operator signature then comes from a party to the payment and not from the provider.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/api/buildPayTransaction.ts#L17-L52
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/api/buildPayTransaction.ts
+        detail: The checkout obtains the signed TransferIntent and contract address only from the JSON-RPC methods cdp_hydrateCharge or cdp_createProductCharge, sent to the CDP endpoint built in getRPCUrl.ts L7-L16 (throws without a CDP API key or rpcUrl).
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/coinbase-commerce-php/blob/c258b69d5bb6d4dd45fdc68fee3b60c4a75247d2/src/ApiClient.php#L17-L21
+        commit: c258b69d5bb6d4dd45fdc68fee3b60c4a75247d2
+        path: src/ApiClient.php
+        detail: The merchant client library defaults to https://api.commerce.coinbase.com/ for creating charges; no repo in the coinbase org contains the Charge API, the operator signing service, or an alternative operator implementation.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/README.md#L35-L42
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: README.md
+        detail: The operator role is documented as permissionless, so other operators are possible, but no operator service code is published.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://docs.cdp.coinbase.com/coinbase-business/checkout-apis/migrate-from-commerce/overview
+        detail: CDP docs direct Commerce merchants from the Charge API at api.commerce.coinbase.com to the Coinbase Business Checkouts API; the Commerce API docs no longer resolve (docs.cdp.coinbase.com/commerce/... returns 404).
+        checked_at: "2026-10-07"
+        quote: Migrate from Commerce Charge API to the Checkouts API
+    finding: >-
+      A Commerce payment needs three things only Coinbase runs and has not published: the Charge API, the operator key that signs each TransferIntent, and the merchant account. The public SDK can point at another RPC URL, but only Coinbase serves the cdp_ charge methods. On 2026-10-07 api.commerce.coinbase.com returned HTTP 503 and commerce.coinbase.com returned 502 to curl. Judgment call: we score 1 and not 0, because anchor 0 says single-vendor, and the protocol documents that anyone can register as an operator. No operator code exists to self-host, so it cannot be 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/transfers/Transfers.sol#L79-L132
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/transfers/Transfers.sol
+        detail: The only per-payment checks are the operator signature, deadline, non-zero recipient, replay and operator registration; a search of contracts/ for blocklist, sanction, deny, allowlist or country finds nothing.
+        checked_at: "2026-10-07"
+        recheck: gh api repos/coinbase/commerce-onchain-payment-protocol/tarball/d891289bd1f41bb95f749af537f2b6a36b17f889 | tar -xzO --include='*/contracts/*' | grep -ciE 'blacklist|blocklist|sanction|allowlist|country'
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/README.md#L60-L65
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: README.md
+        detail: The README discloses that the operator signature lets an operator be selective about which payments to allow based on internal policies, legal requirements or other reasons.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+        archive: data/archive/coinbase-commerce-terms.txt
+        detail: Commerce Terms (last updated 2025-10-29) bar embargoed countries and persons on the SDN, Denied Persons, Unverified and Entity lists and HM Treasury's sanctions regime.
+        checked_at: "2026-10-07"
+        quote: Specially Designated Nationals List
+    finding: >-
+      The settlement contract has no address or geographic filter. Filtering sits at the edge: Coinbase, as operator, can refuse to sign an intent. The README says this power exists, and the Terms name the sanctions lists Coinbase applies to merchants. A payee who acts as its own operator bypasses it (C2). The cell misses 3 for two reasons. The disclosure in the repo does not name a list source; only the Terms do. And the API and signer that apply the filter are closed, so we cannot see what they screen in practice, including payer screening. No trace was run.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/README.md#L10-L24
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: README.md
+        detail: Deployments are enumerated per chain (Ethereum, Polygon, Base, plus testnets); L5-L7 says payers may use any token with Uniswap liquidity.
+        checked_at: "2026-10-07"
+        recheck: gh api repos/coinbase/commerce-onchain-payment-protocol/contents/README.md?ref=d891289bd1f41bb95f749af537f2b6a36b17f889 --jq .content | base64 -d | sed -n 10,24p
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/checkout/constants.ts#L49-L55
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/checkout/constants.ts
+        detail: The SDK checkout hardcodes USDC on Base (0x833589fcd6edb6e08f4c7c32d4f71b54bda02913) and the approve plus transferTokenPreApproved methods.
+        checked_at: "2026-10-07"
+    finding: >-
+      Chains and Transfers addresses are listed in the repo, and the SDK checkout's settlement token, USDC on Base, is in code. The hosted checkout's accepted-token list lives only in the closed API. Nothing in the repo, the SDK, or the Terms tells payees that Circle can freeze USDC or that Base runs a centralized sequencer. Judgment call: we score 2 and not 1, because the enumeration for the public path is in code. The hosted checkout's list being API-only is the listed common failure, and it keeps the cell from 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x03059433BCdB6144624cC2443159D9445C32b7a8
+        address: "0x03059433BCdB6144624cC2443159D9445C32b7a8"
+        chain_id: 8453
+        block_number: 52285285
+        detail: Sourcify exact_match (creation and runtime, solc 0.8.17, verified 2024-10-20); its Transfers.sol differs from the repo by a permit nonce check and PermitCallFailed error that exist only in the Sourcify sources.
+        checked_at: "2026-10-07"
+        recheck: curl -s https://sourcify.dev/server/v2/contract/8453/0x03059433BCdB6144624cC2443159D9445C32b7a8
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xeADE6bE02d043b3550bE19E960504dbA14A14971
+        address: "0xeADE6bE02d043b3550bE19E960504dbA14A14971"
+        chain_id: 8453
+        block_number: 52285285
+        detail: Sourcify exact_match (creation and runtime, verified 2024-08-09); sources identical to the repo at d891289.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/README.md#L26-L31
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: README.md
+        detail: The repo has no foundry.toml, hardhat config, package.json or remappings; the README says Permit2 must be copied in by hand to compile.
+        checked_at: "2026-10-07"
+    finding: >-
+      Both Base Transfers contracts are exact matches on Sourcify. The cell misses 3 because the repo has no build script that reproduces the bytecode. The contract that carried most Base payments (0x0305…b7a8) was built from source that was never pushed to the repo; that source is public only through Sourcify. We did not check Basescan verification, because Basescan blocks automated requests.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/tree/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts
+        detail: The protocol repo holds only Transfers.sol, Sweepable.sol and three interfaces; no deploy scripts, tests, operator service, API or indexer.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/README.md#L1-L3
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: README.md
+        detail: OnchainKit, the public checkout SDK, is marked deprecated and unmaintained; the GitHub repo is archived and npm marks @coinbase/onchainkit deprecated.
+        checked_at: "2026-10-07"
+    finding: >-
+      The contracts, a now-deprecated SDK checkout component, and the old API client libraries are public. The Charge API, the operator signer, the hosted checkout page, the merchant dashboard and any indexer are closed. The Commerce API reference has been removed from Coinbase's docs. Judgment call: we score 1 and not 0, because the public contracts can be used without the closed stack (C2).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/README.md#L33-L65
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: README.md
+        detail: The README explains operators, TransferIntent fields and signing, and lists addresses (L10-L24), but gives no build, deploy or operator-service steps.
+        checked_at: "2026-10-07"
+    finding: >-
+      The docs are enough to operate the deployed contract as your own operator, though you would have to write the signing and frontend code yourself. They are not enough to rebuild Coinbase Commerce. Reproduction not attempted, so the cap is 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/interfaces/ITransfers.sol#L43-L76
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/interfaces/ITransfers.sol
+        detail: The Transferred, OperatorRegistered and OperatorUnregistered events and the TransferIntent struct (L19-L30) are defined in source; no ABI JSON is committed.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://docs.cdp.coinbase.com/coinbase-business/checkout-apis/migrate-from-commerce/overview
+        detail: The only surviving Charge API description is the hosted migration mapping; no OpenAPI file and no payee export format is in any Commerce repo.
+        checked_at: "2026-10-07"
+        quote: Change base URL From api.commerce.coinbase.com
+    finding: >-
+      ABIs can be derived from the verified source, and the events are in the repo. No repo has an API schema; the Charge API was only ever described on hosted docs, which are now replaced by a migration page. We found no payee data export in any format. Judgment call: we score 1, because the API schema is not in the repo.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/LICENSE.md
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: LICENSE.md
+        detail: The repo LICENSE.md is Apache License 2.0, but every Solidity file starts with SPDX-License-Identifier UNLICENSED (Transfers.sol L1, Sweepable.sol L1, ITransfers.sol L1).
+        checked_at: "2026-10-07"
+    finding: >-
+      Three required components are closed: the Charge API, the operator signer and the merchant backend. A closed component cannot be forked, so the cell is 0. The public contracts also carry mixed signals: the repo license is Apache-2.0, but every source file is tagged UNLICENSED. OnchainKit and the client libraries are MIT.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/tree/d891289bd1f41bb95f749af537f2b6a36b17f889/
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: "/"
+        detail: The repo root holds only .gitignore, LICENSE.md, README.md and contracts/; there is no CONTRIBUTING, CLA or license-stability statement. Merged PR #17 shows only the cb-heimdall review bot, not a CLA bot.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/LICENSE.md
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: LICENSE.md
+        detail: LICENSE.md has a single commit (fb5e8a2, 2023-11-16 public release); no relicense event.
+        checked_at: "2026-10-07"
+        recheck: gh api "repos/coinbase/commerce-onchain-payment-protocol/commits?path=LICENSE.md" --jq '.[].sha'
+    finding: >-
+      We found no CLA and no relicensing event. The repo makes no written commitment to keep the license stable. The UNLICENSED SPDX headers are an ambiguity, not a relicense, and are noted under F1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/core/network/getRPCUrl.ts#L7-L16
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/core/network/getRPCUrl.ts
+        detail: The checkout's charge calls throw "API Key Unset" without a Coinbase Developer Platform API key or rpcUrl, and only Coinbase serves the cdp_ charge methods.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/transfers/Transfers.sol#L780-L798
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/transfers/Transfers.sol
+        detail: The contract itself runs with any registered operator, so the onchain core needs no proprietary component.
+        checked_at: "2026-10-07"
+    finding: >-
+      A Coinbase Commerce deployment needs the hosted Charge API and Coinbase's operator key, and no open alternative is published. The settlement contract does not need them, since any operator can use it. Judgment call: we score 1 and not 0, because the core contract can run without proprietary parts. A merchant would still have to write their own operator and checkout code, because none exists in the open.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/checkout/components/CheckoutProvider.tsx#L236-L240
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/checkout/components/CheckoutProvider.tsx
+        detail: On pay, the checkout sends a checkoutInitiated event with the payer address, amount and productId; analyticsService.ts L11-L47 posts it with apiKey, sessionId, page origin and document.title to https://api.developer.coinbase.com/analytics.
+        checked_at: "2026-10-07"
+        package:
+          name: "@coinbase/onchainkit"
+          version: 1.1.3
+          integrity: sha512-DoMHoR1DFC6AeQabf+OA9PEU0OVI+PCwbbnOU40TfrszoPIkgWomO/i3q6S4lvU8Po51l+LrUqkP25o9x3U+cA==
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/core/types.ts#L10-L13
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/core/types.ts
+        detail: Telemetry defaults to enabled (OnchainKitProvider.tsx L83 analytics ?? true); the opt-out is described only in this type comment.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: trace
+        url: https://commerce.coinbase.com/pay/test
+        detail: "Steps run 2026-10-07: curl the page, then curl its two bundles /pay/static/main.3b876a63b31216f2b5a8.js and /pay/static/27849.279546bfef0c8b7f57c7.js and grep. The bundles initialise Amplitude (amplitudeApiKey a576ff6d…), the Sprig SDK (api.sprig.com, session-replay code), Bugsnag, Coinbase's as.coinbase.com analytics service and reCAPTCHA Enterprise."
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260611115217/https://www.coinbase.com/en-ca/legal/commerce/privacy-policy
+        archive: data/archive/coinbase-commerce-privacy.txt
+        detail: The Commerce Privacy Policy (last updated 2024-12-03) discloses analytics providers and device and IP collection by category, without naming vendors.
+        checked_at: "2026-10-07"
+        quote: We receive information about your website usage and interactions from third party analytics providers.
+    finding: >-
+      Telemetry is on by default in both payment frontends. The SDK checkout sends the payer's address and amount to Coinbase's analytics endpoint unless the integrator sets analytics to false. The hosted checkout bundles Amplitude, Sprig (which includes session-replay code), Bugsnag and Coinbase's own analytics service. The privacy policy discloses analytics providers only by category. Judgment call: we score 1 and not 0, following the Daimo precedent: the policy disclosure covers analytics in general, even though it names no vendor. We found no fingerprinting library; the "fingerprint" matches are Bugsnag ID helpers and icon names.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/api/buildPayTransaction.ts#L21-L52
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/api/buildPayTransaction.ts
+        detail: The SDK charge request carries only the payer address and a chargeId or productId.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260611115217/https://www.coinbase.com/en-ca/legal/commerce/privacy-policy
+        archive: data/archive/coinbase-commerce-privacy.txt
+        detail: The policy lists device, browser, IP and cookie data collected automatically, blockchain analysis of wallet addresses, and personal information merchants choose to request from customers.
+        checked_at: "2026-10-07"
+        quote: Any personal information you choose to request from your customers as part of the transaction
+    finding: >-
+      The public SDK request carries only what settlement needs. The privacy policy says Commerce also collects device, IP and cookie data. It analyses payers' wallet addresses on public chains, and it lets merchants collect further customer fields at checkout. All of this is disclosed only in the policy. The hosted checkout's form code is closed, so we could not see which fields are optional.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/interfaces/ITransfers.sol#L46-L60
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/interfaces/ITransfers.sol
+        detail: Transferred emits the operator (indexed), the 16-byte intent id, the recipient, the sender, the amount and the currency; README L110-L120 documents the same fields.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/tx/0xb20c670013eb85ce88ed2353acca655f0c1463552be8c39b335908fe2cbfe2fb
+        address: "0x03059433BCdB6144624cC2443159D9445C32b7a8"
+        chain_id: 8453
+        block_number: 44134913
+        detail: The Transferred log in this swapAndTransferUniswapV3Native payment names operator 0x8fcCC78Dae0a8f93B0fE6799de888d4C57e273db, id 0x5e1eb104b16f4718bb6ef87845be984d, recipient 0xFf5680F0938B01b07952eF075B23082eB136E8Af and sender 0x33a7A26d9C6C799a02E4870137dE647674371FfC.
+        checked_at: "2026-10-07"
+    finding: >-
+      Every payment publishes payer, payee, amount and a per-charge id in a single event, with Coinbase's operator address indexed. Anyone can list all of a merchant's Commerce payers and revenue by filtering on the operator and recipient. The README documents the event fields. The protocol offers no fresh-address or privacy option, because the recipient is the merchant's fixed wallet.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/core/network/getChainPublicClient.ts#L5-L27
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/core/network/getChainPublicClient.ts
+        detail: Balance reads go to Coinbase's CDP node when an API key is set, otherwise to viem's default public RPC; the charge call and analytics go to api.developer.coinbase.com; insufficient balance opens keys.coinbase.com (CheckoutProvider.tsx L303-L309).
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: trace
+        url: https://commerce.coinbase.com/pay/test
+        detail: "Steps run 2026-10-07: grep of the hosted checkout bundles (see P1) shows requests to api.commerce.coinbase.com, api.sprig.com, Amplitude, Bugsnag, as.coinbase.com, google.com/recaptcha and mainnet.base.org."
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260611115217/https://www.coinbase.com/en-ca/legal/commerce/privacy-policy
+        archive: data/archive/coinbase-commerce-privacy.txt
+        detail: The policy discloses sharing with service providers and analytics providers by category only.
+        checked_at: "2026-10-07"
+        quote: We work with service providers, partners and other third-parties providers to help us provide our Services
+    finding: >-
+      In the SDK path, the only third party besides Coinbase is the RPC provider, and an integrator can replace the RPC. In the hosted path, Sprig, Amplitude, Bugsnag and Google reCAPTCHA see the payer's session, and nobody can swap them out. The policy discloses them only as categories. Judgment call: we score 1 and not 0, because the vendors appear in shipped code and are covered by the category disclosure. They are not named in any document.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/core/network/getRPCUrl.ts#L7-L16
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/core/network/getRPCUrl.ts
+        detail: rpcUrl overrides the CDP endpoint, and analyticsUrl overrides the analytics endpoint (analyticsService.ts L38); defaultPublicClients overrides the read client.
+        checked_at: "2026-10-07"
+        recheck: gh api repos/coinbase/onchainkit/contents/packages/onchainkit/src/core/network/getRPCUrl.ts?ref=3ecbd8fd28bf65002a4ad97092bfd0b157310e22 --jq .content | base64 -d
+    finding: >-
+      The SDK's endpoints can be changed in code, but not in a UI. The charge methods only work against Coinbase, and no indexer code is public, so payment data cannot stay inside the integrator's own perimeter. The hosted checkout has no endpoint setting at all.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/transfers/Transfers.sol#L720-L737
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/transfers/Transfers.sol
+        detail: Inside the payer's own transaction, the contract pulls exactly recipientAmount+feeAmount (L189-L214) and immediately sends recipientAmount to the intent's recipient and feeAmount to the operator's fee destination; if any step fails, the transaction reverts.
+        checked_at: "2026-10-07"
+        recheck: gh api repos/coinbase/commerce-onchain-payment-protocol/contents/contracts/transfers/Transfers.sol?ref=d891289bd1f41bb95f749af537f2b6a36b17f889 --jq .content | base64 -d | sed -n 720,737p
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/utils/Sweepable.sol#L34-L79
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/utils/Sweepable.sol
+        detail: The owner can appoint a sweeper, who can move any balance resting in the contract to any address.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x03059433BCdB6144624cC2443159D9445C32b7a8
+        address: "0x03059433BCdB6144624cC2443159D9445C32b7a8"
+        chain_id: 8453
+        block_number: 52285285
+        detail: sweeper() is the zero address at block 52285285; the contract nonetheless holds 4,578.07 USDC (0xeADE…4971 holds 1,673.48 USDC) that did not arrive through a completed payment and that an owner-appointed sweeper could move.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x9189a59e"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      A completed payment moves from payer to merchant inside one atomic transaction, so funds are never held across blocks. The Commerce Terms state that Coinbase does not store the crypto merchants receive (see S4). Once a merchant has been paid, the provider cannot redirect the money. The recipient is fixed in the operator-signed intent, which the payer's wallet shows before signing. The contract does hold residual balances, about 6,250 USDC across the two Base contracts. These are most likely tokens sent to the contract directly by mistake, and the owner EOA can sweep them through a sweeper it appoints. Judgment call: we score 3, because the sweep reaches only stray balances and never funds in an in-progress payment.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x03059433BCdB6144624cC2443159D9445C32b7a8
+        address: "0x03059433BCdB6144624cC2443159D9445C32b7a8"
+        chain_id: 8453
+        block_number: 52285285
+        detail: The EIP-1967 implementation and admin slots both read zero at block 52285285; the verified source has no delegatecall, upgradeTo or selfdestruct.
+        checked_at: "2026-10-07"
+        recheck: cast storage 0x03059433BCdB6144624cC2443159D9445C32b7a8 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://mainnet.base.org --block 52285285
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xeADE6bE02d043b3550bE19E960504dbA14A14971
+        address: "0xeADE6bE02d043b3550bE19E960504dbA14A14971"
+        chain_id: 8453
+        block_number: 52285285
+        detail: The EIP-1967 implementation slot reads zero at block 52285285.
+        checked_at: "2026-10-07"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/README.md#L23-L24
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: README.md
+        detail: The README states that the contract is non-upgradeable and that new versions are deployed at new addresses.
+        checked_at: "2026-10-07"
+    finding: >-
+      Neither Base Transfers contract can be upgraded. Coinbase changes behaviour by deploying a new contract and pointing its API at it. It has done this at least six times on Base, and the new address carries no notice to anyone integrating directly. Integrators who call a fixed address keep the old code. The pause power is scored under C1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/checkout/utils/getCommerceContracts.ts#L10-L41
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/checkout/utils/getCommerceContracts.ts
+        detail: The SDK batches approve(transfersContract, recipientAmount + feeAmount), an exact amount, with transferTokenPreApproved.
+        checked_at: "2026-10-07"
+        recheck: gh api repos/coinbase/onchainkit/contents/packages/onchainkit/src/checkout/utils/getCommerceContracts.ts?ref=3ecbd8fd28bf65002a4ad97092bfd0b157310e22 --jq .content | base64 -d | sed -n 10,41p
+        package:
+          name: "@coinbase/onchainkit"
+          version: 1.1.3
+          integrity: sha512-DoMHoR1DFC6AeQabf+OA9PEU0OVI+PCwbbnOU40TfrszoPIkgWomO/i3q6S4lvU8Po51l+LrUqkP25o9x3U+cA==
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/transfers/Transfers.sol#L169-L217
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/transfers/Transfers.sol
+        detail: The Permit2 path requires requestedAmount == recipientAmount+feeAmount and uses a SignatureTransfer permit with deadline; subsidizedTransferToken (L505-L536) uses an EIP-2612 permit for the exact amount, expiring at the intent deadline.
+        checked_at: "2026-10-07"
+    finding: >-
+      The SDK asks for an exact-amount approval to the Transfers contract. The contract's other token paths use Permit2 or EIP-2612 permits for the exact amount, with a deadline. The hosted checkout bundles the Permit2 SDK. Its one-time token approval to Permit2 is not readable from the minified code, and that approval may be unbounded. Permit2 still enforces the per-payment amount and expiry.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/transfers/Transfers.sol#L720-L737
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: contracts/transfers/Transfers.sol
+        detail: Merchant funds land in the recipient address inside the payment transaction, so nothing remains to withdraw afterwards.
+        checked_at: "2026-10-07"
+        recheck: gh api repos/coinbase/commerce-onchain-payment-protocol/contents/contracts/transfers/Transfers.sol?ref=d891289bd1f41bb95f749af537f2b6a36b17f889 --jq .content | base64 -d | sed -n 720,737p
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xeADE6bE02d043b3550bE19E960504dbA14A14971
+        address: "0xeADE6bE02d043b3550bE19E960504dbA14A14971"
+        chain_id: 8453
+        block_number: 52285285
+        detail: The README-documented contract is non-upgradeable (implementation slot zero) and unpaused at block 52285285, so the self-operator path from C2 stays usable if Coinbase disappears with the contract unpaused.
+        checked_at: "2026-10-07"
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+        archive: data/archive/coinbase-commerce-terms.txt
+        detail: The Commerce Terms state that Coinbase does not store merchants' received crypto.
+        checked_at: "2026-10-07"
+        quote: We do not store the cryptocurrency you receive as payment.
+    finding: >-
+      Derived from S1=3, C2=3, C3=1 and O3=1. Payees already hold their funds, which arrive in their own wallet atomically (S1). Settlement can continue in principle: a payee can register as operator and sign intents against the unpaused, non-upgradeable contract (C2). No public frontend or operator service exists to do this (C3, O3), and the public SDK only works against Coinbase's API. That fails the anchor-3 condition of a public frontend build. A paused contract would also stay paused if the owner key were lost (C1).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/coinbase-commerce-php/blob/c258b69d5bb6d4dd45fdc68fee3b60c4a75247d2/src/Webhook.php#L29-L36
+        commit: c258b69d5bb6d4dd45fdc68fee3b60c4a75247d2
+        path: src/Webhook.php
+        detail: The reference client verifies the webhook signature as HMAC-SHA256 over the raw payload with a constant-time comparison (Util::hashEqual); the API key goes only in a server-side X-CC-Api-Key header (ApiClient.php L214-L224).
+        checked_at: "2026-10-07"
+        recheck: gh api repos/coinbase/coinbase-commerce-php/contents/src/Webhook.php?ref=c258b69d5bb6d4dd45fdc68fee3b60c4a75247d2 --jq .content | base64 -d | sed -n 29,36p
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/onchainkit/blob/3ecbd8fd28bf65002a4ad97092bfd0b157310e22/packages/onchainkit/src/core/network/getRPCUrl.ts#L13-L16
+        commit: 3ecbd8fd28bf65002a4ad97092bfd0b157310e22
+        path: packages/onchainkit/src/core/network/getRPCUrl.ts
+        detail: The browser bundle embeds a CDP client API key in the RPC URL path and in analytics payloads; that key is a client key meant to be public and authorises the cdp_ charge and RPC calls.
+        checked_at: "2026-10-07"
+    finding: >-
+      Merchant API keys stay on the server, and the reference code verifies webhooks. The SDK puts a CDP client key in the browser. That key is meant to be public, but it does authorise charge creation for productId checkouts. No repo describes key scoping or rotation, and the PHP client was last changed in 2021.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/commerce-onchain-payment-protocol/tree/d891289bd1f41bb95f749af537f2b6a36b17f889/
+        commit: d891289bd1f41bb95f749af537f2b6a36b17f889
+        path: "/"
+        detail: The repo has no audit report, no tests and no SECURITY file at this commit; a GitHub code search for a Commerce onchain protocol audit returns nothing.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: repo
+        url: https://github.com/coinbase/.github/blob/a9f35b0168a1bf0e1ebf4835e3484fd96fe1a722/SECURITY.md#L1-L3
+        commit: a9f35b0168a1bf0e1ebf4835e3484fd96fe1a722
+        path: SECURITY.md
+        detail: The org-wide security policy points to the Coinbase HackerOne program; no scope covering the Transfers contracts is stated in any repo.
+        checked_at: "2026-10-07"
+    finding: >-
+      We found no audit report for any Transfers deployment. The live Base contract (0x0305…b7a8) carries a fix that is not in the repo. Coinbase runs a bug bounty on HackerOne, but no repo states its scope.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+notes: >-
+  Scope is the Commerce Onchain Payment Protocol (Transfers) on Base, as used by Coinbase Commerce charges. The product appears to be winding down. Sampled eth_getLogs on all six Base Transfers addresses DefiLlama tracks show the last Transferred event on 2026-04-01 (block 44134913) and none since. Ethereum and Polygon windows were also empty. On 2026-10-07, api.commerce.coinbase.com returned 503 and commerce.coinbase.com returned 502; www.coinbase.com/commerce now redirects to /business. CDP docs carry only a "Migrate from Commerce" guide, and OnchainKit was deprecated on 2026-09-22. Onchain reads are pinned to Base block 52285285; repo reads to commerce-onchain-payment-protocol@d891289, onchainkit@3ecbd8fd (equal to npm 1.1.3 except README) and coinbase-commerce-php@c258b69. No browser traces were run; the hosted checkout was inspected by curling its JS bundles. Search log: docs/research/coinbase-commerce.md.
+
+context: >-
+  Coinbase Commerce is offered to merchants by Coinbase Bermuda Technologies Limited under the Commerce Terms of Service (last updated 2025-10-29), which apply UK, Bermuda, Singapore and US sanctions rules and allow Coinbase to suspend accounts without notice. The Commerce Privacy Policy is dated 2024-12-03. Successor product: Coinbase Business Checkouts API (USDC on Base).

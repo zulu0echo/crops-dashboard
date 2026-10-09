@@ -1,0 +1,329 @@
+slug: tria-card
+name: Tria
+type: incumbent
+website: https://www.tria.so
+repos: []
+contracts: []
+
+components:
+  - name: Tria app and backend (web and mobile, card management, BestPath routing)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Threely Dimensions, Inc. (Tria)
+    required: true
+  - name: Tria TSS wallet key infrastructure
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Tria
+    required: true
+  - name: Third National, LLC and partner Card Program Providers (issuer, collateral)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Third National, LLC and partners
+    required: true
+  - name: Visa (card network)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Sumsub (identity verification, biometrics)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Sumsub
+    required: true
+  - name: Collateral contracts (chain and addresses not published)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Card Program Providers
+    required: true
+
+context: >-
+  Per its Terms of Service, Tria is Threely Dimensions, Inc., governed by Delaware law, and says it is not a bank, money services business, card issuer or other financial institution and does not hold users' funds, collateral or keys. The Terms name Third National, LLC and partners as Card Program Providers that issue the Tria Card and extend credit secured by digital-asset collateral; the card is issued under licence from Visa.
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-international
+        quote: Tria and Issuer reserve the right to block and terminate transactions and suspend access to your Account
+        detail: International Card Terms s5 let Tria and the issuer block transactions and suspend accounts; no notice period is stated.
+        checked_at: "2026-10-07"
+    finding: >-
+      Tria and the issuer can block an individual cardholder's transactions and suspend the account with no stated notice. No settlement contracts are published, so no onchain role can be read. Judgment call: documented per-account blocking meets anchor 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/platform-agreement
+        quote: under which Third National, LLC and one or more of their partners
+        detail: Terms of Service say the card is issued and credit extended by Third National and partners; Tria provides only the front-end.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card payments are authorised and settled by the issuer and its partners; no direct contract path is documented or published. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/platform-agreement
+        quote: under which Third National, LLC and one or more of their partners
+        detail: The card depends on Tria's closed app and on the Card Program Providers.
+        checked_at: "2026-10-07"
+    finding: >-
+      Required intermediaries (Tria backend, issuer, Visa) are closed and single-vendor. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/platform-agreement
+        quote: you are not subject to sanctions or otherwise designated on any list of prohibited or restricted parties
+        detail: Terms require users not to be sanctioned or in restricted jurisdictions (UN, OFAC, US State Department, EU, UK lists).
+        checked_at: "2026-10-07"
+    finding: >-
+      Sanctions screening is disclosed in the Terms only; no code or contracts show where it runs, and it cannot be bypassed. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-international
+        quote: means the Ethereum Blockchain, Polygon Blockchain, Optimism Blockchain, Arbitrium Blockchain
+        detail: The International Card Terms list Supported Blockchains for collateral (Ethereum, Polygon, Optimism, Arbitrum, others at the issuer's discretion) and let the issuer designate collateral assets; no token list or freeze powers are stated.
+        checked_at: "2026-10-07"
+    finding: >-
+      Chains are enumerated in the card terms only (with an open-ended clause); collateral tokens and their issuers' freeze powers are not listed. Enumerated in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/TriaHQ/tria-krapi-seoul-ai-builders/tree/32f9168bd605712aabfed73275d0442621b04d3e/track1-personal-finance-analyst
+        commit: "32f9168bd605712aabfed73275d0442621b04d3e"
+        path: track1-personal-finance-analyst
+        detail: The TriaHQ org has four public repos - this ideathon dataset repo and forks of relay-server, sdk-testing-grounds and rainbowkit; none contains Tria's card, wallet, SDK or backend code. The npm packages tria-sdk-core/tria-sdk-web (2023) point at github.com/TriaHQ/tria-core-sdk, which returns 404, and the @tria-sdk/* packages named in the docs are not on the npm registry.
+        checked_at: "2026-10-07"
+    finding: >-
+      Nothing in the card stack is public. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/TriaHQ/tria-krapi-seoul-ai-builders/tree/32f9168bd605712aabfed73275d0442621b04d3e/track1-personal-finance-analyst
+        commit: "32f9168bd605712aabfed73275d0442621b04d3e"
+        path: track1-personal-finance-analyst
+        detail: No public code or README for running any part of the card product exists.
+        checked_at: "2026-10-07"
+    finding: >-
+      No self-host path. Reproduction not attempted.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/TriaHQ/tria-krapi-seoul-ai-builders/tree/32f9168bd605712aabfed73275d0442621b04d3e/track1-personal-finance-analyst
+        commit: "32f9168bd605712aabfed73275d0442621b04d3e"
+        path: track1-personal-finance-analyst
+        detail: No repo needed to run the product is public; all required components are closed.
+        checked_at: "2026-10-07"
+    finding: >-
+      All required components are closed. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/platform-agreement
+        quote: under which Third National, LLC and one or more of their partners
+        detail: The card requires Tria's hosted platform and the Card Program Providers.
+        checked_at: "2026-10-07"
+    finding: >-
+      The product cannot run without Tria's proprietary platform and the issuer. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/privacy-policy
+        quote: We may engage others to provide analytics services and serve advertisements across the web and/or mobile applications
+        detail: Privacy Policy s4 discloses third-party analytics and advertising using cookies and persistent identifiers.
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics and advertising trackers are disclosed in the privacy policy; the app is closed, so default state cannot be checked. Judgment call: disclosed in docs, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/privacy-policy
+        quote: We utilize a third party, Sumsub
+        detail: Privacy Policy describes identity verification with Sumsub, including biometric comparison of a selfie or video with a government ID.
+        checked_at: "2026-10-07"
+    finding: >-
+      Collection beyond settlement needs (identity documents, biometrics) is disclosed in the privacy policy only. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/privacy-policy
+        quote: We utilize a third party, Sumsub
+        detail: Sumsub, analytics and advertising providers, Third National and Visa are disclosed in the privacy policy and terms.
+        checked_at: "2026-10-07"
+    finding: >-
+      Third parties in the flow are disclosed in documents only and cannot be swapped. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-international
+        quote: Issuer reserves the right to designate which forms of Digital Assets may be used as Collateral
+        detail: Card Terms s3 say a Linked Wallet provides digital-asset Collateral securing charges, which the issuer can liquidate if a payment is unpaid after one day or the collateral value falls below charges.
+        checked_at: "2026-10-07"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://docs.tria.so/platform-agreement
+        quote: Tria does not hold, store, or take custody of your funds, digital assets, collateral, or private keys
+        detail: Tria disclaims custody; it says nothing about who controls the collateral contracts.
+        checked_at: "2026-10-07"
+    finding: >-
+      Card spending is secured by collateral the issuer can liquidate, disclosed in the card terms. Where the collateral sits and who controls it onchain is not published. Judgment call: disclosed issuer-controlled collateral fits anchor 1 at the documented cap.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+notes: >-
+  Eligibility: no public repository needed to run the product and no published or verified contract, so type is incumbent. Searched 2026-10-07: GitHub org TriaHQ (four repos: an ideathon dataset and forks of relay-server, sdk-testing-grounds, tria-rainbowkit); tria-labs/TriaLabs (unrelated Tria Labs, triafed.com) and triaso (0 repos); gh search repos "tria sdk" (unrelated projects); npm @tria-sdk/core, connect, authenticate(-react/-web), react-native, chains, utils, constants (all 404) and legacy tria-sdk-core/tria-sdk-web 2023 (repository github.com/TriaHQ/tria-core-sdk, 404); docs.tria.so (54 pages incl. CoreSDK, BestPath, Security and TSS, TX Flow, supported networks, all legal pages; only example wallet addresses in SDK samples, no card or collateral contracts); www.tria.so (client-rendered shell). The card terms are a collateral-backed Third National program with a generic Supported Blockchains list; the collateral chain and contracts are not published, so no onchain cell could be scored.

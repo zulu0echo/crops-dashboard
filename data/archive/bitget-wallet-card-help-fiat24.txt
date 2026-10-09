@@ -1,0 +1,17 @@
+Archive of Bitget Wallet Help Center articles (client-rendered; text read in a browser on 2026-10-07).
+
+URL: https://web3.bitget.com/helpCenter/482
+Title: How to invite friends and earn with your Fiat24 card | Mainland China - Bitget Wallet Help Center
+How to invite friends and earn with your Fiat24 card
+Invite friends to apply for a Bitget Wallet Card (Fiat24) and earn a bonus when they activate and spend. The more friends you refer, the more you earn.
+Get your referral code or link
+Go to "More" > "Referrals" > "Card" > "Invite now" to copy your unique referral code or invite link.
+Share with friends
+Share your code or link with friends who don't have a Bitget Wallet Card yet. If they don't apply through your link, they can manually enter your referral code within 7 days of card activation. | Note: Mainland China users are currently unable to apply for a new Fiat24 card.
+Rewards
+1. Card activation bonus is sent within 24 hours after your friend's card is approved. | 2. Spending commissions are distributed the next day to your Rewards account. | 3. Check and withdraw your rewards anytime from "Home" > "More" > "Rewards".
+
+URL: https://web3.bitget.com/helpCenter/802
+Title: New signups unavailable in Mainland China | Mainland China - Bitget Wallet Help Center
+New signups unavailable in Mainland China
+Users in Mainland China can no longer apply for a new Bitget Wallet Card. Existing users are not affected.

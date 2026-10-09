@@ -1,0 +1,501 @@
+slug: plasma-one
+name: Plasma One
+type: card
+website: https://www.plasma.org/personal
+primary_chain:
+  name: Plasma
+  chain_id: 9745
+  basis: >-
+    The International Card Terms define Supported Blockchains as "the Plasma blockchain network" and name Rain as issuer, so the card's collateral runs on Rain's Plasma deployment: Coordinator 0xd5dd7939... and Collateral beacon 0xBb931B7B... (block 34429835). Judgment call: Plasma One publishes no addresses; that this Coordinator serves Plasma One rests on the terms, and the sample collateral used to show the flow is not confirmed as a Plasma One cardholder's. Excluded: the US card terms and the Bridge account services.
+
+repos: []
+
+contracts:
+  - address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+    chain_id: 9745
+    role: Rain Coordinator (payments, withdrawals, pulls)
+    verified: explorer
+  - address: "0x36F5A3156FC6deD6bbcA970D26972ABB2dfD6274"
+    chain_id: 9745
+    role: Rain collateral factory (TransparentUpgradeableProxy)
+    verified: explorer
+  - address: "0x6f3b5Fd970Ffe143E04F636B0d7c8a62DEf58740"
+    chain_id: 9745
+    role: ProxyAdmin of the collateral factory
+    verified: none
+  - address: "0xBb931B7BF3691053a7C9caf47Fb0172d20608134"
+    chain_id: 9745
+    role: Collateral UpgradeableBeacon (unverified)
+    verified: none
+  - address: "0x05263D2448d8Bd3dfB9B0b63B6585450c823C1a9"
+    chain_id: 9745
+    role: Collateral implementation
+    verified: explorer
+  - address: "0xe0C209DbE0A57e664Bc63Df4247E25939AECb959"
+    chain_id: 9745
+    role: Sample per-user collateral (BeaconProxy, unattributed)
+    verified: none
+
+components:
+  - name: Rain Coordinator and per-user Collateral contracts
+    role: contracts
+    public: true
+    license: proprietary
+    operator: Signify Holdings, Inc. d/b/a Rain (owner EOA 0x21ebc2f2...)
+    required: true
+  - name: Rain collateral beacon and factory admin (unverified beacon)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Rain (EOA 0x21ebc2f2...)
+    required: true
+  - name: Rain executor, publisher and pull-operator keys
+    role: signer
+    public: false
+    license: proprietary
+    operator: Rain
+    required: true
+  - name: Rain (card issuer and program manager, Visa Principal Member)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Signify Holdings, Inc. d/b/a Rain
+    required: true
+  - name: Visa (card network)
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: Plasma One app and backend
+    role: backend
+    public: false
+    license: proprietary
+    operator: Plasma (Cayman Islands) and Plasma Labs UK Ltd.
+    required: true
+  - name: Privy wallet contracts and TEE key management (not identified)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Privy
+    required: true
+  - name: Sumsub (identity verification)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: Sumsub
+    required: true
+  - name: Bridge (global account services; not in the card path)
+    role: other
+    public: false
+    license: proprietary
+    operator: Bridge Building Inc. / Sp. Z.o.o. / Limited
+    required: false
+  - name: Plasma chain (PlasmaBFT validators)
+    role: other
+    public: true
+    license: none
+    operator: Plasma validators
+    required: true
+
+context: >-
+  Per its Terms of Service and Privacy Policy, Plasma is an exempted company incorporated in the Cayman Islands (CO-412800) with Plasma Labs UK Ltd. as joint data controller, and states it is not a bank, exchange, broker or virtual asset service provider. The card is issued by Rain, a Visa Principal Member, under licence from Visa; global account services are provided by Bridge entities in the US, EEA (Poland) and elsewhere.
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34429835
+        detail: Coordinator owner() = EOA 0x21ebc2f23a91fD7eB8406CDCE2FD653de280B5fc, which adds or removes executors and publishers, sets the treasury and supported assets; timelockWithdrawWithoutSignatureAllowed() = false.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x00000000000000000000000021ebc2f23a91fd7eb8406cdce2fd653de280b5fc"
+      - tier: documented
+        kind: document
+        url: https://www.plasma.org/plasma-one-international-card-terms
+        quote: Plasma and Issuer reserve the right to block and terminate transactions and suspend access to your Account
+        detail: Card Terms s5 let Plasma and the issuer block transactions and suspend accounts at any time.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card settlement contracts are controlled by a single Rain EOA, and the Card Terms let Plasma and Rain block any cardholder's transactions at any time. Users cannot pull collateral out without a Rain signature because unsigned timelock withdrawals are switched off. EOA-held role with per-account blocking, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/tx/0x32bbf2f43c3ea2f7a77d3ec9e1e86d1142e7419a66af113f785659187a0134b8
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34424414
+        detail: Sample card funding tx 0x32bbf2f4...34b8 was sent by EOA 0x2ebE9d77c907C03910157f4c437962F156FEB3Da calling Coordinator.pullAssetFromUserWallet (onlyPullOperator) to move 1.34 USDT0 from account 0xDc4930f1... into its collateral 0xe0C209Db...; payments from collateral to the Rain treasury (makePaymentFromCollateral) require a Rain executor/publisher signature.
+        checked_at: "2026-10-07"
+    finding: >-
+      Merchants are paid by Rain through Visa offchain. Onchain, moving funds into collateral and paying out of it both require Rain-held keys (pull operator, executor or publisher). No payer or payee can settle directly.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.plasma.org/terms-of-service
+        quote: Plasma is not the program manager or the issuer of the Plasma One Card
+        detail: The Terms place the card program with third parties; the International Card Terms name Rain as issuer under licence from Visa.
+        checked_at: "2026-10-07"
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34429835
+        detail: Coordinator publishers(0) = 0xcBD8eaE56e5D51c82E9b901ff535906077c5ab32 and executors(0) = 0xB92949bdF09F4193599Ae7700211751ab5F74aCd, both Rain-held keys.
+        checked_at: "2026-10-07"
+    finding: >-
+      A card payment needs Plasma One's closed app and backend, Rain's signers and Visa. None is public and there is no fallback. Plasma publishes no Plasma One repository.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.plasma.org/terms-of-service
+        quote: "Prohibited jurisdictions include: Cuba, Iran, and North Korea"
+        detail: Terms list prohibited and restricted jurisdictions and OFAC/EU/UK sanctions screening.
+        checked_at: "2026-10-07"
+    finding: >-
+      Geographic and sanctions restrictions are disclosed in the Terms and enforced in the closed backend, Rain and Sumsub, so the neutrality of the settlement layer cannot be shown from code and the screening cannot be bypassed (C2 = 0). Disclosed in docs only, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34429835
+        detail: Coordinator isSupportedAsset(USDT0 0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb) = true; USDT0 exposes isBlocked(address) and owner() 0x4DFF9b5b0143E642a3F63a5bcf2d1C328e600bf8.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x9be918e6000000000000000000000000b8ce59fc3717ada4c02eadf9682a9e934f625ebb"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        recheck: cast call 0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077 "isSupportedAsset(address)(bool)" 0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb --block 34429835 --rpc-url https://rpc.plasma.to
+      - tier: documented
+        kind: document
+        url: https://www.plasma.org/terms-of-service
+        quote: stablecoin issuers may have the contractual or technical ability to freeze, block, or blacklist tokens or addresses
+        detail: The Terms warn of issuer freeze powers in general terms; no chain or validator assumptions are stated.
+        checked_at: "2026-10-07"
+    finding: >-
+      The collateral asset (USDT0) is enumerated in onchain Coordinator config read from verified source, and the Terms warn that stablecoin issuers can freeze addresses, without naming USDT0's blocklist. Plasma's validator set and inclusion assumptions are not stated. Judgment call: the generic freeze warning is not a per-token statement, so 2, not 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xBb931B7BF3691053a7C9caf47Fb0172d20608134
+        address: "0xBb931B7BF3691053a7C9caf47Fb0172d20608134"
+        block_number: 34429835
+        detail: Plasmascan shows Exact Match for the Coordinator, Collateral implementation 0x05263D24... and the factory proxy; the Collateral beacon 0xBb931B7B... and the collateral proxies are unverified; Sourcify v2 has none of these addresses.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x5c60da1b"
+          expect: "0x00000000000000000000000005263d2448d8bd3dfb9b0b63b6585450c823c1a9"
+    finding: >-
+      Rain's Coordinator and Collateral logic are verified on Plasmascan, but the beacon that decides which Collateral logic runs is not, nothing is on Sourcify, and the user wallet contract is not identified. Some contracts verified, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0x05263D2448d8Bd3dfB9B0b63B6585450c823C1a9
+        address: "0x05263D2448d8Bd3dfB9B0b63B6585450c823C1a9"
+        block_number: 34429835
+        detail: The only public code in the card path is explorer-verified Rain contract source; the PlasmaLaboratories GitHub org holds forks (reth, alloy, ethrex), a token list and node templates, and no Plasma One app, SDK, backend or API repo.
+        checked_at: "2026-10-07"
+    finding: >-
+      Contract source is visible through explorer verification; the app, backend, API and indexer are closed and no API schema is published. Judgment call: explorer-verified source counts as "contracts only", so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34429835
+        detail: No Plasma One repository, README or deploy script exists; the card path depends on Rain-held keys.
+        checked_at: "2026-10-07"
+    finding: >-
+      There is no self-host path: no repo or README, and the card cannot run without Rain's keys and Plasma's backend. Reproduction not attempted.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34429835
+        detail: Coordinator ABI and events (AssetPulled, PaymentFromCollateral, Withdrawal) are available from explorer verification only; no repo, API schema or export format.
+        checked_at: "2026-10-07"
+    finding: >-
+      ABIs and events can be read from the explorer, but nothing is versioned in a repo and there is no API schema or data export. Judgment call: 1, as for other explorer-only cases.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xBb931B7BF3691053a7C9caf47Fb0172d20608134
+        address: "0xBb931B7BF3691053a7C9caf47Fb0172d20608134"
+        block_number: 34429835
+        detail: The collateral beacon is unverified, the backend and signers are closed, and there are no repos with a licence.
+        checked_at: "2026-10-07"
+    finding: >-
+      Required components are closed (Plasma One backend, Rain signers, the unverified beacon), and no repo carries any licence. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34429835
+        detail: pullAssetFromUserWallet is onlyPullOperator and payments from collateral verify a Rain executor/publisher signature.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card cannot run without Rain's proprietary signing service and Plasma's backend; there is no open alternative.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.plasma.org/privacy-policy
+        quote: we may use Google Analytics for this purpose
+        detail: The Privacy Policy discloses Google Analytics on the Service and other tracking technologies.
+        checked_at: "2026-10-07"
+    finding: >-
+      Analytics is present and disclosed in the privacy policy. The app is closed, so whether it is on by default or opt-in cannot be checked in code. Judgment call: disclosed analytics with no code to show opt-in is anchor 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.plasma.org/privacy-policy
+        quote: Identity verification (KYC) conducted by SumSub
+        detail: The Privacy Policy describes ID numbers, ID images, biometric face matching via Sumsub, and AML data.
+        checked_at: "2026-10-07"
+    finding: >-
+      Collection goes beyond settlement needs (identity documents, biometrics, AML data) and is disclosed in the privacy policy only. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/tx/0x32bbf2f43c3ea2f7a77d3ec9e1e86d1142e7419a66af113f785659187a0134b8
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34424414
+        detail: The pull call and its AssetPulled event carry the user wallet, its collateral, asset, amount and an opaque UUID transaction id (edd302da-4d10-497c-9258-ce471a434f88); no merchant or order data.
+        checked_at: "2026-10-07"
+        recheck: cast tx 0x32bbf2f43c3ea2f7a77d3ec9e1e86d1142e7419a66af113f785659187a0134b8 input --rpc-url https://rpc.plasma.to | cast calldata-decode "pullAssetFromUserWallet(string,address,address,address,uint256)"
+      - tier: documented
+        kind: document
+        url: https://www.plasma.org/privacy-policy
+        quote: will be visible to other users of the Service and the public
+        detail: The Privacy Policy says data interacting with the Plasma blockchain is visible to the public.
+        checked_at: "2026-10-07"
+    finding: >-
+      No merchant data goes onchain, but each card funding is a public pull from a long-lived wallet into its own collateral, tagged with a Rain transaction id, so amounts and timing are linkable to the wallet. Public visibility is disclosed. Minimal linkage, documented, so 2. Judgment call: the sample is a Rain collateral on Plasma not confirmed as a Plasma One account.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.plasma.org/terms-of-service
+        quote: key-management infrastructure provided by Privy
+        detail: The Terms name Privy for wallet keys and Bridge for account services; the card terms name Rain and Visa; the privacy policy names Sumsub and Google Analytics.
+        checked_at: "2026-10-07"
+    finding: >-
+      Rain, Visa, Privy, Sumsub and Google see payment or identity data; they are disclosed in documents only and cannot be swapped. 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xBb931B7BF3691053a7C9caf47Fb0172d20608134
+        address: "0xBb931B7BF3691053a7C9caf47Fb0172d20608134"
+        block_number: 34429835
+        detail: Collateral beacon owner() = Rain EOA 0x21ebc2f2...; Collateral.withdrawERC20Asset is onlyCoordinator; the sample account's USDT0 allowance to its collateral is 2^256-1, and the Coordinator's pull operator can pull any amount.
+        checked_at: "2026-10-07"
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x00000000000000000000000021ebc2f23a91fd7eb8406cdce2fd653de280b5fc"
+        recheck: cast call 0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb "allowance(address,address)(uint256)" 0xDc4930f1A410554D95ecd03A12500c573595BEB5 0xe0C209DbE0A57e664Bc63Df4247E25939AECb959 --block 34429835 --rpc-url https://rpc.plasma.to
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://www.plasma.org/terms-of-service
+        quote: Plasma cannot access raw private key information for you
+        detail: Plasma says it cannot access keys or initiate actions; this covers Plasma, not Rain.
+        checked_at: "2026-10-07"
+    finding: >-
+      Funds in collateral are released only by Rain's Coordinator, and users cannot withdraw without a Rain signature. The observed account grants its collateral an unlimited USDT0 allowance that Rain's pull operator uses, and a single Rain EOA can swap the collateral logic through the beacon. Rain can redirect funds, so 0. Judgment call: the allowance sample is not confirmed as a Plasma One account.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0x36F5A3156FC6deD6bbcA970D26972ABB2dfD6274
+        address: "0x36F5A3156FC6deD6bbcA970D26972ABB2dfD6274"
+        block_number: 34429835
+        detail: Factory EIP-1967 admin = ProxyAdmin 0x6f3b5Fd9..., whose owner() is EOA 0x21ebc2f2...; the same EOA owns the Collateral beacon and the Coordinator.
+        checked_at: "2026-10-07"
+        check:
+          slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+          expect: "0x0000000000000000000000006f3b5fd970ffe143e04f636b0d7c8a62def58740"
+    finding: >-
+      Every collateral contract can be upgraded at once by a single Rain EOA through the beacon, with no timelock or notice; the factory is upgradeable by the same EOA. EOA admin, so 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb
+        address: "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb"
+        block_number: 34429835
+        detail: USDT0 allowance(0xDc4930f1..., collateral 0xe0C209Db...) = 2^256-1.
+        checked_at: "2026-10-07"
+    finding: >-
+      The observed card account grants an unbounded USDT0 approval to a collateral contract whose logic a Rain EOA can replace; neither the Terms nor the card terms disclose an unbounded approval. Unbounded and undisclosed, so 0. Judgment call: the sample is a Rain collateral on Plasma not confirmed as a Plasma One account, and the app code that sets the approval is not public.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
+        address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+        block_number: 34429835
+        detail: timelockWithdrawWithoutSignatureAllowed() = false, so Collateral.initiateTimeLockWithdrawal reverts without a Rain signature.
+        checked_at: "2026-10-07"
+        check:
+          call: "0xe5b90e49"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      S1: collateral is Rain-controlled. C2: no direct settlement (0). C3: closed single-vendor (0). O3: no self-host path. Funds already in collateral cannot leave without Rain's signature, so they depend on Rain's liveness; balances left in the user's wallet stay under the user's Privy-managed key, but that wallet is not public code. 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+notes: >-
+  Plasma One publishes no contract addresses or repositories. The card-side contracts were found from USDT0 Transfer logs on Plasma (block range 34379335-34429334): per-user Rain Collateral BeaconProxies funded by Coordinator.pullAssetFromUserWallet. The International Card Terms name Plasma as the only Supported Blockchain and Rain as issuer, which is the basis for scoring Rain's Plasma deployment; the specific sample account is not confirmed as a Plasma One user. The accounts seen funding collateral are EIP-7702 delegations to ZeroDev Kernel v3.3 (0xd6CEDDe8...), which does not match a third-party claim (HarrisHan/plasma-one-account) that Plasma One uses Biconomy Nexus 1.2.0; neither is attributed. All reads pinned to Plasma block 34429835.

@@ -1,0 +1,232 @@
+slug: deblock-card
+name: Deblock Card
+type: incumbent
+website: https://deblock.com
+repos: []
+contracts: []
+
+components:
+  - name: Deblock app (iOS, Android, app.deblock.com)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Deblock SAS
+    required: true
+  - name: Deblock current account and card ledger (e-money)
+    role: ledger
+    public: false
+    license: proprietary
+    operator: Deblock SAS (EMI)
+    required: true
+  - name: Deblock card issuing (direct Visa member)
+    role: card-issuer
+    public: false
+    license: proprietary
+    operator: Deblock SAS
+    required: true
+  - name: Visa
+    role: card-network
+    public: false
+    license: proprietary
+    operator: Visa
+    required: true
+  - name: KYC provider (not identified)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: undisclosed
+    required: true
+  - name: Self-custodial crypto wallet (seed-phrase keys on device; not in the card path)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: user, app by Deblock SAS
+    required: false
+
+scores:
+  C1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://deblock.com/en/legal-notice
+        detail: Deblock SAS is the authorised electronic money institution behind the current account the card spends from.
+        quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
+        checked_at: "2026-10-07"
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://deblock.com/en/cards
+        detail: The cards page says Deblock is itself a direct Visa member.
+        checked_at: "2026-10-07"
+    finding: >-
+      The card is a Visa debit card on Deblock's own e-money ledger, with Deblock as issuer. Settlement happens only inside Deblock and Visa, so there is no direct path.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://deblock.com/en/legal-notice
+        detail: Deblock operates the e-money account and, per its cards page, the card issuing; no other operator exists in the card path.
+        quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
+        checked_at: "2026-10-07"
+    finding: >-
+      Every card payment depends on Deblock's closed ledger and issuing systems and on Visa. Closed, single-vendor.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  C4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  C5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  O4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://deblock.com/en/legal-notice
+        detail: The legal notice reserves all software and databases as Deblock's exclusive property.
+        quote: remain the exclusive property of Deblock SAS or its licensors
+        checked_at: "2026-10-07"
+    finding: >-
+      All required components (app, ledger, issuing) are closed and proprietary. Nothing can be forked.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  F3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P4:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://deblock.com/en/legal-notice
+        detail: Card funds are e-money held by Deblock SAS as the authorised electronic money institution.
+        quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
+        checked_at: "2026-10-07"
+    finding: >-
+      The card spends a balance that Deblock holds as e-money. That is a disclosed provider-held balance, so 1. The self-custodial crypto wallet is a separate product and not in the card path.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://deblock.com/en/legal-notice
+        detail: The card balance exists only on Deblock's e-money ledger.
+        quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
+        checked_at: "2026-10-07"
+    finding: >-
+      Derived from S1 = 1 (provider-held e-money), C2 = 0 and C3 = 0. Card funds and access depend on Deblock operating; any recovery would go through EMI safeguarding (see context), not through a path the user controls. Crypto in the self-custodial wallet is outside the card rail.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+  S6:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-07
+    review:
+      status: pending
+
+context: >-
+  Not scored. Deblock SAS (Lille, RCS 948 264 163) is authorised as an electronic money institution by the ACPR (interbank code 17748) and as a crypto-asset service provider by the AMF (number A2025-001) for exchange and order execution; complaints about personal data go to the CNIL (https://deblock.com/en/legal-notice). The cards page says Deblock is a direct Visa member (https://deblock.com/en/cards). I could not read the Terms or privacy policy (see notes), so safeguarding, liability and data-sharing terms are not cited.
+
+notes: >-
+  Incumbent: no verified contract or public repository needed to run the product was found. The card is a Visa debit card on Deblock's own e-money account. The self-custodial crypto wallet uses seed-phrase keys generated on the device (self-custody page), with no smart contract in the card path. Searched: GitHub (org DeblockApp exists with 0 public repos and nothing linking it to Deblock; other org names do not exist; repo search "deblock" returns only image-deblocking projects); deblock.com sitemap, legal notice, legal agreements, cards, self-custody and FAQ pages; the app.deblock.com bundle (Sentry enabled outside localhost, Intercom, Google Tag Manager, Fireblocks key-format helpers; no contract addresses). The Terms, privacy policy and complaints policy render client-side from a Deblock API that needs a bearer token embedded in the page script. I did not use that token, so those documents were not read and the cells that depend on them (C1, C4, P1, P2, P4) are unknown.
