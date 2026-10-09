@@ -1018,5 +1018,34 @@ scores:
 context: >-
   Not scored. The card is issued and its payment services are provided by Monavate: for EEA cardholders UAB Monavate, an electronic money institution authorised and regulated by the Bank of Lithuania (authorisation code LB002139); for UK and other non-EEA cardholders Monavate Ltd, authorised and regulated by the Financial Conduct Authority (firm reference number 901097). Rights as a payment services customer are against Monavate as the licensed issuer (closure notice, https://help.gnosispay.com/articles/1452055581). Monavate's EEA cardholder terms state that the EU deposit guarantee scheme does not apply and that EURe issuer Monerium is authorised as an electronic money institution by the Financial Supervisory Authority of the Central Bank of Iceland (https://help.gnosispay.com/articles/4471559864). After the card closes on 20 Dec 2026, support for refunds, disputes and chargebacks runs until 23:59 UTC on 12 June 2028 (closure notice). Personal data is processed under GDPR and UK GDPR with a named data protection officer, and KYC and transaction records are kept 5 years after account closure as a legal retention requirement (https://help.gnosispay.com/articles/7638555831, https://help.gnosispay.com/articles/7752555767-what-happens-to-your-data).
 
+availability:
+  model: allowlist
+  countries: [EEA, AR, BO, BR, CH, CO, GB, MX]
+  note: >-
+    The Terms (Eligibility) require residence in the EEA or in a "Non-EEA Supported Country" listed in the Eligible Countries FAQ. That FAQ lists all 30 EEA states plus Argentina, Bolivia, Brazil, Colombia, Mexico, Switzerland and the United Kingdom. Residents of French overseas territories are not served. Product variants: EEA residents contract with Gnosis P. Tech (Portugal) and Monavate's EEA entity, everyone else with Gnosis Pay Co Ltd and Monavate Limited (UK); the supported stablecoin is GBPe in the UK, EURe in the EEA and Switzerland, and USDCe elsewhere. The same FAQ also says the card does not work for transactions made from 22 sanctioned or high-risk locations, including Crimea (a region of Ukraine), Russia, Belarus, Iran, North Korea, Venezuela and Zimbabwe. The Terms also exclude sanctioned persons and residents of countries sanctioned by the US, UN, UK or EU. The consumer card and web app close at 23:59 UTC on 20 December 2026 (closure notice of 21 September 2026); partner programmes set their own eligibility rules.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/1662387556
+      archive: data/archive/gnosis-pay-eligible-countries.txt
+      detail: Eligible Countries for Gnosis Pay (help centre, linked from Terms section 2) lists 37 supported countries of residency and 22 locations where card use is prohibited.
+      checked_at: "2026-10-09"
+      quote: Current Supported Countries of Residency
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/2178874711
+      archive: data/archive/gnosis-pay-terms.txt
+      detail: Terms of Service section 2 (Eligibility) require residence in the EEA or a Non-EEA Supported Country listed in the Eligible Countries FAQ, and exclude residents of countries sanctioned by the US, UN, UK or EU.
+      checked_at: "2026-10-09"
+      quote: You must be resident in a Non-EEA Supported Country to order a Card
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
+      archive: data/archive/gnosis-pay-closure-notice.txt
+      detail: Closure notice dated 21 September 2026; the card and web app stop at 23:59 UTC on 20 December 2026, and partner card programmes will have their own eligibility rules.
+      checked_at: "2026-10-09"
+      quote: "Your card and the web app will stop working at 23:59 UTC on 20 December 2026."
+  checked_at: "2026-10-09"
+
 notes: >-
   Migrated 2026-10-07 to the post-red-team rules (components, quotes, rechecks, R7 module read on the spender Safe). Scored the post-incident (June 2026) account architecture from account-kit 5.1.1 at 9366073 and a live account found from a Spend event at block 48629267; all onchain reads are pinned to Gnosis block 48629765. The card side (issuer Monavate, Visa, KYC, card freeze) is documented tier only, from the Terms, the privacy policy and the closure notice. Gnosis Pay is ending its consumer card and web app at 23:59 UTC on 20 Dec 2026 (the withdraw path stays) and moving to partner card programs, which may use different terms and setups. The homepage privacy and legal links return 404; the live legal pages are at help.gnosispay.com/articles.

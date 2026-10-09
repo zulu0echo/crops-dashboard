@@ -27,6 +27,9 @@ if (!checkCriteria(criteria)) {
 }
 for (const c of criteria.criteria) if (!criteria.pillars.some((p) => p.id === c.pillar)) { console.error(`✗ data/criteria.yaml ${c.id}: unknown pillar ${c.pillar}`); process.exit(1); }
 const IDS = criteria.criteria.map((c) => c.id);
+let REGIONS = { countries: [], regions: {} };
+try { REGIONS = parse(readFileSync('data/regions.yaml', 'utf8')); } catch { /* optional */ }
+const COUNTRY = new Set([...REGIONS.countries, ...Object.keys(REGIONS.regions ?? {})]);
 const validateSchema = ajv.compile(schema);
 
 export function isChecksummed(addr) {
@@ -127,6 +130,12 @@ export function checkProvider(p, file) {
       if (e.tier === 'verified' && !['onchain', 'repo'].includes(e.kind)) err(at, `kind ${e.kind} cannot be tier verified`);
     });
   }
+  // Country availability (displayed, not scored) follows the same evidence rules as a cell.
+  if (p.availability) {
+    for (const c of p.availability.countries ?? []) if (!COUNTRY.has(c)) err('availability', `${c} is not an ISO 3166-1 code or a region in data/regions.yaml`);
+    if (!p.availability.evidence.some((e) => e.tier !== 'claimed' || e.by === 'provider'))
+      err('availability', 'third-party claims alone cannot establish availability (e.g. a comparison site); cite the provider\'s terms, docs or code');
+  }
   return errs;
 }
 
@@ -135,7 +144,7 @@ export function checkProvider(p, file) {
 // upgrade path is retry-with-backoff and a per-host allowlist of known-flaky docs sites.
 export async function checkOnline(p, file) {
   const errs = [];
-  const ev = Object.entries(p.scores).flatMap(([id, c]) => (c.evidence ?? []).map((e) => [id, e]));
+  const ev = [...Object.entries(p.scores).flatMap(([id, c]) => (c.evidence ?? []).map((e) => [id, e])), ...(p.availability?.evidence ?? []).map((e) => ['availability', e])];
   const headers = { 'user-agent': 'crops-dashboard-validator' };
   const ghHeaders = { ...headers, accept: 'application/vnd.github+json', ...(process.env.GITHUB_TOKEN && { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }) };
   const seen = new Set();
@@ -273,6 +282,14 @@ function selfCheck() {
   p = base(); p.primary_chain = { name: 'Solana', caip2: 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp', basis: 'Only chain the card settles on, per its program repo.' };
   p.contracts = [{ address: 'JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4', caip2: 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp', role: 'program', verified: 'none' }];
   ok(errs(p).length === 0, 'non-EVM provider rejected: ' + errs(p));
+  p = base(); p.availability = { model: 'blocklist', countries: ['US', 'QQ'], evidence: [docEv], checked_at: '2026-10-09' };
+  ok(has(p, /QQ is not an ISO/), 'availability: unknown country code accepted');
+  p = base(); p.availability = { model: 'allowlist', evidence: [docEv], checked_at: '2026-10-09' };
+  ok(has(p, /schema/), 'availability: allowlist without countries accepted');
+  p = base(); p.availability = { model: 'global', evidence: [{ tier: 'claimed', by: 'third_party', kind: 'document', url: 'https://cardmap.org', detail: 'd', checked_at: '2026-10-09' }], checked_at: '2026-10-09' };
+  ok(has(p, /third-party claims alone cannot establish availability/), 'availability: third-party-only accepted');
+  p = base(); p.availability = { model: 'allowlist', countries: ['EEA', 'GB'], evidence: [docEv], checked_at: '2026-10-09' };
+  ok(errs(p).length === 0, 'availability: valid allowlist rejected: ' + errs(p));
   console.log('validate self-check: ok');
 }
 

@@ -303,3 +303,24 @@ context: >-
 
 notes: >-
   Eligibility: no verified contract and no public repository needed to run the card, so type is incumbent. Searched 2026-10-07: docs.jup.ag (llms.txt index; Spend overview, Jupiter Card, Risks & Security, Fees & Limits, FAQ); github.com/jup-ag (202 repos; none for Spend, card, Global ID or Rain); jupiter.global and jup.ag for terms or privacy pages (404); Rain's GitHub org SignifyHQ, whose collateral-contract-integration-examples repo has Solana IDLs (v2.00-2.05) but no mainnet program id, and whose Android SDK test fixtures name only a devnet program (A7oUtbpm..., absent on mainnet). The docs say Rain-card deposits stay onchain as collateral; if Rain or Jupiter publishes the collateral program or a user's collateral account, re-assess as type card. Deposits are also accepted on Ethereum, Sui, Arbitrum and Base. Card Map was not used.
+
+availability:
+  model: allowlist
+  countries: [AG, AR, AU, BS, BB, BZ, BO, BR, KY, CO, CR, CI, DM, DO, EC, EG, SV, GH, GD, GT, GY, HN, JP, KE, MY, MX, MA, NZ, PK, PA, PY, PE, PH, KN, LC, VC, SN, SG, ZA, KR, SR, TW, TH, TT, TC, UG, AE, UY, VN, ZM, US]
+  note: >-
+    Jupiter's docs list where the Jupiter Card is "actively offered", by country of residence (not citizenship). Bangladesh and Nigeria are on the list but marked "on pause until further notice", so they are left out. United States: only residents of the 31 listed states (Alabama, Alaska, Arkansas, California, Colorado, Connecticut, Florida, Hawaii, Illinois, Indiana, Iowa, Kansas, Kentucky, Maine, Massachusetts, Michigan, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, New York, North Carolina, Oklahoma, Pennsylvania, South Carolina, Texas, Utah, Virginia, West Virginia, Wyoming). Two issuers: DCS for residents of Australia, Japan, Malaysia, the Philippines, Singapore, South Korea, Taiwan, Thailand and Vietnam; Rain elsewhere. The docs add that residents of unlisted countries are reviewed case by case during KYC. No Jupiter Spend terms of service or cardholder agreement was found, so there is no prohibited-country list.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/jupiter-card
+      detail: The Jupiter Card docs list supported countries of residence and supported US states, and name the issuer for each region.
+      quote: "The list below shows where the Jupiter Card is actively offered"
+      archive: data/archive/jupiter-card-supported-countries.txt
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/jupiter-card
+      detail: The list marks Bangladesh as paused; Nigeria is marked the same way further on.
+      quote: "Bangladesh (on pause until further notice)"
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

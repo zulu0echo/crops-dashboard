@@ -1,0 +1,32 @@
+Source: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-prohibited-activities-list
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML, tags removed.
+
+ ether.fi Prohibited Activities List | ether.fi ⌘ Ctrl k Welcome to ether.fi Quickstart 🛟 Visit Help Center Products 💳 Cash Card 📈 Markets Borrow Earn Staking Developers Contracts and Integrations 
+Security Security & Risks Governance Governance Resources About ether.fi 🤝 Partnerships Events 🗓️ Events Archive Legacy Get Started (Archived) Node Operators (Archived) Solo Stakers (Archived) 
+Deprecated Staking Tokens (Archived) 👑 King Protocol (Historical Reference) Legal Ether.Fi Legal Privacy Policy Terms of Use Promo Terms and Conditions ether.fi Cash Cardholder Agreement - Inc. (U.S.) 
+ether.fi Cash Cardholder Agreement - Ltd. (U.S.) ether.fi Cash Corporate Spend Card Terms (US) ether.fi Cash Cardholder Agreement - Inc. (International) ether.fi Cash Cardholder Agreement - Ltd. 
+(International) ether.fi Prohibited Activities List ether.fi Cash Corporate Authorized User Terms ether.fi Cash Corporate Agreement (International) ether.fi Cash Corporate Spend Card Terms 
+(International) Account Opening Privacy Notice - GLBA (U.S.) E-Sign & Electronic Communications Notice (U.S. and International) ether.fi Cash Cashback Rewards Program (U.S. and International) 
+ether.fi Trading and Lending Rewards Program Terms ether.fi Referral Program Terms and Conditions ether.fi Affiliate Program Terms and Conditions ether.fi Cash Protection Program Powered by GitBook 
+On this page For the complete documentation index, see llms.txt . This page is also available as Markdown . Connect with MCP On this page Legal Ether.Fi Legal ether.fi Prohibited Activities List 
+Jurisdictional Restrictions Use of the Ether.Fi Cash platform and card services is strictly prohibited for any individuals, entities, or wallet addresses that are located in, incorporated in, or 
+otherwise affiliated with jurisdictions subject to economic sanctions or identified as high risk under global AML/CFT frameworks. This includes, but is not limited to: Cuba, Iran, North Korea, Syria 
+The Crimea, Donetsk, and Luhansk regions of Ukraine Any jurisdictions designated by the U.S. Department of the Treasury’s Office of Foreign Assets Control (OFAC), the European Union, the United 
+Kingdom, or the United Nations as subject to trade or financial restrictions Ether.Fi Cash may also restrict access to users from additional jurisdictions at its discretion, or as required by changes 
+in applicable law or regulatory guidance. Prohibited jurisdictions may include: Afghanistan, Albania, Belarus, Bosnia, Central African Republic, Congo, Croatia, Cuba, Cyprus, Eritrea, Haiti, Iran, 
+Iraq, Kosovo, Lebanon, Liberia, Libya, Macedonia, Moldova, Montenegro, North Korea, Russia, Serbia, Somalia, Syria, Ukraine (specific regions), Venezuela, Vietnam, Yemen, Zimbabwe Prohibited 
+Activities You may not use Ether.Fi Cash to engage in or facilitate any of the following: Illegal or Regulated Activities The sale, distribution, or promotion of Schedule I controlled substances, or 
+Schedules II–V without appropriate pharmaceutical licensing Weapons sales or manufacturing (including firearms, ammunition, and accessories) Production or distribution of child sexual abuse material 
+or other unlawful content Operation of gambling, betting, lotteries, or games of chance, unless expressly permitted by local law and pre-approved by Ether.Fi Cash Participation in or facilitation of 
+pyramid, Ponzi, or other deceptive financial schemes Human trafficking, escort services, or prostitution (legal or otherwise) Use of crypto assets to obfuscate proceeds from illegal activities or for 
+money laundering Intellectual Property Violations Unauthorized sale or distribution of copyrighted material, including music, software, and media Sale of counterfeit goods or services, including 
+knock-off designer brands Unlawful use of trademarks, patents, or proprietary technology Harmful or Hateful Conduct Promotion or funding of violence, extremism, or terrorism Use of Ether.Fi Cash 
+services to promote hate or discrimination based on race, ethnicity, religion, gender, sexual orientation, disability, or other protected classes Platform Misuse and Identity Fraud Misrepresenting 
+your identity, ownership structure, source of funds, or nature of business Facilitating transactions on behalf of undisclosed third parties Using Ether.Fi Cash products or branding without written 
+permission Impersonating Ether.Fi Cash or suggesting false partnerships, sponsorships, or endorsements Crypto-Specific Risks and Restrictions Engaging in mixing, tumbling, or other privacy-preserving 
+services designed to obfuscate asset origin Interaction with sanctioned wallets or smart contracts, including those on OFAC’s SDN list or flagged by Ether.Fi’s compliance vendors Circumventing 
+network-level controls, such as jurisdictional restrictions or risk-based transaction limits Restricted Activities (Subject to Enhanced Due Diligence or Limitations) Businesses or individuals engaged 
+in the following may require enhanced onboarding and approval: Financial services providers (e.g., crypto exchanges, broker-dealers, money service businesses) DAOs, on-chain investment clubs, or 
+pooled funds Legal sale of Schedules II–V substances with proper licensing High-risk NFT platforms or gaming protocols with tokenized incentives Changes to Prohibited Use Ether.Fi Cash reserves the 
+right to update this list at any time based on changes in regulatory guidance, blockchain analytics, or internal risk assessments. Your continued use of the Ether.Fi Cash platform constitutes 
+acceptance of the most current version of this policy. Previous ether.fi Cash Cardholder Agreement - Ltd. (International) Next ether.fi Cash Corporate Authorized User Terms Last updated 3 months ago 

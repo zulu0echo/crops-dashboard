@@ -89,6 +89,15 @@ check:
 same word at the latest block and flags `drift: true` if it changed. It never edits scores, but a
 drifted cell counts as unknown in the pillar rollup until a human re-checks it and removes the flag.
 
+### Country availability (displayed, never scored)
+
+Add an optional `availability` block: `model` (`global`, `allowlist` or `blocklist`), `countries`
+(ISO 3166-1 alpha-2 codes, `XK` for Kosovo, or `EU`/`EEA` from `data/regions.yaml`), an optional
+`note` for sub-national limits or product variants, `evidence` (the provider's own terms, docs or
+code, with `quote` for documents) and `checked_at`. CI checks the codes and the evidence rules.
+Comparison sites and press are not sufficient. If the provider publishes no country list, leave
+the block out; the site shows "no evidence either way".
+
 ### Right of reply
 
 Providers may set `provider_response` on any cell by PR. It is shown beside the score

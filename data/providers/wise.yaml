@@ -365,3 +365,23 @@ scores:
     assessed_by: AI research agent (seed), 2026-10-07
     review:
       status: pending
+
+availability:
+  model: allowlist
+  countries: [EEA, AD, AR, AU, BH, BL, BR, BV, CA, CH, CL, CN, CO, CR, GB, GE, GF, GG, GI, GP, GU, HK, IL, IM, IN, JE, JP, KR, KW, KY, MC, MF, MK, MO, MQ, MY, NZ, PE, PH, PM, QA, RE, SA, SG, SX, TH, TW, US, UY, YT, ZA]
+  note: >-
+    Recorded as where a Wise account that holds money can be opened. Wise's "Where can I use Wise?" says you can hold money if you live in a country where you can open a Wise account, and its "Where do I need to live to hold money with Wise?" table lists 80 countries and territories (all 30 EEA states plus the 50 codes above). Restrictions in that table: US excluding Nevada; Bahrain, Israel and Malaysia personal accounts only; Hong Kong business accounts only; Brazil BRL only for residents; India only while travelling overseas; Thailand, Wise has temporarily stopped issuing currencies and account details. Send and receive reach further: Wise says you can register and send money from most countries, and it names places it does not serve at all (Afghanistan, Belarus, Burundi, Central African Republic, Chad, Congo, DR Congo, Cuba, Eritrea, Iran, Iraq, North Korea, Libya, Myanmar, Somalia, South Sudan, Russia, Sudan, Syria, Yemen, Venezuela, and the Crimea, Donetsk, Luhansk, Kherson and Zaporizhzhia regions of Ukraine), where you cannot log in, register, use the card, or send or receive. Card eligibility is a narrower separate list, not used here.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://wise.com/help/articles/2813542/where-do-i-need-to-live-to-hold-money-with-wise
+      quote: You can hold money in your account if you live in one of the following countries and territories
+      detail: Wise Help Centre table of countries and territories (with per-country restrictions) where residents can hold money, i.e. open a Wise account.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://wise.com/help/articles/2978049/where-can-i-use-wise
+      quote: You can hold money if you live in a country where you can open a Wise account
+      detail: Wise Help Centre "Where can I use Wise?", which also lists the countries and regions Wise does not serve at all.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

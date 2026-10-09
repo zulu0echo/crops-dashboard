@@ -31,3 +31,10 @@ Wirex One runs on Wirex's BaaS contracts on Base. Most of them have source verif
 - S4 = 0, not 1: a direct withdraw path exists in the contracts, but the Privy key is reached through Wirex's app (export not verified), and admin EOAs can reclassify operations or upgrade.
 - S5 = 0: the bundle ships a literal SSO client secret. I did not use it and redacted it in the archive.
 - F2 and S6 unknown: no license history applies (contracts are UNLICENSED and no repo holds them), and no audit was found.
+
+## Availability 2026-10-09
+
+No `availability` block: no first-party source lists the countries where Wirex One is offered or prohibited.
+- Wirex One Terms (wirexapp.com/legal/one/terms, read 2026-10-09): s1.8-1.11 name the providing entity per region (EEA: Crossmint Europe and UAB Wirex; UK: Wirex Limited; Australia and New Zealand: Novatti; "Rest of the world": Wirex Limited). s1.13 and s5.7 bar use "in any Prohibited Territory" and require residence "in a supported jurisdiction", but neither term is defined or linked, and s1.14 still has a placeholder link ("available at XXX"). s18.5 (Apple clause) excludes US-embargoed countries without naming them. The page footer says "Available in 130+ countries" without a list.
+- help.wirexapp.com "Supported countries" (article 1189, client-rendered) has a per-country feature table, but it describes the classic Wirex app (Wirex account, X-Accounts, card) and does not mention Wirex One, which replaced the classic stack for EEA and AU users in May 2026. Judgment call: not used, because it covers a different product.
+- Also tried: wirexapp.com/supported-countries and /legal/one/prohibited-territories (404), the help-center search (not reachable as an API), and a web search (only third-party listings, which are not sufficient).

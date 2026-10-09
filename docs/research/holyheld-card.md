@@ -26,3 +26,9 @@ A public repo needed for the top-up flow exists (`holyheld/hh-v1-sdk`, BUSL-1.1,
 - S5 = 0: the browser example ships a partner API key (VITE_ env). What the key authorises is undocumented, so I took the lower anchor.
 - C5 = 0: the token list lives only in a hosted API response.
 - S6 unknown: no audit found.
+
+## Availability 2026-10-09
+
+- Source: holyheld.com/legal/terms-and-conditions (last updated 01.07.2026, server-rendered, quotes match the live page). Its scope clause covers users "residents of, or located in the Switzerland"; s9.2 excludes jurisdictions where use would be unlawful without naming any.
+- Also read: /legal (lists only Terms, Privacy and AML Policy), /legal/aml-policy (EDD for FATF high-risk countries and sanctions screening, no country list), /faq and /individual (marketing "global payments", invitation-only membership, no country list).
+- Judgment call: recorded as allowlist [CH]. The site markets global payments, but the only published customer terms are scoped to Switzerland and no other country is listed, so the more restrictive reading is used and the tension is stated in `note`.

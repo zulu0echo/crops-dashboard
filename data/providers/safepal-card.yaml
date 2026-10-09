@@ -577,3 +577,24 @@ context: >-
 
 notes: >-
   SafePal Card is the Fiat24 Mastercard and Swiss IBAN account offered inside the SafePal app. The "self-custody" framing is a claim: the card spends Fiat24 cash tokens (EUR24, USD24, CHF24, CNH24) that sit in the user's Arbitrum address but are issued, gated and movable by Fiat24, and card debits are pulled by Fiat24's authorizer key. The SafePal link is onchain: Fiat24Account.walletProviderMap(8026) returns "SafePal", and SafePal-referred accounts appear among card payers. All reads are pinned to Arbitrum block 512546136; Arbiscan returns 403 to scripted requests, so explorer links point to Blockscout and Sourcify. Neither SafePal nor Fiat24 publishes a repo for the card. No browser trace was run.
+
+availability:
+  model: allowlist
+  countries: [AT, AU, AX, BE, CA, CH, CY, CZ, DE, DK, EE, ES, FI, FO, FR, GB, GR, HK, HU, IE, IS, IT, JP, KR, LI, LT, LU, LV, MY, NL, NO, NZ, PL, PT, RE, RO, SE, SG, SI, SJ, SK, TW]
+  note: >-
+    The 42 listed places are those SafePal's regions page marks "with Mastercard support" (its getMasterCountries list); they match Fiat24's own card-eligible domicile list (info.fiat24.com/api/fiat24/getCountries) exactly. SafePal's wider IBAN-only list adds 19 domiciles with a $1,000/month limit and no card (AD, AM, AR, BD, CL, CO, CR, DM, DO, GE, HR, ID, MK, MX, PE, SM, TH, TR, UY); Fiat24's own list omits HR. Eligibility also needs citizenship of a supported region per SafePal, and Fiat24 excludes US persons and nationals of Iran, North Korea and Russia. SafePal's FAQ mentions a Mainland China limit, but neither current list includes CN, so CN is not listed. Fiat24 also blocks card payments at merchants in 38 countries (its "restricted payments" list), which limits where the card works, not who can hold it.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://ep.isafepal.com/bank/v1/account/getMasterCountries
+      archive: data/archive/safepal-card-fiat-gateway-regions.txt
+      quote: '{"Id":"SJM","Name":"Svalbard and Jan Mayen"},{"Id":"SVK","Name":"Slovakia"}'
+      detail: SafePal's own API behind its "Supported regions for SafePal Fiat gateway" page (safepal.com/en/bank/regions), list of regions with Mastercard support. Raw response committed because the page is client-rendered.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://www.safepal.com/en/bank
+      quote: If you are a citizen in any of the supported regions and reside in supported areas, you will be able to open an account
+      detail: SafePal card page FAQ, linking to the supported-regions page.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -59,3 +59,14 @@ Assessed 2026-10-07 by the AI research agent (seed). The scores are in `data/pro
 ## Recheck RPC
 
 Base (8453) is in the `scripts/recheck.mjs` RPC map, so no new RPC entry is needed.
+
+## Availability 2026-10-09
+
+- Model `global`. Source: the protocol code at the existing pin: `ERC20FeeProxy.sol` L34-L58, plus the SDK search for sanction, OFAC, chainalysis, blocklist, denylist and geoblock, which finds only test mocks.
+- Searched for a first-party country list and found none:
+  - `request.network/api-terms-and-conditions/`: Swiss law, KYB "may" apply to API access, no countries.
+  - `request.network/legal-notice/` and `request.network/privacy-policy/`.
+  - GitHub code search of org:RequestNetwork for "sanctioned", "jurisdictions", "countries" and "OFAC".
+- The docs' KYT pages (`use-cases/compliance-gated-payments.mdx` and `use-cases/hypernative-standard-screening-policy.mdx`) screen wallet addresses and are opt-in per destination. They are not a country list.
+- easy-invoice `src/lib/constants/compliance.ts` (@42ad4d0e) lists 40 countries for the template's crypto-to-fiat compliance form. It is recorded in `note` as an optional off-ramp variant.
+- Judgment call: we keep the unit used for scoring, the open protocol path, so the model is `global`. The closed API is optional and has no published country list.

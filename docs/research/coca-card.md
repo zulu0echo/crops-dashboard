@@ -20,3 +20,10 @@ I found no verified contract or public repository needed to run the card.
 - C4 = 1. The terms list prohibited countries, and the docs list supported residence countries. The settlement layer is undisclosed.
 - The custody claims ("COCA cannot move your money", "cannot freeze") are unverifiable, so S1 to S6 stay unknown.
 - O2 is unknown rather than 0, because attribution of the `coca-labs` org could not be established either way.
+
+## Availability 2026-10-09
+
+- Source: COCA docs, Banking account overview (https://docs.coca.xyz/coca/banking-account/overview), which lists the card's supported residence countries by region. Cross-checked against the COCA Wallet Terms (https://www.coca.xyz/terms), whose "Prohibited Countries" definition names 17 countries plus any UN-sanctioned country.
+- Model `allowlist` (the card list is the more restrictive of the two documents). Codes: `EU`, `IS`, `NO` for the 29 countries under "EEA countries" (Liechtenstein is not named, so `EEA` is not used), plus AD, GI, MC, ME, CH, GB, AU, HK, ID, MY, NZ, PH, SG, TW, TH, VN, AR, BR, CL, CO, EC, MX, PE.
+- Judgment call: the docs say "54 supported countries, which include" but name only 52. I listed the 52 named and said so in `note`.
+- The docs evidence is `claimed, by: provider`, consistent with how this file treats COCA docs elsewhere; the terms are `documented`.

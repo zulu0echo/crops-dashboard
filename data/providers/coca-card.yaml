@@ -311,3 +311,24 @@ context: >-
 
 notes: >-
   Classified as incumbent: I found no verified contract or public repository needed to run the card. Searched: coca.xyz (home, terms, privacy), docs.coca.xyz (full llms.txt index, all 19 pages; the only addresses are the COCA ERC-20 token on Polygon and Base, which is not in the card path), GitHub (users/orgs coca-xyz, cocaxyz, cocawallet, coca-wallet, coca-card, coca-finance, ccalabs, cca-labs, CCALabs: 404; coca-labs has two unrelated 2024 repos, cocalabs and cocacard are empty; code search for coca.xyz finds only third-party lists), and subdomains app., web., api., wallet., card.coca.xyz (no response). The docs say the card spends from an EIP-7702 smart wallet that approves each authorization, but give no chain, address, ABI or audit; these claims were not used to score custody. The Android app id is com.wirex.wallet, and a third-party guide says Wirex supplied the card infrastructure at launch; I found no COCA artifact linking the card to Wirex's onchain stack, so it is not evidence here. Re-assess as type card if COCA publishes the spending contract.
+
+availability:
+  model: allowlist
+  countries: [EU, IS, NO, AD, GI, MC, ME, CH, GB, AU, HK, ID, MY, NZ, PH, SG, TW, TH, VN, AR, BR, CL, CO, EC, MX, PE]
+  note: >-
+    The COCA card is limited to residents of the countries listed in COCA's docs. The docs say "54 supported countries, which include" and then name 52: the 29 listed under "EEA countries" (the EU 27 plus Iceland and Norway; Liechtenstein is not named), six other European countries, ten in Asia-Pacific and seven in Latin America. The two unnamed countries are not listed here. Separately, the COCA Wallet Terms (4 November 2023) prohibit residents of named countries (Afghanistan, North Korea, DR Congo, Eritrea, Libya, Somalia, South Sudan, Sudan, Yemen, Iraq, Iran, Cuba, Syria, Mali, Central African Republic, Guinea-Bissau, Lebanon) and any UN-sanctioned country; none of those are on the card list.
+  evidence:
+    - tier: claimed
+      by: provider
+      kind: document
+      url: https://docs.coca.xyz/coca/banking-account/overview
+      detail: COCA's docs list the card's supported residence countries by region (EEA, Other Europe, Asia-Pacific, Latin America).
+      quote: "Andorra, Gibraltar, Monaco, Montenegro, Switzerland, United Kingdom."
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://www.coca.xyz/terms
+      detail: The COCA Wallet Terms define Prohibited Countries by name and require users not to be resident in them.
+      quote: "Afghanistan, the Democratic People's Republic of Korea, Democratic Republic of Congo, Eritrea, Libya"
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -21,3 +21,9 @@ I found no verified contract or public repository that is shown to be needed to 
 - O2 = 0. Rain's public SDKs are for integrators and are not shown in this app.
 - P1 = 1 and P4 = 1, at the documented cap, from privacy-policy disclosure. No trace was run.
 - S1 to S6 are unknown. The custody terms ("will not ... be holding custody", liquidation rights) cannot be checked without the contract.
+
+## Availability 2026-10-09
+
+- Sources: the FAQ on `https://www.avalanchecard.com/` (server-rendered Webflow, quote checked live), "What countries are supported?", and the international card agreement on `legal.avalanchecard.com` (non-US-citizen attestation, OFAC). The app terms add a generic US-embargo representation with no list.
+- Model `blocklist`, 18 codes: BY, CN, CU, IL, IN, IQ, IR, KP, LK, NG, NI, NP, RU, SY, TR, UA, VE, VN.
+- Judgment calls: the FAQ mixes a positive scope ("many U.S. states, Latin America, and the Caribbean", not enumerated) with an explicit list of excluded countries and US states. The brief says to expand only what a document names, so I used a blocklist of the 18 named countries and put the positive scope in `note`, saying that nothing affirms availability outside the Americas. The 16 excluded US states are sub-national, so they go in `note`; US stays off the blocklist because the US card agreement covers the other states.

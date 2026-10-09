@@ -392,3 +392,23 @@ scores:
     assessed_by: AI research agent (seed), 2026-10-07
     review:
       status: pending
+
+availability:
+  model: blocklist
+  countries: [CN]
+  note: >-
+    The terms say the MiniPay Service is available only to users in "qualifying countries" and is void where prohibited, but neither the terms, the FAQ nor the site publishes the list of qualifying countries. The only country the terms name is the People's Republic of China, where Blueboard offers no crypto-related services, so CN is the only entry. This is a floor, not a claim that MiniPay is offered everywhere else: availability elsewhere depends on the unpublished qualifying-country list, and users also warrant they are not on any trade embargo or sanctions list (no list named). The site's "send to 70+ countries" and the FAQ's "53 countries" and "over 60 countries" for local top-up describe transfer and ramp reach, not where the wallet is offered. The MiniPay Card is offered only "in selected supported markets", also unlisted. The underlying Celo contracts have no country restriction; this block describes the MiniPay app.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://minipay.to/terms-of-service
+      quote: we do not offer or make available any crypto-related services to users located in the People's Republic of China
+      detail: MiniPay (Blueboard Limited) terms of service, general terms; same section says the Services are made available to users in qualifying countries and are void where prohibited.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://minipay.to/terms-of-service
+      quote: The MiniPay Service is available only to users in qualifying countries
+      detail: MiniPay Service section of the terms; the qualifying countries are not listed anywhere on minipay.to.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

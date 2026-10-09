@@ -1,0 +1,14 @@
+Source: https://support.metamask.io/trade/metamask-card/what-is-metamask-card/
+Retrieved: 2026-10-09 with curl; visible text of the article body extracted from the HTML, tags removed.
+
+You are viewing guidance for United States . MetaMask Card features and availability differ by region — set your region below for guidance accurate to you. MetaMask Card features and availability in 
+your region. i Select your country based on where you currently reside. Proof of residency is required to sign up for MetaMask Card. 🇺🇸 US US users MetaMask Card is not currently available for sign-ups 
+in the United States. Join the waitlist here to be notified when it becomes available. MetaMask Card is a powerful new way to experience blockchain in your everyday life. With MetaMask Card, your 
+self-custodial MetaMask wallet meets the worldwide accessibility of Mastercard transactions. What is MetaMask Card? ​ With MetaMask Card, you can spend your tokens on everyday transactions, both IRL 
+and online, wherever Mastercard is accepted. MetaMask Card gives you complete control over your funds. You’ll designate tokens from your MetaMask wallet, set spending limits, and have complete access 
+to your funds until you complete a transaction. At the time of your transaction, the MetaMask Card converts your available tokens into fiat currency (e.g., USD, euros, £). Card type ​ MetaMask Card is 
+currently available for sign-ups as a Virtual card. The Virtual card is free to use, with no yearly fees. Metal card MetaMask Metal card is not currently available for new users. Existing Metal card 
+users can continue using their cards as usual. Partnered with Crypto Life ​ To bring you MetaMask Card, MetaMask has partnered with Crypto Life, a card program manager with Mastercard leading the way 
+on web3 card initiatives. Can I sign up for MetaMask Card? ​ What countries are eligible to sign up for MetaMask Card? Andorra Argentina Austria Bahrain Belgium Brazil Bulgaria Canada Chile Colombia 
+Costa Rica Croatia Cyprus Denmark Dominican Republic El Salvador Finland France Germany Gibraltar Greece Guatemala Guernsey Hungary Iceland Ireland Isle of Man Italy Jersey Liechtenstein Luxembourg 
+Malta Mexico Monaco Netherlands Norway Oman Panama Poland Portugal Romania Slovakia Slovenia Spain Sweden Switzerland United Kingdom Uruguay

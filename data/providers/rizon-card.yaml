@@ -274,3 +274,30 @@ context: >-
 
 notes: >-
   Incumbent: no verified contract or public repository needed to run the product was found. Searched: GitHub (repo search "rizon" returns only unrelated projects such as the RIZON Cosmos chain and the Rizon IRC network; orgs rizonapp, rizon-app, rizonmoney, rizonfi and others do not exist); getrizon.com pages, Terms, privacy policy and card terms; the Intercom help centre (legal, deposit, card and wallet collections); dashboard.getrizon.com (business login shell, no contract or chain config). The Terms say each user gets a Rain-managed collateral smart contract, but no Rizon or Rain document gives an address, factory or team id for this program. The card terms' Supported Blockchains (Polygon, Optimism, Arbitrum) are Rain boilerplate and conflict with the help centre's list, and Rain's shared collateral contracts serve many programs, so no onchain contract can be attributed to Rizon (same reasoning as the Avalanche Card file). Card Map and review sites were not used as evidence.
+
+availability:
+  model: allowlist
+  countries: [AG, AR, AU, BS, BB, BD, BZ, BR, KY, CO, CR, DM, DO, EC, EG, SV, GH, GD, GT, GY, HN, JP, MY, MX, MA, NZ, PK, PA, PY, PE, PH, KN, LC, VC, SN, SG, SR, TH, TC, UG, AE, US, UY, ZM]
+  note: >-
+    Rizon's help centre lists 44 supported nationalities and says eligibility depends on citizenship (passport), not only residence, so a resident of a listed country with another nationality may fail KYC. The codes here are those nationalities. US citizens get the Rizon US Spend Card; the Rizon Global, Inc. card terms require attesting that you are not a US citizen. The Terms of Service also list jurisdictions where accounts may not be opened under Rain's compliance rules (Afghanistan, Albania, Belarus, Bosnia, Central African Republic, Congo, Croatia, Cuba, Cyprus, Eritrea, Haiti, Iran, Iraq, Kosovo, Lebanon, Liberia, Libya, North Macedonia, Moldova, Montenegro, North Korea, Russia, Serbia, Somalia, Syria, Ukraine, Venezuela, Vietnam, Yemen, Zimbabwe, plus Crimea, Donetsk and Luhansk) and exclude EU-, OFAC- and UN-sanctioned jurisdictions; none of those are on the nationality list. The Terms also say Rizon does not actively market its services in the EU or regions outside the US and Latin America.
+  evidence:
+    - tier: claimed
+      by: provider
+      kind: document
+      url: https://intercom.help/rizon/en/articles/13517852-is-rizon-available-for-me
+      detail: Rizon's help article gives the full list of supported nationalities and says eligibility follows citizenship.
+      quote: "Below is the full list of nationalities that Rizon currently support"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://www.getrizon.com/terms-of-service
+      detail: The Terms of Service name the jurisdictions where accounts may not be opened or operated, subject to update by Rain.
+      quote: "Afghanistan, Albania, Belarus, Bosnia, Central African Republic, Congo, Croatia, Cuba, Cyprus"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://intercom.help/rizon/en/articles/11822548-rizon-global-inc-spend-card-terms
+      detail: The Rizon Global, Inc. card terms require users to attest they are not US citizens.
+      quote: "You attest that you are not a United States citizen"
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

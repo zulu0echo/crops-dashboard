@@ -31,3 +31,10 @@
 - S2 2: the Squads 5-of-10 with a 24 h time lock has undisclosed signers and no notice channel in the repo. This covers only the identified program; XPlace or Rain contracts, once found, could lower it.
 - No `check` on Solana items: the nightly re-check reads EVM words only (recheck.mjs `live.word` uses eth_call/eth_getStorageAt).
 - Unknown: O4, F2, P3, P5, S3, S4 (embedded-wallet key export unproven; Kamino withdrawal needs the user's key), S5, S6 (FYEO audit claimed, no report).
+
+## Availability 2026-10-09
+
+- Source: docs.x.place/legal/legal/xplace-terms-and-conditions (GitBook, server-rendered, effective 20 May 2026). s3.2 lists 17 Prohibited Countries, s3.3 lists 16 Restricted U.S. States, and s3.4 bars sanctioned persons and anyone in a Prohibited Country, enforced by IP geolocation, KYC and screening. Quotes match the live HTML.
+- Also read: the XPlace Card privacy policy, which has residents' disclosures for Nevada and Brazil but no country restrictions.
+- Recorded as a blocklist of 17, with the US states in `note`.
+- Judgment calls: the US is not blocked, because only 16 states are restricted. The s3.2 list also covers nationals of those countries, which a country-of-residence map cannot show; this is stated in `note`. No unnamed sanctioned jurisdictions were added.

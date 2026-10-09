@@ -38,3 +38,9 @@
 - S4 1: the withdrawal path is verified onchain, but key export from the closed app is unproven.
 - S6 1: audits are pinned to 64af733, but nothing proves the deployed program equals 64af733.
 - Unknown: O4 (no API schema or export to assess), P5, S5.
+
+## Availability 2026-10-09
+
+- Source: fusewallet.com/support/fuse-visa-card (Framer, server-rendered; quotes match the live HTML). The card overview and the FAQ "Am I eligible for Fuse Card?" both list 18 countries: US (excluding New York and Alaska), AR, BO, BR, CO, CR, DO, EC, SV, GH, GT, HN, MX, PA, NG, PY, PE, UY. The FAQ answer then continues "users in the U.S. and Argentina aged 18 or older, excluding residents of New York and Alaska", a leftover from an earlier version.
+- Also read: fusewallet.com/legal/terms-of-service (referral terms refer to "jurisdictions where fuse card is available" without a list).
+- Judgment call: the page contradicts itself, so per the brief the more restrictive reading is recorded (allowlist US, AR), with the 18-country list and the US state exclusions in `note`. If the reviewer treats the fragment as a stale remnant, the 18-country list is the alternative.

@@ -499,3 +499,29 @@ scores:
 
 notes: >-
   Plasma One publishes no contract addresses or repositories. The card-side contracts were found from USDT0 Transfer logs on Plasma (block range 34379335-34429334): per-user Rain Collateral BeaconProxies funded by Coordinator.pullAssetFromUserWallet. The International Card Terms name Plasma as the only Supported Blockchain and Rain as issuer, which is the basis for scoring Rain's Plasma deployment; the specific sample account is not confirmed as a Plasma One user. The accounts seen funding collateral are EIP-7702 delegations to ZeroDev Kernel v3.3 (0xd6CEDDe8...), which does not match a third-party claim (HarrisHan/plasma-one-account) that Plasma One uses Biconomy Nexus 1.2.0; neither is attributed. All reads pinned to Plasma block 34429835.
+
+availability:
+  model: blocklist
+  countries: [CU, IR, KP, AF, BY, BA, CF, CN, CD, GN, GW, HT, IN, IQ, IL, LY, ML, MM, NP, NI, RU, SO, SS, SD, SY, TR, UA, VE, VN, YE, ZW]
+  note: >-
+    From Appendix I (Prohibited Activities List) of the Terms of Service, last updated 15 June 2026. s1.1 prohibits Cuba, Iran and North Korea; the Crimea, Donetsk, Luhansk, Kherson and Zaporizhzhia regions of Ukraine; and any other jurisdiction under OFAC, EU, UK OFSI or UN sanctions, which are not named and so are not listed here. s1.2 lists 28 "Additional Restricted Jurisdictions" where Plasma "may" restrict or terminate access. They are included as the more restrictive reading, although the wording is discretionary. All of Ukraine is listed because s1.2 names Ukraine outside the s1.1 regions. FATF grey-list countries may face case-by-case review. The card comes in two programmes, both issued by Rain: a US card for US residents (US Consumer Card Terms) and an International card for non-US citizens. Bridge provides the account services through separate US, EEA and rest-of-world entities. Vault Services are additionally unavailable to New York residents.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.plasma.org/terms-of-service
+      detail: Appendix I s1.1 Sanctioned Jurisdictions, which are prohibited for the platform and the card.
+      quote: "Prohibited jurisdictions include: Cuba, Iran, and North Korea"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://www.plasma.org/terms-of-service
+      detail: Appendix I s1.2 Additional Restricted Jurisdictions, 28 countries from Afghanistan to Zimbabwe.
+      quote: Afghanistan, Belarus, Bosnia and Herzegovina, Central African Republic, China (Mainland), the Democratic Republic of the
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://www.plasma.org/plasma-one-international-card-terms
+      detail: The International Card is for non-US citizens; US residents use the separate US Consumer Card Terms.
+      quote: you are signing up for a card that is intended for those outside of the United States
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -1,0 +1,17 @@
+Archived 2026-10-09 by AI research agent. Excerpt copied verbatim from https://docs.jup.ag/user-docs/global/spend/jupiter-card (Markdown variant at .md), sections "Card Issuers" (first paragraph) and "Supported Countries".
+
+The Jupiter Card is issued by two partners, **Rain** and **DCS**, depending on the user's country of residence. Each user is assigned one card issuer automatically: **DCS** issues cards to residents of Australia, Japan, Malaysia, the Philippines, Singapore, South Korea, Taiwan, Thailand, and Vietnam; residents of the other supported countries get a **Rain**-issued card. It is not possible to hold cards from both issuers.
+
+## Supported Countries
+
+Eligibility is based on your country of residence, not your citizenship: a citizen of an unsupported country who resides in a supported one can be onboarded after completing identity verification. The list below shows where the Jupiter Card is actively offered.
+
+<Note>
+**Country not listed?** Eligibility is reviewed case by case during KYC, and proof of address is usually required.
+</Note>
+
+Antigua & Barbuda, Argentina, Australia, Bahamas, Bangladesh *(on pause until further notice)*, Barbados, Belize, Bolivia, Brazil, Cayman Islands, Colombia, Costa Rica, Côte d'Ivoire, Dominica, Dominican Republic, Ecuador, Egypt, El Salvador, Ghana, Grenada, Guatemala, Guyana, Honduras, Japan, Kenya, Malaysia, Mexico, Morocco, New Zealand, Nigeria *(on pause until further notice)*, Pakistan, Panama, Paraguay, Peru, Philippines, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, Senegal, Singapore, South Africa, South Korea, Suriname, Taiwan, Thailand, Trinidad and Tobago, Turks & Caicos Islands, Uganda, United Arab Emirates, Uruguay, Vietnam, Zambia.
+
+### Supported US States
+
+Alabama, Alaska, Arkansas, California, Colorado, Connecticut, Florida, Hawaii, Illinois, Indiana, Iowa, Kansas, Kentucky, Maine, Massachusetts, Michigan, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, New York, North Carolina, Oklahoma, Pennsylvania, South Carolina, Texas, Utah, Virginia, West Virginia, Wyoming.

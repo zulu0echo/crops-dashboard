@@ -35,3 +35,13 @@ All onchain reads are pinned to Plasma block **34429835** (RPC https://rpc.plasm
 - No repo, SDK or app source: P5, S5 unknown; F2 unknown.
 - No audit report for the Plasma One app or for Rain's contracts: S6 unknown.
 - No trace of the app; no confirmation of which wallet implementation Plasma One deploys.
+
+## Availability 2026-10-09
+
+- Source: www.plasma.org/terms-of-service, Appendix I "Plasma One Prohibited Activities List" s1 (Geographic and Jurisdictional Restrictions), server-rendered; quotes match the live HTML. Also read: /plasma-one-international-card-terms (card for non-US citizens), /plasma-one-us-card-terms (US card; default if the holder permanently resides outside the US), /personal (Bridge entities for US, EEA and other residents; "Geographic, regulatory, and other eligibility limits apply").
+- Recorded as a blocklist of 31: CU, IR and KP from s1.1, plus the 28 countries in s1.2.
+- Judgment calls:
+  - s1.2 says Plasma "may" restrict or terminate access in those 28 countries. They are included as the more restrictive reading, and the discretionary wording is stated in `note`.
+  - The s1.1 catch-all (any OFAC, EU, OFSI or UN sanctioned jurisdiction) names no further countries, so none were added.
+  - The occupied Ukrainian regions are sub-national; Ukraine as a whole is on the s1.2 list.
+  - The US is not blocked: the US card programme exists alongside the International one.

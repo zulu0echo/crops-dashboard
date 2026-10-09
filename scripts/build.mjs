@@ -6,13 +6,14 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { execSync } from 'node:child_process';
-import { loadData, rollup, cellStatus, isUnknown } from './rollup.mjs';
+import { loadData, rollup, cellStatus, isUnknown, availableIn } from './rollup.mjs';
 
 const OUT = 'dist';
 rmSync(OUT, { recursive: true, force: true });
 const today = process.env.BUILD_DATE ?? new Date().toISOString().slice(0, 10);
 const config = JSON.parse(readFileSync('site/config.json', 'utf8'));
-const { criteria, providers } = loadData('data');
+const { criteria, providers, regions } = loadData('data');
+const countryName = (() => { const dn = new Intl.DisplayNames(['en'], { type: 'region', fallback: 'code' }); return (cc) => (cc === 'XK' ? 'Kosovo' : dn.of(cc)); })();
 // Non-EVM explorers keyed by CAIP-2 namespace.
 const EXPLORER_NS = { solana: 'https://solscan.io/account' };
 const explorerFor = (chain, addr) => (typeof chain === 'number' ? (EXPLORER[chain] ? `${EXPLORER[chain]}/address/${addr}` : '') : (EXPLORER_NS[String(chain).split(':')[0]] ? `${EXPLORER_NS[String(chain).split(':')[0]]}/${addr}` : ''));
@@ -37,7 +38,7 @@ const allDates = providers.flatMap((p) => Object.values(p.scores).flatMap((c) =>
 const byId = Object.fromEntries(criteria.criteria.map((c) => [c.id, c]));
 const short = (a) => `${a.slice(0, 6)}…${a.slice(-4)}`;
 
-const NAV = [['index.html', 'Ratings'], ['compare/index.html', 'Compare'], ['methodology/index.html', 'Methodology'], ['criteria/index.html', 'Criteria'], ['contribute/index.html', 'Contribute']];
+const NAV = [['index.html', 'Ratings'], ['compare/index.html', 'Compare'], ['countries/index.html', 'Countries'], ['methodology/index.html', 'Methodology'], ['criteria/index.html', 'Criteria'], ['contribute/index.html', 'Contribute']];
 
 function page(path, title, body, { section = path } = {}) {
   const up = '../'.repeat(path.split('/').length - 1);
@@ -182,6 +183,44 @@ ${groupedTable(`${pl.name} by criterion`,
 </section>`).join('\n')}
 <p class="callout">Cells with a dark outline set the pillar rating. ${BASELINE_NOTE}</p>`, { section: 'compare' });
 
+// ---- countries ------------------------------------------------------------------------
+const COUNTRIES = [...regions.countries].sort((a, b) => countryName(a).localeCompare(countryName(b)));
+const status = (p, cc) => availableIn(p, cc, regions.regions);
+const MODEL = { global: 'Offered everywhere, per the provider\'s code or documents', allowlist: 'Offered only in the countries listed', blocklist: 'Offered everywhere except the countries listed' };
+const expand = (codes) => codes.flatMap((c) => regions.regions[c] ? [] : [c]);
+const regionsUsed = (codes) => codes.filter((c) => regions.regions[c]);
+
+function countryTable(list, up) {
+  if (!list.length) return '<p class="muted">None.</p>';
+  return `<div class="table-scroll" tabindex="0" role="region" aria-label="Rails"><table class="overview">
+<thead><tr><th scope="col" class="rowhead">Provider</th><th scope="col" class="avail">Availability source</th><th scope="col">Type</th>${criteria.pillars.map((pl) => `<th scope="col">${esc(pl.name)}</th>`).join('')}</tr></thead><tbody>
+${list.map((p) => `<tr data-type="${esc(p.type)}">${provHead(p, up)}<td class="small avail">${p.availability ? `${esc(MODEL[p.availability.model])}${p.availability.note ? `<br><span class="muted">${esc(p.availability.note)}</span>` : ''}<br><a href="${up}provider/${esc(p.slug)}/index.html#availability">Evidence</a>` : '<span class="muted">No first-party statement found</span>'}</td><td>${typeChip(p.type)}</td>${criteria.pillars.map((pl) => { const r = pillarOf(p, pl); return `<td><a class="cell-link" href="${up}provider/${esc(p.slug)}/index.html#pillar-${pl.id}">${rating(r.score, r.unknown, 'sm')}</a></td>`; }).join('')}</tr>`).join('\n')}
+</tbody></table></div>`;
+}
+
+for (const cc of COUNTRIES) {
+  const yes = providers.filter((p) => status(p, cc) === 'yes');
+  const no = providers.filter((p) => status(p, cc) === 'no');
+  const unk = providers.filter((p) => status(p, cc) === 'unknown');
+  page(`countries/${cc}/index.html`, countryName(cc), `
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Countries</a> <span aria-hidden="true">/</span> ${esc(countryName(cc))}</nav>
+<header class="phead"><p class="eyebrow">Availability · ${esc(cc)}</p><h1>${esc(countryName(cc))}</h1>
+<p class="lede">Which of the ${providers.length} assessed rails say they are offered here, according to each provider's own terms, documents or code. Availability is recorded as evidence and never scored; a rail being offered says nothing about its ratings.</p></header>
+<h2>Offered here <span class="count">${yes.length}</span></h2>${countryTable(yes, '../../')}
+<h2>Not offered here <span class="count">${no.length}</span></h2>${countryTable(no, '../../')}
+<h2>No evidence either way <span class="count">${unk.length}</span></h2><p class="muted small">The provider publishes no country list we could cite, or restricts by criteria other than country (for example sanctions screening of individuals).</p>${countryTable(unk, '../../')}
+<p class="callout">Country lists change without notice and sub-national limits (states, provinces) are recorded in the note, not in the list. Check the provider's current terms before relying on this.</p>`, { section: 'countries' });
+}
+
+const byLetter = {};
+for (const cc of COUNTRIES) (byLetter[countryName(cc)[0].toUpperCase()] ??= []).push(cc);
+page('countries/index.html', 'Countries', `
+<header class="phead"><p class="eyebrow">Availability</p><h1>Countries</h1>
+<p class="lede">Pick a country to see which rails say they are offered there, which say they are not, and which publish no country list. Counts show rails offered, out of ${providers.length}. Availability comes from each provider's own terms, documents or code; it is never scored.</p></header>
+<p class="small muted">${providers.filter((p) => p.availability).length} of ${providers.length} rails have a first-party country statement on file.</p>
+<nav class="pillar-nav" aria-label="Jump to letter">${Object.keys(byLetter).sort().map((l) => `<a href="#l-${l}">${l}</a>`).join('')}</nav>
+${Object.keys(byLetter).sort().map((l) => `<section id="l-${l}"><h2>${l}</h2><ul class="clist countries">${byLetter[l].map((cc) => { const n = providers.filter((p) => status(p, cc) === 'yes').length; return `<li><a href="${esc(cc)}/index.html">${esc(countryName(cc))}</a> <span class="meta">${esc(cc)} · ${n} offered</span></li>`; }).join('')}</ul></section>`).join('')}`, { section: 'countries' });
+
 // ---- provider pages ---------------------------------------------------------------
 for (const p of providers) {
   const cid = p.primary_chain?.chain_id;
@@ -235,6 +274,11 @@ ${p.context ? `<aside class="context" aria-labelledby="h-ctx-${esc(p.slug)}"><h2
 ${pillars}
 <div class="glance-grid">${col('Holds up', holds, 'Nothing rated Partial or Strong.')}${col('Falls short', fails, 'Nothing rated Weak or Fails.')}${col('Not yet evidenced', unknown, 'Every criterion has evidence.')}</div>
 </section>
+${p.availability ? `<section id="availability" aria-labelledby="h-avail"><h2 id="h-avail">Where it is offered</h2>
+<p>${esc(MODEL[p.availability.model])}.${regionsUsed(p.availability.countries ?? []).length ? ` Regions: ${regionsUsed(p.availability.countries).map(esc).join(', ')}.` : ''} <span class="meta">Checked ${esc(p.availability.checked_at)}. Not scored.</span></p>
+${p.availability.note ? `<p class="finding">${esc(p.availability.note)}</p>` : ''}
+${expand(p.availability.countries ?? []).length ? `<p class="small">${p.availability.model === 'blocklist' ? 'Excluded' : 'Listed'} countries (${expand(p.availability.countries).length}): ${expand(p.availability.countries).map((c) => `<a href="../../countries/${esc(c)}/index.html">${esc(countryName(c))}</a>`).join(', ')}</p>` : ''}
+<h4 class="ev-head">Evidence (${p.availability.evidence.length})</h4>${evidenceList(p.availability.evidence, p)}</section>` : `<section id="availability"><h2>Where it is offered</h2><p class="muted">No first-party country statement is on file for this provider. See the <a href="../../countries/index.html">Countries</a> index.</p></section>`}
 ${sections}
 <section class="scope" aria-labelledby="h-scope"><h2 id="h-scope">Scope of assessment</h2>
 <h3>Components in the payment path</h3>

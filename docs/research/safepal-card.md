@@ -42,3 +42,9 @@ Allowance sample: I took `Authorized` logs from the 100,000 blocks before the pi
 - S3 = 0. The default is inferred from onchain allowances, because the SafePal app is closed. Fiat24's guide shows bounded approvals, but users mostly hold unlimited ones, and neither party discloses that.
 - S4 = 0. Derived from S1 = 0, C2 = 0, C3 = 0 and O3 unknown. Payout to a bank needs a Fiat24 operator, and transfers need Fiat24-set status.
 - O3, F2, P5, S5, S6: no artifact, so unknown. No browser trace was run.
+
+## Availability 2026-10-09
+
+- Source: SafePal's "Supported regions for SafePal Fiat gateway" page (`https://www.safepal.com/en/bank/regions`, linked from the `/en/bank` FAQ). The page is client-rendered by `/assets/js/bank.js` from two SafePal API lists: `ep.isafepal.com/bank/v1/account/getMasterCountries` (42 regions, "$100,000 monthly transaction limit with Mastercard support") and `.../getCountry` (61 regions incl. IBAN-only, "$1000 monthly transaction limit without Mastercard support"). Both raw responses committed to `data/archive/safepal-card-fiat-gateway-regions.txt`.
+- Model `allowlist`, 42 ISO codes (no region name: the list lacks BG, MT and HR, so neither EU nor EEA applies).
+- Judgment calls: the dashboard rates the card, so I used the Mastercard list, not the wider IBAN-only list (which is in `note`). Cross-check: Fiat24's own coverage data (`https://info.fiat24.com/api/fiat24/getCountries`, which backs the `info.fiat24.com/overview` page that Fiat24's terms cite) has the same 42 card domiciles; its account list omits HR, which SafePal includes. SafePal's FAQ still mentions a Mainland China limit, but CN is in neither list, so I left it out and said so. Fiat24's nationality exclusions (US persons; Iran, North Korea, Russia) and its 38-country merchant payment blocklist go in `note`, not `countries`.

@@ -402,3 +402,23 @@ scores:
 
 notes: >-
   Eligibility: no verified contract and no public repository needed to run the card, so type is incumbent. Searched 2026-10-07: GitHub orgs 0xhyperbeat (Audits plus forks; Liquid-Bank named in the Zellic scope returns 404) and hyperbeat (unrelated 2015 user); docs.hyperbeat.org (Liquid Banking architecture, Hyperbeat Pay, addresses, audits, legal pages; no card contract addresses); hyperbeat.org terms, privacy, sitemap; the Pay dapp at hyperbeat.org/dapp/pay and its 61 JS chunks (Operator and service addresses found, factory not); HyperEVMScan and Sourcify for the Operator, Morpho service, repay service, wrapper service, a beatUSD batchSettle contract 0xFc29c432... and a sample ERC1967 account 0xd9c6a70b... with implementation 0x6e209362... (all unverified). The Hyperbeat Pay Cardholder Agreement referenced in the Terms is not published, so the card issuer is unknown. HyperEVM onchain reads pinned to block 47900593.
+
+availability:
+  model: blocklist
+  countries: [CU, IR, KP, SD, SY]
+  note: >-
+    The hyperbeat.org Terms (which cover the Pay Service, i.e. the card) bar nationals and residents of Cuba, Iran, North Korea, Sudan and Syria "or any other country subject to United States embargo", UN Security Council resolutions or HM Treasury sanctions; only the five named countries are listed here. The Terms also exclude residents of Ontario, Canada, and say geo-blocking may be used. US residents and citizens may use the Pay Service subject to a separate "Hyperbeat Pay Cardholder Agreement (U.S.)", which is not published, so any US state limits are unknown. The longer country list in the Terms applies only to Beatpot, a different service, and is not used here. The Pay web app bundle contains no country gate that I could find.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://hyperbeat.org/terms
+      detail: The Terms bar nationals and residents of five named embargoed countries from the Platform and every Service.
+      quote: "national or resident of Cuba, Iran, North Korea, Sudan, or Syria"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://hyperbeat.org/terms
+      detail: The Terms exclude residents of Ontario, Canada, and allow US residents to use the Pay Service subject to a US cardholder agreement.
+      quote: "subject to specific eligibility requirements detailed in the applicable Hyperbeat Pay Cardholder Agreement (U.S.), may also use the Pay Service"
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

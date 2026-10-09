@@ -128,3 +128,13 @@ Conclusion: the module does bypass the threshold. One delegate key can move up t
 ### Not changed, but flagged
 
 O2 = 2 rests on "everything except the backend". The component inventory now shows that the indexer, relayer and delegate signer are closed as well. O2's anchor did not change in this migration, so I left the score alone. A reviewer should decide whether it should drop to 1.
+
+## Availability 2026-10-09
+
+- Model `allowlist`: EEA, AR, BO, BR, CH, CO, GB, MX (37 countries in all).
+- Source: help-centre article "Eligible Countries for Gnosis Pay" (`https://help.gnosispay.com/articles/1662387556`, "last updated 28 days ago"). Terms section 2 links to it as the list of Non-EEA Supported Countries. It is archived at `data/archive/gnosis-pay-eligible-countries.txt`. The Terms and closure-notice archives from 2026-10-07 are cited alongside it.
+- The FAQ lists every EEA state individually (all 27 EU members plus IS, LI and NO), so the region name `EEA` is used. This matches the Terms' EEA/non-EEA split.
+- Judgment calls:
+  - The FAQ's "Restricted Countries for Card Usage" list (22 locations, including Crimea) is about where a transaction is made, not residency. None of the 22 is on the residency list, so it is recorded in `note` and not modelled.
+  - French overseas territories are excluded by the FAQ footnote. They have their own ISO codes, none of which is listed, so `FR` stays and the exclusion goes in `note`.
+  - The consumer programme closes on 2026-12-20, and partner programmes will set their own eligibility. The block describes the current programme only.

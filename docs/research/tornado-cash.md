@@ -54,3 +54,12 @@ Assessed 2026-10-07 by the AI research agent (seed). The scores are in `data/pro
 ## Recheck RPC
 
 All `recheck` commands use https://ethereum-rpc.publicnode.com at the latest block. The nightly `check` words are the raw 32-byte returns at the cited blocks.
+
+## Availability 2026-10-09
+
+- Model `global`. Source: `contracts/Tornado.sol` L62-L92 at tornado-core v2.0 (`7033f344`), the deployed build. Deposit and withdraw have no caller or country restriction.
+- Also checked the archived official classic UI at `a83fae07`. Its source was downloaded read-only as a codeload tarball, with `static/` excluded, and not built or run. A grep for country, geolocation, ipapi, ip-api and jurisdiction found no country gate. The only access check is the Chainalysis sanctions-oracle address lookup at wallet connect (`store/metamask.js` L333-L346). That check filters addresses, not countries.
+- No first-party terms or help page lists countries. The GitHub org is archived, and https://tornado.cash did not answer curl (status 000).
+- Judgment calls:
+  - The UI build currently served at tornadocash.eth was not inspected, so it may differ from the archived source.
+  - Jurisdiction-specific legality (US sanctions history, Dutch case) is left in `context` and not treated as a provider availability restriction.

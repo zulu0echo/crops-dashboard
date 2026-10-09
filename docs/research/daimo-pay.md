@@ -163,3 +163,11 @@ Migrated `data/providers/daimo-pay.yaml` to the rules added after the methodolog
 ### Cells scored 2-3 after migration
 
 C5 2, O1 2, F2 2, P5 2, S5 2, S2 3, S3 3. Each has a `recheck`.
+
+## Availability 2026-10-09
+
+- Model `global`. Source: `https://docs.daimo.com/guides/payment-methods` ("plus self-custody wallets and deposit addresses everywhere"), plus the fiat rail table at `https://docs.daimo.com/guides/fiat`, plus the contracts at the existing pin (`packages/contract/src`).
+- `https://daimo.com/terms-of-use` and `https://daimo.com/privacy` name no countries. The terms only say the Services are not intended for use where that would break local law.
+- GitHub code search of `packages/contract/src` for sanction, country, OFAC, blacklist and blocked returned nothing.
+- Fiat rails are a regional variant (US, CA, Europe/SEPA, JP/SG/KR/PH, AR, CO) and are enabled per organization. They are recorded in `note`, not as an allowlist.
+- Judgment call: the payment-method list is built by the closed Daimo API, so code cannot rule out a server-side country gate. `global` rests on the docs statement and the contracts.

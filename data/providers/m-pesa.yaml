@@ -371,3 +371,18 @@ scores:
     assessed_by: AI research agent (seed), 2026-10-07
     review:
       status: pending
+
+availability:
+  model: allowlist
+  countries: [KE]
+  note: >-
+    Scoped to what this file assesses: Safaricom's M-Pesa and its Daraja API. Safaricom's own Daraja docs describe M-Pesa as a mobile money service in Kenya, and every Daraja example uses Kenyan (254) MSISDNs. M-Pesa services in other countries (for example those run by Vodacom and other operators) are separate operators with their own ledgers, terms and APIs, and are not covered here. Safaricom's customer terms (safaricom.co.ke) returned HTTP 403 to automated requests, so any further limits stated there (for example on roaming or international transfers) were not read.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://developer.safaricom.co.ke/apis/GettingStarted
+      archive: data/archive/m-pesa-daraja-getting-started.txt
+      quote: A mobile money transfer service in Kenya for storing and transferring money via mobile phones
+      detail: Daraja "Getting Started" terminology section defines M-PESA. Page is client-rendered; text read from the portal's own GraphQL populateApi response and archived.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

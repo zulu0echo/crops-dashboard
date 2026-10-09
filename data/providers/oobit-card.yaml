@@ -315,3 +315,29 @@ context: >-
 
 notes: >-
   Eligibility: no verified contract and no public repository needed to run the product, so type is incumbent. Searched 2026-10-07: GitHub org oobit-tech (only oobit-plugins, an AI-agent plugin manifest with no licence); gh search repos and code "oobit" (unrelated or third-party repos); npm @oobit/react-native-sdk and @oobit/react-web (MIT tag, declared repo oobit-tech/react-native-SDK is 404); docs.oobit.com (Plug & Pay widget and Partner API, testnet token addresses only); oobit.com FAQ, DePay page, Card Terms, Terms of Use and Privacy Notice (no contract addresses). eth.blockscout.com search "oobit" found only the OBT token, copycat OOB tokens and Oobit-tagged EOAs dormant since 2023; no DePay spender contract was identified. DePay mentions a "smart contract engine" and one-time spending approvals (provider claim); if the spender or Rain collateral contracts can be identified, this provider should be re-evaluated as a card. Card Map was used only to find the product.
+
+availability:
+  model: allowlist
+  countries: [AL, AD, AT, BE, BA, BG, HR, CY, CZ, DK, EE, FI, FR, GE, DE, GI, GR, GG, IS, IE, IT, LV, LI, LT, LU, MT, MD, MC, ME, NL, MK, NO, PL, PT, RO, RS, SK, SI, ES, SE, CH, GB, KZ, KG, MY, PH, SA, KR, TW, TH, AE, BS, CR, DO, SV, GL, GT, MX, PA, PR, AR, BR, CL, CO, EC, PY, PE, UY, KE, ZA, TZ, AU, NZ]
+  note: >-
+    Oobit's help centre lists 75 countries and territories. Listed here: the 74 where the Oobit Visa card is marked available, minus the United States. Vietnam is listed but its card is on a waitlist. The help centre marks the US card as available in "most states" (not named), but both Rain card terms on oobit.com require attesting that you are not a US citizen and say the card is "intended for those outside of the United States". No US card terms were found, so the more restrictive reading is used and the US is left out. Puerto Rico is kept as listed, though the card terms may count it as part of the United States. Hungary is absent, so EU and EEA are not used. Brazil has two programmes: a local card issued by Pomelo for new customers and the Rain-issued US-dollar card for earlier ones. Not supported, per the same article: Afghanistan, Belarus, Central African Republic, China, Cuba, Ethiopia, Hong Kong, Iran, Iraq, Lebanon, Libya, Mali, Myanmar, Nicaragua, North Korea, Russia, Somalia, South Sudan, Sudan, Syria, Venezuela, Yemen. The Terms of Use also exclude Russia, Cuba, Iran, North Korea, Sudan, Syria and other embargoed countries.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://support.oobit.com/en/articles/15262464-is-oobit-available-in-my-country
+      detail: Oobit's help article lists 75 countries and territories with whether the Oobit Visa card, transfers, sending and cashback are available in each, plus a not-supported list.
+      quote: "Oobit is available in 75 countries and territories across six continents"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/legal/terms-of-use
+      detail: The Terms of Use bar nationals and residents of named embargoed countries.
+      quote: "national or resident of Russia, Cuba, Iran, North Korea, Sudan, or Syria"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/legal/card-terms
+      detail: The card terms require the user to attest they are not a US citizen.
+      quote: "You attest that you are not a United States citizen"
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -52,3 +52,14 @@ Base. OnchainKit Checkout hard-switches to base.id and USDC on Base. The new Che
 
 - `node scripts/validate.mjs --offline data/providers/coinbase-commerce.yaml`: 0 errors.
 - `GITHUB_TOKEN=$(gh auth token) node scripts/validate.mjs data/providers/coinbase-commerce.yaml`: 0 errors.
+
+## Availability 2026-10-09
+
+- Model `blocklist`: CU, IR, KP, SD, SY.
+- Source: the Commerce Terms of Service (last updated 2025-10-29), already archived at `data/archive/coinbase-commerce-terms.txt` from Wayback snapshot 20260930113606. The live page still returns 403 to curl.
+- The Terms also exclude "any other country subject to United States embargo or HM Treasury's financial sanctions regime" but name no other countries. Per the brief, only the five named countries are listed, and `note` says so.
+- Searched for an allowlist of supported merchant countries. help.coinbase.com returns 403, and the Wayback availability API has no snapshot for the guessed help-centre paths. None was found.
+- Judgment calls:
+  - "Sudan" is mapped to SD only; South Sudan is not named.
+  - The Terms bind merchants, but their supply clause also covers serving customers in those countries, so the blocklist applies to the product as a whole.
+  - The protocol-level access (permissionless contract, self-operator path) is explained in `note`, not modelled, because the official product restricts these countries.

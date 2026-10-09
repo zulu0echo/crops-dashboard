@@ -47,3 +47,22 @@ Assessed 2026-10-07 by AI research agent (seed). Unit: the Optimism (chain 10) c
 - No primary source for Third National's regulator.
 - No user notice channel for upgrades.
 - No documented export of the Turnkey key.
+
+## Availability 2026-10-09
+
+- Model `allowlist` with 88 codes.
+- Sources:
+  - Help-centre article "In which countries is the Cash card available?" (help.ether.fi 758780, "Updated yesterday"). It is first-party but a support page, so it is cited as `claimed`, `by: provider`.
+  - Terms of Use section 1(c).
+  - Prohibited Activities List (gitbook legal).
+  - All three are archived under `data/archive/etherfi-cash-*.txt`.
+- The International and U.S. Cardholder Agreements (Inc. and Ltd.) were read. They name no countries, only age, KYC and discretionary eligibility.
+- How the list was built:
+  - The help article lists 88 physical-card countries, plus BE and IE (virtual only), plus the US (physical card in 30 states and DC).
+  - It says unlisted jurisdictions cannot apply, so the model is `allowlist`.
+- Judgment calls (more restrictive reading, per the brief):
+  - CA is removed. The help article lists it, but the Terms of Use say the Services "are not available to residents or citizens of Canada".
+  - HR and CY are removed. The help article lists them, but the Prohibited Activities List's hedged "Prohibited jurisdictions may include" list names them. A reviewer may decide the hedged list should not override the explicit help article.
+  - US is included as a whole country. The state limit applies to physical cards only, and the article lists no state as ineligible for the virtual card, so the limit goes in `note`.
+  - Puerto Rico is coded PR because the article lists it as its own jurisdiction.
+- The bank-transfer availability article (860025) covers a different feature and was not used.

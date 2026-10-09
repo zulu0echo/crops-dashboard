@@ -870,5 +870,27 @@ scores:
     review:
       status: pending
 
+availability:
+  model: global
+  note: >-
+    Scored unit is the open protocol path. The fee proxies have no admin and no address or country check, and the SDK has no geoblock, so anyone can pay from anywhere. The hosted API, Secure Payment page and Dashboard are optional; their API terms (request.network/api-terms-and-conditions) and privacy policy name no countries, and the API's optional KYT screening (Hypernative) screens wallet addresses, including exposure to "Sanctioned Jurisdiction Exchanges", not users' countries. Product variant: the easy-invoice template's crypto-to-fiat flow offers a 40-country list in its compliance form (easy-invoice@42ad4d0e src/lib/constants/compliance.ts), which is an optional off-ramp, not the payment path. Judgment call: the closed API could gate by country without saying so; it is not required to pay.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/smart-contracts/src/contracts/ERC20FeeProxy.sol#L34-L58
+      commit: 749b13070bcb88be4a10b8d59fcf3705339d43e0
+      path: packages/smart-contracts/src/contracts/ERC20FeeProxy.sol
+      detail: transferFromWithReferenceAndFee is callable by anyone and checks only that the token transfers succeed; there is no caller, address or country restriction.
+      checked_at: "2026-10-09"
+    - tier: verified
+      kind: repo
+      url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/payment-processor/src/payment/erc20-fee-proxy.ts#L1-L40
+      commit: 749b13070bcb88be4a10b8d59fcf3705339d43e0
+      path: packages/payment-processor/src/payment/erc20-fee-proxy.ts
+      detail: A search of every packages/*/src directory for sanction, OFAC, chainalysis, blocklist, denylist and geoblock finds only test mocks; the SDK has no country gate.
+      checked_at: "2026-10-09"
+      recheck: git clone https://github.com/RequestNetwork/requestNetwork && cd requestNetwork && git checkout 749b13070bcb88be4a10b8d59fcf3705339d43e0 && grep -rniE "sanction|ofac|chainalysis|blocklist|denylist|geoblock" packages/*/src
+  checked_at: "2026-10-09"
+
 notes: >-
   Unit of assessment: the open Request Network protocol on Base. That means the SDK (request-client.js and payment-processor 0.63.0), a Request Node, and four settlement contracts: ERC20FeeProxy, EthereumFeeProxy, Erc20ConversionProxy, and ChainlinkConversionPath. Request's current docs describe only the hosted Request Network API. That API is closed; it is listed in components as not required, because a payment completes without it. Out of scope: batch, swap, recurring (pausable, AccessControl), escrow and commerce-escrow, SingleRequestProxy, EthConversionProxy (WhitelistAdminRole, the same pattern as Erc20ConversionProxy), cross-chain Li.Fi routes, Tron, and NEAR. Storage runs on Gnosis Chain. Requests are anchored through RequestOpenHashSubmitter 0x268C146Afb4790902Ee26A6D2d3aff968623Ec80, which writes to RequestHashStorage 0x2256938E8225a998C498bf86B43c1768EE14b90B. At Gnosis block 48631765, RequestHashStorage still whitelists the open submitter, and the storage fee is 0.0999 xDAI for 1000 bytes. The Gnosis admin Safe 0x8a4D2659f6d24312804BFA2f1F174A5498948037 is 3-of-7 with the same owners as the Base Safe, no modules, and no guard. Those reads are not recorded as evidence, because evidence must be on the primary chain. Base reads are pinned to block 52285354, and repo reads to requestNetwork@749b13070bcb88be4a10b8d59fcf3705339d43e0. No traces were run, and no self-host was attempted.

@@ -761,5 +761,35 @@ scores:
 context: >-
   Not scored. The cardholder agreements (Inc. U.S. and International) say the card is issued by Third National under a licence from Visa, and that the issuer does not hold or control the user's wallet. For Nigeria the card is marketed by BANEX Microfinance Bank, licensed by the Central Bank of Nigeria. ether.fi's own risks page states that ether.fi is not a regulated financial institution and that card use is governed by the cardholder agreement and the issuer's terms (https://etherfi.gitbook.io/etherfi/resources/ether.fi-whitepaper/risks, https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international). I found no primary source stating Third National's regulator.
 
+availability:
+  model: allowlist
+  countries: [AD, AE, AG, AO, AR, AT, AU, BB, BD, BE, BG, BH, BO, BR, BS, BZ, CH, CL, CO, CR, CZ, DE, DK, DM, DO, EC, ES, FR, GB, GG, GI, GR, GT, GY, HK, HN, HU, ID, IE, IM, IS, IT, JE, JP, KN, KR, KY, LC, LI, LT, LU, LV, MC, MT, MV, MX, MY, NG, NO, NZ, OM, PA, PE, PH, PL, PR, PT, PW, PY, RO, SA, SC, SE, SG, SI, SK, SR, SV, TC, TH, TT, TW, US, UY, VC, VG, VU, ZA]
+  note: >-
+    The help-centre article lists 88 countries where a physical card is available, plus Belgium and Ireland (eligible, virtual card only) and the United States. The article says that if a jurisdiction is not listed, you cannot apply. In the US, physical cards are limited to 30 states and DC; US residents contract under the separate U.S. Cardholder Agreements. The documents disagree on three countries, and we take the more restrictive reading. Canada is on the help list, but the Terms of Use say the Services are not available to residents or citizens of Canada, so it is excluded. Croatia and Cyprus are on the help list but also on the Prohibited Activities List's "may include" list of prohibited jurisdictions, so they are excluded. The Prohibited Activities List also bars Cuba, Iran, North Korea, Syria and the Crimea, Donetsk and Luhansk regions of Ukraine; none of these is on the allowlist. The International Cardholder Agreements name no countries.
+  evidence:
+    - tier: claimed
+      by: provider
+      kind: document
+      url: https://help.ether.fi/en/articles/758780-in-which-countries-is-the-cash-card-available
+      archive: data/archive/etherfi-cash-card-countries.txt
+      detail: Help-centre article "In which countries is the Cash card available?" lists 88 physical-card countries, Belgium and Ireland as virtual-only, and the US states with physical cards.
+      checked_at: "2026-10-09"
+      quote: If your jurisdiction is not listed, you will not be able to apply for a Cash card at this time.
+    - tier: documented
+      kind: document
+      url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/terms-of-use
+      archive: data/archive/etherfi-cash-terms-of-use.txt
+      detail: Terms of Use section 1(c) exclude residents or citizens of Canada and of any Restricted Jurisdiction (UN-sanctioned, or where use would be illegal), and allow US residents to use Cash under the U.S. Cardholder Agreements.
+      checked_at: "2026-10-09"
+      quote: Specifically, these Services are not available to residents or citizens of Canada or any Restricted Jurisdiction
+    - tier: documented
+      kind: document
+      url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-prohibited-activities-list
+      archive: data/archive/etherfi-cash-prohibited-activities.txt
+      detail: Prohibited Activities List (Jurisdictional Restrictions) bars Cuba, Iran, North Korea, Syria and the Crimea, Donetsk and Luhansk regions, and says prohibited jurisdictions may include 30 named countries, among them Croatia and Cyprus.
+      checked_at: "2026-10-09"
+      quote: The Crimea, Donetsk, and Luhansk regions of Ukraine
+  checked_at: "2026-10-09"
+
 notes: >-
   Scored the Optimism core-chain deployment from cash-v3 at a5024d0 (2026-10-05); onchain reads are pinned to OP block 157880645, with a sample spend at 157880145. www.ether.fi sits behind a Vercel bot checkpoint (HTTP 429 to curl), so website and legal citations use ether.fi's GitBook (etherfi.gitbook.io), which serves the same Terms, Privacy Policy and cardholder agreements. The ether.fi app, card backend and Turnkey integration are closed, so P5 and S5 are unknown.

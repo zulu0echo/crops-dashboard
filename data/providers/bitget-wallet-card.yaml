@@ -590,3 +590,24 @@ context: >-
 
 notes: >-
   Bitget Wallet Card is a family of regional card programs; the card page says issuing partners vary by region, and Bitget names none on the page. Eligibility rests on the one program tied to verified contracts: the Fiat24-issued card for Mainland China (Bitget help articles 482 and 802, archived; new signups closed, existing cards unaffected). Onchain, Fiat24Account.walletProviderMap(8088) returns "Bitget", and Bitget-referred accounts were the largest group of card payers in the sampled window. Scores describe that program at Arbitrum block 512546136. The EEA/UK/LatAm cards top up a separate card balance that "the card provider" credits (help article 281, logged in docs/research/bitget-wallet-card.md; press reports name Immersve for the EEA/UK card, third-party claim); no contract or repo ties those programs to the product, so they are not scored. The "self-custody" framing is a claim: the Fiat24 balance is a deposit token Fiat24 can gate and move. Arbiscan returns 403 to scripted requests, so explorer links point to Blockscout and Sourcify. No browser trace was run.
+
+availability:
+  model: allowlist
+  countries: [CN]
+  note: >-
+    Scoped to the Fiat24-issued programme this file assesses, which Bitget's help centre files under Mainland China. The documents disagree: the card page FAQ still lists "mainland China" among regions where the card is currently available, but help article 802 says users in Mainland China can no longer apply for a new card (existing users unaffected). Taking the more restrictive reading, this programme serves existing Mainland China cardholders only and is closed to new applicants. Fiat24's own coverage list (info.fiat24.com/api/fiat24/getCountries, checked 2026-10-09) does not include CN as an eligible domicile, which is consistent with the closure. Bitget's other regional programmes (EEA and UK; ten Latin American countries; APAC; South Africa; Pakistan and Bangladesh, per the card page) use different issuers that this file does not assess, so they are not listed.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://web3.bitget.com/helpCenter/802
+      archive: data/archive/bitget-wallet-card-help-fiat24.txt
+      quote: Users in Mainland China can no longer apply for a new Bitget Wallet Card. Existing users are not affected.
+      detail: Bitget Wallet help centre article 802 (Mainland China section, client-rendered; archived 2026-10-07).
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://web3.bitget.com/card
+      quote: Vietnam, Malaysia, mainland China, Taiwan, Australia
+      detail: Card page FAQ "Who can apply for a Bitget Wallet Card?" lists mainland China under Asia-Pacific, and says "Card issuing partners vary by region".
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

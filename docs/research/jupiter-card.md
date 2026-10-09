@@ -25,3 +25,9 @@
 - S1 1: the overview discloses that partners manage balances. The Rain collateral claim was not used to raise it.
 - S4 0: the only documented exit is a partner-run bank withdrawal, region-dependent, with no crypto withdrawal.
 - Unknown: C1, O1, O3, O4, F2, P1 (no privacy policy), P3, P5, S2, S3, S5, S6.
+
+## Availability 2026-10-09
+
+- Source: Jupiter docs, Jupiter Card page, "Supported Countries" and "Supported US States" (https://docs.jup.ag/user-docs/global/spend/jupiter-card). Archived as data/archive/jupiter-card-supported-countries.txt (one live fetch missed the quote). The Spend FAQ and Risks pages point to this list. No terms of service or cardholder agreement exists to cross-check (see above), so there is no prohibited-country list.
+- Model `allowlist`, 51 ISO codes: 50 of the 52 listed countries plus US.
+- Judgment calls: (1) Bangladesh and Nigeria are "on pause until further notice", so they are left out and named in `note`. (2) US is included because the page lists 31 supported states; the states are in `note`. (3) The page says unlisted countries are reviewed case by case during KYC; that is in `note`, and only listed countries are coded. (4) Evidence is `documented`, matching how this file already cites the Jupiter docs.

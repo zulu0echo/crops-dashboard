@@ -354,3 +354,23 @@ context: >-
 
 notes: >-
   Eligibility: no verified contract and no public repository needed to run the product, so type is incumbent. Searched 2026-10-07: phantom.com/cash, terms, privacy; help.phantom.com Cash section (FAQ, Understanding your Cash account, debit card, recovery, compromise, KYC); docs.phantom.com/cash; bridge.xyz Phantom card agreement; usecash.xyz; github.com/phantom (no Cash, card or Cash-account program). Onchain: the CASH mint (read above) and a sample of 60 recent CASH transactions, which use only SPL Token-2022, ATA, swap and prediction programs; no Squads or other smart-account program appeared, and the "self-custodial smart-contract wallet" and "debit-card smart contract" the help pages mention could not be identified. One candidate program, 99vQwtBw... (ExecuteTransfer with an ed25519 voucher), turned out to be a single-vault payout program unrelated to Cash accounts and was excluded. Re-assess as type card if Phantom or Bridge publishes the Cash account or debit-card program.
+
+availability:
+  model: allowlist
+  countries: [US]
+  note: >-
+    The assessed payment path is the virtual Phantom debit card (Lead Bank prepaid Visa via Bridge), which Phantom's help centre says is available only in the United States, except New York. The Cash account itself is described as available worldwide, and Stripe funding is also offered in EU member states, but without the card there is no card payment rail. The Lead Bank cardholder agreement names no countries or states.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/use-your-virtual-phantom-debit-card-us-only-44800221533459
+      detail: Phantom's debit card article limits the card to the US, excluding New York.
+      quote: "The card is available in the US only (except New York)"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/cash-faq-44800866087443
+      detail: The Cash FAQ says the Cash account is available worldwide but some features, including the card, are US (except New York) or EU only.
+      quote: "Cash is available worldwide. Some features are available only in the United States (except New York) and EU"
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

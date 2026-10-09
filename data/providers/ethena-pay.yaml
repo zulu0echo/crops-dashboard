@@ -616,3 +616,47 @@ scores:
 
 notes: >-
   Ethena Pay launched on 2026-09-03. It publishes no repository, contract address or chain; the Avalanche deployment was found from USDe Transfer logs (Ethena Pay's FAQ pays boost in USDe daily and cashback in AVAX) and tied together through shared owner Safe 0xdD2332Ca.... Attribution to Ethena Pay is an inference, recorded as a judgment call in primary_chain.basis. All reads pinned to Avalanche block 96949020. Explorer citations use the Routescan API (snowtrace.io and routescan.io pages return 403 to curl). A third-party audit list (crypticdefense/audits) mentions private Guardian audits of an "EthenaPay Wallet" and "EthenaSafeGuard"; no report is public, so S6 is unknown.
+
+availability:
+  model: allowlist
+  countries: [AR, BZ, BO, BR, CO, CR, EC, GT, GY, HN, MX, PA, PY, PE, SR, UY, BS, BB, KY, DM, DO, GD, KN, LC, VC, TT, TC, HK, JP, MY, PH, SG, TH, AE, CI, EG, GH, KE, SN, ZA, UG, ZM, NZ]
+  note: >-
+    The Terms of Use (s4.5) make the Services available only where Ethena Pay has expressly authorized them, and Appendix 1 (Country-Specific Terms) has sections for 47 countries. The list here is those 47, less four where Appendix 1 withholds the card or digital-asset services by default. Australia: the Spend Card is "not generally available" unless offered through a local issuer. El Salvador, Pakistan and Morocco: digital-asset services are unavailable unless Ethena Pay confirms them at onboarding, and the card spends stablecoin balances. Japan is kept, but Appendix 1 limits Japanese users to functions that are not regulated crypto or electronic-payment services. The /jurisdictions page lists 48 live countries; it adds Antigua and Barbuda, which has no section in Appendix 1, so AG is left out as the more restrictive reading. The Spend Card is not offered to US persons. s4.6 Restricted Jurisdictions (always excluded) include Crimea and the Donetsk and Luhansk regions of Ukraine, Abkhazia, South Ossetia, Northern Cyprus and Somaliland. "Live soon": USA, EU, United Kingdom, Switzerland, Canada, Taiwan, South Korea.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/terms
+      detail: Terms of Use s4.5. The Services are offered only in expressly authorized jurisdictions, which Appendix 1 lists country by country.
+      quote: a jurisdiction where we have expressly authorized them to be available to residents
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/terms
+      detail: Appendix 1 s5.1 (Australia) withholds the Spend Card by default.
+      quote: The Ethena Pay Spend Card is not generally available to Australian users unless expressly offered through a local issuer
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/terms
+      detail: Appendix 1 s3.4 (Pakistan) withholds digital-asset services by default. s4.5 (Morocco) and s1.8 (El Salvador) say the same.
+      quote: Services involving transactions in virtual currencies or other digital assets are not available to Pakistani users
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/terms
+      detail: s4.6 Restricted Jurisdictions, which are never served regardless of Appendix 1.
+      quote: Afghanistan; Abkhazia; Belarus; Burma (Myanmar); Burundi; Central African Republic; Crimea; Cuba
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/jurisdictions
+      detail: The Available Jurisdictions page lists 48 live countries by region. It is the same as Appendix 1 plus Antigua and Barbuda.
+      quote: Ethena Pay is live in 48 countries across Latin America, the Caribbean, Asia & the Middle East, Africa, and Oceania
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/faq
+      detail: The card is not offered to US persons.
+      quote: The Ethena Pay Spend Card is offered only to non-U.S. persons
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

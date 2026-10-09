@@ -13,11 +13,13 @@ export const STALE_DAYS = 180;
 
 export function loadData(dir = 'data') {
   const criteria = parse(readFileSync(join(dir, 'criteria.yaml'), 'utf8'));
+  let regions = { countries: [], regions: {} };
+  try { regions = parse(readFileSync(join(dir, 'regions.yaml'), 'utf8')); } catch { /* optional in forks */ }
   const providers = readdirSync(join(dir, 'providers'))
     .filter((f) => f.endsWith('.yaml'))
     .sort()
     .map((f) => parse(readFileSync(join(dir, 'providers', f), 'utf8')));
-  return { criteria, providers };
+  return { criteria, providers, regions };
 }
 
 // A cell is treated as unknown when it has no score, or when the nightly re-check found drift
@@ -51,6 +53,16 @@ export function cellStatus(cell, today) {
   };
 }
 
+// Country availability. Returns 'yes', 'no', or 'unknown' for one ISO code.
+// `regions` maps region names (EU, EEA) to code lists; unknown when the provider has no availability evidence.
+export function availableIn(p, cc, regions = {}) {
+  const a = p.availability;
+  if (!a) return 'unknown';
+  if (a.model === 'global') return 'yes';
+  const list = new Set((a.countries ?? []).flatMap((c) => regions[c] ?? [c]));
+  return (a.model === 'allowlist') === list.has(cc) ? 'yes' : 'no';
+}
+
 export function diff(before, after) {
   const rows = [];
   for (const slug of new Set([...Object.keys(before), ...Object.keys(after)])) {
@@ -81,6 +93,13 @@ function selfCheck() {
   assert(s.newest === '2026-01-01' && s.stale && s.drift && s.tier === 'verified', 'cellStatus');
   assert(!cellStatus({ evidence: [{ checked_at: '2026-06-01' }] }, '2026-10-07').stale, 'fresh cell marked stale');
   assert(diff({ x: { C: { score: 1, limiting: ['C2'] } } }, { x: { C: { score: 2, limiting: ['C2'] } } }).includes('| x | C | 1 (C2) | 2 (C2) |'), 'diff');
+  const regions = { EU: ['DE', 'FR'] };
+  assert(availableIn({}, 'KE') === 'unknown', 'no availability is unknown');
+  assert(availableIn({ availability: { model: 'global' } }, 'KE') === 'yes', 'global');
+  assert(availableIn({ availability: { model: 'allowlist', countries: ['EU', 'GB'] } }, 'FR', regions) === 'yes', 'allowlist via region');
+  assert(availableIn({ availability: { model: 'allowlist', countries: ['EU'] } }, 'US', regions) === 'no', 'allowlist miss');
+  assert(availableIn({ availability: { model: 'blocklist', countries: ['US'] } }, 'US') === 'no', 'blocklist hit');
+  assert(availableIn({ availability: { model: 'blocklist', countries: ['US'] } }, 'KE') === 'yes', 'blocklist miss');
   console.log('rollup self-check: ok');
 }
 

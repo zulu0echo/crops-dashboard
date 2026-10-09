@@ -46,3 +46,9 @@ Result: **incumbent**. The eligibility rule requires at least one verified contr
 - **P1 = 1, P4 = 1.** Present and disclosed by category in the privacy statement. Defaults and endpoints were not checked.
 - **O2 = 0, F1 = 0.** Nothing MiniPay runs is public, and the EULA forbids deriving source.
 - **Left unknown:** O1, O3, F2, F3, P5, S2, S3, S5, S6.
+
+## Availability 2026-10-09
+
+- Source: `https://minipay.to/terms-of-service` (server-rendered, quotes checked live): "The Services are not available in all countries. The Services are made available to users in qualifying countries and are void where prohibited. In particular, we do not offer or make available any crypto-related services to users located in the People's Republic of China." The MiniPay Service section repeats "available only to users in qualifying countries".
+- Model `blocklist`, 1 code: CN.
+- Judgment calls: the qualifying-country list is not published (searched the terms, `/faq`, the home page and docs.minipay.xyz). Per the brief, I listed only what the document names and explained the unnamed "qualifying countries" and sanctions condition in `note`. The block is therefore a floor of exclusions, not evidence of availability elsewhere; a reviewer may prefer to omit it. Marketing figures ("70+ countries", "53 countries", "over 60 countries" for top-up) describe send and ramp reach and were not used. The Card's "selected supported markets" are also unlisted.

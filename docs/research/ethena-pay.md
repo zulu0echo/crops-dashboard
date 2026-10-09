@@ -46,3 +46,14 @@ All onchain reads are pinned to Avalanche C-Chain block **96949020** (RPC https:
 - No public audit report: S6 unknown.
 - No network trace or app inspection. I did not confirm the AVAX cashback payer onchain.
 - The factory implementation is unverified, so the facet registry and pauser logic are read from behaviour and selectors, not source.
+
+## Availability 2026-10-09
+
+- Sources: pay.ethena.fi/terms (Terms of Use s4.5 eligibility, s4.6 Restricted Jurisdictions, Appendix 1 Country-Specific Terms with 47 country sections), pay.ethena.fi/jurisdictions ("live in 48 countries", list by region), pay.ethena.fi/faq (card is for non-US persons only). All are server-rendered (Next.js) and the quotes match the live HTML.
+- Recorded as an allowlist of 43: the 47 Appendix 1 countries minus AU, SV, PK and MA.
+- Judgment calls:
+  - Antigua and Barbuda is on /jurisdictions but has no Appendix 1 section (the Caribbean numbering runs 2.1 Bahamas to 2.11 Turks and Caicos). The documents disagree, so it is left out.
+  - Australia (s5.1) is left out: the Spend Card is "not generally available" unless offered through a local issuer.
+  - El Salvador (s1.8), Pakistan (s3.4) and Morocco (s4.5) are left out: digital-asset services are unavailable unless Ethena Pay confirms them at onboarding, and the card spends stablecoin balances. These are the default-off readings; Ethena Pay may enable them per user.
+  - Japan (s3.2) is kept with a `note`: services are limited to unregulated functions, and the document does not say the card is excluded.
+  - The s4.6 Restricted Jurisdictions are not listed separately because an allowlist already excludes them; the sub-national ones (Crimea, Donetsk, Luhansk) and the unrecognised ones (Abkhazia, South Ossetia, Northern Cyprus, Somaliland) are in `note`.

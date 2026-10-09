@@ -27,3 +27,9 @@
 ## Not found
 
 - The collateral chain and contracts, any audit or bounty, and any public source for the Tria app, TSS infrastructure or BestPath.
+
+## Availability 2026-10-09
+
+- Source: Tria Prohibited Use Policy, section 4 "Sanctions & Restricted Jurisdictions" (https://docs.tria.so/prohibited-use-policy; identical text at /prohibitions-list, which /platform-agreement-v2 incorporates). Also read: /platform-agreement and /terms-of-service (generic sanctions clause, no names), /card-terms-international (not for US citizens), /card-terms-us (no state list).
+- Model `blocklist`, 25 ISO codes: CU, IR, KP, SY (sanctions) plus the 21 distinct high-risk countries named (AF, BY, CF, CD, ER, ET, GN, GW, IQ, LB, LY, ML, MM, NI, RU, SO, SS, SD, VE, YE, ZW).
+- Judgment calls: (1) Both lists are "including, without limitation"; only named countries are listed and this is said in `note`. (2) Crimea, Donetsk and Luhansk are sub-national and go in `note`. (3) "Democratic Republic of the Congo" maps to CD. (4) The US is not blocked: the international card excludes US citizens, but a separate US card programme exists.

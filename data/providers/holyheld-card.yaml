@@ -591,3 +591,23 @@ context: >-
 
 notes: >-
   Eligibility: the public SDK repo holyheld/hh-v1-sdk (BUSL-1.1) and the Sourcify-verified top-up proxy on Ethereum make this a card provider, not an incumbent, although the logic contract is unverified. The top-up proxy address is not in the SDK source (it comes from the API at init); it was found by searching the CardTopup event topic 0x9ceec115... on eth.blockscout.com. Onchain reads pinned to Ethereum block 26139997 (backendSignatureCheck at 26140011). Holyheld now markets itself as an invitation-only membership for accounts and payments; the Terms still define the card. The README's documentation link (holyheld.com/documentation) returns 404.
+
+availability:
+  model: allowlist
+  countries: [CH]
+  note: >-
+    The Terms and Conditions (last updated 01.07.2026) are the only customer terms Holyheld publishes, and their scope clause covers users resident in or located in Switzerland; s9.2 adds that the Platform is not provided where its use would violate local law. Holyheld markets the membership as being for "global payments" (SEPA, ACH, SWIFT), but no first-party page lists other countries, and no terms for other jurisdictions are published, so the more restrictive reading (Switzerland only) is used. The card itself is not given a separate country list. Membership is by invitation, reviewed per applicant.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/legal/terms-and-conditions
+      detail: The Terms' scope clause limits them to users resident in or located in Switzerland.
+      quote: govern the access and use by users who are residents of, or located in the Switzerland
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/legal/terms-and-conditions
+      detail: s9.2 excludes any jurisdiction where provision or use would violate applicable law, without naming any.
+      quote: The Holyheld Platform is not provided to, and may not be used in any jurisdiction where the provision or use thereof would violate applicable laws and regulations
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

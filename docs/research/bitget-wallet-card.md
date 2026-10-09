@@ -25,3 +25,9 @@ The calls match SafePal Card (C4 = 0, C5 = 2, O1 = 2, P3 = 1, S1 = 0, S3 = 0, S4
 - S3: 188 of 195 sampled Bitget accounts have near-maximum allowances to the authorizer, e.g. #119154 with exactly 2^256-1.
 - P1 and P2: Bitget's privacy policy discloses analytics (no vendor named), government ID and biometric data for KYC.
 - C5: Bitget's card pages state no freeze or sequencer assumptions, so the evidence is the contract enumeration plus Fiat24's docs.
+
+## Availability 2026-10-09
+
+- Sources: help article 802 (archived in `data/archive/bitget-wallet-card-help-fiat24.txt`): "Users in Mainland China can no longer apply for a new Bitget Wallet Card. Existing users are not affected." The card page FAQ (`https://web3.bitget.com/card`, server-rendered) still lists "mainland China" among regions where the card is "currently available", alongside EEA/UK, ten LatAm countries, other APAC, South Africa, Pakistan and Bangladesh.
+- Model `allowlist`, 1 code: CN.
+- Judgment calls: the file is scoped to the Fiat24 programme, so only CN is listed; the other regional programmes (different, unnamed issuers) are mentioned in `note` only. The card page and article 802 disagree on whether Mainland China is open; I took the more restrictive reading (existing cardholders only, no new applications) and said so in `note`, keeping CN because that is where the programme operates. Fiat24's own domicile list (`info.fiat24.com/api/fiat24/getCountries`) omits CN, consistent with the closure. The reviewer may prefer to drop the block or mark the provider `incumbent`, as flagged in the type decision above.

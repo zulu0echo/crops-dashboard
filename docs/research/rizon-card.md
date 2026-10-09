@@ -22,3 +22,9 @@ I found no verified contract or public repository needed to run the card and att
 - C4 = 1: sanctions exclusion (EU, OFAC, UN) is disclosed in the Terms. Contract neutrality cannot be checked.
 - P2 = 1 and P4 = 1 from privacy-policy disclosure (KYC partner unnamed; Rain and Privy named).
 - The custody claims ("non-custodial", the issuer does not hold collateral custody, liquidation rights) cannot be checked without the contract, so S1 to S6 are unknown.
+
+## Availability 2026-10-09
+
+- Source: Rizon help centre article "Is Rizon available for me?" (https://intercom.help/rizon/en/articles/13517852-is-rizon-available-for-me, dated 18 July 2026), which gives the full list of 44 supported nationalities. Cross-checked against the Terms of Service (https://www.getrizon.com/terms-of-service, "Jurisdictional Restrictions": 30 named prohibited jurisdictions plus Crimea, Donetsk and Luhansk) and the Rizon Global, Inc. Spend Card Terms (not for US citizens; US citizens use the separate Rizon US Spend Card Terms).
+- Model `allowlist` with the 44 nationalities as ISO codes. The help article is the most restrictive document; no blocklisted jurisdiction appears on it.
+- Judgment calls: (1) eligibility is by nationality, not residence; the dashboard field is per country, so I used the nationality list and explained the difference in `note`. (2) US is kept because US citizens are served by the US card programme; the Global card's exclusion of US citizens is in `note`. (3) The Terms' line that Rizon does not actively market outside the US and Latin America is not a prohibition, so it goes in `note` only.

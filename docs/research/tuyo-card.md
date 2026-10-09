@@ -31,3 +31,10 @@
 - P4 0: the card provider, issuer and KYC vendor are not named.
 - S4 1: the guide documents a manual `execute` call, and the Kernel source shows the root-validator path. Funds in collateral may not be covered.
 - Unknown: O3, O4, F2, P3, P5, S1, S2, S3, S5, S6. These need a sample account or collateral contract. The "Tuyo shields your transaction details" claim (card guide) is unverified, so P3 stays unknown.
+
+## Availability 2026-10-09
+
+- Sources: help.tuyo.com/guides/tuyo-availability.html (27 platform-wide prohibited jurisdictions) and help.tuyo.com/guides/tuyo-card-availability.html (card-provider issuance and spending exceptions, plus 20 US states/DC and 5 US territories). Both are VitePress, curl-readable, and say they were verified by Tuyo on 16 July 2026 against its Prohibitions page (about.tuyo.com, Notion, last updated 15 July 2026). Quotes match the live HTML.
+- Terms (data/archive/tuyo-card-terms.txt) s2.1 add a general US embargo/OFAC exclusion without naming countries.
+- Recorded as a blocklist of 34: the 27 platform-wide countries, plus IL and NI (the only card-issuance exceptions not already on the platform list), plus the five excluded US territories (PR, VI, AS, GU, MP).
+- Judgment calls: the US is not blocklisted, because most states are eligible; the 20 excluded states and DC are in `note`. The five excluded US territories have their own ISO codes, so they are listed as countries even though the guide places them under "United States availability". Spending-country restrictions are in `note` only, since they limit where the card can be used, not where it is offered. The Notion Prohibitions page itself was not read (client-rendered); the help guides are Tuyo's own transcription of it.

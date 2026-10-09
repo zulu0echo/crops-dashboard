@@ -402,3 +402,29 @@ context: >-
 
 notes: >-
   Type card: Kamino's klend program is a verified build of a public repo, and XPlace's Terms make it the protocol through which Collateral and Credit Mode run. Judgment call: klend is third-party and no XPlace user position was found onchain, so the link rests on XPlace's Terms; Cash Mode (plain USDC balance) may not touch Kamino at all. XPlace's own "smart contracts audited by FYEO" (homepage) and Rain's Solana collateral program have no published address; Rain's integration repo SignifyHQ/collateral-contract-integration-examples has IDLs but no mainnet program id. The Kamino market XPlace uses was not identified (none of the 44 markets in api.kamino.finance is named for XPlace). Solana items carry no `check` because the nightly re-check reads EVM words only.
+
+availability:
+  model: blocklist
+  countries: [BY, CN, CU, IN, IR, IQ, IL, MM, NP, NI, KP, RU, SY, TR, UA, VE, VN]
+  note: >-
+    Terms and Conditions (effective 20 May 2026) s3.2 lists 17 Prohibited Countries. Use is prohibited for residents, people located there, and nationals of these countries. s3.3 adds 16 Restricted U.S. States: Arizona, Delaware, Georgia, Idaho, Louisiana, Maryland, Nevada, New Mexico, North Dakota, Ohio, Oregon, Rhode Island, South Dakota, Vermont, Washington and Wisconsin. s3.4 also bars anyone subject to comprehensive sanctions without naming further countries, and says XPlace may enforce the restrictions with IP geolocation. The terms are the platform's; the card (issued through the Card Partner, Rain) has no separate country list.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+      detail: s3.2 Prohibited Countries, 17 countries from Belarus to Vietnam.
+      quote: Use of the Platform is strictly prohibited for persons who are located in, ordinarily resident in, organized under the laws of, or nationals of any of the following countries
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+      detail: The s3.2 list ends with Venezuela and Vietnam, followed by XPlace's right to update it.
+      quote: Venezuela Vietnam XPlace may update this list at any time
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+      detail: s3.3 Restricted U.S. States.
+      quote: Arizona Delaware Georgia Idaho Louisiana Maryland Nevada New Mexico North Dakota Ohio Oregon Rhode Island South Dakota Vermont Washington Wisconsin
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -39,3 +39,11 @@
 - S3 2: the design is exact-amount, but it is capped at 2 because the app is closed and there is no package or trace.
 - S1 0: owner `setRoot` and the verifier swap let the provider redirect funds.
 - Not found: issuing bank name, Rain collateral addresses, app analytics SDKs (P1 rests on the policy only).
+
+## Availability 2026-10-09
+
+No `availability` block: Payy's documents state a scope but name no country.
+- docs.payy.network/payy-wallet/payy-wallet-faq ("What countries does Payy work in?"): Payy "is available in all countries where the App and Play Store are available" and "may not be used in countries sanctioned by the Office of Foreign Assets Control (OFAC)". Neither the App Store/Play Store country lists nor the OFAC countries are named.
+- Terms of Service (archive data/archive/payy-card-terms.txt): card terms vary by issuing partner "in various jurisdictions" and add GLBA disclosures for US users; no country list. Privacy policy (payy.link/privacy): automated screening so that "no OFAC jurisdictions are utilizing Payy"; no list.
+- Card docs (docs.payy.network/payy-wallet/payy-card): US-based issuer, bank deposits from the US and Argentina only; no list of card countries. The repo's KYC rejection reasons include `WrongUserRegion`, but the region rule lives in closed services.
+- Judgment call: a blocklist with an empty `countries` would render every OFAC-sanctioned country as "available", contradicting the FAQ, and the brief says to omit the block when no first-party source lists countries. Omitted rather than expanding "OFAC-sanctioned countries" from outside sources.

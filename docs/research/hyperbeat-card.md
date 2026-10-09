@@ -23,3 +23,9 @@
 ## Not found
 
 - The cardholder agreement, card issuer, KYC vendor, ManagementAccountFactory address, and any bug bounty.
+
+## Availability 2026-10-09
+
+- Source: hyperbeat.org Terms (https://hyperbeat.org/terms), section 7 geographic restrictions. The Pay web app bundle (61 chunks from https://hyperbeat.org/dapp/pay) was searched for a country gate; it contains only a phone-prefix country list, no blocked-country list.
+- Model `blocklist`: CU, IR, KP, SD, SY, the five countries the Terms name.
+- Judgment calls: (1) "any other country subject to United States embargo, UN Security Council Resolutions, HM Treasury's ... sanctions regime" is not expanded, per the brief; this is stated in `note`. (2) The Ontario, Canada exclusion is sub-national and goes in `note`. (3) The 25-country list in the Terms applies to Beatpot only, not to the Pay Service, so it is not used. (4) US access depends on an unpublished "Hyperbeat Pay Cardholder Agreement (U.S.)"; US is not listed as blocked, and the dependence is in `note`.

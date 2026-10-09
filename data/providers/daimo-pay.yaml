@@ -847,5 +847,32 @@ scores:
     review:
       status: pending
 
+availability:
+  model: global
+  note: >-
+    The docs say crypto deposits (self-custody wallets and deposit addresses) are offered everywhere; the deposit-address contracts and the SDK contain no country or sanctions check. Fiat rails are a regional variant, enabled per organization: Apple Pay, ACH and Google Pay (US), Interac (CA), SEPA (Europe), JPYC (JP, SG, KR, PH), ARS (AR) and Bre-B (CO). The terms of use name no countries, only that the Services are not intended for use where it would be contrary to law. Judgment call: the hosted API that builds the payment-method list is closed, so a server-side country gate cannot be ruled out from code; global rests on the docs statement plus the contracts.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.daimo.com/guides/payment-methods
+      detail: Payment Methods guide lists localized methods by country and states that self-custody wallets and deposit addresses are offered in every country.
+      checked_at: "2026-10-09"
+      quote: plus self-custody wallets and deposit addresses everywhere
+    - tier: documented
+      kind: document
+      url: https://docs.daimo.com/guides/fiat
+      detail: Fiat guide's supported-rails table gives each fiat rail's region (US, Canada, Europe (SEPA), Japan/Singapore/South Korea/Philippines, Argentina, Colombia); users in other countries see crypto, exchange and wallet methods.
+      checked_at: "2026-10-09"
+      quote: Users in a country with no enabled fiat rail see crypto, exchange, and wallet
+    - tier: verified
+      kind: repo
+      url: https://github.com/daimo-eth/sdk/tree/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src
+      commit: ac0a71453ac249aa991d71059c621e2424322d61
+      path: packages/contract/src
+      detail: The deposit-address contracts contain no country or sanctions check; GitHub code search of packages/contract/src for sanction, country, OFAC, blacklist and blocked returns no results, and the 2026-10-07 read at this commit found no pause, blacklist or freeze logic.
+      recheck: gh api -X GET search/code -f q='sanction repo:daimo-eth/sdk path:packages/contract/src' --jq .total_count
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"
+
 notes: >-
   Primary chain Base (8453): the docs' examples use Base USDC, and the repo has Base broadcasts for every deposit-address contract. The repo also has broadcasts for 15 other chains, which we did not assess. Scope is the deposit-address system (DepositAddressManager and related contracts), which @daimo/sdk 1.8.x uses. The older DaimoPay/PayIntent order contracts are still in the repo; we did not score them. Contract addresses were resolved with CREATE3Factory.getDeployed(deployer 0x723a63fb50da50a26997fb99a2eb151e4f8c5227, salt) at 0x37922885311bc9d18e136e4fe6654409d3f45ffd. The pricer and bridger addresses come from the DAParams of a live session (tx 0x8d3d409f…bd00). We did not enumerate the full relayer set, because public Base RPCs limit eth_getLogs ranges. The two relayers listed were confirmed with direct relayerAuthorized() reads. All onchain reads are pinned to block 52280426. All repo reads are pinned to daimo-eth/sdk@ac0a71453ac249aa991d71059c621e2424322d61. No browser or network traces were run. Migrated to the post-red-team evidence rules on 2026-10-07 (components, quotes, rechecks, package evidence); score changes are listed in docs/research/daimo-pay.md.

@@ -21,3 +21,9 @@ I found no verified contract and no public repository needed to run the product.
 - P4 0: KYC, fraud and blockchain-intelligence vendors are named only by category.
 - S1 1: custodial and disclosed.
 - Unknown: O1, O3, O4, F2, P3, P5, S2, S3, S4, S5, S6, because no contract, code or trace is available. S3 in particular is unknown: the approval size and default are not visible.
+
+## Availability 2026-10-09
+
+- Source: Oobit help centre, "Is Oobit available in my country?" (https://support.oobit.com/en/articles/15262464-is-oobit-available-in-my-country), a per-country table of 75 countries and territories plus a "Not supported in" list. Cross-checked against the Terms of Use (embargoed-country exclusion) and the card terms on oobit.com (not for US citizens).
+- Model `allowlist`, 73 ISO codes: the 74 countries where the table marks the Oobit Visa card "Yes", minus the United States. No region names: Hungary is absent, so neither EU nor EEA applies.
+- Judgment calls: (1) Vietnam is listed but its card is "Waitlist", so it is left out and mentioned in `note`. (2) The help article marks the US card "Yes*" ("most states"), but both Rain card terms on oobit.com (/legal/card-terms, /legal/rain-card-terms) require attesting that you are not a US citizen and say the card is intended for those outside the United States. No US card terms were found. Per the brief, the more restrictive reading wins, so the US is left out and the conflict is in `note`. Puerto Rico is kept as listed. (3) All three sources are `documented`, matching how this file already cites Oobit's own FAQ.

@@ -363,3 +363,35 @@ context: >-
 
 notes: >-
   Scored from Tuyo's Terms (Notion, client-rendered, archived), Privacy Policy (archived), the help.tuyo.com guides (curl-readable), the ZeroDev Kernel source at tag v3.2, and Sourcify for the two Base contracts that Tuyo names. I could not identify a sample Tuyo account or its card collateral. base.blockscout.com is behind a Cloudflare challenge (not bypassed), Base public RPC refuses USDC log scans over 300 blocks, and Rain's docs need a login. As a result S1, S2, S3, P3 and the card-path onchain facts are unknown. Card Map (third party) lists Rain as issuer; no Tuyo document confirms it.
+
+availability:
+  model: blocklist
+  countries: [AF, BD, BY, CN, CD, CU, IN, IR, IQ, LB, LY, ML, MM, NP, NG, KP, RU, SO, SS, SD, SY, TR, UA, GB, VE, VN, YE, IL, NI, PR, VI, AS, GU, MP]
+  note: >-
+    Two layers, both from Tuyo's help guides (verified by Tuyo on 16 July 2026 against its Prohibitions page, last updated 15 July 2026). The 27 platform-wide prohibited jurisdictions block all Tuyo services, the card included. The card provider adds issuance exceptions; of these only Israel and Nicaragua are not already platform-wide prohibitions. The card provider also blocks card payments (spending) in CU, IR, KP, RU, SY, UA and VE. In the US, the card cannot be issued to residents of Arizona, Delaware, Georgia, Idaho, Louisiana, Maryland, Mississippi, Missouri, Nevada, New Mexico, North Dakota, Ohio, Oregon, Rhode Island, South Dakota, Tennessee, Vermont, Washington, Wisconsin or the District of Columbia. Puerto Rico, the U.S. Virgin Islands, American Samoa, Guam and the Northern Mariana Islands are also excluded. They have their own ISO codes, so they are in the list. The Terms of Service add a general exclusion of US-embargoed or sanctioned jurisdictions without naming them.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/tuyo-availability.html
+      detail: Tuyo's platform-wide prohibited jurisdictions table, which applies to the card. It lists 27 countries, from Afghanistan to Yemen, including the United Kingdom.
+      quote: Tuyo is generally available outside the platform-wide prohibited jurisdictions below
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/tuyo-availability.html
+      detail: The United Kingdom row of the platform-wide table, quoted as an example.
+      quote: United Kingdom (GB) Not available
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/tuyo-card-availability.html
+      detail: The card provider's issuance exceptions add Israel and Nicaragua to the platform-wide list. The page also lists the US states and territories where the card cannot be issued.
+      quote: Israel (IL) Not available Available
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/tuyo-card-availability.html
+      detail: The Nicaragua row of the card provider's issuance exceptions.
+      quote: Nicaragua (NI) Not available Available
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

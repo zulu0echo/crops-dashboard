@@ -331,3 +331,23 @@ context: >-
 
 notes: >-
   Classified as incumbent: I found no verified contract or public repository shown to be needed to run this card. Searched: avalanchecard.com and legal.avalanchecard.com (terms, card agreements, privacy policy); GitHub for Rain orgs, where SignifyHQ (Signify Holdings, i.e. Rain) publishes integrator SDKs and a collateral-examples repo; GitHub code search for RainCollateral; Avalanche C-Chain via cast and Routescan. Rain's v1 RainCollateralController 0x753Fb325... and RainCollateral 0xD71Fd741... are live on Avalanche and verified on Routescan. Their controllerAdmin can liquidate any collateral, and user withdrawals need a Rain signature. But 1000 recent Withdrawal events show only USDe, USDC and USDT, with no AVAX or WAVAX, and the card agreement does not list Avalanche as a supported chain, so I could not tie them to this card. Re-assess as type card if Rain discloses the card's collateral contract.
+
+availability:
+  model: blocklist
+  countries: [BY, CN, CU, IL, IN, IQ, IR, KP, LK, NG, NI, NP, RU, SY, TR, UA, VE, VN]
+  note: >-
+    The site FAQ names 18 countries whose residents cannot be issued a card, and these are listed. The same answer says the card "is currently available in many U.S. states, Latin America, and the Caribbean" without enumerating those regions, so availability outside the Americas is not affirmed by any document; the blocklist records only what is named. In the US, residents of 16 states cannot be issued a card: Arizona, Delaware, Georgia, Idaho, Louisiana, Maryland, Nevada, New Mexico, North Dakota, Ohio, Oregon, Rhode Island, South Dakota, Vermont, Washington and Wisconsin. US residents use the separate US card agreement; under the international card agreement the holder attests they are not a US citizen. Both agreements bar persons blocked or sanctioned by the US (OFAC), and the app terms require that the user is not located in a US-embargoed or "terrorist supporting" country (not listed).
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.avalanchecard.com/
+      quote: "Cannot issue to residents of the following countries: Belarus, Cuba, India, Iran, Iraq, Israel, Mainland China, Nepal, Nicaragua, Nigeria, North Korea, Russia, Sri Lanka, Syria, Turkey, Ukraine, Venezuela, Vietnam"
+      detail: Avalanche Card site FAQ "What countries are supported?", which also lists the 16 excluded US states and says the card is available in many US states, Latin America and the Caribbean.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://legal.avalanchecard.com/legal/avalanche-card-international-card-agreement-94211945
+      quote: You attest that you are not a United States citizen, and that you are signing up for a card that is intended for those outside of the United States
+      detail: Avalanche Card international card agreement (Rain Liquidity / issuer), section 1 representations; also requires the holder not be blocked or sanctioned by the US (OFAC).
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -327,3 +327,29 @@ scores:
 
 notes: >-
   Eligibility: no public repository needed to run the product and no published or verified contract, so type is incumbent. Searched 2026-10-07: GitHub org TriaHQ (four repos: an ideathon dataset and forks of relay-server, sdk-testing-grounds, tria-rainbowkit); tria-labs/TriaLabs (unrelated Tria Labs, triafed.com) and triaso (0 repos); gh search repos "tria sdk" (unrelated projects); npm @tria-sdk/core, connect, authenticate(-react/-web), react-native, chains, utils, constants (all 404) and legacy tria-sdk-core/tria-sdk-web 2023 (repository github.com/TriaHQ/tria-core-sdk, 404); docs.tria.so (54 pages incl. CoreSDK, BestPath, Security and TSS, TX Flow, supported networks, all legal pages; only example wallet addresses in SDK samples, no card or collateral contracts); www.tria.so (client-rendered shell). The card terms are a collateral-backed Third National program with a generic Supported Blockchains list; the collateral chain and contracts are not published, so no onchain cell could be scored.
+
+availability:
+  model: blocklist
+  countries: [CU, IR, KP, SY, AF, BY, CF, CD, ER, ET, GN, GW, IQ, LB, LY, ML, MM, NI, RU, SO, SS, SD, VE, YE, ZW]
+  note: >-
+    From section 4 of Tria's Prohibited Use Policy (the same text is published as the Prohibitions List, which the platform agreement incorporates). It names sanctioned countries "including, without limitation" Cuba, Iran, North Korea and Syria, plus the Crimea, Donetsk and Luhansk regions of Ukraine (sub-national, not listed as codes), and high-risk jurisdictions "including but not limited to" 21 more countries (Myanmar is named twice). Both lists are open-ended, and the platform agreement also excludes any country subject to EU, UK, UN or US sanctions; only named countries are listed here. Card programme variants: the international card terms require attesting that you are not a US citizen; US users have separate US card terms, which name no state limits.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/prohibited-use-policy
+      detail: Section 4 (Sanctions and Restricted Jurisdictions) names the sanctioned and high-risk jurisdictions where the Tria Card may not be applied for or used.
+      quote: "jurisdictions that Tria prohibits due to high money-laundering, fraud, or compliance risk, including but not limited to: Afghanistan, Belarus, Central African Republic"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/prohibited-use-policy
+      detail: The same section names the sanctioned countries and Ukrainian regions.
+      quote: "Cuba, Iran, North Korea, Syria, and the Crimea, Donetsk, or Luhansk regions of Ukraine"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/card-terms-international
+      detail: The international card terms are for non-US citizens; US users are covered by the separate US card terms.
+      quote: "You attest that you are not a United States citizen"
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

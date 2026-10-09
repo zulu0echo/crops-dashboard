@@ -529,3 +529,23 @@ context: >-
 
 notes: >-
   "Fuse Card" here is Squads' Fuse wallet card (fusewallet.com), not a Fuse Network (chain 122) product. A Fuse Network blog post announces a different card (Solid Card); no Fuse Card document mentions chain 122. Solana reads were taken through api.mainnet-beta.solana.com at slots 454199060-454202586, and the Bridge spender key was identified by getProgramAccounts over v4 SpendingLimit accounts with the USDC mint. Fuse's app and backend are closed, so O4, P5 and S5 are unknown. Card Map was used only to identify the product.
+
+availability:
+  model: allowlist
+  countries: [US, AR]
+  note: >-
+    The Fuse Visa Card support page lists 18 countries twice (in the card overview and in the FAQ "Am I eligible for Fuse Card?"): the U.S. (excluding residents of New York and Alaska), Argentina, Bolivia, Brazil, Colombia, Costa Rica, Dominican Republic, Ecuador, El Salvador, Ghana, Guatemala, Honduras, Mexico, Panama, Nigeria, Paraguay, Peru and Uruguay. The same FAQ answer then says the card is for users in the U.S. and Argentina only, followed by "We are working to make Fuse Card available in more countries soon". The page contradicts itself, so the more restrictive reading (US and AR) is used; the 18-country list is probably the newer text. In the US, residents of New York and Alaska are excluded. Applicants must be 18 or older and pass KYC via Bridge.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/support/fuse-visa-card
+      detail: The FAQ answer limits the card to the U.S. and Argentina, excluding New York and Alaska.
+      quote: users in the U.S. and Argentina aged 18 or older, excluding residents of New York and Alaska
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/support/fuse-visa-card
+      detail: The same page lists 18 countries, starting with the U.S. (excluding New York and Alaska) and ending with Paraguay, Peru and Uruguay.
+      quote: Fuse Card is currently available for users in
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -26,3 +26,9 @@
 - P3 1 rather than 2: the minimal-linkage description is documentation only; no sample card transaction was found.
 - P1 1: analytics are on by default with an opt-out, disclosed.
 - Unknown: O1, O3, O4, F2, P5, S2, S3, S4 (key export and wallet type unproven), S5, S6.
+
+## Availability 2026-10-09
+
+- Source: Phantom help centre, "Use your virtual Phantom debit card (US only)" (https://help.phantom.com/articles/use-your-virtual-phantom-debit-card-us-only-44800221533459) and the Cash FAQ (https://help.phantom.com/articles/cash-faq-44800866087443); "Understanding your Cash account" has the per-feature availability table. The Bridge/Lead Bank cardholder agreement was also read; it names no countries or states.
+- Model `allowlist`: US only, with the New York exclusion in `note`.
+- Judgment call: the Cash account is "available worldwide" (and Stripe funding covers EU member states), but this file assesses the card payment path, whose required components are the Bridge card programme, Lead Bank and Visa. The card is US-only, so the allowlist follows the card, and worldwide Cash access is described in `note`.
