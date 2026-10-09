@@ -1,0 +1,31 @@
+Source: https://about.tuyo.com/Tuyo-Cardholder-Agreement-United-States-1a2bde147092805694e6db6d96273668 (Notion page rendered in a browser; excerpts copied verbatim 2026-10-09)
+
+Tuyo Cardholder Agreement (United States)
+Last Updated: March 7th, 2025
+INTEREST RATE AND INTEREST CHARGES
+APR for Purchases N/A
+Fees
+Below are the fees listed in the doc:
+Fee Category Fees
+Annual Fees $0
+Transaction Fees
+- Balance transfer
+- Cash advance
+- International Transactions
+- N/A
+- None
+- 1% in US Dollars
+Penalty Fees
+- Late Payment
+- Over the Credit Line
+- Returned Payment
+- 2%
+- None
+- None
+[...]
+"Issuer" Refers to Third National.
+"Supported Blockchain" Means the Ethereum Blockchain, Polygon Blockchain, Optimism Blockchain, Arbitrum Blockchain, and other blockchain networks which may be added at our sole discretion.
+[...]
+you may, if enabled by us, use your Card to obtain cash from certain automated teller machines ("ATM") or make Purchases at certain merchant point-of-sale devices ("POS"). Where enabled, you may do these things if the ATM or POS requires entry of a PIN and displays the logo of the Payment Card Network on your Card. We will treat any allowed ATM transactions as Cash Advances and all POS transactions as Purchases.
+[...]
+Tuyo and Issuer may defend any claim subject to indemnification hereunder using counsel of their choice, and you will pay or promptly reimburse Rain for the reasonable fees of such counsel and all related costs and expenses.

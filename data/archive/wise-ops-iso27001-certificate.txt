@@ -1,0 +1,118 @@
+Text extracted on 2026-10-09 (pypdf) from the ISO/IEC 27001 certificate PDF linked from the Coalfire Certification client directory (https://coalfirecertification.com/client-directory.html, data file https://coalfirecertification.com/data/data.json, entry registrant "Wise Payments Ltd", cert_number "2020-080301", latest "06/30/2026", expiration "8/3/2029"). PDF URL: https://coalfirecertification.com/Certificates/Wise%20ISO%2027001%20Certificate%20Award%20-%2006.30.2026.pdf . Wise's own security page links an older copy (https://wise.com/gateway/v1/iso-certificate, issued July 10, 2025, expiring August 3, 2026). Verbatim extraction follows; line breaks are as extracted.
+
+--- page 1 ---
+CERTIFICATE NUMBER:  
+2020-080301 
+ 
+Coalfire Certification | 12735 Morris Road, Suite 250 | Alpharetta, GA 30004 | coalfirecertification.com 
+© 2026 Coalfire Certification Inc. All rights reserved. Template only. 
+This certificate relates to the Information Security Management System, and not to the products or services of the certified organization. The 
+certification reference number, the mark of the certification body and/or the accreditation mark may not be shown on products or stated in 
+documents regarding products or services. Promotional material, advertisements or other documents showing or referring to this certificate, 
+the trademark of the certification body, or the accreditation mark, must comply with the intention of the certificate. 
+CERTIFICATE OF REGISTRATION 
+Information Security Management System – ISO/IEC 27001:2022 
+Coalfire Certification, Inc. certifies that the following organization operates an Information Security Management System 
+(ISMS) that conforms to the requirements of ISO/IEC 27001:2022 per the scope and boundaries statement detailed 
+below: 
+COMPANY: Wise Payments Ltd ADDRESS: 
+Worship Square, Level 1 
+65 Clifton Street 
+London, EC2A 4JE 
+United Kingdom 
+Scope: 
+The certificate scope comprises the Information Security Management System supporting the operations underlying the 
+Wise financial service offerings: Wise Account, Wise Business, and Wise Platform. The organizational scope includes the 
+Engineering, Product, Banking, Brand, Core Compliance, Security, Customer Support, Finance, Operations, People teams, 
+Internal Audit, Workplace, Privacy, Group Risk affecting the ISMS. 
+STATEMENT OF APPLICABILITY: 
+VERSION: 2.2 
+ON BEHALF OF COALFIRE CERTIFICATION, INC. 
+ 
+ 
+ 
+ 
+Booker Young, VP of Global Assurance 
+ 
+ 
+DATE: April 20, 2026  
+Original Registration Date: 
+ 
+August 3, 2020 
+Certificate Issuance Date: 
+July 3, 2026 
+Expiration Date: 
+August 3, 2029  
+  
+
+--- page 2 ---
+ 
+ 
+ 
+Coalfire Certification | 12735 Morris Road, Suite 250 | Alpharetta, GA 30004 | coalfirecertification.com 
+© 2026 Coalfire Certification Inc. All rights reserved. Template only. 
+Address Key Processes and Activities: 
+Central Office 
+Worship Square, Level 1  
+65 Clifton Street  
+London, EC2A 4JE  
+United Kingdom 
+• Operational control and authority for the management system 
+• Cloud engineering services 
+• System development 
+• Application security 
+• Site reliability engineering 
+• Product management 
+• Contract administration and negotiation 
+• Sales operations 
+Satellite Office #1 
+Kopli 68a 
+Tallinn 10412 
+Estonia 
+• Policy and procedure reviews 
+• Business operations 
+• System development 
+• Site reliability engineering 
+• Background checks 
+• Analysis of statutory and regulatory requirements 
+• Customer success and support 
+• Facilities and property management 
+Satellite Office #2 
+Promenade Gardens 
+Váci út 80, 3rd floor 
+Budapest 1133 
+Hungary 
+• Cloud engineering services 
+• Business operations 
+• System development 
+• Background checks 
+• Product management 
+• Customer success and support 
+• Contract administration and negotiation 
+• Sales operations 
+Satellite Office #3 
+1 Paya Lebar Link #13-06, PLQ2 
+Paya Lebar Quarter 408533 
+Singapore 
+• Cloud engineering services 
+• Business operations 
+• System development 
+• Site reliability engineering 
+• Background checks 
+• Analysis of statutory and regulatory requirements 
+• Customer success and support 
+• Sales operations  
+Satellite Office #4 
+Domain Tower 2, 
+10025 Alterra Parkway  
+Austin, TX 78758 
+United States 
+• Policy and procedure reviews 
+• Business operations 
+• System development 
+• Site reliability engineering 
+• Background checks 
+• Analysis of statutory and regulatory requirements 
+• Customer success and support 
+• Facilities and property management 
+ 

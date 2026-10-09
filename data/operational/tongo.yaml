@@ -1,0 +1,505 @@
+slug: tongo
+fees:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value:
+    - kind: network
+      paid_by: payer
+      amount: Starknet v3 fee in STRK; sample 1.456 STRK for a Tongo transfer (42.4M L2 gas, 1,696 L1 data gas)
+      basis: Starknet fee formula over L2 gas, L1 gas and L1 data gas at the block's prices plus an optional tip, paid by the submitting Starknet account; all fees go to the sequencer (StarkWare). Set by Starknet, not by Tongo.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: Optional relayer fee (fee_to_sender), set per operation by the user; 0 when the user submits directly
+      basis: Only on the gasless Relayer path. Tongo.cairo pays fee_to_sender from the sender's encrypted balance to the caller in ERC-20 at the Vault rate; the Relayer executes only when fees cover its gas plus a configurable margin.
+      evidence_index: 1
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://starknet-rpc.publicnode.com
+      block_number: 12474497
+      detail: starknet_getTransactionReceipt for 0x1c865f68…3949 (a TransferEvent on the v2 USDC ledger 0x00b3…d4d3, Starknet block 12,474,497, 2026-07-29 21:13:42 UTC) returns actual_fee 0x1433e87959c49180 FRI (1.456 STRK). Other transfers on that ledger paid 1.33 to 1.46 STRK, withdrawals 0.70 to 1.04 STRK. Read through a public Starknet JSON-RPC endpoint; any node returns the same receipt.
+      checked_at: 2026-10-09
+      recheck: curl -s -X POST -H 'content-type:application/json' https://starknet-rpc.publicnode.com -d '{"jsonrpc":"2.0","id":1,"method":"starknet_getTransactionReceipt","params":["0x1c865f68ecae417c817c0009a25a1f386266d21a7b0fce999630bfe64e13949"]}' | jq -c '.result | {actual_fee, execution_resources}'
+    - tier: verified
+      kind: repo
+      commit: 7dac05e823f83620fe231605ba81642a178657ad
+      checked_at: 2026-10-09
+      url: https://github.com/fatlabsxyz/tongo/blob/7dac05e823f83620fe231605ba81642a178657ad/packages/contracts/src/tongo/Tongo.cairo#L236-L255
+      path: packages/contracts/src/tongo/Tongo.cairo
+      detail: With relayData set, withdraw moves fee_to_sender from the Vault to get_caller_address() and subtracts it from the sender's encrypted balance; transfer and ragequit do the same (L309-L314, L372-L377). There is no other fee in Tongo.cairo or Vault.cairo.
+    - tier: documented
+      kind: document
+      url: https://docs.starknet.io/learn/protocol/fees
+      detail: Starknet fee units (L2 gas, L1 gas, L1 data gas), v3 STRK-denominated limits and tip, and the recipient of fees.
+      quote: Starknet does not currently implement burning of fees, and all fees charged are received by the sequencer
+      checked_at: 2026-10-09
+    - tier: documented
+      kind: document
+      url: https://docs.tongo.cash/protocol/relayer.html
+      detail: Relayer architecture page; the Relayer uses the AVNU paymaster, pays gas and is reimbursed from the operation's fee.
+      quote: carry a fee_to_sender amount that is paid to the Relayer
+      checked_at: 2026-10-09
+  note: No protocol fee and no fee to Fat Solutions on the direct path. Funding a Tongo account is an ordinary ERC-20 approve and call, paying the same Starknet fee. Fees are high relative to the amounts moved so far (the v2 USDC Vault held 7.78 USDC at the seed read).
+  checked_at: 2026-10-09
+custody_model:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+  note: Agrees with the S1 finding (anchor 3 in substance, capped at 2 for want of schema-compatible onchain evidence). The ERC-20 reserve sits in an ownerless, non-upgradeable Vault released only against the key holder's proof; the ledger owner cannot move funds. Native USDC keeps Circle's freeze power over the Vault address.
+  checked_at: 2026-10-09
+licences:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://fatsolutions.xyz/
+      detail: The developer presents itself as a research and development team; the site names no legal entity, licence or regulator.
+      quote: Zero-Knowledge Privacy Research and Development Team
+      checked_at: 2026-10-09
+    - tier: documented
+      kind: document
+      url: https://www.tongo.cash/
+      detail: The product site links to the demo, docs, GitHub and npm and has no terms, privacy or legal page.
+      quote: live on starknet mainnet
+      checked_at: 2026-10-09
+  note: "Judgment call: absent rather than not_applicable, because Fat Solutions holds the ledger owner key (external-transfer approvals) and the Relayer owner role and runs the demo frontend, although it never holds users' funds. Searched: tongo.cash, fatsolutions.xyz, docs.tongo.cash (introduction, vault, relayer, auditor, contracts) and the repository README. No legal name or jurisdiction is disclosed, so no regulator register could be searched."
+  checked_at: 2026-10-09
+cashout:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: No fiat leg. The payee withdraws the wrapped ERC-20 (USDC, USDT, STRK, ETH, WBTC) to a Starknet address; converting it to local currency is outside the protocol.
+  burden: institution
+  checked_at: 2026-10-09
+maturity:
+  first_deployment:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      date: 2026-07-13
+      block: 11811046
+      what: v2 USDC Tongo ledger 0x00b3…d4d3 (its Vault 0x4cf9…b27f at block 11,810,608 the same day). The first v1 instance (0x6d82…0e27) dates from block 3,587,879 on 2025-11-14.
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://starknet-rpc.publicnode.com
+        block_number: 11811046
+        detail: Binary search with starknet_getClassHashAt finds the v2 USDC ledger first present at Starknet block 11,811,046 (class 0x072c…471e) and its Vault at 11,810,608 (class 0x044d…121f); starknet_getBlockWithTxHashes gives timestamps 1783970097 (2026-07-13T19:14:57Z) and 1783969165. The Relayer appears at 11,811,680. The earliest v1 instance appears at 3,587,879 (1763155393, 2025-11-14T21:23:13Z), class 0x0058…672a.
+        checked_at: 2026-10-09
+        recheck: for b in 11811045 11811046; do curl -s -X POST -H 'content-type:application/json' https://starknet-rpc.publicnode.com -d '{"jsonrpc":"2.0","id":1,"method":"starknet_getClassHashAt","params":{"block_id":{"block_number":'$b'},"contract_address":"0x00b32618c475b2fb50b0facd2c49136be6e77281834dc86bdae652680faad4d3"}}' | jq -c '.result // .error.message'; done
+    note: Judgment call. The assessed unit is the v2 ledgers, so the v2 USDC ledger is recorded; v1 instances (separate contracts, still holding funds) are about eight months older. Voyager returned 403 and Starkscan renders client-side, so the timestamps come from a public Starknet JSON-RPC node rather than an explorer API.
+    checked_at: 2026-10-09
+  entity:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://fatsolutions.xyz/
+        detail: The developer's site carries only a trade name and a contact address; no legal form, jurisdiction or register number.
+        quote: © 2026 FAT SOLUTIONS
+        checked_at: 2026-10-09
+      - tier: documented
+        kind: document
+        url: https://reports.zksecurity.xyz/reports/tongo/
+        detail: The audit report names the client by trade name only.
+        quote: On October 13th, 2025, FatSolutions engaged zkSecurity to perform a security audit of its Tongo
+        checked_at: 2026-10-09
+    note: Maintainer is Fat Solutions (GitHub organisation fatlabsxyz, npm scope @fatsolutions); no legal entity is disclosed on tongo.cash, fatsolutions.xyz, the docs, the GitHub organisation profile (empty) or the npm package. Recorded as absent (undisclosed), not as proof that no company exists.
+    checked_at: 2026-10-09
+  incidents:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/security-advisories
+        detail: No published security advisories in fatlabsxyz/tongo (empty list on 2026-10-09); fatlabsxyz/she has none either. Release notes mention fixes for the October 2025 zkSecurity audit (sdk-v1.3.0, PR 122) but no incident.
+        checked_at: 2026-10-09
+        recheck: gh api repos/fatlabsxyz/tongo/security-advisories --jq length; gh api repos/fatlabsxyz/tongo/releases --jq '.[].tag_name'
+    note: Empty list with the search recorded. Audit findings fixed before release are not incidents. No post-mortem or disclosure page exists to search.
+    checked_at: 2026-10-09
+  changes:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2025-11-14
+        summary: v1 Tongo instances deployed on Starknet mainnet (class 0x0058…672a), each ledger holding its own ERC-20.
+        url: https://docs.tongo.cash/protocol/contracts.html
+      - date: 2026-07-13
+        summary: v2.0.0 released and deployed - Vaults hold reserves and deploy ledgers, external transfers between ledgers, optional Relayer with the AVNU paymaster. v1 instances remain live and are listed as legacy.
+        url: https://github.com/fatlabsxyz/tongo/releases/tag/v2.0.0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tongo.cash/protocol/vault.html
+        detail: Vault Architecture (v2) page describing the split into Vaults and ledgers.
+        quote: In v2 the protocol is split into two kinds of contracts. Vaults and Tongo Ledgers.
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/releases
+        detail: Release v2.0.0 published 2026-07-13 (52 pull requests since v0.0.2, including vault, relayer and external transfers); deployment dates are from Starknet state (see first_deployment).
+        checked_at: 2026-10-09
+    note: Contracts are not upgradeable, so every change is a new deployment; users move funds themselves.
+    checked_at: 2026-10-09
+volume:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_observable
+  reason: Transfer amounts are ElGamal-encrypted. Fund, Withdraw and Ragequit events do carry plaintext amounts, so entry and exit are public, but they are Starknet events, the volume script reads EVM logs only, and this row lists no contracts because Starknet addresses do not fit the schema.
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: false
+          detail: no security policy file
+        - repo: fatlabsxyz/she
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
+        detail: "fatlabsxyz/tongo: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
+        detail: "fatlabsxyz/she: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: fatlabsxyz/she
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
+        detail: "fatlabsxyz/tongo: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
+        detail: "fatlabsxyz/she: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: false
+          detail: no deployment configuration
+        - repo: fatlabsxyz/she
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
+        detail: "fatlabsxyz/tongo: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
+        detail: "fatlabsxyz/she: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: true
+          detail: "rules: deletion, non_fast_forward, creation, required_linear_history, required_signatures, pull_request"
+        - repo: fatlabsxyz/she
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/rules/branches/master
+        detail: "fatlabsxyz/tongo: rules: deletion, non_fast_forward, creation, required_linear_history, required_signatures, pull_request"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/rules/branches/master
+        detail: "fatlabsxyz/she: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: true
+          detail: 3 workflow file(s)
+        - repo: fatlabsxyz/she
+          ok: false
+          detail: 1 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
+        detail: "fatlabsxyz/tongo: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
+        detail: "fatlabsxyz/she: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: true
+          detail: test command in a workflow
+        - repo: fatlabsxyz/she
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
+        detail: "fatlabsxyz/tongo: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
+        detail: "fatlabsxyz/she: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: false
+          detail: coverage tooling referenced
+        - repo: fatlabsxyz/she
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
+        detail: "fatlabsxyz/tongo: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
+        detail: "fatlabsxyz/she: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: true
+          detail: "latest tags: v2.0.0, v0.0.2, v0.0.1"
+        - repo: fatlabsxyz/she
+          ok: false
+          detail: "latest tags: ts-v0.4.0, ts-v0.1.1, ts-v0.1.0"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/tags
+        detail: "fatlabsxyz/tongo: latest tags: v2.0.0, v0.0.2, v0.0.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/tags
+        detail: "fatlabsxyz/she: latest tags: ts-v0.4.0, ts-v0.1.1, ts-v0.1.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: fatlabsxyz/she
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/commits?per_page=10
+        detail: "fatlabsxyz/tongo: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/commits?per_page=10
+        detail: "fatlabsxyz/she: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: true
+          detail: 5 release(s) with notes
+        - repo: fatlabsxyz/she
+          ok: true
+          detail: 1 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
+        detail: "fatlabsxyz/tongo: 5 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
+        detail: "fatlabsxyz/she: 1 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fatlabsxyz/tongo
+          ok: false
+          detail: none found
+        - repo: fatlabsxyz/she
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
+        detail: "fatlabsxyz/tongo: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
+        detail: "fatlabsxyz/she: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B10.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Logical and integration views. The docs cover the encryption system, storage, the v2 Vault and ledger split, the Relayer (with the AVNU paymaster), auditing, the contract ABI and the SDK; the SHE section documents each proof protocol. No infrastructure view, as no operator-run infrastructure is required.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tongo.cash/protocol/vault.html
+        detail: Section 4 of the protocol documentation; sections 1-8 cover the protocol, 9-13 the SDK and 14-15 the SHE cryptography.
+        quote: In v2 the protocol is split into two kinds of contracts. Vaults and Tongo Ledgers.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+  B12.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    refs:
+      - criterion: C4
+        index: 0
+    note: Settlement checks only proofs, nonces and balances; the seed grep of the SDK for country, geolocation, sanction and chainalysis found nothing. The optional auditor key is a human-held decryption key, not an automated screen, and no canonical instance has one.
+    checked_at: 2026-10-09

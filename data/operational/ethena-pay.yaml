@@ -1,0 +1,359 @@
+slug: ethena-pay
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement, security page or trust centre found on pay.ethena.fi (/security returns 404; legal hub, FAQ, privacy, terms, disclaimers read). Rain and Third National not checked.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Sign-in uses passkeys with Face ID or fingerprint (the passkey is the wallet owner key per CROPS findings); no separate second factor is described.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/blog/introducing-ethena-pay
+        detail: Launch post, 3 September 2026.
+        checked_at: 2026-10-09
+        quote: with sign-in secured by passkeys and Face ID or fingerprint and data encrypted end to end
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: The privacy policy states access controls, encryption "where appropriate", network security, monitoring and logging; the launch post claims data "encrypted end to end". No data classification and no TLS version stated; no TLS scan recorded.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/privacy
+        detail: Privacy Policy (last updated 18 May 2026), security section.
+        checked_at: 2026-10-09
+        quote: These safeguards include, where appropriate, access controls, encryption, network security measures, monitoring, logging, and employee training
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: "Published retention table: KYC/CDD 5 years after the relationship ends; transactions 5 years; screening results relationship + 5 years; account profile account life + 1 year; device and usage data 12 months; support records 3 years; security incident records 5 years. Data is deleted or anonymised at the end of the period or on a valid deletion request, subject to exceptions."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/privacy
+        detail: Privacy Policy retention table.
+        checked_at: 2026-10-09
+        quote: 5 years after the end of the business relationship
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Ethena Pay Ltd. (Malta) is data controller under the GDPR, with a designated data protection contact; no DPIA statement and no processor list by name (categories only). Card data is shared with the issuer under the card terms.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/privacy
+        detail: Privacy Policy opening paragraph.
+        checked_at: 2026-10-09
+        quote: acting as data controller for the purposes of the EU General Data Protection Regulation
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Ethena Pay Ltd., Malta, company C 114576 (Terms of Use, Appendix 1 general provisions); the card agreement is with the issuer Third National, with Signify Holdings, Inc. d/b/a Rain as programme manager; ramps with Iron Network UAB or MoonPay USA LLC; KYC with Sumsub; wallet auth with Privy.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/legal
+        detail: Legal hub footer naming the company and registration number.
+        checked_at: 2026-10-09
+        quote: private limited company incorporated in Malta (company number C 114576)
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/card-terms
+        detail: Spend Card Terms (effective 1 June 2026), Issuer section.
+        checked_at: 2026-10-09
+        quote: The card program is managed by Signify Holdings, Inc. d/b/a Rain
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Ethena (the USDe issuer) presents Ethena Pay as its own distribution channel for USDe, funded on Ethena's economics (reserve yield on USDe, interchange); the Daily Boost is a discretionary Ethena Pay subsidy. No financial statements found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/blog/introducing-ethena-pay
+        detail: Launch post, section on why Ethena builds a neobank.
+        checked_at: 2026-10-09
+        quote: Ethena Pay gives Ethena a direct route into that pool
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Ethena Pay may terminate with notice where practicable, or immediately without notice on legal, third-party-provider, fraud or breach grounds; after closure balances "could remain in your control, could be returned to you, or could be frozen or locked", which Ethena Pay says it does not control. The issuer may cancel the card at any time with or without notice. The user can close the account in the app.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/terms
+        detail: Terms of Use (22 September 2026) s8.3 and s8.5.
+        checked_at: 2026-10-09
+        quote: could remain in your control, could be returned to you, or could be frozen or locked
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/card-terms
+        detail: Spend Card Terms, termination.
+        checked_at: 2026-10-09
+        quote: we may suspend, revoke or cancel your Account privileges
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Yes. The privacy policy says automated decision-making and profiling (watchlist matching, risk-scoring models, behavioural analytics) are used for identity verification, sanctions screening, fraud detection, transaction monitoring and eligibility, and can suspend accounts or block transactions; some features use machine learning.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/privacy
+        detail: Privacy Policy s1.13-1.14 Automated decision-making (EEA/UK).
+        checked_at: 2026-10-09
+        quote: We may use automated decision-making, including profiling, in connection with identity verification, sanctions screening, fraud detection, transaction monitoring, and access eligibility assessments
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: Only an override path is documented (EEA/UK users may request human review and contest a decision, except where the decision is needed for the contract or required by law). No monitoring, validation, decommissioning or bias evaluation documentation found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/privacy
+        detail: Privacy Policy s1.14.
+        checked_at: 2026-10-09
+        quote: You have the right to request human review of any such decision
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: none
+      amount: Virtual card issuance, replacement and activation free; no account, monthly, inactivity or closure fee
+      basis: Pricing page (effective 1 September 2026, updated 30 September 2026); fees may change under Terms s6.2.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: Visa's conversion fee passed through at cost (about 1%); no cross-border fee; USD purchases free
+      basis: Pricing page s2.2 and Spend Card Terms Important Disclosures.
+      evidence_index: 0
+    - kind: cashout
+      paid_by: payer
+      amount: ATM 1.00 USD + 0.65% where ATM access is available, plus any operator surcharge
+      basis: Pricing page s2.2 and Spend Card Terms.
+      evidence_index: 1
+    - kind: cashout
+      paid_by: payer
+      amount: Bank off-ramp fees set by Iron / MoonPay and shown at the time of the transaction
+      basis: Pricing page s4 Third-Party Fees; the launch post says withdrawals cost a "nominal" amount without a figure.
+      evidence_index: 2
+    - kind: card
+      paid_by: payer
+      amount: Late payment up to 40 USD; returned payment up to 29 USD
+      basis: Spend Card Terms penalty fees (secured card; collateral can be liquidated).
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/pricing
+      detail: Pricing page, account fees and card transaction fees.
+      checked_at: 2026-10-09
+      quote: Typically around 1.0%, passed through directly from the applicable card network with no markup
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/pricing
+      detail: Pricing page, ATM fee.
+      checked_at: 2026-10-09
+      quote: "If ATM access is available: $1.00 plus 0.65% of the withdrawal amount"
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/pricing
+      detail: Pricing page s4, funding partners.
+      checked_at: 2026-10-09
+      quote: Fees for onramp and offramp services, currency conversion, and bank transfers, as disclosed by the applicable provider at the time of the transaction
+  note: Network gas for the card spend is paid by Ethena Pay's relayer (CROPS C2/S3 findings), not shown as a user fee. Rewards (cashback in AVAX, Daily Boost in USDe) are not fees and are not recorded.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: S1
+      index: 2
+  note: Balances sit in the user's own wallet contract, but Ethena Pay's executor key can move up to 10,000 USDe and 10,000 USDC per wallet per day to any address, and card spends pass into a Rain-controlled collateral pool. Agrees with the S1 finding (score 0, disputed against the FAQ's "no access" claim).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: unknown
+  note: "No licence found for any party in the card path. Ethena Pay's Terms say it is not licensed by any financial regulator in the user's country and rely on third parties' home authorisations. The Spend Card Terms name Third National as issuer and Rain (Signify Holdings, Inc.) as programme manager, without a regulator or licence number; FDIC BankFind lists no active institution named Third National. Iron Network UAB and MoonPay USA LLC (ramps) were not checked against the Lithuanian or US registers."
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/terms
+      detail: Terms of Use Appendix 1, General Provisions, regulatory status.
+      checked_at: 2026-10-09
+      quote: Ethena Pay Ltd. is not licensed, registered, authorized, or otherwise approved by any financial services, banking, payments, securities, or crypto asset regulator
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_spend
+      partner: Third National (issuer), Rain (programme manager), Visa
+      fee: Visa FX at cost (about 1%); no cross-border fee
+      limits: Virtual card; non-US persons only; secured by wallet collateral (daily allowance 10,000 USDe / 10,000 USDC by default).
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Third National (issuer), Visa
+      fee: 1.00 USD + 0.65%, plus operator surcharge
+      limits: Only where the card, device and country allow; "availability is limited and outside our control". Not eligible for cashback.
+      evidence_index: 1
+    - countries: [ALL]
+      method: bank_transfer
+      partner: Iron Network UAB / MoonPay USA LLC
+      fee: set by the provider at the time of the transaction
+      limits: Withdrawal to a bank via the virtual IBAN account; outbound wire transfers not offered.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/card-terms
+      detail: Spend Card Terms (effective 1 June 2026), issuer and programme manager.
+      checked_at: 2026-10-09
+      quote: References in these Card Terms to the " Issuer " refer to Third National
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/pricing
+      detail: Pricing page s7, services not currently available.
+      checked_at: 2026-10-09
+      quote: Wire transfers (outbound)
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/terms
+      detail: Terms of Use, conventional payment infrastructure provided by MoonPay or other Third-Party Providers (Iron Customer Terms, Exhibit G).
+      checked_at: 2026-10-09
+      quote: These features are provided by Moonpay or other applicable Third-Party Providers
+  note: Per-country off-ramp currencies are not listed in any public page; the availability list in the provider file applies.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2026-06-02
+      block: 87002584
+      what: Rain collateral BeaconProxy 0x6070848b... on Avalanche, which receives card spends; the wallet factory 0xAc66ca9A... followed at block 87652557 (2026-06-10)
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getcontractcreation&contractaddresses=0x6070848bd19C37488d0516058f2933Dd992733dE,0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f
+        address: "0x6070848bd19C37488d0516058f2933Dd992733dE"
+        block_number: 87002584
+        detail: Creation tx 0x0ebf2458...4a0e (creator 0x21ebc2f2..., via factory 0x154f9755...); code size 0 at block 87002583 and 1345 at 87002584 (2026-06-02 14:53:40 UTC). Wallet factory proxy creation tx 0x062bcda8...409c at block 87652557 (2026-06-10 11:29:34 UTC), code size 0 at the block before.
+        checked_at: 2026-10-09
+        recheck: cast codesize 0x6070848bd19C37488d0516058f2933Dd992733dE --block 87002583 --rpc-url https://api.avax.network/ext/bc/C/rpc; cast codesize 0x6070848bd19C37488d0516058f2933Dd992733dE --block 87002584 --rpc-url https://api.avax.network/ext/bc/C/rpc
+    note: Attribution of these contracts to Ethena Pay is inferred in the provider file (judgment call in primary_chain.basis). Public launch was 3 September 2026 (launch post).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Ethena Pay Ltd.
+      jurisdiction: MT
+      registration_number: C 114576
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/legal
+        detail: Legal hub footer; the Terms of Use Appendix 1 names the same entity as contracting party.
+        checked_at: 2026-10-09
+        quote: private limited company incorporated in Malta (company number C 114576)
+    note: Not checked in the Malta Business Registry (its search is an interactive web app), so no register_url.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident report found on pay.ethena.fi (legal hub, FAQ, support, insights launch post) or docs.ethena.fi; the product launched on 3 September 2026. Ethena Pay has no public repository.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2026-06-01
+        summary: Ethena Pay Spend Card Terms take effect (issuer Third National, programme manager Rain).
+        url: https://pay.ethena.fi/card-terms
+      - date: 2026-09-01
+        summary: Pricing page takes effect (last updated 30 September 2026).
+        url: https://pay.ethena.fi/pricing
+      - date: 2026-09-03
+        summary: Ethena Pay publicly launched.
+        url: https://pay.ethena.fi/blog/introducing-ethena-pay
+      - date: 2026-09-22
+        summary: Terms of Use last updated.
+        url: https://pay.ethena.fi/legal
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/card-terms
+        detail: Spend Card Terms header.
+        checked_at: 2026-10-09
+        quote: Effective as of June 1, 2026
+      - tier: documented
+        kind: document
+        url: https://pay.ethena.fi/pricing
+        detail: Pricing page header.
+        checked_at: 2026-10-09
+        quote: "Effective Date: September 1, 2026"
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_observable
+  reason: A card spend emits AllowanceSpent from each user's wallet proxy (about 12,300 wallets, not listed) and a USDe Transfer from the USDe token into Rain collateral 0x6070848b...; the listed BatchExecutor's event carries only call counts, and the spec cannot filter token transfers by recipient. Card spends cannot be summed over listed contracts alone.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

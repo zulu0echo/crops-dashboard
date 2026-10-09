@@ -59,3 +59,25 @@ No `availability` block: no first-party source lists where HesabPay is offered o
 
 - Searched: `https://hesab.com/terms` and `/privacy` (server-rendered, re-read 2026-10-09), the hesab.com home page and its 13 Next.js chunks (all locale strings), and the earlier developer-bundle notes above. hesabpay.com still returns a Cloudflare 403 to curl; not bypassed.
 - What exists: terms s1.1 lets anyone open an account "using your mobile phone number" with no country condition; s3.1 says only that limits "may apply based on jurisdictional regulations"; privacy s2 ties KYC/AML to Da Afghanistan Bank; the home page says "Visa Cards have arrived in Afghanistan"; privacy s8 says data may be processed "outside Afghanistan". None of these is a statement of where the service is offered or barred, so writing `allowlist: [AF]` would be inference from the regulator and marketing copy. The DAB EMI licence (context section) is regulatory, not the provider's own availability statement. The site shows "no evidence".
+
+## Operational 2026-10-09
+
+File: `data/operational/hesabpay.yaml` (new).
+
+- **Sources read** (curl, all 200):
+  - hesab.com terms (effective 2026-04-06) and privacy policy (updated 2026-04-06)
+  - hesab.com/visa/FAQs
+  - hesab.com/sitemap.xml
+  - blog posts on Visa cards (press release dated 2026-07-24) and security tips (2026-09-01)
+  - Da Afghanistan Bank list of licensed EMIs (www.dab.gov.af/non-banking-financial-institutions)
+- **Not found (404):** hesab.com/fees, /pricing, /about, /security and /.well-known/security.txt.
+- **Developer portal:** developers.hesab.com is a Vite app. Its public bundle shows no auth scheme, and its docs need a login, so B5.x is unknown.
+- **Licence:** DAB lists HesabPay under Zinzir Ltd, EMI101005, licence date 5 June 2023. The terms and policy name HesabPay, Inc. (Delaware). The relationship between the two entities is not stated; this is recorded in the licence note and on `maturity.entity`. The Delaware entity search is behind a challenge page and was not used.
+- **Judgment calls**
+  - `first_deployment` is unknown: the only date is "Founded in 2018" for the company, in HesabPay's own press release, and it is not a service launch.
+  - The cash-out ATM row follows terms s1.4 ("any Visa-enabled ATM globally"), although the July 2026 release describes virtual cards.
+  - B1.5 is attested from the policy's "regular security audits and penetration testing".
+  - B12.1 is evidenced: the "Ask HesabPay" AI assistant initiates transactions.
+  - No transfer or agent cash-out tariff is published, so those fee components are unknown, not zero.
+  - Volume is `not_verifiable`: Algorand use is claimed, but no HesabPay document links an address.
+- **Validator:** `--offline` 0 errors; online 0 errors, after shortening one quote whose apostrophe is HTML-encoded as `&#x27;`, which the validator's normaliser does not decode.

@@ -1,0 +1,757 @@
+slug: fuse-card
+facts:
+  B2.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: true
+          detail: "security policy file: SECURITY.md"
+        - repo: Squads-Protocol/public-v4-client
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
+        detail: "Squads-Protocol/v4: security policy file: SECURITY.md"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
+        detail: "Squads-Protocol/public-v4-client: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Squads-Protocol/public-v4-client
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
+        detail: "Squads-Protocol/v4: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
+        detail: "Squads-Protocol/public-v4-client: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: false
+          detail: no deployment configuration
+        - repo: Squads-Protocol/public-v4-client
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
+        detail: "Squads-Protocol/v4: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
+        detail: "Squads-Protocol/public-v4-client: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Squads-Protocol/public-v4-client
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/rules/branches/main
+        detail: "Squads-Protocol/v4: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/rules/branches/main
+        detail: "Squads-Protocol/public-v4-client: rules: deletion, non_fast_forward, pull_request"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: true
+          detail: 5 workflow file(s)
+        - repo: Squads-Protocol/public-v4-client
+          ok: false
+          detail: 1 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
+        detail: "Squads-Protocol/v4: 5 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
+        detail: "Squads-Protocol/public-v4-client: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: true
+          detail: test command in a workflow
+        - repo: Squads-Protocol/public-v4-client
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
+        detail: "Squads-Protocol/v4: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
+        detail: "Squads-Protocol/public-v4-client: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Squads-Protocol/public-v4-client
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
+        detail: "Squads-Protocol/v4: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
+        detail: "Squads-Protocol/public-v4-client: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: false
+          detail: "latest tags: release-0.1.0"
+        - repo: Squads-Protocol/public-v4-client
+          ok: true
+          detail: "latest tags: v1.4.1, v1.4.0, v1.3.0"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/tags
+        detail: "Squads-Protocol/v4: latest tags: release-0.1.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/tags
+        detail: "Squads-Protocol/public-v4-client: latest tags: v1.4.1, v1.4.0, v1.3.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: true
+          detail: 9 of 10 recent commits signed
+        - repo: Squads-Protocol/public-v4-client
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/commits?per_page=10
+        detail: "Squads-Protocol/v4: 9 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/commits?per_page=10
+        detail: "Squads-Protocol/public-v4-client: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: false
+          detail: no changelog or release notes
+        - repo: Squads-Protocol/public-v4-client
+          ok: true
+          detail: CHANGELOG file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
+        detail: "Squads-Protocol/v4: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
+        detail: "Squads-Protocol/public-v4-client: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Squads-Protocol/v4
+          ok: false
+          detail: none found
+        - repo: Squads-Protocol/public-v4-client
+          ok: true
+          detail: contribution section in README
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
+        detail: "Squads-Protocol/v4: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
+        detail: "Squads-Protocol/public-v4-client: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: The Squads Trust Center (trust.squads.xyz) lists one framework, SOC 2 Type 1, and no ISO 27001 certificate. Not recorded as absent because a trust-centre listing is not a certifier search; no certifier directory entry was found for Squads, Bridge or Lead Bank.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: attested
+    value: Squads Trust Center shows SOC 2 Type 1 as "Compliant" (Type 1, not Type II); no report is published and documents are behind a "Request Access" form. Bridge and Lead Bank reports not found.
+    evidence:
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://trust.squads.xyz
+        detail: Squads Trust Center (Comp AI) compliance overview listing SOC 2 Type 1 as the only framework, with a security questionnaire and documents on request.
+        checked_at: 2026-10-09
+        quote: SOC 2 Type 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: The Squads v4 settlement program has ten published audits (OtterSec, Neodyme, Certora, Trail of Bits) pinned to commit 64af733; no audit of the Fuse app, Fuse backend or Bridge card integration is published.
+    refs:
+      - criterion: S6
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: attested
+    value: A "Vulnerability & Patch Management" policy is listed on the Squads Trust Center; its patch timelines are not public.
+    evidence:
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://trust.squads.xyz
+        detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
+        checked_at: 2026-10-09
+        quote: Vulnerability & Patch Management
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: attested
+    value: An "Incident Response & Breach Notification" policy is listed on the Squads Trust Center; no notification deadline is published in it, the Fuse Terms, the Squads Terms or the privacy policy.
+    evidence:
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://trust.squads.xyz
+        detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
+        checked_at: 2026-10-09
+        quote: Incident Response & Breach Notification
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: attested
+    value: A "Disaster Recovery Policy" is listed on the Squads Trust Center (text on request). For the user's funds, the walkaway path is the onchain withdrawal from the Card Account (CROPS S4).
+    evidence:
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://trust.squads.xyz
+        detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
+        checked_at: 2026-10-09
+        quote: Disaster Recovery Policy
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page or post-mortem found on fusewallet.com (sitemap read in full), squads.xyz or trust.squads.xyz; status.squads.so did not resolve.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Every Fuse wallet has a Device Key (Face ID) and a 2FA Key (iCloud, or a Ledger); the threshold is 1-of-2 until a Recovery Key is added, then 2-of-n, so a second factor is mandatory only after onboarding completes. Card controls (freeze, limit) sit in the same app.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://fusewallet.com/support/fuse-security
+        detail: Fuse security overview, key roles and thresholds.
+        checked_at: 2026-10-09
+        quote: these keys operate on a 1/2 threshold
+      - tier: documented
+        kind: document
+        url: https://fusewallet.com/support/fuse-security
+        detail: Fuse security overview, 2FA Key.
+        checked_at: 2026-10-09
+        quote: A 2FA Key that adds two-factor authentication for all transactions
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Squads keeps personal information for as long as the user uses the Services or as needed for stated purposes (disputes, audits, legal defence); no fixed period and no deletion-on-termination commitment. KYC data is also held by Bridge and Lead Bank under their own policies (not read).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://squads.xyz/legal/privacy-policy
+        detail: Squads privacy policy (covers Fuse), section 7 Retention of Personal Information.
+        checked_at: 2026-10-09
+        quote: We retain the personal information we collect as described in this Privacy Policy for as long as you use the Services
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Selimor Investments Limited d/b/a Squads (BVI) is named as the party processing personal information; Bridge and Lead Bank are named as financial-services partners that collect KYC data. The policy does not use controller/processor terms; no DPIA statement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://squads.xyz/legal/privacy-policy
+        detail: Squads privacy policy, opening paragraph.
+        checked_at: 2026-10-09
+        quote: processing of personal information by Selimor Investments Limited d/b/a Squads
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: "Logical view only: Fuse posts describe the Main Account (Squads v4 multisig with Device, 2FA and Recovery keys), the separate Card Account with the Main Account as sole signer, and Bridge's daily Spending Limit. No infrastructure or integration architecture is published."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://fusewallet.com/blog/fuse-pay
+        detail: Fuse Pay announcement describing the Card Account and the Bridge spending limit.
+        checked_at: 2026-10-09
+        quote: You can set a daily Spending Limit for Bridge
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: "Three parties: Squads Inc. under the Fuse Wallet and Card Terms (which form part of the Squads Terms with Selimor Investments Limited, BVI law); Lead Bank (Missouri) as card issuer under the cardholder agreement; Bridge Ventures LLC as programme manager. No company-register entry was checked for the Squads entities."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://fusewallet.com/legal/terms-of-service
+        detail: Fuse Wallet and Card Terms of Service, opening paragraph.
+        checked_at: 2026-10-09
+        quote: entered into by and between Squads Inc.
+      - tier: documented
+        kind: document
+        url: https://www.bridge.xyz/card-agreements/fuse-card
+        detail: Lead Bank Prepaid Visa Cardholder Agreement for Fuse Card.
+        checked_at: 2026-10-09
+        quote: issued to you by Lead Bank
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: On card closure the remaining balance is returned as stablecoin to the user's Fuse wallet at no fee, but the bank may refuse to return balances under 1 USD. Squads may end the platform agreement without reason on 30 days' notice, or sooner where regulators, third parties or risk require. Funds outside the card stay in the user's own Squads accounts.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.bridge.xyz/card-agreements/fuse-card
+        detail: Cardholder agreement, termination clause.
+        checked_at: 2026-10-09
+        quote: such amounts will be credited to your Platform Provider wallet in the form of Stablecoin
+      - tier: documented
+        kind: document
+        url: https://squads.xyz/legal/terms-of-service
+        detail: Squads Terms s10.2 Termination.
+        checked_at: 2026-10-09
+        quote: Squads may terminate this Agreement at any time, with or without reason, upon thirty (30) days notice
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: none
+      amount: 0 USD to obtain the card; no monthly, annual, inactivity or replacement fee
+      basis: Cardholder agreement fee schedule (Lead Bank); the bank may change fees on notice by posting or email.
+      evidence_index: 0
+    - kind: fx
+      paid_by: none
+      amount: 0% on transactions with merchants outside the US
+      basis: Cardholder agreement long-form disclosure (international transaction fee).
+      evidence_index: 1
+    - kind: provider
+      paid_by: none
+      amount: No top-up fee or card transaction fee
+      basis: Fuse support page; top-up is a transfer from the Main Account to the Card Account on Solana (network fee paid via Fuse's paymaster, not quantified).
+      evidence_index: 2
+    - kind: cashout
+      paid_by: payer
+      amount: "Bank transfer: 1 USD ACH fee or 1 USD SEPA fee; no Fuse fee"
+      basis: Fuse support page on bank transfers.
+      evidence_index: 3
+    - kind: limit
+      paid_by: none
+      amount: Daily card spending limit up to 2,000 USD by default (user-adjustable; may rise with usage)
+      basis: Fuse support page; enforced onchain as the Bridge spending limit.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.bridge.xyz/card-agreements/fuse-card
+      detail: Lead Bank Prepaid Visa Card long-form fee disclosure.
+      checked_at: 2026-10-09
+      quote: There are no fees to purchase a Card.
+    - tier: documented
+      kind: document
+      url: https://www.bridge.xyz/card-agreements/fuse-card
+      detail: Long-form disclosure, using the card outside the U.S.
+      checked_at: 2026-10-09
+      quote: A fee of 0% applies to the U.S. dollar amount of each transaction conducted with merchants outside of the U.S.
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/support/fuse-visa-card
+      detail: Fuse Card support page, card overview and FAQ.
+      checked_at: 2026-10-09
+      quote: No top-up fees or card transaction fees
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/support/bank-transfers
+      detail: Fuse bank transfer options and fees.
+      checked_at: 2026-10-09
+      quote: "Fee: Zero Fuse fees. $1 ACH fees still apply."
+  note: The cardholder agreement leaves the annual-fee and per-transaction rows blank in its long-form table and says Platform Provider or Program Manager fees may apply to stablecoin sales; Fuse's pages state none. Spread on the USDC-to-USD conversion by Bridge is not stated.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: Funds rest in the user's own Squads v4 Card Account (sole member is the user's Main Account); Bridge's key can pull up to the daily limit (default 2,000 USDC) to any destination and settles with merchants off-chain. Agrees with the S1 finding (score 0, bounded ability to redirect funds).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: Lead Bank
+      holder: partner
+      country: US
+      regulator: FDIC (primary federal regulator); state charter, Missouri
+      type: State-chartered commercial bank, FDIC-insured, non-member (BKCLASS NM)
+      number: FDIC certificate 8283
+      activities: Issuer of the Fuse Card (Lead Bank Prepaid Visa Card); Kansas City, MO; active.
+      register_url: https://banks.data.fdic.gov/bankfind-suite/bankfind/details/8283
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://api.fdic.gov/banks/institutions?filters=CERT:8283&fields=NAME,CERT,CITY,STNAME,REGAGNT,ACTIVE,BKCLASS,CHRTAGNT,ESTYMD,FED_RSSD&limit=1
+      archive: data/archive/fuse-card-ops-fdic-lead-bank.txt
+      detail: FDIC BankFind API record for certificate 8283, Lead Bank, Kansas City, Missouri; active, state charter, regulator FDIC, class NM.
+      checked_at: 2026-10-09
+      quote: '"NAME":"Lead Bank"'
+      recheck: curl -s 'https://api.fdic.gov/banks/institutions?filters=CERT:8283&fields=NAME,ACTIVE,REGAGNT,BKCLASS'
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/legal/terms-of-service
+      detail: Fuse Terms name Lead Bank as the issuing FDIC member bank.
+      checked_at: 2026-10-09
+      quote: issued by Lead Bank, FDIC member bank
+  note: "Only the issuer is register-checked. Bridge Ventures LLC (programme manager) holds no stated licence for the card; Bridge's legal page says US account services are provided by Bridge Building Inc. (NMLS ID 2450917), which was not checked in NMLS Consumer Access. Squads says it is not a bank or a digital asset custodian. The cardholder agreement says card funds are not FDIC insured."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_spend
+      partner: Lead Bank (issuer), Bridge (programme manager), Visa
+      fee: none stated; 0% international
+      limits: Virtual card only (Apple Pay in store); daily limit up to 2,000 USD by default. Available where the card is offered (see availability).
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: none
+      fee: n/a
+      limits: Not available; the cardholder agreement says ATM withdrawals are not available and the support page says the card cannot be used at ATMs.
+      evidence_index: 1
+    - countries: [ALL]
+      method: bank_transfer
+      partner: not named on the page (Fuse's virtual bank accounts are powered by Bridge)
+      fee: 1 USD ACH or 1 USD SEPA; no Fuse fee
+      limits: To ACH or SEPA accounts; not for residents of New York or Alaska or of 35 listed countries (incl. CN, CU, IR, KP, RU, UA, KE, SI).
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/support/fuse-visa-card
+      detail: Fuse Card support page, fees and international use.
+      checked_at: 2026-10-09
+      quote: There are no fees associated with using your Fuse Card.
+    - tier: documented
+      kind: document
+      url: https://www.bridge.xyz/card-agreements/fuse-card
+      detail: Cardholder agreement long-form disclosure, Get cash.
+      checked_at: 2026-10-09
+      quote: ATM withdrawals are not available.
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/support/bank-transfers
+      detail: Fuse bank transfer page with fees and the list of restricted countries of residence.
+      checked_at: 2026-10-09
+      quote: Bank transfers are not available for those with a primary residence in a country listed below
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/blog/fuse-off-ramp
+      detail: Fuse Off-Ramp announcement, eligibility.
+      checked_at: 2026-10-09
+      quote: Fuse Off-Ramp is accessible to most users across the US and Europe.
+  note: The off-ramp announcement says US and Europe; the support page lists residence-based exclusions instead of an allowlist. Recorded as ALL with the exclusions in limits.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2023-03-20
+      block: 183693695
+      what: Squads v4 program SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf first deployed on Solana mainnet (slot); Bridge's first card SpendingLimitUse followed on 2025-01-15
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/tx/5bwAnr48sKGak6BDpCMngxyyWugJR2qCzfhWDumJgZEqqi5WJQQedBXxnPkYGb1aR9rsgRXZY6uhwSHj6UrZHaqj
+        address: "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 183693695
+        detail: The oldest of the 23 transactions touching programData Fy3YMJCv... is a System createAccount of SQDS4ep... plus BPF upgradeable loader deployWithMaxDataLen (authority HM5y4mz3...), slot 183693695, 2023-03-20 17:14:36 UTC.
+        checked_at: 2026-10-09
+        recheck: curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type:application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getSignaturesForAddress","params":["Fy3YMJCvwbAXUgUM5b91ucUVA3jYzwWLHL3MwBqKsh8n",{"limit":1000}]}' | jq '.result[-1]'
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/tx/4h2Wi1By8vB9Z9GNb3ijGWb6HdaF5gQZtZN7Pix2zaDhAq8bkNFMubyb1rD8hj6cqeygBFQGspr2rMphuJsSKYfh
+        address: "AE2RGS1hhdmMMFrM6HAaZx8XmZL4TuSfQX8wjCpDXv2p"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 314054836
+        eoa: true
+        detail: Paging getSignaturesForAddress back to the start for Bridge's spender key AE2RGS1h... (49,500 signatures) ends at this SpendingLimitUse + TransferChecked, slot 314054836, 2025-01-15 01:38:07 UTC, fee payer 7kEydiJ9....
+        checked_at: 2026-10-09
+    note: The settlement program predates the card; the date recorded is the program's. The first observed card debit by Bridge's key (2025-01-15) dates the card programme onchain. The current bytecode is from the upgrade of 2024-11-20; the program has been immutable since 2024-11-21 (see changes).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Selimor Investments Limited (d/b/a Squads)
+      jurisdiction: VG
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://squads.xyz/legal/terms-of-service
+        detail: Squads Terms (of which the Fuse Terms form part) name Selimor Investments Limited, governed by BVI law; the privacy policy gives 19 Waterfront Drive, Road Town, Tortola.
+        checked_at: 2026-10-09
+        quote: Selimor Investments Limited
+      - tier: documented
+        kind: document
+        url: https://fusewallet.com/legal/terms-of-service
+        detail: The Fuse Wallet and Card Terms name Squads Inc. as counterparty, with no jurisdiction.
+        checked_at: 2026-10-09
+        quote: entered into by and between Squads Inc.
+    note: "Judgment call. Three names appear: Squads Inc. (Fuse Terms counterparty), Squads Labs Inc. (card disclosures) and Selimor Investments Limited d/b/a Squads (Squads Terms and privacy policy, BVI). Selimor is recorded because it is the only one with a stated jurisdiction and the Fuse Terms form part of its terms. The BVI register is not publicly searchable; no register entry was checked."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No primary-source incident report found on fusewallet.com (all blog and support pages in the sitemap), the Squads Trust Center, or the Squads-Protocol/v4 repository (README, SECURITY.md). Not recorded as an empty list because these sources would not necessarily disclose an incident.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2024-01-27
+        summary: Squads v4 program upgraded through its upgrade-authority multisig (3YNUB5PL...).
+        url: https://solana.fm/tx/422SuJwPQFKsAqpNUYNBq7Gov6tjN1H5pNpkXkq5oqWGrpHqDUAQ4RjWvYQiuSCMpUzg5wFj2KMozNS3TTvudH2E
+      - date: 2024-10-11
+        summary: Squads v4 relicensed from BUSL-1.1 to AGPL-3.0 (commit 316913ad, "Open sourced!").
+        url: https://github.com/Squads-Protocol/v4/commit/316913ad
+      - date: 2024-10-22
+        summary: Squads v4 program upgraded.
+        url: https://solana.fm/tx/4NfPUWhL6B4D5SR7RLmyCmpzrJZ9pyz25doSzerCXiTHFh2pg5aPS5dxf7fZwvn4eBumYGDRQavNCzMLysKexKpm
+      - date: 2024-11-20
+        summary: Squads v4 program upgraded to the bytecode now deployed.
+        url: https://solana.fm/tx/2C8c1t748F3gDpmdTNXMws9ofPNr2Vvjsuo9PXn3TgoEQWoVHKHJisjgqr6E7ayZX2u2ZcD7Tag8j1xrB27B839
+      - date: 2024-11-21
+        summary: Upgrade authority set to none; the program is immutable from this slot (302808455).
+        url: https://solana.fm/tx/2Qikw7Xm2usk2VkdHvKDwecDLZnxzxxag92xtDmHAn4MSk7MSwSA2J6Gy3XaLkAgyeX9qYUMvatE9Yy95kUftPc8
+      - date: 2025-01-15
+        summary: First observed Fuse card debit (SpendingLimitUse) by Bridge's spender key.
+        url: https://solana.fm/tx/4h2Wi1By8vB9Z9GNb3ijGWb6HdaF5gQZtZN7Pix2zaDhAq8bkNFMubyb1rD8hj6cqeygBFQGspr2rMphuJsSKYfh
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://solana.fm/tx/2Qikw7Xm2usk2VkdHvKDwecDLZnxzxxag92xtDmHAn4MSk7MSwSA2J6Gy3XaLkAgyeX9qYUMvatE9Yy95kUftPc8
+        address: "SQDS4ep65T869zMMBKyuUq6aD6EgTu8psMjkvj52pCf"
+        caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        block_number: 302808455
+        detail: The programData transaction list holds upgrades at slots 244446274, 297082331 and 302582236 (inner BPF loader upgrade, authority 3YNUB5PL...) and a setAuthority to null at slot 302808455 (2024-11-21 21:45 UTC).
+        checked_at: 2026-10-09
+        recheck: curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type:application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getTransaction","params":["2Qikw7Xm2usk2VkdHvKDwecDLZnxzxxag92xtDmHAn4MSk7MSwSA2J6Gy3XaLkAgyeX9qYUMvatE9Yy95kUftPc8",{"encoding":"jsonParsed","maxSupportedTransactionVersion":0}]}' | jq '.result.meta.innerInstructions'
+    refs:
+      - criterion: F2
+        index: 0
+    note: Fuse-side changes (card availability widened from US-only at launch to the 18 countries now listed) are not dated in any first-party page and are not listed.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  note: "Card debits are observable on Solana: each is a SpendingLimitUse signed by Bridge's key AE2RGS1h... moving USDC out of a Card Account vault (about 49,500 signatures from 2025-01-15 to 2026-10-09). The volume spec takes an EVM chain_id, log topic and contract list only, so no spec can be written for this Solana rail and the figure is not computed."
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

@@ -1,0 +1,735 @@
+slug: jupiter-card
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement for Jupiter Spend. Jupiter's security page lists audits of its onchain programs only; Rain lists SOC 2 Type II and PCI DSS; nothing found for DCS or Noah.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: attested
+    value: "Jupiter states nothing for Spend. Partner (Rain, for Rain-issued cards): SOC 2 Type II and PCI DSS, reports available to partners on request; not read."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
+        checked_at: 2026-10-09
+        quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: Rain privacy policy (last updated 16 July 2026), Security section.
+        checked_at: 2026-10-09
+        quote: Rain maintains SOC 2 Type II certification
+    note: Jupiter's docs name Rain as issuer outside the nine DCS countries, so Rain's statements cover Rain-issued cards only; nothing was found for DCS or Noah.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: attested
+    value: Jupiter says Rain-card deposits stay onchain as collateral; Rain says its contracts are independently audited before launch and per chain. No report linked and no collateral program identified (CROPS S6 unknown). Jupiter's published audits cover its own onchain programs, not Spend.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/index.md
+        detail: Jupiter Spend overview, deposits.
+        checked_at: 2026-10-09
+        quote: With a Rain-issued card, they stay on-chain as collateral for the card
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page, "Smart contract audits"; no report is linked from the page.
+        checked_at: 2026-10-09
+        quote: Our smart contracts are reviewed by independent auditors before launch and again for each new chain we support
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: attested
+    value: "Partner (Rain): penetration test summary available to partners through its trust center. Nothing from Jupiter, DCS or Noah."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
+        checked_at: 2026-10-09
+        quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
+    note: Jupiter's docs name Rain as issuer outside the nine DCS countries, so Rain's statements cover Rain-issued cards only; nothing was found for DCS or Noah.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: evidenced
+    value: "Partner (Rain): code peer-reviewed and automatically scanned before production; no cadence. Nothing from Jupiter for Spend."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page, "Secure development".
+        checked_at: 2026-10-09
+        quote: Code is peer-reviewed and automatically scanned for vulnerabilities before it reaches production
+    note: Jupiter's docs name Rain as issuer outside the nine DCS countries, so Rain's statements cover Rain-issued cards only; nothing was found for DCS or Noah.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: evidenced
+    value: "No Jupiter commitment found. Partner (Rain): documented incident response plan keeping partners informed; no time stated."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page, "Detection and response".
+        checked_at: 2026-10-09
+        quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
+    note: Jupiter's docs name Rain as issuer outside the nine DCS countries, so Rain's statements cover Rain-issued cards only; nothing was found for DCS or Noah.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: "See CROPS S4 (0): the only documented exits are partner-run withdrawals."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: "Jupiter's status page (status.jup.ag) covers the website and trading APIs, not Spend or the card. Partner (Rain): status.rain.xyz with incident history; no post-mortems found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/
+        detail: Rain Platform Status (cState), with components for onboarding, API, card issuing, authorizations, disputes and collateral, and a paged incident history back to 2025.
+        checked_at: 2026-10-09
+        quote: We continuously monitor the performance and availability of our services
+      - tier: documented
+        kind: trace
+        url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
+        detail: Read the incident pages listed on status.rain.xyz pages 1 to 3 (2025-06-12 to 2026-09-28) on 2026-10-09. Updates give a one-line cause at most (partner OS patching, payment processor, expired certificate, processor rules engine); the 2026-09-28 incident says the root cause is still being investigated, and no post-mortem is linked from any incident.
+        checked_at: 2026-10-09
+        recheck: curl -s https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/ | grep -i "root cause"
+      - tier: documented
+        kind: trace
+        url: https://status.jup.ag/
+        detail: "status.jup.ag read 2026-10-09: components are Website, API Gateway and swap, trigger, recurring, token and price APIs; no Spend or card component."
+        checked_at: 2026-10-09
+    note: Jupiter's docs name Rain as issuer outside the nine DCS countries, so Rain's statements cover Rain-issued cards only; nothing was found for DCS or Noah.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Global ID sign-in by an emailed verification code or a Google or Apple account; no password and no separate second factor. Unfreezing a DCS-issued card asks for an SMS code.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/faq.md
+        detail: Jupiter Spend FAQ, account access.
+        checked_at: 2026-10-09
+        quote: You log in to your Global ID with a verification code sent to your email, or with your Google or Apple account
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: No Spend API is documented; Jupiter's developer APIs cover trading only.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "Jupiter interface privacy policy: encryption in transit and at rest, access controls and NDAs. Partner (Rain): encryption in transit and at rest, PCI DSS. Observed: jup.ag refuses TLS 1.1 and accepts TLS 1.2. No data classification; no Spend-specific policy."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/legal/privacy-policy.md
+        detail: Jupiter privacy policy, section 9 Data Integrity & Security of Processing.
+        checked_at: 2026-10-09
+        quote: both during transmission and once it is at rest
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: "Rain privacy policy, Security section: encryption in transit and at rest, access controls, multifactor authentication, tokenization, PCI DSS for card data."
+        checked_at: 2026-10-09
+        quote: encryption of sensitive data in transit and at rest
+      - tier: documented
+        kind: trace
+        url: https://jup.ag
+        detail: openssl s_client -tls1_1 to jup.ag:443 failed with alert protocol version; -tls1_2 negotiated an ECDHE cipher. Run 2026-10-09.
+        checked_at: 2026-10-09
+        recheck: echo | openssl s_client -connect jup.ag:443 -servername jup.ag -tls1_1; echo | openssl s_client -connect jup.ag:443 -servername jup.ag -tls1_2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: A Global ID cannot be deleted once verified; identity documents are held by SumSub, not Jupiter. The interface privacy policy keeps data as long as needed for its purposes; Rain keeps card records five years or longer after closure. No Spend-specific retention schedule.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/index.md
+        detail: Jupiter Spend overview, Data Handling & Privacy.
+        checked_at: 2026-10-09
+        quote: Global ID cannot be deleted once created
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: Rain privacy policy, Retention section.
+        checked_at: 2026-10-09
+        quote: Customer identification records, transaction records, and related regulated financial services records may be retained for five years or longer following account closure
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Block Raccoon S.A. (Panama) is controller for interface data; Spend is not mentioned. SumSub handles verification; Nimbus LLC (Third National) is controller for Rain card issuance. No DPIA statement.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/legal/privacy-policy.md
+        detail: Jupiter privacy policy, opening.
+        checked_at: 2026-10-09
+        quote: which is the controller for your Personal Data within the scope of this Privacy Policy
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: "Rain privacy policy, Entity Roles and Data Flows: Nimbus LLC d/b/a Third National is controller for card issuance."
+        checked_at: 2026-10-09
+        quote: For card issuance and customer account services, Nimbus LLC generally acts as a controller
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: evidenced
+    value: "Partner (Rain): security events monitored centrally; no SIEM or endpoint detection named. Jupiter: some merchants are dynamically restricted by fraud and risk monitoring."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page, "Detection and response".
+        checked_at: 2026-10-09
+        quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
+    note: Jupiter's docs name Rain as issuer outside the nine DCS countries, so Rain's statements cover Rain-issued cards only; nothing was found for DCS or Noah.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: "Logical view only: the docs map each Spend product to its partner (card: Rain or DCS; off-ramp and remittance: Noah; QR Pay: DCS) and describe deposits and balances. No infrastructure or integration architecture."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/risks-and-security.md
+        detail: Jupiter Spend, Risks & Security.
+        checked_at: 2026-10-09
+        quote: Each product is operated through a different partner
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: No Jupiter Spend terms are public. The interface Terms of Use name "Jupiter" with a registered address in Grand Cayman under Panama law; the privacy policy names Block Raccoon S.A. (Panama) as controller; neither mentions Spend. Card terms with Rain or DCS are not published.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/legal/terms-of-use.md
+        detail: Jupiter Terms of Use (interface).
+        checked_at: 2026-10-09
+        quote: registered address is Suite 102, Cannon Place, P.O. Box 712
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/legal/privacy-policy.md
+        detail: Jupiter privacy policy.
+        checked_at: 2026-10-09
+        quote: Block Raccoon S.A., a company incorporated in Panama
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Only fee revenue is documented (FX, ATM, physical card, deposit processing, payout fees). No funding statement or financial statements for Spend.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+        detail: Jupiter Spend Fees & Limits.
+        checked_at: 2026-10-09
+        quote: FX conversion (Rain) | 1% on non-USD payments
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Jupiter may disable interface access at any time; Spend users are bound by partner terms. Card balances can leave only through the Send routes (Solana wallet or Noah bank transfer, not for every card); DCS-card balances cannot be withdrawn; Rain-card refunds cannot be withdrawn. A Global ID cannot be deleted.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/risks-and-security.md
+        detail: Jupiter Spend, Risks & Security.
+        checked_at: 2026-10-09
+        quote: Users are subject to the terms, conditions, and operational stability of these partners
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+        detail: Jupiter Spend Fees & Limits, withdrawals with DCS-issued cards.
+        checked_at: 2026-10-09
+        quote: card balances are for spending only
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: "Yes: merchants may be dynamically restricted by fraud, abuse or risk monitoring systems, and Rain uses automated fraud, sanctions and transaction monitoring. Machine learning is not stated."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+        detail: Jupiter Spend Fees & Limits, restricted merchant categories.
+        checked_at: 2026-10-09
+        quote: some merchants may be dynamically restricted based on fraud, abuse, or risk monitoring systems
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: Rain privacy policy, Automated Processing and Decision-Making.
+        checked_at: 2026-10-09
+        quote: We may use automated systems to support fraud detection, sanctions screening, transaction monitoring, identity verification, biometric matching, eligibility assessments, and risk management
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: Only Rain's override path (human review where law grants it). Nothing from Jupiter.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: "Rain privacy policy, Automated Processing and Decision-Making: available where applicable law grants the right."
+        checked_at: 2026-10-09
+        quote: request human review, express your point of view, and contest the decision
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: payer
+      amount: No annual fee; physical card $13.13 plus shipping; Claynosaurz virtual card $25
+      basis: Fees & Limits; card orders non-refundable.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: "Deposit: none on Solana; Ethereum, Base, Arbitrum, Sui: higher of $0.30 or 0.02% plus gas"
+      basis: Fees & Limits; minimum deposit $3 ($10 on Ethereum).
+      evidence_index: 1
+    - kind: fx
+      paid_by: payer
+      amount: 1% on non-USD (Rain cards); 1.8% (DCS cards)
+      basis: Fees & Limits; set by the issuer.
+      evidence_index: 2
+    - kind: cashout
+      paid_by: payer
+      amount: "ATM (Rain only): $1 + 0.65%, plus $0.30 + 1% if non-USD; $0.60 balance inquiry or decline"
+      basis: Fees & Limits; DCS cards have no ATM access.
+      evidence_index: 3
+    - kind: cashout
+      paid_by: payer
+      amount: "Bank payout via Noah: fixed + variable per corridor, e.g. ACH $2 + 0.05%, SEPA $1 + 0.10%, SWIFT $30 + 0.05%"
+      basis: Fees & Limits, Payout Fees; may change.
+      evidence_index: 4
+    - kind: limit
+      paid_by: none
+      amount: "DCS: $50,000/day, $990,000/year; Rain: no limit"
+      basis: Fees & Limits, Spending Limits.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+      detail: Jupiter Spend Fees & Limits, physical card.
+      checked_at: 2026-10-09
+      quote: plus shipping, charged to your Spend balance
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+      detail: Fees & Limits, deposit note.
+      checked_at: 2026-10-09
+      quote: Direct deposits on Solana have no processing fee
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+      detail: Fees & Limits, card fees and regional differences.
+      checked_at: 2026-10-09
+      quote: FX conversion (DCS) | 1.8% on non-USD payments
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+      detail: Fees & Limits, ATM withdrawal (Rain).
+      checked_at: 2026-10-09
+      quote: a withdrawal in a currency other than USD adds an FX fee of
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+      detail: Fees & Limits, Payout Fees table.
+      checked_at: 2026-10-09
+      quote: Each payout (outgoing transfer) incurs a fixed fee plus a variable fee on the transfer amount
+  note: No USD payment fee. Remittance deposits by bank transfer also carry fees (e.g. ACH $2 + 0.05%). The standard virtual card price is not listed.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+  note: 'Agrees with S1 (1): Spend balances are managed by the issuing partners. The Rain "onchain collateral" claim has no published address and is not used.'
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: attested
+  value:
+    - entity: Nimbus LLC d/b/a Third National (Rain)
+      holder: partner
+      country: US
+      regulator: Not named in any document
+      type: Licensed lender and money transmitter; Visa-authorized card issuer (as stated by Rain)
+      activities: Issuer for Rain cards outside the nine DCS countries (Jupiter names only "Rain").
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/risks-and-security.md
+      detail: Jupiter Spend, Risks & Security.
+      checked_at: 2026-10-09
+      quote: Jupiter Spend relies on regulated financial partners to issue cards, process payments, and handle transfers
+    - tier: documented
+      kind: document
+      url: https://legal.raincards.xyz/legal/privacy-policy
+      detail: "Rain privacy policy, Entity Roles and Data Flows: describes Nimbus LLC, doing business as Third National, without naming a regulator, state or licence number."
+      checked_at: 2026-10-09
+      quote: is a licensed lender, money transmitter and Visa-authorized card issuer
+    - tier: documented
+      kind: trace
+      url: https://api.fdic.gov/banks/institutions?search=NAME:%22Third%20National%22&fields=NAME,CERT,ACTIVE,CITY,STNAME&limit=20
+      detail: 'FDIC BankFind institutions API, run 2026-10-09: the closest matches for "Third National" are other banks (Fifth Third Bank, N.A. and inactive banks); a search for NAME:Nimbus with ACTIVE:1 returns 0 institutions. NMLS Consumer Access returned HTTP 403 to a scripted request and was not bypassed; the Puerto Rico OCIF licence check (concesionarios.ocif.pr.gov) failed the TLS handshake.'
+      checked_at: 2026-10-09
+      recheck: curl -s 'https://api.fdic.gov/banks/institutions?search=NAME:Nimbus&filters=ACTIVE:1&fields=NAME,CERT' | grep -o '"total":[0-9]*'
+  note: Attested only. Jupiter names "Rain" and "DCS" without entities or licences; DCS and Noah were not identified in any register. FDIC BankFind lists no institution named Third National or Nimbus; NMLS blocked scripted access; the Puerto Rico OCIF check could not be reached.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries:
+        - ALL
+      method: card_spend
+      partner: Rain or DCS (by country), Visa
+      fee: 1% (Rain) or 1.8% (DCS) on non-USD
+      limits: DCS $50,000/day; Rain no limit.
+      evidence_index: 0
+    - countries:
+        - AG
+        - AR
+        - BS
+        - BB
+        - BZ
+        - BO
+        - BR
+        - KY
+        - CO
+        - CR
+        - CI
+        - DM
+        - DO
+        - EC
+        - EG
+        - SV
+        - GH
+        - GD
+        - GT
+        - GY
+        - HN
+        - KE
+        - MX
+        - MA
+        - NZ
+        - PK
+        - PA
+        - PY
+        - PE
+        - KN
+        - LC
+        - VC
+        - SN
+        - ZA
+        - SR
+        - TT
+        - TC
+        - UG
+        - AE
+        - UY
+        - ZM
+        - US
+      method: atm
+      partner: Rain, Visa
+      fee: $1 + 0.65% (+ $0.30 + 1% non-USD)
+      limits: Rain-issued cards only.
+      evidence_index: 1
+    - countries:
+        - AG
+        - AR
+        - BS
+        - BB
+        - BZ
+        - BO
+        - BR
+        - KY
+        - CO
+        - CR
+        - CI
+        - DM
+        - DO
+        - EC
+        - EG
+        - SV
+        - GH
+        - GD
+        - GT
+        - GY
+        - HN
+        - KE
+        - MX
+        - MA
+        - NZ
+        - PY
+        - PE
+        - KN
+        - LC
+        - VC
+        - SN
+        - ZA
+        - SR
+        - TT
+        - TC
+        - UG
+        - AE
+        - UY
+        - ZM
+        - US
+      method: bank_transfer
+      partner: Noah
+      fee: Fixed + variable per corridor
+      limits: USDC deposits only; Rain-issued cards; EUR or USD restricted in some regions.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/jupiter-card.md
+      detail: Jupiter Card, Card Issuers.
+      checked_at: 2026-10-09
+      quote: Each user is assigned one card issuer automatically
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+      detail: Fees & Limits.
+      checked_at: 2026-10-09
+      quote: DCS-issued cards cannot withdraw cash at ATMs for now
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/fees-and-limits.md
+      detail: Fees & Limits, Withdrawals, with the restricted-region table.
+      checked_at: 2026-10-09
+      quote: Bank Transfer is powered by our partner Noah
+  note: ATM and bank rows exclude the DCS countries; bank rows also exclude Pakistan and Panama (no EUR or USD off-ramp). A Solana wallet withdrawal also exists for some cards; it is not a cash-out.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: unknown
+    note: No dated launch announcement or effective-dated terms found (docs undated; jup.ag legal and blog paths 404; the public jup-ag/docs repo holds no Spend pages).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: unknown
+    note: 'Contracting entity for Spend not documented: the interface Terms name "Jupiter" at a Grand Cayman address under Panama law, and the privacy policy names Block Raccoon S.A. (Panama); neither mentions Spend (see B11.1).'
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value:
+      - date: 2026-09-28
+        summary: "Rain platform: unexpected card declines and API issues for some partners, 18:53 to 19:35 UTC; root cause still under investigation. Rain-wide; which programmes were affected is not stated."
+        funds_lost: unknown
+        url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
+      - date: 2026-06-25
+        summary: "Rain platform: elevated API error rates for 3h32m, caused by an expired encryption certificate."
+        funds_lost: unknown
+        url: https://status.rain.xyz/issues/2026-06-25-elevated-api-error-rate/
+      - date: 2026-06-03
+        summary: "Rain platform: partial outage affecting card authorizations for 9 minutes, attributed to operating-system patching at a partner."
+        funds_lost: unknown
+        url: https://status.rain.xyz/issues/2026-06-03-payments-partner-outage/
+      - date: 2026-05-05
+        summary: "Rain platform: elevated card declines for 3h10m from a partial outage at its payment processor."
+        funds_lost: unknown
+        url: https://status.rain.xyz/issues/2026-05-05-elevated-authorization-declines/
+      - date: 2026-01-02
+        summary: "Rain platform: elevated card declines for 1h15m from an incident in the processor rules engine; Rain stated funds were safe."
+        funds_lost: no
+        url: https://status.rain.xyz/issues/2026-01-02-payementology-rules-declines/
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
+        detail: Rain status incident 2026-09-28.
+        checked_at: 2026-10-09
+        quote: We are investigating an issue that is causing unexpected declines for transactions
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-06-25-elevated-api-error-rate/
+        detail: Rain status incident 2026-06-25.
+        checked_at: 2026-10-09
+        quote: The issue was caused by an expired encryption certificate
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-06-03-payments-partner-outage/
+        detail: Rain status incident 2026-06-03.
+        checked_at: 2026-10-09
+        quote: Our partner has identified the cause as operating system patching activity on their side
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-05-05-elevated-authorization-declines/
+        detail: Rain status incident 2026-05-05.
+        checked_at: 2026-10-09
+        quote: The incident was related to our payment processor and has been mitigated
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-01-02-payementology-rules-declines/
+        detail: Rain status incident 2026-01-02.
+        checked_at: 2026-10-09
+        quote: Funds are safe and Rain infrastructure is working as intended
+    note: No Spend incident report found in the docs or on status.jup.ag. Entries are Rain platform incidents (Rain-issued cards only); not stated which programmes were affected.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: unknown
+    note: Spend docs carry no dates; no changelog found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: "Incumbent: the provider file lists no contracts, so there is nothing a volume spec could be computed over; card settlement runs offchain through the issuer and Visa."
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+notes: Incumbent card in the Jupiter app, issued by Rain or DCS by country, with Noah for off-ramp. Partner-level facts cite Rain and cover Rain-issued cards only. Docs cited as Mintlify .md copies. No repository facts apply.

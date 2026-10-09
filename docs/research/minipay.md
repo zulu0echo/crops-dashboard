@@ -52,3 +52,24 @@ Result: **incumbent**. The eligibility rule requires at least one verified contr
 - Source: `https://minipay.to/terms-of-service` (server-rendered, quotes checked live): "The Services are not available in all countries. The Services are made available to users in qualifying countries and are void where prohibited. In particular, we do not offer or make available any crypto-related services to users located in the People's Republic of China." The MiniPay Service section repeats "available only to users in qualifying countries".
 - Model `blocklist`, 1 code: CN.
 - Judgment calls: the qualifying-country list is not published (searched the terms, `/faq`, the home page and docs.minipay.xyz). Per the brief, I listed only what the document names and explained the unnamed "qualifying countries" and sanctions condition in `note`. The block is therefore a floor of exclusions, not evidence of availability elsewhere; a reviewer may prefer to omit it. Marketing figures ("70+ countries", "53 countries", "over 60 countries" for top-up) describe send and ramp reach and were not used. The Card's "selected supported markets" are also unlisted.
+
+## Operational 2026-10-09
+
+File: `data/operational/minipay.yaml` (new).
+
+- **Sources read** (curl, all 200):
+  - minipay.to terms of service (updated 2026-04-27), privacy statement (updated 2026-09-07) and FAQ
+  - docs.minipay.xyz
+  - Opera press release of 2023-09-13 (press.opera.com/2023/09/13/opera-launches-minipay/)
+  - Opera Africa blog posts of 2023-10-18 (Nigeria) and 2023-11-06 (Kenya)
+  - security.opera.com and opera.com/.well-known/security.txt (Bugcrowd programme)
+- **Not found:** minipay.to/.well-known/security.txt returns 404.
+- **Entity:** Blueboard Limited. The terms are under Norwegian law with the Oslo City Court as venue. Its jurisdiction (Ireland) comes from Opera Ltd's Form 20-F for 2020 (exhibit 8.1 subsidiaries list, found via EDGAR full-text search). sec.gov returns 403 to the validator's user agent, so the 20-F is described in the note rather than cited as evidence. The Irish CRO register was not read.
+- **Judgment calls**
+  - `custody_model` is `self_custody` (per the terms, via a ref to S1 evidence), not `provider_custodial` as the brief assumed for incumbents. The documents say keys never reach Blueboard. The closed app means this is documented only.
+  - Operator controls still apply (the backend is required). Custodial controls B3.2 and B3.3 are `not_applicable` with burden institution; B4.5 is left unset (implied).
+  - The FAQ is cited as documented for fees, cash-out and B4.1, although the provider file treats it as claimed for CROPS scoring, because it is the operator's only pricing statement.
+  - Licences are unknown, not absent: no Blueboard licence was found, and ramp and virtual-account partners (NOAH named) hold their own.
+  - Cash-out is recorded as `exchange` through unnamed ramp partners, because no per-country partner or method list is published.
+  - Volume is `not_verifiable`: transfers are public on Celo, but there is no listed settlement contract or reviewed attribution method.
+- **Validator:** `--offline` 0 errors; online 0 errors, after shortening the network-fee quote to avoid an encoded apostrophe.

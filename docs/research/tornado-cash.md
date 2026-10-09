@@ -63,3 +63,20 @@ All `recheck` commands use https://ethereum-rpc.publicnode.com at the latest blo
 - Judgment calls:
   - The UI build currently served at tornadocash.eth was not inspected, so it may differ from the archived source.
   - Jurisdiction-specific legality (US sanctions history, Dutch case) is left in `context` and not treated as a provider availability restriction.
+
+## Operational 2026-10-09
+
+Facts are in `data/operational/tornado-cash.yaml`. The bot's B2.1, B2.3, B8.2 and B9.x facts are unchanged. The bot refreshed them during this session and added tornado-core.
+
+- **Fees.** The pools take no fee (ETHTornado.sol L29-L40). The relayer fee is optional and bound into the proof. Gas samples from 2026-10-09:
+  - Deposit, tx 0xb25e…d1cc: 919,444 gas at 3.12 gwei, 0.00287 ETH.
+  - Self-submitted withdrawal, tx 0x7678…48e3: 349,079 gas at 3.12 gwei, 0.00109 ETH.
+  
+  Denominations are fixed per pool.
+- **Custody.** `self_custody` (S1 = 3). Licences and cash-out are `not_applicable` with burden on the institution: there is no operating entity and no service in the required path.
+- **First deployment.** ETH 0.1 pool at block 9116966, 2019-12-16. Source: Sourcify creation data and the receipt. publicnode prunes blocks before 15.5M, so eth.drpc.org was used for the timestamp.
+- **Entity.** `absent`. The GitHub org profile names no company, the READMEs and UI source contain no terms, and tornado.cash does not respond.
+- **Incidents.** Governance proposal 20, from onchain state only (refs S2 3). The 2024 frontend report is left out because there is no primary source for it.
+- **Changes.** OFAC designation (jy0916), the org's last push (2022-08-22), and delisting (sb0057). Both Treasury quotes were checked live.
+- **Volume spec.** Withdrawal (topic0 0xe9e5…4931) over the 12 pools, count only. The event carries no amount, and value would need per-pool count × denomination. The pools are active: 347 events on the four ETH pools in 5000 blocks.
+- **Group B recorded:** B10.1 (README, logical view only), B11.2 (refs), B12.1 absent (refs C4), B12.2 not_applicable. Operator and custodial controls are left unset.

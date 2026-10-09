@@ -1,0 +1,78 @@
+Source: https://www.coca.xyz/post/q-a-recap-everything-you-asked-about-coca-3-0-and-more-answered
+Fetched: 2026-10-09 (curl; Wix page, served intermittently without body text). Visible text with tags stripped:
+Q&A Recap: Everything You Asked About COCA 3.0 and More – Answered! top of page Home Cashback Contacts Docs Press News More... Use tab to navigate through the menu items. Get Free Card Home Cashback 
+Contacts Docs Press News Menu Close Q&A Recap: Everything You Asked About COCA 3.0 and More – Answered! May 4 9 min read After the biggest update in COCA's history – the launch of COCA 3.0 – the 
+community had a lot to unpack. The release sparked active discussion across our community, with users eager to learn more about the new features and what comes next. That's why, on April 30, we held 
+our latest COCA Q&A session . The Q&A was hosted by Chulpan, Social Media Manager, with questions answered by Vasili Paulau, CEO, and Max Holub, Head of Product. We also want to congratulate the five 
+community members who each won $20 for submitting the most interesting questions. Missed the session? We've got you covered. Here's everything you need to know from the Q&A 👇 🔒 Self-Custody & Security 
+Q: You emphasize self-custody infrastructure. Where do you draw the line between user control and frictionless UX, and what specific innovations are you building to make self-custody feel as seamless 
+as a neobank? Our goal isn&#x27;t to be a &#x27;crypto bank,&#x27; but a neobank powered by blockchain infrastructure. We prioritize a seamless Web2 interface where the majority of users never 
+interact with a private key directly. We are committed to build the experience to look and feel like a traditional challenger bank, while keeping self-custody &#x27;under the hood.&#x27; We 
+don&#x27;t sacrifice security for convenience – we simply hide the technical complexity. For users who require total sovereignty, the underlying keys will remain fully accessible and exportable. But 
+for everyone else, it&#x27;s just banking that works. Vasili Paulau Q: What are your plans for a truly self-custodial card and wallet, with exportable keys and technical transparency? Since our 3.0 
+update, COCA is fully self-custodial. We utilize a dual-wallet architecture under total user control: a Smart-Contract Wallet for the &#x27;Banking Balance&#x27; (connected to both card and IBAN) and 
+a Standard Crypto Wallet for core assets. We leverage Privy for our wallet infrastructure. To provide ultimate transparency and sovereignty, we are bringing back an updated Private Key Export for 
+both wallets in our upcoming updates. We will also continue to reinforce the product transparency via comprehensive security audits and will be updating the whitepaper and App itself to provide 
+verifiable proof of our self-custodial architecture. Vasili Paulau Q: When non-custodial crypto is sent straight to the COCA card, does the sender and receiver name appear on the blockchain? Is it a 
+private transaction? Short answer: No. Legal names are never broadcast to the blockchain. Transactions are identified only by wallet addresses. COCA acts as a "Privacy Shield" between your on-chain 
+assets and your real-world activity. When you spend: Merchants see a standard card transaction with no visibility into your crypto wealth or wallet history. Banks process the payment without having 
+access to your private keys or the source of your funds. Vasili Paulau 📜 Regulation Q: With the introduction of SEPA transfers in the COCA app, could you clarify how things now stand regarding DAC8? 
+Based on COCA&#x27;s current role as a Software Provider and our self-custody setup, COCA is not required to submit DAC8 reports or report incoming and outgoing transfers under DAC8. If the 
+applicable regulatory requirements change, or if COCA becomes subject to reporting obligations in the future, we will inform users in advance. Vasili Paulau 🏦 Banking, IBAN & Transfers Q: In the long 
+term, do you see COCA evolving more toward a neobank experience or remaining purely DeFi-native? In the long term, we see COCA evolving into a neobank powered by blockchain infrastructure. COCA 3.0 
+is a clear step in that direction. We&#x27;re building banking accounts, cards, rewards, and everyday financial tools that feel simple and familiar, while keeping self-custody and Web3 infrastructure 
+under the hood. Most users shouldn&#x27;t need to deal with private keys or technical complexity to use crypto in daily life. But for those who want full sovereignty, the underlying keys remain 
+accessible and exportable. Max Holub Q: Will EUR IBAN be available for non-European users in the near future? We&#x27;re exploring this possibility yet and always want to make our products available 
+to as many users as possible. Max Holub Q: Why is there no IBAN for Ukrainian citizens? I have an IBAN from Revolut, but COCA doesn&#x27;t provide one. At the moment, IBAN is available only for 
+residents of: Austria, Belgium, Bulgaria, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, 
+Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK. Ukraine is not included in the supported list right now. However, we are doing our best to expand IBAN availability 
+to additional regions. Max Holub Q: When will ACH become available? According to our current roadmap, ACH support and USD transfers are planned for Q2 2026. Max Holub Q: Does COCA 3.0 offer a credit 
+Visa card based on customers' spending history through a Visa debit card? Nope, we don&#x27;t offer credit cards right now. We are currently exploring the possibility to introduce credit cards on top 
+of self-custody infrastructure. Max Holub Q: What is the monthly spending limit on the COCA Card? The monthly spending limit for the COCA Card is €30,000. Max Holub 💰 Cashback & APY Q: The new up to 5% 
+APY on spendable USD balances is fantastic. Are there plans to introduce a similar yield for the new EUR accounts? This was one of the most popular questions, and we understand how important EUR APY 
+is for our community 💯 We are actively exploring EUR APY, but we will only launch it when we can offer a reliable, sustainable solution with the right provider. At the moment, available EUR stablecoin 
+yield opportunities are still limited, so we prefer to take a careful approach rather than rush the release. Max Holub Q: In a pure self-custody model with no lock-ups, how is this yield generated 
+while ensuring long-term sustainability? The yield is generated through external DeFi lending infrastructure, including protocols such as Morpho. Funds are supplied to lending markets where borrowers 
+pay interest, and this interest becomes the source of APY. To keep it sustainable, we focus on reliable yield sources, monitor market conditions, and avoid offering rates that cannot be responsibly 
+supported. Max Holub Q: Will recurring payments be available? Will direct debits be available, and will they support cashback? Yes, we plan to implement direct debits and recurring payments in Q3–Q4 
+this year. And yes, we plan to provide direct cashback for direct debits. Max Holub Q: Will cashback through Curve be available for lower tiers? First of all, Curve cashback is available across all 
+tiers. Currently, Premium+ and Elite members enjoy enhanced rates of 6% and 8%, while all other tiers receive a flat 1% cashback on all Curve transactions, with no limits. We will keep you updated on 
+any future adjustments. Our primary focus is currently on scaling our Banking Features, UX/UI, and global expansion while ensuring our incentive programs remain sustainable for the long term. Max 
+Holub 🪙 COCA Token & Lock-up Q: How exactly will the COCA buying feature in the app work? Will the price be the current official COCA price? Buying and selling COCA will work through decentralized 
+liquidity pools, ensuring a fair market price at all times. Max Holub Q: Why is the minimum staking amount 1,000 $COCA? The minimum staking amount is actually 300 $COCA on the Standard tier. This 
+gives users 3% cashback and a 50% subscription discount in the Streaming category. Max Holub Q: Could COCA token staking unlock exclusive benefits in the future, such as merchandise, events, 
+higher-tier perks, or community access? Absolutely. While our current staking model focuses on Tiers, we are actively working on expanding the utility of the token: exclusive perks, real-world 
+utility and community access. We are happy to hear your proposals. If you have specific ideas for benefits you&#x27;d like to see unlocked through $COCA, we encourage you to share them with us. Max 
+Holub 🤝 Community, Trust & Support Q: Since COCA is becoming our everyday banking account, building trust and brand loyalty will be crucial. Are there any plans to bring COCA into the physical world 
+through real-life events, sponsorships, or exclusive official merchandise? We understand how this would be great. We have plans to do that, however right now we&#x27;re focusing on bringing more 
+product and loyalty value to you as well as polishing UX and UI so COCA would provide such an exciting experience you could recommend to everyone. Max Holub Q: Currently, the COCA community is 
+heavily focused on platforms like Discord and Telegram, which are perfect for crypto-natives. But with COCA 3.0 introducing traditional banking features like IBANs, the target audience is much 
+broader. Are there plans to open a subreddit or build a presence on more mainstream social networks and websites, such as Trustpilot? Great question. Expanding beyond crypto-native channels is 
+definitely part of our 2026 roadmap – Reddit, Trustpilot, and Product Hunt are all being actively explored. We&#x27;re also thinking about involving our most dedicated community members as brand 
+ambassadors to help lead the way. So, stay tuned – we&#x27;ll keep you posted over the coming months! Max Holub 🚀 Product Roadmap Q: Is the COCA 3.0 update the shape the app will have for the future, 
+or are there more major updates on the roadmap? The direction will be kept – self-banking meaning neobank experience with self-custody nature where only you can control your funds. However, banking 
+will be improved with loyalty features and banking tools, including ACH accounts for USD transfers, APY on EUR, currency exchange, card-to-card transfers, in-app transfers to your friends, in-app 
+purchase of COCA, better experience for getting salary into your COCA, clearer interface, improved experience with refunds, direct debits and other. Max Holub Q: Are there any plans to introduce new 
+features, such as additional blockchain integrations or improvements to the card and rewards system? Definitely. We&#x27;ll expand assets and chains for crypto top-ups in Q2 returning Tron, Stellar 
+and more. As to the cards – we&#x27;re going to improve refunds clarity and logic, and bring more clarity as to the currency in which you pay. What concerns rewards, we&#x27;re still in discussion 
+with some of our partners to bring more loyalty value depending on the tier, including lounge access and some other perks. Max Holub Q: Is Near Intents integrated into Swap? Not yet. However, 
+we&#x27;re in discussion with the Near Team right now in this regard. Max Holub Q: COCA combines banking, crypto, rewards, and travel in one app but what is the feature or use case that the team 
+itself is most excited about that users are still sleeping on? Something that exists today but is massively underused? That&#x27;s a great question! We love our customers since you use the absolute 
+majority of the features. There&#x27;s one feature we use ourselves and think you could use more frequently — COCA travel, where you can book hotels worldwide with discounts up to 65%. Moreover, when 
+you pay with a COCA card you get cashback based on your tier. Max Holub 🔭 Long-Term Strategy Q: How do you see COCA in 5 years? What do you think will change in the world of finance and crypto 
+services? By 2031, COCA will have evolved from a banking app into a Sovereign Financial Co-pilot. Our goal is to make the complexity of blockchain so invisible that &#x27;being your own bank&#x27; 
+becomes accessible to everyone – from crypto natives to your older relatives. In five years, we won&#x27;t just be a banking interface – but a Personal Account Manager powered by deep AI integration: 
+Predictive Insights: Real-time analysis of your spending, portfolio, and reward incentives. Agentic Payments: AI that autonomously optimizes your transactions, finding the best yields or payment 
+routes without you lifting a finger. We are viewing COCA as a bridge where total financial sovereignty meets the effortless intelligence of an AI-driven future. Vasili Paulau Q: How does COCA 3.0 
+plan to drive real user adoption beyond the crypto-native audience, and what specific features are being built to attract everyday users outside Web3? First of all this is Web2-first UX and UI. No 
+crypto-native terminology, simple neo-bank experience which is familiar to users outside Web3. Tools and products which are necessary to the Web2 audience and don&#x27;t require any specific 
+blockchain knowledge — including bank or card-to-card transfers, higher than traditional banks interest on customer&#x27;s balance without the need to stake or lock or something, intuitive AI help 
+with managing your money. So, basically, crypto assets will become as any other fiat currency for Web2 customers, just one of the methods to pay, get paid or rewarded, or as an investment asset for a 
+more proficient audience. Max Holub Q: Are Poland and similar markets part of a deeper regional rollout strategy? Yes, we test deeper penetration into some new markets. We do it step by step right 
+now. Max Holub Q: Does COCA plan to introduce a more formal partnership model for KOLs, affiliates, ambassadors, or local communities who can drive real adoption? Yes. We&#x27;ve been actively 
+working on this over the past few months. A formal affiliate program is already in progress, and we&#x27;ll be ready to announce it publicly very soon. Vasili Paulau 💙 Final Thoughts Thank you to 
+everyone who joined the COCA Q&A session, submitted questions, and shared useful feedback. COCA 3.0 marks a major step forward, but it's only the beginning. We'll continue sharing updates as new 
+features, improvements, and roadmap milestones go live. If you still have questions, send them in our Telegram or Discord chats – the COCA team is always listening. See you at the next Q&A session! 
+Recent Posts See All COCA Monthly Update: September 2026 A Bank Froze His Money for a Year. Now He Pays With COCA and Skips the Bank Community AMA Recap: Loyalty Program and What&#x27;s Next Join 
+over 1M+ crypto users worldwide ALREADY EARNING CASHBACK, YIELD, AND REAL-LIFE PERKS WITH COCA Need Help? Home ​ Wallet Cashback Contacts Press Docs Policy & Docs ​ Privacy Policy Cookie Policy Terms 
+and Conditions &copy; 2026 by ccalabs Home Cashback Contacts Docs Press News bottom of page

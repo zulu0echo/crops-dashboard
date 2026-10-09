@@ -21,6 +21,16 @@ jobs:
           RPC_1: ${{ vars.RPC_1 }}
           RPC_100: ${{ vars.RPC_100 }}
           RPC_8453: ${{ vars.RPC_8453 }}
+      # Operational layer: repository practice facts and verified volumes (never touch ratings).
+      - name: Refresh repository facts
+        run: npm run repo-facts || echo "::warning::repo-facts had errors; see log"
+        env: { GITHUB_TOKEN: "${{ github.token }}" }
+      - name: Recompute verified volumes
+        run: npm run volumes || echo "::warning::volumes had errors; see log"
+        env:
+          RPC_1: ${{ vars.RPC_1 }}
+          RPC_100: ${{ vars.RPC_100 }}
+          RPC_8453: ${{ vars.RPC_8453 }}
       - name: One issue per drifted provider
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
@@ -36,8 +46,8 @@ jobs:
           git diff --quiet data/ && exit 0
           git config user.name "crops-recheck-bot"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B bot/drift
-          git commit -am "Mark drifted evidence (nightly re-check)"
+          git commit -am "Nightly: drift flags, repository facts, volumes"
           git push -f origin bot/drift
-          gh pr view bot/drift --json state --jq .state 2>/dev/null | grep -q OPEN || gh pr create --head bot/drift --title "Mark drifted evidence" --body "Automated: sets \`drift: true\` on evidence the nightly re-check found changed. Does not change any score. See the Drift issues."
+          gh pr view bot/drift --json state --jq .state 2>/dev/null | grep -q OPEN || gh pr create --head bot/drift --title "Nightly: drift flags, repository facts, volumes" --body "Automated: sets \`drift: true\` on evidence the nightly re-check found changed, refreshes repository-practice facts and verified volumes in data/operational/. Does not change any score. See the Drift issues."
       - if: steps.run.outputs.read_failed == '1'
         run: echo "::error::Some onchain or repo reads failed; see the recheck step log." && exit 1

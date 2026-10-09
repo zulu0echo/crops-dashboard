@@ -1,0 +1,168 @@
+Source: https://www.coca.xyz/terms
+Fetched: 2026-10-09 (curl; Wix page, served intermittently without body text). Visible text with tags stripped:
+COCA Wallet: MPC security meets non-custodial card top of page Home Cashback Contacts Docs Press News More... Use tab to navigate through the menu items. Award-winning crypto super app: #1 Product of 
+the Day on Product Hunt and winner of the "Next Financial Revolution" at CONF3RENCE 2024 Get Started COCA WALLET TERMS Dated: 4 November 2023 The Coca non-custodial wallet ("Coca Wallet") (described 
+below) is provided to you by CCA Labs, CCA Labs - FZCO a company registered in Dubai Digital Oasis, Dubai, UAE with registered address of Dubai Silicon Oasis, DDP, Building A1, Dubai, United Arab 
+Emirates and registration number DSO-FZCO-31557 ("Coca"). ​ These terms and conditions ("Terms" or "T&Cs") will apply to your use of the Coca Wallet. These Terms constitute a legal agreement between 
+you and Coca (unless otherwise specified) and govern your access to and use of the Coca Wallet. Wallet and Account services offered through the Coca Wallet may be governed by separate terms and 
+conditions, and/or provided by third parties and subject to their additional terms and conditions. You acknowledge and agree that by accessing and using such services, you agree to be bound by such 
+separate terms and conditions as notified to you. ​ The Coca Wallet is a non-custodial wallet, meaning you are solely in control of your Digital Assets. Coca has no control over your NCW, and we 
+cannot help you recover access to your NCW. Make sure to backup your access to your NCW, and ensure that you do not allow anyone else to access your NCW. 1. WELCOME 2. DEFINITIONS means a corporation 
+directly or indirectly, controlling, controlled by or under direct or indirect common control with another corporation; Affiliate means any law, rule, statute, subordinate legislation, regulation, 
+by-law, order, ordinance, protocol, code, guideline, treaty, policy, notice, direction or judicial, arbitral, administrative, ministerial or departmental judgment, award, decree, treaty, directive, 
+or other requirement or guideline published or in force at any time which applies to or is otherwise intended to govern or regulate any person (including all parties to this Terms), property, 
+transaction, activity, event or other matter, including any rule, order, judgment, directive or other requirement or guideline issued by any governmental or regulatory authority; Applicable Law means 
+any day except any Saturday, Sunday or public holiday which banking institutions are open for normal business activities in England; Business Day(s) has the meaning given to it in clause 3(i); 
+Dapp(s) means the feature offered in the Coca Wallet that allows users to place Digital Assets into one or more DeFi Protocols; DeFi Earning means the decentralized finance projects offered by 
+independent third parties; DeFi Protocols has the meaning given to it in clause 3(h); DeFi Swap means any sort of cryptographic tokens, digital currencies, cryptocurrencies or virtual currencies; 
+Digital Asset means an event or failure which is beyond our reasonable control including (i) Acts of God, nature, court or government; (ii) failure or interruption in public or private 
+telecommunication networks, Third-Party Blockchain Networks, communication channels or information systems; (iii) acts or omissions of acts of a party for whom we are not responsible; (iv) delay, 
+failure or interruption in, or unavailability of, third party services and sites; (v) strikes, lockouts, labour disputes, wars, terrorist acts and riots; (vi) viruses, malware, other malicious 
+computer codes or the hacking of any part of the Coca Wallet and related applications or software; Force Majeure Event means to include without limitation; include/including means Coca and its 
+Affiliates; NCW Group means all information, instructions (including transfer of funds instructions), communications, orders or messages given to us by you via the Coca Wallet; Instructions means a 
+non-custodian wallet; NCW means the decentralized network(s) of blockchains built by third parties; Network(s) means any information relating to an identified or identifiable natural person; an 
+identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online 
+identifier or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person; Personal Data means the countries or 
+jurisdictions subject to prohibitions or restrictions on accessing or using the Coca Wallet and are as follows: any of the following: Afghanistan, the Democratic People's Republic of Korea, 
+Democratic Republic of Congo, Eritrea, Libya, Somalia, South Sudan, Sudan, Yemen, Iraq, Iran, Cuba, Syria, Mali, Central African Republic, Guinea-Bissau, Lebanon or any other country which (or with 
+any other persons who) is sanctioned by the United Nations Security Council, or under applicable laws of your country of residence; Prohibited Countries means the unique process that allows a user's 
+physical characteristics, such as, facial features or fingerprint to verify its identity which the user uses to import and recover his or her non-custodial wallet on a new device; Recovery Phrase 
+means an event or failure which is beyond our reasonable control including (i) Acts of God, nature, court or government; (ii) failure or interruption in public or private telecommunication networks, 
+Third-Party Blockchain Networks, communication channels or information systems; (iii) acts or omissions of acts of a party for whom we are not responsible; (iv) delay, failure or interruption in, or 
+unavailability of, third party services and sites; (v) strikes, lockouts, labour disputes, wars, terrorist acts and riots; (vi) viruses, malware, other malicious computer codes or the hacking of any 
+part of the Coca Wallet and related applications or software; Force Majeure Event has the meaning given to it in clause 3; Services means the website at https://coca.xyz which may change from time to 
+time; Site has the meaning given to it in clause 3(f); Staking means all the cryptocurrencies listed on the Coca Wallet, which may be updated with or without notice at our sole discretion from time 
+to time; Supported Cryptocurrency means any taxes, duties or fees that incurred, or required to be collected, paid or withheld for any reason in connection with your use of the Coca Wallet under any 
+Applicable Law; Taxes has the meaning given to it in clause 3(d); Third-Party Blockchain Networks has the meaning given to it in clause 12; Third Party Materials means the validator run and managed 
+by Coca through a third party service provider, responsible for validating transactions on Networks; Validator means the account you must register in order to use the Coca Wallet; Coca Wallet Account 
+means the NCW Group wallet mobile application; Coca Wallet has the meaning given to it in clause 3(i); Wallet Extension means the NCW Group; and we/us/our means the user(s) of the Coca Wallet. 
+you/your Subject to clause 12, the NCW Group and/or the Third-Party Blockchain Networks provides the following services (collectively, the "Services"): (a) receive and send Supported Cryptoassets to 
+other recipients; (b) buy and sell Digital Assets; (c) create a new Coca Wallet, generate your NCW addresses and Recovery Phrase that you may use to import and recover your Coca Wallet on a new 
+device; (d) enable you to authorise transfer of Supported Cryptocurrencies with the passcode, biometrics or two-factor authentication (collectively "Codes") you set, facilitate the submission of 
+Supported Cryptocurrencies transaction data to the relevant blockchain networks ("Third-Party Blockchain Networks"); (e) enable you to use DeFi Earning which allow the users to earn Digital Assets 
+from the DeFi Protocols; (f) enable you to use DeFi Earning which allows you to earn Supported Cryptocurrencies from staking Supported Cryptocurrencies with the Validator ("Staking"); (g) enable you 
+to use the DeFi Swap protocol, which is a set of smart contracts on Third-Party Blockchain Networks that allows users to stake Supported Cryptocurrencies in certain smart contracts to swap and pool 
+such Supported Cryptocurrencies ("DeFi Swap"); (h) enable you to use a decentralized exchange aggregator, which is a third party platform built on a Third-Party Blockchain Network that allows you to 
+stake and swap Supported Cryptocurrencies; (i) enable you to access a digital asset browser ("Wallet Extension") and link to decentralized applications and decentralized exchanges ("Dapp(s)"); and 
+(j) enable you to transfer Digital Assets to a third party linked smart contract wallet for use in fiat payment system as an extension provided by third party services providers ("Card Usage"). 3. 
+THE COCA WALLET By signing up for the use of the Coca Wallet, you represent and warrant that: - you are at least eighteen (18) years of age; - you have the full right, power, and authority to agree 
+to these Terms; - you are not resident or a Tax resident of, and do not otherwise have any relevant connection with, any Prohibited Countries; - you are not a resident or Tax resident of, and do not 
+otherwise have any relevant connection with, any jurisdiction in which entry into or performing your obligations under these Terms is unlawful or restricted in any way or requires licensing, 
+registration or approval of any kind; - you are not impersonating any other person, operating under an alias or otherwise concealing your identity; you are not located in, under the control of, or a 
+national, citizen or resident of any Prohibited Countries; - you will not use the Coca Wallet if any applicable laws in your country prohibit you from doing so in accordance with these Terms; and - 
+you are compliant with all Applicable Law requirements to which you are subject, including without limitation, all tax laws and regulations, exchange control requirements and registration 
+requirements. 4. ONBOARDING You agree to, at all times, cooperate with all requests made by us or any of our third-party service providers on our behalf in connection with your use of the Coca 
+Wallet. Failure to provide up to date information may result in your inability to or adversely affect your use of the Coca Wallet. You undertake to indemnify us, our Affiliates and any third-party 
+service providers for any and all losses and damage incurred as a result of your failure to provide complete, accurate and up to date information at any point during your use of the Coca Wallet. 5. 
+YOUR INFORMATION We may charge fees for some or part of the Services. Such fees may be subject to change at our sole discretion. The fees are disclosed at the time you access the Service and/or are 
+available on the Site. You may incur charges from third parties for use of Third Party Materials, such as but not limited to the Dapps, Staking, Card Usage, DeFi Earning, which you may access through 
+your NCW. Such third party fees are not charged by Coca. 6. FEES To the extent permitted by Applicable Law, we may at any time and without liability, terminate, suspend or limit your use or any 
+functionality of the Coca Wallet or your Coca Wallet Account (such suspension or termination shall be determined by Coca), under the following circumstances: (a) in the event of any breach by you of 
+these Terms and any other terms and conditions referred to in these Terms; (b) for the purposes of complying with Applicable Laws or the prevention of criminal activities; (c) where we suspect that 
+you conduct any fraudulent or unlawful activities (including but not limited to money laundering, terrorism financing and fraudulent activities); (d) where we are required to do so to comply with a 
+court order, law, regulation, regulatory decree or ombudsman's orders; or (e) where we determine, in our sole discretion, that your use of your Coca Wallet and Coca Wallet Account is detrimental or 
+harmful to us in any manner; or (f) it transpires that you have provided false, inaccurate, incomplete or misleading information; you fail to provide the required information for the ongoing due 
+diligence process; or (g) to remedy the effects of any defect in or compromise to any information system upon which we relies on; or (h) where you have been declared bankrupt; or (i) where you have 
+been declared deceased. (b) If at any time you do not feel that you can agree to these Terms or any changes made to the Coca Wallet or your Coca Wallet Account, you must immediately stop using and 
+close your Coca Wallet Account. You can close your Coca Wallet Account at any time by withdrawing your Cryptoassets from your Coca Wallet Account. (c) You will also lose your access to your Coca 
+Wallet Account if you terminate your use of the Coca Wallet or if we decide to withdraw the Coca Wallet altogether (in which case we'll endeavor to give you two months' notice). You will not be 
+entitled to any refund of fees for use of the Coca Wallet or Coca Wallet Account (if any) or any other fees. 7. LIMITATION OF SERVICES / TERMINATION / ACCOUNT CLOSURE You are solely responsible and 
+liable for keeping your Coca Wallet Account safe (including details relating to your Codes and Recovery Phrase) to avoid loss of access to and/or control over your Coca Wallet Account. We will not be 
+liable to you for any loss of access to your Coca Wallet Account should you lose your Codes. You are advised to maintain adequate security, measure and control of your Codes and access to and use of 
+your Coca Wallet Account. We will not be liable to you for any losses or damage resulting from any unauthorised access or use of your Coca Wallet Account. The NCW Group does not receive or store your 
+Codes or Recovery Phrase. We therefore, cannot assist with your Coca Wallet details retrieval. Neither can we provide a replacement of your Codes. In the event that you need to access a deceased's 
+Coca Wallet Account, please contact Coca. We may ask you for supporting documentation, such as a death certificate, probate documents, or other documents proving you have the right to administer the 
+deceased's estate. FAILURE TO KEEP YOUR COCA WALLET ACCOUNT SAFE OR REMEMBER YOUR COCA WALLET ACCOUNT DETAILS IN RELATION TO THE COCA WALLET MAY RESULT IN YOUR NCW ACCOUNT BECOMING PERMANENTLY 
+INACCESSIBLE OR THE PERMANENT LOSS OF THE SUPPORTED CRYPTOCURRENCY STORED IN YOUR NCW ACCOUNT. If you believe your mobile, Coca Wallet Account, or the login details for your Coca Wallet Account have 
+been lost, stolen, or accessed without authorisation, you must contact us immediately at support@coca.xyz . We will not be responsible for losses incurred due to unauthorised access of your email. 8. 
+SECURITY By using the Coca Wallet, you confirm that you have read and accepted our Privacy Notice and understand how we and/or Coca collect, use, disclose and share amongst ourselves your Personal 
+Data and disclose such Personal Data to our authorised service providers and relevant third parties. For full and comprehensive information about when and why we collect personal information about 
+you, how we use it, the conditions under which we may disclose it and how we keep it secure, please refer to our Privacy Notice, which is accessible at spatium.net/privacy-policy.html (for those of 
+our technology partner) and coca.xyz/privacy 9. DATA PROTECTION You shall accept full responsibility for the security and authenticity of all Instructions and you shall be bound by all such 
+Instructions You are aware that Instructions and information transmitted via the Coca Wallet are generally transmitted via the Internet and You acknowledge and agree that in the event of any dispute 
+arising in connection with your use of the Coca Wallet, our records. 10. ELECTRONIC COMMUNICATIONS NCW Group owns or licenses all rights, title and interest in the Coca Wallet and the proprietary 
+technology (unless otherwise specified), including our software (in source and object forms), algorithms, user interface designs, architecture, and documentation (both printed and electronic), 
+network designs, know-how, and trade secrets, and including any modifications, improvements, and derivative work thereof (the "NCW Group Technology"). When you accept these Terms, we grant you a 
+personal, non-exclusive, limited, revocable and non-transferable license to use the NCW Group Technology without the right to sublicense. You may only use the Coca Wallet in a manner consistent with 
+these Terms, and you shall not interfere with, disrupt, or cause damage to any other users of the Coca Wallet, produce any derivative work based on the NCW Group Technology, nor shall you translate, 
+reverse engineer, decompile or disassemble the NCW Group Technology. 11. OWNERSHIP AND USE OF THE NCW SERVICE PROVIDER TECHNOLOGY Any transactions in relation to the Supported Cryptocurrencies must 
+be confirmed and recorded on the relevant Third-Party Blockchain Networks. Such Third Party Blockchain Networks are decentralized, peer-to-peer networks and supported by independent third parties, 
+which the NCW Group does not own, operate or has control over them. Therefore, we cannot and do not (i) ensure that the Instruction that you submit via the Coca Wallet to the Third-Party Blockchain 
+Networks will be confirmed or processed; or (ii) assist you to cancel or modify your Instructions once the Instructions have been submitted via the Coca Wallet to the Third-Party Blockchain Networks. 
+The Coca Wallet may include description or reference to a third party's website, product or services, including Third-Party Blockchain Networks ("Third Party Materials"). When using a Dapp or other 
+Third Party Materials through the Wallet Extension, you understand that you are interacting with Third Party Materials. We do not have control over the Third Party Materials, do not warrant or 
+endorse, and are not responsible for the availability or legitimacy of the content, products or services on or accessible from, those Third Party Materials (including any related websites, resources 
+or links displayed therein). You acknowledge sole responsibility for and assume all risk arising from your use of any Third Party Materials. 12. THIRD PARTY SERVICES AND CONTENTS You acknowledge and 
+agree that by confirming the sending of your Supported Cryptocurrency you have checked and confirm that the recipient wallet address supports the type of cryptocurrency or token you are sending, is 
+compatible with the token standard of the cryptocurrency or token you are sending, is a valid address, and is the correct recipient address. NCW Group is not liable for any losses of your Supported 
+Cryptocurrency and will not assist in retrieving such lost Supported Cryptocurrency if you fail to do so. 13. GENERAL DISCLAIMER THE COCA WALLET AND RELATED SERVICES ARE PROVIDED ON AN "AS IS" AND 
+"AS AVAILABLE" BASIS. EXCEPT AS EXPRESSLY PROVIDED IN THESE TERMS, TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, RELATING TO THE COCA 
+WALLET AND UNDERLYING SOFTWARE OR ANY CONTENT ON THE SERVICES, WHETHER PROVIDED OR OWNED BY US OR BY ANY THIRD PARTY, INCLUDING WITHOUT LIMITATION, ANY WARRANTIES REGARDING QUALITY, STABILITY, 
+SUITABILITY, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, FREEDOM FROM VIRUS AND ERROR. IN ADDITION, WE DO NOT REPRESENT OR WARRANT THAT THE CONTENT ACCESSIBLE VIA THE 
+COCA WALLET IS ACCURATE, COMPLETE, RELIABLE, CURRENT, FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS, OR THAT THE RESULTS OF USING THE SERVICES WILL MEET YOUR PURPOSE OR REQUIREMENTS. YOU EXPRESSLY 
+ACKNOWLEDGE AND AGREE THAT USE OF THE COCA WALLET AND RELATED SERVICES ARE AT YOUR SOLE RISK AND THAT THE ENTIRE RISK AS TO SATISFACTORY QUALITY, PERFORMANCE, ACCURACY AND EFFECT IS WITH YOU. We 
+shall not be liable for fault on the part of any third-party service providers instructed by us or introduced to You within the Wallet. The parties agree that any claims against the other under these 
+Terms may only be brought on an individual basis and not as a plaintiff or class member in any purported class or representative action or proceeding. No court or adjudicator may consolidate or join 
+more than one person's or party's claims and may not otherwise preside over any form of a consolidated, representative, or class proceeding. Any relief awarded to you cannot and may not affect any 
+other users 14. WARRANTY DISCLAIMERS TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WE AND OUR EMPLOYEES SHALL NOT BE LIABLE FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, OR ANY SIMILAR LOSSES OR 
+DAMAGES (INCLUDING LOST PROFITS), COSTS AND FEES OR LIABILITY ARISING OUT OF TORT (INCLUDING NEGLIGENCE) RESULTING FROM THE USE OR INABILITY TO USE THE COCA WALLET OR FOR ANY INDIRECT, SPECIAL, 
+PUNITIVE DAMAGES, STATUTORY, CONTRACTUAL OR OTHERWISE, ARISING FROM OR IN CONNECTION WITH THE CONTENT, FEES, OR USAGE OF THE WALLET. WE ARE NOT RESPONSIBLE FOR: (A) ANY FAILURES OR ERRORS IN SAID 
+FUNCTIONS, OR ARISING OUT OF FAILURES OR ERRORS OF PERSONNEL; (B) LINKS TO CONTENT AVAILABLE FOR THE COCA WALLET; (C) DELETION OF AN ACCOUNT; (D) DENIAL OF ACCOUNT DELETION; (E) STORAGE, DELETION, 
+DISCLOSURE AND ANY OTHER USE OR LOSS OF CONTENT CONTAINED IN USING THE APP; AND (F) EXCHANGING, BUYING, SELLING, SENDING, RECEIVING, STORING CRYPTO- ASSETS OR NON-CASH UNLESS WE HAVE DIRECTLY 
+CONTRIBUTED TO THE CLAIM, INCLUDING USING THIRD-PARTY SERVICES THAT YOU USE TO DO SO USING OUR APP. IN ANY EVENT, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, OUR TOTAL MAXIMUM AND AGGREGATE 
+LIABILITY TO YOU FOR DIRECT DAMAGES SHALL NOT EXCEED 1% OF THE FEES YOU PAID US (IF YOU PAID US) IN THE TWELVE MONTHS PRECEDING THE EVENT ALLEGED TO HAVE CAUSED THE CLAIM. TO THE MAXIMUM EXTENT 
+PERMITTED BY APPLICABLE LAW, WE AND OUR PERSONNEL SHALL NOT BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, EXEMPLARY, EXEMPLARY, STATUTORY, INCIDENTAL OR CONSEQUENTIAL DAMAGES, OR ANY SIMILAR DAMAGES 
+OR LOSSES (INCLUDING LOST PROFITS AND LOSS OF DATA), COSTS, EXPENSES AND FEES, WHETHER IN TORT (INCLUDING NEGLIGENCE), CONTRACT, OR ANY OTHER FORM OR THEORY OF LIABILITY, ARISING FROM OR RELATING TO 
+THE CONTENTS, FEES, USE OR INABILITY TO USE COCA WALLET OR ITS FUNCTIONS, NOTWITHSTANDING ANYTHING ELSE, WE ARE FULLY RELEASED FROM OUR OBLIGATIONS AND LIABILITY TO YOU IF YOU VIOLATE THESE TERMS AND 
+CONDITIONS, ANY OTHER TERMS, RULES OR REGULATIONS APPLICABLE TO THE NCW GROUP, OR IF YOU VIOLATE THE RIGHTS OF ANY OTHER PERSON AS A RESULT OF USING THE NCW GROUP. 15. LIMITATION OF LIABILITY You 
+agree to indemnify and hold harmless the NCW Group, their affiliates and third-party service providers, and each of their officers, directors, agents, joint venture entities, employees and 
+representatives, from any claim or demand (including attorneys' fees and any fines, fees or penalties imposed by any regulatory authority) arising out of or related to (a) your breach of any of these 
+Terms; (b) your wrongful or improper use of the Coca Wallet; (c) any third party's access or use of your Coca Wallet Account, Codes, Recovery Phrase, NCW address information; or (d) your violation of 
+any law, rule, regulation, or the rights of any third party. 16. INDEMNIFICATION This paragraph 17 applies where the Coca Wallet has been acquired from the Apple App Store. You acknowledge and agree 
+that the Terms are solely between you and Coca, not Apple, Inc. ("Apple") and that Apple has no responsibility for the App or content thereof. Your use of the Coca Wallet must comply with the App 
+Store Terms of Service. You acknowledge that Apple has no obligation whatsoever to furnish any maintenance and support services with respect to the Coca Wallet. In the event of any failure of the 
+Coca Wallet to conform to any applicable warranty, you may notify Apple, and (where applicable) Apple will refund the purchase price for the Coca Wallet to you; to the maximum extent permitted by 
+applicable law. Apple will have no other warranty obligation whatsoever with respect to the Coca Wallet, and any other claims, losses, liabilities, damages, costs or expenses attributable to any 
+failure to conform to any warranty will be solely governed by the Terms and any law applicable to the NCW Group as provider of the Coca Wallet. You acknowledge that Apple is not responsible for 
+addressing any claims of you or any third party relating to the Coca Wallet or your possession and/or use of the Coca Wallet, including, but not limited to: (i) product liability claims; (ii) any 
+claim that the Coca Wallet fails to conform to any applicable legal or regulatory requirement; and (iii) claims arising under consumer protection or similar legislation; and all such claims are 
+governed solely by the Terms and any law applicable to the NCW Group as provider of the software. You acknowledge that, in the event of any third-party claim that the Coca Wallet or your possession 
+and use of that Coca Wallet infringes that third party's intellectual property rights, the NCW Group, not Apple, will be solely responsible for the investigation, defense, settlement and discharge of 
+any such intellectual property infringement claim to the extent required by the Terms. You represent and warrant that (i) you are not located in a country that is subject to U.S. Government embargo, 
+or that has been designated by the U.S. Government as a "terrorist supporting" country; and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties. You and Us 
+acknowledge and agree that Apple, and Apple's subsidiaries, are third-party beneficiaries of the Terms of Service as relates to your license of the Coca Wallet, and that, upon your acceptance of the 
+terms and conditions of the Terms of Service, Apple will have the right (and will be deemed to have accepted the right) to enforce the Terms of Service as relates to your license of the Coca Wallet 
+against you as a third-party beneficiary thereof. 17. APPLE APP STORE PROVISIONS Where you download the Coca Wallet from any other app store or distribution platform other than the Apple App Store, 
+including the Google Play Store (the "Distribution Platform") you agree that: (a) the Terms are between you and the NCW Group, and not with the provider of the Distribution Platform ("Store 
+Provider"); (b) your use of the Coca Wallet must comply with the Store Provider's then-current Distribution Platform Terms of Service; (c) the Store Provider is only a provider of the Distribution 
+Platform where you obtained the Coca Wallet; (d) Coca, and not the Store Provider, is solely responsible for the Coca Wallet; (e) the Store Provider has no obligation or liability to you with respect 
+to the Coca Wallet or the Terms; and (f) you acknowledge and agree that the Store Provider is a third-party beneficiary to the Terms as it relates to the Coca Walle 18. Downloading Our App from other 
+App Stores We do not provide any type of investment advice. We may provide information concerning types of currencies and digital payment tokens, prices, and events that may have influenced prices, 
+all of which should not be considered investment advice. If you require investment advice you should contact a financial advisor. You are solely responsible for how you use our services and the 
+financial results of your actions. 19. NO INVESTMENT ADVICE It is your sole responsibility to determine whether, and to what extent, any Taxes apply to your use of the Coca Wallet, and to withhold, 
+collect, report and remit the correct amounts of such Taxes to the appropriate tax authorities. We are not obligated to, nor will we determine whether Taxes apply, or calculate, collect, report, or 
+remit any Taxes to any tax authority arising from any transaction. 20. TAXES These Terms may from time to time be updated or amended, and we will post any such updates on the Site. Such updated Terms 
+as posted will take effect immediately unless otherwise indicated. You should regularly check the Site to inform yourself of any such changes. In addition, we may at any time change, add or remove 
+any feature or functionality of the Coca Wallet without prior notice. By continuing to use the Coca Wallet after any such changes have taken effect, you are indicating your acceptance of the updated 
+or amended Terms as well as your acceptance of the do not wish to be bound by any changes or amendments to these Terms then you should stop using the Coca Wallet and immediately and inform Coca via 
+email at support@coca.xyz 21. AMENDMENT AND VARIATION These Terms, and any rights and obligations and licences granted hereunder, are limited, revocable, non-exclusive and personal to you and 
+therefore may not be transferred, assigned or delegated by you to any third-party without our written consent, but may be transferred, assigned or delegated by us without notice and restriction, 
+including without limitation to any of the entities within the NCW Group, or to any successor in interest of any business associated with the NCW Group. Any attempted transfer or assignment in 
+violation hereof shall be null and void. 22. TRANSFER, ASSIGNMENT OR DELEGATION If any provision of these Terms shall be found by any court or administrative body of competent jurisdiction to be 
+invalid or unenforceable, the invalidity or unenforceability of such provision shall not affect the other provisions of these Terms and all provisions not affected by such invalidity or 
+unenforceability shall remain in full force and effect. Such provision will be changed and interpreted to accomplish the objectives of the provision to the greatest extent possible under any 
+Applicable Laws. 23. SEVERABILITY These Terms constitute the entire agreement between the parties with regard to its subject matter and supersedes and invalidates all other prior representations, 
+arrangements, understandings, and agreements relating to the same subject matter, whether oral or in writing, express or implied. Each party acknowledges that in agreeing to these Terms it does not 
+rely on any statement, representation, warranty, or understanding other than those expressly set out in these Terms. 24. ENTIRE AGREEMENT These Terms shall not be waived in whole or in part except 
+where agreed by all parties in writing. No failure or delay on the part of any party hereto in exercising any right, power or remedy hereunder shall operate as a waiver thereof, nor shall any single 
+or partial exercise of any such right, power or remedy preclude any other or further exercise thereof or the exercise of any other right, power or remedy. No right, power or remedy conferred upon or 
+reserved for any party in these Terms is exclusive of any other right, power or remedy available to that party and each such right, power or remedy shall be cumulative. 25. WAIVER By using the Coca 
+Wallet, you agree that Coca may provide you with any notices or other communications, including marketing, relating to your use of the Coca Wallet electronically: (a) via email (in each case to the 
+address that you provide), or (b) by posting to the Site. For notices made by email, the date of receipt will be deemed the date on which such notice is transmitted. You will always be given the 
+option to unsubscribe from receiving any marketing material from us. 26. NOTICES AND COMMUNICATIONS Other than any entities within the NCW Group, a person who is not a party to these Terms has no 
+right to enforce any of these Terms. 27. THIRD PARTY RIGHTS The law of England and Wales will apply to all disputes and the interpretation of these Terms. The English courts will have non-exclusive 
+jurisdiction over any dispute arising from or related to your use of the Coca Wallet. This does not affect your rights under the law of the country in which you are resident, including (where 
+applicable) your right to have a dispute in relation to your use of the Coca Wallet heard in the courts of that country. 28. GOVERNING LAW AND DISPUTE RESOLUTION &copy;2024 coca.xyz, All Rights 
+Reserved. COCA Wallet Join our 700K user community today Need Help? Join our Discord channel! Stay Updated Open COCA Blog Discover COCA Wallet's unmatched MPC security and non-custodial debit card. 
+Enjoy best crypto rates, fee-free swaps, easy NFT and dApp access, all with no KYC hassles. Product Cards Features Roadmap FAQ Home Telegram Facebook Instagram X.com Medium YouTube Discord Social 
+Docs Privacy Policy Cookie Policy Terms and Conditions Policy & Docs &copy; 2024 by ccalabs Home Cashback Contacts Docs Press News bottom of page

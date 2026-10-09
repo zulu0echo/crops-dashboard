@@ -1,0 +1,651 @@
+slug: curvy
+name: Curvy
+type: transfer
+website: https://curvy.box
+primary_chain:
+  name: Arbitrum One
+  chain_id: 42161
+  basis: >-
+    The contracts README (0xCurvy/contracts@e996fe71 README.md L35-L36) says the production aggregator chain is Arbitrum, and that Base, BSC, Ethereum, Gnosis, Linea, Optimism, Polygon, Tempo and Robinhood run portals only. Unit: the Arbitrum CurvyAggregatorAlphaV2 proxy 0xE519…cbB1, the CurvyVaultV2 proxy 0xcC8d…4f00, PortalFactory 0x4f32…1389 and the registered verifiers. Excluded: portal-only chains, Solana, the V1 contracts, and the testnet and staging deployments.
+
+repos:
+  - url: https://github.com/0xCurvy/contracts
+    role: contracts
+    license: Apache-2.0
+  - url: https://github.com/0xCurvy/sdk
+    role: sdk
+    license: MIT
+  - url: https://github.com/0xCurvy/rs-core
+    role: sdk
+    license: MIT
+  - url: https://github.com/0xCurvy/payments-sdk
+    role: sdk
+    license: none
+  - url: https://github.com/0xCurvy/docs
+    role: docs
+    license: none
+
+contracts:
+  - address: "0xE51924cEF003a654EC9735c4d97f5D4862cBcbB1"
+    chain_id: 42161
+    role: CurvyAggregatorAlphaV2 proxy (UUPS)
+    verified: none
+  - address: "0x855de6C7A698ea870fc53DE755D612Ed977d3F0A"
+    chain_id: 42161
+    role: CurvyAggregatorAlphaV2 implementation
+    verified: sourcify
+  - address: "0xcC8d5c60A8fb15Aa3793647eF531f1bA7dF24f00"
+    chain_id: 42161
+    role: CurvyVaultV2 proxy (UUPS, holds funds)
+    verified: none
+  - address: "0xBf38e322f4009aeEF390669DfDD05a43c7eaeEb0"
+    chain_id: 42161
+    role: CurvyVaultV2 implementation
+    verified: sourcify
+  - address: "0x4f32082C5647F8fE0f0Fb567b98F2a5516361389"
+    chain_id: 42161
+    role: PortalFactory (deploys per-recipient portals)
+    verified: sourcify
+  - address: "0xEFf85079AfF7c3AEe250066eC4AD51ce163dD044"
+    chain_id: 42161
+    role: Withdrawal verifier (maxInputs 2)
+    verified: none
+  - address: "0xDB3bf26Bdc9d204029722eFaB9c9B4a69e7ab804"
+    chain_id: 42161
+    role: Aggregation verifier (2 in, 3 out)
+    verified: none
+  - address: "0xFEedE9784EB9DB6358d3D9952Fb832Ebe3677A73"
+    chain_id: 42161
+    role: Pending-notes commitment verifier (batch 5)
+    verified: none
+  - address: "0xB2c10d9e523B6d7792F1825f4Bb2552860f64b9F"
+    chain_id: 42161
+    role: Safe 4-of-6 (owner and AUTHORITY_ROLE)
+    verified: none
+
+components:
+  - name: CurvyAggregatorAlphaV2 and CurvyVaultV2 (UUPS proxies)
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: Safe 4-of-6 0xB2c1…4b9F (AUTHORITY_ROLE, no timelock)
+    required: true
+    repo: https://github.com/0xCurvy/contracts
+  - name: PortalFactory and per-recipient Portal clones
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: OPERATOR_ROLE 0xE679…06d2 (EIP-7702 EOA); AUTHORITY Safe
+    required: true
+    repo: https://github.com/0xCurvy/contracts
+  - name: Groth16 verifiers (snarkjs-generated)
+    role: contracts
+    public: true
+    license: GPL-3.0
+    operator: replaceable by AUTHORITY_ROLE
+    required: true
+    repo: https://github.com/0xCurvy/contracts
+  - name: Portal Broadcaster (operator that deploys shield portals)
+    role: relayer
+    public: false
+    license: proprietary
+    operator: Curvy
+    required: true
+  - name: Curvy API (network registry, auth, notes sync, relay, portal records)
+    role: api
+    public: false
+    license: proprietary
+    operator: Curvy (api.curvy.box)
+    required: true
+  - name: Global Ledger address risk scoring
+    role: oracle
+    public: false
+    license: proprietary
+    operator: Global Ledger via Curvy Portal Broadcaster
+    required: true
+  - name: Circuit keys host (protocol s3:// paths, circuitKeysBaseUrl)
+    role: other
+    public: false
+    license: proprietary
+    operator: Curvy
+    required: true
+  - name: Curvy SDK (@0xcurvy/curvy-sdk)
+    role: sdk
+    public: true
+    license: MIT
+    operator: user
+    required: true
+    repo: https://github.com/0xCurvy/sdk
+  - name: rs-core (Rust/WASM prover and cryptography)
+    role: sdk
+    public: true
+    license: MIT
+    operator: user
+    required: true
+    repo: https://github.com/0xCurvy/rs-core
+  - name: Arbitrum One and a JSON-RPC endpoint
+    role: ledger
+    public: true
+    license: BUSL-1.1
+    operator: Offchain Labs sequencer; RPC configurable
+    required: true
+    repo: https://github.com/OffchainLabs/nitro
+  - name: Curvy web app (app.curvy.box)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Curvy
+    required: false
+  - name: LI.FI bridging for portal-only chains
+    role: other
+    public: false
+    license: proprietary
+    operator: LI.FI
+    required: false
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/src/v2/portal/PortalFactory.sol#L160-L185
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: evm/src/v2/portal/PortalFactory.sol
+        detail: deployShieldPortal is onlyRole(OPERATOR_ROLE), and it is the only route by which a payee's portal funds enter the pool. The aggregator's portalShield accepts only a portal authorised during that call.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/contracts/contents/evm/src/v2/portal/PortalFactory.sol?ref=e996fe719580f4d82ff34f06ee8a0916df65a613" --jq .content | base64 -d | sed -n 160,185p
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/42161/0x4f32082C5647F8fE0f0Fb567b98F2a5516361389
+        address: "0x4f32082C5647F8fE0f0Fb567b98F2a5516361389"
+        block_number: 513140605
+        detail: hasRole(OPERATOR_ROLE, 0xE679…06d2) on PortalFactory returns true at block 513140605. That address is an EIP-7702-delegated EOA (code 0xef0100…). The Safe granted the role and revoked its own OPERATOR_ROLE in the same block, 0x1dadba35.
+        checked_at: "2026-10-09"
+        check:
+          call: "0x91d1485497667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b929000000000000000000000000e6793916368eebf5c686d07480480c3b738a06d2"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xE51924cEF003a654EC9735c4d97f5D4862cBcbB1
+        address: "0xE51924cEF003a654EC9735c4d97f5D4862cBcbB1"
+        block_number: 513140605
+        detail: directShieldEnabled() returns false, so deposits that bypass portals are switched off. AUTHORITY_ROLE, which can toggle that switch, swap verifiers, rewire the vault and upgrade, is held by Safe 0xB2c1…4b9F (4-of-6, no timelock).
+        checked_at: "2026-10-09"
+        recheck: cast call 0xE51924cEF003a654EC9735c4d97f5D4862cBcbB1 "directShieldEnabled()(bool)" --rpc-url https://arb1.arbitrum.io/rpc
+        check:
+          call: "0x33df2d6a"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      Shielding a payment into the pool needs the operator. That role is held by a single EIP-7702-delegated EOA, and per the docs it acts only after Global Ledger screening, so it can refuse individual portals without notice. Direct shielding is disabled. AUTHORITY_ROLE (Safe 4-of-6, no timelock) can switch it on or off, replace verifiers and rewire or upgrade the vault and aggregator. Withdrawals and portal recovery have no pause. Scored 0: an EOA-held role that can target individual payees.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol#L518-L557
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol
+        detail: submitWithdrawalRequest is permissionless. It checks a known notes root and a Groth16 proof, then pays the destination encoded in the proof. commitPendingNotes (L274) is permissionless too.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/contracts/contents/evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol?ref=e996fe719580f4d82ff34f06ee8a0916df65a613" --jq .content | base64 -d | sed -n 518,557p
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/src/v2/portal/PortalFactory.sol#L267-L286
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: evm/src/v2/portal/PortalFactory.sol
+        detail: Anyone can call deployRecoveryEntryPortal. Portal.recover then sends a portal's whole balance to any address, provided tx.origin is the portal's recovery address (Portal.sol L21-L24, L139).
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/42161/0x855de6C7A698ea870fc53DE755D612Ed977d3F0A
+        address: "0xE51924cEF003a654EC9735c4d97f5D4862cBcbB1"
+        block_number: 513140605
+        detail: The aggregator proxy's EIP-1967 implementation slot points to 0x855d…3F0A. Its Sourcify source matches contracts@e996fe71 (develop) apart from a trailing newline; it does not match main.
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x000000000000000000000000855de6c7a698ea870fc53de755d612ed977d3f0a"
+    finding: >-
+      A payer completes a payment with a plain transfer to the payee's portal address. Moving those funds into the shielded pool needs Curvy's operator (C1), because direct shielding is disabled. The payee can withdraw from the pool, or recover funds stuck at a portal, by calling the contracts directly. Withdrawing also needs notes-tree data and circuit keys that Curvy hosts (C3). Scored 1: settlement into the private pool depends on the provider, while recovery and withdrawal are direct.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/sdk/blob/75ce11eda3ea9521f6ed81f0019787eee0a9080c/src/config/createCurvyConfig.ts#L32-L57
+        commit: 75ce11eda3ea9521f6ed81f0019787eee0a9080c
+        path: src/config/createCurvyConfig.ts
+        detail: The SDK takes apiBaseUrl, indexerBaseUrl, relayerBaseUrl and circuitKeysBaseUrl (configurable), and submissionMode defaults to "relay". At L112-L114 it loads the network registry and protocol parameters from the API before any action can run.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/sdk/contents/src/config/createCurvyConfig.ts?ref=75ce11eda3ea9521f6ed81f0019787eee0a9080c" --jq .content | base64 -d | sed -n 32,57p
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/sdk/blob/75ce11eda3ea9521f6ed81f0019787eee0a9080c/src/http/index.ts#L47-L50
+        commit: 75ce11eda3ea9521f6ed81f0019787eee0a9080c
+        path: src/http/index.ts
+        detail: The default API base is https://api.curvy.box. No repository in github.com/0xCurvy contains the API, the indexer, the relayer or the Portal Broadcaster.
+        checked_at: "2026-10-09"
+    finding: >-
+      Several closed services that only Curvy runs are required. Shielding needs the Portal Broadcaster operator. The SDK needs the API for the network registry and protocol parameters, auth and notes sync. Proofs need circuit keys from Curvy's host. The SDK lets an integrator point these URLs elsewhere and submit planner transactions from its own wallet. But no self-host code is published, and the operator role is onchain and cannot be replaced by config. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/docs/blob/73d17acd6a35d0aa4ba4c15f3717fcef3895d5df/docs/for-the-curious/compliance-model.md#L16-L20
+        commit: 73d17acd6a35d0aa4ba4c15f3717fcef3895d5df
+        path: docs/for-the-curious/compliance-model.md
+        detail: The docs repo says Global Ledger scores each address, and the Curvy-operated Portal Broadcaster uses that score to decide whether a portal is deployed and its funds shielded.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/docs/contents/docs/for-the-curious/compliance-model.md?ref=73d17acd6a35d0aa4ba4c15f3717fcef3895d5df" --jq .content | base64 -d | sed -n 16,20p
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol#L253-L267
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol
+        detail: The contracts hold no address list, but the only open entry, portalShield, requires an operator-deployed portal. directShield reverts while directShieldEnabled is false.
+        checked_at: "2026-10-09"
+    finding: >-
+      Edge screening (Global Ledger, run by the Curvy-operated broadcaster) is disclosed in a versioned docs repo, and the contracts contain no address or country list. The screening cannot be bypassed: entry to the pool is operator-gated onchain, and the direct entry is disabled. A screened-out payee can only recover funds publicly through the portal recovery path. The list source is named, but the scoring rules live in a closed backend. Judgment call: the settlement layer is not neutral, because entry depends on a screened operator, so we score 1 rather than 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xcC8d5c60A8fb15Aa3793647eF531f1bA7dF24f00
+        address: "0xcC8d5c60A8fb15Aa3793647eF531f1bA7dF24f00"
+        block_number: 513140605
+        detail: The vault registry lists 6 tokens. getTokenAddress(1..6) returns native ETH, USDC 0xaf88…5831, USD₮0 0xFd08…Cbb9, SOL 0x2bcC…0c07, WETH 0x82aF…Bab1 and WBTC 0x2f2a…5B0f. The vault held 14,013 USDC and 2.87 ETH at this block.
+        checked_at: "2026-10-09"
+        recheck: for i in 1 2 3 4 5 6; do cast call 0xcC8d5c60A8fb15Aa3793647eF531f1bA7dF24f00 "getTokenAddress(uint256)(address)" $i --rpc-url https://arb1.arbitrum.io/rpc; done
+        check:
+          call: "0x67ccdf380000000000000000000000000000000000000000000000000000000000000002"
+          expect: "0x000000000000000000000000af88d065e77c8cc2239327c5edb3a432268e5831"
+    finding: >-
+      Supported tokens are enumerated onchain in the vault registry, and the SDK reads them from the API. A search of the docs repo finds no statement that USDC or USD₮0 can freeze the vault address, and nothing on Arbitrum sequencer or forced-inclusion assumptions. Scored 2: enumerated in code, assumptions not stated.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/42161/0xBf38e322f4009aeEF390669DfDD05a43c7eaeEb0
+        address: "0xBf38e322f4009aeEF390669DfDD05a43c7eaeEb0"
+        block_number: 513140605
+        detail: Sourcify results on Arbitrum. Vault implementation 0xBf38…eEb0 and PortalFactory 0x4f32…1389 are exact_match. Aggregator implementation 0x855d…3F0A is a partial match. The two ERC1967 proxies and the three registered verifiers (0xEFf8…d044, 0xDB3b…b804, 0xFEed…7A73) have no Sourcify record.
+        checked_at: "2026-10-09"
+        recheck: for a in 0xBf38e322f4009aeEF390669DfDD05a43c7eaeEb0 0x855de6C7A698ea870fc53DE755D612Ed977d3F0A 0x4f32082C5647F8fE0f0Fb567b98F2a5516361389 0xEFf85079AfF7c3AEe250066eC4AD51ce163dD044; do curl -s https://sourcify.dev/server/v2/contract/42161/$a | jq -r .match; done
+    finding: >-
+      The vault, factory and aggregator logic is verified on Sourcify (two exact matches and one partial). The verifiers every proof goes through, and the proxies, are not on Sourcify. Arbiscan and Arbitrum Blockscout served a bot challenge, which we did not bypass, so explorer verification was not checked. The verified source matches the develop branch, not main, and deployed_addresses.json lists older implementations. Scored 1: some contracts verified.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/sdk/blob/75ce11eda3ea9521f6ed81f0019787eee0a9080c/README.md#L1-L5
+        commit: 75ce11eda3ea9521f6ed81f0019787eee0a9080c
+        path: README.md
+        detail: The SDK is public (MIT) and marked closed beta. The contracts, rs-core prover and docs are public. The org has no repository for the API, the indexer, the relayer, the Portal Broadcaster or the web app.
+        checked_at: "2026-10-09"
+    finding: >-
+      Public: contracts, SDK, Rust prover, payments SDK and docs. Not public: the API, indexer, relayer and Portal Broadcaster, all required, and the app.curvy.box frontend. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/README.md#L1-L40
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: evm/README.md
+        detail: The evm README documents the Hardhat 3 and Ignition deploy and upgrade layout (ignition/, scripts/deploy-v2.ts) for the contracts only.
+        checked_at: "2026-10-09"
+    finding: >-
+      Contract deployment is documented. The backend services needed to operate the rail are not published. Reproduction not attempted. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/src/v2/aggregator-alpha/ICurvyAggregatorAlpha.sol#L55-L64
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: evm/src/v2/aggregator-alpha/ICurvyAggregatorAlpha.sol
+        detail: Event definitions (PendingNotes, CommittedNotes, CommittedNullifiers) are in the repo, and the README says ABIs are extracted into the SDK.
+        checked_at: "2026-10-09"
+    finding: >-
+      ABIs and events are in the repo, and the SDK carries a typed client for the API. No API schema (OpenAPI or equivalent) is published, and there is no payee export. Judgment call: the required API has no schema in the repo, so we take the lower anchor, 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/LICENSE
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: LICENSE
+        detail: The contracts are Apache-2.0 at the repo root, with per-file SPDX headers (verifiers GPL-3.0, ICurvyVerifiers.sol BUSL-1.1). The SDK and rs-core are MIT.
+        checked_at: "2026-10-09"
+    finding: >-
+      The public repositories carry OSI licences. The exception is ICurvyVerifiers.sol, an interface file under BUSL-1.1. The API, the Portal Broadcaster and the circuit-key host are required and closed. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/README.md#L63-L80
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: README.md
+        detail: The README's licensing section lists the licence per file. The root tree (LICENSE, LICENSES, NOTICE, THIRD-PARTY-NOTICES.md, audit, evm, solana) has no CLA or CONTRIBUTING file.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/contracts/git/trees/e996fe719580f4d82ff34f06ee8a0916df65a613" --jq '.tree[].path'
+    finding: >-
+      No CLA and no licence-stability commitment. The licence files were added in commit 13d578d0 (2026-09-25); we did not check whether the code carried other terms before that. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/sdk/blob/75ce11eda3ea9521f6ed81f0019787eee0a9080c/src/config/createCurvyConfig.ts#L112-L126
+        commit: 75ce11eda3ea9521f6ed81f0019787eee0a9080c
+        path: src/config/createCurvyConfig.ts
+        detail: SDK start-up needs GetNetworks and GetProtocol from the Curvy API, and shielding needs the onchain operator.
+        checked_at: "2026-10-09"
+    finding: >-
+      Deposits cannot be shielded without the closed Portal Broadcaster holding OPERATOR_ROLE, and the SDK cannot start without the closed API. The core cannot run on public components alone. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/sdk/blob/75ce11eda3ea9521f6ed81f0019787eee0a9080c/package.json#L268-L287
+        commit: 75ce11eda3ea9521f6ed81f0019787eee0a9080c
+        path: package.json
+        detail: The SDK's runtime dependencies include no analytics, telemetry or error-reporting package. A grep of src/ for posthog, sentry, mixpanel, amplitude, gtag and datadog finds nothing.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: document
+        url: https://curvy.box/privacy-policy
+        detail: The privacy policy says the website and web application collect basic analytics data and use anonymous analytics tools.
+        checked_at: "2026-10-09"
+        quote: Anonymous analytics tools
+    finding: >-
+      The public SDK ships no analytics. The web app is closed, and the policy discloses basic analytics on the site and app. Scored 1: present and disclosed in policy, and the app code cannot be inspected.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://curvy.box/privacy-policy
+        detail: The policy lists portal configuration metadata, compliance status flags, aggregator execution metadata and risk scoring by third-party analytics providers.
+        checked_at: "2026-10-09"
+        quote: Transactions routed through certain Curvy Portals may be screened using third-party blockchain analytics providers
+    finding: >-
+      Beyond settlement data, the flow involves a Curvy ID handle registered through the API, an auth signature, compliance flags from Global Ledger, and portal metadata held by Curvy. The canonical app does no KYC. This is disclosed in policy only. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol#L218-L251
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol
+        detail: When shielding, PendingNotes emits the note id, token and net amount in plaintext (isPlaintext true). The note's ownerHash is passed in calldata. Withdrawals reveal amount, token and destination.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/contracts/contents/evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol?ref=e996fe719580f4d82ff34f06ee8a0916df65a613" --jq .content | base64 -d | sed -n 218,251p
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/docs/blob/73d17acd6a35d0aa4ba4c15f3717fcef3895d5df/docs/for-programmers/portals-and-recovery.md#L8-L28
+        commit: 73d17acd6a35d0aa4ba4c15f3717fcef3895d5df
+        path: docs/for-programmers/portals-and-recovery.md
+        detail: Each receipt goes to a fresh, deterministic per-recipient portal address that the backend derives. The portal record feed is public and anonymous.
+        checked_at: "2026-10-09"
+    finding: >-
+      Payers send to fresh portal addresses, so no stable payee address appears onchain. Transfers inside the pool emit encrypted note fields. Entry amounts are plaintext in PendingNotes. The ownerHash sits in shield calldata, and we did not verify from code whether it changes for each note. Exits reveal amount and destination. Amount and timing matching are behavioural and not scored. Judgment call: stealth-style receipt fits anchor 3, but the plaintext entry data and the unverified ownerHash freshness hold it at 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/docs/blob/73d17acd6a35d0aa4ba4c15f3717fcef3895d5df/docs/for-the-curious/compliance-model.md#L16-L20
+        commit: 73d17acd6a35d0aa4ba4c15f3717fcef3895d5df
+        path: docs/for-the-curious/compliance-model.md
+        detail: Global Ledger scores each portal's address before shielding. LI.FI is a dependency of the SDK for bridging.
+        checked_at: "2026-10-09"
+    finding: >-
+      Curvy's API and broadcaster see every payment, and Global Ledger scores each depositing address. Both are named in a docs repo, but the screening vendor sits in the closed broadcaster and cannot be swapped. LI.FI joins bridged routes. Scored 1: third parties are disclosed in docs and not swappable.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/sdk/blob/75ce11eda3ea9521f6ed81f0019787eee0a9080c/src/config/createCurvyConfig.ts#L32-L57
+        commit: 75ce11eda3ea9521f6ed81f0019787eee0a9080c
+        path: src/config/createCurvyConfig.ts
+        detail: The API, metadata, indexer (also per chain id), relayer and circuit-key URLs are all parameters of createCurvyConfig.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/sdk/contents/src/config/createCurvyConfig.ts?ref=75ce11eda3ea9521f6ed81f0019787eee0a9080c" --jq .content | base64 -d | sed -n 32,57p
+    finding: >-
+      Endpoints, including the indexer, can be configured in code. The indexer code is not public, so the 3 anchor's public-indexer condition fails. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/src/v2/vault/CurvyVaultV2.sol#L131-L240
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: evm/src/v2/vault/CurvyVaultV2.sol
+        detail: The vault is UUPS, and _authorizeUpgrade requires AUTHORITY_ROLE (L131). setCurvyAggregatorAddress (L237-L240) lets AUTHORITY name the contract allowed to call withdraw.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/contracts/contents/evm/src/v2/vault/CurvyVaultV2.sol?ref=e996fe719580f4d82ff34f06ee8a0916df65a613" --jq .content | base64 -d | sed -n 237,240p
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xcC8d5c60A8fb15Aa3793647eF531f1bA7dF24f00
+        address: "0xcC8d5c60A8fb15Aa3793647eF531f1bA7dF24f00"
+        block_number: 513140605
+        detail: The vault proxy's implementation slot is 0xBf38…eEb0, upgraded at block 0x1dadba35. hasRole(AUTHORITY_ROLE, Safe 0xB2c1…4b9F) is true.
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x000000000000000000000000bf38e322f4009aeef390669dfdd05a43c7eaeeb0"
+    finding: >-
+      Funds in transit sit in an upgradeable vault. Its authority (Safe 4-of-6, no timelock) can upgrade it or rewire which aggregator may withdraw, either of which could redirect funds. Before shielding, funds wait at the payee's portal, recoverable only by the portal's recovery key. Upgradeability is visible in the public source and README. Judgment call: anchor 1 (upgradeable escrow, disclosed) rather than 0. The same power could redirect funds, but it is disclosed in code, not hidden.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xB2c10d9e523B6d7792F1825f4Bb2552860f64b9F
+        address: "0xB2c10d9e523B6d7792F1825f4Bb2552860f64b9F"
+        block_number: 513140605
+        detail: Safe 1.4.1, getThreshold() 4 with 6 owners. getModulesPaginated returns none, and the guard slot is zero. It holds AUTHORITY_ROLE on the vault and aggregator and owns the PortalFactory. The Upgraded events at block 0x1dadba35 came straight from this Safe, with no timelock in between.
+        checked_at: "2026-10-09"
+        recheck: cast call 0xB2c10d9e523B6d7792F1825f4Bb2552860f64b9F "getThreshold()(uint256)" --rpc-url https://arb1.arbitrum.io/rpc
+        check:
+          call: "0xe75235b8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000004"
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/address/0xB2c10d9e523B6d7792F1825f4Bb2552860f64b9F
+        address: "0xB2c10d9e523B6d7792F1825f4Bb2552860f64b9F"
+        block_number: 513140605
+        detail: The Safe guard slot is zero.
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      A 4-of-6 Safe with no modules or guard can upgrade the vault and aggregator directly, with no timelock. We found no disclosure of the signers. Scored 1: multisig admin, no timelock.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/sdk/blob/75ce11eda3ea9521f6ed81f0019787eee0a9080c/src/actions/aggregator/directShield.ts#L140-L157
+        commit: 75ce11eda3ea9521f6ed81f0019787eee0a9080c
+        path: src/actions/aggregator/directShield.ts
+        detail: The only approval call in the SDK sets the vault's allowance to exactly the deposit amount, after resetting any non-zero allowance first. The default receive flow is a plain transfer to a portal, with no approval.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xCurvy/sdk/contents/src/actions/aggregator/directShield.ts?ref=75ce11eda3ea9521f6ed81f0019787eee0a9080c" --jq .content | base64 -d | sed -n 140,157p
+    finding: >-
+      Payers fund a portal by plain transfer. The optional direct-shield path, currently disabled onchain, approves exactly the amount. That fits anchor 3 in substance, but we have no package or trace evidence for the published build, and npm latest (0.0.7) lags the pinned source (0.0.8-rc.2). Judgment call: scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/docs/blob/73d17acd6a35d0aa4ba4c15f3717fcef3895d5df/docs/for-programmers/portals-and-recovery.md#L55-L76
+        commit: 73d17acd6a35d0aa4ba4c15f3717fcef3895d5df
+        path: docs/for-programmers/portals-and-recovery.md
+        detail: The docs give the recovery path for funds stuck at a portal, an onchain call signed by the recipient's recovery key.
+        checked_at: "2026-10-09"
+    finding: >-
+      Derived from S1=1, C2=1, C3=0 and O3=1. Funds still at a portal can be recovered by a documented manual contract call. Funds already shielded need a proof built from notes-tree data and circuit keys that Curvy hosts, and they sit in a vault the Safe can upgrade. Settlement into the pool stops without the operator. Scored 1: retrievable only through a documented manual call, and for shielded funds only while the keys remain available.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/audit/Curvy%202026%20Audit%20Report%20Final.pdf
+        commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+        path: audit/Curvy 2026 Audit Report Final.pdf
+        detail: The Ethernal audit (23 March to 15 April 2026) pins commit 5f6e43cf, which exists in the repo. It covers CurvyAggregatorAlphaV6, CurvyVaultV6, PortalFactory, Portal and SolanaPortal, and lists fix commits.
+        checked_at: "2026-10-09"
+    finding: >-
+      An audit pinned to 5f6e43cf exists, with findings marked fixed. The README says the audited contracts are the V1 stack. The deployed contracts are the greenfield V2 rewrite (develop @e996fe71), which the report does not cover. We found no bug bounty. Scored 1: an audit of a previous version.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: global
+  note: >-
+    The deployed Arbitrum contracts have no country check, and the public SDK has no country or geolocation gate (a grep of src/ finds none). We found no first-party terms page that lists countries; curvy.box has a privacy policy but no terms. Address screening by Global Ledger can refuse individual portals; that filters addresses, not countries. Judgment call: the closed app.curvy.box and api.curvy.box could geoblock by IP, and we could not inspect them.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol#L518-L557
+      commit: e996fe719580f4d82ff34f06ee8a0916df65a613
+      path: evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol
+      detail: Withdrawal checks only the root, the proof and the nullifiers. No contract has a caller-country or geolocation check.
+      checked_at: "2026-10-09"
+    - tier: verified
+      kind: repo
+      url: https://github.com/0xCurvy/sdk/blob/75ce11eda3ea9521f6ed81f0019787eee0a9080c/src/http/index.ts#L47-L50
+      commit: 75ce11eda3ea9521f6ed81f0019787eee0a9080c
+      path: src/http/index.ts
+      detail: The SDK HTTP client sends requests to the configured API base. A grep of src/ for country, geolocation and jurisdiction finds no country gate.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"
+
+notes: >-
+  Unit: the Arbitrum aggregator, vault, portal factory and verifiers. Reads at Arbitrum block 513140605 (role history from eth_getLogs in 10M-block windows from block 488600000). The deployed implementations match the develop branch (e996fe71) and not main (0afe6c80); deployed_addresses.json in both branches lists earlier implementations, 0xE884…C193 and 0x8c0D…3cAF. Live use: getCurrentNoteIndex 3159 and 1369 nullifier batches. Portal-only chains, Solana and V1 are out of scope. The SDK is in closed beta. The audit PDF was read by stream extraction. No transactions, UI runs, traces or self-host attempts were made.

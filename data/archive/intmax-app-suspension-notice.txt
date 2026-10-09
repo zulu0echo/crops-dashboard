@@ -1,0 +1,3 @@
+Source: https://app.intmax.io (fetched with curl, 2026-10-09; visible text of the server-rendered page)
+
+INTMAX Web App Mining Bridge Transfer History Exit Referral Program Exit Explorer INTMAX Website Docs Support Privacy Policy Terms of Use Mainnet Mining Bridge Transfer History Exit Connect Wallet Please use the Exit page to withdraw your assets. Deposits and withdrawals are temporarily suspended due to a technical issue identified in the ZKP protocol. Service Temporarily Unavailable The INTMAX app is temporarily unavailable due to a technical issue identified in the ZKP protocol. Your existing assets remain safe. To withdraw your assets, please use the Exit page. Go to Exit Page

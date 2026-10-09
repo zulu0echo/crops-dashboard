@@ -12,7 +12,7 @@ const OUT = 'dist';
 rmSync(OUT, { recursive: true, force: true });
 const today = process.env.BUILD_DATE ?? new Date().toISOString().slice(0, 10);
 const config = JSON.parse(readFileSync('site/config.json', 'utf8'));
-const { criteria, providers, regions } = loadData('data');
+const { criteria, providers, regions, operational, opsCriteria } = loadData('data');
 const countryName = (() => { const dn = new Intl.DisplayNames(['en'], { type: 'region', fallback: 'code' }); return (cc) => (cc === 'XK' ? 'Kosovo' : dn.of(cc)); })();
 // Non-EVM explorers keyed by CAIP-2 namespace.
 const EXPLORER_NS = { solana: 'https://solscan.io/account' };
@@ -37,8 +37,9 @@ const autoChecked = allEvidence.filter((e) => e.check || (e.kind === 'repo' && /
 const allDates = providers.flatMap((p) => Object.values(p.scores).flatMap((c) => (c.evidence ?? []).map((e) => e.checked_at))).sort();
 const byId = Object.fromEntries(criteria.criteria.map((c) => [c.id, c]));
 const short = (a) => `${a.slice(0, 6)}…${a.slice(-4)}`;
+const STATE = { evidenced: 'Evidenced', attested: 'Attested', unknown: 'Unknown', absent: 'Absent', not_applicable: 'Not applicable', not_observable: 'Not observable', not_verifiable: 'Not verifiable' };
 
-const NAV = [['index.html', 'Ratings'], ['compare/index.html', 'Compare'], ['countries/index.html', 'Countries'], ['methodology/index.html', 'Methodology'], ['criteria/index.html', 'Criteria'], ['contribute/index.html', 'Contribute']];
+const NAV = [['index.html', 'Ratings'], ['compare/index.html', 'Compare'], ['countries/index.html', 'Countries'], ['operational/index.html', 'Operational'], ['methodology/index.html', 'Methodology'], ['criteria/index.html', 'Criteria'], ['contribute/index.html', 'Contribute']];
 
 function page(path, title, body, { section = path } = {}) {
   const up = '../'.repeat(path.split('/').length - 1);
@@ -56,7 +57,7 @@ ${config.seed_pending_review && pending ? `<div class="notice" role="note"><div 
 <main id="main" class="wrap">${body}</main>
 <footer class="foot"><div class="wrap">
 <div><h2>About</h2><p>An open, evidence-only assessment of payment rails against Censorship Resistance, Open Source and Free, Privacy, and Security. Every rating links to an artifact anyone can re-check.</p></div>
-<div><h2>Data</h2><ul><li><a href="${up}data.json">Full dataset (JSON)</a></li><li><a href="${up}grid.csv">Ratings grid (CSV)</a></li><li><a href="${repo}">Source repository</a></li></ul></div>
+<div><h2>Data</h2><ul><li><a href="${up}data.json">Full dataset (JSON)</a></li><li><a href="${up}grid.csv">Ratings grid (CSV)</a></li><li><a href="${up}operational.csv">Operational facts (CSV)</a></li><li><a href="${repo}">Source repository</a></li></ul></div>
 <div><h2>This site</h2><ul><li>Dataset version ${esc(version)}</li><li>Built ${esc(today)}</li><li>MIT licensed</li><li>No analytics, cookies, or third-party requests</li></ul></div>
 </div></footer>
 </body></html>
@@ -190,11 +191,12 @@ const MODEL = { global: 'Offered everywhere, per the provider\'s code or documen
 const expand = (codes) => codes.flatMap((c) => regions.regions[c] ? [] : [c]);
 const regionsUsed = (codes) => codes.filter((c) => regions.regions[c]);
 
-function countryTable(list, up) {
+const cashoutIn = (op, cc) => { const co = op?.cashout; if (!co) return '<span class="state st-unknown">Unknown</span>'; if (co.status !== 'evidenced') return `<span class="state st-${esc(co.status)}">${esc(STATE[co.status])}</span>`; const hits = co.value.filter((x) => x.countries.some((c) => c === 'ALL' || c === cc || (regions.regions[c] ?? []).includes(cc))); return hits.length ? hits.map((x) => `${esc(x.method.replace('_', ' '))}${x.partner ? ` (${esc(x.partner)})` : ''}${x.fee ? `, ${esc(x.fee)}` : ''}`).join('; ') : '<span class="muted">none listed for this country</span>'; };
+function countryTable(list, up, cc) {
   if (!list.length) return '<p class="muted">None.</p>';
   return `<div class="table-scroll" tabindex="0" role="region" aria-label="Rails"><table class="overview">
-<thead><tr><th scope="col" class="rowhead">Provider</th><th scope="col" class="avail">Availability source</th><th scope="col">Type</th>${criteria.pillars.map((pl) => `<th scope="col">${esc(pl.name)}</th>`).join('')}</tr></thead><tbody>
-${list.map((p) => `<tr data-type="${esc(p.type)}">${provHead(p, up)}<td class="small avail">${p.availability ? `${esc(MODEL[p.availability.model])}${p.availability.note ? `<br><span class="muted">${esc(p.availability.note)}</span>` : ''}<br><a href="${up}provider/${esc(p.slug)}/index.html#availability">Evidence</a>` : '<span class="muted">No first-party statement found</span>'}</td><td>${typeChip(p.type)}</td>${criteria.pillars.map((pl) => { const r = pillarOf(p, pl); return `<td><a class="cell-link" href="${up}provider/${esc(p.slug)}/index.html#pillar-${pl.id}">${rating(r.score, r.unknown, 'sm')}</a></td>`; }).join('')}</tr>`).join('\n')}
+<thead><tr><th scope="col" class="rowhead">Provider</th><th scope="col" class="avail">Availability source</th><th scope="col">Cash-out here</th><th scope="col">Type</th>${criteria.pillars.map((pl) => `<th scope="col">${esc(pl.name)}</th>`).join('')}</tr></thead><tbody>
+${list.map((p) => `<tr data-type="${esc(p.type)}">${provHead(p, up)}<td class="small avail">${p.availability ? `${esc(MODEL[p.availability.model])}${p.availability.note ? `<br><span class="muted">${esc(p.availability.note)}</span>` : ''}<br><a href="${up}provider/${esc(p.slug)}/index.html#availability">Evidence</a>` : '<span class="muted">No first-party statement found</span>'}</td><td class="small">${cashoutIn(operational[p.slug], cc)}</td><td>${typeChip(p.type)}</td>${criteria.pillars.map((pl) => { const r = pillarOf(p, pl); return `<td><a class="cell-link" href="${up}provider/${esc(p.slug)}/index.html#pillar-${pl.id}">${rating(r.score, r.unknown, 'sm')}</a></td>`; }).join('')}</tr>`).join('\n')}
 </tbody></table></div>`;
 }
 
@@ -206,9 +208,9 @@ for (const cc of COUNTRIES) {
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Countries</a> <span aria-hidden="true">/</span> ${esc(countryName(cc))}</nav>
 <header class="phead"><p class="eyebrow">Availability · ${esc(cc)}</p><h1>${esc(countryName(cc))}</h1>
 <p class="lede">Which of the ${providers.length} assessed rails say they are offered here, according to each provider's own terms, documents or code. Availability is recorded as evidence and never scored; a rail being offered says nothing about its ratings.</p></header>
-<h2>Offered here <span class="count">${yes.length}</span></h2>${countryTable(yes, '../../')}
-<h2>Not offered here <span class="count">${no.length}</span></h2>${countryTable(no, '../../')}
-<h2>No evidence either way <span class="count">${unk.length}</span></h2><p class="muted small">The provider publishes no country list we could cite, or restricts by criteria other than country (for example sanctions screening of individuals).</p>${countryTable(unk, '../../')}
+<h2>Offered here <span class="count">${yes.length}</span></h2>${countryTable(yes, '../../', cc)}
+<h2>Not offered here <span class="count">${no.length}</span></h2>${countryTable(no, '../../', cc)}
+<h2>No evidence either way <span class="count">${unk.length}</span></h2><p class="muted small">The provider publishes no country list we could cite, or restricts by criteria other than country (for example sanctions screening of individuals).</p>${countryTable(unk, '../../', cc)}
 <p class="callout">Country lists change without notice and sub-national limits (states, provinces) are recorded in the note, not in the list. Check the provider's current terms before relying on this.</p>`, { section: 'countries' });
 }
 
@@ -220,6 +222,74 @@ page('countries/index.html', 'Countries', `
 <p class="small muted">${providers.filter((p) => p.availability).length} of ${providers.length} rails have a first-party country statement on file.</p>
 <nav class="pillar-nav" aria-label="Jump to letter">${Object.keys(byLetter).sort().map((l) => `<a href="#l-${l}">${l}</a>`).join('')}</nav>
 ${Object.keys(byLetter).sort().map((l) => `<section id="l-${l}"><h2>${l}</h2><ul class="clist countries">${byLetter[l].map((cc) => { const n = providers.filter((p) => status(p, cc) === 'yes').length; return `<li><a href="${esc(cc)}/index.html">${esc(countryName(cc))}</a> <span class="meta">${esc(cc)} · ${n} offered</span></li>`; }).join('')}</ul></section>`).join('')}`, { section: 'countries' });
+
+// ---- operational layer (facts, never scored) -----------------------------------------------
+const stateChip = (f) => { const st = f?.status ?? 'unknown'; const label = st === 'not_applicable' ? (f.burden === 'institution' ? 'N/A: falls to the institution' : 'N/A: no such service') : STATE[st]; return `<span class="state st-${st}">${esc(label)}</span>`; };
+const operatorFree = (p) => !(p.components ?? []).some((c) => c.required && !c.public);
+// A control's effective fact: recorded, or an implied not_applicable when the rail has no operator.
+function effectiveFact(p, op, ctl) {
+  const f = op?.facts?.[ctl.id];
+  if (f) return f;
+  if (ctl.applies === 'operator' && operatorFree(p)) return { status: 'not_applicable', burden: 'institution', reason: 'No required closed component: whoever runs the client, node or relayer holds this control.', implied: true };
+  if (ctl.applies === 'custodial' && op?.custody_model?.status === 'evidenced' && op.custody_model.value === 'self_custody') return { status: 'not_applicable', burden: 'none', reason: 'Self-custody: the provider holds no customer funds or accounts.', implied: true };
+  return { status: 'unknown', implied: true };
+}
+const factValue = (v) => (v === undefined || v === null ? '' : typeof v === 'string' || typeof v === 'number' ? esc(String(v)) : `<code>${esc(JSON.stringify(v)).slice(0, 300)}</code>`);
+const refList = (refs, p) => (refs?.length ? `<p class="meta">Evidence shared with CROPS: ${refs.map((r) => `<a href="#${esc(r.criterion)}">${esc(r.criterion)} item ${r.index + 1}</a>`).join(', ')}</p>` : '');
+const reviewLineOps = (f) => (f.assessed_by ? `<p class="crit-tags review">${f.review?.status === 'reviewed' ? `<span class="chip reviewed">Reviewed</span><span>by ${esc(f.review.by)}, ${esc(f.review.date)}</span>` : '<span class="chip pending">Unreviewed</span>'}<span>Assessed by ${esc(f.assessed_by)}</span>${f.checked_at ? `<span>Checked ${esc(f.checked_at)}</span>` : ''}</p>` : '');
+const factBlock = (f, p) => `${f.note ? `<p class="finding">${esc(f.note)}</p>` : ''}${f.reason ? `<p class="muted small">${esc(f.reason)}</p>` : ''}${refList(f.refs, p)}${f.evidence?.length ? evidenceList(f.evidence, p) : ''}${reviewLineOps(f)}`;
+const COUNTS = (p, op) => { const c = { evidenced: 0, attested: 0, absent: 0, not_applicable: 0, unknown: 0 }; for (const ctl of opsCriteria.controls) c[effectiveFact(p, op, ctl).status]++; return c; };
+const repoSummary = (op) => { const ids = opsCriteria.controls.filter((c) => c.auto).map((c) => c.id); if (!op?.facts?.[ids[0]]) return ''; const all = ids.filter((id) => op.facts[id]?.value?.summary === 'all').length; const some = ids.filter((id) => op.facts[id]?.value?.summary === 'some').length; return `${all}${some ? ` (+${some} partial)` : ''} of ${ids.length}`; };
+const volumeText = (op) => { const v = op?.volume; if (!v) return '<span class="state st-unknown">Unknown</span>'; if (v.status !== 'evidenced') return `<span class="state st-${esc(v.status)}">${esc(STATE[v.status] ?? v.status)}</span>`; const r = v.value.results.find((x) => x.sum_units) ?? v.value.results[0]; return `${r ? `${esc(r.sum_units ?? r.sum)} ${esc(r.symbol ?? '')}` : '0'} · ${esc(v.value.events)} events / ${esc(v.spec.window_days)}d`; };
+const CUSTODY = { self_custody: 'Self-custody', provider_custodial: 'Provider-custodial', hybrid: 'Hybrid: self-custody with a provider-controlled spend path' };
+
+function operationalSection(p, op) {
+  const A = [];
+  const art = (title, key, f, body) => A.push(`<article class="crit" id="op-${esc(key)}"><div class="crit-body"><header class="crit-head"><div><h3>${title}</h3></div>${stateChip(f)}</header>${body}${factBlock(f ?? {}, p)}</div></article>`);
+  const fees = op?.fees;
+  art('Fees', 'fees', fees, ['evidenced', 'attested'].includes(fees?.status) && Array.isArray(fees.value) ? `<div class="table-scroll" tabindex="0"><table class="plain"><thead><tr><th scope="col">Component</th><th scope="col">Paid by</th><th scope="col">Amount</th><th scope="col">Basis</th></tr></thead><tbody>${fees.value.map((x) => `<tr><td>${esc(x.kind)}</td><td>${esc(x.paid_by)}</td><td>${esc(x.amount)}</td><td class="small">${esc(x.basis ?? '')}</td></tr>`).join('')}</tbody></table></div>` : '');
+  const cm = op?.custody_model;
+  art('Custody model', 'custody_model', cm, cm?.status === 'evidenced' ? `<p><strong>${esc(CUSTODY[cm.value])}</strong></p>` : '');
+  const lic = op?.licences;
+  art('Licences and registrations', 'licences', lic, ['evidenced', 'attested'].includes(lic?.status) && Array.isArray(lic.value) ? `<div class="table-scroll" tabindex="0"><table class="plain"><thead><tr><th scope="col">Entity</th><th scope="col">Country</th><th scope="col">Regulator</th><th scope="col">Licence</th><th scope="col">Register</th></tr></thead><tbody>${lic.value.map((x) => `<tr><td>${esc(x.entity)}${x.holder === 'partner' ? ' <span class="chip">partner</span>' : ''}</td><td><a href="../../countries/${esc(x.country)}/index.html">${esc(countryName(x.country))}</a></td><td>${esc(x.regulator)}</td><td>${esc(x.type)}${x.number ? ` · ${esc(x.number)}` : ''}${x.activities ? `<br><span class="small muted">${esc(x.activities)}</span>` : ''}</td><td>${x.register_url ? `<a href="${href(x.register_url)}">register</a>` : ''}</td></tr>`).join('')}</tbody></table></div>` : '');
+  const co = op?.cashout;
+  art('Cash-out options', 'cashout', co, ['evidenced', 'attested'].includes(co?.status) && Array.isArray(co.value) ? `<div class="table-scroll" tabindex="0"><table class="plain"><thead><tr><th scope="col">Where</th><th scope="col">Method</th><th scope="col">Partner</th><th scope="col">Fee</th><th scope="col">Limits</th></tr></thead><tbody>${co.value.map((x) => `<tr><td>${x.countries.map((c) => (c === 'ALL' ? 'everywhere offered' : regions.regions[c] ? esc(c) : `<a href="../../countries/${esc(c)}/index.html">${esc(countryName(c))}</a>`)).join(', ')}</td><td>${esc(x.method.replace('_', ' '))}</td><td>${esc(x.partner ?? '')}</td><td>${esc(x.fee ?? '')}</td><td class="small">${esc(x.limits ?? '')}</td></tr>`).join('')}</tbody></table></div>` : '');
+  const m = op?.maturity ?? {};
+  art('First deployment', 'first_deployment', m.first_deployment, m.first_deployment?.status === 'evidenced' ? `<p><strong>${esc(m.first_deployment.value.date)}</strong>${m.first_deployment.value.block ? ` (block ${esc(m.first_deployment.value.block)})` : ''}${m.first_deployment.value.what ? `: ${esc(m.first_deployment.value.what)}` : ''}</p>` : '');
+  art('Operating entity', 'entity', m.entity, m.entity?.status === 'evidenced' ? `<p><strong>${esc(m.entity.value.legal_name)}</strong>, ${esc(m.entity.value.jurisdiction)}${m.entity.value.registration_number ? ` · ${esc(m.entity.value.registration_number)}` : ''}${m.entity.value.register_url ? ` · <a href="${href(m.entity.value.register_url)}">register</a>` : ''}</p>` : '');
+  art('Security incidents', 'incidents', m.incidents, `${m.incidents?.status === 'evidenced' && m.incidents.value?.length ? `<ul class="plain-list">${m.incidents.value.map((x) => `<li>${esc(x.date)}: ${esc(x.summary)} <span class="chip${x.funds_lost === 'yes' ? ' flag' : ''}">funds lost: ${esc(x.funds_lost)}</span> <a href="${href(x.url)}">source</a></li>`).join('')}</ul>` : ''}<p class="muted small">Absence of a found incident is not evidence that none occurred.</p>`);
+  art('Product changes affecting users', 'changes', m.changes, m.changes?.status === 'evidenced' && m.changes.value?.length ? `<ul class="plain-list">${m.changes.value.map((x) => `<li>${esc(x.date)}: ${esc(x.summary)} <a href="${href(x.url)}">source</a></li>`).join('')}</ul>` : '');
+  const v = op?.volume;
+  A.push(`<article class="crit" id="op-volume"><div class="crit-body"><header class="crit-head"><div><h3>Volume transacted (verified only)</h3></div><span class="state st-${esc(v?.status ?? 'unknown')}">${esc(STATE[v?.status ?? 'unknown'])}</span></header>
+${v?.status === 'evidenced' ? `<p><strong>${volumeText(op)}</strong> <span class="meta">gross observed, blocks ${esc(v.value.from_block)} to ${esc(v.value.to_block)}, computed ${esc(v.value.computed_at)} over ${esc(v.value.calls ?? '?')} log queries (${esc(v.value.rpc ?? '')} RPC)</span></p>
+<table class="plain"><thead><tr><th scope="col">Token</th><th scope="col">Events</th><th scope="col">Sum</th></tr></thead><tbody>${v.value.results.map((r) => `<tr><td><code>${esc(r.symbol ?? r.token)}</code></td><td>${esc(r.count)}</td><td>${esc(r.sum_units ?? r.sum)}</td></tr>`).join('')}</tbody></table>
+<p class="small">Method: ${esc(v.spec.event ?? v.spec.topic0)} on ${v.spec.addresses.map((a) => `<code>${esc(short(a))}</code>`).join(', ')}, chain ${esc(v.spec.chain_id)}, ${esc(v.spec.window_days)}-day window.${v.spec.exclusions ? ` Exclusions: ${esc(v.spec.exclusions)}` : ''} Re-run: <code>node scripts/volumes.mjs ${esc(p.slug)}</code></p>` : ''}
+${v?.reason ? `<p class="muted small">${esc(v.reason)}</p>` : ''}${v?.note ? `<p class="finding">${esc(v.note)}</p>` : ''}${reviewLineOps(v ?? {})}</div></article>`);
+
+  const B = opsCriteria.groups.map((g) => `<tbody><tr class="group-row"><th scope="rowgroup" colspan="3">${esc(g.name)}</th></tr>${opsCriteria.controls.filter((c) => c.group === g.id).map((c) => { const f = effectiveFact(p, op, c); return `<tr id="op-${esc(c.id)}"><th scope="row"><span class="cid">${esc(c.id)}</span> ${esc(c.title)}<br><span class="small muted">${esc(c.question)}</span></th><td>${stateChip(f)}${f.implied ? '<br><span class="meta">implied from the component list</span>' : ''}</td><td class="small">${f.value?.summary ? `<strong>${esc(f.value.summary)}</strong> of ${f.value.repos.length} repo(s): ${f.value.repos.map((r) => `${esc(r.repo)} ${r.ok ? '✓' : '✗'} <span class="muted">${esc(r.detail)}</span>`).join('; ')}` : factValue(f.value)}${f.note ? `<br>${esc(f.note)}` : ''}${f.reason && !f.implied ? `<br><span class="muted">${esc(f.reason)}</span>` : ''}${f.evidence?.length ? `<br>${f.evidence.map((e, i) => `<a href="${href(e.url)}">source ${i + 1}</a>`).join(' · ')}` : ''}${f.refs?.length ? `<br>${f.refs.map((r) => `<a href="#${esc(r.criterion)}">CROPS ${esc(r.criterion)}</a>`).join(' · ')}` : ''}</td></tr>`; }).join('')}</tbody>`).join('');
+  const c = COUNTS(p, op);
+  return `<section class="operational" id="operational" aria-labelledby="h-ops">
+<header class="pillar-head ops-head"><div><h2 id="h-ops">Operational and procurement</h2><p>Facts an institution's procurement, finance and security functions ask for. Separate from the CROPS ratings and never scored.</p></div></header>
+<p class="small muted">Group A: operational facts. Group B: ${opsCriteria.controls.length} due-diligence controls derived from a UN agency's vendor requirements: ${c.evidenced} evidenced, ${c.attested} attested, ${c.absent} absent, ${c.not_applicable} not applicable, ${c.unknown} unknown. "Not applicable" means there is no operator to hold the control: it falls to whoever deploys the rail. <a href="../../methodology/index.html#operational">How to read this</a>.</p>
+<h3 class="ops-sub">Group A: operational facts</h3>
+${A.join('\n')}
+<h3 class="ops-sub">Group B: institutional due diligence</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Due diligence controls"><table class="overview ops"><thead><tr><th scope="col" class="rowhead">Control</th><th scope="col">State</th><th scope="col">What was found</th></tr></thead>${B}</table></div>
+</section>`;
+}
+
+page('operational/index.html', 'Operational', `
+<header class="phead"><p class="eyebrow">Second layer</p><h1>Operational and procurement facts</h1>
+<p class="lede">What each rail costs, who holds the money and under which licence, how a payee cashes out, how long it has operated, what moved through it, and how far an institution's standard vendor due diligence would get. Facts with evidence, never scores, and never combined with the CROPS ratings.</p></header>
+<div class="howto"><h2>How to read this</h2><ul class="rules">
+<li><strong>Five states.</strong> <span class="state st-evidenced">Evidenced</span> a document or chain state anyone can re-check; <span class="state st-attested">Attested</span> the provider says it exists but it is available only under NDA; <span class="state st-absent">Absent</span> evidence that it does not exist; <span class="state st-not_applicable">N/A</span> there is no operator to hold the control, so it falls to whoever deploys the rail; <span class="state st-unknown">Unknown</span> nobody has looked.</li>
+<li><strong>Volumes are verified only.</strong> A figure appears only when it was computed from public chain logs by a query you can re-run. Rails whose settlement cannot be observed say so.</li>
+<li><strong>Operator-free rails show many "not applicable" cells.</strong> That is not a pass or a fail: an institution running the client itself holds those controls and should assess itself against them.</li>
+</ul></div>
+${groupedTable('Operational facts by provider',
+  '<th scope="col">Custody</th><th scope="col">Licences</th><th scope="col">Cash-out</th><th scope="col">First deployment</th><th scope="col">Entity</th><th scope="col">Volume</th><th scope="col">Repo practice</th><th scope="col">Due diligence</th>',
+  (p) => { const op = operational[p.slug]; const c = COUNTS(p, op); const cm = op?.custody_model; return `<td>${cm?.status === 'evidenced' ? esc(CUSTODY[cm.value].split(':')[0]) : stateChip(cm)}</td><td>${op?.licences?.status === 'evidenced' ? `${op.licences.value.length} in ${esc([...new Set(op.licences.value.map((x) => x.country))].join(', '))}` : stateChip(op?.licences)}</td><td>${op?.cashout?.status === 'evidenced' ? esc([...new Set(op.cashout.value.map((x) => x.method.replace('_', ' ')))].join(', ')) : stateChip(op?.cashout)}</td><td>${op?.maturity?.first_deployment?.status === 'evidenced' ? esc(op.maturity.first_deployment.value.date) : stateChip(op?.maturity?.first_deployment)}</td><td>${op?.maturity?.entity?.status === 'evidenced' ? esc(op.maturity.entity.value.legal_name) : stateChip(op?.maturity?.entity)}</td><td>${volumeText(op)}</td><td>${repoSummary(op) || '<span class="state st-unknown">Unknown</span>'}</td><td class="small dd"><a href="provider/${esc(p.slug)}/index.html#operational">${c.evidenced} evidenced<br>${c.attested} attested · ${c.absent} absent<br>${c.not_applicable} n/a · ${c.unknown} unknown</a></td>`; })}
+<p class="callout">Group B controls are derived from a UN humanitarian agency's vendor requirements (software development practices and Authority-to-Operate controls). They record the provider's position against each control; they are not a judgment that an institution must require it.</p>`, { section: 'operational' });
 
 // ---- provider pages ---------------------------------------------------------------
 for (const p of providers) {
@@ -280,6 +350,7 @@ ${p.availability.note ? `<p class="finding">${esc(p.availability.note)}</p>` : '
 ${expand(p.availability.countries ?? []).length ? `<p class="small">${p.availability.model === 'blocklist' ? 'Excluded' : 'Listed'} countries (${expand(p.availability.countries).length}): ${expand(p.availability.countries).map((c) => `<a href="../../countries/${esc(c)}/index.html">${esc(countryName(c))}</a>`).join(', ')}</p>` : ''}
 <h4 class="ev-head">Evidence (${p.availability.evidence.length})</h4>${evidenceList(p.availability.evidence, p)}</section>` : `<section id="availability"><h2>Where it is offered</h2><p class="muted">No first-party country statement is on file for this provider. See the <a href="../../countries/index.html">Countries</a> index.</p></section>`}
 ${sections}
+${operationalSection(p, operational[p.slug])}
 <section class="scope" aria-labelledby="h-scope"><h2 id="h-scope">Scope of assessment</h2>
 <h3>Components in the payment path</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Components">${(p.components ?? []).length ? `<table class="plain"><thead><tr><th scope="col">Component</th><th scope="col">Role</th><th scope="col">Public</th><th scope="col">Licence</th><th scope="col">Operator</th><th scope="col">Required</th></tr></thead><tbody>${p.components.map((x) => `<tr><td>${x.repo ? `<a href="${href(x.repo)}">${esc(x.name)}</a>` : esc(x.name)}</td><td>${esc(x.role)}</td><td>${x.public ? 'Yes' : '<strong>No</strong>'}</td><td>${esc(x.license)}</td><td>${esc(x.operator)}</td><td>${x.required ? 'Yes' : 'No'}</td></tr>`).join('')}</tbody></table>` : '<p class="muted">Not yet listed.</p>'}</div>
@@ -320,7 +391,7 @@ page('methodology/index.html', 'Methodology', `<div class="prose">${readFileSync
 page('contribute/index.html', 'Contribute', `<div class="prose">${readFileSync('site/contribute.html', 'utf8').replaceAll('%REPO%', repo)}</div>`, { section: 'contribute' });
 copyFileSync('site/style.css', join(OUT, 'style.css'));
 
-writeFileSync(join(OUT, 'data.json'), JSON.stringify({ generated: today, criteria, providers: providers.map((p) => ({ ...p, rollup: rollups[p.slug] })) }, null, 2));
+writeFileSync(join(OUT, 'data.json'), JSON.stringify({ generated: today, criteria, providers: providers.map((p) => ({ ...p, rollup: rollups[p.slug] })), operational_criteria: opsCriteria, operational }, null, 2));
 // CSV cells are quoted, and a leading = + - @ is neutralised so spreadsheets don't execute contributor text.
 const csv = (v) => { const s = String(v ?? ''); return '"' + (/^[=+\-@]/.test(s) ? "'" + s : s).replace(/"/g, '""') + '"'; };
 writeFileSync(join(OUT, 'grid.csv'), [
@@ -328,4 +399,5 @@ writeFileSync(join(OUT, 'grid.csv'), [
   ...providers.map((p) => [p.slug, p.name, p.type, p.primary_chain?.name ?? '', ...criteria.pillars.flatMap((pl) => [rollups[p.slug][pl.id].score, rollups[p.slug][pl.id].limiting.join(' ')])].map(csv).join(',')),
 ].join('\n') + '\n');
 
+writeFileSync(join(OUT, 'operational.csv'), [['slug', 'custody_model', 'licences', 'cashout_methods', 'first_deployment', 'entity', 'volume_status', 'volume_events', ...opsCriteria.controls.map((c) => c.id)].map(csv).join(','), ...providers.map((p) => { const op = operational[p.slug]; return [p.slug, op?.custody_model?.status === 'evidenced' ? op.custody_model.value : (op?.custody_model?.status ?? 'unknown'), op?.licences?.value?.length ?? '', (op?.cashout?.value ?? []).map((x) => x.method).join(' '), op?.maturity?.first_deployment?.value?.date ?? '', op?.maturity?.entity?.value?.legal_name ?? '', op?.volume?.status ?? 'unknown', op?.volume?.value?.events ?? '', ...opsCriteria.controls.map((c) => effectiveFact(p, op, c).status)].map(csv).join(','); })].join('\n') + '\n');
 console.log(`built ${providers.length} providers, ${criteria.criteria.length} criteria into ${OUT}/ (staleness date ${today})`);

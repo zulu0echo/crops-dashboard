@@ -1,0 +1,606 @@
+slug: deblock-card
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement found on deblock.com (legal notice, cards, pricing, about, press; /en/security returns 404), in the 274 public help articles (intercom.help/deblock) or in the Client Terms v12.3. The privacy policy loads only through Deblock's token-protected API and was not read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: Same search as B1.1. The legal notice names Vercel Inc (servers in the European Union) as website host; the hosting of the app and ledger is not stated, and no certificate was found for either.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE 3402 statement found in the same search.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No independent code review report found; CROPS S6 is unknown for this provider.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report, attestation or bug bounty found (help centre keyword search for penetration, pentest, bug bounty returned nothing).
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No patch timelines in the Client Terms v12.3 or the help centre.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No customer incident-notification time found. The Client Terms (s3.7) say Deblock will email or text the client if it suspects unauthorised access to that client's account, without a time limit.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: The Client Terms (s11.5) promise only best efforts for service continuity; no recovery plan is described.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Public status page (status.deblock.com, StatusPal) with per-service status and an incident and maintenance history back to 2024-10-07. Incident entries carry short cause statements (for example the 2026-09-04 Visa settlement issue); no separate post-mortem documents were found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://intercom.help/deblock/en/articles/14805793-service-status-outages
+        detail: Help article pointing customers to status.deblock.com, listing the services covered and the subscription option.
+        checked_at: "2026-10-09"
+        quote: this is your go-to page to check the real-time status of all Deblock services
+      - tier: documented
+        kind: document
+        url: https://status.deblock.com/incidents
+        detail: Incident and maintenance history, 30 entries from 2024-10-07 to 2026-10-02.
+        checked_at: "2026-10-09"
+        quote: Incident & maintenance history
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Access only through the app on the user's phone, with a passcode or device biometrics; sensitive operations (payments, transfers to external accounts, viewing card numbers and IBANs, crypto actions) require strong authentication with a 4-digit code or biometrics plus possession of the registered "Key Smartphone". A selfie check is required after reinstalling the app.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://intercom.help/deblock/en/articles/8921705-how-can-i-keep-my-account-safe
+        detail: Help article "How can I keep my account safe?".
+        checked_at: "2026-10-09"
+        quote: Your account can only be accessed through the app on your phone, there is no other way
+      - tier: documented
+        kind: document
+        url: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
+        archive: data/archive/deblock-card-ops-terms.txt
+        detail: Client Terms v12.3 s8.4 Strong Authentication (PDF; excerpt archived).
+        checked_at: "2026-10-09"
+        quote: the authentication via the 4-digit code can be replaced by a biometric authentication managed by their smartphone
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    note: No idle-session timeout stated. The Terms (s8.3) only advise the client to close the app when not in use.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: No public API documentation found for personal or business accounts; the card product is used through Deblock's own apps.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: Monthly statements download in the app (help article 14136786) and a transaction report is available on request (Terms s3.6); no API export, volume limit or export logging found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "No data classification or encryption-at-rest statement found (the privacy policy was not readable without Deblock's API token). Observed: deblock.com refuses TLS 1.1 and accepts TLS 1.2."
+    evidence:
+      - tier: documented
+        kind: trace
+        url: https://deblock.com
+        detail: "openssl s_client -tls1_1 to deblock.com:443 failed with alert protocol version; -tls1_2 negotiated ECDHE-RSA-CHACHA20-POLY1305. Run 2026-10-09 with LibreSSL 3.3.6."
+        checked_at: "2026-10-09"
+        recheck: "echo | openssl s_client -connect deblock.com:443 -servername deblock.com -tls1_1; echo | openssl s_client -connect deblock.com:443 -servername deblock.com -tls1_2"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: unknown
+    note: The Client Terms (s13) say data may be kept after closure "for other legal reasons" without periods, and funds left after closure can be claimed for six years (s9.3). Retention periods are in the privacy policy, which loads only through Deblock's token-protected API and was not read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Deblock SAS is data controller, with a Data Protection Officer (dpo@deblock.com) and the CNIL as supervisory authority. No processor list (the KYC provider is unnamed in the provider file) and no DPIA statement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://deblock.com/en/legal-notice
+        detail: Legal notice s5, Personal data protection.
+        checked_at: "2026-10-09"
+        quote: Deblock SAS processes personal data as a data controller
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    note: The account-closure help article says closure decisions are recorded for audit and regulatory review; no statement on login or activity logging.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: unknown
+    note: No architecture documentation found. The Terms describe the crypto wallet's 2-of-2 key-shard design in prose (s3.3, s5.1); nothing covers the e-money ledger or card stack.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Deblock SAS, French société par actions simplifiée, SIREN 948 264 163 (RCS Lille Métropole), Lille; French law and French courts govern the Client Terms. Deblock is itself the EMI and card issuer (direct Visa member per its cards page).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
+        archive: data/archive/deblock-card-ops-terms.txt
+        detail: Client Terms v12.3 (23 Feb 2026) preamble naming the contracting entity (PDF; excerpt archived).
+        checked_at: "2026-10-09"
+        quote: registered under number 948 264 163 in the Trade and Companies Register of Lille
+      - tier: documented
+        kind: document
+        url: https://recherche-entreprises.api.gouv.fr/search?q=948264163
+        detail: French government company search API (annuaire-entreprises.data.gouv.fr data); active legal unit DEBLOCK, SIREN 948264163.
+        checked_at: "2026-10-09"
+        quote: '"siren":"948264163","siren_conserve":null,"nom_complet":"DEBLOCK (DEBLOCK)"'
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Customer fees and paid plans (Premium at 10 EUR a month; crypto buy, sell and swap fees of 1.99% on Standard and 0.49% on Premium; ATM and FX fees beyond allowances). No financial statements or funding disclosures found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://deblock.com/en/pricing-plans
+        detail: Pricing plans page.
+        checked_at: "2026-10-09"
+        quote: Premium 10€ /mo
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: "Client may close at any time for free. Deblock may terminate without giving reasons on two months' email notice, or immediately on listed grounds (missing source-of-funds information, false documents, abnormal use, suspected fraud, reputational harm, legal order). Balance is sent to the client's bank account; at least 60 days to withdraw, then a minimum 1 EUR fee per transfer, and funds can be claimed for six years. On closure Deblock hands over its key shard so the client keeps the self-custodial crypto wallet."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
+        archive: data/archive/deblock-card-ops-terms.txt
+        detail: Client Terms v12.3 s9.1 (initiated by Deblock).
+        checked_at: "2026-10-09"
+        quote: by notification via email, after the expiry of a two-month notice period
+      - tier: documented
+        kind: document
+        url: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
+        archive: data/archive/deblock-card-ops-terms.txt
+        detail: Client Terms v12.3 s9.3 and s9.5.
+        checked_at: "2026-10-09"
+        quote: we will give the Client at least 60 days to withdraw the money we hold for the Client
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: The Client Terms (s8.5) say Deblock may set up monitoring systems for anti-money-laundering checks, without saying whether they are automated or use AI. Automated decision-making would be disclosed in the privacy policy, which was not readable without Deblock's API token.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: Standard plan free; Premium 10 EUR per month
+      basis: Pricing plans page; fees may change under the Client Terms s1.4 with 60 days to decline.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: Virtual cards free; physical card delivery fee on Standard (shown in app); up to 3 physical cards free on Premium
+      basis: Help articles 8911205 and 8911216; Standard delivery fee amount not published.
+      evidence_index: 1
+    - kind: fx
+      paid_by: payer
+      amount: First 500 EUR a month free of markup; then Standard 0.5% weekdays, 1% weekends; Premium 0%
+      basis: Help article 8911354. The cards page says 0% FX on card payments abroad, which conflicts for Standard users beyond the allowance.
+      evidence_index: 2
+    - kind: cashout
+      paid_by: payer
+      amount: "ATM: 1% (min 1 EUR) beyond the plan allowance, plus any ATM operator surcharge"
+      basis: Help article 11093412 (allowance Standard 1 withdrawal or 100 EUR a month, Premium 5 or 1,000 EUR; limits 15,000 EUR a month Standard, 30,000 EUR Premium, 1,000 EUR a day).
+      evidence_index: 3
+    - kind: cashout
+      paid_by: none
+      amount: SEPA and SEPA Instant transfers out free
+      basis: Help article 8913029; Terms s6.1 allow cross-border or SWIFT fees for other currencies.
+      evidence_index: 4
+    - kind: cashout
+      paid_by: payer
+      amount: "Crypto sell (crypto to EUR): 1.99% Standard, 0.49% Premium"
+      basis: Pricing plans page; applies to the self-custodial wallet off-ramp into the e-money account.
+      evidence_index: 0
+    - kind: limit
+      paid_by: none
+      amount: Each card payment capped at 10,000 EUR
+      basis: Help article 8911134; Deblock says the cap may change.
+      evidence_index: 5
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://deblock.com/en/pricing-plans
+      detail: Pricing plans page (Standard and Premium columns).
+      checked_at: "2026-10-09"
+      quote: Premium 10€ /mo
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/8911216-are-there-any-fees-for-ordering-a-physical-card
+      detail: Help article on physical card fees.
+      checked_at: "2026-10-09"
+      quote: Standard plan subscribers will be charged a delivery fee when ordering a physical card
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/8911354-are-there-any-fees-for-making-card-payments
+      detail: Help article on card payment and FX fees.
+      checked_at: "2026-10-09"
+      quote: "Standard: 0.5% on weekdays, 1% on weekends"
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/11093412-what-are-the-limits-and-fees-for-atm-withdrawals
+      detail: Help article on ATM limits and fees.
+      checked_at: "2026-10-09"
+      quote: A 1% Deblock fee applies to the amount withdrawn, with a minimum of €1 per withdrawal
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/8913029-are-there-any-fees-to-send-transfers
+      detail: Help article on outgoing transfer fees.
+      checked_at: "2026-10-09"
+      quote: Sending transfers is completely free
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/8911134-are-there-any-limits-to-how-much-money-i-can-spend-on-my-cards
+      detail: Help article on card spending limits.
+      checked_at: "2026-10-09"
+      quote: each card payment you make is capped at €10,000
+  note: Card top-ups into the account are free up to 2,000 EUR a month, then a fee shown in the app (help article 11087296); a funding fee, not recorded above. Insurance and cashback are plan benefits, not fees.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+  note: The card spends a Deblock-issued e-money balance, safeguarded in client money accounts at banks (Terms s8.1). The separate crypto wallet is a 2-of-2 key-shard wallet with one shard on Deblock's backend; it is outside the card path, as in the S1 finding.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: Deblock SAS
+      holder: provider
+      country: FR
+      regulator: Autorité de contrôle prudentiel et de résolution (ACPR)
+      type: Electronic money institution (agrément)
+      number: CIB 17748
+      activities: Issuing and distributing e-money; authorised 2023-11-22, active; free-provision-of-services passports to 29 other EEA states from 2024-09-04
+      register_url: https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-autorisations/records?where=id_referentiel%3D%22732211%22
+      evidence_index: 0
+    - entity: Deblock SAS
+      holder: provider
+      country: FR
+      regulator: Autorité des marchés financiers (AMF)
+      type: Crypto-asset service provider (MiCA)
+      number: A2025-001
+      activities: Exchange of crypto-assets for funds and for other crypto-assets, execution of orders; authorised 2025-05-23, notified for 29 other EEA states
+      register_url: https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-autorisations/records?where=id_referentiel%3D%22732211%22
+      detail: ACPR REGAFI register open-data API, authorisation record for DEBLOCK (id 732211, SIREN 948264163, CIB 17748, LEI 254900XTUI35BGIBXP21); category Établissement de Monnaie Électronique, nature Agrément. The entity record is in dataset prd-banque-entites and the 29 outbound passports in prd-banque-passeports-sortants.
+      checked_at: "2026-10-09"
+      quote: '"id_referentiel": "732211", "id_autorisation": "36579", "date_debut": "2023-11-22", "situation": "ACTIF"'
+      recheck: curl -s 'https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=siren%3D%22948264163%22'
+    - tier: documented
+      kind: document
+      url: https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv
+      detail: ESMA interim MiCA register of authorised CASPs; row for DEBLOCK SAS (AMF, authorised 23/05/2025).
+      checked_at: "2026-10-09"
+      quote: DEBLOCK SAS,254900XTUI35BGIBXP21
+  note: The register lists DEBLOCK as an EMI with no card-issuing licence separate from the EMI authorisation; Deblock's cards page says it is a direct Visa member (provider statement, not checked against Visa).
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [FR]
+      method: card_spend
+      partner: Deblock SAS (issuer), Visa
+      fee: No card payment fee; FX markup beyond 500 EUR a month on Standard (0.5% weekdays, 1% weekends)
+      limits: 10,000 EUR per card payment; card works at Visa merchants worldwide.
+      evidence_index: 0
+    - countries: [FR]
+      method: atm
+      partner: Deblock SAS (issuer), Visa
+      fee: Free allowance by plan, then 1% (min 1 EUR) plus operator surcharge
+      limits: 15,000 EUR a month (Standard) or 30,000 EUR (Premium); 1,000 EUR a day; any Visa ATM, including abroad.
+      evidence_index: 1
+    - countries: [FR]
+      method: bank_transfer
+      partner: SEPA (Deblock SAS as EMI)
+      fee: Free (SEPA and SEPA Instant)
+      limits: Euro SEPA only; other international transfers not yet supported per help article 8912244.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/8899846-do-my-cards-work-in-all-countries
+      detail: Help article on card acceptance abroad.
+      checked_at: "2026-10-09"
+      quote: work globally in the Visa network
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/11093412-what-are-the-limits-and-fees-for-atm-withdrawals
+      detail: Help article on ATM limits and fees.
+      checked_at: "2026-10-09"
+      quote: Includes 1 free withdrawal or up to €100/month without any Deblock fees
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/8913029-are-there-any-fees-to-send-transfers
+      detail: Help article on outgoing transfers.
+      checked_at: "2026-10-09"
+      quote: Sending transfers is completely free
+    - tier: documented
+      kind: document
+      url: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
+      archive: data/archive/deblock-card-ops-terms.txt
+      detail: Client Terms v12.3 (French version, s3.5) require legal residence in France to open an account.
+      checked_at: "2026-10-09"
+      quote: The Client must be 18 or over and a legal resident in France to open a Deblock Account
+  note: "Countries: the only first-party eligibility statement found is the French Client Terms v12.3 (residence in France). The same Terms mention clients residing in Germany (PayPal top-ups), the ACPR register shows passports into 29 other EEA states, and the site has French Pacific locales, so other residents may be served under terms versions not read; the provider file has no availability block. Crypto off-ramp into the e-money account (fee in `fees`) precedes any of these routes."
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: "2023-11-22"
+      what: ACPR authorisation of Deblock SAS as an electronic money institution (regulator date); no dated public launch of the account or card was found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-autorisations/records?where=id_referentiel%3D%22732211%22
+        detail: REGAFI authorisation record, date_debut 2023-11-22.
+        checked_at: "2026-10-09"
+        quote: '"date_debut": "2023-11-22", "situation": "ACTIF"'
+    note: The card cannot have been issued to customers before the e-money authorisation; the earliest status-page entry is 2024-10-07, and the about page says the company was founded in October 2022.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Deblock SAS
+      jurisdiction: FR
+      register_url: https://recherche-entreprises.api.gouv.fr/search?q=948264163
+      registration_number: SIREN 948 264 163 (RCS Lille Métropole)
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://recherche-entreprises.api.gouv.fr/search?q=948264163
+        detail: French government company search API; legal unit created 2023-01-16, active, NAF 63.11Z, head office 612 rue de la Chaude Rivière, Lille.
+        checked_at: "2026-10-09"
+        quote: '"siren":"948264163","siren_conserve":null,"nom_complet":"DEBLOCK (DEBLOCK)"'
+      - tier: documented
+        kind: document
+        url: https://deblock.com/en/legal-notice
+        detail: Legal notice naming the publisher and its registration.
+        checked_at: "2026-10-09"
+        quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value:
+      - date: "2025-12-19"
+        summary: Platform outage affecting all services including card payments and SEPA transfers, 31 minutes (status page, major incident).
+        funds_lost: unknown
+        url: https://status.deblock.com/incidents/216835
+      - date: "2026-02-04"
+        summary: Services down for 27 minutes; a fix was rolled out to all services (status page, major incident).
+        funds_lost: unknown
+        url: https://status.deblock.com/incidents/221752
+      - date: "2026-08-04"
+        summary: Degraded performance affecting crypto transactions, card payments and app access (status page, major incident).
+        funds_lost: unknown
+        url: https://status.deblock.com/incidents/244780
+      - date: "2026-09-04"
+        summary: All Deblock card transactions declined for about 3 hours because Visa's settlement system stopped registering the funds Deblock holds with Visa; Deblock states no customer funds were affected.
+        funds_lost: "no"
+        url: https://status.deblock.com/incidents/247956
+      - date: "2026-10-02"
+        summary: Card payments declined for some customers despite sufficient funds, 13 minutes (status page, major incident).
+        funds_lost: unknown
+        url: https://status.deblock.com/incidents/250403
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.deblock.com/incidents/247956
+        detail: Status page incident entry for the 2026-09-04 Visa settlement issue.
+        checked_at: "2026-10-09"
+        quote: Visa's settlement system (VPS) stopped registering the funds we hold with them to cover card spending
+    note: Selected from the 30 status-page entries (2024-10-07 to 2026-10-02) the major incidents touching card payments or all services; minor incidents and scheduled maintenance are omitted. No security incident or data breach notice was found on deblock.com or in the help centre.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: "2023-01-16"
+        summary: Legal unit DEBLOCK (SIREN 948 264 163) created (French company register).
+        url: https://recherche-entreprises.api.gouv.fr/search?q=948264163
+      - date: "2023-11-22"
+        summary: Authorised by the ACPR as an electronic money institution (CIB 17748).
+        url: https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-autorisations/records?where=id_referentiel%3D%22732211%22
+      - date: "2024-09-04"
+        summary: E-money free-provision-of-services passports registered for 29 other EEA states.
+        url: https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D732211&limit=50
+      - date: "2025-05-23"
+        summary: Authorised as a crypto-asset service provider under MiCA by the AMF (A2025-001).
+        url: https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv
+      - date: "2026-02-23"
+        summary: Client Terms and Conditions version 12.3 dated.
+        url: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D732211&limit=50
+        detail: REGAFI outbound passport records for Deblock (29 rows, all Libre prestation de services from 2024-09-04).
+        checked_at: "2026-10-09"
+        quote: '"type_passeport": "Libre prestation de services"'
+      - tier: documented
+        kind: document
+        url: https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv
+        detail: ESMA interim MiCA CASP register row for Deblock, authorisation date 23/05/2025.
+        checked_at: "2026-10-09"
+        quote: DEBLOCK SAS,254900XTUI35BGIBXP21
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: Closed e-money ledger and Visa card issuing with no listed contracts; card settlement is not on any public chain. Deblock publishes no transaction volumes that could be checked.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

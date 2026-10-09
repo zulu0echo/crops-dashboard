@@ -46,3 +46,38 @@ Checked: 2026-10-07. Repo pin: `MetaMask/metamask-mobile@b513a4b65ab0a9f84ff0913
 - O4 = 1. ABIs exist only in verification metadata, and I found no export.
 - S5 = 1. A key named as a secret ships in the app but acts as a PKCE public client id. What it authorises server-side is not visible.
 - F1 = 0 and F2 = 0. The LICENSE is inspect-only and reserves licensing options, and the CLA permits relicensing.
+
+## Availability 2026-10-09
+
+- Model `allowlist` with 48 countries.
+- Source: MetaMask support article "What is MetaMask Card?" (`support.metamask.io/trade/metamask-card/what-is-metamask-card/`), section "What countries are eligible to sign up for MetaMask Card?". The article body is archived at `data/archive/metamask-card-eligible-countries.txt`. As with the other support pages, it is cited as `claimed`, `by: provider`.
+- Also cited: the CL Platform Terms archive from 2026-10-07. Their eligibility clause names no countries.
+- Other pages checked:
+  - support.metamask.io sitemap: the card FAQ, getting-started, limits and fees, and UK-migration pages.
+  - The Monavate issuer terms archive. It discusses EEA/UK execution times but has no country list.
+- Judgment calls:
+  - The US is excluded. The article says US sign-ups are "not currently available", and getting-started says sign-ups are "temporarily paused". Existing US cards keep working, which is recorded in `note`.
+  - Regions are not used because the list leaves out several EU states (CZ, EE, LV, LT).
+  - The support site has a client-side region selector. The country list is in the static HTML that curl returns, and it is the same for every region.
+
+## Operational 2026-10-09
+
+File: `data/operational/metamask-card.yaml`. Bot facts (B2.1, B2.3, B8.2, B9.x) left as filled.
+
+- **MetaMask support pages read.** Limits and fees, card FAQ, getting started, security and privacy, UK migration, managing, using and metal card. Limits and fees and the FAQ are archived as `data/archive/metamask-card-ops-*.txt`. The static HTML shows the default (US) region view.
+- **Crypto Life.** Read withcl.com home and legal pages. `/security` and `/sitemap.xml` return 404. The "Fee Information Document" PDF is for the 2023 CL card powered by Ledger, not MetaMask, so it is not used. The Baanx global privacy policy (secure.baanx.co.uk) still fails TLS (curl exit 35).
+- **Registers.**
+  - Bank of Lithuania (`lb.lt/en/sfi-financial-market-participants/uab-monavate`): UAB Monavate holds authorisation LB002139, an EMI licence for non-limited activity valid from 2022-03-31, company code 305628001.
+  - Companies House: 11155611 is MONAVATE ONCHAIN LTD, previously BAANX.COM LTD until 19 Aug 2026. 12472532 is MONAVATE LTD. Archived as `metamask-card-ops-companies-house.txt`, because the `/more` page did not return the quote to the validator's fetch.
+  - FCA register: client-rendered, and the API returns 403. Not checked.
+- **Onchain.** I bisected `cast codesize` on rpc.linea.build. FoxConnect Global first has code at block 2715910 (2024-03-06 10:39:22 UTC), and the receipt of tx 0x10f468bf...136a has it as contractAddress. Its Sourcify ABI has only status events (`WithdrawalStatus(uint256,uint16)`) with no amount.
+
+Judgment calls:
+- **Licences evidenced for the EU issuer only.** Monavate Ltd (UK) rests on the CL terms alone, so it is left out of the value and named in the note. Immersve (new UK cards) and Cross River (US) were not checked.
+- **Entity.** Recorded as the programme manager Baanx.com Ltd / Monavate Onchain Ltd, from the CL terms and Companies House. MetaMask (Consensys) is not a party to the card terms.
+- **Custody `hybrid`.** Funds rest in the user's EOA, behind an unbounded operator pull path (S1 = 0).
+- **Volume `not_observable`.** Settlement amounts appear only as token Transfer logs to the beneficiary Safe, and the spec cannot filter those by recipient.
+- **Cash-out.** ATM is listed for the US only, as the FAQ says, even though US sign-ups are paused. No bank off-ramp is documented. Card spend is recorded as `card_withdrawal`.
+- **Left `unknown`.** B1.x, B3.1 and incidents: nothing first-party was found.
+
+Validator: offline 0 errors. Online 0 errors on the second run; the first run had transient ETIMEDOUTs on lineascan and support.metamask.io.

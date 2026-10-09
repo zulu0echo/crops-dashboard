@@ -1,0 +1,18 @@
+Source: https://docs.coca.xyz/coca/banking-account/overview
+Fetched: 2026-10-09 (curl; GitBook page, intermittently slow). Visible text with tags stripped:
+Overview | COCA COCA ⌘ Ctrl k COCA 💸 Banking That Pays You Back 🤩 The Bank We All Deserve Why are rewards so high? Where is my money stored and who controls it? Is COCA safe? What is COCA's roadmap for 
+2026? 💳 Banking Account Overview COCA Card IBAN 🚀 CRYPTO ACCOUNT Overview Buy Crypto Exchange assets 💰 Membership & Rewards Membership you deserve 8% Cashback 50%-off subscriptions 5% Balance APY 👌 Only 
+UP! Tokenomics Token designed to work Address & Details Token allocations No new tokens until Dec 1, 2027 Powered by GitBook On this page For the complete documentation index, see llms.txt . This 
+page is also available as Markdown . Copy On this page 💳 Banking Account Overview Money is only useful if you can actually use it. COCA is built around that simple idea: top up your Banking Account, 
+pay at 150M+ merchants worldwide and get rewarded . Spend your money everywhere COCA gives you both a virtual and a physical card , designed for everyday spending—coffee, groceries, Uber, online 
+shopping, rent-related payments, and subscriptions. Add your COCA card to Apple Pay or Google Pay and pay anywhere cards are accepted. Easy ways to top up your Banking Account Adding money to COCA is 
+simple. Choose the option that feels most familiar to you. Bank transfer (IBAN / SEPA) Get your own IBAN and send money to COCA just like you would with a regular bank account. Transfer EUR (SEPA) or 
+USD, and your money is ready to spend. Card top up Add money instantly using your debit or credit card from another bank. It's fast, easy, and works the way you expect. Stablecoins You can also top 
+up COCA with supported stablecoins on multiple blockchains directly to the Banking Account you control. Global Access You can order the card with a passport from almost any country, including those 
+in the EEA, CIS, US, UK, Latin America, Asia-Pacific, MENA regions, and more. Card availability depends on your residence in one of the 54 supported countries, which include: EEA countries: Austria, 
+Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Norway, 
+Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden. Other Europe Countries: Andorra, Gibraltar, Monaco, Montenegro, Switzerland, United Kingdom. Asia-Pacific: Australia, Hong Kong, 
+Indonesia, Malaysia, New Zealand, Philippines, Singapore, Taiwan, Thailand, Vietnam. Latin America: Argentina, Brazil, Chile, Colombia, Ecuador, Mexico, Peru. Top-Tier Security COCA cards are PCI DSS 
+and ISO compliant, ensuring top-tier security. 3D Secure is available for added protection. You can also freeze your card to protect yourself against unauthorized transactions. Fees Zero FX Fees on 
+Direct Pairs Zero Annual Fees Zero Issue Fees Zero ATM Withdrawals Fees Globally Up to $200 Previous What is COCA's roadmap for 2026? Next COCA Card Last updated 5 months ago Spend your money 
+everywhere Easy ways to top up your Banking Account Global Access Top-Tier Security Fees

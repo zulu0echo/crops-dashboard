@@ -1,0 +1,1426 @@
+slug: zcash
+fees:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value:
+    - kind: network
+      paid_by: payer
+      amount: ZIP 317 conventional fee, 5000 zatoshis per logical action, minimum 2 actions (10000 zats = 0.0001 ZEC)
+      basis: Wallet and mempool convention (ZIP 317, Active), not a consensus fee; logical actions count transparent inputs/outputs, Sapling spends/outputs, Orchard and (since NU6.3) Ironwood actions. Paid to the miner. Changes need a ZIP and node releases.
+      evidence_index: 0
+  evidence:
+    - tier: verified
+      kind: repo
+      commit: 3af03aa3ad991874d86b8cf35919bc9b4671e8ba
+      checked_at: 2026-10-09
+      url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0317.rst#L126-L196
+      path: zips/zip-0317.rst
+      detail: conventional_fee = marginal_fee x max(grace_actions, logical_actions) with marginal_fee = 5000 zatoshis and grace_actions = 2 (L130-L146); Revision 1 adds nActionsIronwood to logical_actions from NU6.3 (L178-L196).
+  note: There is no protocol or provider fee. Relayers do not exist; light-wallet servers are free public services. Swap and merchant integrations in third-party wallets are out of scope.
+  checked_at: 2026-10-09
+custody_model:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+  note: Agrees with the S1 finding (anchor 3 in substance, capped at 2 only for want of contract evidence). Value moves from notes the payer controls to notes the payee controls; nobody holds funds in flight.
+  checked_at: 2026-10-09
+licences:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: No operating entity runs the rail. Zcash is a proof-of-work chain run by independent miners and node operators; the Zcash Foundation and ZODL maintain software but do not transmit or hold users' funds.
+  burden: institution
+  checked_at: 2026-10-09
+cashout:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: Native-asset rail. The payee receives ZEC at its own shielded address; converting ZEC to local currency is outside the protocol.
+  burden: institution
+  checked_at: 2026-10-09
+maturity:
+  first_deployment:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      date: 2016-10-28
+      block: 0
+      what: Zcash mainnet genesis (Sprout shielded pool). The assessed Ironwood pool activated with NU6.3 at height 3,428,143 on 2026-07-28 (see changes).
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291
+        checked_at: 2026-10-09
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebra-chain/src/parameters/constants.rs#L75-L99
+        path: zebra-chain/src/parameters/constants.rs
+        detail: Mainnet activation heights compiled into Zebra v6.4.2, from Overwinter 347,500 to NU6.3 3,428,143; network_upgrade.rs L104-L120 maps Height(0) to Genesis.
+      - tier: verified
+        kind: onchain
+        url: https://api.blockchair.com/zcash/raw/block/0
+        block_number: 0
+        detail: The raw genesis header's nTime field (bytes 100-103, little-endian) decodes to 2016-10-28T07:56:00Z. The NU6.3 activation block 3428143 decodes to 2026-07-28T14:07:23Z the same way. Read through a public explorer API; any Zcash node returns the same header.
+        checked_at: 2026-10-09
+        recheck: curl -s https://api.blockchair.com/zcash/raw/block/0 | jq -r '.data[0].raw_block[200:208]'  (reverse the 4 bytes, then date -u -r)
+    note: Judgment call. Genesis is recorded as the first deployment of the rail; the Ironwood pool, which carries new shielded transfers today, is under three months old.
+    checked_at: 2026-10-09
+  entity:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      legal_name: Zcash Foundation
+      jurisdiction: US
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://zfnd.org/
+        detail: The Zcash Foundation maintains Zebra, the only maintained consensus node since zcashd reached end of life, and holds the Zcash trademark.
+        quote: The Zcash Foundation is a 501(c)(3) public charity
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: repo
+        commit: e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291
+        checked_at: 2026-10-09
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/SECURITY.md#L115-L125
+        path: SECURITY.md
+        detail: Zebra's security policy names Zcash Open Development Lab (ZODL) as maintainer of zcash/zcash, librustzcash and zallet.
+    note: Judgment call. Maintenance is split between the Zcash Foundation (Zebra node) and ZODL (librustzcash, orchard, Zallet, Zodl wallet; Znewco, Inc. per the Zodl SDK CLA). The Foundation is recorded because the assessed unit is defined by Zebra. The IRS exempt-organisation entry was not looked up (no EIN on the site), so no register_url. Electric Coin Company still runs electriccoin.co but no longer appears as maintainer in the sources read.
+    checked_at: 2026-10-09
+  incidents:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2019-03-27
+        summary: CVE-2019-7167 published. A flaw in the original Sprout zk-SNARK parameters allowed counterfeiting before the Sapling upgrade (2018-10-28), which removed it. Whether it was exploited cannot be seen in the shielded pool.
+        funds_lost: unknown
+        url: https://nvd.nist.gov/vuln/detail/CVE-2019-7167
+      - date: 2026-06-02
+        summary: Orchard circuit soundness flaw (reported 2026-05-29) allowed counterfeiting and spending others' notes within Orchard. Orchard disabled by emergency soft fork at height 3363426, fixed in NU6.2 (2026-06-03), sealed withdraw-only by NU6.3. Exploitation cannot be ruled out; the ZIP 209 turnstile protects the supply cap.
+        funds_lost: unknown
+        url: https://github.com/zcash/zcash/security/advisories/GHSA-ghc3-g8w4-whf9
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 3af03aa3ad991874d86b8cf35919bc9b4671e8ba
+        checked_at: 2026-10-09
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0257.md#L33-L67
+        path: zips/zip-0257.md
+        detail: ZIP 257 records the 2026-05-29 report, the emergency disabling of Orchard from height 3363426 and the failed attempt at 3363366.
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/security-advisories
+        detail: zcash/zcash publishes GHSA-ghc3-g8w4-whf9 (critical, 2026-07-19) plus node DoS and consensus-robustness advisories; ZcashFoundation/zebra publishes GHSA-ww9q-8r59-xv46 for the same flaw and further peer-handling advisories in 2026.
+        checked_at: 2026-10-09
+    note: Only fund-safety incidents are listed. 2026 node advisories in zcashd and Zebra (denial of service, block poisoning, peer bans) are not repeated here. ECC's 2019 post-mortem on electriccoin.co returned HTTP 403 and was not read; the CVE record is cited instead.
+    checked_at: 2026-10-09
+  changes:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2018-10-29
+        summary: Sapling network upgrade (height 419200), new shielded pool and proving system.
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0205.rst
+      - date: 2022-05-31
+        summary: NU5 (height 1687104) introduces the Orchard pool and Halo 2 proofs without trusted setup.
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0252.rst
+      - date: 2024-11-23
+        summary: NU6 (height 2726400) replaces the dev fund with the deferred lockbox (12%) and Zcash Community Grants (8%) streams.
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0253.md
+      - date: 2025-11-24
+        summary: NU6.1 (height 3146400) extends the funding streams and disburses the lockbox (ZIP 271).
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0255.md
+      - date: 2026-06-02
+        summary: Emergency soft fork disables Orchard actions (height 3363426).
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0257.md
+      - date: 2026-06-03
+        summary: NU6.2 (height 3364600) re-enables Orchard with the corrected circuit and limits proof length.
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0257.md
+      - date: 2026-07-18
+        summary: zcashd reaches its end-of-support halt at height 3417100; Zebra and Zallet become the only maintained node and full-node wallet.
+        url: https://github.com/zcash/zcash/security/advisories/GHSA-ghc3-g8w4-whf9
+      - date: 2026-07-28
+        summary: NU6.3 (height 3428143) activates the Ironwood pool and seals Orchard as withdraw-only behind a turnstile.
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0258.md
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291
+        checked_at: 2026-10-09
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebra-chain/src/parameters/constants.rs#L75-L99
+        path: zebra-chain/src/parameters/constants.rs
+        detail: Mainnet activation heights for every upgrade listed; dates are the timestamps of the activation blocks (read from block headers via api.blockchair.com/zcash/raw/block/<height>).
+      - tier: verified
+        kind: repo
+        commit: 3af03aa3ad991874d86b8cf35919bc9b4671e8ba
+        checked_at: 2026-10-09
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0258.md#L60-L72
+        path: zips/zip-0258.md
+        detail: ZIP 258 fixes the NU6.3 Mainnet activation height at 3428143 (status Draft at this commit although the upgrade has activated).
+    note: Overwinter, Blossom, Heartwood and Canopy are omitted for brevity; their heights are in the same Zebra constants.
+    checked_at: 2026-10-09
+volume:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_observable
+  reason: Shielded transfers hide amounts and parties by design; only pool-level flows (value entering or leaving each shielded pool through the turnstile) are visible on the chain. Zcash also has no contract address the volume script could query.
+facts:
+  B2.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: true
+          detail: "security policy file: SECURITY.md"
+        - repo: zcash/librustzcash
+          ok: false
+          detail: no security policy file
+        - repo: zcash/orchard
+          ok: false
+          detail: no security policy file
+        - repo: zcash/zips
+          ok: false
+          detail: no security policy file
+        - repo: zcash/lightwalletd
+          ok: false
+          detail: no security policy file
+        - repo: zingolabs/zaino
+          ok: false
+          detail: no security policy file
+        - repo: zcash/zallet
+          ok: false
+          detail: no security policy file
+        - repo: zodl-inc/zodl-android
+          ok: false
+          detail: no security policy file
+        - repo: zodl-inc/zodl-ios
+          ok: false
+          detail: no security policy file
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: false
+          detail: no security policy file
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: "security policy file: SECURITY.md"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/contents/?ref=main
+        detail: "ZcashFoundation/zebra: security policy file: SECURITY.md"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/contents/?ref=main
+        detail: "zcash/librustzcash: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/contents/?ref=main
+        detail: "zcash/orchard: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/contents/?ref=main
+        detail: "zcash/zips: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/contents/?ref=master
+        detail: "zcash/lightwalletd: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/contents/?ref=dev
+        detail: "zingolabs/zaino: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/contents/?ref=main
+        detail: "zcash/zallet: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/contents/?ref=main
+        detail: "zodl-inc/zodl-android: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/contents/?ref=main
+        detail: "zodl-inc/zodl-ios: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/contents/?ref=main
+        detail: "zodl-inc/zodl-android-wallet-sdk: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/contents/?ref=master
+        detail: "zcash/zcash (archived): security policy file: SECURITY.md"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: true
+          detail: dependabot config present
+        - repo: zcash/librustzcash
+          ok: true
+          detail: dependabot config present
+        - repo: zcash/orchard
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: zcash/zips
+          ok: true
+          detail: dependabot config present
+        - repo: zcash/lightwalletd
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: zingolabs/zaino
+          ok: true
+          detail: dependabot config present
+        - repo: zcash/zallet
+          ok: true
+          detail: scanning step in a workflow
+        - repo: zodl-inc/zodl-android
+          ok: true
+          detail: dependabot config present
+        - repo: zodl-inc/zodl-ios
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: true
+          detail: dependabot config present
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: dependabot config present
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/contents/?ref=main
+        detail: "ZcashFoundation/zebra: dependabot config present"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/contents/?ref=main
+        detail: "zcash/librustzcash: dependabot config present"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/contents/?ref=main
+        detail: "zcash/orchard: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/contents/?ref=main
+        detail: "zcash/zips: dependabot config present"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/contents/?ref=master
+        detail: "zcash/lightwalletd: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/contents/?ref=dev
+        detail: "zingolabs/zaino: dependabot config present"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/contents/?ref=main
+        detail: "zcash/zallet: scanning step in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/contents/?ref=main
+        detail: "zodl-inc/zodl-android: dependabot config present"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/contents/?ref=main
+        detail: "zodl-inc/zodl-ios: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/contents/?ref=main
+        detail: "zodl-inc/zodl-android-wallet-sdk: dependabot config present"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/contents/?ref=master
+        detail: "zcash/zcash (archived): dependabot config present"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: false
+          detail: no deployment configuration
+        - repo: zcash/librustzcash
+          ok: false
+          detail: no deployment configuration
+        - repo: zcash/orchard
+          ok: false
+          detail: no deployment configuration
+        - repo: zcash/zips
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: zingolabs/zaino
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: zcash/zallet
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: zodl-inc/zodl-android
+          ok: false
+          detail: no deployment configuration
+        - repo: zodl-inc/zodl-ios
+          ok: false
+          detail: no deployment configuration
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: false
+          detail: no deployment configuration
+        - repo: zcash/zcash (archived)
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/contents/?ref=main
+        detail: "ZcashFoundation/zebra: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/contents/?ref=main
+        detail: "zcash/librustzcash: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/contents/?ref=main
+        detail: "zcash/orchard: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/contents/?ref=main
+        detail: "zcash/zips: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/contents/?ref=master
+        detail: "zcash/lightwalletd: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/contents/?ref=dev
+        detail: "zingolabs/zaino: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/contents/?ref=main
+        detail: "zcash/zallet: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/contents/?ref=main
+        detail: "zodl-inc/zodl-android: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/contents/?ref=main
+        detail: "zodl-inc/zodl-ios: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/contents/?ref=main
+        detail: "zodl-inc/zodl-android-wallet-sdk: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/contents/?ref=master
+        detail: "zcash/zcash (archived): no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: true
+          detail: "rules: pull_request, required_status_checks, merge_queue, deletion, non_fast_forward"
+        - repo: zcash/librustzcash
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        - repo: zcash/orchard
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        - repo: zcash/zips
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, deletion, pull_request, required_status_checks"
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        - repo: zingolabs/zaino
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, non_fast_forward"
+        - repo: zcash/zallet
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        - repo: zodl-inc/zodl-android
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request"
+        - repo: zodl-inc/zodl-ios
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/rules/branches/main
+        detail: "ZcashFoundation/zebra: rules: pull_request, required_status_checks, merge_queue, deletion, non_fast_forward"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/rules/branches/main
+        detail: "zcash/librustzcash: rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/rules/branches/main
+        detail: "zcash/orchard: rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/rules/branches/main
+        detail: "zcash/zips: rules: deletion, non_fast_forward, pull_request, deletion, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/rules/branches/master
+        detail: "zcash/lightwalletd: rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/rules/branches/dev
+        detail: "zingolabs/zaino: rules: deletion, non_fast_forward, pull_request, non_fast_forward"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/rules/branches/main
+        detail: "zcash/zallet: rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/rules/branches/main
+        detail: "zodl-inc/zodl-android: rules: deletion, non_fast_forward, pull_request"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/rules/branches/main
+        detail: "zodl-inc/zodl-ios: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/rules/branches/main
+        detail: "zodl-inc/zodl-android-wallet-sdk: rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/rules/branches/master
+        detail: "zcash/zcash (archived): rules: deletion, non_fast_forward, pull_request, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: true
+          detail: 29 workflow file(s)
+        - repo: zcash/librustzcash
+          ok: true
+          detail: 6 workflow file(s)
+        - repo: zcash/orchard
+          ok: true
+          detail: 6 workflow file(s)
+        - repo: zcash/zips
+          ok: true
+          detail: 4 workflow file(s)
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: 1 workflow file(s)
+        - repo: zingolabs/zaino
+          ok: true
+          detail: 13 workflow file(s)
+        - repo: zcash/zallet
+          ok: true
+          detail: 12 workflow file(s)
+        - repo: zodl-inc/zodl-android
+          ok: true
+          detail: 9 workflow file(s)
+        - repo: zodl-inc/zodl-ios
+          ok: true
+          detail: 4 workflow file(s)
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: true
+          detail: 6 workflow file(s)
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: 8 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/contents/?ref=main
+        detail: "ZcashFoundation/zebra: 29 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/contents/?ref=main
+        detail: "zcash/librustzcash: 6 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/contents/?ref=main
+        detail: "zcash/orchard: 6 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/contents/?ref=main
+        detail: "zcash/zips: 4 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/contents/?ref=master
+        detail: "zcash/lightwalletd: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/contents/?ref=dev
+        detail: "zingolabs/zaino: 13 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/contents/?ref=main
+        detail: "zcash/zallet: 12 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/contents/?ref=main
+        detail: "zodl-inc/zodl-android: 9 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/contents/?ref=main
+        detail: "zodl-inc/zodl-ios: 4 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/contents/?ref=main
+        detail: "zodl-inc/zodl-android-wallet-sdk: 6 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/contents/?ref=master
+        detail: "zcash/zcash (archived): 8 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: false
+          detail: test command in a workflow
+        - repo: zcash/librustzcash
+          ok: true
+          detail: test command in a workflow
+        - repo: zcash/orchard
+          ok: true
+          detail: test command in a workflow
+        - repo: zcash/zips
+          ok: true
+          detail: test command in a workflow
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: test command in a workflow
+        - repo: zingolabs/zaino
+          ok: false
+          detail: test command in a workflow
+        - repo: zcash/zallet
+          ok: true
+          detail: test command in a workflow
+        - repo: zodl-inc/zodl-android
+          ok: false
+          detail: test command in a workflow
+        - repo: zodl-inc/zodl-ios
+          ok: false
+          detail: test command in a workflow
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: true
+          detail: test command in a workflow
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/contents/?ref=main
+        detail: "ZcashFoundation/zebra: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/contents/?ref=main
+        detail: "zcash/librustzcash: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/contents/?ref=main
+        detail: "zcash/orchard: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/contents/?ref=main
+        detail: "zcash/zips: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/contents/?ref=master
+        detail: "zcash/lightwalletd: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/contents/?ref=dev
+        detail: "zingolabs/zaino: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/contents/?ref=main
+        detail: "zcash/zallet: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/contents/?ref=main
+        detail: "zodl-inc/zodl-android: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/contents/?ref=main
+        detail: "zodl-inc/zodl-ios: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/contents/?ref=main
+        detail: "zodl-inc/zodl-android-wallet-sdk: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/contents/?ref=master
+        detail: "zcash/zcash (archived): test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: true
+          detail: coverage tooling referenced
+        - repo: zcash/librustzcash
+          ok: true
+          detail: coverage tooling referenced
+        - repo: zcash/orchard
+          ok: false
+          detail: coverage tooling referenced
+        - repo: zcash/zips
+          ok: false
+          detail: coverage tooling referenced
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: coverage tooling referenced
+        - repo: zingolabs/zaino
+          ok: true
+          detail: coverage tooling referenced
+        - repo: zcash/zallet
+          ok: true
+          detail: coverage tooling referenced
+        - repo: zodl-inc/zodl-android
+          ok: true
+          detail: coverage tooling referenced
+        - repo: zodl-inc/zodl-ios
+          ok: false
+          detail: coverage tooling referenced
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: true
+          detail: coverage tooling referenced
+        - repo: zcash/zcash (archived)
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/contents/?ref=main
+        detail: "ZcashFoundation/zebra: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/contents/?ref=main
+        detail: "zcash/librustzcash: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/contents/?ref=main
+        detail: "zcash/orchard: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/contents/?ref=main
+        detail: "zcash/zips: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/contents/?ref=master
+        detail: "zcash/lightwalletd: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/contents/?ref=dev
+        detail: "zingolabs/zaino: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/contents/?ref=main
+        detail: "zcash/zallet: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/contents/?ref=main
+        detail: "zodl-inc/zodl-android: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/contents/?ref=main
+        detail: "zodl-inc/zodl-ios: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/contents/?ref=main
+        detail: "zodl-inc/zodl-android-wallet-sdk: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/contents/?ref=master
+        detail: "zcash/zcash (archived): coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: false
+          detail: "latest tags: zebra-utils-v10.0.3, zebra-utils-v10.0.2, zebra-utils-v10.0.1"
+        - repo: zcash/librustzcash
+          ok: false
+          detail: "latest tags: zip321-0.10.0-pre.1, zip321-0.10.0-pre.0, zip321-0.9.0"
+        - repo: zcash/orchard
+          ok: true
+          detail: "latest tags: v0.11.0, v0.1.0-beta.3, v0.1.0-beta.2"
+        - repo: zcash/zips
+          ok: true
+          detail: "latest tags: vtest, v2026.7.0, v2026.6.4"
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: "latest tags: v0.5.4, v0.5.3, v0.5.2"
+        - repo: zingolabs/zaino
+          ok: true
+          detail: "latest tags: zainod-0.10.1, v0.4.0_nu_6_2_alpha, v0.1.2-zr4"
+        - repo: zcash/zallet
+          ok: true
+          detail: "latest tags: v0.1.0-beta.3, v0.1.0-beta.2, v0.1.0-beta.1"
+        - repo: zodl-inc/zodl-android
+          ok: true
+          detail: "latest tags: shielded-vote-2.4.10-testflight.5, shielded-vote-2.4.10-testflight.4, shielded-vote-2.4.10-testflight.3"
+        - repo: zodl-inc/zodl-ios
+          ok: true
+          detail: "latest tags: test-0.0.1-42, release-baseline-2026-08-08, beta4-rc2"
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: true
+          detail: "latest tags: v5.1.0, v5.0.0, v3.3.0"
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: "latest tags: zc.v0.11.2.z0, v6.20.0, v6.12.5"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/tags
+        detail: "ZcashFoundation/zebra: latest tags: zebra-utils-v10.0.3, zebra-utils-v10.0.2, zebra-utils-v10.0.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/tags
+        detail: "zcash/librustzcash: latest tags: zip321-0.10.0-pre.1, zip321-0.10.0-pre.0, zip321-0.9.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/tags
+        detail: "zcash/orchard: latest tags: v0.11.0, v0.1.0-beta.3, v0.1.0-beta.2"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/tags
+        detail: "zcash/zips: latest tags: vtest, v2026.7.0, v2026.6.4"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/tags
+        detail: "zcash/lightwalletd: latest tags: v0.5.4, v0.5.3, v0.5.2"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/tags
+        detail: "zingolabs/zaino: latest tags: zainod-0.10.1, v0.4.0_nu_6_2_alpha, v0.1.2-zr4"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/tags
+        detail: "zcash/zallet: latest tags: v0.1.0-beta.3, v0.1.0-beta.2, v0.1.0-beta.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/tags
+        detail: "zodl-inc/zodl-android: latest tags: shielded-vote-2.4.10-testflight.5, shielded-vote-2.4.10-testflight.4, shielded-vote-2.4.10-testflight.3"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/tags
+        detail: "zodl-inc/zodl-ios: latest tags: test-0.0.1-42, release-baseline-2026-08-08, beta4-rc2"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/tags
+        detail: "zodl-inc/zodl-android-wallet-sdk: latest tags: v5.1.0, v5.0.0, v3.3.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/tags
+        detail: "zcash/zcash (archived): latest tags: zc.v0.11.2.z0, v6.20.0, v6.12.5"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: true
+          detail: 6 of 10 recent commits signed
+        - repo: zcash/librustzcash
+          ok: true
+          detail: 5 of 10 recent commits signed
+        - repo: zcash/orchard
+          ok: false
+          detail: 4 of 10 recent commits signed
+        - repo: zcash/zips
+          ok: true
+          detail: 6 of 10 recent commits signed
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: 6 of 10 recent commits signed
+        - repo: zingolabs/zaino
+          ok: true
+          detail: 9 of 10 recent commits signed
+        - repo: zcash/zallet
+          ok: true
+          detail: 5 of 10 recent commits signed
+        - repo: zodl-inc/zodl-android
+          ok: false
+          detail: 3 of 10 recent commits signed
+        - repo: zodl-inc/zodl-ios
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: false
+          detail: 4 of 10 recent commits signed
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: 9 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/commits?per_page=10
+        detail: "ZcashFoundation/zebra: 6 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/commits?per_page=10
+        detail: "zcash/librustzcash: 5 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/commits?per_page=10
+        detail: "zcash/orchard: 4 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/commits?per_page=10
+        detail: "zcash/zips: 6 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/commits?per_page=10
+        detail: "zcash/lightwalletd: 6 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/commits?per_page=10
+        detail: "zingolabs/zaino: 9 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/commits?per_page=10
+        detail: "zcash/zallet: 5 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/commits?per_page=10
+        detail: "zodl-inc/zodl-android: 3 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/commits?per_page=10
+        detail: "zodl-inc/zodl-ios: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/commits?per_page=10
+        detail: "zodl-inc/zodl-android-wallet-sdk: 4 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/commits?per_page=10
+        detail: "zcash/zcash (archived): 9 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: true
+          detail: CHANGELOG file
+        - repo: zcash/librustzcash
+          ok: true
+          detail: 6 release(s) with notes
+        - repo: zcash/orchard
+          ok: true
+          detail: CHANGELOG file
+        - repo: zcash/zips
+          ok: false
+          detail: no changelog or release notes
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: CHANGELOG file
+        - repo: zingolabs/zaino
+          ok: true
+          detail: CHANGELOG file
+        - repo: zcash/zallet
+          ok: true
+          detail: CHANGELOG file
+        - repo: zodl-inc/zodl-android
+          ok: true
+          detail: CHANGELOG file
+        - repo: zodl-inc/zodl-ios
+          ok: true
+          detail: CHANGELOG file
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: true
+          detail: CHANGELOG file
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: 10 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/contents/?ref=main
+        detail: "ZcashFoundation/zebra: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/contents/?ref=main
+        detail: "zcash/librustzcash: 6 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/contents/?ref=main
+        detail: "zcash/orchard: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/contents/?ref=main
+        detail: "zcash/zips: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/contents/?ref=master
+        detail: "zcash/lightwalletd: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/contents/?ref=dev
+        detail: "zingolabs/zaino: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/contents/?ref=main
+        detail: "zcash/zallet: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/contents/?ref=main
+        detail: "zodl-inc/zodl-android: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/contents/?ref=main
+        detail: "zodl-inc/zodl-ios: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/contents/?ref=main
+        detail: "zodl-inc/zodl-android-wallet-sdk: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/contents/?ref=master
+        detail: "zcash/zcash (archived): 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ZcashFoundation/zebra
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: zcash/librustzcash
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: zcash/orchard
+          ok: true
+          detail: contribution section in README
+        - repo: zcash/zips
+          ok: false
+          detail: none found
+        - repo: zcash/lightwalletd
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: zingolabs/zaino
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: zcash/zallet
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: zodl-inc/zodl-android
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: zodl-inc/zodl-ios
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: zodl-inc/zodl-android-wallet-sdk
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: zcash/zcash (archived)
+          ok: true
+          detail: CONTRIBUTING file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ZcashFoundation/zebra/contents/?ref=main
+        detail: "ZcashFoundation/zebra: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/librustzcash/contents/?ref=main
+        detail: "zcash/librustzcash: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/orchard/contents/?ref=main
+        detail: "zcash/orchard: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zips/contents/?ref=main
+        detail: "zcash/zips: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/lightwalletd/contents/?ref=master
+        detail: "zcash/lightwalletd: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zingolabs/zaino/contents/?ref=dev
+        detail: "zingolabs/zaino: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zallet/contents/?ref=main
+        detail: "zcash/zallet: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android/contents/?ref=main
+        detail: "zodl-inc/zodl-android: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-ios/contents/?ref=main
+        detail: "zodl-inc/zodl-ios: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zodl-inc/zodl-android-wallet-sdk/contents/?ref=main
+        detail: "zodl-inc/zodl-android-wallet-sdk: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zcash/zcash/contents/?ref=master
+        detail: "zcash/zcash (archived): CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B10.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Logical and integration architecture of the node (crate structure, services, dependencies) in the Zebra book; the protocol is specified in the Zcash Protocol Specification and ZIPs. No infrastructure view, as no operator-run infrastructure is required.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291
+        checked_at: 2026-10-09
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/book/src/dev/overview.md#L43-L147
+        path: book/src/dev/overview.md
+        detail: Zebra design overview, sections Service Dependencies (L43) and Architecture (L78), then per-crate responsibilities.
+    checked_at: 2026-10-09
+  B11.2:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Protocol funding streams in consensus. From NU6.1 until height 4,406,400, 12% of each block subsidy goes to the deferred lockbox and 8% to the Major Grants stream administered by the Financial Privacy Fund. The Zcash Foundation also publishes quarterly financial reports.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291
+        checked_at: 2026-10-09
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebra-chain/src/parameters/network/subsidy/constants/mainnet.rs#L228-L242
+        path: zebra-chain/src/parameters/network/subsidy/constants/mainnet.rs
+        detail: Mainnet FundingStreams from NU6_1 to Height(4_406_400) with Deferred 12 and MajorGrants 8 (FPF address t3cFfPt1…Cow).
+    checked_at: 2026-10-09
+  B12.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 3af03aa3ad991874d86b8cf35919bc9b4671e8ba
+        checked_at: 2026-10-09
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0317.rst#L126-L146
+        path: zips/zip-0317.rst
+        detail: Transaction acceptance depends only on consensus rules and the fee rule; the node, protocol libraries and Zallet contain no screening step (code searched in the seed research for country, geoblock and sanction terms). The AI-assisted audit in ZIP 257 concerns security review, not the payment path.
+    checked_at: 2026-10-09

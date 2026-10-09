@@ -1,0 +1,536 @@
+slug: fluidkey
+name: Fluidkey
+type: transfer
+website: https://www.fluidkey.com
+primary_chain:
+  name: Base
+  chain_id: 8453
+  basis: >-
+    Fluidkey's docs say deposits from other chains via Near Intents "are deposited as USDC on Base", and the earliest auto-earn profile in Fluidkey's recovery tool configures Base USDC (fluidkey/sara@e6e4fcd9 src/configs/autoEarnProfiles.ts). Unit: stealth accounts as counterfactual Safe 1.3.0 proxies on Base (singleton 0xd9Db…9552, factory 0xa6B7…6AB2) and the FluidkeyEarn module 0x3BDb…f2f9. Excluded: the other six EVM chains, Near Intents routes, bank (Noah) and tokenised-stock features.
+
+repos:
+  - url: https://github.com/fluidkey/fluidkey-stealth-account-kit
+    role: sdk
+    license: MIT
+  - url: https://github.com/fluidkey/fluidkey-earn-module
+    role: contracts
+    license: none
+  - url: https://github.com/fluidkey/sara
+    role: frontend
+    license: MIT
+  - url: https://github.com/fluidkey/fluidkey-hydrator
+    role: contracts
+    license: MIT
+
+contracts:
+  - address: "0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552"
+    chain_id: 8453
+    role: Safe 1.3.0 singleton (stealth account logic)
+    verified: sourcify
+  - address: "0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2"
+    chain_id: 8453
+    role: Safe 1.3.0 proxy factory
+    verified: sourcify
+  - address: "0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9"
+    chain_id: 8453
+    role: FluidkeyEarnModule (optional auto-earn)
+    verified: sourcify
+
+components:
+  - name: Stealth Safe accounts (Safe 1.3.0 proxy, singleton and factory)
+    role: contracts
+    public: true
+    license: LGPL-3.0
+    operator: none (each Safe is 1-of-1, owned by a user-derived stealth EOA)
+    required: true
+    repo: https://github.com/safe-global/safe-smart-account
+  - name: Fluidkey backend (stealth address issuance, ENS offchain resolver, indexing)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Fluid Privacy SA
+    required: true
+  - name: Fluidkey app (web and mobile)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Fluid Privacy SA
+    required: true
+  - name: Fluidkey Stealth Account Kit (@fluidkey/stealth-account-kit)
+    role: sdk
+    public: true
+    license: MIT
+    operator: user or Fluidkey app
+    required: true
+    repo: https://github.com/fluidkey/fluidkey-stealth-account-kit
+  - name: Base and a JSON-RPC endpoint
+    role: ledger
+    public: true
+    license: MIT
+    operator: Base sequencer (Coinbase)
+    required: true
+    repo: https://github.com/ethereum-optimism/optimism
+  - name: Gas sponsorship relayer
+    role: relayer
+    public: false
+    license: proprietary
+    operator: Fluid Privacy SA
+    required: false
+  - name: FluidkeyEarnModule and authorized relayers (auto-earn)
+    role: contracts
+    public: true
+    license: AGPL-3.0
+    operator: Fluid Privacy SA (owner Safe 2-of-3)
+    required: false
+    repo: https://github.com/fluidkey/fluidkey-earn-module
+  - name: Privy embedded wallet (web login key derivation)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: Privy
+    required: false
+  - name: SARA recovery interface (recovery.fluidkey.com)
+    role: frontend
+    public: true
+    license: MIT
+    operator: Fluid Privacy SA, or self-hosted
+    required: false
+    repo: https://github.com/fluidkey/sara
+  - name: Noah (bank feature, KYC), Near Intents, Houdini Swap
+    role: other
+    public: false
+    license: proprietary
+    operator: third parties
+    required: false
+
+scores:
+  C1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552
+        address: "0xaAa53d54Ba6450f9294Ce3c1f51e866D0F8C8e70"
+        block_number: 52372315
+        detail: A sample Fluidkey stealth account (from an AutoEarnExecuted event at block 52372274) is a Safe 1.3.0 proxy with masterCopy 0xd9Db…9552, threshold 1, one owner 0x43D7…17EB with no code, guard slot 0, and one module, FluidkeyEarnModule 0x3BDb…f2f9.
+        checked_at: "2026-10-09"
+        recheck: cast call 0xaAa53d54Ba6450f9294Ce3c1f51e866D0F8C8e70 "getModulesPaginated(address,uint256)(address[],address)" 0x0000000000000000000000000000000000000001 10 --rpc-url https://mainnet.base.org
+        check:
+          slot: "0x0"
+          expect: "0x000000000000000000000000d9db270c1b5e3bd161e8c8503c55ceabee709552"
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-earn-module/blob/122cde19940d06b94c0027f4cd2e22e7fa19129a/src/FluidkeyEarnModule.sol#L429-L483
+        commit: 122cde19940d06b94c0027f4cd2e22e7fa19129a
+        path: src/FluidkeyEarnModule.sol
+        detail: The module can only make the Safe wrap native tokens, approve and deposit into the vault configured for that Safe's config hash, with shares minted to the Safe; it has no transfer-out, pause or freeze path.
+        checked_at: "2026-10-09"
+    finding: >-
+      Payments are ordinary transfers into user-owned 1-of-1 Safes built on Safe's immutable 1.3.0 singleton; no Fluidkey role can pause, freeze or block them onchain. The optional earn module lets Fluidkey's relayers push received funds into preconfigured vaults, which is a custody question (S1), not a block. Refusal of service happens off-chain, in address issuance (C3, C4).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-stealth-account-kit/blob/2a4ccfafef127165c11ba16fc16235c919698ec2/README.md#L1-L58
+        commit: 2a4ccfafef127165c11ba16fc16235c919698ec2
+        path: README.md
+        detail: The kit "enables anyone to independently generate and recover stealth smart accounts and related funds" and lists the Fluidkey parameters (chainId 0, Safe 1.3.0, default addresses, threshold 1).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/fluidkey/fluidkey-stealth-account-kit/contents/README.md?ref=2a4ccfafef127165c11ba16fc16235c919698ec2" --jq .content | base64 -d | sed -n 1,58p
+      - tier: documented
+        kind: document
+        url: https://docs.fluidkey.com/readme/recovery
+        detail: The docs present the open recovery interface (SARA) only as a way to verify addresses or "as a last resort to recover funds".
+        checked_at: "2026-10-09"
+        quote: as a last resort to recover funds
+    finding: >-
+      Once a payer has a stealth address, settlement is a plain token transfer, and the payee can deploy the Safe and move funds with the kit and Safe's public factory, without Fluidkey. But new addresses are issued by Fluidkey's backend, and the documented direct path is recovery only. Judgment call: 2, possible and reconstructable from public code, but not documented as a settlement path.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fluidkey.com/technical-documentation/technical-walkthrough
+        detail: The user shares a BIP-32 node of the viewing key with Fluidkey so that Fluidkey can generate stealth addresses, and ENS names resolve through Fluidkey's offchain resolver.
+        checked_at: "2026-10-09"
+        quote: Fluidkey uses an ENS offchain resolver to return stealth addresses
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-stealth-account-kit/tree/2a4ccfafef127165c11ba16fc16235c919698ec2/src
+        commit: 2a4ccfafef127165c11ba16fc16235c919698ec2
+        path: src
+        detail: The public kit contains only key derivation and address prediction; no resolver, issuance service or relayer code is published in github.com/fluidkey.
+        checked_at: "2026-10-09"
+    finding: >-
+      In the product flow a payer gets a fresh address from Fluidkey's offchain ENS resolver or payment page, both run only by Fluidkey with no public code. The gas relayer is also Fluidkey's. Scored 0: required, closed, single-vendor. The kit lets a payee derive addresses themselves, which keeps funds recoverable (S4).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.fluidkey.com/privacy
+        detail: The privacy policy lists fraud, risk and device signals including sanctions/PEP screening indicators among the data processed, and fraud-prevention and risk-screening providers among recipients.
+        checked_at: "2026-10-09"
+        quote: Fraud, risk and device signals, which may include sanctions/PEP screening indicators
+      - tier: documented
+        kind: document
+        url: https://www.fluidkey.com/terms
+        detail: The terms require that users are not subject to or resident in jurisdictions under Swiss, UN, EU, UK, US or other sanctions.
+        checked_at: "2026-10-09"
+        quote: subject to economic sanctions or trade embargoes
+    finding: >-
+      The settlement layer (token transfers into Safes) has no filtering. Screening exists in Fluidkey's closed backend and is disclosed only in the privacy policy and terms; we cannot see where it applies or whether address issuance is refused. Scored 1: edge filtering disclosed in docs only.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fluidkey.com/readme/frequently-asked-questions
+        detail: The FAQ names 7 EVM chains (Ethereum, Arbitrum, Base, Polygon, Optimism, Gnosis, BSC); receiving accepts ETH, USDC and any ERC-20.
+        checked_at: "2026-10-09"
+        quote: Fluidkey accounts are currently available on 7 EVM chains
+    finding: >-
+      Chains are listed in the docs; tokens are an open set. We found no statement that USDC or other issuers can freeze funds in a stealth account, or about Base's sequencer. Judgment call: an open token set is not enumerated, so 0, as for Railgun.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9
+        address: "0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9"
+        block_number: 52372315
+        detail: Sourcify returns exact_match on Base for the Safe singleton, proxy factory and FluidkeyEarnModule (and match for MultiSend 0xA238…7761); the module source equals src/FluidkeyEarnModule.sol at 122cde19 apart from a trailing newline.
+        checked_at: "2026-10-09"
+        recheck: for a in 0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552 0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2 0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/8453/$a | jq -r .match; done
+    finding: >-
+      All contracts in the path are full Sourcify matches. No rebuild was attempted, and the Safe contracts come from Safe's own repository rather than Fluidkey's. Judgment call: 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-stealth-account-kit/tree/2a4ccfafef127165c11ba16fc16235c919698ec2/src
+        commit: 2a4ccfafef127165c11ba16fc16235c919698ec2
+        path: src
+        detail: github.com/fluidkey publishes the kit, the earn module, the hydrator, the SARA recovery UI and hackathon repos; no app, backend, resolver or indexer code.
+        checked_at: "2026-10-09"
+    finding: >-
+      Only the SDK-level kit and contracts are public. The app, backend, resolver, relayer and indexer are closed. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/sara/blob/e6e4fcd9e718722948b82fa0e819e0c4fca46e0d/README.md
+        commit: e6e4fcd9e718722948b82fa0e819e0c4fca46e0d
+        path: README.md
+        detail: The only public deployable app is the SARA recovery interface, whose README has a description and a demo link but no build steps.
+        checked_at: "2026-10-09"
+    finding: >-
+      There is no path to a self-hosted Fluidkey deployment: the app and backend are closed. SARA recovers funds but does not issue addresses or receive payments. Judgment call: 0, since recovery is not a working payment deployment.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-earn-module/blob/122cde19940d06b94c0027f4cd2e22e7fa19129a/src/FluidkeyEarnModule.sol#L98-L116
+        commit: 122cde19940d06b94c0027f4cd2e22e7fa19129a
+        path: src/FluidkeyEarnModule.sol
+        detail: The earn module's events are in its source; Safe ABIs are public through safe-deployments, used by the kit.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: document
+        url: https://docs.fluidkey.com/readme/receiving-funds
+        detail: The docs describe receiving via ENS, payment pages and Near Intents; transaction export is described only in the docs (Exporting Transactions page).
+        checked_at: "2026-10-09"
+        quote: These transfers are deposited as USDC on Base
+    finding: >-
+      Contract interfaces are public, but there is no API schema for the backend, and the transaction export is documented only. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-stealth-account-kit/blob/2a4ccfafef127165c11ba16fc16235c919698ec2/LICENSE
+        commit: 2a4ccfafef127165c11ba16fc16235c919698ec2
+        path: LICENSE
+        detail: The kit is MIT; SARA and the hydrator are MIT; the earn module has no LICENSE file (SPDX AGPL-3.0-only in source, GPL-3.0 in package.json).
+        checked_at: "2026-10-09"
+    finding: >-
+      The required app and backend are closed, so F1 is 0 by rule.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-stealth-account-kit/blob/14a11e007c51320b64803156158672082c2fcc0a/LICENSE
+        commit: 14a11e007c51320b64803156158672082c2fcc0a
+        path: LICENSE
+        detail: The kit's LICENSE went MIT (de2cc84a, 2024-01-04) to Apache-2.0 (14a11e00, 2024-01-12) and back to MIT the same day (b32f35d3); no CLA or CONTRIBUTING file.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/fluidkey/fluidkey-stealth-account-kit/commits?path=LICENSE&sha=2a4ccfafef127165c11ba16fc16235c919698ec2" --jq '.[].sha'
+        historical: true
+    finding: >-
+      No CLA and no licence-stability commitment. The kit's licence changed twice in January 2024, between two permissive licences. Judgment call: the anchor names any prior relicense as 0; we apply it as for Privacy Pools.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fluidkey.com/technical-documentation/technical-walkthrough
+        detail: Address generation for users relies on the viewing-key node shared with Fluidkey.
+        checked_at: "2026-10-09"
+        quote: the user shares a BIP-32 derived node of their private viewing key with Fluidkey
+    finding: >-
+      Production depends on Fluidkey's hosted backend for issuing and tracking addresses, with no open alternative; the open kit covers key derivation and recovery. Scored 1: documented that production needs a hosted service.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    unknown: true
+    finding: >-
+      The app is closed and we ran no trace. The privacy policy mentions consent-based usage analysis, which does not show whether analytics is on by default.
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.fluidkey.com/privacy
+        detail: The policy lists contact and login details, blockchain data, identity-verification data from regulated partners, fraud/risk/device signals and, for the Bank feature, biometric data.
+        checked_at: "2026-10-09"
+        quote: Fraud, risk and device signals, which may include sanctions/PEP screening indicators
+      - tier: documented
+        kind: document
+        url: https://docs.fluidkey.com/technical-documentation/technical-walkthrough
+        detail: Fluidkey holds a node of each user's viewing key, which lets it link all of the user's stealth accounts and payments.
+        checked_at: "2026-10-09"
+        quote: the user shares a BIP-32 derived node of their private viewing key with Fluidkey
+    finding: >-
+      Beyond settlement data, Fluidkey holds the user's viewing-key node (and so the full payment history), login and contact data, and risk signals; KYC applies only to the optional Bank feature. All of it is disclosed in the policy and docs, not limited in code. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-stealth-account-kit/blob/2a4ccfafef127165c11ba16fc16235c919698ec2/src/generateStealthAddresses.ts#L1-L49
+        commit: 2a4ccfafef127165c11ba16fc16235c919698ec2
+        path: src/generateStealthAddresses.ts
+        detail: Each payment goes to a fresh stealth EOA's counterfactual Safe; nothing about the payee or invoice is written onchain.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/fluidkey/fluidkey-stealth-account-kit/contents/src/generateStealthAddresses.ts?ref=2a4ccfafef127165c11ba16fc16235c919698ec2" --jq .content | base64 -d
+      - tier: documented
+        kind: document
+        url: https://docs.fluidkey.com/readme/sending-funds
+        detail: When sending, the app selects "one or a few stealth accounts" to fund a payment, which can link them; labels limit which accounts are combined.
+        checked_at: "2026-10-09"
+        quote: selecting one or a few stealth accounts
+    finding: >-
+      Receiving uses fresh addresses with no metadata. Spending can combine several stealth accounts in one payment, linking them, and Safes created with the earn-module initializer are recognisable as Fluidkey accounts; both are documented. Fluidkey itself sees all links (P2). Judgment call: 2, minimal documented linkage, because the linking comes from the app's spending logic rather than user behaviour.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fluidkey.com/readme/account-set-up
+        detail: The web app derives keys through a Privy embedded wallet; other docs pages name Noah (bank KYC), Near Intents and Houdini Swap; the policy lists IT, risk-screening and identity-verification providers by type.
+        checked_at: "2026-10-09"
+        quote: your keys are generated from your login via a Privy embedded wallet
+    finding: >-
+      Fluidkey's backend sees every payment, and Privy, risk-screening providers and feature partners are disclosed only in docs and the policy; the app code is closed. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    finding: >-
+      The app is closed, so we could not check whether RPC or indexer endpoints are configurable. The SARA recovery UI accepts a custom RPC URL, but it is not the payment path.
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552
+        address: "0xaAa53d54Ba6450f9294Ce3c1f51e866D0F8C8e70"
+        block_number: 52372315
+        detail: The sample stealth Safe's threshold is 1 and its only owner is a stealth EOA derived from the user's keys; Fluidkey holds no signer.
+        checked_at: "2026-10-09"
+        recheck: cast call 0xaAa53d54Ba6450f9294Ce3c1f51e866D0F8C8e70 "getOwners()(address[])" --rpc-url https://mainnet.base.org
+        check:
+          call: "0xe75235b8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-earn-module/blob/122cde19940d06b94c0027f4cd2e22e7fa19129a/src/FluidkeyEarnModule.sol#L375-L427
+        commit: 122cde19940d06b94c0027f4cd2e22e7fa19129a
+        path: src/FluidkeyEarnModule.sol
+        detail: autoEarn is callable by an authorized relayer (or with a relayer signature) and deposits into the vault configured for the Safe, with shares to the Safe.
+        checked_at: "2026-10-09"
+    finding: >-
+      Payments go directly into a Safe the payee alone controls; Fluidkey cannot redirect them. With auto-earn on, Fluidkey's relayers move received funds into preconfigured Morpho, Aave or InfiniFi vaults without a per-transaction signature, so custody shifts to those vaults; the shares stay with the Safe. Judgment call: 3, because the payment itself is a direct transfer and auto-earn is a disclosed, user-chosen profile.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9
+        address: "0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9"
+        block_number: 52372315
+        detail: FluidkeyEarnModule is not a proxy (implementation slot zero); its owner() is Safe 0x9E3e…e7CD (1.4.1, 2-of-3, no modules, guard 0), which can add relayers and register new configs but not change code. Each stealth Safe's masterCopy can be changed only by its own 1-of-1 owner.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9 "owner()(address)" --rpc-url https://mainnet.base.org
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000009e3eba321427941868cb4123de97dab145c9e7cd"
+    finding: >-
+      Nobody but the account owner can change the code behind a stealth account, and the earn module is immutable. Scored 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-earn-module/blob/122cde19940d06b94c0027f4cd2e22e7fa19129a/src/FluidkeyEarnModule.sol#L459-L467
+        commit: 122cde19940d06b94c0027f4cd2e22e7fa19129a
+        path: src/FluidkeyEarnModule.sol
+        detail: The only approval in public code is the module's exact-amount approval of the vault (amountToSave); a payer pays by plain transfer and needs no approval.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/fluidkey/fluidkey-earn-module/contents/src/FluidkeyEarnModule.sol?ref=122cde19940d06b94c0027f4cd2e22e7fa19129a" --jq .content | base64 -d | sed -n 459,467p
+    finding: >-
+      Receiving needs no approval, and the auto-earn path approves exact amounts. Judgment call: approvals the closed app may request for swaps or other features cannot be checked, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-stealth-account-kit/blob/2a4ccfafef127165c11ba16fc16235c919698ec2/src/predictStealthSafeAddress.ts#L1-L60
+        commit: 2a4ccfafef127165c11ba16fc16235c919698ec2
+        path: src/predictStealthSafeAddress.ts
+        detail: The kit replays stealth EOAs from the user's keys and predicts each Safe address from Safe's public deployments, so funds can be located and recovered without Fluidkey.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/fluidkey/fluidkey-stealth-account-kit/contents/src/predictStealthSafeAddress.ts?ref=2a4ccfafef127165c11ba16fc16235c919698ec2" --jq .content | base64 -d | sed -n 1,60p
+    finding: >-
+      Derived from S1=3, C2=2, C3=0, O3=0. Funds sit in user-owned Safes (S1). If Fluidkey disappears, a user with their login or key backup can rebuild addresses with the kit and move funds through the public Safe contracts, for example with SARA (C2). New addresses, ENS resolution and gas sponsorship stop, because they need the closed backend (C3), and the app cannot be self-hosted (O3). Scored 2: funds retrievable without the provider; settlement stops. Keys created through Privy depend on that login or a backup.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    finding: >-
+      The app bundle is closed and not inspected. The docs say spending keys never leave the client, while a viewing-key node is shared with Fluidkey by design (P2).
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/fluidkey/fluidkey-stealth-account-kit/blob/2a4ccfafef127165c11ba16fc16235c919698ec2/README.md#L60-L63
+        commit: 2a4ccfafef127165c11ba16fc16235c919698ec2
+        path: README.md
+        detail: The kit was audited by Dedaub (May 2024, PDF in audits/); the earn-module repo holds an Ackee report (March 2025) and its source has commits after an "implement audit recommendations" commit (8263b4f8, 2025-02-24).
+        checked_at: "2026-10-09"
+    finding: >-
+      Audit reports for the kit and the earn module are in their repos. We could not extract the audited commits from the PDFs, so we cannot tie them to the deployed code. The app and backend have no published audit, and we found no bounty. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+notes: >-
+  Unit: Fluidkey stealth accounts on Base. Fluidkey runs no settlement contract of its own: payments are transfers into counterfactual Safe 1.3.0 proxies owned by stealth EOAs, and the optional FluidkeyEarnModule moves balances into vaults. Reads at block 52372315 via base-rpc.publicnode.com (the sample Safe 0xaAa5…8e70 came from an AutoEarnExecuted log at block 52372274). Authorized-relayer events could not be enumerated (public Base RPCs cap log ranges). No availability block: the terms refer to sanctions regimes without naming countries. No transactions, app runs, traces or self-host attempts.

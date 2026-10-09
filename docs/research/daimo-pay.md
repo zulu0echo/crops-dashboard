@@ -171,3 +171,24 @@ C5 2, O1 2, F2 2, P5 2, S5 2, S2 3, S3 3. Each has a `recheck`.
 - GitHub code search of `packages/contract/src` for sanction, country, OFAC, blacklist and blocked returned nothing.
 - Fiat rails are a regional variant (US, CA, Europe/SEPA, JP/SG/KR/PH, AR, CO) and are enabled per organization. They are recorded in `note`, not as an allowlist.
 - Judgment call: the payment-method list is built by the closed Daimo API, so code cannot rule out a server-side country gate. `global` rests on the docs statement and the contracts.
+
+## Operational 2026-10-09
+
+Facts are in `data/operational/daimo-pay.yaml`. The earlier example facts were replaced. B1.4 and the bot's B2.1, B2.3, B8.2 and B9.x facts are unchanged.
+
+- **Fees.** No fee schedule exists in the docs, the terms or the privacy notice, and daimo.com/pricing returns 404. Onchain:
+  - The relayer keeps any surplus above minOutputAmount (refs S1 1-2).
+  - Sample tx 0x8d3d…bd00: 30 USDC in, 30 USDC out. The relayer paid 3,057,526 gas at 0.0064 gwei.
+  - The payer sends one transfer.
+- **Custody.** `provider_custodial`. The earlier judgment call is kept, and it is consistent with S1 = 0.
+- **Licences.** `absent`. The terms and privacy notice name no licence, and the privacy notice says Daimo does not act as a financial institution. The FinCEN MSB register and state registers were not searched.
+- **Cash-out.** `not_applicable`. The fiat rails are pay-in only, and Withdrawals sends stablecoins.
+- **First deployment.** DepositAddressManager at Base block 47696940, 2026-06-23. Evidence: the code is empty at the block before; the receipt shows the OwnershipTransferred log; the repo broadcast run-latest.json. Sourcify has no creation data.
+- **Entity.** Daimo, Inc., US, taken from the terms (Santa Monica address, California law). The state of incorporation is not stated.
+- **Incidents.** None found. The daimo-eth/sdk GitHub security advisories list is empty. The status page history is client-rendered and was not read.
+- **Changes.** Commits c990a190 (2025-12-17) and 99c3f248 (2026-01-08), and the manager deployment (2026-06-23).
+- **Volume spec.** SameChainFinish (topic0 0x4b27…6cd6) on the manager, token word 1, amount word 2, 30 days. Checked against the sample log. Cross-chain flows are excluded.
+- **Group B recorded:**
+  - `absent`: B2.2, B3.1, B6.5.
+  - `evidenced`: B3.4, B5.1, B5.2, B5.3, B6.3, B6.4, B10.1, B11.1, B11.3.
+  - `unknown`, with the search noted: B11.2, B12.1.

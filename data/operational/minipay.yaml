@@ -1,0 +1,433 @@
+slug: minipay
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: none
+      amount: no MiniPay fee on wallet transfers
+      basis: MiniPay FAQ; set by Blueboard and changeable.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: Celo network fee, stated as typically under $0.01
+      basis: Celo gas, payable in stablecoins; set by the network, not MiniPay.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payee
+      amount: $1 + 1% on deposits to a USD virtual account; EUR 1 + 1% on EUR
+      basis: MiniPay FAQ (virtual accounts provided by NOAH).
+      evidence_index: 1
+    - kind: card
+      paid_by: none
+      amount: no issuance or monthly MiniPay Card fee
+      basis: MiniPay FAQ; Visa exchange rates and fees may apply on non-USD purchases.
+      evidence_index: 2
+    - kind: cashout
+      paid_by: payer
+      amount: set by third-party ramp providers; FAQ says fee-free local-currency withdrawals are available through some
+      basis: MiniPay FAQ; partner fees are not published by MiniPay.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://minipay.to/faq
+      quote: "there are very low network fees (typically less than $0.01) charged on every transaction"
+      detail: MiniPay FAQ, "Does MiniPay charge fees?".
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://minipay.to/faq
+      quote: "there is a $1 + 1% fee charged on deposits to your USD account"
+      detail: MiniPay FAQ, "Are there any fees for receiving payments?" (virtual accounts).
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://minipay.to/faq
+      quote: "No, there are no monthly card fees or subscriptions for the MiniPay card."
+      detail: MiniPay FAQ, card fees.
+      checked_at: "2026-10-09"
+  note: Judgment call. The provider file treats the FAQ as claimed (support content) for CROPS scores, but here it is cited as documented because it is the operator's only published pricing statement. Ramp-partner fees are unknown.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+  note: Self-custody per the terms (key pair generated on device, recovery phrase backed up to the user's Google account, "not available to us"). The app is closed, so this rests on documents only (CROPS S1 holds at the documented cap). The MiniPay backend still holds account and transaction data, so operator controls apply.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: unknown
+  note: No licence held by Blueboard Limited was found in the terms, privacy statement, FAQ or minipay.to. The terms say Blueboard offers no exchange services and that buying and selling crypto assets is provided by third parties under their own terms, so any licences sit with the unnamed ramp and virtual-account partners (NOAH named for virtual accounts). No regulator register was searched for Blueboard.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: exchange
+      partner: Integrated third-party ramp partners (not named per country)
+      fee: Partner-set; not published by MiniPay
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://minipay.to/faq
+      quote: "You can withdraw funds from MiniPay to your local currency and preferred payment method"
+      detail: MiniPay FAQ, "How can I withdraw my funds from MiniPay?"; top-ups and withdrawals are provided by third parties.
+      checked_at: "2026-10-09"
+  note: The payout method (bank, mobile money or other) depends on the ramp partner in each country, and MiniPay publishes no per-country partner list, so the method is recorded as exchange through a ramp. Because the wallet is self-custodial, a user can also move stablecoins to any exchange on Celo. The MiniPay Card is digital-only, and no ATM withdrawal is documented.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: "2023-09-13"
+      what: MiniPay unveiled inside Opera Mini; rollout began in Nigeria.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://press.opera.com/2023/09/13/opera-launches-minipay/
+        quote: "MiniPay’s rollout begins in Nigeria"
+        detail: Opera press release dated Oslo, September 13, 2023.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Blueboard Limited
+      jurisdiction: IE
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://minipay.to/terms-of-service
+        quote: "form a legally binding contract between you and Blueboard Limited"
+        detail: MiniPay terms of service (last update April 27, 2026); governed by Norwegian law with the Oslo City Court as venue.
+        checked_at: "2026-10-09"
+    note: Jurisdiction IE comes from Opera Ltd's Form 20-F for 2020 (SEC accession 0001437749-21-014514, exhibit 8.1 list of subsidiaries, "Blueboard Limited Ireland"), read 2026-10-09. sec.gov returns 403 to the validator's user agent, so it is not cited as an evidence URL. The Irish Companies Registration Office entry was not read, so no registration number is recorded.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident notice was found on minipay.to, the MiniPay blog or Opera's Africa blog. No status page was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: "2023-10-18"
+        summary: After a month-long initial rollout, MiniPay opened to all Opera Mini users in Nigeria.
+        url: https://blogs.opera.com/africa/2023/10/minipay-now-open-to-all-users-in-nigeria/
+      - date: "2023-11-06"
+        summary: MiniPay launched to all Opera Mini users in Kenya.
+        url: https://blogs.opera.com/africa/2023/11/minipay-now-available-to-all-users-in-kenya/
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://blogs.opera.com/africa/2023/10/minipay-now-open-to-all-users-in-nigeria/
+        quote: "Our initial month-long rollout of MiniPay has proven to be a big hit"
+        detail: Opera Africa blog, October 18th, 2023.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: document
+        url: https://blogs.opera.com/africa/2023/11/minipay-now-available-to-all-users-in-kenya/
+        quote: "we are delighted to launch our innovative stablecoin wallet, MiniPay, to all Opera Mini users in Kenya"
+        detail: Opera Africa blog, November 6th, 2023.
+        checked_at: "2026-10-09"
+    note: Later changes (standalone apps, virtual accounts, MiniPay Card) were not dated from a primary source here.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: MiniPay transfers are ordinary stablecoin transfers on Celo, but the provider file lists no settlement contracts. The only MiniPay-specific onchain marker is the SocialConnect issuer's attestations, which identify registered addresses, not MiniPay-originated transfers. A volume figure would need an attribution method that has not been reviewed. Reported figures are not recorded.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement for Blueboard Limited or Opera found; not in the Coalfire Certification directory (checked for Wise).
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: Opera runs public and private bug bounties (security.opera.com, bugcrowd.com/opera); whether MiniPay is in scope was not established, and no penetration-test report was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: not_applicable
+    reason: Self-custody per the terms. Funds sit on Celo under user-held keys, and the recovery phrase is backed up to the user's own Google account, not by Blueboard. Backups of Blueboard's account and transaction metadata are not covered by this control and were not found.
+    burden: institution
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: not_applicable
+    reason: Self-custody per the terms. If the app stops, recovery is the user's recovery phrase in another Celo wallet (CROPS S4, documented only).
+    burden: institution
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Access and recovery go through the user's Google Account login. Any MFA is whatever the user sets on that Google account; MiniPay states no MFA of its own.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://minipay.to/faq
+        quote: "Only you have access to your funds through your secure Google Account login."
+        detail: MiniPay FAQ, "Your Wallet's Security".
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: The documented Mini App interface is an injected EIP-1193 provider in the app (CROPS O4); the authentication of the app-to-backend API is not documented.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "Observed: minipay.to refuses TLS 1.1 and accepts TLS 1.2. The terms say the private key is stored encrypted on the device. No statement on server-side encryption at rest or data classification was found."
+    evidence:
+      - tier: documented
+        kind: trace
+        url: https://minipay.to
+        detail: "openssl s_client -tls1_1 to minipay.to:443 failed with alert protocol version; -tls1_2 negotiated ECDHE-ECDSA-AES128-GCM-SHA256. Run 2026-10-09. The app's backend host was not identified, so it was not scanned."
+        checked_at: "2026-10-09"
+        recheck: "echo | openssl s_client -connect minipay.to:443 -servername minipay.to -tls1_1; echo | openssl s_client -connect minipay.to:443 -servername minipay.to -tls1_2"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Contact, technical, personal and wallet data kept for two years after use ends; transactional data while active and for two years after. Deletion on request through an online form. See CROPS P2 for what is collected.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://minipay.to/privacy-statement
+        quote: "Transactional Data is retained for as long as a Crypto Assets or transaction is active, and for a period of two years thereafter."
+        detail: MiniPay privacy statement section 4, Retention (last update Sep 7, 2026).
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Blueboard Limited is the data controller under the GDPR; a Data Protection Officer is reachable by form; the Irish DPC and Norway's Datatilsynet are named as supervisory authorities. DPIA availability not found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://minipay.to/privacy-statement
+        quote: "We act as a Data controller of Personal data that Process via Services."
+        detail: MiniPay privacy statement sections 1 and 6-7.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Integration view only (docs.minipay.xyz documents the injected provider, custom methods and token transfers for Mini Apps); the logical and infrastructure architecture of the app and backend is not published.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.minipay.xyz/technical-references.md
+        quote: "MiniPay injects an Ethereum provider when it loads your app"
+        detail: MiniPay developer docs, technical references.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Blueboard Limited (Opera Group; Ireland per Opera's 20-F subsidiary list). Terms governed by Norwegian law, with the Oslo City Court as venue.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://minipay.to/terms-of-service
+        quote: "These General Terms are governed by the laws of Norway"
+        detail: MiniPay terms of service, general terms.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: unknown
+    note: MiniPay charges no wallet fees. It takes deposit fees on virtual accounts and pays card cashback; it is part of the Opera Group. No primary source on how its ongoing operation is funded was read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Blueboard may terminate access at any time, with or without notice; termination ends the software licence. Funds stay on Celo under the user's keys (self-custody per the terms), so exit is through the recovery phrase.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://minipay.to/terms-of-service
+        quote: "to terminate your access to the Services at any time, with or without notice"
+        detail: MiniPay terms of service, general terms.
+        checked_at: "2026-10-09"
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: The terms and privacy statement (searched for AI, automated decision-making and machine learning) do not mention AI in payment processing or compliance. The app is closed, so absence cannot be shown.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending

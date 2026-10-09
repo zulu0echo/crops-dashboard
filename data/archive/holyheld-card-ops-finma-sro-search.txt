@@ -1,0 +1,9 @@
+Source: https://www.finma.ch/en/authorisation/self-regulatory-organisations-sros/sro-member-search/
+Retrieved: 2026-10-09 in a browser (the FINMA SRO member search is client-rendered); search term "Holyheld", visible result text.
+
+Search for SRO members
+The data is updated regularly, usually within two to five working days, and is based on information provided by the self-regulatory organisations.
+1 result(s) found
+Company name	Domicile	Details
+Holyheld Labs AG	Zug	Financial intermediary
+Self-regulatory organisation: VQF, Zug

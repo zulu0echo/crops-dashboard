@@ -1,0 +1,809 @@
+slug: wirex-one
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
+        detail: "wirexapp/wirex-baas-agent-skills: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
+        detail: "wirexapp/wirex-baas-agent-skills: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
+        detail: "wirexapp/wirex-baas-agent-skills: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/rules/branches/main
+        detail: "wirexapp/wirex-baas-agent-skills: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
+        detail: "wirexapp/wirex-baas-agent-skills: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
+        detail: "wirexapp/wirex-baas-agent-skills: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
+        detail: "wirexapp/wirex-baas-agent-skills: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/tags
+        detail: "wirexapp/wirex-baas-agent-skills: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: 0 of 1 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/commits?per_page=10
+        detail: "wirexapp/wirex-baas-agent-skills: 0 of 1 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
+        detail: "wirexapp/wirex-baas-agent-skills: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: wirexapp/wirex-baas-agent-skills
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
+        detail: "wirexapp/wirex-baas-agent-skills: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No audit or independent review of the Wirex BaaS contracts, API or app was found (CROPS S6 unknown); several implementations are only partial Sourcify matches and the TokensRegistry implementation is unverified.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Public status page at status.wirexapp.com (Atlassian Statuspage) with incident histories, including WirexOne-labelled incidents. No post-mortem was found among the 50 most recent incidents (2024-04-17 to 2026-10-08) returned by its API.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.wirexapp.com/
+        detail: Wirex status page, linked from wirexapp.com and the help centre.
+        checked_at: 2026-10-09
+        quote: Wirex Status
+      - tier: documented
+        kind: trace
+        url: https://status.wirexapp.com/api/v2/incidents.json
+        detail: The 50 incidents returned on 2026-10-09 contain no update or postmortem body mentioning a post-mortem.
+        checked_at: 2026-10-09
+        recheck: "curl -s https://status.wirexapp.com/api/v2/incidents.json | grep -ci postmortem"
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: Retail users authenticate through Privy (access and identity tokens exchanged for a Wirex user token); partner backends use OAuth2 client credentials. All tokens are HMAC-SHA256 signed JWTs.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-auth/SKILL.md#L14-L21
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: skills/wirex-baas-auth/SKILL.md
+        detail: Three authentication methods (S2S OAuth2, user token issuance, Privy) and the JWT format.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Server-to-server calls use OAuth2 client credentials (client_id and client_secret issued by Wirex) with a single scope, partner:full; rotation is not documented. The Wirex One web bundle ships a literal SSO client secret (CROPS S5).
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-auth/SKILL.md#L69-L76
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: skills/wirex-baas-auth/SKILL.md
+        detail: "S2S token details: HS256, 48-hour validity, scope partner:full."
+        checked_at: 2026-10-09
+    refs:
+      - criterion: S5
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: Access tokens (S2S and user) are valid for 48 hours, far above the partner's 120-minute cap.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-auth/SKILL.md#L69-L76
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: skills/wirex-baas-auth/SKILL.md
+        detail: Token Details table, Validity 48 hours from issuance.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Customer account records are normally kept up to six years after the relationship ends; legacy Wirex App records may be kept separately; public blockchain records cannot be deleted (see CROPS P2 for what is collected).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/privacy
+        detail: Wirex One Privacy, Data Use and Retention Policy, section 13.
+        checked_at: 2026-10-09
+        quote: normally keep customer account records for up to six years after your relationship with Wirex ends
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The controller is the Wirex group company that provides the service under the Terms; requests from EEA Wirex One users are routed to Wirex Europe sp. z o.o. as controller during the transition, and partners providing regulated services may be independent controllers. DPIA availability not found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/privacy
+        detail: Wirex One Privacy Policy, controller section and data-subject requests.
+        checked_at: 2026-10-09
+        quote: is the Wirex company directly responsible for handling your personal data
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/privacy
+        detail: Wirex One Privacy Policy, rights section on EEA routing during launch.
+        checked_at: 2026-10-09
+        quote: Wirex Europe sp. z o.o. as controller
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Integration architecture is published for Wirex BaaS (REST API with OAuth2, contract registry, Account Abstraction wallets, card, KYC and banking modules); logical contract architecture is partly covered by ABI fragments; infrastructure architecture is not published.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-overview/SKILL.md#L13-L72
+        commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+        path: skills/wirex-baas-overview/SKILL.md
+        detail: Platform overview and the five-step integration flow (partner credentials, OAuth2, contract registry, user wallet deployment).
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Card-based services in the EEA, UK and rest of world are provided by Wirex Limited (England and Wales, 09334596); UAB Wirex (Lithuania, 305118023) runs EEA card programme management; Crossmint Europe, S.L. provides EEA and UK crypto-asset services; Novatti Group Limited provides the card in Australia and New Zealand.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/terms
+        detail: Wirex One Terms of Service clauses 1.8 to 1.11.
+        checked_at: 2026-10-09
+        quote: Card-based Regulated Services is provided by Wirex Limited
+      - tier: documented
+        kind: document
+        url: https://find-and-update.company-information.service.gov.uk/company/09334596
+        detail: Companies House, WIREX LIMITED, active private limited company, registered office 9th Floor 107 Cheapside, London EC2V 6DN.
+        checked_at: 2026-10-09
+        quote: Incorporated on 1 December 2014
+    note: UAB Wirex, Crossmint Europe and Novatti were not checked in their company registers; UAB Wirex returns no entry in the Bank of Lithuania's register of financial market participants.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: The user may close the Wirex Profile at any time (closure can be delayed by investigations); Wirex may terminate with at least two months' notice, or suspend or terminate earlier for breach, suspected fraud or legal reasons. Closure ends regulated services only; the self-custodial wallet stays with the user.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/terms
+        detail: Wirex One Terms clause 10 (Profile Closure, Suspension and Termination).
+        checked_at: 2026-10-09
+        quote: Wirex may also terminate your Wirex Profile or access to Regulated Services at any time by providing you with at least two (2) months' notice
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/terms
+        detail: Wirex One Terms clause 10.6.
+        checked_at: 2026-10-09
+        quote: does not affect your Self-Custodial Wallet, which remains under your sole control
+    note: CROPS S1 and S4 found that Wirex's oracle can move wallet balances through the installed executor module, so the Terms' description of sole control does not match the deployed contracts.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: "Yes: application decisions may be made solely by automated checks, and accounts are profiled for a risk rating used in fraud and transaction monitoring; wallet-address screening and blockchain monitoring apply to Wirex One. Whether AI or machine learning is used is not stated."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/privacy
+        detail: Wirex One Privacy Policy section 12 (Fraud prevention).
+        checked_at: 2026-10-09
+        quote: Application decisions may be taken based solely on automated checks of information
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: fx
+      paid_by: payer
+      amount: card scheme or provider rate plus mark-up; amount not published
+      basis: Wirex One Terms 9.10; the Fees and Limits Schedule they cite is not published.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: network gas on onchain transactions, set by the network
+      basis: Wirex One Terms 4.6.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.wirexapp.com/legal/one/terms
+      detail: Wirex One Terms 9.10 (card transactions in another currency).
+      checked_at: 2026-10-09
+      quote: any associated mark-ups or fees will apply
+    - tier: documented
+      kind: document
+      url: https://www.wirexapp.com/legal/one/terms
+      detail: Wirex One Terms 4.6 (network fees).
+      checked_at: 2026-10-09
+      quote: You are solely responsible for any network fees, gas fees
+    - tier: documented
+      kind: document
+      url: https://www.wirexapp.com/legal/one/terms
+      detail: Wirex One Terms 1.14 point to a fee schedule whose link is a placeholder.
+      checked_at: 2026-10-09
+      quote: Applicable fees, limits and charges are published in the Fees and Limits Schedule available at XXX
+  note: "No Wirex One fee schedule is published: Terms 1.14 link it as \"XXX\". The help centre's general Wirex Fees article (help.wirexapp.com/article/wirex-fees-1379, client-rendered) lists card issuance free, ATM free up to 200 GBP/EUR a month then 2%, and card delivery from 5 GBP/EUR, but it does not name Wirex One and describes the classic Wirex account. Judgment call: those figures are not recorded as Wirex One fees, consistent with the availability judgment in the research log."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: "Hybrid, not self-custody: funds sit in the user's Kernel smart account (key via Privy), but Wirex's FundsManagement executor is installed on it and Wirex's oracle EOA can move balances to FundsBuffer or an admin-set destination (S1 = 0, provider can redirect). The Terms call the wallet self-custodial."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: Wirex Limited
+      holder: provider
+      country: GB
+      regulator: Financial Conduct Authority
+      type: Authorised Electronic Money Institution
+      number: "902025"
+      activities: Issue e-money and provide payment services; authorised since 17/08/2018. Provides Wirex One card services in the EEA, UK and rest of world.
+      register_url: https://register.fca.org.uk/s/firm?id=0010X000047SC0tQAG
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://register.fca.org.uk/s/firm?id=0010X000047SC0tQAG
+      archive: data/archive/wirex-one-ops-fca-wirex-limited.txt
+      detail: FCA Register firm page for reference 902025 (client-rendered; text read in a browser and archived), Companies House number 09334596.
+      checked_at: 2026-10-09
+      quote: Authorised Electronic Money Institution
+    - tier: documented
+      kind: document
+      url: https://www.wirexapp.com/legal/one/terms
+      detail: Wirex One Terms 1.8 to 1.11 name the regulated providers per region.
+      checked_at: 2026-10-09
+      quote: Card-based Regulated Services is provided by Wirex Limited
+  note: "Only Wirex Limited was checked in a register. Per the Terms, EEA and UK crypto-asset services are provided by Crossmint Europe, S.L. (Spain, CNMV crypto-asset service provider and Bank of Spain payment institution, partner) and the card in Australia and New Zealand by Novatti Group Limited (partner); neither was checked in its regulator's register. UAB Wirex does EEA card programme management and has no entry in the Bank of Lithuania register."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_withdrawal
+      partner: Wirex Limited (Novatti in AU and NZ), Visa or Mastercard
+      fee: FX mark-up not published
+      limits: Card spend at merchants from the smart-account balance (the schema has no card-spend value); limits not published.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Wirex Card
+      fee: not published for Wirex One
+      limits: ATM withdrawals need the card PIN; limits not published.
+      evidence_index: 1
+    - countries: [ALL]
+      method: bank_transfer
+      partner: Wirex and regulated third-party providers (account identifiers)
+      fee: not published for Wirex One
+      limits: Virtual IBANs, sort codes or other local details; SEPA, Faster Payments or ACH depending on the account identifier.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.wirexapp.com/legal/one/terms
+      detail: Wirex One Terms 1.8 to 1.11 (card providers per region) and clause 9 (Wirex Card).
+      checked_at: 2026-10-09
+      quote: Card-based Regulated Service is provided by Novatti Group Limited
+    - tier: documented
+      kind: document
+      url: https://www.wirexapp.com/legal/one/terms
+      detail: Wirex One Terms 9.3 (PIN for ATM withdrawals).
+      checked_at: 2026-10-09
+      quote: Your PIN is required to complete certain transactions, including ATM withdrawals
+    - tier: documented
+      kind: document
+      url: https://www.wirexapp.com/legal/one/terms
+      detail: Wirex One Terms 8.1 to 8.2 (account identifiers and payment rails).
+      checked_at: 2026-10-09
+      quote: receive funds to, and send payments using, such account identifiers using supported payment rails and currencies
+  note: No first-party country list exists for Wirex One (see the research log, Availability 2026-10-09), so ALL is the unbounded set of supported jurisdictions, not a published list. The Terms also offer Pay-to-Card transfers to external Visa or Mastercard cards (9.14). Which rails each region gets is not stated.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2025-04-29
+      block: 29552868
+      what: FundsManagement proxy 0xFB384a73...F06a on Base (card debits), part of the shared Wirex BaaS deployment
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/tx/0xb85fdeb6e59076f4fe1350ee9d0ccaaab0a0817ee0a4c0d8af962b015d8c471a
+        address: "0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a"
+        block_number: 29552868
+        detail: FundsManagement proxy has code size 0 at block 29552867 and 1159 at 29552868 (2025-04-29 02:51:23 UTC); creation tx 0xb85fdeb6...471a from 0x685f0df57331bE2Ff7306415Fe4f36F610c80e54 (receipt contractAddress matches; Sourcify deployment record agrees). FundsBuffer 0xbFACe6Ad... was created 69 blocks earlier (29552799).
+        checked_at: 2026-10-09
+        recheck: cast codesize 0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a --block 29552867 --rpc-url https://mainnet.base.org; cast codesize 0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a --block 29552868 --rpc-url https://mainnet.base.org
+    note: Dates the BaaS settlement contracts scored in CROPS. Wirex One itself replaced the legacy Wirex app later (the status page logs a legacy-to-Wirex One balance migration in June 2026); the legacy Wirex card and Wirex Pay chain predate this and are excluded.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Wirex Limited
+      jurisdiction: GB
+      register_url: https://find-and-update.company-information.service.gov.uk/company/09334596
+      registration_number: "09334596"
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://find-and-update.company-information.service.gov.uk/company/09334596
+        detail: Companies House, WIREX LIMITED, active, registered office 9th Floor 107 Cheapside, London EC2V 6DN.
+        checked_at: 2026-10-09
+        quote: Incorporated on 1 December 2014
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/terms
+        detail: Wirex One Terms name Wirex Limited as the card-based regulated service provider.
+        checked_at: 2026-10-09
+        quote: Card-based Regulated Services is provided by Wirex Limited
+    note: Recorded entity is the card provider for the EEA, UK and rest of world. Other regulated parts are provided by other entities (see B11.1).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value:
+      - date: 2026-06-25
+        summary: Card operations incident; to contain it, all card transactions were set to be declined in all regions (status page, critical; follow-up outage entry on 26 June).
+        funds_lost: unknown
+        url: https://status.wirexapp.com/incidents/pdb8txhch0y7
+      - date: 2026-09-03
+        summary: Major incident affecting all financial operations on Wirex One; stuck transactions to be processed after the fix (status page, critical).
+        funds_lost: unknown
+        url: https://status.wirexapp.com/incidents/snf1c6h7mrrk
+      - date: 2026-09-30
+        summary: Card operations stopped temporarily in all regions after a problem during planned maintenance at a third-party provider (status page, critical).
+        funds_lost: unknown
+        url: https://status.wirexapp.com/incidents/506j6w44m2bs
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.wirexapp.com/incidents/pdb8txhch0y7
+        detail: Status page incident, Card operations outage, June 2026.
+        checked_at: 2026-10-09
+        quote: all card transactions are currently set to be declined
+      - tier: documented
+        kind: document
+        url: https://status.wirexapp.com/incidents/snf1c6h7mrrk
+        detail: Status page incident, WirexOne transaction processing, 3 September 2026.
+        checked_at: 2026-10-09
+        quote: We are observing major incident affecting all financial operations on WirexOne
+      - tier: documented
+        kind: document
+        url: https://status.wirexapp.com/incidents/506j6w44m2bs
+        detail: Status page incident, Card operations outage, 30 September 2026.
+        checked_at: 2026-10-09
+        quote: temporary stop card operations
+    note: Selected from status page incidents marked critical since the Wirex One rollout (May 2026); the API returns the 50 most recent incidents back to 2024-04-17. Major-level Wirex One incidents (bank transfers 2026-08-27, deposits 2026-09-16, exchange 2026-09-26) are not listed. No funds loss was stated in any update.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2018-08-17
+        summary: Wirex Limited authorised by the FCA as an Electronic Money Institution (FRN 902025).
+        url: https://register.fca.org.uk/s/firm?id=0010X000047SC0tQAG
+      - date: 2026-06-29
+        summary: Balances migrating from the legacy Wirex app to Wirex One (status page incident on migration failures from 28 June).
+        url: https://status.wirexapp.com/incidents/b0cnzlzwnqwc
+      - date: 2026-09-30
+        summary: EEA card transactions before 30 September 2026 fall under TRANSACT Payments Malta Limited's terms; the current Terms name Wirex Limited as the EEA card service provider.
+        url: https://www.wirexapp.com/legal/one/terms
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://register.fca.org.uk/s/firm?id=0010X000047SC0tQAG
+        archive: data/archive/wirex-one-ops-fca-wirex-limited.txt
+        detail: FCA Register firm status (archived).
+        checked_at: 2026-10-09
+        quote: Since 17/08/2018
+      - tier: documented
+        kind: document
+        url: https://status.wirexapp.com/incidents/b0cnzlzwnqwc
+        detail: Status page incident on the legacy-to-Wirex One balance migration.
+        checked_at: 2026-10-09
+        quote: balances migration failures from Wirexapp to Wirex One
+      - tier: documented
+        kind: document
+        url: https://www.wirexapp.com/legal/one/terms
+        detail: Wirex One Terms 13.7.
+        checked_at: 2026-10-09
+        quote: should be submitted to Wirex and will be handled under the TRANSACT Payments Malta Limited
+    note: "Judgment call: the 30 September 2026 entry reads clause 13.7 together with clause 1.8 as a change of EEA card provider; the Terms do not state the change in so many words."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_observable
+  reason: Card debits are OutgoingTransactionProcessed events on the shared Wirex BaaS FundsManagement contract, which serves several partner programmes (UserAccountCreated parentEntity values vary) and also processes non-card outgoing operations; the event's operation type is a string the spec cannot filter, and nothing onchain ties a wallet to the Wirex One programme without Wirex's records.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

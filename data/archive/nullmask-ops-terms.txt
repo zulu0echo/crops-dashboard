@@ -1,0 +1,33 @@
+Source: NullMask Terms of Use, effective date Oct 1, 2026, https://app.nullmask.io/terms (client-rendered; read in a browser on 2026-10-09 by the AI research agent (operational)). Excerpts, verbatim.
+
+1.1 Who we are. "NullMask", "we", "us" and "our" mean the company that operates the Services (the "Operator"). We will give the Operator's full legal details to any person who needs them to bring or answer a legal claim, and to any competent authority, on written request to legal@nullmask.io.
+
+3.3 Where your assets are. Assets you deposit are held by the Pool smart contract, together with the assets of other users. They are not held in an account with us. We do not hold your wallet's private key.
+
+3.4 What we are not. We are not a bank, exchange, broker, payment institution, investment adviser or trustee. We do not hold deposits in the banking sense, and your assets in the Pool are not protected by any deposit guarantee or investor compensation scheme.
+
+5.7 Returns. A returned deposit goes only to the address it came from. We may deduct the network cost of the return and, if we introduce one, a screening fee of up to 1% of the deposit. If that address cannot receive the assets, the deposit can stay pending indefinitely. Do not deposit from an exchange or any other address you do not control.
+
+5.9 Minimums and limits. Each supported asset has a minimum deposit amount, which the Pool enforces. We may set maximum amounts and overall limits at any time.
+
+6.1 How these operations work. You sign each operation with your wallet. Our servers prepare the cryptographic proof, and our relayer submits the operation to Ethereum and pays the network gas. You pay the network and service fee described in section 7 in ETH from your private balance.
+
+6.5 Swaps. Swaps inside the Pool are executed through a third-party decentralised exchange protocol, currently Uniswap V2. You choose the slippage tolerance. That protocol charges its own fee, and the price can move before your swap is executed.
+
+7.1 Protocol fee. We charge a protocol fee on deposits and on withdrawals. Each fee is at most 1% of the amount. The current rates are shown in the application before you confirm.
+
+7.3 Network and service fee. Transfers, swaps and withdrawals carry a network and service fee. It covers the network gas our relayer pays and our cost of running the Services. Our servers set its amount, and it may be higher than the actual network gas. The difference is not refunded.
+
+7.4 Gas amount added to deposits. From the ETH you add to a deposit under section 5.1 we keep the gas for crediting and an amount towards the cost of screening. The rest is returned.
+
+7.6 Changes. We may change fee rates, and how the network and service fee is calculated, at any time and without notice. The protocol fee stays within the 1% limit in section 7.1.
+
+8.5 Changes to the Services. We may change, suspend or stop the Services, or any part of them, at any time. If we decide to stop the Services, we will try, where lawful and reasonably practicable, to give notice in the application and time to withdraw.
+
+18.2 By us. We may restrict or end your access to the Services at any time and without notice. Reasons include a breach of these Terms, a screening result, a legal requirement, and a risk to us, to other users or to the Pool.
+
+18.3 Your assets. Restricting your access does not by itself change the assets recorded to your account in the Pool. Section 6 continues to apply to them. We will not refuse a withdrawal to an address that passes screening only because we restricted your access, unless a law, a legal order or a pause requires it.
+
+19.3 Arbitration. Any dispute that is not resolved in that way will be referred to and finally resolved by arbitration under the LCIA Rules, which are treated as part of this section. There will be one arbitrator. The seat of arbitration is London. The language is English.
+
+20.1 We may change these Terms at any time. We will post the new version with a new effective date. For important changes we will also show a notice in the application.

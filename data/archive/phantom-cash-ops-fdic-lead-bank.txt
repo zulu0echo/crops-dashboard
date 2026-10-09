@@ -1,0 +1,3 @@
+Source: https://api.fdic.gov/banks/institutions?filters=CERT:8283&fields=NAME,CERT,CITY,STNAME,REGAGNT,ACTIVE,BKCLASS,CHRTAGNT,ESTYMD,FED_RSSD&limit=1
+Fetched: 2026-10-09 (curl). FDIC BankFind institutions API response, verbatim:
+{"meta":{"total":1,"parameters":{"filters":"CERT:8283","fields":"NAME,CERT,CITY,STNAME,REGAGNT,ACTIVE,BKCLASS,CHRTAGNT,ESTYMD,FED_RSSD","limit":"1"},"index":{"name":"institutions_20261009090008","createTimestamp":"2026-10-09T12:00:05Z"}},"data":[{"data":{"REGAGNT":"FDIC","CITY":"Kansas City","ACTIVE":1,"BKCLASS":"NM","FED_RSSD":"893855","CHRTAGNT":"STATE","STNAME":"Missouri","CERT":8283,"ESTYMD":"01/12/1928","NAME":"Lead Bank","ID":"8283"},"score":0}],"totals":{"count":1}}

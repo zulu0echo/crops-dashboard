@@ -1,0 +1,71 @@
+Source: https://www.coca.xyz/post/coca-3-0-full-banking-you-control
+Fetched: 2026-10-09 (curl; Wix page, served intermittently without body text). Visible text with tags stripped:
+COCA 3.0: Full Banking. You Control top of page Home Cashback Contacts Docs Press News More... Use tab to navigate through the menu items. Get Free Card Home Cashback Contacts Docs Press News Menu 
+Close COCA 3.0: Full Banking. You Control Apr 20 9 min read Updated: Apr 23 COCA was built on a simple idea: your money should work harder for you, and you should always be the one in control of it. 
+COCA 3.0 is the most complete expression of that idea yet. COCA is a self-banking app — a new kind of financial experience where you can spend, earn, and grow your money, while keeping full control of 
+it at all times. No bank, no intermediary, not even COCA can access your funds without your permission. COCA 3.0 is the biggest release in our history, and it takes that idea further than ever. 
+What&#x27;s new: a free EUR bank account you can use to receive salary, pay bills, and move funds globally via SEPA. APY — interest on your spendable balance — that earns every second, not just at the 
+end of the month, or when it's locked/staked. A completely rebuilt infrastructure that gives you true, technical ownership of your funds. And a cleaner, more consistent app experience from first tap 
+to last. Whether you&#x27;re new to COCA or have been here since the start, this one is worth reading in full. Here&#x27;s everything that&#x27;s new, why it matters, and what&#x27;s coming next. New 
+to COCA? Start Here. COCA is an app on your phone. It gives you a Visa card, a bank account number, and the ability to earn interest, cashback and discount perks — all without a traditional bank. 
+Here&#x27;s what makes COCA different: with a normal bank, your money sits in an account the bank controls. They can freeze it, lend it out, or restrict it. With COCA, your money lives in a 
+self-custodial account — a wallet that is mathematically yours. No one at COCA, no payment processor, no third party can access or move your funds unless you authorise the transaction yourself. Think 
+of it like this: instead of handing your money to a bank to look after, COCA gives you the tools to look after it yourself — with the same easy experience you&#x27;d expect from any modern finance 
+app. On top of that, COCA pays you back for using it: up to 8% cashback on everyday spending, 50% back on subscriptions like Netflix, Spotify, Claude AI and more , up to 5% interest (APY) on your 
+balance, and up to 65% off hotels worldwide — all from one app. Why COCA 3.0 COCA started with a simple mission: let people spend, earn, and grow their money without relying on traditional banks — and 
+without ever giving up control of their funds. Over time, we kept hearing the same question from our community: when can COCA be my main account? When can I receive my salary here? When can I use it 
+the way I use a bank, but continue to have full ownership of my money? The honest answer was: not yet. You could receive and spend your stablecoins with the COCA card. You could earn cashback and 
+APY. But you couldn&#x27;t receive or send bank transfers (fiat) directly into COCA. There was still a gap between COCA and everyday financial life. COCA 3.0 closes that gap. A bank account number. 
+Real-time earnings. Full technical ownership of your funds. One app for everything. What&#x27;s New in COCA 3.0 Everything below is live now or arriving within weeks. 🔐 Full Self-Custody — Your Money, 
+Technically Yours Before Most financial apps — including some that called themselves non-custodial — still had the ability to access, freeze, or restrict your funds behind the scenes. True ownership 
+was a claim, not a technical reality. Now with COCA 3.0 With COCA 3.0, your money lives in a self-custodial account — a wallet secured by cryptography that only you control. COCA, payment processors, 
+and any other intermediary cannot access, freeze, or move your funds. Every transaction requires your authorisation. What does self-custody actually mean? In traditional banking, your money 
+isn&#x27;t really &#x27;yours&#x27; in the technical sense. It&#x27;s a number on the bank&#x27;s ledger. They control it. With self-custody, your funds are held in a cryptographic wallet — think of 
+it like a digital safe that only opens with your key. Nobody else has a copy. With COCA 3.0, when you make a payment, only the exact amount of that transaction is authorised. The rest of your balance 
+stays untouched in your wallet. It&#x27;s the digital equivalent of handing over cash at the till — precise, controlled, and nobody reaches into your pocket for more. How do I access my account 
+without a seed phrase? Most crypto wallets make you write down a 12 or 24-word recovery phrase (a &#x27;seed phrase&#x27;). Lose it, and you lose your money. COCA uses a system called Privy — a 
+security-first key management platform — that lets you log in with your email, no seed phrase needed. You still own your account and all the funds in it. Privy just makes accessing it feel simple and 
+familiar. Privy is SOC 2 Type II certified (the same security standard used by enterprise software companies) and has been independently audited by multiple security firms. The result: full ownership 
+of your money, with none of the complexity that usually comes with it. 🏦 Bank Account & Personal IBAN — Receive Your Salary in COCA Before To receive a salary, a bank transfer, or a payment from 
+someone, you needed a separate traditional bank account. COCA and your everyday banking lived in two different places. Now with COCA 3.0 EUR bank accounts are now live. You get a personal IBAN — a 
+unique account number, the same kind any bank would give you — so you can receive your salary, pay bills, and send or receive money, all from inside COCA. USD accounts with ACH support are coming 
+soon. What is an IBAN? An IBAN (International Bank Account Number) is the standard account number for bank traders used across the European continents and a few neighboring territories. When someone 
+wants to pay you — your employer, a client, a friend — they send it to your IBAN. It&#x27;s the same system every bank uses. Your COCA IBAN works exactly the same way. Give it to your employer, and 
+your salary lands in COCA. Give it to a client, and their payment arrives in COCA. From there, the money is immediately available to spend with your COCA Card, or it starts earning APY the moment it 
+arrives. You can also send money directly from COCA to other bank accounts — whether you&#x27;re paying bills or transferring funds to family and friends. And whenever you need cash, you can access it 
+instantly with global ATM withdrawals. *EUR bank accounts are only available to residents of these countries. (see clause 1.3). ⚡ Instant APY — Your Balance Earns Every Second Before APY (interest on 
+your balance) was paid out monthly. There was a minimum balance requirement to qualify, and if you moved your money before the payout date, you lost that month&#x27;s earnings entirely. Now with COCA 
+3.0 APY now accrues in real time — every second of every day, on your spendable balance. No minimum balance. No lock-up. No waiting until the end of the month. The moment money lands in your account, 
+it starts earning. What is APY? APY stands for Annual Percentage Yield — it&#x27;s the interest rate you earn on money sitting in your account. A 5% APY means that if you held $5,000 for a full year, 
+you&#x27;d earn $250 in interest or more, through the power of compounding. With COCA, that interest now accrues continuously, not in monthly batches. Your balance stays fully spendable the entire 
+time. There&#x27;s no lock-up period, no penalty for spending. Use your card, transfer money, or just let it grow — the choice is yours at every moment. Where does the yield come from? COCA generates 
+yield by putting your balance to work through Morpho — a well-established, audited lending protocol. Your funds always remain under your control and are not handed over to COCA or any third party. 
+They are not used for off-platform lending or borrowing. Within the protocol, borrowers provide collateral and pay interest to access liquidity, and that interest flows back to you. Risk is actively 
+managed by Gauntlet , a specialist DeFi risk firm, which sets limits on how funds are allocated to keep returns sustainable and exposure controlled. This isn&#x27;t COCA paying interest from its own 
+pocket. The yield comes from real financial activity, which is what makes it sustainable over time. How much you earn depends on your membership tier. Every tier earns 5% APY — what changes is the 
+balance range in each tier. For example, the Starter tier earns 5% on the first $5,000, while higher tiers like Premium+ and Elite extend that range up to unlimited balances. These tier ranges are 
+part of the COCA Loyalty program , designed to reward higher participation and give users a clear path to unlock more value as they move up tiers. 🎨 App Experience — Cleaner, Faster and More Intuitive 
+Before The app experience was functional, but some flows felt less streamlined and certain screens still reflected earlier design iterations, creating small inconsistencies across the app. Now with 
+COCA 3.0 The app experience has been refined with new screens and improved flows, making everyday actions smoother and more intuitive. The home screen now brings together your balance, your live APY, 
+your COCA card and your bank balance — the things you use every day, right where you&#x27;d expect them. The app is now split into two clear sections: (1) Banking (for spending, transfers, and 
+everyday use) and (2) Crypto (for managing your crypto portfolio). While both live in the same app, each has its own room with the same clean experience. No switching between apps. No confusion about 
+where your money is. If you&#x27;re new: you don&#x27;t need to touch Crypto at all. Start with Banking, get your IBAN and deposit funds via bank transfer or crypto. That's it. Your money is 
+immediately ready to spend with your card, earn APY, or be sent to other bank accounts or crypto addresses. The rest is there when you want it. Coming Soon COCA 3.0 is a platform, not a single 
+release. Here&#x27;s what&#x27;s in progress now. In-App COCA Token Purchase The $COCA token is COCA&#x27;s membership token. Stake it to unlock higher cashback rates, larger APY balance caps, and 
+subscription rebates (like 50% back on Netflix or Spotify etc). Right now, you buy $COCA on external exchanges (MEXC and Bitmart). Soon, you&#x27;ll be able to buy it directly inside the app using 
+your Banking balance in a few taps. Card-to-Card Transfers Send money instantly to family and friends, directly from COCA card to any other card. No account numbers, no bank details, no delays. You 
+enter their details, confirm the amount, and it arrives immediately — as fast as sending a message. Currency Exchange — EUR and USD, No Fees Convert between EUR and USD inside COCA at the real 
+mid-market rate, with no exchange fees added on top. ACH Transfers for USD Accounts ACH is the US standard for bank transfers — the same system used to receive salaries and make payments in the United 
+States. USD bank accounts are coming soon to COCA, and with them, full ACH support. Receive your salary in USD, make USD payments, and manage US dollar finances entirely within COCA. USD bank 
+accounts will be available to users residing in the US, South America, Europe, UK, Asia and Australia. Update Your App COCA 3.0 is now live on iOS and Android. Update your app to access your personal 
+IBAN, real-time APY, and a smoother app experience. After updating, just tap "Authorize" to complete your upgrade to COCA 3.0. If you&#x27;re new, download COCA and get started — your virtual card is 
+free. Download on the App Store Get it in Google Play Have a question or want to report a bug? Chat to us in Telegram or Discord , or leave a bug report inside the app. A note on transaction history 
+: To move to this new high-performance infrastructure, we're starting with a clean slate. After migration to COCA 3.0 your old transaction history is safely archived—just one message to support and 
+we&#x27;ll send it over. A note on APY: With COCA 3.0, APY is moving from the old monthly model to real-time earnings. If you stay on a version below 3.0 during April, you'll receive your final 6% 
+APY payout under the old model on May 10, 2026. If you upgrade during April, you'll receive: rewards under the old model up to the day you upgraded to COCA 3.0 real-time APY for the time after you 
+upgrade Starting May 1, 2026, APY will only be available on COCA 3.0 and above. Self-banking. The way it should be. COCA 3.0 is built around a simple idea: your money should be yours — completely and 
+technically yours — while still being as easy to use as any app on your phone. A bank account number. Real-time interest. Cashback on every purchase. 50% back on subscriptions. A card that works at 
+150 million+ merchants worldwide. All of it under your control, with no bank, no intermediary, not even COCA, able access without your permission. You are the bank. We&#x27;re just the app that makes 
+it easy. Team COCA 💙 Recent Posts See All 2025 in Review: Celebrating COCA&#x27;s innovation, wins, and growth Introducing COCA 2.0: A New Chapter in Stablecoin Banking COCA: Recap of 2024 Join over 
+1M+ crypto users worldwide ALREADY EARNING CASHBACK, YIELD, AND REAL-LIFE PERKS WITH COCA Need Help? Home ​ Wallet Cashback Contacts Press Docs Policy & Docs ​ Privacy Policy Cookie Policy Terms and 
+Conditions &copy; 2026 by ccalabs Home Cashback Contacts Docs Press News bottom of page

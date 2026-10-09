@@ -1,0 +1,1358 @@
+slug: railgun
+fees:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: 0.25% of the shielded amount (shieldFee = 25 bps)
+      basis: Contract parameter on the RailgunSmartWallet proxy, sent to the treasury contract; changeFee is owner-only (RAIL governance vote, at least 7 days) and capped at 50%. Unchanged since one FeeChange event at block 14737691.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payee
+      amount: 0.25% of the unshielded amount (unshieldFee = 25 bps)
+      basis: Same contract parameter; deducted from the note value on unshield, so the receiving public address gets the amount net of the fee.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: Broadcaster premium, set by each broadcaster as a % of gas (docs say generally ~10%), paid in the transacted token
+      basis: Optional; set per broadcaster over Waku, not by the contracts. Self-relaying avoids it but pays gas from a public address.
+      evidence_index: 2
+    - kind: network
+      paid_by: payer
+      amount: Ethereum gas for shield, transact and unshield
+      basis: Paid in ETH when self-signing, or folded into the broadcaster premium in the transacted token.
+      evidence_index: 2
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://sourcify.dev/server/v2/contract/1/0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9
+      address: "0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9"
+      block_number: 26153698
+      detail: shieldFee() and unshieldFee() both return 25 (basis points of 10,000); nftFee() returns 0; treasury() = 0xE8A8…FF40. The only FeeChange event since deployment (block 14737691, tx 0x2bd98cd1…2361) set 25/25/0.
+      checked_at: 2026-10-09
+      recheck: cast call 0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9 "unshieldFee()(uint120)" --rpc-url https://ethereum-rpc.publicnode.com
+      check:
+        call: "0x053ed12a"
+        expect: "0x0000000000000000000000000000000000000000000000000000000000000019"
+    - tier: verified
+      kind: repo
+      url: https://github.com/Railgun-Privacy/contract/blob/36bcf5ed7cf94bfafb6e1a303e1832c769c16780/contracts/logic/RailgunLogic.sol#L316-L358
+      commit: 36bcf5ed7cf94bfafb6e1a303e1832c769c16780
+      path: contracts/logic/RailgunLogic.sol
+      detail: transferTokenOut splits the note value with getFee(value, inclusive, unshieldFee), sends the base to the recipient and the fee to the treasury, and emits Unshield(to, token, base, fee). changeFee (L141-L155) is onlyOwner and caps each fee at BASIS_POINTS / 2.
+      checked_at: 2026-10-09
+    - tier: documented
+      kind: document
+      url: https://docs.railgun.org/wiki/learn/railgun-deductions.md
+      detail: Railgun's docs describe the 0.25% protocol deduction and broadcaster premiums set by individual broadcasters.
+      quote: Broadcaster Premiums are up to the individual Broadcasters themselves
+      checked_at: 2026-10-09
+  checked_at: 2026-10-09
+custody_model:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: Agrees with S1 (2) finding. Notes are spendable only with the owner's keys and no admin function moves balances; the residual risk is an upgrade after a public RAIL vote with a 7-day minimum, which S1 already records.
+  checked_at: 2026-10-09
+licences:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: No operating entity runs the rail. The contracts are governed onchain by RAIL stakers (ProxyAdmin owned by the Delegator, owned by the Voting contract; see C1), and broadcasters are independent operators. No company is named as provider in the docs or GitHub organisations.
+  burden: institution
+  checked_at: 2026-10-09
+cashout:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: Token-to-address rail. The payee unshields tokens to an address it controls; converting them to local currency is outside the protocol.
+  burden: institution
+  checked_at: 2026-10-09
+maturity:
+  first_deployment:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      date: 2022-05-01
+      block: 14693013
+      what: RailgunSmartWallet proxy 0xFA70…a4b9 created (tx 0x13954e0d…22aa) by 0x76EB…4624; first implementation set at block 14737691 (2022-05-08).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9?fields=deployment
+        address: "0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9"
+        block_number: 14693013
+        detail: Sourcify creation data gives tx 0x13954e0d1af4c619efbd502299e78e116d1309b2b85c15ac6fe09838bb8622aa at block 14693013; the receipt (read via rpc.mevblocker.io) has contractAddress 0xfa70…a4b9 and status 1; block 14693013 is dated 2022-05-01 UTC.
+        checked_at: 2026-10-09
+        recheck: cast receipt 0x13954e0d1af4c619efbd502299e78e116d1309b2b85c15ac6fe09838bb8622aa contractAddress --rpc-url https://rpc.mevblocker.io
+    note: The Delegator's first GrantPermission logs (block 12977000, 2021-08-07) show the governance stack predates this proxy; an earlier settlement contract, if any, is not in the provider's contract list and was not traced.
+    checked_at: 2026-10-09
+  entity:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.railgun.org/wiki/rail-token/protocol-governance.md
+        detail: The docs describe changes as onchain protocol requests decided by RAIL stakers and name no company; the full docs index (docs.railgun.org/wiki/llms.txt), railgun.org and the Railgun-Privacy and Railgun-Community GitHub organisations (no company field) were searched for a legal entity.
+        quote: Treasury funds never pass through a developer or team wallet, during an upgrade or otherwise.
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: api
+        url: https://api.github.com/orgs/Railgun-Privacy
+        detail: "GitHub org Railgun-Privacy: name Railgun, company, blog, location and email empty; Railgun-Community lists only https://www.railgun.org."
+        checked_at: 2026-10-09
+    note: No maintaining legal entity is disclosed. Railway Wallet, the reference client, is published by the Right to Privacy Foundation, which is not the Railgun protocol's maintainer.
+    checked_at: 2026-10-09
+  incidents:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9
+        address: "0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9"
+        block_number: 26153698
+        detail: eth_getLogs over the proxy from its creation block (14693013) to latest returns no ProxyPause events (topic0 0xa51641ae…bb6f); the only ProxyUnpause is in the setup transaction at block 14737691.
+        checked_at: 2026-10-09
+        recheck: cast logs --address 0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9 0xa51641ae9e6ff3082f83f718f043efc36fa8eb06274cd78c3e7251af263ebb6f --from-block 14693013 --rpc-url https://rpc.mevblocker.io
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/security-advisories
+        detail: No published security advisories for Railgun-Privacy/contract or Railgun-Community/engine.
+        checked_at: 2026-10-09
+    note: No post-mortem found in docs.railgun.org (full index searched) or the repos. Third-party reports of illicit use are not incidents of the rail and are not recorded.
+    checked_at: 2026-10-09
+  changes:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2022-05-08
+        summary: Proxy initialised with its first implementation (0xbcfa…541a), fees set to 25/25 bps and treasury 0xc851…4d6c; proxy unpaused.
+        url: https://etherscan.io/tx/0x2bd98cd135e2eaf7b7239bb4951a043f655629b5d0f0ca12334ce05718512361
+      - date: 2022-07-24
+        summary: Treasury changed to 0xE8A8…FF40 (TreasuryChange).
+        url: https://etherscan.io/tx/0x75671d8d03312847db13e98bafb021f17ccda2ca170e9945b33ad8ed5fca812b
+      - date: 2022-11-29
+        summary: Implementation upgraded to 0x3216…e13b (ProxyUpgrade).
+        url: https://etherscan.io/tx/0xab0625746a64ed88fd040a39bdbe9ed930328d9b09245b36cd1d9a64444dad95
+      - date: 2023-03-09
+        summary: Implementation upgraded to 0xc0be…09cc (ProxyUpgrade).
+        url: https://etherscan.io/tx/0xe001ac69697083957933db13ff27c56769ce8826d4ab676b3965d7a44b9f0668
+      - date: 2025-07-28
+        summary: Implementation upgraded to 0xb4f2…d89b (ProxyUpgrade).
+        url: https://etherscan.io/tx/0xfc6cda4a6e9b8e2d055a50212551e6daa8ec180ad7aced11d00ae71e1d0eab6e
+      - date: 2026-08-14
+        summary: Implementation upgraded to the current 0xD662…6A0C (ProxyUpgrade), deployed at block 25641630; adds Action events and TokenBlocklist.
+        url: https://etherscan.io/tx/0x7ac142845ccd9f156d992099a7ca8d6cb52655f4153cc49c48c38c8966a6b3ad
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9
+        address: "0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9"
+        block_number: 26153698
+        detail: ProxyUpgrade, FeeChange and TreasuryChange logs on the proxy since block 14693013 (via rpc.mevblocker.io), block dates from block headers. Upgrades at blocks 14737691, 16076750, 16790263, 23018635, 25753684; one FeeChange (14737691); TreasuryChange at 14737691 and 15202637.
+        checked_at: 2026-10-09
+        recheck: cast logs --address 0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9 0x85aeb0b8dd2de94a068da6d2ccd785fea888eee68ec95d9a17c74446a865839d --from-block 14693013 --rpc-url https://rpc.mevblocker.io
+    note: Each upgrade after setup required a passed RAIL governance proposal (ProxyAdmin is owned by the Delegator and the Voting contract). The proposal documents behind each upgrade were not read; the transaction is the primary source cited.
+    checked_at: 2026-10-09
+volume:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: unknown
+  spec:
+    chain_id: 1
+    addresses:
+      - "0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9"
+    topic0: "0xd93cf895c7d5b2cd7dc7a098b678b3089f37d91f48d9b83a0800a91cbdf05284"
+    event: Unshield(address to, (uint8 tokenType, address tokenAddress, uint256 tokenSubID) token, uint256 amount, uint256 fee)
+    amount_word: 4
+    token_word: 2
+    window_days: 30
+    exclusions: Counts unshields only (value leaving the shielded pool to public addresses, net of the 0.25% fee). Private 0zk-to-0zk transfers, shields and RelayAdapt swaps are not included; ERC721 unshields count as amount 1. BSC, Polygon and Arbitrum deployments are excluded.
+  note: Judgment call. Shielded 0zk transfers hide amount, token and parties, so the payments themselves are not observable; the spec measures pool exits (Unshield) on the listed proxy, a lower bound on payee settlement to public addresses. Data words verified on a live log at block 26148878 (word 2 = USDT, word 4 = amount). Not computed; the maintainer runs scripts/volumes.mjs.
+facts:
+  B1.4:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: ABDK reviewed an early version of the contracts and circuits; no audit of the deployed implementation was found. See CROPS S6.
+    refs:
+      - criterion: S6
+        index: 0
+    checked_at: 2026-10-09
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: no security policy file
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: no security policy file
+        - repo: Railgun-Community/engine
+          ok: false
+          detail: no security policy file
+        - repo: Railgun-Community/wallet
+          ok: false
+          detail: no security policy file
+        - repo: Railgun-Community/shared-models
+          ok: false
+          detail: no security policy file
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: no security policy file
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: false
+          detail: no security policy file
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: false
+          detail: no security policy file
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: no security policy file
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/contents/?ref=main
+        detail: "Railgun-Privacy/contract: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/contents/?ref=main
+        detail: "Railgun-Privacy/circuits-v2: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/contents/?ref=main
+        detail: "Railgun-Community/engine: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/contents/?ref=main
+        detail: "Railgun-Community/wallet: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/contents/?ref=main
+        detail: "Railgun-Community/shared-models: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/contents/?ref=master
+        detail: "Railgun-Community/deployments: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/contents/?ref=main
+        detail: "Railgun-Community/waku-broadcaster-client: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/contents/?ref=main
+        detail: "Railgun-Community/private-proof-of-innocence: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/contents/?ref=main
+        detail: "Railgun-Community/subsquid-integration: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/contents/?ref=main
+        detail: "Railway-Wallet/Railway-Wallet: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railgun-Community/engine
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railgun-Community/wallet
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railgun-Community/shared-models
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/contents/?ref=main
+        detail: "Railgun-Privacy/contract: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/contents/?ref=main
+        detail: "Railgun-Privacy/circuits-v2: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/contents/?ref=main
+        detail: "Railgun-Community/engine: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/contents/?ref=main
+        detail: "Railgun-Community/wallet: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/contents/?ref=main
+        detail: "Railgun-Community/shared-models: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/contents/?ref=master
+        detail: "Railgun-Community/deployments: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/contents/?ref=main
+        detail: "Railgun-Community/waku-broadcaster-client: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/contents/?ref=main
+        detail: "Railgun-Community/private-proof-of-innocence: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/contents/?ref=main
+        detail: "Railgun-Community/subsquid-integration: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/contents/?ref=main
+        detail: "Railway-Wallet/Railway-Wallet: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: no deployment configuration
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: no deployment configuration
+        - repo: Railgun-Community/engine
+          ok: false
+          detail: no deployment configuration
+        - repo: Railgun-Community/wallet
+          ok: false
+          detail: no deployment configuration
+        - repo: Railgun-Community/shared-models
+          ok: false
+          detail: no deployment configuration
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: no deployment configuration
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: false
+          detail: no deployment configuration
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: false
+          detail: no deployment configuration
+        - repo: Railgun-Community/subsquid-integration
+          ok: true
+          detail: "deployment configuration: docker-compose.yml"
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/contents/?ref=main
+        detail: "Railgun-Privacy/contract: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/contents/?ref=main
+        detail: "Railgun-Privacy/circuits-v2: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/contents/?ref=main
+        detail: "Railgun-Community/engine: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/contents/?ref=main
+        detail: "Railgun-Community/wallet: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/contents/?ref=main
+        detail: "Railgun-Community/shared-models: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/contents/?ref=master
+        detail: "Railgun-Community/deployments: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/contents/?ref=main
+        detail: "Railgun-Community/waku-broadcaster-client: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/contents/?ref=main
+        detail: "Railgun-Community/private-proof-of-innocence: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/contents/?ref=main
+        detail: "Railgun-Community/subsquid-integration: deployment configuration: docker-compose.yml"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/contents/?ref=main
+        detail: "Railway-Wallet/Railway-Wallet: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Railgun-Community/engine
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, required_linear_history"
+        - repo: Railgun-Community/wallet
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, required_linear_history"
+        - repo: Railgun-Community/shared-models
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Railgun-Community/subsquid-integration
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, required_linear_history"
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/rules/branches/main
+        detail: "Railgun-Privacy/contract: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/rules/branches/main
+        detail: "Railgun-Privacy/circuits-v2: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/rules/branches/main
+        detail: "Railgun-Community/engine: rules: deletion, non_fast_forward, pull_request, required_linear_history"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/rules/branches/main
+        detail: "Railgun-Community/wallet: rules: deletion, non_fast_forward, pull_request, required_linear_history"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/rules/branches/main
+        detail: "Railgun-Community/shared-models: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/rules/branches/master
+        detail: "Railgun-Community/deployments: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/rules/branches/main
+        detail: "Railgun-Community/waku-broadcaster-client: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/rules/branches/main
+        detail: "Railgun-Community/private-proof-of-innocence: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/rules/branches/main
+        detail: "Railgun-Community/subsquid-integration: rules: deletion, non_fast_forward, pull_request, required_linear_history"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/rules/branches/main
+        detail: "Railway-Wallet/Railway-Wallet: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: no .github/workflows
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: 1 workflow file(s)
+        - repo: Railgun-Community/engine
+          ok: true
+          detail: 5 workflow file(s)
+        - repo: Railgun-Community/wallet
+          ok: true
+          detail: 3 workflow file(s)
+        - repo: Railgun-Community/shared-models
+          ok: true
+          detail: 4 workflow file(s)
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: no .github/workflows
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: true
+          detail: 3 workflow file(s)
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: true
+          detail: 2 workflow file(s)
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: no .github/workflows
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/contents/?ref=main
+        detail: "Railgun-Privacy/contract: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/contents/?ref=main
+        detail: "Railgun-Privacy/circuits-v2: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/contents/?ref=main
+        detail: "Railgun-Community/engine: 5 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/contents/?ref=main
+        detail: "Railgun-Community/wallet: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/contents/?ref=main
+        detail: "Railgun-Community/shared-models: 4 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/contents/?ref=master
+        detail: "Railgun-Community/deployments: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/contents/?ref=main
+        detail: "Railgun-Community/waku-broadcaster-client: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/contents/?ref=main
+        detail: "Railgun-Community/private-proof-of-innocence: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/contents/?ref=main
+        detail: "Railgun-Community/subsquid-integration: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/contents/?ref=main
+        detail: "Railway-Wallet/Railway-Wallet: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: test command in a workflow
+        - repo: Railgun-Privacy/circuits-v2
+          ok: true
+          detail: test command in a workflow
+        - repo: Railgun-Community/engine
+          ok: true
+          detail: test command in a workflow
+        - repo: Railgun-Community/wallet
+          ok: true
+          detail: test command in a workflow
+        - repo: Railgun-Community/shared-models
+          ok: true
+          detail: test command in a workflow
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: test command in a workflow
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: true
+          detail: test command in a workflow
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: true
+          detail: test command in a workflow
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: test command in a workflow
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/contents/?ref=main
+        detail: "Railgun-Privacy/contract: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/contents/?ref=main
+        detail: "Railgun-Privacy/circuits-v2: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/contents/?ref=main
+        detail: "Railgun-Community/engine: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/contents/?ref=main
+        detail: "Railgun-Community/wallet: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/contents/?ref=main
+        detail: "Railgun-Community/shared-models: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/contents/?ref=master
+        detail: "Railgun-Community/deployments: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/contents/?ref=main
+        detail: "Railgun-Community/waku-broadcaster-client: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/contents/?ref=main
+        detail: "Railgun-Community/private-proof-of-innocence: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/contents/?ref=main
+        detail: "Railgun-Community/subsquid-integration: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/contents/?ref=main
+        detail: "Railway-Wallet/Railway-Wallet: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Railgun-Community/engine
+          ok: true
+          detail: coverage tooling referenced
+        - repo: Railgun-Community/wallet
+          ok: true
+          detail: coverage tooling referenced
+        - repo: Railgun-Community/shared-models
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/contents/?ref=main
+        detail: "Railgun-Privacy/contract: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/contents/?ref=main
+        detail: "Railgun-Privacy/circuits-v2: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/contents/?ref=main
+        detail: "Railgun-Community/engine: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/contents/?ref=main
+        detail: "Railgun-Community/wallet: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/contents/?ref=main
+        detail: "Railgun-Community/shared-models: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/contents/?ref=master
+        detail: "Railgun-Community/deployments: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/contents/?ref=main
+        detail: "Railgun-Community/waku-broadcaster-client: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/contents/?ref=main
+        detail: "Railgun-Community/private-proof-of-innocence: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/contents/?ref=main
+        detail: "Railgun-Community/subsquid-integration: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/contents/?ref=main
+        detail: "Railway-Wallet/Railway-Wallet: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: no tags
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: no tags
+        - repo: Railgun-Community/engine
+          ok: true
+          detail: "latest tags: v9.6.0, v9.5.4, v9.5.3"
+        - repo: Railgun-Community/wallet
+          ok: true
+          detail: "latest tags: v10.9.0, v10.8.6, v10.8.5"
+        - repo: Railgun-Community/shared-models
+          ok: true
+          detail: "latest tags: v8.0.1, v8.0.0, v7.6.2"
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: no tags
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: true
+          detail: "latest tags: v9.1.1, v9.1.0, v9.0.6"
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: false
+          detail: no tags
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: no tags
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: true
+          detail: "latest tags: v5.26.1, v5.24.21, v5.24.18"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/tags
+        detail: "Railgun-Privacy/contract: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/tags
+        detail: "Railgun-Privacy/circuits-v2: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/tags
+        detail: "Railgun-Community/engine: latest tags: v9.6.0, v9.5.4, v9.5.3"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/tags
+        detail: "Railgun-Community/wallet: latest tags: v10.9.0, v10.8.6, v10.8.5"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/tags
+        detail: "Railgun-Community/shared-models: latest tags: v8.0.1, v8.0.0, v7.6.2"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/tags
+        detail: "Railgun-Community/deployments: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/tags
+        detail: "Railgun-Community/waku-broadcaster-client: latest tags: v9.1.1, v9.1.0, v9.0.6"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/tags
+        detail: "Railgun-Community/private-proof-of-innocence: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/tags
+        detail: "Railgun-Community/subsquid-integration: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/tags
+        detail: "Railway-Wallet/Railway-Wallet: latest tags: v5.26.1, v5.24.21, v5.24.18"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: Railgun-Privacy/circuits-v2
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: Railgun-Community/engine
+          ok: false
+          detail: 2 of 10 recent commits signed
+        - repo: Railgun-Community/wallet
+          ok: false
+          detail: 2 of 10 recent commits signed
+        - repo: Railgun-Community/shared-models
+          ok: true
+          detail: 9 of 10 recent commits signed
+        - repo: Railgun-Community/deployments
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: true
+          detail: 9 of 10 recent commits signed
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: true
+          detail: 5 of 10 recent commits signed
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: 0 of 1 recent commits signed
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: 2 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/commits?per_page=10
+        detail: "Railgun-Privacy/contract: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/commits?per_page=10
+        detail: "Railgun-Privacy/circuits-v2: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/commits?per_page=10
+        detail: "Railgun-Community/engine: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/commits?per_page=10
+        detail: "Railgun-Community/wallet: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/commits?per_page=10
+        detail: "Railgun-Community/shared-models: 9 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/commits?per_page=10
+        detail: "Railgun-Community/deployments: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/commits?per_page=10
+        detail: "Railgun-Community/waku-broadcaster-client: 9 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/commits?per_page=10
+        detail: "Railgun-Community/private-proof-of-innocence: 5 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/commits?per_page=10
+        detail: "Railgun-Community/subsquid-integration: 0 of 1 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/commits?per_page=10
+        detail: "Railway-Wallet/Railway-Wallet: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railgun-Community/engine
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railgun-Community/wallet
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railgun-Community/shared-models
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: no changelog or release notes
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: true
+          detail: 10 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/contents/?ref=main
+        detail: "Railgun-Privacy/contract: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/contents/?ref=main
+        detail: "Railgun-Privacy/circuits-v2: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/contents/?ref=main
+        detail: "Railgun-Community/engine: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/contents/?ref=main
+        detail: "Railgun-Community/wallet: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/contents/?ref=main
+        detail: "Railgun-Community/shared-models: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/contents/?ref=master
+        detail: "Railgun-Community/deployments: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/contents/?ref=main
+        detail: "Railgun-Community/waku-broadcaster-client: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/contents/?ref=main
+        detail: "Railgun-Community/private-proof-of-innocence: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/contents/?ref=main
+        detail: "Railgun-Community/subsquid-integration: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/contents/?ref=main
+        detail: "Railway-Wallet/Railway-Wallet: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Railgun-Privacy/contract
+          ok: false
+          detail: none found
+        - repo: Railgun-Privacy/circuits-v2
+          ok: false
+          detail: none found
+        - repo: Railgun-Community/engine
+          ok: false
+          detail: none found
+        - repo: Railgun-Community/wallet
+          ok: true
+          detail: contribution section in README
+        - repo: Railgun-Community/shared-models
+          ok: false
+          detail: none found
+        - repo: Railgun-Community/deployments
+          ok: false
+          detail: none found
+        - repo: Railgun-Community/waku-broadcaster-client
+          ok: false
+          detail: none found
+        - repo: Railgun-Community/private-proof-of-innocence
+          ok: true
+          detail: contribution section in README
+        - repo: Railgun-Community/subsquid-integration
+          ok: false
+          detail: none found
+        - repo: Railway-Wallet/Railway-Wallet
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/contract/contents/?ref=main
+        detail: "Railgun-Privacy/contract: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Privacy/circuits-v2/contents/?ref=main
+        detail: "Railgun-Privacy/circuits-v2: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/engine/contents/?ref=main
+        detail: "Railgun-Community/engine: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/wallet/contents/?ref=main
+        detail: "Railgun-Community/wallet: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/shared-models/contents/?ref=main
+        detail: "Railgun-Community/shared-models: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/deployments/contents/?ref=master
+        detail: "Railgun-Community/deployments: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/waku-broadcaster-client/contents/?ref=main
+        detail: "Railgun-Community/waku-broadcaster-client: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/private-proof-of-innocence/contents/?ref=main
+        detail: "Railgun-Community/private-proof-of-innocence: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railgun-Community/subsquid-integration/contents/?ref=main
+        detail: "Railgun-Community/subsquid-integration: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Railway-Wallet/Railway-Wallet/contents/?ref=main
+        detail: "Railway-Wallet/Railway-Wallet: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B10.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Logical architecture only (contracts, UTXO Merkle tree, zk-SNARKs, broadcasters, SDK) on docs.railgun.org; integration via the SDK and Adapt Modules pages. No infrastructure view, as there is no operator-run infrastructure.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.railgun.org/wiki/learn/privacy-system.md
+        detail: The privacy-system page and its children (zero-knowledge cryptography, trusted setup, community broadcasters) describe the components; integrating-railgun pages cover SDKs and Adapt Modules.
+        quote: The RAILGUN privacy system is a series of smart contracts that privatizes blockchain interactions.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+  B11.2:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Onchain fee switch. 0.25% on shield and unshield goes to the treasury contract, distributed to RAIL stakers (4.2% of the treasury every two weeks per the docs). No foundation or grant funding of maintenance was found.
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9
+        address: "0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9"
+        block_number: 26153698
+        detail: shieldFee() = 25 and unshieldFee() = 25; treasury() = 0xE8A8B458BcD1Ececc6b6b58F80929b29cCecFF40.
+        checked_at: 2026-10-09
+        check:
+          call: "0x01c37790"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000019"
+      - tier: documented
+        kind: document
+        url: https://docs.railgun.org/wiki/rail-token/rail-security-rewards.md
+        detail: Treasury allocation to RAIL stakers.
+        quote: 4.2% of the treasury tokens are allocated to the claiming mechanism every 2 weeks.
+        checked_at: 2026-10-09
+    note: The fees reward stakers, not a named maintainer; how contract and SDK development is paid for is not documented.
+    checked_at: 2026-10-09
+  B12.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.railgun.org/wiki/learn/common-misconceptions.md
+        detail: The only screening in the path is the optional PPOI layer, which checks new shields against public lists; the contracts process transactions with or without it. Contracts (grep for sanction/ofac/country) and SDK (OFAC list check) contain list lookups only, no model or AI component.
+        quote: is an optional compliance layer, separate from the core RAILGUN contracts, that screens new shields against public bad-actor lists.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09

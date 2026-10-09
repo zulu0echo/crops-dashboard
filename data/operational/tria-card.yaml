@@ -1,0 +1,535 @@
+slug: tria-card
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement found in Tria's legal pages (docs.tria.so terms, privacy policy, card terms, prohibited use policy), the 25 articles at help.tria.so or www.tria.so. The "Security and TSS" docs page is now password-protected and was not read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No independent code review report found; CROPS S6 is unknown for this provider.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report or bug bounty found; www.tria.so/.well-known/security.txt returns 404.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: The help centre describes the wallet as non-custodial; no recovery plan for the card service or for collateral held under the card programme was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page found (status.tria.so does not resolve) and no post-mortems found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Login with a Google or Apple account, with an optional secondary email for recovery; card number and CVV are revealed only after a device biometric check. No separate second factor for login is described.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.tria.so/en/articles/14886061-managing-login-methods
+        detail: Help article on login methods (4 May 2026).
+        checked_at: "2026-10-09"
+        quote: You can log in to your account using either your primary Google email or your Apple account
+      - tier: documented
+        kind: document
+        url: https://help.tria.so/en/articles/14854386-card-security-and-troubleshooting
+        detail: Help article on card security.
+        checked_at: "2026-10-09"
+        quote: Complete the biometric security check
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: The public SDK docs (CoreSDK, React and React Native references) cover wallet onboarding with SSO and passkeys; no card API is documented, and the TX Flow and protocol pages are password-protected.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "The privacy policy states encryption at rest and in transit with reasonable procedural, physical and electronic safeguards; no data classification is stated. Observed: www.tria.so refuses TLS 1.1 and accepts TLS 1.2."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/privacy-policy
+        detail: Privacy Policy s11, How We Protect Your Information.
+        checked_at: "2026-10-09"
+        quote: including encryption at rest and during transit
+      - tier: documented
+        kind: trace
+        url: https://www.tria.so
+        detail: "openssl s_client -tls1_1 to www.tria.so:443 failed with alert protocol version; -tls1_2 negotiated ECDHE-ECDSA-CHACHA20-POLY1305. Run 2026-10-09 with LibreSSL 3.3.6."
+        checked_at: "2026-10-09"
+        recheck: "echo | openssl s_client -connect www.tria.so:443 -servername www.tria.so -tls1_1; echo | openssl s_client -connect www.tria.so:443 -servername www.tria.so -tls1_2"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Retention "as long as necessary", set case by case by type of data, purpose and legal reason; no periods are given. On termination Tria may delete or deactivate the account and related information. See CROPS P2 for what is collected.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/privacy-policy
+        detail: Privacy Policy s12, Information Storage.
+        checked_at: "2026-10-09"
+        quote: We retain your information for as long as necessary to provide the Services
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The privacy policy is issued by Threely Dimensions, Inc. without using controller or processor terms; Sumsub is named for biometric identity checks, and the card terms point to the issuer's privacy notice hosted by Rain (legal.raincards.xyz). No DPIA statement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/privacy-policy
+        detail: Privacy Policy opening paragraph and s5 Biometric Data.
+        checked_at: "2026-10-09"
+        quote: This Privacy Policy describes how Threely Dimensions, Inc.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    note: The protected docs pages say access to them is logged; nothing is stated about logging of customer accounts or activity.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: attested
+    value: Tria's architecture pages (Protocol Construct, Security and TSS, TX Flow, BestPath) exist on docs.tria.so but are now password-protected for authorised readers, with a password from a Tria representative. They were public when the CROPS seed was researched on 2026-10-07; the card stack (issuer, collateral contracts) was not described in them.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/security-tss
+        detail: The Security and TSS page now shows a password gate; docs.tria.so/tx-flow and /network-construct show the same gate.
+        checked_at: "2026-10-09"
+        quote: This section is password-protected and intended for authorized use only
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: "Threely Dimensions Inc. (Tria), Delaware law and courts. Card issuers differ by programme: Third National for the US card, Nimbus, LLC (a Delaware company) for the international card, with BANEX Microfinance Bank marketing the card in Nigeria. No company register entry found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/platform-agreement
+        detail: Terms of Service, governing law.
+        checked_at: "2026-10-09"
+        quote: laws of the State of Delaware
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-international
+        detail: International Card Terms (last updated 9 January 2026), opening paragraph naming the issuer.
+        checked_at: "2026-10-09"
+        quote: Nimbus, LLC a Delaware U.S. corporation
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-us
+        detail: US Cardholder Agreement (last updated 9 January 2026), opening paragraph naming the issuer.
+        checked_at: "2026-10-09"
+        quote: and Third National, including its affiliates, successors, and assigns
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Annual card memberships (Lite/virtual 25 USD, Pro/plastic 109 USD, Max/metal 250 USD) and card transaction, FX and ATM fees. No financial statements found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-international
+        detail: International Card Terms, Important Disclosures (fee disclosure date 31 October 2025).
+        checked_at: "2026-10-09"
+        quote: "Virtual Card: $25 Plastic Card: $109 Metal Card: $250"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: "Tria and/or the issuer may suspend, revoke or cancel card privileges at any time with or without cause or notice, and termination does not end the obligation to repay; collateral can be liquidated if a payment is more than one day late or its value falls below charges. Tria may modify or discontinue the Services at any time and on termination may block the wallet address and delete or deactivate the account and its information."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-international
+        detail: International Card Terms s10 Termination.
+        checked_at: "2026-10-09"
+        quote: Tria and/or Issuer may suspend, revoke or cancel your Account privileges
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/platform-agreement
+        detail: Terms of Service s11.2 Effect of Termination.
+        checked_at: "2026-10-09"
+        quote: delete or deactivate your Tria Account and all related information
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: No statement on AI or automated decision-making in payments or compliance found in the privacy policy, terms or help centre. The help centre describes automatic routing of top-up swaps (BestPath), which is not described as AI.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: payer
+      amount: "Card issue and annual fee: virtual 25 USD, plastic 109 USD, metal 250 USD"
+      basis: International Card Terms and US Cardholder Agreement disclosures (fee disclosure date 31 October 2025); sold as Lite, Pro and Max memberships.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: FX up to 3% plus international transactions up to 1% (international terms); US card up to 3%
+      basis: Card terms. The help centre says Lite and higher memberships pay no Tria FX fee, Visa FX still applies; the terms are the binding ceiling.
+      evidence_index: 0
+    - kind: cashout
+      paid_by: payer
+      amount: "ATM: up to 2 USD + 3% per withdrawal (terms); help centre states 1 USD + 1%; inquiry or decline up to 2 USD"
+      basis: Card terms disclosures and help article 14780504 disagree; both recorded.
+      evidence_index: 1
+    - kind: provider
+      paid_by: payer
+      amount: Card top-up - no Tria service fee; provider fee for swaps and bridging shown in app
+      basis: Help article 14854432; the international card terms also allow a USDC settlement or deposit fee of up to 1%.
+      evidence_index: 2
+    - kind: limit
+      paid_by: none
+      amount: ATM 750 USD per transaction, 3 per 24 hours; top-up minimum 10 USD (50 USD for BTC)
+      basis: Help articles 14780504 and 14056654; spending limit equals posted collateral.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/card-terms-international
+      detail: International Card Terms, Important Disclosures.
+      checked_at: "2026-10-09"
+      quote: "ATM Fee (Withdraw): Up to $2 + 3%"
+    - tier: documented
+      kind: document
+      url: https://help.tria.so/en/articles/14780504-atm-withdrawals
+      detail: Help article on ATM withdrawals (15 May 2026).
+      checked_at: "2026-10-09"
+      quote: "Per Transaction: Maximum of $750"
+    - tier: documented
+      kind: document
+      url: https://help.tria.so/en/articles/14854432-what-are-provider-fees
+      detail: Help article on provider fees (1 May 2026).
+      checked_at: "2026-10-09"
+      quote: we do not charge any direct service fees for card deposits at this time
+  note: "Fees in the card terms are maxima (\"up to\"); interest is 0% and late, returned and over-limit fees are not charged. Gas for top-ups is sponsored on most chains (not Solana or Tron)."
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: The Tria wallet is self-custodial (TSS keys; Tria disclaims custody), but card spending is backed by collateral posted from a linked wallet that the issuer can liquidate, and top-ups move funds into a card balance under the issuer's programme. Agrees with the S1 finding.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: attested
+  value:
+    - entity: Third National
+      holder: partner
+      country: US
+      regulator: not stated
+      type: Card issuer and creditor for the US Tria Credit Card (as stated in the Cardholder Agreement)
+      evidence_index: 0
+    - entity: Nimbus, LLC
+      holder: partner
+      country: US
+      regulator: not stated
+      type: Card issuer for the international Tria Spend Card, under licence from Visa (as stated in the card terms)
+      evidence_index: 1
+    - entity: BANEX MICROFINANCE BANK LIMITED
+      holder: partner
+      country: NG
+      regulator: Central Bank of Nigeria
+      type: Licensed microfinance bank marketing the card in Nigeria (as stated in the card terms)
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/card-terms-us
+      detail: US Cardholder Agreement naming the issuer.
+      checked_at: "2026-10-09"
+      quote: and Third National, including its affiliates, successors, and assigns
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/card-terms-international
+      detail: International Card Terms naming the issuer.
+      checked_at: "2026-10-09"
+      quote: Nimbus, LLC a Delaware U.S. corporation
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/card-terms-international
+      detail: International Card Terms, Nigeria users.
+      checked_at: "2026-10-09"
+      quote: BANEX MICROFINANCE BANK LIMITED (BANEX), a financial institution licensed by the Central Bank of Nigeria (CBN)
+  note: "Tria (Threely Dimensions Inc.) says it is not a bank, money services business or card issuer and claims no licence. None of the partner licences was confirmed in a register: FDIC BankFind lists no active institution named Third National (2026-10-09); Nimbus, LLC is not a bank and no licence is stated for it; the Central Bank of Nigeria register was not checked."
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_spend
+      partner: Nimbus, LLC (international) or Third National (US) as issuer; Visa
+      fee: FX up to 3% plus international up to 1% (terms)
+      limits: Spending limit equals posted collateral value; virtual (Lite) or physical cards.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Card issuer, Visa
+      fee: Up to 2 USD + 3% (terms); 1 USD + 1% (help centre)
+      limits: 750 USD per transaction, 3 per 24 hours; select "Credit" at the ATM; local ATM caps apply.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/card-terms-international
+      detail: International Card Terms, Important Disclosures.
+      checked_at: "2026-10-09"
+      quote: "Foreign Exchange (\"FX\"): Up to 3%"
+    - tier: documented
+      kind: document
+      url: https://help.tria.so/en/articles/14780504-atm-withdrawals
+      detail: Help article on ATM withdrawals.
+      checked_at: "2026-10-09"
+      quote: "Percentage Fee: 1% of the withdrawal amount"
+  note: "ALL means every country not on the provider file's blocklist. Card eligibility is narrower in practice: the card application checks the country of residence against an unpublished supported list (help article 14056678). No bank off-ramp to fiat accounts was found in the help centre or terms."
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: "2025-10-31"
+      what: Fee Disclosure Date of the Tria card terms, the earliest dated card document found (terms effective date, not a confirmed launch date).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-international
+        detail: International Card Terms, Important Disclosures effective date.
+        checked_at: "2026-10-09"
+        quote: effective as of 31 Oct, 2025
+    note: No dated launch announcement of the Tria card was found (www.tria.so is client-rendered with no newsroom; help articles carry 2026 update dates). The card may have launched earlier.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Threely Dimensions Inc.
+      jurisdiction: US-DE
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/platform-agreement
+        detail: Terms of Service naming the contracting entity; governed by Delaware law.
+        checked_at: "2026-10-09"
+        quote: Tria does not hold, store, or take custody of your funds, digital assets, collateral, or private keys
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/privacy-policy
+        detail: Privacy Policy naming Threely Dimensions, Inc.
+        checked_at: "2026-10-09"
+        quote: This Privacy Policy describes how Threely Dimensions, Inc.
+    note: Jurisdiction inferred from the Delaware governing-law and venue clause; incorporation state not stated and not checked in the Delaware Division of Corporations search (interactive). SEC EDGAR full-text search returned no filings for the name.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident report or status page found on www.tria.so, docs.tria.so or help.tria.so. Searched 2026-10-09.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: "2025-10-31"
+        summary: Card fee disclosures take effect (memberships 25, 109 and 250 USD; FX and ATM fee ceilings).
+        url: https://docs.tria.so/card-terms-international
+      - date: "2026-01-09"
+        summary: International Card Terms updated, naming Nimbus, LLC as issuer (the platform agreement still names Third National, LLC and partners as Card Program Providers); US Cardholder Agreement with Third National updated the same day.
+        url: https://docs.tria.so/card-terms-international
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-international
+        detail: International Card Terms header.
+        checked_at: "2026-10-09"
+        quote: "Last Updated: January 9, 2026"
+      - tier: documented
+        kind: document
+        url: https://docs.tria.so/card-terms-us
+        detail: US Cardholder Agreement header.
+        checked_at: "2026-10-09"
+        quote: "Last Updated: January 9, 2026"
+    note: Not listed because undated - the Security and TSS, TX Flow and protocol docs pages, public when the CROPS seed was researched on 2026-10-07, were password-protected by 2026-10-09 (see B10.1).
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: No listed contracts; the collateral chain and addresses are not published (provider file notes), and card settlement runs through the issuers' closed systems.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

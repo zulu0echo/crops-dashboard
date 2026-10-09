@@ -1,0 +1,696 @@
+slug: monero
+fees:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value:
+    - kind: network
+      paid_by: payer
+      amount: Dynamic per-byte fee; sample 0.000491 XMR for a 1,535-byte transaction (block 3,780,260, 2026-10-09)
+      basis: Consensus minimum since fork v15 is 0.95 x block_reward x 3000 / median_weight^2 per byte of weight; nodes reject fees more than 2% below it. Wallets pay a multiple by priority. Paid to the miner; changes need a hard fork.
+      evidence_index: 0
+  evidence:
+    - tier: verified
+      kind: repo
+      commit: 22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0
+      checked_at: 2026-10-09
+      url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/blockchain.cpp#L3621-L3718
+      path: src/cryptonote_core/blockchain.cpp
+      detail: get_dynamic_base_fee (L3621-L3663) computes the per-byte minimum from the block reward, DYNAMIC_FEE_REFERENCE_TRANSACTION_WEIGHT (3000, cryptonote_config.h L75) and the long-term effective median from HF_VERSION_2021_SCALING (v15); check_fee (L3667-L3718) multiplies by transaction weight and rejects fees below 98% of it.
+      recheck: gh api "repos/monero-project/monero/contents/src/cryptonote_core/blockchain.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 3621,3718p
+    - tier: verified
+      kind: onchain
+      url: https://xmrchain.net/api/block/3780260
+      block_number: 3780260
+      detail: Block 3,780,260 (2026-10-09 12:10:24 UTC) holds two-output transactions of 1,532-1,539 bytes paying 490,240,000-492,480,000 piconero (about 0.00049 XMR, 320,000 piconero per byte). Read through a public explorer API; any monerod returns the same block.
+      checked_at: 2026-10-09
+      recheck: curl -s https://xmrchain.net/api/block/3780260 | jq '.data.txs[1:6][] | {tx_fee, tx_size}'
+  note: There is no protocol, developer or provider fee; the only charge is the miner fee. The sample is one block on one day; the per-byte minimum moves with the block reward (tail emission 0.6 XMR) and the median block weight.
+  checked_at: 2026-10-09
+custody_model:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+  note: Agrees with the S1 finding (anchor 3 in substance, capped at 2 only for want of contract evidence). Value moves from the payer's outputs to one-time outputs only the payee's keys can spend; nobody holds funds in flight.
+  checked_at: 2026-10-09
+licences:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: No operating entity runs the rail. Monero is a proof-of-work chain run by independent miners and node operators; the project has no company, and its Core Team and volunteers maintain software and escrow donations but do not transmit or hold users' funds.
+  burden: institution
+  checked_at: 2026-10-09
+cashout:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: Native-asset rail. The payee receives XMR at its own address; converting XMR to local currency is outside the protocol and depends on exchanges whose availability varies by jurisdiction.
+  burden: institution
+  checked_at: 2026-10-09
+maturity:
+  first_deployment:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      date: 2014-04-18
+      block: 1
+      what: Monero mainnet launch (block 1, first mined block; genesis has timestamp 0). The current format (ring 16, Bulletproofs+, view tags) dates from fork v15, 2022-08-13.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_config.h#L236-L237
+        path: src/cryptonote_config.h
+        detail: Mainnet GENESIS_TX and GENESIS_NONCE (10000) compiled into monerod v0.18.5.3; hardforks.cpp L34-L36 starts fork version 1 at height 1.
+      - tier: verified
+        kind: onchain
+        url: https://xmrchain.net/api/block/1
+        block_number: 1
+        detail: Block 1 (hash 771fbcd6...8148) has timestamp 1397818193, 2014-04-18 10:49:53 UTC. Block 0 (hash 418015bb...32e3, the CAIP-2 reference) has timestamp 0. Read through a public explorer API; any monerod returns the same headers.
+        checked_at: 2026-10-09
+        recheck: curl -s https://xmrchain.net/api/block/1 | jq -r '.data.timestamp_utc'
+    note: Judgment call. The first mined block is recorded because the genesis block carries no real timestamp.
+    checked_at: 2026-10-09
+  entity:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_i18n/en.yml#L468-L468
+        path: _i18n/en.yml
+        detail: The getmonero.org FAQ text states that Monero is an open source community project with no company that runs it and no CEO; contributors are volunteers or community-funded.
+      - tier: verified
+        kind: repo
+        commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2019-12-03-core-team-general-fund.md#L9-L25
+        path: _posts/2019-12-03-core-team-general-fund.md
+        detail: The Core Team describes itself as an informal group that escrows the Community Crowdfunding System and stewards the General Fund; no legal entity is named.
+    note: Judgment call. Recorded as absent (no maintaining legal entity exists) rather than unknown. The Core Team, the Monero Research Lab and the vulnerability response team are informal groups; the security contacts in meta/VULNERABILITY_RESPONSE_PROCESS.md are individuals. Search of the website and docs repositories for company, corporation, legal entity and foundation found no entity.
+    checked_at: 2026-10-09
+  incidents:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2017-05-17
+        summary: Disclosure of the CryptoNote key-image bug that allowed undetectable inflation. Found 2017-02-19, patched secretly in v0.10.2 and enforced by the April 2017 fork; the project scanned the chain and states Monero was never exploited.
+        funds_lost: "no"
+        url: https://www.getmonero.org/2017/05/17/disclosure-of-a-major-bug-in-cryptonote-based-currencies.html
+      - date: 2018-09-05
+        summary: Post-mortem of the multiple-counting bug in wallet transfer reporting (fixed in v0.12.3.0); exchanges using get_transfers could be credited several times over. An exchange was exploited through a Monero fork; losses on Monero itself are not stated.
+        funds_lost: unknown
+        url: https://www.getmonero.org/2018/09/05/a-post-mortum-of-the-multiple-counting-bug-2018-09-05.html
+      - date: 2018-09-25
+        summary: Post-mortem of the burning bug. The wallet did not warn on outputs sent to a reused one-time address, so an attacker could leave a service with unspendable outputs; patched privately for exchanges, protocol and supply unaffected.
+        funds_lost: unknown
+        url: https://www.getmonero.org/2018/09/25/a-post-mortum-of-the-burning-bug.html
+      - date: 2021-09-20
+        summary: Post-mortem of two decoy-selection bugs in the reference wallet (v0.14.1.0 to v0.17.2.2) that weakened sender privacy; fixed in v0.17.2.3.
+        funds_lost: "no"
+        url: https://www.getmonero.org/2021/09/20/post-mortem-of-decoy-selection-bugs.html
+      - date: 2023-06-08
+        summary: Post-mortem of the 10-block-old decoy selection bug (HIGH severity, wallets v0.13.0.2 to v0.18.2.1) revealing the real input of transactions spending outputs exactly 10 blocks old.
+        funds_lost: "no"
+        url: https://www.getmonero.org/2023/06/08/10block-old-decoy-selection-bug.html
+      - date: 2023-11-04
+        summary: The Core Team reports the Community Crowdfunding System hot wallet was drained of 2,675.73 XMR on 2023-09-01, source not ascertained; the General Fund covered the loss. Project donation funds, not user funds or the protocol.
+        funds_lost: "yes"
+        url: https://www.getmonero.org/2023/11/04/ccs-wallet-incident.html
+      - date: 2025-08-26
+        summary: Post-mortem of the find_and_save_rings() bug (wallets v0.12.0.0 to v0.18.4.1) that sent outgoing transaction ids to the daemon on first wallet load, reducing sender anonymity against an untrusted remote node; fixed in v0.18.4.2.
+        funds_lost: "no"
+        url: https://www.getmonero.org/2025/08/26/post-mortem-of-find-and-save-rings-bug.html
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2017-05-17-disclosure-of-a-major-bug-in-cryptonote-based-currencies.md#L9-L31
+        path: _posts/2017-05-17-disclosure-of-a-major-bug-in-cryptonote-based-currencies.md
+        detail: Overview and timeline of the key-image bug, including the statement that the Monero blockchain had never been exploited.
+      - tier: verified
+        kind: repo
+        commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2023-11-04-ccs-wallet-incident.md#L1-L13
+        path: _posts/2023-11-04-ccs-wallet-incident.md
+        detail: Core Team notice of the CCS wallet drain of 2,675.73 XMR on 2023-09-01 and the General Fund covering it.
+      - tier: verified
+        kind: repo
+        commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2025-08-26-post-mortem-of-find-and-save-rings-bug.md#L1-L20
+        path: _posts/2025-08-26-post-mortem-of-find-and-save-rings-bug.md
+        detail: Quick facts of the find_and_save_rings() privacy bug (severity, affected versions, fix). The other post-mortems listed are in the same _posts directory at this commit.
+    note: Primary sources are the project's own post-mortems in monero-project/monero-site. The 2021-12 multisig vulnerability notice (experimental feature) and the 2016 MWR Labs statement are not listed. Privacy-loss incidents in the reference wallet are included because the rail's property is privacy; none moved funds.
+    checked_at: 2026-10-09
+  changes:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2017-01-10
+        summary: Fork v4 (height 1,220,516) allows RingCT transactions (hidden amounts).
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/README.md#L130-L130
+      - date: 2018-10-18
+        summary: Forks v8/v9 (heights 1,685,555 and 1,686,275) enable then require Bulletproofs and fix ring size at 11.
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/README.md#L134-L135
+      - date: 2019-11-30
+        summary: Fork v12 (height 1,978,433) switches proof of work to RandomX and requires at least two outputs.
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/README.md#L138-L138
+      - date: 2020-10-17
+        summary: Forks v13/v14 (heights 2,210,000 and 2,210,720) introduce the CLSAG signature format and forbid MLSAG.
+        url: https://www.getmonero.org/2020/08/18/network-upgrade-october-2020.html
+      - date: 2022-08-13
+        summary: Forks v15/v16 (heights 2,688,888 and 2,689,608) raise ring size to 16, add Bulletproofs+ and view tags, and change the dynamic fee and block-weight algorithm. No fork since; the next is listed as undetermined.
+        url: https://www.getmonero.org/2022/04/20/network-upgrade-july-2022.html
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/README.md#L120-L145
+        path: README.md
+        detail: Scheduled software upgrades table with height, date, fork version and details for every mainnet fork; the next fork row is XXX (not determined).
+      - tier: verified
+        kind: repo
+        commit: 22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/hardforks/hardforks.cpp#L34-L76
+        path: src/hardforks/hardforks.cpp
+        detail: Mainnet fork heights compiled into monerod. Dates above are the activation-block timestamps read from xmrchain.net/api/block/<height>, which match the README dates.
+    note: Forks v2, v3, v5 to v7, v10 and v11 are omitted for brevity; they are in the same README table.
+    checked_at: 2026-10-09
+volume:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_observable
+  reason: Ring signatures, stealth addresses and RingCT hide senders, recipients and amounts by design; only transaction counts and fees are public. Monero also has no contract address the volume script could query.
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: monero-project/monero
+          ok: false
+          detail: no security policy file
+        - repo: monero-project/monero-gui
+          ok: false
+          detail: no security policy file
+        - repo: monero-project/monero-site
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
+        detail: "monero-project/monero: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
+        detail: "monero-project/monero-gui: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
+        detail: "monero-project/monero-site: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: monero-project/monero
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: monero-project/monero-gui
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: monero-project/monero-site
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
+        detail: "monero-project/monero: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
+        detail: "monero-project/monero-gui: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
+        detail: "monero-project/monero-site: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: monero-project/monero
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: monero-project/monero-gui
+          ok: true
+          detail: "deployment configuration: Dockerfile.android"
+        - repo: monero-project/monero-site
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
+        detail: "monero-project/monero: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
+        detail: "monero-project/monero-gui: deployment configuration: Dockerfile.android"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
+        detail: "monero-project/monero-site: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: monero-project/monero
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: monero-project/monero-gui
+          ok: false
+          detail: "rules: deletion, non_fast_forward"
+        - repo: monero-project/monero-site
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/rules/branches/master
+        detail: "monero-project/monero: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/rules/branches/master
+        detail: "monero-project/monero-gui: rules: deletion, non_fast_forward"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/rules/branches/master
+        detail: "monero-project/monero-site: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: monero-project/monero
+          ok: true
+          detail: 3 workflow file(s)
+        - repo: monero-project/monero-gui
+          ok: true
+          detail: 3 workflow file(s)
+        - repo: monero-project/monero-site
+          ok: true
+          detail: 4 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
+        detail: "monero-project/monero: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
+        detail: "monero-project/monero-gui: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
+        detail: "monero-project/monero-site: 4 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: monero-project/monero
+          ok: false
+          detail: test command in a workflow
+        - repo: monero-project/monero-gui
+          ok: false
+          detail: test command in a workflow
+        - repo: monero-project/monero-site
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
+        detail: "monero-project/monero: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
+        detail: "monero-project/monero-gui: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
+        detail: "monero-project/monero-site: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: monero-project/monero
+          ok: false
+          detail: coverage tooling referenced
+        - repo: monero-project/monero-gui
+          ok: false
+          detail: coverage tooling referenced
+        - repo: monero-project/monero-site
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
+        detail: "monero-project/monero: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
+        detail: "monero-project/monero-gui: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
+        detail: "monero-project/monero-site: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: monero-project/monero
+          ok: true
+          detail: "latest tags: v0.18.5.3, v0.18.5.1, v0.18.5.0"
+        - repo: monero-project/monero-gui
+          ok: true
+          detail: "latest tags: v0.18.5.3, v0.18.5.2, v0.18.5.1"
+        - repo: monero-project/monero-site
+          ok: false
+          detail: "latest tags: 2026-07-21, 2026-07-08, 2026-05-12"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/tags
+        detail: "monero-project/monero: latest tags: v0.18.5.3, v0.18.5.1, v0.18.5.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/tags
+        detail: "monero-project/monero-gui: latest tags: v0.18.5.3, v0.18.5.2, v0.18.5.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/tags
+        detail: "monero-project/monero-site: latest tags: 2026-07-21, 2026-07-08, 2026-05-12"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: monero-project/monero
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: monero-project/monero-gui
+          ok: true
+          detail: 9 of 10 recent commits signed
+        - repo: monero-project/monero-site
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/commits?per_page=10
+        detail: "monero-project/monero: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/commits?per_page=10
+        detail: "monero-project/monero-gui: 9 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/commits?per_page=10
+        detail: "monero-project/monero-site: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: monero-project/monero
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: monero-project/monero-gui
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: monero-project/monero-site
+          ok: true
+          detail: 7 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
+        detail: "monero-project/monero: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
+        detail: "monero-project/monero-gui: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
+        detail: "monero-project/monero-site: 7 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: monero-project/monero
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: monero-project/monero-gui
+          ok: true
+          detail: contribution section in README
+        - repo: monero-project/monero-site
+          ok: true
+          detail: CONTRIBUTING file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
+        detail: "monero-project/monero: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
+        detail: "monero-project/monero-gui: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
+        detail: "monero-project/monero-site: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.2:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Vulnerability Response Process. Acknowledgement within 3 working days; HIGH and MEDIUM fixed in a point release, LOW in the next regular release; HIGH announced publicly within 3 working days of the patch release; the response team has 90 days to complete the process, after which the researcher may disclose. No fixed patch deadline per severity of the 30/40/90-day kind.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 97fb74b0bfffafa553b8ca6b4978218b4ca13362
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/meta/blob/97fb74b0bfffafa553b8ca6b4978218b4ca13362/VULNERABILITY_RESPONSE_PROCESS.md#L55-L131
+        path: VULNERABILITY_RESPONSE_PROCESS.md
+        detail: Section III steps 3 and 7 (response time, release type by severity), section IV step 1 (90 days) and step 3d (researcher disclosure after 90 days).
+    note: The process covers code in the project's repositories, not the websites. It is run by volunteers.
+    checked_at: 2026-10-09
+  B10.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Logical and integration views only. The docs describe the node/wallet split (monerod, wallet CLI, wallet RPC, GUI), their P2P, keyboard and JSON-RPC interfaces and the data directory; the RPC references and the Levin P2P protocol are documented separately. No single architecture document and no infrastructure view, as no operator-run infrastructure is required.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: fff7b8ecc25bb8fc37f919b7c4795bb89aa8d9eb
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero-docs/blob/fff7b8ecc25bb8fc37f919b7c4795bb89aa8d9eb/docs/en/interacting/overview.md#L51-L96
+        path: docs/en/interacting/overview.md
+        detail: Executables table and the interaction matrix (P2P, keyboard commands, HTTP API, GUI) published as docs.getmonero.org.
+      - tier: verified
+        kind: repo
+        commit: 22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/docs/LEVIN_PROTOCOL.md
+        path: docs/LEVIN_PROTOCOL.md
+        detail: Wire format of the P2P protocol; docs/ANONYMITY_NETWORKS.md and docs/ZMQ.md cover Tor/I2P transport and the ZMQ interface.
+    checked_at: 2026-10-09
+  B11.2:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Donations only. There is no protocol funding stream (the block reward, including tail emission, goes to miners). Development is paid through the Community Crowdfunding System and the General Fund, both escrowed by the Core Team; the bug bounty is paid from community donations.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2019-12-03-core-team-general-fund.md#L9-L25
+        path: _posts/2019-12-03-core-team-general-fund.md
+        detail: The Core Team escrows the CCS and stewards the General Fund, which pays contributors, infrastructure and server costs, with some hosting donated by sponsors.
+      - tier: verified
+        kind: repo
+        commit: 97fb74b0bfffafa553b8ca6b4978218b4ca13362
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/meta/blob/97fb74b0bfffafa553b8ca6b4978218b4ca13362/VULNERABILITY_RESPONSE_PROCESS.md#L133-L140
+        path: VULNERABILITY_RESPONSE_PROCESS.md
+        detail: Bounty XMR is solely contributed by community donors and escrowed by unpaid volunteers.
+    note: The 2023 CCS wallet drain (2,675.73 XMR) was covered from the General Fund (see incidents). No current treasury figure was read.
+    checked_at: 2026-10-09
+  B12.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    refs:
+      - criterion: C4
+        index: 0
+      - criterion: C4
+        index: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0
+        checked_at: 2026-10-09
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/blockchain.cpp#L3667-L3718
+        path: src/cryptonote_core/blockchain.cpp
+        detail: Transaction acceptance depends on consensus checks and the fee rule only. The seed research searched monero and monero-gui for country, analytics and telemetry and found no screening step; the VRP's AI clause concerns bug reports, not the payment path.
+    checked_at: 2026-10-09

@@ -1,0 +1,23 @@
+Source: https://docs.coca.xyz/coca/the-bank-we-all-deserve/why-are-rewards-so-high
+Fetched: 2026-10-09 (curl; GitBook page, intermittently slow). Visible text with tags stripped:
+Why are rewards so high? | COCA COCA ⌘ Ctrl k COCA 💸 Banking That Pays You Back 🤩 The Bank We All Deserve Why are rewards so high? Where is my money stored and who controls it? Is COCA safe? What is 
+COCA's roadmap for 2026? 💳 Banking Account Overview COCA Card IBAN 🚀 CRYPTO ACCOUNT Overview Buy Crypto Exchange assets 💰 Membership & Rewards Membership you deserve 8% Cashback 50%-off subscriptions 5% 
+Balance APY 👌 Only UP! Tokenomics Token designed to work Address & Details Token allocations No new tokens until Dec 1, 2027 Powered by GitBook On this page For the complete documentation index, see 
+llms.txt . This page is also available as Markdown . Copy On this page 🤩 The Bank We All Deserve Why are rewards so high? People usually ask: "How can COCA offer high cashback and APY when banks 
+don't?" Short answer: because COCA is not a traditional bank. When banks earn revenue from card activity or FX, a lot of it gets eaten by the cost of running the institution. That's why, for many 
+banks, rewards are either minimal, full of exclusions, or funded in a way that's hard to sustain long-term. We don't run a branch network, we don't rely on legacy rails for everything thus we can 
+share more of the value created by payments and stablecoin infrastructure back to users. COCA uses more efficient infrastructure COCA is designed around stablecoins and blockchain infrastructure , 
+which is cheaper than traditional setups: Settlement and transfers are handled with fewer layers Operations are automated and standardized The system runs globally without a local banking That 
+doesn't mean there are no costs – there are still payment partners, card rails, compliance, support, and risk management – but the model is more efficient. And since operating costs are lower, COCA 
+allocates a larger portion of value back to users instead of burning it on fees and overhead. Merchant-funded cashback adds a second engine for rewards COCA works with a growing network of merchants 
+who fund offers to attract customers. Here is how that typically works in practice: A merchant wants more sales or customers They allocate a marketing budget to offer rewards (cashback, discounts, 
+special offers) When users shop through COCA (or pay with COCA in qualifying ways), the merchant-funded reward gets triggered That reward is then paid out to the user (often alongside COCA's base 
+rewards, depending on the program) Rewards are not only "COCA paying from its own pocket" but come from the brands and businesses that benefit directly from the transactions. Earnings come from real 
+activity in DeFi COCA offers earnings on card idle balance. It is earned by putting stablecoins to work in decentralized finance (DeFi), where people and businesses borrow, lend, and use stablecoins 
+every day. Because these systems run automatically and without traditional intermediaries, they can generate higher returns than classic savings accounts. The interest comes from real usage, not from 
+COCA subsidizing rewards. APY levels are based on what these markets actually generate and are adjusted to stay sustainable over time. Is this sustainable? We combine three drivers: Lower operating 
+costs (more efficient infrastructure) Additional cashback from merchants (funded by marketing budgets) Earnings generated from real DeFi activity (money are put to work in global, automated markets) 
+Summary COCA rewards can be high because they're powered by a modern stablecoin + payments model, not old-school banking. They're driven by efficient infrastructure, merchant-funded cashback and 
+zero-trust DeFi protocols , which creates more room to offer strong, competitive rewards while keeping funds accessible. Previous Banking That Pays You Back Next Where is my money stored and who 
+controls it? Last updated 5 months ago COCA uses more efficient infrastructure Merchant-funded cashback adds a second engine for rewards Earnings come from real activity in DeFi Is this sustainable? 
+Summary

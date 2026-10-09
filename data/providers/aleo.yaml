@@ -1,0 +1,564 @@
+slug: aleo
+name: Aleo (credits.aleo private transfers)
+type: transfer
+website: https://aleo.org
+primary_chain:
+  name: Aleo mainnet
+  caip2: "aleo:0"
+  basis: >-
+    Aleo is its own proof-of-stake chain (BFT validator committee), so the unit is Aleo mainnet as defined by snarkVM v4.11.0 (MAINNET_V0_CONSENSUS_VERSION_HEIGHTS, consensus_heights.rs L165-L190) and the built-in credits.aleo program, whose transfer functions are the settlement path. CAIP-2 id aleo:0 from the registered aleo namespace (ChainAgnostic/namespaces aleo/caip2.md). Mainnet height read via the Provable API: 22,659,198 on 2026-10-09. Excluded: testnet and canary, other deployed programs (token_registry, stablecoins), bridges.
+
+repos:
+  - url: https://github.com/ProvableHQ/snarkOS
+    role: backend
+    license: Apache-2.0
+  - url: https://github.com/ProvableHQ/snarkVM
+    role: contracts
+    license: Apache-2.0
+  - url: https://github.com/ProvableHQ/sdk
+    role: sdk
+    license: GPL-3.0
+  - url: https://github.com/ProvableHQ/leo
+    role: sdk
+    license: GPL-3.0
+
+contracts: []
+
+components:
+  - name: Aleo mainnet consensus (BFT committee of bonded validators)
+    role: ledger
+    public: true
+    license: Apache-2.0
+    operator: 23 validators at 2026-10-09; bonding open at 10M credits
+    required: true
+    repo: https://github.com/ProvableHQ/snarkOS
+  - name: credits.aleo (built-in program; transfer and fee functions)
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: none (changed only by consensus upgrades)
+    required: true
+    repo: https://github.com/ProvableHQ/snarkVM
+  - name: snarkVM (VM, consensus versions, restrictions list)
+    role: other
+    public: true
+    license: Apache-2.0
+    operator: Provable (maintainer); run inside every node and client
+    required: true
+    repo: https://github.com/ProvableHQ/snarkVM
+  - name: snarkOS node and developer CLI (transfer_private)
+    role: backend
+    public: true
+    license: Apache-2.0
+    operator: user, validators, or any node operator
+    required: true
+    repo: https://github.com/ProvableHQ/snarkOS
+  - name: Proving parameters (parameters.provable.com, S3 fallback; checksums in snarkVM)
+    role: other
+    public: true
+    license: Apache-2.0
+    operator: Provable (both download URLs)
+    required: true
+    repo: https://github.com/ProvableHQ/snarkVM
+  - name: Provable SDK (@provablehq/sdk)
+    role: sdk
+    public: true
+    license: GPL-3.0
+    operator: user
+    required: false
+    repo: https://github.com/ProvableHQ/sdk
+  - name: Provable API (api.explorer.provable.com, edge.provable.com), default endpoint
+    role: api
+    public: false
+    license: proprietary
+    operator: Provable
+    required: false
+  - name: Provable delegated proving and record scanning services
+    role: other
+    public: false
+    license: proprietary
+    operator: Provable
+    required: false
+  - name: Consumer wallets (Shield, Leo Wallet, Puzzle); no public source found
+    role: wallet
+    public: false
+    license: proprietary
+    operator: wallet vendors
+    required: false
+
+scores:
+  C1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/src/restrictions/mod.rs#L32-L60
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/src/restrictions/mod.rs
+        detail: snarkVM carries a consensus-level restrictions registry that can block whole programs, single functions, or specific public or constant argument values (for example an address passed to transfer_public) over block ranges; is_argument_restricted (L237-L290) matches only public and constant inputs and outputs.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/src/restrictions/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 32,60p
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/parameters/src/mainnet/resources/restrictions.json#L1-L6
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: parameters/src/mainnet/resources/restrictions.json
+        detail: The mainnet list is empty (no programs, functions or arguments) at v4.11.0; it has been empty since it was introduced in June 2024 (commits e8e59b7f and e579d0a9).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/resources/restrictions.json?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d
+    finding: >-
+      credits.aleo itself has no admin, pause or blacklist. But the node software has a built-in restrictions list that, once a release containing entries is adopted by the validator committee, makes the chain reject named programs, functions or public argument values such as a specific address, from a chosen block height. The list is empty today. Private transfers cannot be targeted by address because their arguments are encrypted, but the whole transfer_private function could be restricted. Provable maintains the only node implementation we found, and 23 validators decide whether to run a release. Judgment call: there is no key, but an address-level filter is designed into consensus and can be activated by one release with no enforced delay, so we score 1, not 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkOS/blob/493fca395c2c9a103f3f57f1f1aede0a9dae8949/cli/src/commands/developer/transfer_private.rs#L46-L90
+        commit: "493fca395c2c9a103f3f57f1f1aede0a9dae8949"
+        path: cli/src/commands/developer/transfer_private.rs
+        detail: The snarkOS CLI builds a credits.aleo/transfer_private transaction locally from the user's key, input record and fee record, and broadcasts it to any endpoint given with --endpoint or --broadcast.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkOS/contents/cli/src/commands/developer/transfer_private.rs?ref=493fca395c2c9a103f3f57f1f1aede0a9dae8949" --jq .content | base64 -d | sed -n 46,90p
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L842-L869
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: transfer_private takes the sender's record, a private recipient and a private amount, and outputs a record for the recipient and a change record; no third-party signature is required.
+        checked_at: "2026-10-09"
+    finding: >-
+      A payer can build and prove a transfer locally and submit it to any Aleo node, with no Provable service in the path, using the public CLI or SDK. Judgment call: anchor 3 needs onchain evidence about the deployed program, which the dashboard cannot record for Aleo addresses and programs (the schema's address formats do not fit), so we take 2; the deployed credits.aleo matches source (see O1).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/parameters/src/mainnet/mod.rs#L25-L42
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: parameters/src/mainnet/mod.rs
+        detail: Proving parameters above degree 15 are downloaded from https://parameters.provable.com/mainnet with https://s3.us-west-1.amazonaws.com/mainnet.parameters as fallback; both are Provable-controlled and checksums are in the repo.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 25,42p
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/sdk/blob/9bbe5e63b29dcadc93fad29fe4631e8c186ce639/sdk/src/program-manager.ts#L597-L610
+        commit: "9bbe5e63b29dcadc93fad29fe4631e8c186ce639"
+        path: sdk/src/program-manager.ts
+        detail: The SDK defaults to the Provable API (https://edge.provable.com/api/v2) when no host is passed, and the snarkOS CLI defaults to https://api.explorer.provable.com/v2 (developer/mod.rs L80); both accept any node URL.
+        checked_at: "2026-10-09"
+    finding: >-
+      No relayer or paymaster is needed, and any snarkOS node can take the transaction. Two things are hosted by Provable by default: the API endpoint, which the user can replace with their own node, and the proving parameters, which every client downloads from Provable's two URLs on first use. The parameter files are checksummed in public code, so a mirror is possible, but none is configured. Scored 2: required intermediaries with public code, no independent fallback by default.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/parameters/src/mainnet/resources/restrictions.json#L1-L6
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: parameters/src/mainnet/resources/restrictions.json
+        detail: The consensus restrictions list is empty, so no program, function or argument is filtered at settlement today.
+        checked_at: "2026-10-09"
+        recheck: gh search code --repo ProvableHQ/snarkOS country --json path --jq '.[].path'; gh search code --repo ProvableHQ/sdk sanction --json path --jq '.[].path'
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkOS/blob/493fca395c2c9a103f3f57f1f1aede0a9dae8949/cli/src/commands/developer/transfer_private.rs#L46-L90
+        commit: "493fca395c2c9a103f3f57f1f1aede0a9dae8949"
+        path: cli/src/commands/developer/transfer_private.rs
+        detail: GitHub code search on 2026-10-09 for country and geoip in snarkOS, and country in the SDK, found no client-side gate (SDK hits are licence text and the demo website's terms).
+        checked_at: "2026-10-09"
+    finding: >-
+      Settlement is neutral today: the consensus restrictions list is empty and credits.aleo has no address checks. Its existence is disclosed in code, and it would apply at the settlement layer, where no direct path could bypass it (scored under C1). We found no edge filtering in the node, CLI or SDK. The hosted Provable API and the closed consumer wallets may filter, and we could not inspect them. Judgment call: 2, not 3, because 3 needs a distributed-package or trace record and because the settlement layer carries a filtering mechanism, even if empty.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L842-L869
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: The unit's asset is Aleo credits held as private records or public account balances in credits.aleo; there is no issuer freeze and no sequencer.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | grep -n '^function'
+    finding: >-
+      Native credits have no issuer freeze, and the chain has a validator committee rather than a sequencer. Other tokens on Aleo, including stablecoin programs that Provable publishes as compliant-stablecoin examples, are out of scope here and may carry freeze lists. Neither the CLI nor the SDK tells payees about the committee or restrictions-list assumptions. Scored 2: enumerated in code, assumptions not stated.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L1-L60
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: The credits.aleo program text served for mainnet by the Provable API on 2026-10-09 is token-for-token identical to this file once comments are removed (1,471 tokens each).
+        checked_at: "2026-10-09"
+        recheck: diff <(curl -s https://api.explorer.provable.com/v1/mainnet/program/credits.aleo | jq -r . | perl -0pe 's#/\*.*?\*/##sg;s#//[^\n]*##g' | tr -s ' \t\n' '\n' | grep .) <(gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | perl -0pe 's#/\*.*?\*/##sg;s#//[^\n]*##g' | tr -s ' \t\n' '\n' | grep .) && echo identical
+    finding: >-
+      Aleo programs are stored onchain as Aleo instructions, so source and deployment can be compared directly; credits.aleo matches the snarkVM source. Sourcify does not cover Aleo, and we read the deployed program through Provable's hosted API rather than our own node. Judgment call: a full source match through an explorer-style API is anchor 2; anchor 3 is defined by Sourcify and a rebuild script, which do not apply.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkOS/tree/493fca395c2c9a103f3f57f1f1aede0a9dae8949/node/rest
+        commit: "493fca395c2c9a103f3f57f1f1aede0a9dae8949"
+        path: node/rest
+        detail: Node and REST API (snarkOS@493fca39, v4.11.0), VM and credits.aleo (snarkVM@29343ebb), and SDK (sdk@9bbe5e63, v0.12.0) are public; the hosted explorer API and the consumer wallets were not found in any public repository.
+        checked_at: "2026-10-09"
+        recheck: gh api "orgs/ProvableHQ/repos?per_page=100" --jq '.[]|[.name,(.license.spdx_id//"none"),.archived]|@tsv'
+    finding: >-
+      The node, VM, settlement program, CLI and SDK are public, and the node's REST API is in its source. The hosted indexer and explorer API that the SDK and CLI use by default, and every consumer wallet we know of, have no public source. Scored 2: everything a user strictly needs is public, but the default backend and the usual frontends are not.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkOS/blob/493fca395c2c9a103f3f57f1f1aede0a9dae8949/README.md#L43-L190
+        commit: "493fca395c2c9a103f3f57f1f1aede0a9dae8949"
+        path: README.md
+        detail: The snarkOS README covers requirements, installation, ports and running a client, validator or prover.
+        checked_at: "2026-10-09"
+    finding: >-
+      Build and run documentation exists for the node. Reproduction not attempted, so the score is capped at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L842-L940
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: The settlement program's interface (functions, inputs, records, mappings, finalize logic) is in the repo; the node's REST routes are defined in snarkOS node/rest/src/lib.rs.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkOS/contents/node/rest/src/lib.rs?ref=493fca395c2c9a103f3f57f1f1aede0a9dae8949" --jq .content | base64 -d | grep -n 'route('
+    finding: >-
+      The program interface and the node API are versioned in the repos. We found no payee export format in the CLI or SDK. Scored 2: interfaces present, export absent.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/LICENSE.md
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: LICENSE.md
+        detail: snarkVM and snarkOS are Apache-2.0; the SDK and Leo are GPL-3.0.
+        checked_at: "2026-10-09"
+        recheck: for r in snarkOS snarkVM sdk leo; do echo $r $(gh api repos/ProvableHQ/$r --jq '.license.spdx_id'); done
+    finding: >-
+      Every listed repository, including all required ones (node, VM and settlement program), carries an OSI-approved licence. Closed components (hosted API, proving and scanning services, consumer wallets) are optional.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/LICENSE.md
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: LICENSE.md
+        detail: snarkVM's licence changed from GPL to Apache-2.0 in commit b8cd7cbc (2023-05-21) and snarkOS's in 2f449c59 the same day; no CLA appears in either repo's CONTRIBUTING or workflows.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/commits?path=LICENSE.md&per_page=10" --jq '.[]|[.sha[0:8],.commit.author.date,.commit.message[0:60]]|@tsv'
+    finding: >-
+      There is no CLA and no written licence-stability commitment. The node and VM were relicensed from GPL to Apache-2.0 in May 2023, which widened rights but shows the maintainer can change the licence of future versions. Judgment call: anchor 0 names any prior relicense event; under the take-the-lower-anchor rule we score 0, though the change was permissive.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/parameters/src/mainnet/mod.rs#L25-L42
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: parameters/src/mainnet/mod.rs
+        detail: The only hosted dependency on the required path is the proving-parameter download, which is public, Apache-licensed data checked against hashes in the repo.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 25,42p
+    finding: >-
+      A production deployment (own node, CLI or SDK) needs no proprietary software. The proving parameters are fetched from Provable's hosts but are open data that can be mirrored. The hosted API, delegated proving and record scanning are optional. Judgment call: 2, since we made no O3 reproduction and the parameter hosting has no independent default.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/sdk/blob/9bbe5e63b29dcadc93fad29fe4631e8c186ce639/sdk/package.json#L1-L80
+        commit: "9bbe5e63b29dcadc93fad29fe4631e8c186ce639"
+        path: sdk/package.json
+        detail: The SDK's runtime dependencies are @provablehq/wasm, @scure/base, @serenity-kit/noble-sodium, comlink, core-js, mime and xmlhttprequest-ssl, with no analytics or error reporting; snarkOS validator telemetry is local metrics exposed on the node's own REST API.
+        checked_at: "2026-10-09"
+        recheck: npm view @provablehq/sdk@0.12.0 dependencies
+        package:
+          name: "@provablehq/sdk"
+          version: "0.12.0"
+          integrity: "sha512-xGOteR7nRF2Vx/6HUG8oB7tQ9myWLdINGC7dPfHgl/U1MQA4/eZTA+2+42700pxBo8UdFq5K1EdLoUpKlh9VIQ=="
+    finding: >-
+      The SDK, CLI and node ship no third-party analytics. The SDK's demo website imports Amplitude, but its init call is commented out, and the website is not on the payment path. The closed consumer wallets were not inspected. Judgment call: absence shown in code and the published package, with no trace, is capped at 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L842-L869
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: transfer_private takes only a record, a recipient and an amount; the fee functions add only the fee amount and an execution id.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,869p
+    finding: >-
+      The protocol collects only what settlement needs. No required component holds account or identity data. Optional Provable services see more: the hosted API sees the submitting IP, and the record-scanning service, if used, needs the user's view key.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L842-L940
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: transfer_private keeps sender, recipient and amount private (encrypted records); transfer_private_to_public and transfer_public_to_private reveal one side and the amount, as the program comments state.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,940p
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/sdk/blob/9bbe5e63b29dcadc93fad29fe4631e8c186ce639/sdk/src/program-manager.ts#L3266-L3315
+        commit: "9bbe5e63b29dcadc93fad29fe4631e8c186ce639"
+        path: sdk/src/program-manager.ts
+        detail: The SDK's transfer builder makes the caller choose the transfer type and whether to pay the fee from a private record or the public balance.
+        checked_at: "2026-10-09"
+    finding: >-
+      A transfer_private with a private fee reveals no payer, payee or amount onchain; the program and function name, timing and transaction size are visible. Paying the fee publicly (fee_public) reveals the payer's address, and public transfers are fully transparent; both are explicit choices in the SDK and CLI. The anonymity set depends on how much activity uses records, which we do not score. Judgment call: we score what the protocol offers for a private transfer, which is anchor 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/sdk/blob/9bbe5e63b29dcadc93fad29fe4631e8c186ce639/sdk/src/program-manager.ts#L597-L610
+        commit: "9bbe5e63b29dcadc93fad29fe4631e8c186ce639"
+        path: sdk/src/program-manager.ts
+        detail: The default host (edge.provable.com) is named in code and replaced by passing a host; the network client also takes optional prover and record-scanner URIs (network-client.ts L120-L124).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/sdk/contents/sdk/src/program-manager.ts?ref=9bbe5e63b29dcadc93fad29fe4631e8c186ce639" --jq .content | base64 -d | sed -n 597,610p
+    finding: >-
+      By default the SDK and CLI query and broadcast through Provable's API, which sees the user's IP, the records they look up and the transactions they submit; the parameter host sees downloads. All are named in code and swappable for a self-run node. Optional delegated proving and record scanning send more (an authorization or a view key) to Provable. Scored 2: third parties present, named in code, swappable by config.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkOS/blob/493fca395c2c9a103f3f57f1f1aede0a9dae8949/cli/src/commands/developer/transfer_private.rs#L60-L80
+        commit: "493fca395c2c9a103f3f57f1f1aede0a9dae8949"
+        path: cli/src/commands/developer/transfer_private.rs
+        detail: The CLI takes --endpoint for queries and --broadcast for submission; the SDK takes a host argument; the node that serves both is public (snarkOS node/rest).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkOS/contents/cli/src/commands/developer/transfer_private.rs?ref=493fca395c2c9a103f3f57f1f1aede0a9dae8949" --jq .content | base64 -d | sed -n 60,80p
+    finding: >-
+      The RPC and data endpoint is configurable in the SDK and CLI, and the node that provides it is public. Scored 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L842-L869
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: transfer_private consumes the sender's record and creates a record owned by the recipient in the same transition; no escrow or third party holds funds.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,869p
+    finding: >-
+      Value moves directly from the payer's record to a record the payee owns. No one holds funds in flight. Judgment call: anchor 3 in substance, but 3 needs onchain evidence the schema cannot carry for Aleo, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/console/network/src/consensus_heights.rs#L165-L190
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: console/network/src/consensus_heights.rs
+        detail: Mainnet has had 21 consensus versions since launch, the latest (V21) at height 22,437,000 with a comment giving its target time (2026-10-01 21:00 UTC); V22 is reserved. The Provable API reported height 22,659,198 on 2026-10-09.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/console/network/src/consensus_heights.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 165,190p; curl -s https://api.explorer.provable.com/v1/mainnet/block/height/latest
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L230-L245
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: Joining the committee needs at least 10M credits delegated (L242); the committee read through the Provable API on 2026-10-09 had 23 members, 21 open to delegation, about 1.05 billion credits bonded.
+        checked_at: "2026-10-09"
+    finding: >-
+      credits.aleo and the consensus rules change only through snarkVM releases with fixed activation heights, which the 23 validators must run. Provable maintains the only implementation we found, and it has shipped 21 consensus versions in about two years, each activated at a block height fixed in the release; we did not check how far ahead each release shipped. There is no enforced delay or user-exit window. Judgment call: notice exists through heights fixed in releases (V21 carried a target date in code), so we take 2, as for other own-chain protocols; 3 would also need onchain evidence the schema cannot carry. The restrictions list is scored under C1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L776-L870
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: synthesizer/program/src/resources/credits.aleo
+        detail: credits.aleo has no approve or allowance function; every transfer is executed by the owner's key (self.caller, self.signer or record ownership).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | grep -n '^function'
+    finding: >-
+      There are no allowances for native credits; each payment is executed by the owner, so nothing can pull funds later. Judgment call: better than exact-amount approvals in substance, but 3 needs a distributed-package or trace record, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/parameters/src/mainnet/mod.rs#L25-L42
+        commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+        path: parameters/src/mainnet/mod.rs
+        detail: Every execution, including a withdrawal of one's own credits, needs proving parameters that clients download only from Provable's two URLs unless already cached.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 25,42p
+    finding: >-
+      Derived from S1=2 (anchor 3 in substance), C2=2, C3=2 and O3=1. Funds are records or balances under the user's key (S1), and any node accepts a transaction (C2). But spending needs proving parameters that the code fetches only from Provable-run hosts (C3); if Provable disappeared, a user without a cached copy would need to obtain the files elsewhere and check them against the published hashes, a manual step no repo documents. We did not reproduce a self-hosted setup (O3=1). Judgment call: funds are retrievable without Provable only by that undocumented manual step, so we score 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ProvableHQ/sdk/blob/9bbe5e63b29dcadc93fad29fe4631e8c186ce639/sdk/src/network-client.ts#L36-L72
+        commit: "9bbe5e63b29dcadc93fad29fe4631e8c186ce639"
+        path: sdk/src/network-client.ts
+        detail: The SDK accepts an optional API key or JWT for Provable's gateway, supplied by the integrator; none is bundled.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ProvableHQ/sdk/contents/sdk/src/network-client.ts?ref=9bbe5e63b29dcadc93fad29fe4631e8c186ce639" --jq .content | base64 -d | sed -n 36,72p
+    finding: >-
+      Private keys stay with the user; the protocol has no webhooks. The SDK supports an optional gateway API key or JWT, which an integrator could ship in a browser bundle; the SDK does not do so itself. Using the optional record-scanning service hands a view key to Provable. Judgment call: 2, since 3 needs a package or trace record and the optional services widen key exposure.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    finding: >-
+      We found no audit report pinned to a commit in snarkVM, snarkOS or the SDK; snarkVM's SECURITY.md (L1-L11) asks for reports by GitHub issue or email and mentions no bounty. External audits and bounty programmes are known by reputation only, which we do not score.
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: global
+  note: >-
+    The protocol has no country rule, and the consensus restrictions list (which could block programs, functions or public argument values, not countries) is empty. The node, CLI and SDK contain no country or IP-geolocation gate in GitHub code search on 2026-10-09. The hosted Provable API and the consumer wallets (Shield, Leo Wallet, Puzzle) are closed, so we could not check them for geoblocking, and we found no first-party country list for them. Legality of use varies by jurisdiction; that is not an availability restriction by the protocol.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/parameters/src/mainnet/resources/restrictions.json#L1-L6
+      commit: "29343ebbb7970e4240b4444346aeb26e31009bd7"
+      path: parameters/src/mainnet/resources/restrictions.json
+      detail: The mainnet restrictions list is empty.
+      checked_at: "2026-10-09"
+      recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/resources/restrictions.json?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d
+    - tier: verified
+      kind: repo
+      url: https://github.com/ProvableHQ/snarkOS/blob/493fca395c2c9a103f3f57f1f1aede0a9dae8949/cli/src/commands/developer/transfer_private.rs#L46-L90
+      commit: "493fca395c2c9a103f3f57f1f1aede0a9dae8949"
+      path: cli/src/commands/developer/transfer_private.rs
+      detail: The reference CLI transfer has no location check; code search of snarkOS for country and geoip returns nothing.
+      checked_at: "2026-10-09"
+      recheck: gh search code --repo ProvableHQ/snarkOS country --json path --jq '.[].path'
+  checked_at: "2026-10-09"
+
+notes: >-
+  Unit: Aleo mainnet credits.aleo transfers, private path. Pins: snarkVM@29343ebb (v4.11.0), snarkOS@493fca39 (v4.11.0), sdk@9bbe5e63 (v0.12.0). Aleo addresses (aleo1..., bech32, 63 characters) and program IDs do not fit the schema's address formats, so chain reads (height, committee, deployed credits.aleo) were made through the Provable API and are recorded in repo evidence details with curl rechecks; C1, C2, S1 and S2 are capped accordingly. No transactions, node runs, builds, traces or self-host attempts were made.

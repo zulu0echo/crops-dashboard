@@ -1,0 +1,12 @@
+Source: Privacy Policy of the BLANKSQUARE Application & Shielder Service, version of 25 July 2025, PDF linked from https://docs.blanksquare.io/other/privacy-policy-apps (file "2025_07_25 - Privacy Policy Apps.pdf", gitbook upload). Text transcribed 2026-10-09 by the AI research agent (seed); excerpts only.
+
+8. Data categories
+Technical data: The technical data includes data collected and used in connection with the ICT Systems to provide the Services. Most of this information is anonymous data. However, in some cases it may be used to identify you, for example in combination with other data. In such cases we treat it as personal data. For example, this includes: IP addresses; Location data; User hardware and software data; App user information (including statistics about user journeys)
+
+Blockchain data: This also includes Wallet public address, which is a personal data when the Wallet can be linked to you (the User).
+
+11. Data recipients
+We may disclose your personal data to the following categories of recipients: our business partners (including service providers and contractors), such as analytical tools providers or data storage providers;
+
+15.4.1. PostHog analytics solutions
+PostHog analytics solutions are a group of tools to analyse use of the App and to produce statistics and reports on its operation (e.g. PostHog Product Analytics). The PostHog analytics solutions enabled in the App operate in a cookieless mode. The solution provider is PostHog Inc., address: 2261 Market Street #4008, San Francisco, California 94114, USA.

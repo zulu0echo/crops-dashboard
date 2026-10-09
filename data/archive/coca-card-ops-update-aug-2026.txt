@@ -1,0 +1,30 @@
+Source: https://www.coca.xyz/post/coca-monthly-update-august-2026
+Fetched: 2026-10-09 (curl; Wix page, served intermittently without body text). Visible text with tags stripped:
+COCA Monthly Update: August 2026 top of page Home Cashback Contacts Docs Press News More... Use tab to navigate through the menu items. Get Free Card Home Cashback Contacts Docs Press News Menu Close 
+COCA Monthly Update: August 2026 Sep 14 3 min read August was COCA&#x27;s best month on record so far. New users, active card users, and card transaction volume all exploded. On the product side, it 
+was just as busy. We launched in-app $COCA trading through Aurora Intents, gave you private key export, and made sending money to other COCA users easier with nicknames. And we didn&#x27;t slow down 
+anywhere else either. We sat down live with Aurora Labs, ran a real-world test of eight crypto cards in South Africa, kept the Community FAQ going, and so much more. Let&#x27;s take a closer look at 
+everything that happened last month 👇 📈 Growth & Momentum COCA keeps growing month after month, and August was a record one: registrations, card activations, and active users all hit new highs. New 
+Users: +80% MoM Active Card Users : +67% MoM Card Transaction Volume: +25% MoM It&#x27;s great to see more people joining COCA, and even better to see them actively using it every day. The reasons 
+they&#x27;re joining keep growing, too. Some are financially savvy users who optimize their budgets with cashback and APY. Others turn to COCA to hedge against currency inflation and preserve the 
+value of their money, the same reason crypto was built in the first place. Different needs, same result: COCA works as a real tool for people around the world. ⚙️ Product Updates & Improvements 
+August&#x27;s biggest release ran on our integration with Aurora Intents, bringing $COCA trading and more deposit options directly into the app. 🪙 Buy & Exchange $COCA in the App You can now buy and 
+exchange $COCA straight from your USD balance, right inside the COCA app. No more switching between exchanges or transferring tokens first to upgrade your tier. ⛓️ More Networks for Stablecoin Deposits 
+We expanded USDC support to NEAR, Ethereum, Arbitrum, Base, Solana, Gnosis, Polygon, Optimism, Avalanche, Sui, Stellar, Monad, and X Layer. USDT is now supported on NEAR, Ethereum, Tron, Solana, 
+Gnosis, Polygon, Optimism, Avalanche, TON, and Scroll. Every supported chain gets a persistent deposit address, making it simpler to fund your COCA banking account. Soon, you&#x27;ll also be able to 
+deposit and spend popular cryptocurrencies like BTC, ETH, and SOL, and many more, right in the app. 🔑 Private Key Export You can now export your private keys for both the Crypto Wallet and Banking 
+sections, from Profile → Security → View Private Keys. 💸 COCA ID: Send Money by Nickname Send your banking balance to other COCA users by nickname (COCA ID) instead of copying addresses or 
+double-checking long strings. 💬 COCA x Aurora: Live AMA To mark the Aurora Intents launch, COCA CEO Vasili Paulau joined Aurora Labs CEO Declan Hannon live on X for an hour on self-custodial banking. 
+They covered why private key export was hidden for months and why it&#x27;s back, what Aurora Intents changed for deposits and $COCA purchases, and where crypto banking is heading next. Missed it? 
+Read the full recap on our blog ↖️ 🌍 Making Headlines Worldwide From crypto media to global newswires, our Aurora Intents integration made headlines around the world: AP News , Business Insider , 
+Benzinga , BeInCrypto , PR Newswire , StreetInsider , The Manila Times , FF News , MPost , and Blockchain Reporter . Click through for the details. 🇿🇦 Best Crypto Card in South Africa To get a fair 
+answer, we ran our own real-world test: we completed KYC, funded eight cards with crypto, and bought the exact same item at the same supermarket on the same day with COCA, EtherFi, Bitget Wallet, 
+Wirex, RedotPay, Bybit, Kast, and Oobit. See the full breakdown on our blog ↖️ 🤝 Staying Close to the Community We kept publishing our Community FAQ, answering the questions you ask us most often. We 
+also kept the conversation going live: our SMM Manager Chulpan Bulatova joined the community chat for a day of questions about COCA&#x27;s social media, content, and community initiatives. 🎁 
+Refer-a-Friend Takes a Break, Affiliate Program Stays Open We paused Refer-a-Friend while we work on making it more rewarding, and enjoyable. While it&#x27;s on pause, our Affiliate Program keeps 
+paying across three streams: up to $45 per active user every month, $1.50 to $60 per user based on monthly card spending, and up to $800 in loyalty bonuses, up to $905 per user combined. Find the 
+details and apply 👈 🚀 What&#x27;s Next There&#x27;s a lot brewing for what&#x27;s ahead. We&#x27;re rolling out new ways to grow your Claim Capacity and get more rewards each month, bringing additional 
+assets for crypto sends, and gearing up for a new campaign we can&#x27;t wait to share. Stay tuned. And thanks for being with us. 💙 Team COCA Recent Posts See All COCA Monthly Update: September 2026 A 
+Bank Froze His Money for a Year. Now He Pays With COCA and Skips the Bank Community AMA Recap: Loyalty Program and What&#x27;s Next Join over 1M+ crypto users worldwide ALREADY EARNING CASHBACK, 
+YIELD, AND REAL-LIFE PERKS WITH COCA Need Help? Home ​ Wallet Cashback Contacts Press Docs Policy & Docs ​ Privacy Policy Cookie Policy Terms and Conditions &copy; 2026 by ccalabs Home Cashback 
+Contacts Docs Press News bottom of page

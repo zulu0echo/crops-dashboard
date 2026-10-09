@@ -1,0 +1,784 @@
+slug: blanksquare
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: false
+          detail: no security policy file
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: false
+          detail: no security policy file
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielding-dapp: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielder-quickstart: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielding-dapp: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielder-quickstart: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: false
+          detail: no deployment configuration
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: false
+          detail: no deployment configuration
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielding-dapp: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielder-quickstart: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: false
+          detail: "rules: required_signatures"
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/rules/branches/main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: rules: required_signatures"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/rules/branches/main
+        detail: "Cardinal-Cryptography/shielding-dapp: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/rules/branches/main
+        detail: "Cardinal-Cryptography/shielder-quickstart: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: false
+          detail: 25 workflow file(s)
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: true
+          detail: 4 workflow file(s)
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: 25 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielding-dapp: 4 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielder-quickstart: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: true
+          detail: test command in a workflow
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: true
+          detail: test command in a workflow
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielding-dapp: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielder-quickstart: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: true
+          detail: coverage tooling referenced
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielding-dapp: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielder-quickstart: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: true
+          detail: "latest tags: v0.1.0, shielder-scheduler-tee-20251030-140127, shielder-scheduler-tee-20251017-120503"
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: true
+          detail: "latest tags: 1.0.5, 1.0.4, 1.0.3"
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/tags
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: latest tags: v0.1.0, shielder-scheduler-tee-20251030-140127, shielder-scheduler-tee-20251017-120503"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/tags
+        detail: "Cardinal-Cryptography/shielding-dapp: latest tags: 1.0.5, 1.0.4, 1.0.3"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/tags
+        detail: "Cardinal-Cryptography/shielder-quickstart: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: true
+          detail: 5 of 5 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/commits?per_page=10
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/commits?per_page=10
+        detail: "Cardinal-Cryptography/shielding-dapp: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/commits?per_page=10
+        detail: "Cardinal-Cryptography/shielder-quickstart: 5 of 5 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: true
+          detail: CHANGELOG file
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: true
+          detail: 4 release(s) with notes
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielding-dapp: 4 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielder-quickstart: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Cardinal-Cryptography/blanksquare-monorepo
+          ok: true
+          detail: contribution section in README
+        - repo: Cardinal-Cryptography/shielding-dapp
+          ok: false
+          detail: none found
+        - repo: Cardinal-Cryptography/shielder-quickstart
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
+        detail: "Cardinal-Cryptography/blanksquare-monorepo: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielding-dapp: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
+        detail: "Cardinal-Cryptography/shielder-quickstart: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No certification statement for Common Labs Inc. or Cardinal Cryptography in the docs or archived terms.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement of availability found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: zkSecurity audited the contracts and circuits at zkOS-monorepo commit 22e2f52 (March 2025); the deployed Shielder.sol changed after that commit. No review of the relayer, TEE prover or apps is listed.
+    refs:
+      - criterion: S6
+        index: 0
+      - criterion: S6
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration test of the relayer, TEE prover or apps found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No SECURITY file, disclosure page or patch timeline in the repositories, docs or archived terms.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No incident-notification commitment in the docs or archived terms excerpts.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page or post-mortem found; the apps and relayer went offline without a notice we could find.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: The relayer API takes unauthenticated JSON POSTs (quote_fees, relay); no OAuth, JWT or API key option exists in its configuration. The SDK otherwise talks only to a user-chosen RPC.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.blanksquare.io/integration-guides/fees.md
+        detail: The fee quote is a POST to the relayer with a token and pocket-money payload only.
+        checked_at: 2026-10-09
+        quote: is equivalent to making a POST request to the `/quote_fees` endpoint of the relayer API
+      - tier: verified
+        kind: repo
+        url: https://github.com/Cardinal-Cryptography/blanksquare-monorepo/blob/5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e/crates/shielder-relayer/README.md#L30-L65
+        commit: 5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e
+        path: crates/shielder-relayer/README.md
+        detail: The relayer's options cover RPC, keys, pricing, ports and fees, with no client authentication setting; the OpenAPI spec is served at /api.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: unknown
+    note: The apps' privacy policy (PDF, 25 July 2025) was not re-read in full; the archived excerpts list data categories and recipients but not retention periods.
+    refs:
+      - criterion: P2
+        index: 1
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Logical and integration views on the docs site (protocol overview, notes and accounts, relayers, anonymity revokers, client-side components, TEE proof delegation, SDK guides, deployments); infrastructure only as the relayer's Docker and configuration README. Not versioned with the code except the relayer README.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.blanksquare.io/llms.txt
+        detail: Docs index listing the protocol-details and integration-guides pages.
+        checked_at: 2026-10-09
+        quote: TEE-based Proof Delegation
+    refs:
+      - criterion: O3
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Common Labs Inc., Panama (registered address in Panama City); terms under Panama law. Applies to the apps and Shielder Service, not to direct contract use.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.blanksquare.io/other/terms-and-conditions-shielder-service
+        archive: data/archive/blanksquare-shielder-terms.txt
+        detail: Terms 19.1 and 22.18.
+        checked_at: 2026-10-09
+        quote: These Terms will be governed by the law of Panama
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: An onchain fee switch exists (up to 5% per deposit and withdrawal, paid to the owner Safe) but is set to 0; relayer commission would accrue to the relayer's fee address. No other funding source is published.
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xfFF44d366DeDF9B2A531109E1A08BF9873C58b53
+        address: "0x064A67a5484DF6baf36be42F9554d45E7741dCFf"
+        block_number: 52380966
+        detail: protocolDepositFeeBps() and protocolWithdrawFeeBps() return 0; protocolFeeReceiver() is the owner Safe 0x9Dc4…2165.
+        checked_at: 2026-10-09
+        check:
+          call: "0xb1a076ea"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Common Labs may terminate the Shielder Service agreement immediately if the user is a Restricted Individual (other termination clauses not in the archived excerpts). Funds stay in the contract and can be withdrawn with the SDK's direct path while it is unpaused (S4).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.blanksquare.io/other/terms-and-conditions-shielder-service
+        archive: data/archive/blanksquare-shielder-terms.txt
+        detail: Terms 6.2.
+        checked_at: 2026-10-09
+        quote: SERVICE PROVIDER has the right to terminate the Agreement with immediate effect if the User is a Restricted Individual.
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: absent
+    value: No automated screening or AI in the payment path. The contract checks only proofs, nullifiers and amounts; the relayer has no sanctions, blocklist or analytics code. The anonymity revoker acts on a governance decision, not an automated one.
+    refs:
+      - criterion: C4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: not_applicable
+    reason: No AI component in the payment path (B12.1 absent).
+    burden: none
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: none
+      amount: Protocol deposit and withdrawal fees both 0 bps on Base (contract cap 500 bps each)
+      basis: protocolDepositFeeBps and protocolWithdrawFeeBps, settable at once by the owner Safe up to MAX_FEE_BPS 500; receiver is the owner Safe. Unchanged at every block sampled since deployment.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payee
+      amount: Relayer fee = network fee + optional pocket money + commission (default 15% of relay cost), in the withdrawn token
+      basis: Set by whoever runs a relayer (shielder-relayer SERVICE_FEE_PERCENT); optional, since withdrawManual needs no relayer. The official Base relayer did not resolve on 2026-10-09.
+      evidence_index: 2
+    - kind: network
+      paid_by: payer
+      amount: Base gas; sample 1,764,659 gas, about 0.0000106 ETH incl. L1 fee, for the last shield (2026-04-02)
+      basis: Paid by the depositor, and by the withdrawer on the direct path; relayers fold it into their fee.
+      evidence_index: 4
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://sourcify.dev/server/v2/contract/8453/0xfFF44d366DeDF9B2A531109E1A08BF9873C58b53
+      address: "0x064A67a5484DF6baf36be42F9554d45E7741dCFf"
+      block_number: 52380966
+      detail: protocolDepositFeeBps() and protocolWithdrawFeeBps() return 0 and protocolFeeReceiver() is the owner Safe 0x9Dc4…2165 at block 52380966; both fees also read 0 at blocks 33246477, 40000000 and 46000000.
+      checked_at: 2026-10-09
+      recheck: cast call 0x064A67a5484DF6baf36be42F9554d45E7741dCFf "protocolWithdrawFeeBps()(uint256)" --rpc-url https://mainnet.base.org
+      check:
+        call: "0xb1a076ea"
+        expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    - tier: verified
+      kind: repo
+      url: https://github.com/Cardinal-Cryptography/blanksquare-monorepo/blob/5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e/contracts/ProtocolFee.sol#L13-L109
+      commit: 5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e
+      path: contracts/ProtocolFee.sol
+      detail: MAX_FEE_BPS is 500; the setters (called by onlyOwner functions in Shielder.sol L168-L184) revert above it; fees round up.
+      checked_at: 2026-10-09
+    - tier: verified
+      kind: repo
+      url: https://github.com/Cardinal-Cryptography/blanksquare-monorepo/blob/5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e/crates/shielder-relayer/README.md#L49-L60
+      commit: 5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e
+      path: crates/shielder-relayer/README.md
+      detail: Relayer configuration table, service-fee-percent default 15%, relay gas estimate 2,000,000, max pocket money 0.1 native token, quote validity 15 s.
+      checked_at: 2026-10-09
+    - tier: documented
+      kind: document
+      url: https://docs.blanksquare.io/integration-guides/fees.md
+      detail: Understanding Fees page, protocol fee and relayer fee structure.
+      checked_at: 2026-10-09
+      quote: the amount the relayer charges for the service (calculated as a percentage of `relayer_cost`)
+    - tier: verified
+      kind: onchain
+      url: https://basescan.org/tx/0x7abb4a49363a5a338df618ea184eeac84c5417103c4de8a5b4dfa662365c8c3e
+      address: "0x064A67a5484DF6baf36be42F9554d45E7741dCFf"
+      block_number: 44167109
+      detail: The last transaction that changed the Shielder's Merkle tree (NewAccount log, block 44167109, 2026-04-02 09:52:45 UTC) used 1,764,659 gas at 0.006 gwei plus an L1 fee of 54,547,339,119 wei, about 0.0000106 ETH in total.
+      checked_at: 2026-10-09
+      recheck: cast receipt 0x7abb4a49363a5a338df618ea184eeac84c5417103c4de8a5b4dfa662365c8c3e --rpc-url https://base.drpc.org
+  note: No withdrawal gas sample; public Base RPCs refuse log queries over the deployment's range, so only the last tree-changing transaction was located (by bisecting merkleTree() state).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: C2
+      index: 0
+  note: Agrees with S1 (score 1). Only a valid proof moves funds out, to the address bound in it, and the terms say the service provider does not safekeep or control crypto-assets. The disclosed risk is that a 2-of-5 Safe can upgrade the escrow with no timelock and pause withdrawals.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.blanksquare.io/other/terms-and-conditions-shielder-service
+      archive: data/archive/blanksquare-shielder-terms.txt
+      detail: The Shielder Service terms (4 Nov 2025) describe a non-custodial service by Common Labs Inc. (Panama) and cite no licence, registration or regulator in the archived sections.
+      checked_at: 2026-10-09
+      quote: SERVICE PROVIDER does not safekeep or control any crypto-assets on behalf of the Users.
+  note: "Searched: the docs (llms.txt, FAQ, fraud protection, legal pages) and the archived terms and privacy excerpts; no licence is claimed. Not searched: the Panama Public Registry and Superintendency registers (interactive search), and the full PDF terms beyond the archived excerpts."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: not_applicable
+  reason: A payment is a withdrawal of tokens to the payee's own Base address; converting them to local currency is outside the protocol and the apps.
+  burden: institution
+  refs:
+    - criterion: C2
+      index: 0
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2025-07-23
+      block: 33246476
+      what: Shielder proxy 0x064A…dCFf created in tx 0xf63c3126…8045 by 0x9A3C…bebA, two transactions after the implementation 0xfFF4…8b53 (tx 0x1bc2f5ad…a6a8); unpaused in the same block.
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xfFF44d366DeDF9B2A531109E1A08BF9873C58b53?fields=deployment
+        address: "0xfFF44d366DeDF9B2A531109E1A08BF9873C58b53"
+        block_number: 33246476
+        detail: Sourcify creation data for the implementation gives tx 0x1bc2f5ad1486353b4bc94c9b1dc7b603b192709f3bf731025f78a93f181ca6a8 in block 33246476 by 0x9A3CE7876beCF00e6467E7AE38e059Ee8c12bebA. The proxy has no Sourcify record; its deploy receipt (tx 0xf63c31263f7dc17c56862a7d763b4d24f1fd9e0f141e488d5d43401730068045, same block and sender) has contractAddress 0x064A…dCFf. Block 33246476 is dated 2025-07-23 14:51:39 UTC.
+        checked_at: 2026-10-09
+        recheck: cast receipt 0xf63c31263f7dc17c56862a7d763b4d24f1fd9e0f141e488d5d43401730068045 contractAddress --rpc-url https://mainnet.base.org
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Common Labs Inc.
+      jurisdiction: PA
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.blanksquare.io/other/terms-and-conditions-shielder-service
+        archive: data/archive/blanksquare-shielder-terms.txt
+        detail: Terms definition 22.18 names the service provider and its registered address in Panama City; section 19.1 sets Panama law.
+        checked_at: 2026-10-09
+        quote: Common Labs Inc. with its registered address at
+    note: No company-register entry; the Panama Public Registry search is interactive and was not used. The code is written by Cardinal Cryptography (GitHub org); its relation to Common Labs is not stated.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/security-advisories
+        detail: No published security advisories for Cardinal-Cryptography/blanksquare-monorepo.
+        checked_at: 2026-10-09
+        recheck: gh api repos/Cardinal-Cryptography/blanksquare-monorepo/security-advisories --jq length
+    note: "No security incident found in the docs or repository. Service status: on 2026-10-09 the web app and blanksquare.io returned Vercel DEPLOYMENT_NOT_FOUND and the Base relayer host did not resolve; no notice of the shutdown was found, so it is recorded here and in changes only as an observation, not a dated incident."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2025-07-23
+        summary: Shielder proxy deployed with implementation 0xfFF4…8b53 (v0.1.1) and unpaused (tx 0x87a2b37d…53d7); owner the deployer EOA 0x9A3C…bebA, protocol fees 0.
+        url: https://basescan.org/tx/0xf63c31263f7dc17c56862a7d763b4d24f1fd9e0f141e488d5d43401730068045
+      - date: 2025-07-28
+        summary: Ownership transferred from the deployer EOA to the 2-of-5 Safe 0x9Dc4…2165 (OwnershipTransferred, block 33462649).
+        url: https://basescan.org/tx/0x51ee17e500d88c471690cc5d17abf88982e2add8631fb65a5de31e5762f863a9
+      - date: 2025-11-04
+        summary: Current version of the Shielder Service terms (restricted-country annex, Panama law).
+        url: https://docs.blanksquare.io/other/terms-and-conditions-shielder-service
+      - date: 2026-04-02
+        summary: Last transaction that changed the Shielder's Merkle tree (a NewAccount); no tree change since, and the apps and relayer were offline on 2026-10-09.
+        url: https://basescan.org/tx/0x7abb4a49363a5a338df618ea184eeac84c5417103c4de8a5b4dfa662365c8c3e
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/address/0x064A67a5484DF6baf36be42F9554d45E7741dCFf
+        address: "0x064A67a5484DF6baf36be42F9554d45E7741dCFf"
+        block_number: 52380966
+        detail: State read at blocks 33246477, 40000000, 46000000 and 52380966 - the EIP-1967 implementation slot is 0xfFF4…8b53 throughout, fees 0 and paused false; owner() changes from 0x9A3C…bebA to the Safe at block 33462649 (bisected), whose OwnershipTransferred log is in tx 0x51ee17e5…63a9. merkleTree() nextFreeLeafId last changed at block 44167109 (bisected).
+        checked_at: 2026-10-09
+        recheck: cast call 0x064A67a5484DF6baf36be42F9554d45E7741dCFf "owner()(address)" --block 33462648 --rpc-url https://mainnet.base.org
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x000000000000000000000000fff44d366dedf9b2a531109e1a08bf9873c58b53"
+      - tier: documented
+        kind: document
+        url: https://docs.blanksquare.io/other/terms-and-conditions-shielder-service
+        archive: data/archive/blanksquare-shielder-terms.txt
+        detail: Terms version date.
+        checked_at: 2026-10-09
+        quote: Terms and Conditions of the Shielder Service, version of 04 November 2025
+    note: Upgrade and pause history comes from state sampling, not a full log scan (public Base RPCs refuse long log ranges), so an upgrade reverted between samples would be missed. The privacy policy is dated 25 July 2025.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 8453
+    addresses:
+      - "0x064A67a5484DF6baf36be42F9554d45E7741dCFf"
+    topic0: "0xe29a05751186ef5c2f95758981409c90ffb53df312ac3c9045828ca41ca491ed"
+    event: Withdraw(bytes3 version, address token, uint256 amount, address to, uint256, uint256, address relayer, uint256 fee, uint256, uint256, uint256, uint256 protocolFee, bytes)
+    amount_word: 2
+    token_word: 1
+    window_days: 30
+    exclusions: Withdrawals only (the payment leg to the payee). Native ETH appears as token 0x0000…0000. Amounts are gross of relayer fee and protocol fee. NewAccount and Deposit (shielding) events are excluded.
+  note: All Withdraw fields are non-indexed and in plaintext, so payouts are observable. The tree has not changed since 2026-04-02, so a 30-day window is expected to be empty. Not computed; Base log ranges need an archive RPC (RPC_8453).
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+notes: Transfer protocol; no required closed component, so operator controls are recorded only for the services Common Labs ran (relayer, TEE prover, apps), all offline or dormant on 2026-10-09. Custodial-only controls are left unset (self-custody). Bot facts (B2.1, B2.3, B8.2, B9.x) untouched.

@@ -1,0 +1,487 @@
+slug: solayer-card
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement found for Solayer Labs, Inc. in docs.solayer.org (Solayer Pay pages, security and audits pages, legal pages) or solayer.org/terms. Third National not checked.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: "Solayer lists five audits (OtterSec April and July 2024; Halborn August and October 2024) covering token-metadata, restaking, endoAVS and sUSD programs, and commits to two audits a year on existing contracts. None covers Solayer Pay, its hot/cold wallet backend or the card programme."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/security/audits
+        detail: Audits page listing the five reports with links to GitHub PDFs.
+        checked_at: 2026-10-09
+        quote: Solayer will conduct two audits per year on all existing contracts
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report or statement found. The audits page invites bug reports to report@solayer.org; no bounty terms found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No customer incident-notification commitment found in the card terms, website terms or docs.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: The Security page says cold storage "provides a fallback in extreme cases" and describes regular cold-wallet rotation and review; no recovery plan is published.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Public status page at status.solayer.org (Better Stack) covering solayer.org, the app page, a deposit/withdraw monitor and RPC endpoints; no card or Solayer Pay component. No post-mortems found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.solayer.org
+        detail: Better Stack status page, monitors listed on 2026-10-09.
+        checked_at: 2026-10-09
+        quote: Deposit withdraw monitor
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: unknown
+    note: Users connect a wallet to the Solayer app; no account-level MFA statement found for the card dashboard.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    note: The Security page says cold wallets are protected by multi-signature access controls; no statement on privileged staff access.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: Only the issuer's GLBA privacy notice speaks to data security ("security measures that comply with federal law", computer safeguards, secured files and buildings). No Solayer data classification, encryption-at-rest or TLS statement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/opening-account
+        detail: Opening Account Disclosures, Third National ("Issuer") privacy notice, What We Do.
+        checked_at: 2026-10-09
+        quote: These measures include computer safeguards and secured files and buildings
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: absent
+    value: The card terms refer to a "Solayer Privacy Policy" that is not published; the FAQ defers to the card provider's privacy policy. No retention or deletion statement exists for Solayer.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+        detail: International Card Terms, Background, refer to a Solayer Privacy Policy.
+        checked_at: 2026-10-09
+        quote: are described in Solayer Privacy Policy
+      - tier: documented
+        kind: trace
+        url: https://docs.solayer.org/llms.txt
+        detail: The docs index (llms.txt) lists no privacy policy; solayer.org/privacy and docs.solayer.org/resources/legal/privacy.md both returned HTTP 404 on 2026-10-09; the FAQ (Q17) says information is handled per the card provider's policy.
+        checked_at: 2026-10-09
+        recheck: curl -s -o /dev/null -w '%{http_code}' https://solayer.org/privacy; curl -s -o /dev/null -w '%{http_code}' https://docs.solayer.org/resources/legal/privacy.md
+    note: Third National's GLBA notice (opening-account) covers sharing, not retention.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: unknown
+    note: No Solayer privacy policy, so no controller statement; the only notice is Third National's GLBA notice. KYC is collected by Sumsub (CROPS P2).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    note: The Security page lists real-time transaction monitoring and circuit breakers that freeze suspicious activity; no SIEM or endpoint-detection statement.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: The Security page describes a hybrid hot-wallet (card swipes, small operational balance) and offline multisig cold-storage design; no logical, infrastructure or integration architecture and no deposit or wallet addresses are published.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/solayer-pay/security
+        detail: Solayer Pay Security page.
+        checked_at: 2026-10-09
+        quote: Hot wallets are what make your Solayer Pay feel instant.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: "Solayer Labs, Inc. under the website Terms (New York law); the card terms are between the user, Solayer and the issuer Third National (Puerto Rico law). Incorporation state and address are not given: the Terms' notice address is a placeholder (123 Main Street, Anytown, USA). Rain is not named in any Solayer document read, though the card terms follow Rain's template."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://solayer.org/terms
+        detail: Solayer Terms of Use, opening paragraph.
+        checked_at: 2026-10-09
+        quote: operated by or on behalf of Solayer Labs, Inc.
+      - tier: documented
+        kind: document
+        url: https://solayer.org/terms
+        detail: Terms of Use, copyright notice address.
+        checked_at: 2026-10-09
+        quote: 123 Main Street, Anytown, USA
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+        detail: International Card Terms, defined terms.
+        checked_at: 2026-10-09
+        quote: The issuer for this card program is Third National.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Card revenue from a 20 USD annual membership, top-up fees and per-transaction fees (see fees); Solayer also runs a LAYER token and points programme. No financial statements found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/solayer-pay/fee
+        detail: Solayer Pay fee structure page.
+        checked_at: 2026-10-09
+        quote: Annual $20 / year
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: "Solayer or the issuer may suspend, revoke or cancel the account or card at any time, with or without cause or notice (card terms s9); the website Terms allow suspension or termination with or without notice. Cards are deactivated after 6 months of inactivity. Under the US terms, withdrawing collateral needs 3 business days' notice to Solayer. No statement on what happens to balances or data on termination."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+        detail: International Card Terms s9 Termination.
+        checked_at: 2026-10-09
+        quote: with or without cause and with or without giving you notice
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/us-card-terms
+        detail: US Cardholder Agreement, collateral withdrawal.
+        checked_at: 2026-10-09
+        quote: To withdraw your Collateral, you must provide Solayer at least (3) business days prior notice.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: Circuit breakers that freeze suspicious activity and real-time monitoring are described; whether these are automated or AI-driven is not stated.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: payer
+      amount: 20 USD per year membership (virtual card); physical card free plus shipping 24.99 USD (US) or 59.99 USD (international)
+      basis: Fee structure page and physical card page; the card is deactivated after 6 months of inactivity.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: Top-up 1% per top-up (fee page); the FAQ says 0.5% and the top-up guide 0.10 USD
+      basis: Three Solayer docs pages disagree; the dedicated fee page is listed first.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: 0.15 USD per USD transaction
+      basis: Fee structure page and FAQ.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: "Intl card: 0.10 USD + 1.5% per non-USD transaction, plus cross-border up to 3%; US card: 1%"
+      basis: International Card Terms disclosures (effective 11 April 2025) and fee page; the FAQ says 0.10 USD + 1.75%; US Card Terms disclosures.
+      evidence_index: 1
+    - kind: cashout
+      paid_by: payer
+      amount: ATM withdrawals with the physical card; standard ATM and network fees may apply; no Solayer figure
+      basis: Physical card page.
+      evidence_index: 2
+    - kind: limit
+      paid_by: none
+      amount: ATM 250 USD per withdrawal (including surcharges), three attempts per rolling 24 hours
+      basis: Physical card page; spending limits are otherwise set dynamically by Solayer and the issuer (card terms).
+      evidence_index: 2
+    - kind: card
+      paid_by: payer
+      amount: "Penalties (international card): late payment up to 40 USD, returned payment up to 29 USD, liquidation up to 35 USD"
+      basis: International Card Terms disclosures; fees may change on 30 days' notice.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/solayer-pay/fee
+      detail: Solayer Pay fee structure page (membership, top-up and transaction fees).
+      checked_at: 2026-10-09
+      quote: Top-Up Fee 1% per top-up transaction
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/resources/legal/intl-card-terms
+      detail: International Card Terms, Important Disclosures (effective 11 April 2025).
+      checked_at: 2026-10-09
+      quote: "Cross Border Fee: up to 3%"
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/solayer-pay/card
+      detail: Physical Card page, ATM withdrawals and shipping.
+      checked_at: 2026-10-09
+      quote: "Maximum withdrawal amount per transaction: $250"
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/solayer-pay/faq
+      detail: FAQ Q11, conflicting top-up and international fees.
+      checked_at: 2026-10-09
+      quote: Top-Up Fee – 0.5% per top-up
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/resources/legal/us-card-terms
+      detail: US Card Account Opening Disclosures.
+      checked_at: 2026-10-09
+      quote: "International Transaction: 1% of each transaction in U.S. dollars"
+  note: Solayer's own pages disagree on the top-up fee (1%, 0.5%, 0.10 USD) and the international fee (1.5% or 1.75%); the US Card Terms list no annual fee while the docs charge 20 USD a year. Network fees for deposits are not stated.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+  note: Agrees with S1 (score 1, judgment call), because the Security page puts card funds in Solayer-run hot wallets and multisig cold storage, against the US Card Terms' unbacked statement that collateral stays in the user's custody in smart contracts and the overview's "non-custodial" claim.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: unknown
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/resources/legal/intl-card-terms
+      detail: The card terms name Third National as issuer under licence from Visa, without regulator, licence type or number; governing law Puerto Rico.
+      checked_at: 2026-10-09
+      quote: The issuer for this card program is Third National.
+    - tier: documented
+      kind: document
+      url: https://api.fdic.gov/banks/institutions?filters=NAME:%22Third%20National%22&fields=NAME,CERT,CITY,STNAME,ACTIVE&limit=20
+      archive: data/archive/solayer-card-ops-fdic-third-national-search.txt
+      detail: FDIC BankFind exact-name search for "Third National" returns no institution.
+      checked_at: 2026-10-09
+      quote: '"totals":{"count":0}'
+  note: No licence found for any party. No Solayer document names a licence, regulator or registration for Solayer Labs, Inc. Third National is not an FDIC-insured US bank by that name; the Puerto Rico OCIF register was not checked (earlier attempts from this environment failed the TLS handshake). Rain (Signify Holdings) is not named in Solayer's documents.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_spend
+      partner: Third National (issuer), Visa
+      fee: 0.15 USD per USD transaction; 0.10 USD + 1.5% non-USD (plus up to 3% cross-border)
+      limits: Virtual and physical cards; spending limits set dynamically by Solayer and the issuer; 17 US states excluded.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Third National (issuer), Visa ATMs
+      fee: Standard ATM and network fees may apply
+      limits: Physical card only; 250 USD per withdrawal including surcharges; three attempts per 24 hours.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/solayer-pay/fee
+      detail: Fee structure page.
+      checked_at: 2026-10-09
+      quote: International Fee $0.10 + 1.5% per international transaction
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/solayer-pay/card
+      detail: Physical Card page, ATM withdrawals.
+      checked_at: 2026-10-09
+      quote: Standard ATM and network fees may apply
+  note: ALL means every country not on the blocklist in the provider file. No bank-transfer off-ramp is documented; balances leave the card only as spend, ATM cash or a collateral withdrawal requested from Solayer (US terms, 3 business days' notice).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2025-04-11
+      what: Card Terms (international and US) take effect; earliest dated primary source for the card programme. No launch announcement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+        detail: International Card Terms header; the US Cardholder Agreement carries the same date.
+        checked_at: 2026-10-09
+        quote: Effective as of April 11, 2025
+    note: solayer.org/resources/blog lists posts back to May 2025 (a July 2025 post on card updates via Telegram) but no launch post. The docs overview says the card is live for 40,000+ users.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: unknown
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://solayer.org/terms
+        detail: Solayer Terms of Use name Solayer Labs, Inc. as operator and choose New York law; the notice address is a placeholder.
+        checked_at: 2026-10-09
+        quote: These Terms are governed by the laws of the State of New York
+    note: The contracting entity is named (Solayer Labs, Inc.), but no document states its jurisdiction of incorporation, registration number or a real address (the Terms give "123 Main Street, Anytown, USA"). Governing law (New York) is not taken as the jurisdiction. No company register checked.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident report for the card found. Searched status.solayer.org (no card component, no incident listed), solayer.org/resources/blog and docs.solayer.org.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2025-04-11
+        summary: International and US Card Terms take effect (issuer Third National).
+        url: https://docs.solayer.org/resources/legal/intl-card-terms
+      - date: 2026-03-12
+        summary: Docs rebrand the Emerald Card to Solayer Pay and switch to a 20 USD per year membership model.
+        url: https://github.com/solayer-labs/solayer_docs/commit/7c7c549399343dcbc581dfaef0430f72c20c6913
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.solayer.org/resources/legal/us-card-terms
+        detail: US Cardholder Agreement header.
+        checked_at: 2026-10-09
+        quote: "Last Updated: April 11, 2025"
+      - tier: verified
+        kind: repo
+        url: https://github.com/solayer-labs/solayer_docs/commit/7c7c549399343dcbc581dfaef0430f72c20c6913
+        commit: 7c7c549399343dcbc581dfaef0430f72c20c6913
+        path: solayer-pay
+        detail: Commit of 2026-03-12 "docs - update Solayer Pay to $20/year membership model", following f0bac808 (rebrand Emerald Card to Solayer Pay) the same day.
+        checked_at: 2026-10-09
+        recheck: gh api repos/solayer-labs/solayer_docs/commits/7c7c549399343dcbc581dfaef0430f72c20c6913 --jq '.commit.author.date + " " + .commit.message'
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: No listed contracts. Card funds sit in Solayer-run hot and cold wallets whose addresses are not published, and the card settles over Visa on the issuer's closed ledger.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

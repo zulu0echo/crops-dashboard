@@ -1,0 +1,528 @@
+slug: monero
+name: Monero
+type: transfer
+website: https://www.getmonero.org
+primary_chain:
+  name: Monero mainnet
+  caip2: "monero:418015bb9ae982a1975da7d79277c270"
+  basis: >-
+    Monero is its own proof-of-work chain, so the unit is Monero mainnet as defined by the reference node monerod at tag v0.18.5.3 (mainnet_hard_forks in src/hardforks/hardforks.cpp L34-L76; current fork v16 since height 2,689,608). CAIP-2 id from the registered monero namespace (ChainAgnostic/namespaces monero/caip2.md, mainnet genesis hash prefix). Excluded: stagenet, testnet, Wownero and other forks, exchanges and atomic-swap tools.
+
+repos:
+  - url: https://github.com/monero-project/monero
+    role: backend
+    license: BSD-3-Clause
+  - url: https://github.com/monero-project/monero-gui
+    role: frontend
+    license: BSD-3-Clause
+  - url: https://github.com/monero-project/monero-site
+    role: docs
+    license: BSD-3-Clause
+
+contracts: []
+
+components:
+  - name: Monero mainnet consensus (proof-of-work miners and full nodes)
+    role: ledger
+    public: true
+    license: BSD-3-Clause
+    operator: miners and node operators; rule changes ship as scheduled hard forks
+    required: true
+    repo: https://github.com/monero-project/monero
+  - name: monerod reference node (own node or a remote node run by someone else)
+    role: backend
+    public: true
+    license: BSD-3-Clause
+    operator: user, or any public remote-node operator
+    required: true
+    repo: https://github.com/monero-project/monero
+  - name: wallet2 library and monero-wallet-cli (in the monero repo)
+    role: wallet
+    public: true
+    license: BSD-3-Clause
+    operator: user
+    required: true
+    repo: https://github.com/monero-project/monero
+  - name: Monero GUI wallet
+    role: wallet
+    public: true
+    license: BSD-3-Clause
+    operator: user
+    required: false
+    repo: https://github.com/monero-project/monero-gui
+  - name: Public remote and bootstrap nodes (GUI simple mode picks one via P2P)
+    role: api
+    public: true
+    license: BSD-3-Clause
+    operator: independent node operators
+    required: false
+    repo: https://github.com/monero-project/monero
+  - name: MoneroPulse DNS records (advisory checkpoints, update notices)
+    role: other
+    public: false
+    license: proprietary
+    operator: Monero core team domains (moneropulse.se/.org/.net/.co)
+    required: false
+
+scores:
+  C1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/cryptonote_core.cpp#L119-L151
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/cryptonote_core/cryptonote_core.cpp
+        detail: monerod fetches checkpoints from the MoneroPulse DNS domains (checkpoints.cpp L315-L338), but enforce-dns-checkpointing defaults to false and disable-dns-checkpoints turns the lookup off; enforcement is the operator's opt-in.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/cryptonote_core/cryptonote_core.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 119,151p
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/hardforks/hardforks.cpp#L34-L76
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/hardforks/hardforks.cpp
+        detail: Rule changes are hard forks compiled into releases at fixed heights; the last mainnet fork (v16) was at height 2,689,608 in August 2022.
+        checked_at: "2026-10-09"
+    finding: >-
+      The consensus rules contain no admin key, pause, freeze, blacklist or allowlist role, and recipients are one-time addresses that a filter could not target. The core team runs the MoneroPulse DNS domains, which publish checkpoints; nodes look them up by default but only enforce them if the operator opts in. Rule changes need a hard fork that miners and node operators choose to run. Judgment call: the substance is anchor 3, but a 3 needs onchain evidence about a deployed contract, which a chain with no contract addresses cannot supply, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/rpc/core_rpc_server_commands_defs.h#L614-L650
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/rpc/core_rpc_server_commands_defs.h
+        detail: The node's send_raw_transaction RPC takes only the signed transaction hex (plus relay and sanity flags) and relays it to the P2P network; any monerod, the user's own or a remote one, accepts it.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server_commands_defs.h?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 614,650p
+    finding: >-
+      A payer signs a transaction in their own wallet and submits it to any Monero node; the payee detects it by scanning with their view key. No company, API or signer is in the path. Judgment call: this is direct settlement in substance, but anchor 3 is defined by calls to public contracts and needs onchain evidence about a deployed contract, which this chain has none of, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/rpc/core_rpc_server.cpp#L197-L250
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/rpc/core_rpc_server.cpp
+        detail: With bootstrap-daemon-address set to auto (the GUI's simple modes, main.qml L792), monerod picks a public node advertised on the P2P network, so there is no vendor endpoint; the local node takes over once synced.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 197,250p
+    finding: >-
+      No relayer, paymaster or API is required. A user can run monerod and a wallet locally; light users can point the wallet at any remote node, and the GUI's simple mode picks one from public nodes advertised on the P2P network rather than from a vendor list. All node code is public.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/blockchain.cpp#L3264-L3325
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/cryptonote_core/blockchain.cpp
+        detail: Transaction validation checks ring sizes, key images and proofs; it has no address or country rule.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero-gui/blob/d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c/main.qml#L786-L795
+        commit: "d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c"
+        path: main.qml
+        detail: GitHub code search on 2026-10-09 for country, analytics and telemetry in monero-project/monero-gui returned nothing; in monero-project/monero, country matched only an old English mnemonic word list.
+        checked_at: "2026-10-09"
+        recheck: gh search code --repo monero-project/monero-gui country --json path --jq '.[].path'; gh search code --repo monero-project/monero country --json path --jq '.[].path'
+    finding: >-
+      The settlement layer is neutral: consensus has no address or country rules, and recipients are unlinkable one-time addresses. We found no screening in the node, the CLI or the GUI. A remote node can refuse to relay, but the wallet can switch node or use its own. Judgment call: the substance fits 3, but 3 needs a distributed-package or trace record for the client, which we do not have, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/README.md#L120-L150
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: README.md
+        detail: The README's upgrade table lists every mainnet fork and states that upgrades are scheduled; the chain carries only XMR, with no issued tokens and no sequencer.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/README.md?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 120,150p
+    finding: >-
+      The rail carries one asset, XMR, on one proof-of-work chain, so there is no issuer freeze and no sequencer to inherit. The upgrade schedule is published in the README. Neither the GUI nor the CLI states to payees that the chain depends on scheduled hard forks and miner adoption. Scored 2: enumerated in code, assumptions not stated.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    finding: >-
+      Not applicable as worded: Monero has no contracts, and its rules run in node software that each operator builds or downloads. The repo has reproducible-build tooling (contrib/guix), but we did not verify any release binary against source.
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/tree/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src
+        detail: The monero repo at v0.18.5.3 contains the node (daemon, cryptonote_core, p2p, rpc), the wallet library and CLI (wallet, simplewallet), the wallet RPC server and reproducible-build scripts (contrib/guix); the GUI is in monero-project/monero-gui at v0.18.5.3 (d7c2f13d).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq '.[].name'
+    finding: >-
+      Every layer of a payment is public: node, wallet library, CLI and GUI wallets, RPC servers and build scripts. Remote nodes run the same public code. Scored 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/README.md#L560-L600
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: README.md
+        detail: The README documents dependencies and build steps for each platform and how to run monerod; the GUI README covers its build.
+        checked_at: "2026-10-09"
+    finding: >-
+      Build and run documentation exists for the node and wallets. Reproduction not attempted, so the score is capped at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/simplewallet/simplewallet.cpp#L9025-L9045
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/simplewallet/simplewallet.cpp
+        detail: The CLI's export_transfers command writes the wallet's transfer history to a CSV file (output<N>.csv by default); node RPC messages are defined in src/rpc/core_rpc_server_commands_defs.h and wallet RPC in src/wallet/wallet_rpc_server_commands_defs.h.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/simplewallet/simplewallet.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 9025,9045p
+    finding: >-
+      A payee can export transfers to CSV from the CLI, and the RPC request and response types are versioned in the repo. There are no contract ABIs. The RPC interface is defined as C++ serialization structs; the human-readable RPC reference lives on the website, not in the repo. Judgment call: the export would support 3, but we are not sure the C++ definitions count as an API schema equivalent to OpenAPI, so we take the lower anchor, 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/LICENSE
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: LICENSE
+        detail: monero, monero-gui and monero-site carry the BSD 3-clause licence; the meta repo (process documents) has no licence file and no running component needs it.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero-gui/contents/LICENSE?ref=d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c" --jq .content | base64 -d | head -12
+    finding: >-
+      Every repository needed to run the rail (node, wallet library, CLI and GUI) is BSD-3-Clause. The meta repository (process documents) has no licence file, but nothing needs it to run. It is not listed under repos because nothing runs from it.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/docs/CONTRIBUTING.md#L104-L110
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: docs/CONTRIBUTING.md
+        detail: The contribution contract says the project MUST use a share-alike licence, patches MUST use the project licence, patches are owned by their authors, and there MUST NOT be any copyright assignment process.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/docs/CONTRIBUTING.md?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 104,110p
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/LICENSE
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: LICENSE
+        detail: The LICENSE file's commit history since 2016 (14f75384) shows only copyright-year updates.
+        checked_at: "2026-10-09"
+    finding: >-
+      There is no CLA, copyright stays with each contributor, and the repo's contribution contract forbids copyright assignment, so no single party can relicense the code. No relicensing has happened. Judgment call: we read the no-assignment and share-alike rules as the written licence-stability commitment anchor 3 asks for.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/cryptonote_core.cpp#L119-L180
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/cryptonote_core/cryptonote_core.cpp
+        detail: The only external services the node consults by default are the MoneroPulse DNS records (checkpoints, update notices), and both can be disabled by flag.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/cryptonote_core/cryptonote_core.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 119,180p
+    finding: >-
+      A production deployment needs no proprietary component: node and wallets are public and run on their own. The default DNS lookups are optional. Judgment call: the code supports 3, but with no O3 reproduction we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero-gui/blob/d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c/main.qml#L1530-L1548
+        commit: "d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c"
+        path: main.qml
+        detail: The GUI's persistent settings hold node addresses and display options and no analytics setting; code search of monero-gui for analytics and telemetry returned nothing, and in monero only a Trezor protobuf matched telemetry.
+        checked_at: "2026-10-09"
+        recheck: gh search code --repo monero-project/monero-gui analytics --json path --jq '.[].path'; gh search code --repo monero-project/monero-gui telemetry --json path --jq '.[].path'
+    finding: >-
+      We found no analytics, telemetry or crash-reporting SDK in the node, CLI or GUI. The node's default update check is a DNS lookup, counted under P4. We ran no trace. Judgment call: absence shown only in code is capped at 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/rpc/core_rpc_server_commands_defs.h#L614-L650
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/rpc/core_rpc_server_commands_defs.h
+        detail: Submitting a payment sends only the signed transaction; no RPC on the payment path takes account, identity or contact fields.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server_commands_defs.h?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 614,650p
+    finding: >-
+      The flow collects only what settlement needs: a transaction whose outputs, amounts and optional encrypted payment ID are readable only by the recipient. No required component holds an account or identity. A remote node, if used, sees the user's IP and the transactions and outputs they request (see P4).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/blockchain.cpp#L3264-L3325
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/cryptonote_core/blockchain.cpp
+        detail: From fork v15 every input must use a ring of 16 (15 decoys plus the real output) and all rings in a transaction must be the same size; amounts are hidden by RingCT with Bulletproofs+ (cryptonote_config.h HF_VERSION_BULLETPROOF_PLUS 15).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/cryptonote_core/blockchain.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 3264,3325p
+    finding: >-
+      By default every payment goes to a one-time stealth address, hides the amount, and hides the spent output among 16 ring members. Fee, transaction size, input and output counts, timing and tx_extra contents are visible. The sender is hidden only probabilistically: decoy-selection and timing heuristics, and transactions that spend outputs created together, can narrow the ring; we record these in the finding and do not score them. Judgment call: we score what the protocol reveals by default, which is anchor 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/cryptonote_core.cpp#L172-L176
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/cryptonote_core/cryptonote_core.cpp
+        detail: check-updates defaults to notify (a DNS lookup of MoneroPulse records), and DNS checkpoints are looked up hourly unless disabled (L272-L280).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/cryptonote_core/cryptonote_core.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 172,176p
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/rpc/core_rpc_server.cpp#L197-L250
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/rpc/core_rpc_server.cpp
+        detail: In simple mode the wallet's requests go through a bootstrap public node until the local node syncs.
+        checked_at: "2026-10-09"
+    finding: >-
+      With a local node, only the user's DNS resolver (for MoneroPulse lookups) and P2P peers see anything. With a remote or bootstrap node, that node sees the user's IP, the transactions they submit and the outputs they request. Both are named in code and can be swapped or disabled by setting. Scored 2: third parties present, named in code, swappable.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero-gui/blob/d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c/main.qml#L1530-L1548
+        commit: "d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c"
+        path: main.qml
+        detail: The GUI stores a user-editable list of remote nodes (remoteNodesSerialized, edited in components/RemoteNodeEdit.qml) and a bootstrap node address; the CLI takes --daemon-address.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero-gui/contents/main.qml?ref=d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c" --jq .content | base64 -d | sed -n 1530,1548p
+    finding: >-
+      The node endpoint, which is both RPC and indexer for a Monero wallet, is configurable in the GUI and CLI, and the node code is public.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/blockchain.cpp#L3264-L3325
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/cryptonote_core/blockchain.cpp
+        detail: A transaction spends the payer's outputs and creates one-time outputs only the payee's keys can spend; there is no escrow or intermediary account.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/cryptonote_core/blockchain.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 3264,3325p
+    finding: >-
+      Value moves directly from the payer's outputs to the payee's one-time outputs in one transaction; keys stay in the user's wallet. No one holds funds in flight. Judgment call: anchor 3 in substance, but 3 needs onchain evidence about a deployed contract, which this chain has none of, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/README.md#L120-L150
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: README.md
+        detail: The README states that upgrades are scheduled hard forks whose software is released before the fork date, and tabulates every fork with its height and minimum version; the next fork is listed as undetermined.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/README.md?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 120,150p
+    finding: >-
+      No key can change the rules. Upgrades are hard forks compiled into node releases at fixed heights, announced in the README schedule ahead of time, and effective only if miners and node operators run them; the last one was in August 2022. The core team's MoneroPulse checkpoints are advisory unless an operator enforces them. Judgment call: notice is given by schedule but there is no enforced delay, and 3 would also need onchain evidence this chain cannot supply, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/rpc/core_rpc_server_commands_defs.h#L614-L650
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/rpc/core_rpc_server_commands_defs.h
+        detail: Wallets submit fully signed transactions; Monero has no allowance or delegated-spend mechanism.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server_commands_defs.h?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 614,628p
+    finding: >-
+      There are no token approvals; each payment is a signed transaction and nothing can pull funds later. Judgment call: this beats exact-amount approvals in substance, but 3 needs a distributed-package or trace record for the client, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/rpc/core_rpc_server.cpp#L197-L250
+        commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+        path: src/rpc/core_rpc_server.cpp
+        detail: Node discovery and bootstrap rely on the P2P network, not on a vendor service.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 197,250p
+    finding: >-
+      Derived from S1=2 (anchor 3 in substance), C2=2 (direct in substance), C3=3 and O3=1. Funds are outputs controlled by the user's keys (S1), any node accepts a payment (C2), and no hosted service is required (C3). There is no provider whose disappearance would stop the rail; if the project's maintainers stopped, the released code would keep running. We did not reproduce a self-hosted setup (O3=1). Judgment call: 2, not 3, for that reason.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero-gui/blob/d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c/main.qml#L1530-L1548
+        commit: "d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c"
+        path: main.qml
+        detail: Remote-node credentials in the GUI are per-node username and password entered by the user; no service keys are bundled.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/monero-project/monero-gui/contents/main.qml?ref=d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c" --jq .content | base64 -d | sed -n 1530,1548p
+    finding: >-
+      Spend and view keys stay in the user's wallet file. The protocol has no API keys or webhooks, and we found no bundled service keys. Judgment call: absence shown only in code is capped at 2, since 3 needs a distributed-package or trace record.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/resources/research-lab/audits/clsag.pdf
+        commit: "5a596d19334d647cdad65cdb9f1287729c9d140d"
+        path: resources/research-lab/audits/clsag.pdf
+        detail: The CLSAG audit report by JP Aumasson and Antony Vennard (2020) is in the website repo; research-lab/audits/BP holds Bulletproofs audit statements of work.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/monero-project/meta/blob/97fb74b0bfffafa553b8ca6b4978218b4ca13362/VULNERABILITY_RESPONSE_PROCESS.md#L1-L30
+        commit: "97fb74b0bfffafa553b8ca6b4978218b4ca13362"
+        path: VULNERABILITY_RESPONSE_PROCESS.md
+        detail: A live bug bounty paid in XMR from community donations, with scope (code only, not live sites) and HackerOne intake, is defined in the meta repo; the monero README links it.
+        checked_at: "2026-10-09"
+    finding: >-
+      Audit reports exist for protocol components (CLSAG, Bulletproofs), and a bug bounty with scope is in a repo. We did not read the audit PDFs for a pinned commit, and the current release has not been shown to be the audited code. Scored 1: audit reports, no pinned commit shown.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: global
+  note: >-
+    The protocol has no country or address rules, and the official node, CLI and GUI wallets contain no country or IP-geolocation gate in GitHub code search on 2026-10-09. The GUI picks bootstrap nodes from the P2P network, not by region. Optional DNS lookups (MoneroPulse) and remote nodes chosen by the user are outside the protocol. Legality of use and exchange access vary by jurisdiction; that is not an availability restriction by the protocol.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/monero-project/monero-gui/blob/d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c/main.qml#L786-L795
+      commit: "d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c"
+      path: main.qml
+      detail: The GUI starts the local node with bootstrap address auto and no location check; code search of monero-gui for country returns nothing.
+      checked_at: "2026-10-09"
+      recheck: gh search code --repo monero-project/monero-gui country --json path --jq '.[].path'
+    - tier: verified
+      kind: repo
+      url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/cryptonote_core/blockchain.cpp#L3264-L3325
+      commit: "22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0"
+      path: src/cryptonote_core/blockchain.cpp
+      detail: Transaction validation has no address or country rule.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"
+
+notes: >-
+  Unit: Monero mainnet transfers. Pins: monero@22578c3f (v0.18.5.3), monero-gui@d7c2f13d (v0.18.5.3), meta@97fb74b0, monero-site@5a596d19. The chain has no contracts, so cells whose top anchor needs onchain contract evidence (C1, C2, S1, S2) are capped at 2 with the reason in each finding, and O1 is unknown. No transactions, node runs, builds, traces or self-host attempts were made. No primary legal source was cited: EUR-Lex refused automated requests (HTTP 202 challenge), so the EU AML Regulation's treatment of anonymity-enhancing coins is not recorded here.

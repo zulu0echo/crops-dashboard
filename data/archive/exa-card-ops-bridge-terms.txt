@@ -1,0 +1,122 @@
+Source: https://help.exactly.app/en/articles/13862897-bridge-terms-and-conditions
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+Written by Mate Updated over 2 weeks ago
+Table of contents
+Particular Terms and Conditions
+​USD Deposit and Withdrawal Service
+1. Acceptance
+The following Particular Terms and Conditions (the "Particular Terms") govern the integrated service between Exa Labs SAS ("Exa" or "we") and Bridge Ventures Inc. ("Bridge"), offered to users of the Exa App (the "App"). They constitute an agreement between you and Exa, and must be read, understood, and accepted by anyone using the service described in these Particular Terms (the "Service").
+By using the Service, you declare that you have fully read, understood, and accepted these Particular Terms, the General Terms and Conditions of the App, Exa's Privacy Policy, as well as Bridge's terms and conditions and privacy policies available at bridge.xyz/legal.
+USE OF THE SERVICE CONSTITUTES SUFFICIENT PROOF OF THE USER'S ACCEPTANCE OF THESE PARTICULAR TERMS, THE PRIVACY POLICY, AND ALL OTHER DOCUMENTS GOVERNING THE SERVICE.
+References in these Particular Terms to "you" or "your" refer to the user who holds an active account in the Exa App, has completed the required identity verification process (KYC), accepts these Particular Terms, and has been authorized to use the Service.
+Any user who does not wish to accept these Particular Terms must refrain from using the Service.
+2. Description of the Service
+The Service comprises two components: (i) a deposit service (the "Onramp Service") and (ii) a withdrawal service (the "Offramp Service"), both designed by Exa and provided through Bridge.
+2.1 Onramp Service
+The Onramp Service enables users to receive money deposits in US dollars (USD) or euros (EUR) via bank transfers (including ACH, SEPA, and wire transfers) originating from third-party bank accounts or financial platforms.
+Funds received through the Onramp Service are automatically converted into USDC (USD Coin, a stablecoin backed 1:1 in US dollars) and credited to the user's wallet within the Exa App (the "Exa Account").
+To access the Onramp Service, Exa may assign the user a virtual USD bank account in the United States (the "Virtual USD Account"), provided by Bridge, which will receive the transferred funds. This account is for the exclusive use of the user for the purposes of this Service.
+2.2 Offramp Service
+The Offramp Service enables users to send funds from their Exa Account to bank accounts, by converting USDC held in the Exa Account into US dollars (USD) or euros (EUR) and transferring the resulting fiat funds via bank transfer (including ACH, SEPA, and wire transfers) to a destination bank account designated by the user (the "Destination Account").
+To use the Offramp Service, the user must provide accurate and complete details of the Destination Account. The user is solely responsible for the accuracy of such details. The Destination Account must be held in the user's own name, or the user must have proper legal authorization to send funds to it, in accordance with applicable law and Bridge's requirements. Exa and/or Bridge may restrict the Offramp Service to Destination Accounts held solely in the user's name in certain jurisdictions.
+2.3 Conversion Criteria
+Fund conversion is carried out according to the following criteria:
+USD transfers (Onramp and Offramp): conversion between USD and USDC is performed at a 1:1 ratio.
+EUR transfers (Onramp and Offramp): conversion between EUR and USDC is performed at the exchange rate in effect at the time Bridge processes the transaction. The approximate applicable exchange rate will be communicated to the user prior to confirming each transaction.
+Exa acts as a facilitator of the Service. The processing, conversion, custody of funds in transit, and the Virtual USD Account infrastructure are the responsibility of Bridge. Exa does not issue or manage banking payment instruments in connection with this Service.
+3. Eligibility and Access
+The Service is available to Exa App users in all countries where the App is available, subject to restrictions imposed by applicable law in each jurisdiction and to Bridge's approval.
+To access the Service, the user must:
+Hold an active account in the Exa App.
+Have successfully completed the identity verification process (KYC) required by Exa.
+Meet the eligibility criteria established by Bridge for the provision of the Service, including the approval and validation of the user's information by Bridge.
+Not appear on any sanctions, prohibited persons, or restricted parties lists under applicable anti-money laundering and counter-terrorist financing (AML/CFT) regulations.
+Access to the Service is subject to Bridge's express approval. Both Exa and Bridge reserve the right to reject, suspend, or cancel any user's access to the Service, as well as to request additional information if necessary, at any time and for any reason, including non-compliance with these Particular Terms or applicable law.
+The Onramp Service allows users to receive transfers from their own or third-party accounts in USD or EUR. However, the user is responsible for ensuring that the transferred funds belong to them or that they have the proper authorization to receive them. Likewise, in the case of the Offramp Service, the user is responsible for ensuring they have the right to dispose of the funds sent and, where applicable, proper authorization to transfer funds to a Destination Account not held in their own name. Furthermore, it is established that the type of service available to users may vary over time and across different jurisdictions. Availability of the Onramp Service does not guarantee availability of the Offramp Service, and vice versa.
+4. Fees and Charges
+Use of the Service is subject to the following charges, which may change even without prior notice:
+4.1 Account Opening and Maintenance
+Opening and maintaining the Virtual USD Account is free of charge for the user. Account creation and monthly maintenance fees are sponsored by Exa. These conditions may be modified at any time without prior notice.
+4.2 Sponsored Transaction Fees (Onramp)
+Exa sponsors transaction fees on onramping up to the following limits per user:
+Up to USD 3,000 in cumulative onramped volume, OR
+Up to 60 onramp transactions, whichever limit is reached first.
+All Bridge onramp and offramp transactions count toward the same shared limit, regardless of transfer type or currency.
+4.3 Post-Limit Pricing (Onramp)
+Once a user has exceeded the sponsored limits described in section 4.2, the following fees apply per onramp transaction, based on currency:
+USD (ACH): 0.4% of the transaction amount.
+Wire (domestic US only): 1% of the transaction amount.
+EUR: 0.7% of the transaction amount.
+GBP: 1% of the transaction amount.
+MXN: 1% of the transaction amount.
+Post-limit fees will be automatically deducted from the received amount, prior to conversion to USDC and crediting to the user's Exa Account.
+4.4 Offramp Fees
+The following fees apply per offramp transaction, based on transfer type and currency:
+USD (ACH): 0.4% of the transaction amount.
+Wire (domestic US only): 1% of the transaction amount.
+EUR: 0.7% of the transaction amount.
+Offramp fees will be automatically deducted from the amount to be sent, after conversion from USDC and prior to the transfer to the Destination Account. The net amount to be received will be communicated to the user prior to confirming each transaction.
+4.5 Minimum Amount
+Exa will notify users of the applicable minimum amount per transfer in due course. Until a specific minimum is established, there is no minimum amount restriction for use of the Service, notwithstanding the fixed costs described above, which may be disproportionate for very low amounts.
+5. Settlement Process
+5.1 Onramp
+Once a transfer is received in the user's Virtual USD Account, Bridge processes the conversion of funds to USDC and credits them to the Exa Account. Settlement times will depend on the type of transfer and banking processing times:
+ACH transfers: generally between 1 and 3 business days.
+Wire transfers (domestic US only): generally the same business day or the next.
+SEPA transfers: generally between 1 and 2 business days.
+5.2 Offramp
+Once the user confirms an offramp transaction in the App, the corresponding USDC amount will be debited from the user's Exa Account, converted to the selected fiat currency, and the bank transfer to the Destination Account will be initiated by Bridge. Estimated settlement times are:
+ACH transfers: generally between 1 and 3 business days.
+Wire transfers (domestic US only): generally the same business day or the next.
+SEPA transfers: generally between 1 and 2 business days.
+Once an offramp transaction has been confirmed by the user and processing has begun, it cannot be modified or cancelled. Transfers sent to a Destination Account whose details were incorrectly provided by the user may be unrecoverable, and neither Exa nor Bridge shall be liable for losses arising from inaccurate or incomplete Destination Account information provided by the user.
+5.3 General Provisions on Settlement
+The timeframes indicated are estimates. Exa and Bridge do not guarantee specific processing times, as they may be affected by external factors such as banking hours, compliance verifications, or other circumstances beyond their control.
+In the event that a transfer is rejected, returned, or cancelled for technical or compliance reasons, or at the instruction of the intervening financial institutions, Exa will manage the return of funds as follows: in the case of onramp transactions, to the user's originating account; in the case of offramp transactions, funds returned by the destination bank will be re-converted to USDC and credited back to the user's Exa Account, at the exchange rate in effect at the time of re-conversion where applicable. Such management may be subject to an administration fee, which will be communicated to the user at the appropriate time.
+6. Personal Data
+By accepting these Particular Terms, the user understands and consents that information and data related to the use of the Service may be shared and/or disclosed between Exa and Bridge, as well as with third-party service providers, exclusively for the purpose of providing the Service, complying with legal obligations, and conducting regulatory compliance checks (AML/CFT, KYC).
+The processing of the user's personal data is governed by Exa's Privacy Policy, available in the App and on Exa's website. Bridge will process user data in accordance with its own privacy policy available at bridge.xyz/legal.
+User data will not be retained by Exa for commercial purposes once the contractual relationship with the user in the context of the Service has ended, unless applicable law requires its retention.
+7. Security and User Responsibility
+The user is solely responsible for use of the Service, for the transfer and withdrawal instructions given, and for all movements made in their Exa Account.
+The user agrees to:
+Keep their Exa App access credentials confidential and not share them with third parties.
+Notify Exa immediately of any unauthorized use of their account or any suspected security breach.
+Use the Service exclusively for the lawful purposes set out in these Particular Terms.
+Not use the Service to transfer funds derived from unlawful activities or in violation of applicable AML/CFT regulations.
+Provide accurate, complete, and up-to-date information for each transaction, including Destination Account details for offramp transactions.
+In the event of loss, theft, compromise, or leakage of the user's account access credentials, any resulting damages or losses will be the exclusive responsibility of the user, and both Exa and Bridge shall be held harmless from any claims related to such damages, unless they are attributable to gross negligence or willful misconduct by Exa or Bridge.
+Exa, in its capacity as a facilitator of the Service, shall not be liable for losses or damages arising from misuse of the Service by the user, nor for delays, errors, or omissions attributable to Bridge or third-party financial institutions involved in the processing of transfers.
+8. Prohibited Activities
+The user may not use the Service to carry out or facilitate any of the following activities:
+Unlawful or abusive activities of any nature.
+Fraud, money laundering, or terrorist financing.
+Unauthorized gambling.
+Intellectual property infringement.
+Transferring or receiving funds on behalf of third parties without proper legal authorization.
+Any activity that Bridge or Exa consider to pose an elevated financial, legal, or reputational risk.
+Any other activity included in Bridge's Prohibited Activities List, which may be updated by Bridge at any time upon notice.
+Failure to comply with the provisions of this section will entitle Exa and/or Bridge to suspend or cancel the user's access to the Service immediately and without prior notice, without prejudice to any applicable legal actions.
+9. Modifications and Cancellation of the Service
+Exa may modify the conditions of the Service at any time, including fees, minimum amounts, supported transfer types, and available features. Such modifications will be communicated to the user with reasonable prior notice through the App or by email.
+Continued use of the Service by the user following notification of any modification will constitute acceptance of the new conditions.
+The user may request cancellation of the Service at any time through the Exa App support channels. Cancellation will not affect transactions already initiated or rights and obligations accrued prior to the cancellation date.
+In the event of cancellation or suspension of the Service by Exa or Bridge, all transactions in progress will be completed before proceeding with the definitive closure of the user's Virtual USD Account, unless there is a legal issue preventing this.
+10. Independence of Exa and Bridge
+Exa and Bridge are independent companies. The provision of the Service takes place within the framework of a collaboration agreement, but each company maintains its own legal, operational, and financial independence.
+The user should read and understand Bridge's terms and conditions available at bridge.xyz/legal, as Bridge has a direct and independent contractual relationship with each user regarding the banking infrastructure and transaction processing.
+Any mention of Exa's and Bridge's trademarks and names is made exclusively within the framework of their commercial alliance, with each party retaining intellectual property over its respective trademarks and rights.
+11. Intellectual Property
+All intellectual property rights in the Exa App, its content, trademarks, logos, designs, and other elements are the property of Exa Labs SAS or its licensors. Nothing in these Particular Terms shall be construed as granting the user any license or right over such elements, beyond the use necessary to access and use the Service.
+The intellectual property rights in Bridge's technological infrastructure are the exclusive property of Bridge Ventures Inc.
+12. Governing Law and Dispute Resolution
+These Particular Terms are governed by the laws applicable in the jurisdiction of incorporation of Exa Labs SAS (Uruguay), without prejudice to any mandatory public order rules that may apply in the user's country of residence.
+Any dispute or claim arising from use of the Service must first be submitted to Exa's support team through the channels available in the App. Exa undertakes to respond within a reasonable timeframe and to seek an amicable resolution.
+If the dispute cannot be resolved amicably, the parties may resort to the dispute resolution mechanisms set out in Bridge's terms and conditions for matters relating to the banking infrastructure and transaction processing.
+13. General Provisions
+If any provision of these Particular Terms is declared invalid, void, or unenforceable, such provision will be modified to the minimum extent necessary to make it valid and enforceable, without affecting the validity of the remaining Particular Terms.
+Exa's failure to enforce any provision of these Particular Terms shall not constitute a waiver of its right to enforce such provision in the future.
+These Particular Terms, together with the Exa App's General Terms and Conditions, the Privacy Policy, and Bridge's terms, constitute the entire agreement between the user and Exa in relation to the Service, and supersede any prior agreement on the same subject matter.
+Last updated: July 2026
+© 2026 Exa Labs SAS. All rights reserved.

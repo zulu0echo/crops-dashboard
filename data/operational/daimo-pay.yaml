@@ -1,0 +1,614 @@
+slug: daimo-pay
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: no published fee; relayer keeps any surplus over the payee minimum (2026-10-07 sample, 30 USDC in and out)
+      basis: The executor only checks that the payee receives minOutputAmount, computed from Daimo-signed prices and the session's slippage bps; any surplus goes to the relayer. Commercial pricing is set off-chain per organisation and not published.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: one ERC-20 transfer (or native send) to the session's deposit address, at the source chain's gas price
+      basis: The SDK's crypto flow sends the exact amount to the deposit address; no approval is needed (CROPS S3).
+      evidence_index: 1
+    - kind: network
+      paid_by: none
+      amount: relayer-paid settlement gas, Base sample 2026-10-07, about 0.0000196 ETH (3,057,526 gas at 0.0064 gwei)
+      basis: sameChainFinish submitted by the relayer EOA through the DaimoPayRelayer wrapper (tx 0x8d3d…bd00); the gas includes deploying the deposit address. Recovered by Daimo through pricing not visible here.
+      evidence_index: 0
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://basescan.org/tx/0x8d3d409f5ca6bef78bf3b88f48bc92cf085cc192ee04399b2b7323edf417bd00
+      chain_id: 8453
+      block_number: 52280330
+      detail: "Receipt read 2026-10-09: from relayer 0xA9C3…4E2f to wrapper 0xc88f…eE04; SameChainFinish from the manager with paymentToken USDC, paymentAmount 30000000 and outputAmount 30000000; gasUsed 3057526, effectiveGasPrice 6411200 wei, l1Fee 34968834359 wei. Block time 2026-10-07 05:13 UTC."
+      checked_at: 2026-10-09
+      recheck: cast receipt 0x8d3d409f5ca6bef78bf3b88f48bc92cf085cc192ee04399b2b7323edf417bd00 --rpc-url https://mainnet.base.org
+    - tier: verified
+      kind: repo
+      url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/sdk/src/web/hooks/useWalletFlow.ts#L648-L668
+      commit: ac0a71453ac249aa991d71059c621e2424322d61
+      path: packages/sdk/src/web/hooks/useWalletFlow.ts
+      detail: The EVM payment is a single transfer(depositAddress, amount) or native send.
+      checked_at: 2026-10-09
+  refs:
+    - criterion: S1
+      index: 1
+    - criterion: S1
+      index: 2
+  note: "Searched for a fee schedule: docs.daimo.com (all guides and the API reference, no fee or pricing page), daimo.com/pricing (404), the terms and privacy notice. Fiat rails and exchange deposits may carry partner fees that were not itemised. No FX margin or limits are published; the relayer surplus is bounded by maxSameChainFinishSlippageBps and related params per session."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: S1
+      index: 3
+  note: Judgment call. The payer self-custodies until deposit, but funds in flight sit in a deposit address that only the Daimo-run manager and relayers can release, and the relayer runs arbitrary calls on them. Recorded as provider-custodial in flight rather than hybrid. Agrees with S1 (score 0). Daimo's privacy notice calls it noncustodial.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://daimo.com/privacy
+      detail: The privacy notice says Daimo does not act as a financial institution or custodian; neither it nor the terms name a licence or regulator.
+      checked_at: 2026-10-09
+      quote: do not act as a financial institution or custodian
+    - tier: documented
+      kind: document
+      url: https://daimo.com/terms-of-use
+      detail: Terms of use (last updated 2025-04-01) name Daimo, Inc. and cite no licence.
+      checked_at: 2026-10-09
+      quote: We are Daimo, Inc.
+  note: "Searched: terms of use, privacy notice, docs (fiat guide names Coinbase and Stripe onramps and Sumsub KYC as partners). Not searched: the FinCEN MSB registrant search and state money-transmitter registers (form-based), and the fiat partners' own licences, which are not recorded because no Daimo document names the licensed entity."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: not_applicable
+  reason: The payee receives stablecoins to its own address; converting them to local currency is outside the product. Daimo's fiat rails are pay-in only, and its Withdrawals component sends stablecoins to a recipient address.
+  burden: institution
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.daimo.com/guides/fiat
+      detail: Fiat guide covers deposits from local bank and wallet rails only.
+      checked_at: 2026-10-09
+      quote: Users in a country with no enabled fiat rail see crypto, exchange, and wallet
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2026-06-23
+      block: 47696940
+      what: DepositAddressManager 0xfca1…09b6 on Base, deployed through CREATE3 factory 0x3792…5ffd by 0x723a…5227 (tx 0x7f2a…2a45).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/tx/0x7f2a98fd7979380aef79205e44839889e0b1f1beea9448c26b293f882adc2a45
+        address: "0xfca14E46d74d7673168e95b5f625bf2847B009b6"
+        chain_id: 8453
+        block_number: 47696940
+        detail: The receipt (status 1) carries the manager's OwnershipTransferred log; eth_getCode for the manager is empty at block 47696939 and non-empty at 47696940; block time 2026-06-23 02:53 UTC. Sourcify has no creation data for this address (runtime-only match).
+        checked_at: 2026-10-09
+        recheck: cast code 0xfca14E46d74d7673168e95b5f625bf2847B009b6 --block 47696939 --rpc-url https://mainnet.base.org && cast receipt 0x7f2a98fd7979380aef79205e44839889e0b1f1beea9448c26b293f882adc2a45 --rpc-url https://mainnet.base.org
+      - tier: verified
+        kind: repo
+        url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/broadcast/DeployDepositAddressManager.s.sol/8453/run-latest.json#L1-L89
+        commit: ac0a71453ac249aa991d71059c621e2424322d61
+        path: packages/contract/broadcast/DeployDepositAddressManager.s.sol/8453/run-latest.json
+        detail: Foundry broadcast for Base records the deploy transaction hash and block 47696940.
+        checked_at: 2026-10-09
+    note: This is the current deposit-address system, the unit of assessment. Daimo ran earlier payment contracts (DaimoPay/PayIntent, then Universal Address) before it; those are not dated here.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Daimo, Inc.
+      jurisdiction: US
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://daimo.com/terms-of-use
+        detail: Terms name Daimo, Inc., give a Santa Monica, California address and choose California law.
+        checked_at: 2026-10-09
+        quote: 3101 Ocean Park Blvd Ste 100
+    note: From the terms only. The state of incorporation is not stated and no company-register entry was looked up, so there is no register URL.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/security-advisories
+        detail: The repository's published security advisories list is empty.
+        checked_at: 2026-10-09
+        recheck: gh api repos/daimo-eth/sdk/security-advisories --jq length
+    note: "Searched: GitHub security advisories, the docs, and status.daimo.com (UptimeRobot; history is client-rendered and was not read). No incident was found from a primary source."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2025-12-17
+        summary: Deposit-address contracts added to the repo (commit c990a190), replacing the Universal Address design.
+        url: https://github.com/daimo-eth/sdk/commit/c990a190af9b7cfbf7c922a0e8f0f9ad191f1dc5
+      - date: 2026-01-08
+        summary: Universal Address contracts, the only audited code (Nethermind NM-0585), deleted from the repo (commit 99c3f248).
+        url: https://github.com/daimo-eth/sdk/commit/99c3f248a7458106eafeb5eb7778db143115a6a8
+      - date: 2026-06-23
+        summary: Current DepositAddressManager deployed on Base at block 47696940.
+        url: https://basescan.org/tx/0x7f2a98fd7979380aef79205e44839889e0b1f1beea9448c26b293f882adc2a45
+    refs:
+      - criterion: S6
+        index: 1
+    note: Dates of the two repo changes are commit dates read through the GitHub API. Earlier DaimoPay/PayIntent contracts remain in the repo but are not used by @daimo/sdk 1.8.x.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 8453
+    addresses:
+      - "0xfca14E46d74d7673168e95b5f625bf2847B009b6"
+    topic0: "0x4b27129020863e95e8f8f7cb9e957cce497bbc4b358e20fab274c20812f96cd6"
+    event: SameChainFinish(address indexed depositAddress, DAParams params, address paymentToken, uint256 paymentAmount, uint256 outputAmount, uint256 paymentTokenPriceUsd, uint256 toTokenPriceUsd)
+    token_word: 1
+    amount_word: 2
+    window_days: 30
+    exclusions: Same-chain Base settlements only. Cross-chain payments emit Start on the source chain and FastFinish or Claim on the destination and are not counted. paymentAmount (word 2) in paymentToken (word 1) is what the deposit address held; outputAmount to the payee is word 3. Word 0 is the offset of the dynamic DAParams tuple. Gross observed.
+  note: Spec checked against the live log in tx 0x8d3d…bd00 (topic0 equals keccak of the full tuple signature; word 1 USDC, word 2 = 30000000). Not computed; the maintainer runs scripts/volumes.mjs.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  reason: "not computed on 2026-10-09: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+facts:
+  B1.4:
+    status: evidenced
+    value: Nethermind audit NM-0585 (2025-07) covers code that is no longer deployed; see CROPS S6.
+    refs:
+      - criterion: S6
+        index: 0
+      - criterion: S6
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/contents/?ref=master
+        detail: "daimo-eth/sdk: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.2:
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://daimo.com/terms-of-use
+        detail: The terms of use contain no patch or vulnerability-remediation commitment.
+        checked_at: 2026-10-09
+        quote: We are Daimo, Inc.
+    refs:
+      - criterion: S6
+        index: 1
+    note: "Searched: terms, privacy notice, docs.daimo.com, daimo.com/.well-known/security.txt (404) and the repo (no SECURITY file)."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/contents/?ref=master
+        detail: "daimo-eth/sdk: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B3.1:
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://daimo.com/privacy
+        detail: The privacy notice's security section makes no incident-notification commitment, and the terms have none.
+        checked_at: 2026-10-09
+        quote: We have organizational and technical processes and procedures in place to protect your personal information
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Status page at status.daimo.com (UptimeRobot); no post-mortem found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.daimo.com
+        detail: Public status page with uptime history and email subscription; its incident history is client-rendered and was not read.
+        checked_at: 2026-10-09
+        quote: Daimo Status
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: Browser calls use a per-session client secret (UUID) that grants access only to that session; no OAuth, OpenID Connect or JWT.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.daimo.com/api-reference/overview
+        detail: API overview, authentication section.
+        checked_at: 2026-10-09
+        quote: Each session has its own client secret
+    refs:
+      - criterion: S5
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Server calls use one account-wide API key as a bearer token; webhooks are HMAC-SHA256 signed. No key scoping or rotation is documented.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.daimo.com/guides/sessions
+        detail: Sessions guide, credential model.
+        checked_at: 2026-10-09
+        quote: Your account-wide API key
+    refs:
+      - criterion: S5
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: Client secrets are scoped to one session, and sessions carry an expiresAt and end in a terminal state; no expiry is documented for the account API key.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.daimo.com/guides/sessions
+        detail: Sessions guide lists terminal statuses including expired; the session object carries expiresAt.
+        checked_at: 2026-10-09
+        quote: Terminal statuses
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Personal information is kept as long as necessary for the notice's purposes, then deleted or anonymised; no fixed periods. Termination is at Daimo's discretion without notice; funds already delivered are with the payee.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://daimo.com/privacy
+        detail: Section 3 of the privacy notice (last updated 2026-02-28).
+        checked_at: 2026-10-09
+        quote: We will only keep your personal information for as long as it is necessary
+    refs:
+      - criterion: P2
+        index: 2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The privacy notice is issued by Daimo, Inc. for its own processing; controller and processor roles toward integrating merchants are not defined, and no DPIA is mentioned.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://daimo.com/privacy
+        detail: Opening of the privacy notice.
+        checked_at: 2026-10-09
+        quote: This privacy notice for Daimo, Inc
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://daimo.com/privacy
+        detail: Neither the privacy notice nor the terms reference a data processing agreement.
+        checked_at: 2026-10-09
+        quote: This privacy notice for Daimo, Inc
+    note: Searched the privacy notice, terms and docs for processing agreement, DPA and addendum.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/contents/?ref=master
+        detail: "daimo-eth/sdk: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: "rules: deletion, non_fast_forward"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/rules/branches/master
+        detail: "daimo-eth/sdk: rules: deletion, non_fast_forward"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/contents/?ref=master
+        detail: "daimo-eth/sdk: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/contents/?ref=master
+        detail: "daimo-eth/sdk: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/contents/?ref=master
+        detail: "daimo-eth/sdk: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/tags
+        detail: "daimo-eth/sdk: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: daimo-eth/sdk
+          ok: true
+          detail: 6 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/commits?per_page=10
+        detail: "daimo-eth/sdk: 6 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/contents/?ref=master
+        detail: "daimo-eth/sdk: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: daimo-eth/sdk
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/daimo-eth/sdk/contents/?ref=master
+        detail: "daimo-eth/sdk: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Integration view only. The docs describe the session lifecycle and credential model; the contracts README covers building and testing; no logical or infrastructure architecture of the API, relayer, price signer or indexer is published.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.daimo.com/guides/sessions
+        detail: Sessions guide with a status diagram and credential model.
+        checked_at: 2026-10-09
+        quote: Terminal statuses
+    refs:
+      - criterion: O3
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Daimo, Inc., Santa Monica, California, United States; terms governed by California law.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://daimo.com/terms-of-use
+        detail: Governing-law clause of the terms of use.
+        checked_at: 2026-10-09
+        quote: governed by and construed in accordance with the laws of the State of California
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: unknown
+    note: "No primary source on funding was found: no pricing page (daimo.com/pricing returns 404), no fee schedule in the docs, terms or privacy notice. Onchain, the relayer may keep a surplus within the session's slippage bound (see fees)."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Daimo may deny access to anyone without notice or liability. Delivered funds sit with payees; undelivered deposits can be refunded by anyone after expiry if the session parameters are known (CROPS S4).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://daimo.com/terms-of-use
+        detail: Term and termination section.
+        checked_at: 2026-10-09
+        quote: WITHOUT NOTICE OR LIABILITY, DENY ACCESS
+    refs:
+      - criterion: S4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: The privacy notice says information is processed for fraud monitoring and prevention, and the closed API and relayer decide which deposits settle; whether that uses automated screening or AI is not stated and cannot be seen from public code. Searched the terms, privacy notice and docs for automated, machine learning, artificial intelligence and screening.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending

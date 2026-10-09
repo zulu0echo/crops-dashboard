@@ -1,0 +1,36 @@
+Strings read 2026-10-09 from the production frontend bundle https://app.zerc20.io/assets/index-qR7fWkny.js (4,416,753 bytes), loaded by https://app.zerc20.io/. Fetched with curl and searched with grep; not run.
+
+== zERC20 service endpoints in the bundle
+https://v1.mainnet.api.zerc20.io/indexer/zbnb
+https://v1.mainnet.api.zerc20.io/indexer/zeth
+https://v1.mainnet.api.zerc20.io/indexer/zjpyc
+https://v1.mainnet.api.zerc20.io/indexer/zusdc
+https://v1.mainnet.api.zerc20.io/relayer/zbnb
+https://v1.mainnet.api.zerc20.io/relayer/zeth
+https://v1.mainnet.api.zerc20.io/relayer/zjpyc
+https://v1.mainnet.api.zerc20.io/relayer/zusdc
+
+== RPC endpoints with an embedded Alchemy key (the same 21-character key on every URL; redacted here)
+https://arb-mainnet.g.alchemy.com/v2/<21-character key, redacted here>
+https://base-mainnet.g.alchemy.com/v2/<21-character key, redacted here>
+https://bnb-mainnet.g.alchemy.com/v2/<21-character key, redacted here>
+https://eth-mainnet.g.alchemy.com/v2/<21-character key, redacted here>
+https://kaia-mainnet.g.alchemy.com/v2/<21-character key, redacted here>
+https://polygon-mainnet.g.alchemy.com/v2/<21-character key, redacted here>
+
+== Other third-party hosts in the bundle (selection)
+https://56.rpc.thirdweb.com
+https://api.web3modal.org
+https://eth.merkle.io
+https://ic0.app/
+https://icp-api.io
+https://polygon.drpc.org
+https://pulse.walletconnect.org
+https://rpc.walletconnect.org
+
+== Reown AppKit feature flags passed by the app
+features:{analytics:!1,email:!1,socials:!1,send:!1,swaps:!1,onramp:!1,legalCheckbox:!0}
+
+== Search for country gating
+grep -iE 'geoblock|ipapi|ip-api|ipinfo|geolocation|restricted countr' over the bundle: no matches.
+grep -iE 'googletagmanager|posthog|sentry|mixpanel|amplitude|hotjar|plausible|logrocket|datadog' over the bundle: no matches (one false positive 'sEntry').

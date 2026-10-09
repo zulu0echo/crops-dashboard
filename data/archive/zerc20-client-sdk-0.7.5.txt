@@ -1,0 +1,98 @@
+Excerpts read 2026-10-09 from the npm tarball of @zerc20/client-sdk@0.7.5 (https://registry.npmjs.org/@zerc20/client-sdk/-/client-sdk-0.7.5.tgz, integrity sha512-gUaALG+nFrQwhpnAEvcCGysygk2ikhQtXBDZNRy8xOKpWnIA5TVRh6x2D0eI6rP0WJ5nZAj/G9/zievWhzHj3g==). MIT licence; package.json has no repository field. Read only; nothing was installed or run.
+
+== package.json
+{
+  "name": "@zerc20/client-sdk",
+  "version": "0.7.5",
+  "license": "MIT",
+  "dependencies": {
+    "@dfinity/agent": "~3.4.1",
+    "@dfinity/candid": "~3.4.1",
+    "@dfinity/principal": "~3.4.1",
+    "@dfinity/vetkeys": "~0.4.0",
+    "@noble/curves": "^2.2.0",
+    "base64-arraybuffer": "^1.0.2",
+    "pako": "^2.1.0",
+    "poseidon-lite": "^0.3.0",
+    "viem": "^2.51.0"
+  }
+}
+
+== dist/operations/liquidityManager/wrap.js lines 40-60
+    const nativeUnderlying = isNativeToken(underlying);
+    let approvalTransactionHash;
+    if (!nativeUnderlying) {
+        const currentAllowance = ensureBigintLike(await reader.readContract({
+            address: underlying,
+            abi: ERC20_ABI,
+            functionName: "allowance",
+            args: [account, managerAddress],
+        }), "allowance");
+        if (currentAllowance < normalizedAmount) {
+            const approvalHash = await writeProvider.writeContract({
+                address: underlying,
+                abi: ERC20_ABI,
+                functionName: "approve",
+                args: [managerAddress, normalizedAmount],
+                ...txOverrides,
+            });
+            const approvalReceipt = await receipt.waitForTransactionReceipt({
+                hash: approvalHash,
+            });
+            approvalTransactionHash = approvalReceipt.transactionHash;
+
+== dist/operations/liquidityManager/unwrap.js lines 85-105
+        if (expectedOut < minAmountOut) {
+            throw new Error("Price changed beyond slippage tolerance. Expected output is below the minimum acceptable amount.");
+        }
+    }
+    const allowance = ensureBigintLike(await reader.readContract({
+        address: tokenAddress,
+        abi: Zerc20Artifact.abi,
+        functionName: "allowance",
+        args: [account, managerAddress],
+    }), "allowance");
+    let approvalTransactionHash;
+    if (allowance < normalizedAmount) {
+        const approvalHash = await writeProvider.writeContract({
+            address: tokenAddress,
+            abi: Zerc20Artifact.abi,
+            functionName: "approve",
+            args: [managerAddress, normalizedAmount],
+            ...txOverrides,
+        });
+        const approvalReceipt = await receipt.waitForTransactionReceipt({
+            hash: approvalHash,
+
+== dist/constants.js lines 1-30
+/**
+ * Protocol-fixed constants and internal SDK defaults.
+ * @remarks
+ * Protocol constants are exported from the public API. Internal defaults remain unexported unless
+ * callers need them for validation.
+ * The `DEFAULT_*` values are internal tuning defaults, overridable via optional parameters.
+ */
+/** Height of the aggregation tree (number of levels). */
+export const AGGREGATION_TREE_HEIGHT = 6;
+/** Height of the per-chain transfer tree (number of levels). */
+export const TRANSFER_TREE_HEIGHT = 40;
+/** Height of the global transfer tree (aggregation + transfer). */
+export const GLOBAL_TRANSFER_TREE_HEIGHT = TRANSFER_TREE_HEIGHT + AGGREGATION_TREE_HEIGHT;
+/** Number of burn addresses in a batch invoice. */
+export const NUM_BATCH_INVOICES = 10;
+/** Default max number of events to fetch per indexer request. */
+export const DEFAULT_INDEXER_FETCH_LIMIT = 20;
+/** Max number of indexer events supported by receive flows. */
+export const MAX_INDEXER_FETCH_LIMIT = 100;
+/** Default block span used when querying aggregation state (in blocks). */
+export const DEFAULT_EVENT_BLOCK_SPAN = 5000n;
+/** Default timeout for decider jobs (milliseconds). */
+export const DEFAULT_DECIDER_TIMEOUT_MS = 5 * 60 * 1000;
+/** Default polling interval for decider job status checks (milliseconds). */
+export const DEFAULT_DECIDER_POLL_INTERVAL_MS = 1_000;
+/** Default IC storage tag used when no tag is provided. */
+export const DEFAULT_ZSTORAGE_TAG = "v1";
+//# sourceMappingURL=constants.js.map
+== Search results over dist/**/*.js excluding *.test.js
+grep for sentry|posthog|mixpanel|amplitude|gtag|analytics: no matches.
+Files containing an http(s) URL outside tests: dist/chain/metadata.js (block-explorer URLs only).

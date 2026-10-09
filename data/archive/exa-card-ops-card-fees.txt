@@ -1,0 +1,7 @@
+Source: https://help.exactly.app/en/articles/9055779-exa-card-associated-fees-and-costs
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+Written by Mate October 28, 2024
+ Every transaction you make with your card in a currency that is not USD has a 1.5% FX fee (foreign transaction fee) included in the currency rate. 
+We may charge an origination fee whenever you make a loan. This fee will be included in the interest you pay on the installments associated with that loan.
+ 

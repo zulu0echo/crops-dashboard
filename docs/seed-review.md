@@ -6,10 +6,77 @@ Every unreviewed rating of 2 or 3, with the command that reproduces it. Run it, 
 `review` to `{status: reviewed, by: <your name>, date: <YYYY-MM-DD>}` in the provider file. Ratings of 2 or 3 need two reviewers (methodology 2.8);
 record the second in the pull request. Also skim every finding marked "Judgment call".
 
+## Aleo (credits.aleo private transfers) (`data/providers/aleo.yaml`)
+
+- [ ] **C2 Settle without the provider = 2.** `gh api "repos/ProvableHQ/snarkOS/contents/cli/src/commands/developer/transfer_private.rs?ref=493fca395c2c9a103f3f57f1f1aede0a9dae8949" --jq .content | base64 -d | sed -n 46,90p`
+- [ ] **C3 Reliance on hosted services = 2.** `gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 25,42p`
+- [ ] **C4 Neutral settlement, disclosed filtering = 2.** `gh search code --repo ProvableHQ/snarkOS country --json path --jq '.[].path'; gh search code --repo ProvableHQ/sdk sanction --json path --jq '.[].path'`
+- [ ] **C5 Token and chain freeze risks disclosed = 2.** `gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | grep -n '^function'`
+- [ ] **O1 Contracts verified onchain = 2.** `diff <(curl -s https://api.explorer.provable.com/v1/mainnet/program/credits.aleo | jq -r . | perl -0pe 's#/\*.*?\*/##sg;s#//[^\n]*##g' | tr -s ' \t\n' '\n' | grep .) <(gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | perl -0pe 's#/\*.*?\*/##sg;s#//[^\n]*##g' | tr -s ' \t\n' '\n' | grep .) && echo identical`
+- [ ] **O2 Whole stack published = 2.** `gh api "orgs/ProvableHQ/repos?per_page=100" --jq '.[]|[.name,(.license.spdx_id//"none"),.archived]|@tsv'`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/ProvableHQ/snarkOS/contents/node/rest/src/lib.rs?ref=493fca395c2c9a103f3f57f1f1aede0a9dae8949" --jq .content | base64 -d | grep -n 'route('`
+- [ ] **F1 Open-source licences = 3.** `for r in snarkOS snarkVM sdk leo; do echo $r $(gh api repos/ProvableHQ/$r --jq '.license.spdx_id'); done`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 25,42p`
+- [ ] **P1 Tracking and analytics = 2.** `npm view @provablehq/sdk@0.12.0 dependencies`
+- [ ] **P2 Data collected beyond payment = 3.** `gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,869p`
+- [ ] **P3 Payments linkable onchain = 3.** `gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,940p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/ProvableHQ/sdk/contents/sdk/src/program-manager.ts?ref=9bbe5e63b29dcadc93fad29fe4631e8c186ce639" --jq .content | base64 -d | sed -n 597,610p`
+- [ ] **P5 Endpoints can be changed = 3.** `gh api "repos/ProvableHQ/snarkOS/contents/cli/src/commands/developer/transfer_private.rs?ref=493fca395c2c9a103f3f57f1f1aede0a9dae8949" --jq .content | base64 -d | sed -n 60,80p`
+- [ ] **S1 Who holds funds in transit = 2.** `gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,869p`
+- [ ] **S2 Who can upgrade the code = 2.** `gh api "repos/ProvableHQ/snarkVM/contents/console/network/src/consensus_heights.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 165,190p; curl -s https://api.explorer.provable.com/v1/mainnet/block/height/latest`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | grep -n '^function'`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/ProvableHQ/sdk/contents/sdk/src/network-client.ts?ref=9bbe5e63b29dcadc93fad29fe4631e8c186ce639" --jq .content | base64 -d | sed -n 36,72p`
+
+## AnomaPay (`data/providers/anoma-pay.yaml`)
+
+- [ ] **C2 Settle without the provider = 2.** `gh api "repos/anoma/pa-evm/contents/contracts/src/ProtocolAdapter.sol?ref=e368e2738df6a28f1b7577215da6789283952cba" --jq .content | base64 -d | sed -n 108,112p`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68 0xDe6A308ed57AF26BFf059e6C550BD4908aC1840e 0x7C1B7b8fEB636eA9Ecd32152Bce2744a0EEf39C7 0xBbcD45801a3c3B858fbc66674FE7c9f94e33dC72; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/56/$a | jq -r .match; done`
+- [ ] **F2 Protection against relicensing = 2.** `gh api "repos/anoma/pa-evm/contents/?ref=e368e2738df6a28f1b7577215da6789283952cba" --jq '.[].name'`
+- [ ] **P3 Payments linkable onchain = 2.** `gh api "repos/anoma/anomapay-erc20-forwarder/contents/contracts/src/ERC20Forwarder.sol?ref=916cc7ed960f443f7cce82bd517ab8505519cd1e" --jq .content | base64 -d | sed -n 70,78p`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/anoma/anomapay-erc20-forwarder/contents/contracts/src/ERC20Forwarder.sol?ref=916cc7ed960f443f7cce82bd517ab8505519cd1e" --jq .content | base64 -d | sed -n 133,159p`
+
+## Aztec (Alpha mainnet private token transfers) (`data/providers/aztec.yaml`)
+
+- [ ] **C1 Admin pause or freeze powers = 2.** `cast call 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 "owner()(address)" --rpc-url https://ethereum-rpc.publicnode.com; cast call 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 "getEscapeHatch()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **C2 Settle without the provider = 2.** `gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 271,277p`
+- [ ] **C3 Reliance on hosted services = 3.** `gh api "repos/AztecProtocol/aztec-packages/contents/docs/docs-operate/operators/full-node/setup.md?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 8,48p`
+- [ ] **C4 Neutral settlement, disclosed filtering = 2.** `gh search code --repo AztecProtocol/aztec-packages sanction --json path --jq '.[].path'; gh search code --repo AztecProtocol/aztec-packages geoblock --json path --jq '.[].path'`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0x35b22e09Ee0390539439E24f06Da43D83f90e298 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 0x1102471Eb3378FEE427121c9EfcEa452E4B6B75e 0x7d4Ef0676c2032bbCC09227501D34d86641ab8cA 0x5B062aB5fD3A66BC7e73b04CeD38587673b6A2D7 0xaf73Dd51D1eb8a079BB097f39c832cDD00ac691c; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done`
+- [ ] **O2 Whole stack published = 3.** `gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq '.[].name'`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 271,300p`
+- [ ] **F1 Open-source licences = 2.** `for r in aztec-packages networks; do echo $r $(gh api repos/AztecProtocol/$r --jq '.license.spdx_id // "none"'); done`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/cli/src/utils/commands.ts?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 35,40p`
+- [ ] **P1 Tracking and analytics = 2.** `for p in pxe aztec.js wallet-sdk cli-wallet; do gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/$p/package.json?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | jq -r '.dependencies|keys[]' | grep -iE 'telemetry|sentry|analytics|posthog'; done`
+- [ ] **P2 Data collected beyond payment = 3.** `gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 271,277p`
+- [ ] **P3 Payments linkable onchain = 2.** `gh api "repos/AztecProtocol/aztec-packages/contents/docs/docs-developers/docs/aztec-js/how_to_use_private_fee_juice.md?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 67,70p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/cli/src/utils/commands.ts?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 35,40p`
+- [ ] **P5 Endpoints can be changed = 3.** `gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/cli/src/utils/commands.ts?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 35,40p`
+- [ ] **S1 Who holds funds in transit = 2.** `gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 271,277p`
+- [ ] **S2 Who can upgrade the code = 2.** `cast call 0x1102471Eb3378FEE427121c9EfcEa452E4B6B75e "getConfiguration()((uint256,uint256),uint256,uint256,uint256,uint256,uint256,uint256,uint256)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 258,277p`
+- [ ] **S4 Funds safe if provider disappears = 2.** `cast call 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 "getEscapeHatch()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/cli/src/utils/commands.ts?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 28,40p`
+
 ## Bitget Wallet Card (`data/providers/bitget-wallet-card.yaml`)
 
 - [ ] **C5 Token and chain freeze risks disclosed = 2.** `cast call 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 "validXXX24Tokens(address)(bool)" 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA --rpc-url https://arb1.arbitrum.io/rpc --block 512546136`
 - [ ] **O1 Contracts verified onchain = 2.** `for a in 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 0x96AA3D05755C54D2745d0Dc98Ea55E163DA5Bb16 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA 0x7aFe16b7d1A2F4C106E49FD0C2BE852a3a536E96; do curl -s https://sourcify.dev/server/v2/contract/42161/$a | jq -c '{address,match}'; done`
+
+## Blanksquare (Shielder) (`data/providers/blanksquare.yaml`)
+
+- [ ] **C2 Settle without the provider = 3.** `gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/ts/shielder-sdk/src/client/client.ts?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | sed -n 214,250p` ; `cast storage 0x064A67a5484DF6baf36be42F9554d45E7741dCFf 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://mainnet.base.org`
+- [ ] **C3 Reliance on hosted services = 3.** `gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/ts/shielder-sdk/src/client/factories.ts?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | sed -n 30,67p`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0x064A67a5484DF6baf36be42F9554d45E7741dCFf 0xfFF44d366DeDF9B2A531109E1A08BF9873C58b53 0x37aA4F682012000acA40196F30E6cD737CF1eb94; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/8453/$a | jq -r .match; done`
+- [ ] **O2 Whole stack published = 2.** `gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/crates?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq '.[].name'`
+- [ ] **F1 Open-source licences = 3.** `for r in blanksquare-monorepo shielding-dapp shielder-quickstart; do echo $r $(gh api repos/Cardinal-Cryptography/$r --jq '.license.spdx_id // "none"'); done`
+- [ ] **F2 Protection against relicensing = 2.** `gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/commits?path=LICENSE&sha=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq '.[].sha'`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/ts/shielder-sdk/package.json?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | jq .dependencies`
+- [ ] **P3 Payments linkable onchain = 2.** `gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/contracts/Shielder.sol?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | sed -n 63,100p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/ts/shielder-sdk/src/chain/relayer.ts?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | grep -n fetch`
+- [ ] **P5 Endpoints can be changed = 2.** `gh api "repos/Cardinal-Cryptography/shielding-dapp/contents/src/domains/chains/utils/definitions/chains/base/base.ts?ref=f167cd97b3ffc5e87520360cb6fd1fb712016674" --jq .content | base64 -d | sed -n 11,27p`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/Cardinal-Cryptography/shielding-dapp/contents/src/domains/shielder/utils/useShield.tsx?ref=f167cd97b3ffc5e87520360cb6fd1fb712016674" --jq .content | base64 -d | sed -n 104,121p`
+- [ ] **S4 Funds safe if provider disappears = 2.** `cast call 0x064A67a5484DF6baf36be42F9554d45E7741dCFf "paused()(bool)" --rpc-url https://mainnet.base.org`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/Cardinal-Cryptography/shielding-dapp/contents/envVarsSchema.ts?ref=f167cd97b3ffc5e87520360cb6fd1fb712016674" --jq .content | base64 -d`
 
 ## Coinbase Commerce (Onchain Payment Protocol) (`data/providers/coinbase-commerce.yaml`)
 
@@ -24,6 +91,14 @@ record the second in the pull request. Also skim every finding marked "Judgment 
 - [ ] **S3 Token approval scope = 3.** `gh api repos/coinbase/onchainkit/contents/packages/onchainkit/src/checkout/utils/getCommerceContracts.ts?ref=3ecbd8fd28bf65002a4ad97092bfd0b157310e22 --jq .content | base64 -d | sed -n 10,41p`
 - [ ] **S4 Funds safe if provider disappears = 2.** `gh api repos/coinbase/commerce-onchain-payment-protocol/contents/contracts/transfers/Transfers.sol?ref=d891289bd1f41bb95f749af537f2b6a36b17f889 --jq .content | base64 -d | sed -n 720,737p`
 - [ ] **S5 Secrets and webhook handling = 2.** `gh api repos/coinbase/coinbase-commerce-php/contents/src/Webhook.php?ref=c258b69d5bb6d4dd45fdc68fee3b60c4a75247d2 --jq .content | base64 -d | sed -n 29,36p`
+
+## Curvy (`data/providers/curvy.yaml`)
+
+- [ ] **C5 Token and chain freeze risks disclosed = 2.** `for i in 1 2 3 4 5 6; do cast call 0xcC8d5c60A8fb15Aa3793647eF531f1bA7dF24f00 "getTokenAddress(uint256)(address)" $i --rpc-url https://arb1.arbitrum.io/rpc; done`
+- [ ] **F2 Protection against relicensing = 2.** `gh api "repos/0xCurvy/contracts/git/trees/e996fe719580f4d82ff34f06ee8a0916df65a613" --jq '.tree[].path'`
+- [ ] **P3 Payments linkable onchain = 2.** `gh api "repos/0xCurvy/contracts/contents/evm/src/v2/aggregator-alpha/CurvyAggregatorAlphaV2.sol?ref=e996fe719580f4d82ff34f06ee8a0916df65a613" --jq .content | base64 -d | sed -n 218,251p`
+- [ ] **P5 Endpoints can be changed = 2.** `gh api "repos/0xCurvy/sdk/contents/src/config/createCurvyConfig.ts?ref=75ce11eda3ea9521f6ed81f0019787eee0a9080c" --jq .content | base64 -d | sed -n 32,57p`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/0xCurvy/sdk/contents/src/actions/aggregator/directShield.ts?ref=75ce11eda3ea9521f6ed81f0019787eee0a9080c" --jq .content | base64 -d | sed -n 140,157p`
 
 ## Daimo Pay (`data/providers/daimo-pay.yaml`)
 
@@ -57,6 +132,17 @@ record the second in the pull request. Also skim every finding marked "Judgment 
 - [ ] **S4 Funds safe if provider disappears = 2.** `cast call 0x6817974CA2c354F2FA40d8349b725B5bF81c8338 "delay()(uint256)" --rpc-url https://mainnet.optimism.io --block 157885618`
 - [ ] **S5 Secrets and webhook handling = 2.** `curl -s https://raw.githubusercontent.com/exactly/exa/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/utils/verifySignature.ts`
 
+## Fluidkey (`data/providers/fluidkey.yaml`)
+
+- [ ] **C1 Admin pause or freeze powers = 3.** `cast call 0xaAa53d54Ba6450f9294Ce3c1f51e866D0F8C8e70 "getModulesPaginated(address,uint256)(address[],address)" 0x0000000000000000000000000000000000000001 10 --rpc-url https://mainnet.base.org`
+- [ ] **C2 Settle without the provider = 2.** `gh api "repos/fluidkey/fluidkey-stealth-account-kit/contents/README.md?ref=2a4ccfafef127165c11ba16fc16235c919698ec2" --jq .content | base64 -d | sed -n 1,58p`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552 0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2 0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/8453/$a | jq -r .match; done`
+- [ ] **P3 Payments linkable onchain = 2.** `gh api "repos/fluidkey/fluidkey-stealth-account-kit/contents/src/generateStealthAddresses.ts?ref=2a4ccfafef127165c11ba16fc16235c919698ec2" --jq .content | base64 -d`
+- [ ] **S1 Who holds funds in transit = 3.** `cast call 0xaAa53d54Ba6450f9294Ce3c1f51e866D0F8C8e70 "getOwners()(address[])" --rpc-url https://mainnet.base.org`
+- [ ] **S2 Who can upgrade the code = 3.** `cast call 0x3BDb857AFe9b51d8916D80240d2ADe40D4d3f2f9 "owner()(address)" --rpc-url https://mainnet.base.org`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/fluidkey/fluidkey-earn-module/contents/src/FluidkeyEarnModule.sol?ref=122cde19940d06b94c0027f4cd2e22e7fa19129a" --jq .content | base64 -d | sed -n 459,467p`
+- [ ] **S4 Funds safe if provider disappears = 2.** `gh api "repos/fluidkey/fluidkey-stealth-account-kit/contents/src/predictStealthSafeAddress.ts?ref=2a4ccfafef127165c11ba16fc16235c919698ec2" --jq .content | base64 -d | sed -n 1,60p`
+
 ## Fuse Card (`data/providers/fuse-card.yaml`)
 
 - [ ] **C5 Token and chain freeze risks disclosed = 2.** `curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type:application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["12BqReNBFWSfQ3hSwjDuyUGyVmZMDj1VLh5ctG6LAK4B",{"encoding":"base64"}]}' (bytes 73-104 = mint, 105-112 = amount)`
@@ -76,10 +162,23 @@ record the second in the pull request. Also skim every finding marked "Judgment 
 - [ ] **S4 Funds safe if provider disappears = 2.** `cast call 0x91Def2b0C4894F4A574C5e3c6C7d0B8F51F53723 "txCooldown()(uint256)" --rpc-url https://rpc.gnosischain.com --block 48629765; cast call 0x91Def2b0C4894F4A574C5e3c6C7d0B8F51F53723 "getModulesPaginated(address,uint256)(address[],address)" 0x0000000000000000000000000000000000000001 10 --rpc-url https://rpc.gnosischain.com --block 48629765; cast call 0x91Def2b0C4894F4A574C5e3c6C7d0B8F51F53723 "owner()(address)" --rpc-url https://rpc.gnosischain.com --block 48629765`
 - [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/gnosispay/docs/contents/webhooks/getting-started.mdx?ref=b0b8c668d044b543f794e6a91065045ec03c6cbb" --jq .content | base64 -d | sed -n '28,41p;115,140p'`
 
+## Hinkal (`data/providers/hinkal.yaml`)
+
+- [ ] **C2 Settle without the provider = 2.** `gh api "repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/contracts/HinkalHelper.sol?ref=61b6839aa80fc0c33bfdcde0323753c83cb2ce67" --jq .content | base64 -d | sed -n 208,236p` ; `curl -s https://sourcify.dev/server/v2/contract/1/0x7cb60446d7635C68EDf1c568cac74A1f98c1Cfa4 | jq .match`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0x7cb60446d7635C68EDf1c568cac74A1f98c1Cfa4 0x5f912cBBB7F14E4524faAe8559666e7C79227C1b 0x8c16D510bD236479bc4a61819599338bebe26c36; do curl -s https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; curl -s https://eth.blockscout.com/api/v2/smart-contracts/$a | jq -c '{is_fully_verified,is_partially_verified}'; done`
+- [ ] **F2 Protection against relicensing = 2.** `gh api "repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/git/trees/61b6839aa80fc0c33bfdcde0323753c83cb2ce67" --jq '.tree[].path'`
+- [ ] **P3 Payments linkable onchain = 2.** `gh api "repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/contracts/HinkalBase.sol?ref=61b6839aa80fc0c33bfdcde0323753c83cb2ce67" --jq .content | base64 -d | sed -n 108,131p`
+- [ ] **S2 Who can upgrade the code = 2.** `cast call 0xF04310839973454155d9886a4023451F8D3Db7D0 "getMinDelay()(uint256)" --rpc-url https://ethereum-rpc.publicnode.com`
+
 ## Holyheld Card (`data/providers/holyheld-card.yaml`)
 
 - [ ] **F2 Protection against relicensing = 2.** `gh api "repos/holyheld/hh-v1-sdk/commits?path=LICENSE" --jq '.[].sha'; gh api "repos/holyheld/hh-v1-sdk/contents/.github?ref=c3b91ee4ba6e9e75bbd7afbedb6f669536b9d516"`
 - [ ] **S3 Token approval scope = 2.** `cast calldata-decode "CardTopupPermitSigned(address,uint256,uint256,bytes,bytes,uint256,bytes,bytes32)" $(cast tx 0x34972db6c6224bf12c0e26aec6a32f59bcdcba584ec865c328d02f022492472a input --rpc-url https://ethereum-rpc.publicnode.com)`
+
+## Houdini Swap (`data/providers/houdini-swap.yaml`)
+
+- [ ] **S3 Token approval scope = 2.** `gh api 'repos/HoudiniSwap/houdiniswap-agent/contents/packages/mcp-server/src/tools/swap-flow.ts?ref=b29c75d9c3b2afeaa04e534a4a374f08292cb88f' --jq .content | base64 -d | sed -n 88,124p`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api 'repos/HoudiniSwap/houdini-api-examples/contents/nextjs-example/lib/helpers.ts?ref=a536b91111f7a4d13145e03791a8b5ffe28b8028' --jq .content | base64 -d | sed -n 39,60p`
 
 ## MetaMask Card (`data/providers/metamask-card.yaml`)
 
@@ -88,6 +187,29 @@ record the second in the pull request. Also skim every finding marked "Judgment 
 - [ ] **P3 Payments linkable onchain = 2.** `cast receipt 0xdd18b6eaa171dcf4974129304f80c9550040ce57be64785a175184d054cab7c7 --rpc-url https://rpc.linea.build`
 - [ ] **S2 Who can upgrade the code = 3.** `cast storage 0x9dd23A4a0845f10d65D293776B792af1131c7B30 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://rpc.linea.build --block 32253699`
 - [ ] **S4 Funds safe if provider disappears = 2.** `cast call 0xacA92E438df0B2401fF60dA7E4337B687a2435DA "balanceOf(address)(uint256)" 0x0edC0eA676C5e608D628ecc659a13A213476De3E --rpc-url https://rpc.linea.build --block 32253699`
+
+## Monero (`data/providers/monero.yaml`)
+
+- [ ] **C1 Admin pause or freeze powers = 2.** `gh api "repos/monero-project/monero/contents/src/cryptonote_core/cryptonote_core.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 119,151p`
+- [ ] **C2 Settle without the provider = 2.** `gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server_commands_defs.h?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 614,650p`
+- [ ] **C3 Reliance on hosted services = 3.** `gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 197,250p`
+- [ ] **C4 Neutral settlement, disclosed filtering = 2.** `gh search code --repo monero-project/monero-gui country --json path --jq '.[].path'; gh search code --repo monero-project/monero country --json path --jq '.[].path'`
+- [ ] **C5 Token and chain freeze risks disclosed = 2.** `gh api "repos/monero-project/monero/contents/README.md?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 120,150p`
+- [ ] **O2 Whole stack published = 3.** `gh api "repos/monero-project/monero/contents/src?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq '.[].name'`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/monero-project/monero/contents/src/simplewallet/simplewallet.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 9025,9045p`
+- [ ] **F1 Open-source licences = 3.** `gh api "repos/monero-project/monero-gui/contents/LICENSE?ref=d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c" --jq .content | base64 -d | head -12`
+- [ ] **F2 Protection against relicensing = 3.** `gh api "repos/monero-project/monero/contents/docs/CONTRIBUTING.md?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 104,110p`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api "repos/monero-project/monero/contents/src/cryptonote_core/cryptonote_core.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 119,180p`
+- [ ] **P1 Tracking and analytics = 2.** `gh search code --repo monero-project/monero-gui analytics --json path --jq '.[].path'; gh search code --repo monero-project/monero-gui telemetry --json path --jq '.[].path'`
+- [ ] **P2 Data collected beyond payment = 3.** `gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server_commands_defs.h?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 614,650p`
+- [ ] **P3 Payments linkable onchain = 3.** `gh api "repos/monero-project/monero/contents/src/cryptonote_core/blockchain.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 3264,3325p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/monero-project/monero/contents/src/cryptonote_core/cryptonote_core.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 172,176p`
+- [ ] **P5 Endpoints can be changed = 3.** `gh api "repos/monero-project/monero-gui/contents/main.qml?ref=d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c" --jq .content | base64 -d | sed -n 1530,1548p`
+- [ ] **S1 Who holds funds in transit = 2.** `gh api "repos/monero-project/monero/contents/src/cryptonote_core/blockchain.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 3264,3325p`
+- [ ] **S2 Who can upgrade the code = 2.** `gh api "repos/monero-project/monero/contents/README.md?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 120,150p`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server_commands_defs.h?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 614,628p`
+- [ ] **S4 Funds safe if provider disappears = 2.** `gh api "repos/monero-project/monero/contents/src/rpc/core_rpc_server.cpp?ref=22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0" --jq .content | base64 -d | sed -n 197,250p`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/monero-project/monero-gui/contents/main.qml?ref=d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c" --jq .content | base64 -d | sed -n 1530,1548p`
 
 ## Payy Card (`data/providers/payy-card.yaml`)
 
@@ -100,6 +222,40 @@ record the second in the pull request. Also skim every finding marked "Judgment 
 
 - [ ] **C5 Token and chain freeze risks disclosed = 2.** `cast call 0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077 "isSupportedAsset(address)(bool)" 0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb --block 34429835 --rpc-url https://rpc.plasma.to`
 - [ ] **P3 Payments linkable onchain = 2.** `cast tx 0x32bbf2f43c3ea2f7a77d3ec9e1e86d1142e7419a66af113f785659187a0134b8 input --rpc-url https://rpc.plasma.to | cast calldata-decode "pullAssetFromUserWallet(string,address,address,address,uint256)"`
+
+## Privacy Pools (0xbow) (`data/providers/privacy-pools.yaml`)
+
+- [ ] **C5 Token and chain freeze risks disclosed = 2.** `gh api "repos/0xbow-io/privacy-pools-website/contents/src/config/chainData.ts?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 129,160p`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0x6818809EefCe719E480a7526D76bD3e561526b46 0x15e355024de1CDc74ADdea7EBDf98418Ba5B1a2c 0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB 0xb419c2867aB3CBc78921660cB95150d95A94ce86 0xe859C0bD25f260BaEE534Fb52e307D3b64D24572; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done`
+- [ ] **O2 Whole stack published = 2.** `gh api "repos/0xbow-io/privacy-pools-core/contents/packages?ref=d494b63e79f33bb2b0c8ece6cdacdca465c3b884" --jq '.[].name'`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/0xbow-io/privacy-pools-core/contents/packages/sdk/src/abi?ref=d494b63e79f33bb2b0c8ece6cdacdca465c3b884" --jq '.[].name'`
+- [ ] **P3 Payments linkable onchain = 3.** `gh api "repos/0xbow-io/privacy-pools-core/contents/packages/contracts/src/interfaces/IPrivacyPool.sol?ref=d494b63e79f33bb2b0c8ece6cdacdca465c3b884" --jq .content | base64 -d | sed -n 39,59p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/0xbow-io/privacy-pools-website/contents/src/config/chainData.ts?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 129,142p`
+- [ ] **P5 Endpoints can be changed = 2.** `gh api "repos/0xbow-io/privacy-pools-website/contents/src/containers/Modals/CustomRpc/CustomRpc.tsx?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 391,405p`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/0xbow-io/privacy-pools-website/contents/src/hooks/useDeposit.ts?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 489,505p`
+- [ ] **S4 Funds safe if provider disappears = 2.** `cast storage 0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/0xbow-io/privacy-pools-website/contents/src/config/env.ts?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 3,29p`
+- [ ] **S6 Audits and bug bounty = 2.** `gh api "repos/0xbow-io/privacy-pools-core/contents/packages/contracts/src/contracts/Entrypoint.sol?ref=238e3594053becde68aa40e1e4cef6c0c46e68da" --jq .content | base64 -d | diff - <(curl -s "https://sourcify.dev/server/v2/contract/1/0x15e355024de1CDc74ADdea7EBDf98418Ba5B1a2c?fields=sources" | jq -r '.sources["src/contracts/Entrypoint.sol"].content')`
+
+## Railgun (`data/providers/railgun.yaml`)
+
+- [ ] **C1 Admin pause or freeze powers = 2.** `cast storage 0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103 --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **C2 Settle without the provider = 3.** `gh api "repos/Railgun-Community/deployments/contents/src/chains/ethereum.ts?ref=68d93979600d93b46200c2c4c6a006a4d80e38a1" --jq .content | base64 -d | sed -n 20,39p`
+- [ ] **C3 Reliance on hosted services = 3.** `gh api "repos/Railgun-Community/engine/contents/src/railgun-engine.ts?ref=6e2614d53a106dd62abad91e7ce03ee4a3956138" --jq .content | base64 -d | sed -n 719,760p`
+- [ ] **C4 Neutral settlement, disclosed filtering = 3.** `gh api "repos/Railgun-Community/wallet/contents/src/utils/blocked-address.ts?ref=5c9d04c844879b8377d91775052e88c836b48730" --jq .content | base64 -d | sed -n 6,20p`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9 0xD662C4B1F22AcEb0BEaCdf3A493De6f478686A0C 0x4F8E20f55f879beE7Bc010Bd6bD2138B34aC65c8; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done`
+- [ ] **O2 Whole stack published = 2.** `gh repo list Railgun-Community --limit 100 --json name,isArchived,pushedAt; gh repo list Railgun-Privacy --json name`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/Railgun-Community/deployments/contents/src/abi?ref=68d93979600d93b46200c2c4c6a006a4d80e38a1" --jq '.[].name'`
+- [ ] **F2 Protection against relicensing = 2.** `gh api "repos/Railgun-Community/engine/commits?path=LICENSE&sha=6e2614d53a106dd62abad91e7ce03ee4a3956138" --jq '.[].sha'`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api "repos/Railgun-Community/wallet/contents/src/services/artifacts/artifact-util.ts?ref=5c9d04c844879b8377d91775052e88c836b48730" --jq .content | base64 -d | sed -n 1,10p`
+- [ ] **P2 Data collected beyond payment = 3.** `gh api "repos/Railgun-Privacy/contract/contents/contracts/logic/Globals.sol?ref=36bcf5ed7cf94bfafb6e1a303e1832c769c16780" --jq .content | base64 -d | sed -n 21,90p`
+- [ ] **P3 Payments linkable onchain = 3.** `gh api "repos/Railgun-Privacy/contract/contents/contracts/logic/RailgunLogic.sol?ref=36bcf5ed7cf94bfafb6e1a303e1832c769c16780" --jq .content | base64 -d | sed -n 56,82p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/Railgun-Community/wallet/contents/src/services/railgun/quick-sync/V2/graphql/index.ts?ref=5c9d04c844879b8377d91775052e88c836b48730" --jq .content | base64 -d | sed -n 3180,3184p`
+- [ ] **P5 Endpoints can be changed = 2.** `gh api "repos/Railway-Wallet/Railway-Wallet/contents/desktop/src/views/screens/modals/settings/AddCustomRPCModal/AddCustomRPCModal.tsx?ref=e9398a1ccf94ff016062592fc310a8a697d94f2b" --jq .content | base64 -d | sed -n 95,110p`
+- [ ] **S1 Who holds funds in transit = 2.** `cast call 0x4F8E20f55f879beE7Bc010Bd6bD2138B34aC65c8 "owner()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S2 Who can upgrade the code = 2.** `cast call 0xB6d513f6222Ee92Fff975E901bd792E2513fB53B "owner()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S4 Funds safe if provider disappears = 2.** `cast storage 0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9 0x8dea8703c3cf94703383ce38a9c894669dccd4ca8e65ddb43267aa0248711450 --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S5 Secrets and webhook handling = 3.** `gh api "repos/Railgun-Community/wallet/contents/src/services/railgun/core/init.ts?ref=5c9d04c844879b8377d91775052e88c836b48730" --jq .content | base64 -d | sed -n 142,182p`
 
 ## Request Network (`data/providers/request-network.yaml`)
 
@@ -122,6 +278,26 @@ record the second in the pull request. Also skim every finding marked "Judgment 
 - [ ] **C5 Token and chain freeze risks disclosed = 2.** `cast call 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 "validXXX24Tokens(address)(bool)" 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA --rpc-url https://arb1.arbitrum.io/rpc --block 512546136`
 - [ ] **O1 Contracts verified onchain = 2.** `for a in 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 0x96AA3D05755C54D2745d0Dc98Ea55E163DA5Bb16 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA 0x7aFe16b7d1A2F4C106E49FD0C2BE852a3a536E96; do curl -s https://sourcify.dev/server/v2/contract/42161/$a | jq -c '{address,match}'; done`
 
+## Tongo (confidential ERC-20 on Starknet) (`data/providers/tongo.yaml`)
+
+- [ ] **C1 Admin pause or freeze powers = 2.** `curl -s -X POST -H 'content-type:application/json' https://starknet-rpc.publicnode.com -d '{"jsonrpc":"2.0","id":1,"method":"starknet_call","params":{"request":{"contract_address":"0x00b32618c475b2fb50b0facd2c49136be6e77281834dc86bdae652680faad4d3","entry_point_selector":"0x2f9dcd9248258202f28bd37f3175e5a6107267df83a34999b7ac96f0d53d62e","calldata":[]},"block_id":"latest"}}' | jq -c .result`
+- [ ] **C2 Settle without the provider = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 191,294p`
+- [ ] **C3 Reliance on hosted services = 3.** `gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/src/account/account.data.service.ts?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 200,215p`
+- [ ] **C4 Neutral settlement, disclosed filtering = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | grep -niE "sanction|blacklist|blocklist|country"`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/src/abi?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq '.[].name'`
+- [ ] **F1 Open-source licences = 3.** `for r in tongo she; do echo $r $(gh api repos/fatlabsxyz/$r --jq '.license.spdx_id // "none"'); done`
+- [ ] **F2 Protection against relicensing = 2.** `gh api "repos/fatlabsxyz/tongo/commits?path=LICENSE&sha=7dac05e823f83620fe231605ba81642a178657ad" --jq '.[].sha'`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/package.json?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | jq .dependencies`
+- [ ] **P1 Tracking and analytics = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/package.json?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | grep -iE "sentry|analytics|posthog|mixpanel|amplitude|segment|gtag"`
+- [ ] **P2 Data collected beyond payment = 3.** `gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 191,216p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/README.md?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 19,30p`
+- [ ] **P5 Endpoints can be changed = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/README.md?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 19,30p`
+- [ ] **S1 Who holds funds in transit = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Vault.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 150,190p`
+- [ ] **S2 Who can upgrade the code = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | grep -c replace_class`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/src/operations/fund.ts?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 80,91p`
+- [ ] **S4 Funds safe if provider disappears = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 235,294p`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/.env?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | cut -d= -f1`
+
 ## Tornado Cash (Classic pools) (`data/providers/tornado-cash.yaml`)
 
 - [ ] **C1 Admin pause or freeze powers = 3.** `cast call 0x47CE0C6eD5B0Ce3d3A51fdb1C52DC66a7c3c2936 "operator()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
@@ -143,6 +319,27 @@ record the second in the pull request. Also skim every finding marked "Judgment 
 - [ ] **S4 Funds safe if provider disappears = 2.** `cast call 0x910Cbd523D972eb0a6f4cAe4618aD62622b39DbF "operator()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
 - [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/tornadocash/tornado-classic-ui/contents/networkConfig.js?ref=a83fae0772c8da084c0e76b3a756b456f5b9f5bb" --jq .content | base64 -d | sed -n 1,39p`
 
+## Umbra Cash (`data/providers/umbra.yaml`)
+
+- [ ] **C2 Settle without the provider = 3.** `gh api "repos/ScopeLift/umbra-protocol/contents/contracts-core/contracts/Umbra.sol?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 106,239p`
+- [ ] **C3 Reliance on hosted services = 3.** `gh api "repos/ScopeLift/umbra-protocol/contents/umbra-js/src/classes/Umbra.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 444,470p`
+- [ ] **C4 Neutral settlement, disclosed filtering = 2.** `gh api "repos/ScopeLift/umbra-protocol/contents/umbra-js/src/utils/utils.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 1170,1192p`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 0x31fe56609C65Cd0C510E7125f051D440424D38f3; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done`
+- [ ] **O2 Whole stack published = 2.** `gh repo list ScopeLift --limit 100 --json name | jq -r '.[].name' | grep -i umbra`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/ScopeLift/umbra-protocol/contents/contracts-core/contracts/Umbra.sol?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 12,27p`
+- [ ] **F1 Open-source licences = 2.** `for r in umbra-protocol umbra-subgraph; do echo $r $(gh api repos/ScopeLift/$r --jq '.license.spdx_id // "none"'); done`
+- [ ] **F2 Protection against relicensing = 2.** `gh api "repos/ScopeLift/umbra-protocol/commits?path=LICENSE.txt&sha=07a64aeef305399a86afe72e502156d72babcc17" --jq '.[].sha'`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api "repos/ScopeLift/umbra-protocol/contents/frontend/src/utils/umbra-api.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 65,80p`
+- [ ] **P1 Tracking and analytics = 2.** `gh api "repos/ScopeLift/umbra-protocol/contents/frontend/package.json?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | grep -iE "sentry|analytics|gtag|amplitude|mixpanel|segment|posthog|fingerprint|datadog"`
+- [ ] **P2 Data collected beyond payment = 2.** `gh api "repos/ScopeLift/umbra-protocol/contents/frontend/src/pages/PrivacyPolicy.vue?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 5,30p`
+- [ ] **P3 Payments linkable onchain = 3.** `gh api "repos/ScopeLift/umbra-protocol/contents/contracts-core/contracts/Umbra.sol?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 12,27p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/ScopeLift/umbra-protocol/contents/umbra-js/src/classes/TxHistoryProvider.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 6,25p`
+- [ ] **P5 Endpoints can be changed = 2.** `gh api "repos/ScopeLift/umbra-protocol/contents/umbra-js/src/classes/Umbra.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 100,145p`
+- [ ] **S1 Who holds funds in transit = 3.** `cast storage 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S2 Who can upgrade the code = 3.** `cast storage 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103 --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S4 Funds safe if provider disappears = 2.** `cast call 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 "toll()(uint256)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/ScopeLift/umbra-protocol/contents/frontend/.env.example?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d`
+
 ## Wirex One (`data/providers/wirex-one.yaml`)
 
 - [ ] **C5 Token and chain freeze risks disclosed = 2.** `cast call 0xfb7Fb83C837b0AD724DfeDB02D45a82c053647cF "retrieveAllTokensV2()((address,string,uint256,bool,address)[])" --rpc-url https://mainnet.base.org`
@@ -151,7 +348,54 @@ record the second in the pull request. Also skim every finding marked "Judgment 
 
 - [ ] **S5 Secrets and webhook handling = 2.** `gh api 'repos/transferwise/digital-signatures-examples/contents/verify-webhook-signature/verify-signature.js?ref=c29c3625cbf2afe571b045cea2fd1a5d99764f6b' --jq .content | base64 -d | sed -n 17,32p`
 
+## WORM (BETH proof-of-burn) (`data/providers/worm.yaml`)
+
+- [ ] **C1 Admin pause or freeze powers = 3.** `gh api "repos/worm-privacy/worm/contents/src/BETH.sol?ref=eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6" --jq .content | base64 -d | sed -n 10,55p` ; `cast call 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 "initializer()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **C2 Settle without the provider = 3.** `gh api "repos/worm-privacy/worm-miner/contents/README.md?ref=fd23cd8012f550cf4950dad02e79c1ce9d39b809" --jq .content | base64 -d | sed -n 37,64p`
+- [ ] **C3 Reliance on hosted services = 3.** `gh api "repos/worm-privacy/worm-miner/contents/Makefile?ref=fd23cd8012f550cf4950dad02e79c1ce9d39b809" --jq .content | base64 -d | sed -n 1,20p`
+- [ ] **C4 Neutral settlement, disclosed filtering = 2.** `S=5c309e254871bdda9a3537f35c7f06c7f25527e4; for f in $(gh api "repos/worm-privacy/worm-privacy.github.io/git/trees/$S?recursive=1" --jq '.tree[].path | select(test("^src/.*[.]tsx?$"))'); do gh api "repos/worm-privacy/worm-privacy.github.io/contents/$f?ref=$S" --jq .content | base64 -d | grep -iE "countr|geoloc|ipapi|sanction|chainalysis" && echo "^ $f"; done`
+- [ ] **C5 Token and chain freeze risks disclosed = 2.** `cast call 0xbA5A285806c343AaD955a40FE4b6e5e607B752b6 "swapRouterContract()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **O1 Contracts verified onchain = 2.** `for a in 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 0x7c155d52b78799d4975417a3815cDe8C5aec434f 0x5745a35b9c5938B2307F0287f45df5743A9D02e6 0x03d4702b51a98661B89dF5fcBe8C4baeF84C60B7; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done`
+- [ ] **O2 Whole stack published = 2.** `gh repo list worm-privacy --limit 50 --json name,isArchived,pushedAt`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/worm-privacy/worm-miner/contents/common/src/contracts/abis?ref=fd23cd8012f550cf4950dad02e79c1ce9d39b809" --jq '.[].name'`
+- [ ] **F2 Protection against relicensing = 2.** `gh api "repos/worm-privacy/worm/commits?path=LICENSE&sha=eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6" --jq '.[].sha'`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api repos/worm-privacy/trusted-setup/releases --jq '.[].tag_name'`
+- [ ] **P1 Tracking and analytics = 2.** `gh api "repos/worm-privacy/worm-privacy.github.io/contents/package.json?ref=5c309e254871bdda9a3537f35c7f06c7f25527e4" --jq .content | base64 -d | grep -iE "sentry|analytics|gtag|amplitude|mixpanel|segment|posthog|hotjar|fingerprint"`
+- [ ] **P3 Payments linkable onchain = 2.** `cast call 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 "MINT_CAP()(uint256)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S1 Who holds funds in transit = 3.** `cast call 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 "proofOfBurnVerifier()(address)" --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S2 Who can upgrade the code = 3.** `cast storage 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/worm-privacy/worm-privacy.github.io/contents/src/lib/core/contracts/uniswap/burn-any-erc20.ts?ref=5c309e254871bdda9a3537f35c7f06c7f25527e4" --jq .content | base64 -d | sed -n 21,46p`
+- [ ] **S4 Funds safe if provider disappears = 2.** `cast storage 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://ethereum-rpc.publicnode.com`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/worm-privacy/worm-privacy.github.io/contents/src/components/tools/rainbowkit-root.tsx?ref=5c309e254871bdda9a3537f35c7f06c7f25527e4" --jq .content | base64 -d | sed -n 64,109p`
+
 ## XPlace Card (`data/providers/xplace-card.yaml`)
 
 - [ ] **S2 Who can upgrade the code = 2.** `curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type: application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["6hhBGCtmg7tPWUSgp3LG6X2rsmYWAc4tNsA6G4CnfQbM",{"encoding":"base64"}]}'  # decode: threshold u16 at byte 72, time_lock u32 at 74, member count u32 at 99`
+
+## Zcash (shielded transfers) (`data/providers/zcash.yaml`)
+
+- [ ] **C1 Admin pause or freeze powers = 2.** `gh api "repos/zcash/zips/contents/zips/zip-0257.md?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 51,75p`
+- [ ] **C2 Settle without the provider = 2.** `gh api "repos/ZcashFoundation/zebra/contents/zebra-rpc/src/methods.rs?ref=e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291" --jq .content | base64 -d | sed -n 262,283p`
+- [ ] **C3 Reliance on hosted services = 3.** `gh api "repos/zodl-inc/zodl-android/contents/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 13,28p`
+- [ ] **C4 Neutral settlement, disclosed filtering = 2.** `gh search code --repo zodl-inc/zodl-android country --json path --jq '.[].path'; gh search code --repo ZcashFoundation/zebra geoip --json path --jq '.[].path'`
+- [ ] **C5 Token and chain freeze risks disclosed = 2.** `gh api "repos/zcash/zips/contents/zips/zip-0258.md?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 85,100p`
+- [ ] **O2 Whole stack published = 3.** `for r in ZcashFoundation/zebra zcash/librustzcash zcash/orchard zcash/lightwalletd zingolabs/zaino zcash/zallet zodl-inc/zodl-android zodl-inc/zodl-ios zodl-inc/zodl-android-wallet-sdk; do echo $r $(gh api repos/$r --jq '[.archived,.pushed_at]|@tsv'); done`
+- [ ] **O4 Interfaces and data export = 2.** `gh api "repos/zcash/lightwalletd/contents/lightwallet-protocol/walletrpc/service.proto?ref=d16d48124e9ad4157ebc2324b5090c6ba201470c" --jq .content | base64 -d | sed -n 224,330p`
+- [ ] **F1 Open-source licences = 3.** `for r in ZcashFoundation/zebra zcash/librustzcash zcash/orchard zcash/zips zcash/lightwalletd zingolabs/zaino zcash/zallet zodl-inc/zodl-android zodl-inc/zodl-ios zodl-inc/zodl-android-wallet-sdk zcash/zcash; do echo $r $(gh api repos/$r/contents --jq '[.[].name|select(test("^(LICEN|COPYING)";"i"))]|join(",")'); done`
+- [ ] **F3 No proprietary dependencies = 2.** `gh api "repos/zodl-inc/zodl-android/contents/crash-android-lib/src/foss/kotlin/co/electriccoin/zcash/crash/android/internal/ListCrashReportersImpl.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d`
+- [ ] **P1 Tracking and analytics = 2.** `gh api "repos/zodl-inc/zodl-android/contents/app/src/main/java/co/electriccoin/zcash/app/ZcashApplication.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 141,154p`
+- [ ] **P2 Data collected beyond payment = 3.** `gh api "repos/zcash/lightwalletd/contents/lightwallet-protocol/walletrpc/service.proto?ref=d16d48124e9ad4157ebc2324b5090c6ba201470c" --jq .content | base64 -d | grep -n "rpc "`
+- [ ] **P3 Payments linkable onchain = 3.** `gh api "repos/zcash/zips/contents/zips/zip-0224.rst?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 232,257p`
+- [ ] **P4 Third parties in the payment flow = 2.** `gh api "repos/zodl-inc/zodl-android/contents/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/CMCApiProvider.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 48,60p`
+- [ ] **P5 Endpoints can be changed = 3.** `gh api "repos/zodl-inc/zodl-android/contents/ui-lib/src/main/java/co/electriccoin/zcash/ui/screen/chooseserver/ChooseServerVM.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 148,230p`
+- [ ] **S1 Who holds funds in transit = 2.** `gh api "repos/zcash/zips/contents/zips/zip-0224.rst?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 232,257p`
+- [ ] **S2 Who can upgrade the code = 2.** `gh api "repos/ZcashFoundation/zebra/contents/zebra-chain/src/parameters/constants.rs?ref=e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291" --jq .content | base64 -d | sed -n 74,99p`
+- [ ] **S3 Token approval scope = 2.** `gh api "repos/zcash/lightwalletd/contents/lightwallet-protocol/walletrpc/service.proto?ref=d16d48124e9ad4157ebc2324b5090c6ba201470c" --jq .content | base64 -d | sed -n 276,279p`
+- [ ] **S4 Funds safe if provider disappears = 2.** `gh api "repos/zcash/zallet/contents/README.md?ref=522b486d2e4acea9fd8868ac8331e25abd6ec145" --jq .content | base64 -d | sed -n 1,25p`
+- [ ] **S5 Secrets and webhook handling = 2.** `gh api "repos/zodl-inc/zodl-android/contents/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/CMCApiProvider.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 30,46p`
+
+## zERC20 (zBNB on BNB Chain) (`data/providers/zerc20.yaml`)
+
+- [ ] **C5 Token and chain freeze risks disclosed = 2.** `cast call 0x39Cc069dF606c7bc8c79b0ADd0696BCaf548eFD9 "underlyingToken()(address)" --rpc-url https://bsc-rpc.publicnode.com`
+- [ ] **P3 Payments linkable onchain = 2.** `cast call 0x4388D5618B9e13Bd580209CDf37a202778C75c54 "index()(uint256)" --rpc-url https://bsc-rpc.publicnode.com`
 

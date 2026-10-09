@@ -1,0 +1,524 @@
+slug: payy-card
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: polybase/payy
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/contents/?ref=main
+        detail: "polybase/payy: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: polybase/payy
+          ok: true
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/contents/?ref=main
+        detail: "polybase/payy: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: polybase/payy
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/contents/?ref=main
+        detail: "polybase/payy: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: polybase/payy
+          ok: true
+          detail: "rules: deletion, non_fast_forward, creation, update, required_linear_history, copilot_code_review, code_quality, pull_request, required_status_checks"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/rules/branches/main
+        detail: "polybase/payy: rules: deletion, non_fast_forward, creation, update, required_linear_history, copilot_code_review, code_quality, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: polybase/payy
+          ok: true
+          detail: 2 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/contents/?ref=main
+        detail: "polybase/payy: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: polybase/payy
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/contents/?ref=main
+        detail: "polybase/payy: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: polybase/payy
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/contents/?ref=main
+        detail: "polybase/payy: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: polybase/payy
+          ok: false
+          detail: "latest tags: zk-circuits-v1.1.12, beam-v0.3.0, beam-v0.2.4"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/tags
+        detail: "polybase/payy: latest tags: zk-circuits-v1.1.12, beam-v0.3.0, beam-v0.2.4"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: polybase/payy
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/commits?per_page=10
+        detail: "polybase/payy: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: polybase/payy
+          ok: true
+          detail: 9 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/contents/?ref=main
+        detail: "polybase/payy: 9 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: polybase/payy
+          ok: true
+          detail: contribution section in README
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/polybase/payy/contents/?ref=main
+        detail: "polybase/payy: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement for Zeplo, Inc. (Payy) found in docs.payy.network (llms.txt index, card page, FAQ), payy.link, the Terms of Service or the Privacy Policy.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: No hosting or support organisation certification found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement of availability found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: attested
+    value: Payy says the important parts of its code have been audited; no report, auditor or date is published (CROPS S6 unknown).
+    evidence:
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://docs.payy.network/payy-wallet/payy-wallet-faq
+        detail: Payy Wallet FAQ, "Is Payy safe to use?".
+        checked_at: 2026-10-09
+        quote: code have been audited
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report or attestation found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: The Terms of Service and Privacy Policy contain no security or data-incident notification commitment; the policy promises notice only of material policy changes.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page or post-mortem found on payy.link or docs.payy.network.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: No login, username, email or password; the wallet key is generated and stored on the device, with optional cloud backup and a recovery phrase. There is no account-level MFA.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.payy.network/payy-wallet/payy-wallet-faq
+        detail: Payy Wallet FAQ, "Why is there no login, email or passwords in Payy?".
+        checked_at: 2026-10-09
+        quote: we do not have any login/username/email/password requirements in Payy
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Users can delete their account in the app; no retention period is stated, and Payy stores the network public key address but not the private key.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://payy.link/privacy
+        detail: Privacy Policy (last updated 6 May 2024), "How you can access or change your information".
+        checked_at: 2026-10-09
+        quote: You may delete your Payy account at any time.
+    refs:
+      - criterion: P2
+        index: 0
+    note: Card KYC data is collected for the card programme (CROPS P2); its retention by Rain or the issuer is governed by Rain's privacy policy, not read.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The Privacy Policy is issued by Zeplo, Inc. for Payy and refers card data to Rain's privacy policy; it does not name controller and processor roles or mention a DPIA.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://payy.link/privacy
+        detail: Privacy Policy opening paragraph.
+        checked_at: 2026-10-09
+        quote: Payy by Zeplo, Inc. is a software service
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: docs.payy.network publishes a privacy architecture (privacy layer, PrivacyBridge, privacy vault) for the Payy Network EVM L2, which the CROPS seed excluded as not live for the card. The live Ethereum rollup v1 and the card path (wallet, guild backend, Rain) have no architecture document.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.payy.network/privacy/privacy-architecture
+        detail: Privacy Architecture page with component diagram.
+        checked_at: 2026-10-09
+        quote: The Payy Privacy architecture is composed of the following components
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Zeplo, Inc. d/b/a Payy (registration number 6772334 stated on payy.link; office at 169 Madison Avenue, New York; terms performed in Delaware). The card is issued by Rain through issuing partners; Rain's issuing bank is not named.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
+        archive: data/archive/payy-card-terms.txt
+        detail: Terms of Service opening paragraph and section 14.1.
+        checked_at: 2026-10-09
+        quote: ZEPLO, INC. d/b/a PAYY
+      - tier: documented
+        kind: document
+        url: https://payy.link/privacy
+        detail: payy.link footer with company number and address.
+        checked_at: 2026-10-09
+        quote: Zeplo Inc. (6772334), 169 Madison Avenue
+    note: The Delaware register search is behind a CAPTCHA and was not used.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Payy may terminate access immediately and without notice for non-compliance "or for any reason"; card use can be restricted, suspended or terminated with immediate effect, with notice and reasons unless unlawful. No statement on funds on termination beyond user control of the wallet; withdrawals depend on Payy's prover (CROPS S4 = 0).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
+        archive: data/archive/payy-card-terms.txt
+        detail: Terms of Service section 16 and section 2.6.22.
+        checked_at: 2026-10-09
+        quote: will terminate immediately and automatically without notice from Payy
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: none
+      amount: No application, transaction, top-up or monthly fees
+      basis: Payy Card docs feature table; the Terms let Payy change fees at any time without notice.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: Visa rate plus 1% bank fee on non-USD purchases
+      basis: Payy Card docs usage notes (set bank fee to 1% in the Visa calculator).
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: No transaction fee for the USDC-to-fiat conversion, but a spread may be included
+      basis: Terms of Service section 2.6.18; the referenced Pricing and Fees Disclosures were not found.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.payy.network/payy-wallet/payy-card
+      detail: Payy Card docs, Features table and usage notes.
+      checked_at: 2026-10-09
+      quote: No transaction or top-up fees
+    - tier: documented
+      kind: document
+      url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
+      archive: data/archive/payy-card-terms.txt
+      detail: Terms of Service section 2.6.18 Fees and Charges.
+      checked_at: 2026-10-09
+      quote: Payy will not charge transaction  fees but may include a spread
+  note: The ATM fee (private beta) and any physical-card fee are not stated; the Light Up physical card is sold out.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: S4
+      index: 0
+  note: "Judgment call. Payy says it is non-custodial and the note keys sit on the user's device, but the S1 finding (score 0) shows funds at rest in an upgradeable rollup escrow whose owner Safe can overwrite the state root, and S4 (score 0) shows every withdrawal needs Payy's prover. Unlike Exa and MetaMask Card, the provider controls the funds at rest, not only a spend path, so provider_custodial; a reviewer may prefer hybrid."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: unknown
+  note: The Terms say cards are issued by Rain through issuing partners licensed in their jurisdictions; the card docs say only "U.S.-based" issuer. No issuer name, regulator or licence number is given in any first-party document, so no register could be checked. payy.link states Payy is not a regulated bank.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_withdrawal
+      partner: Rain and a U.S.-based issuer, Visa
+      fee: none from Payy; Visa rate plus 1% on non-USD
+      limits: Card spend at merchants (the schema has no card-spend value); spending limited to the wallet balance; some foreign online merchants reject U.S.-issued cards.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Rain and a U.S.-based issuer, Visa
+      fee: not stated
+      limits: Contactless ATM withdrawals in private beta, on request to support.
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.payy.network/payy-wallet/payy-card
+      detail: Payy Card docs, Features table (ATM access) and usage notes.
+      checked_at: 2026-10-09
+      quote: Contactless ATM withdrawals are supported
+  note: No bank withdrawal is documented; bank deposits are offered from the U.S. and Argentina only. Payy publishes no country list (no availability block), so ALL here means wherever the card is issued.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2026-02-17
+      block: 24475975
+      what: RollupV1 proxy 0x367C1eAF14AA06b78ce76bd0243297de79d85270 on Ethereum (current settlement escrow)
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/tx/0x8d002955fe594ded0ee57519c15a7c9dcf52e759be1fdd628eaf810dc2558abd
+        address: "0x367C1eAF14AA06b78ce76bd0243297de79d85270"
+        block_number: 24475975
+        detail: Creation tx 0x8d002955...8abd from 0x6B96F1A8D65eDe8AD688716078B3DD79f9BD7323 at block 24475975 (2026-02-17 10:32:35 UTC, Blockscout); eth_getCode returns 0x at block 24475974 and runtime code at 24475975 (read via eth.drpc.org, since publicnode refuses archive reads).
+        checked_at: 2026-10-09
+        recheck: cast codesize 0x367C1eAF14AA06b78ce76bd0243297de79d85270 --block 24475974 --rpc-url https://eth.drpc.org; cast codesize 0x367C1eAF14AA06b78ce76bd0243297de79d85270 --block 24475975 --rpc-url https://eth.drpc.org
+    note: Dates the Ethereum rollup only. Payy ran earlier on a Polygon rollup (0x4cbb5041..., now empty; the repo documents a Polygon to Ethereum mint migration), which was not dated.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Zeplo, Inc. (d/b/a Payy)
+      jurisdiction: US
+      registration_number: "6772334"
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
+        archive: data/archive/payy-card-terms.txt
+        detail: Terms of Service name Zeplo, Inc. d/b/a Payy as the contracting party.
+        checked_at: 2026-10-09
+        quote: ZEPLO, INC. d/b/a PAYY
+      - tier: documented
+        kind: document
+        url: https://payy.link/privacy
+        detail: payy.link footer gives "Zeplo Inc. (6772334)" and a New York office address.
+        checked_at: 2026-10-09
+        quote: Zeplo Inc. (6772334), 169 Madison Avenue
+    note: The number's register is not stated; it has the form of a Delaware file number and the Terms are performed in Delaware, but the Delaware search is CAPTCHA-protected, so the state is not recorded.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident disclosure found on payy.link, docs.payy.network or in polybase/payy (no SECURITY.md or post-mortem at 2f95947). The reverted addProver and mint calls of 30 Sep 2026 noted in the CROPS log changed no state and are not an incident.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2026-02-17
+        summary: RollupV1 deployed on Ethereum; the repo documents a mint migration from the Polygon rollup.
+        url: https://etherscan.io/tx/0x8d002955fe594ded0ee57519c15a7c9dcf52e759be1fdd628eaf810dc2558abd
+      - date: 2026-03-25
+        summary: MIT LICENSE removed from polybase/payy (commit c4d2c902); RollupV1.sol is UNLICENSED.
+        url: https://github.com/polybase/payy/commit/c4d2c9021b8fb9988816eb6987a734b830bfce15
+    refs:
+      - criterion: F2
+        index: 0
+    note: The Polygon to Ethereum migration date is taken from the Ethereum deployment; the repo README gives no date.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_observable
+  reason: Card debits are private UTXO note transfers inside the Payy rollup; the L1 contract sees only state roots and proofs, so card spends cannot be separated from other transfers or valued from chain data. Payy's funding of Rain happens off this contract.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

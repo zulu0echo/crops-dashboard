@@ -1,0 +1,496 @@
+slug: coca-card
+facts:
+  B1.1:
+    status: attested
+    value: COCA's docs say the cards are "PCI DSS and ISO compliant" without naming the ISO standard, the certified entity, the certifier or a certificate. Whether this refers to COCA, its unnamed card programme provider or the issuer is not stated.
+    evidence:
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://docs.coca.xyz/coca/banking-account/overview
+        archive: data/archive/coca-card-ops-docs-overview.txt
+        detail: Banking account overview, Top-Tier Security section.
+        checked_at: 2026-10-09
+        quote: COCA cards are PCI DSS and ISO compliant
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE statement for CCA Labs FZCO. COCA's docs and the COCA 3.0 post relay that its wallet-infrastructure vendor Privy is SOC 2 Type I and Type II certified; that covers Privy, not COCA, and was not checked.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No independent review of COCA's app, backend or card spending contract found. The docs cite Privy's audits (Cure53, Zellic, Doyensec) and Morpho's audits, which cover those vendors.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No customer incident-notification commitment found in the Wallet Terms, Privacy Notice or docs.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: The Privacy Notice lists business continuity and disaster recovery among processing purposes; no recovery plan is published.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No public status page found (coca.xyz pages and docs read; status subdomains not probed beyond those in the provider file's notes, which did not respond).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Login is through Privy with email, social login or device-based authentication (no seed phrase); 3D Secure is available for card payments and the card can be frozen in the app. No mandatory second factor is described.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.coca.xyz/coca/the-bank-we-all-deserve/is-coca-safe
+        archive: data/archive/coca-card-ops-docs-is-coca-safe.txt
+        detail: Is COCA safe? page, Privy key management.
+        checked_at: 2026-10-09
+        quote: email, social login, or device-based authentication
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: unknown
+    note: The Privacy Notice (dated 4 November 2023) names network and information security as a purpose but states no encryption, TLS or classification measures.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Customer account records normally kept up to six years after the relationship ends; data of never-activated accounts may be deleted after 6 months; with transaction activity, data is kept until the user requests deletion, subject to legal duties. Erasure can be requested. See CROPS P2 for what is collected.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/privacy
+        archive: data/archive/coca-card-ops-privacy.txt
+        detail: Privacy, Data Use and Retention Notice (dated 4 November 2023), retention section.
+        checked_at: 2026-10-09
+        quote: We normally keep customer account records for up to six years after your relationship with Coca ends
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: CCA Labs FZCO states it is data controller for personal information processed in its business. International transfers rely on authority approval or contracts based on European Commission model clauses. No DPIA statement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/privacy
+        archive: data/archive/coca-card-ops-privacy.txt
+        detail: Privacy Notice opening paragraph.
+        checked_at: 2026-10-09
+        quote: Coca is a data controller in respect of personal information
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: unknown
+    note: Docs describe an EIP-7702 smart wallet that approves each card authorization, Privy key management and Morpho/Gauntlet yield, but name no chain, address, card provider or issuer; no architecture document.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: CCA Labs FZCO, registered in Dubai Silicon Oasis (UAE), registration number DSO-FZCO-31557, under the COCA Wallet Terms. The card is described as a third-party extension; no card issuer or programme manager is named in any COCA document.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/terms
+        archive: data/archive/coca-card-ops-terms.txt
+        detail: COCA Wallet Terms (dated 4 November 2023), opening paragraph.
+        checked_at: 2026-10-09
+        quote: registration number DSO-FZCO-31557
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: COCA says rewards are funded by card and payment revenue, merchant-funded offers and DeFi yield (Morpho vaults curated by Gauntlet); loyalty tiers require staking the COCA token. Plastic-card and ATM fees apply (see fees). No financial statements found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.coca.xyz/coca/the-bank-we-all-deserve/why-are-rewards-so-high
+        archive: data/archive/coca-card-ops-docs-rewards.txt
+        detail: Why are rewards so high? page.
+        checked_at: 2026-10-09
+        quote: They allocate a marketing budget to offer rewards
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: "COCA may terminate, suspend or limit any user's use at any time without liability; if it withdraws the wallet altogether it will endeavour to give two months' notice; no refund of fees. The user can close the account. COCA says funds stay in the user's self-custodial wallet and private keys can be exported (since August 2026), so balances do not depend on COCA on termination; this is a provider claim not verified in the CROPS file (S1 unknown)."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/terms
+        archive: data/archive/coca-card-ops-terms.txt
+        detail: COCA Wallet Terms, clauses 6 and 7.
+        checked_at: 2026-10-09
+        quote: we may at any time and without liability, terminate, suspend or limit your use or any functionality of the Coca Wallet
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/post/coca-monthly-update-august-2026
+        archive: data/archive/coca-card-ops-update-aug-2026.txt
+        detail: COCA Monthly Update August 2026, private key export.
+        checked_at: 2026-10-09
+        quote: You can now export your private keys for both the Crypto Wallet and Banking sections
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Yes. The Privacy Notice says application decisions may be taken solely on automated checks (fraud prevention and identity data) for anti-money-laundering and fraud purposes. An AI support chat is on the 2026 roadmap (not in the payment path).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/privacy
+        archive: data/archive/coca-card-ops-privacy.txt
+        detail: Privacy Notice, automated decision-making.
+        checked_at: 2026-10-09
+        quote: Application decisions may be taken based solely on automated checks
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: Only a rights statement is published (users have rights in relation to automated decision-making in verification); no monitoring, validation, decommissioning or bias documentation.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/privacy
+        archive: data/archive/coca-card-ops-privacy.txt
+        detail: Privacy Notice, automated decision-making.
+        checked_at: 2026-10-09
+        quote: You have rights in relation to the automated decision-making used in the verification process
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: payer
+      amount: Virtual card free; plastic card 5 USD (Starter to Standard+), free for Premium and above; no annual fee
+      basis: COCA Card docs page and banking overview.
+      evidence_index: 0
+    - kind: fx
+      paid_by: none
+      amount: Zero FX fees on direct pairs; other pairs not stated
+      basis: Banking overview.
+      evidence_index: 1
+    - kind: cashout
+      paid_by: payer
+      amount: ATM free up to 250 USD per month, then 2% (card page); the overview says free up to 200 USD
+      basis: COCA Card docs page and banking overview disagree on the free allowance.
+      evidence_index: 0
+    - kind: limit
+      paid_by: none
+      amount: Purchases 30,000 EUR per transaction, day and month; ATM 850 EUR per day, 5,000 EUR per month, 5 per day
+      basis: COCA Card docs page.
+      evidence_index: 2
+    - kind: provider
+      paid_by: none
+      amount: Crypto purchases and swaps advertised with "zero COCA fees"; third-party fees may apply
+      basis: Crypto account docs; the Wallet Terms say third-party fees (card usage, DeFi, staking) are not charged by COCA.
+      evidence_index: 3
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.coca.xyz/coca/banking-account/coca-card
+      archive: data/archive/coca-card-ops-docs-card.txt
+      detail: COCA Card page, card fee note and ATM table.
+      checked_at: 2026-10-09
+      quote: Plastic card is 5$ for Starter, Standard & Standard+
+    - tier: documented
+      kind: document
+      url: https://docs.coca.xyz/coca/banking-account/overview
+      archive: data/archive/coca-card-ops-docs-overview.txt
+      detail: Banking account overview, Fees.
+      checked_at: 2026-10-09
+      quote: Zero ATM Withdrawals Fees Globally Up to $200
+    - tier: documented
+      kind: document
+      url: https://docs.coca.xyz/coca/banking-account/coca-card
+      archive: data/archive/coca-card-ops-docs-card.txt
+      detail: COCA Card page, purchase and ATM limits.
+      checked_at: 2026-10-09
+      quote: Max cash withdrawal amount per day 850 EUR
+    - tier: documented
+      kind: document
+      url: https://docs.coca.xyz/coca/crypto-account/exchange-assets
+      archive: data/archive/coca-card-ops-docs-exchange.txt
+      detail: Exchange assets page.
+      checked_at: 2026-10-09
+      quote: Swap assets with Zero COCA Fees
+  note: Card top-up and IBAN transfer fees, the FX rate source, network fees for stablecoin top-ups and any card-to-card transfer fee (shown in-app per the September 2026 update) are not published. Cashback and APY are rewards, not fees, and are not recorded.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: unknown
+  note: S1 is unknown in the provider file. COCA describes a self-custodial EIP-7702 smart wallet with Privy keys that approves each card authorization, and since COCA 3.0 (April 2026) claims it cannot access, freeze or move funds; no chain, contract or address is published, so the claim cannot be checked.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: unknown
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.coca.xyz/post/q-a-recap-everything-you-asked-about-coca-3-0-and-more-answered
+      archive: data/archive/coca-card-ops-qa-recap.txt
+      detail: COCA 3.0 Q&A recap; on DAC8, COCA describes itself as a software provider.
+      checked_at: 2026-10-09
+      quote: current role as a Software Provider
+    - tier: documented
+      kind: document
+      url: https://www.coca.xyz/terms
+      archive: data/archive/coca-card-ops-terms.txt
+      detail: The Wallet Terms describe card use as an extension provided by third-party service providers, unnamed.
+      checked_at: 2026-10-09
+      quote: as an extension provided by third party services providers
+  note: No licence found for any party. COCA names no issuer, programme manager, IBAN provider or regulator, and calls itself a software provider. CCA Labs FZCO holds no licence stated in any COCA document. The Android app id (com.wirex.wallet) and third-party reports point at Wirex as former card infrastructure provider, but no COCA document confirms the current issuer, so no partner licence is recorded.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_spend
+      partner: Unnamed card programme provider and issuer, Visa
+      fee: No COCA fee stated for purchases; zero FX on direct pairs
+      limits: 30,000 EUR per transaction, day and month; residents of the 54 supported countries.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Unnamed issuer, Visa ATMs
+      fee: Free up to 250 USD a month, then 2% (overview says 200 USD)
+      limits: 850 EUR per day, 5,000 EUR per month, 5 withdrawals per day.
+      evidence_index: 0
+    - countries: [AT, BE, BG, CZ, DK, EE, FI, FR, DE, GR, HU, IS, IE, IT, LV, LT, LU, MT, NL, NO, PL, PT, RO, SK, SI, ES, SE, GB]
+      method: bank_transfer
+      partner: Unnamed IBAN provider (SEPA, EUR)
+      fee: Not published
+      limits: Personal EUR IBAN since COCA 3.0 (April 2026); USD and ACH announced, not confirmed live.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.coca.xyz/coca/banking-account/coca-card
+      archive: data/archive/coca-card-ops-docs-card.txt
+      detail: COCA Card page, purchase and ATM limits and fees.
+      checked_at: 2026-10-09
+      quote: Max purchase amount per transaction 30,000 EUR
+    - tier: documented
+      kind: document
+      url: https://www.coca.xyz/post/q-a-recap-everything-you-asked-about-coca-3-0-and-more-answered
+      archive: data/archive/coca-card-ops-qa-recap.txt
+      detail: COCA 3.0 Q&A recap listing the countries whose residents can get an IBAN.
+      checked_at: 2026-10-09
+      quote: Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK
+  note: ALL means every country on the card availability list in the provider file. The IBAN list omits Croatia and Cyprus, which are on the card list. Sending from COCA to other bank accounts is described in the COCA 3.0 post.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2023-11-04
+      what: COCA Wallet Terms dated 4 November 2023 already define Card Usage; earliest dated primary source for the card. No launch announcement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/terms
+        archive: data/archive/coca-card-ops-terms.txt
+        detail: COCA Wallet Terms header and clause 2(j) Card Usage.
+        checked_at: 2026-10-09
+        quote: "Dated: 4 November 2023"
+    note: The card has run on rebuilt infrastructure since COCA 3.0 (20 April 2026), which COCA presents as its move to full self-custody.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: CCA Labs FZCO
+      jurisdiction: AE-DU
+      registration_number: DSO-FZCO-31557
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/terms
+        archive: data/archive/coca-card-ops-terms.txt
+        detail: COCA Wallet Terms opening paragraph (registered address Dubai Silicon Oasis, DDP, Building A1).
+        checked_at: 2026-10-09
+        quote: registration number DSO-FZCO-31557
+    note: Not checked in the Dubai Integrated Economic Zones register (no public search found), so no register_url.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident report found. Searched coca.xyz/news and the blog feed (monthly updates March to September 2026, COCA 3.0 post and Q&A recap) and docs.coca.xyz. No status page found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2023-11-04
+        summary: COCA Wallet Terms and Privacy Notice dated (CCA Labs FZCO; card as third-party extension).
+        url: https://www.coca.xyz/terms
+      - date: 2026-04-20
+        summary: COCA 3.0 released; COCA says the infrastructure was rebuilt for full self-custody and personal EUR IBANs went live.
+        url: https://www.coca.xyz/post/coca-3-0-full-banking-you-control
+      - date: 2026-09-01
+        summary: Updated Loyalty Program (claimable rewards, monthly claim capacity, no cashback cap).
+        url: https://www.coca.xyz/post/coca-monthly-update-september-2026
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/post/coca-3-0-full-banking-you-control
+        archive: data/archive/coca-card-ops-coca-3-0.txt
+        detail: COCA 3.0 announcement, 20 April 2026 (updated 23 April).
+        checked_at: 2026-10-09
+        quote: EUR bank accounts are now live
+      - tier: documented
+        kind: document
+        url: https://www.coca.xyz/post/coca-monthly-update-september-2026
+        archive: data/archive/coca-card-ops-update-sep-2026.txt
+        detail: COCA Monthly Update September 2026.
+        checked_at: 2026-10-09
+        quote: On September 1, we launched the updated COCA Loyalty Program
+    note: Private key export for the Banking section arrived in August 2026 (monthly update, archived).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: No listed contracts; the card spending contract, chain and settlement addresses are not published. COCA says it is listed on Paymentscan, a third-party card tracker; provider-reported or third-party figures are not stored.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

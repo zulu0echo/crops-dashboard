@@ -1,0 +1,17 @@
+Source: https://help.ether.fi/en/articles/833743-why-is-there-a-10-fee-for-my-first-virtual-cash-card
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+ Updated over 2 weeks ago
+Table of contents
+Why a $10 fee may apply
+Core members normally receive one free virtual Cash card. In some regions, regional pricing means the first virtual Cash card has a $10 fee instead.
+Regions where the $10 first-virtual-card fee applies
+Argentina, Angola, Bangladesh, Bolivia, Colombia, Ecuador, Indonesia, Malaysia, Mexico, Nigeria, Peru, Philippines, South Africa, and Thailand.
+What to expect
+The applicable fee is shown in the app before you order your card. This regional fee does not change whether ether.fi Cash is available in your region.
+Related Articles
+What are the benefits of a personal Cash credit card?
+Managing your card and vault limits
+How to delete a Cash card
+How to Get eSIM Discounts with Your Cash Card
+In which countries is the Cash card available?

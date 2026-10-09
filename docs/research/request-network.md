@@ -70,3 +70,21 @@ Base (8453) is in the `scripts/recheck.mjs` RPC map, so no new RPC entry is need
 - The docs' KYT pages (`use-cases/compliance-gated-payments.mdx` and `use-cases/hypernative-standard-screening-policy.mdx`) screen wallet addresses and are opt-in per destination. They are not a country list.
 - easy-invoice `src/lib/constants/compliance.ts` (@42ad4d0e) lists 40 countries for the template's crypto-to-fiat compliance form. It is recorded in `note` as an optional off-ramp variant.
 - Judgment call: we keep the unit used for scoring, the open protocol path, so the model is `global`. The closed API is optional and has no published country list.
+
+## Operational 2026-10-09
+
+Facts are in `data/operational/request-network.yaml`. The B2.1, B2.3, B8.2 and B9.x facts come from the repo-facts bot and were left as they were.
+
+- **Fees.** There are two regimes. The pricing page (request.network/pricing/) gives the hosted API path: 0.9% capped at $500, gas included on EVM chains, $3.99 per payment on Tron. On the open path ERC20FeeProxy takes no fee: feeAmount and feeAddress are call parameters. Network sample: tx 0x2580…3d4e on Base (217,904 gas at 0.0116 gwei). That call also ran an Across fill, so a direct proxy call costs less. The Gnosis storage fee, read live, is `getFeesAmount(1000)` = 0.0999 xDAI at block 48666105.
+- **Custody.** `self_custody`, consistent with S1 (refs S1 0-2).
+- **Licences.** Recorded as `absent`. Sources read: legal notice, API terms, privacy policy, the UID register, and a finma.ch site search (no authorisation found). Not checked: FINMA's authorised-institutions application, SRO member lists, and the Request Tech off-ramp's licences.
+- **Cash-out.** `not_applicable` (burden on the institution). The hosted Request Tech off-ramp is noted, but no first-party fee, limit or country terms were found for it.
+- **First deployment.** ERC20FeeProxy at Base block 10827274, 2024-02-20. Source: Sourcify creation data plus the block timestamp.
+- **Entity.** Request Network Stiftung, CHE-422.666.391. The UID register entry is archived at `data/archive/request-network-ops-uid-register.txt`. The register address (Gartenstrasse 5, c/o Coin Finance AG) differs from the one on the legal notice (Baarerstrasse 82).
+- **Incidents.** None found. The monorepo's GitHub security advisories list is empty.
+- **Changes.** API terms updated 2025-12-22. Orchestrator fee layer and Merkle Science KYT added on 2026-07-01 (docs commit 9152cc23).
+- **Volume spec.** TransferWithReferenceAndFee (topic0 0x9f16…a2b6) on ERC20FeeProxy and Erc20ConversionProxy (which delegatecalls the fee proxy), token word 0, amount word 2, 30 days. Checked against the log of tx 0x2580…3d4e.
+- **Group B recorded:** B2.2 (not_applicable, see below), B3.4, B5.1, B5.2, B6.1, B6.3, B6.4, B10.1, B11.1, B11.2, B11.3, B12.1, B12.2.
+- **Judgment calls:**
+  - The rail is operator-free, so the validator does not allow `absent` on operator controls. B2.2 is therefore `not_applicable` (burden on the institution), with the docs' "6 months of security fixes for the previous API version" quoted.
+  - B12.1 records the optional Hypernative/Merkle Science wallet screening as automated screening. The docs describe it as rules and thresholds, not a learned model.

@@ -27,3 +27,18 @@
 - S4 0: withdrawal is a request to Solayer with notice.
 - C5 1: tokens and chains are in docs only, and the two documents disagree on the chain.
 - Unknown: O1, O3, O4, F2, P1 (no Solayer privacy policy), P3, P5, S2, S3, S5, S6.
+
+## Availability 2026-10-09
+
+- Source: Solayer docs, Eligibility (https://docs.solayer.org/solayer-pay/eligibility), "Restricted U.S. States" and "Restricted Countries and Territories (Global)". Cross-checked against the international card terms (not for US citizens) and the US card terms (no country or state list).
+- Model `blocklist`, 95 ISO codes from the 96 listed entries.
+- Judgment calls: (1) "Darfur" is a region of Sudan and is covered by SD (said in `note`). (2) "Eritea" is read as Eritrea (ER), "Palestinian Territory" as PS, "Democratic Republic of Congo" as CD. (3) Slovenia is the only EU member not listed, so no `EU` shorthand is used. (4) The 17 restricted US states go in `note`; the US itself is not blocked. (5) The page restricts citizens as well as residents; the per-country field cannot express that, so it is in `note`.
+
+## Operational 2026-10-09
+
+File: `data/operational/solayer-card.yaml`. Assessed by the AI research agent (operational); every fact pending review.
+
+- Sources read: docs.solayer.org Solayer Pay pages (overview, fee structure, physical card, security, FAQ, top-up), audits page, legal pages (international and US card terms, opening-account GLBA notice; legal/privacy.md 404), solayer.org/terms, solayer.org/privacy (404), solayer.org/resources/blog, status.solayer.org, the solayer_docs commit history (GitHub API), FDIC BankFind exact-name search for "Third National" (no match; archived as `data/archive/solayer-card-ops-fdic-third-national-search.txt`).
+- Group A: fees evidenced (20 USD a year; top-up 1%; 0.15 USD per USD transaction; 0.10 USD + 1.5% non-USD plus up to 3% cross-border; ATM fees unstated, 250 USD per withdrawal; physical card shipping; penalty fees); custody `provider_custodial` (refs S1 0); licences unknown (no licence for anyone; Third National absent from FDIC); cash-out card spend and ATM; first deployment 2025-04-11 (card terms effective; no launch post); entity unknown (Solayer Labs, Inc. named, jurisdiction not stated, notice address a placeholder); incidents unknown; volume not_verifiable.
+- Group B recorded: B1.4 (audits cover restaking/sUSD/token programs, not the card), B3.4 (status page without a card component), B6.1 (issuer GLBA notice only), B10.1 (hot/cold wallet description), B11.1-B11.3 evidenced; B6.3 absent (card terms cite a Solayer Privacy Policy that is not published); the rest unknown.
+- Judgment calls: Solayer's own pages disagree on fees (top-up 1% / 0.5% / 0.10 USD; international 1.5% / 1.75%); the dedicated fee page is listed first and the others named. First deployment uses the card terms' effective date as the earliest dated primary source. Entity left unknown rather than inferring "US" from New York governing law. Rain is not named in any Solayer document, though the terms follow Rain's template.

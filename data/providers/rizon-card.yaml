@@ -293,6 +293,7 @@ availability:
       url: https://www.getrizon.com/terms-of-service
       detail: The Terms of Service name the jurisdictions where accounts may not be opened or operated, subject to update by Rain.
       quote: "Afghanistan, Albania, Belarus, Bosnia, Central African Republic, Congo, Croatia, Cuba, Cyprus"
+      archive: data/archive/rizon-card-terms-jurisdictions.txt
       checked_at: "2026-10-09"
     - tier: documented
       kind: document

@@ -264,3 +264,20 @@ body:has(#t-incumbent:checked) .overview tbody:not([data-type="incumbent"]) { di
 .clist.countries a { font: 500 1rem/1.3 var(--sans); }
 .phead p, .lede, .callout, .context p { overflow-wrap: anywhere; }
 .overview .avail { min-width: 260px; max-width: 360px; }
+
+/* Operational layer */
+.state { display: inline-block; font: 600 11px/1 var(--sans); letter-spacing: 0.03em; text-transform: uppercase; padding: 4px 7px; border-radius: 3px; border: 1px solid; white-space: nowrap; }
+.st-evidenced { background: var(--s3); color: var(--s3-ink); border-color: var(--s3-edge); }
+.st-attested { background: var(--s1); color: var(--s1-ink); border-color: var(--s1-edge); }
+.st-absent { background: var(--s0); color: var(--s0-ink); border-color: var(--s0-edge); }
+.st-not_applicable, .st-not_observable, .st-not_verifiable { background: var(--surface-2); color: var(--ink-2); border-color: var(--line-strong); }
+.st-unknown { background: repeating-linear-gradient(135deg, var(--unk) 0 5px, #fff 5px 10px); color: var(--unk-ink); border: 1px dashed var(--unk-edge); }
+.operational { margin-top: 64px; border-top: 4px double var(--line-strong); padding-top: 8px; }
+.ops-head { border-bottom-color: var(--accent); }
+.ops-sub { margin: 32px 0 8px; font-size: 1.15rem; }
+.overview.ops .rowhead { min-width: 260px; max-width: 360px; font-weight: 400; }
+.overview.ops td:nth-child(2) { white-space: nowrap; }
+.footer-note { font-size: 12px; }
+.overview td.dd { white-space: nowrap; }
+.overview td.dd a { text-decoration: none; color: var(--ink-2); line-height: 1.5; }
+.crit-body .table-scroll table.plain { min-width: 480px; }

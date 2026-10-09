@@ -11,8 +11,10 @@
     "validate:offline": "node scripts/validate.mjs --offline",
     "build": "node scripts/build.mjs",
     "recheck": "node scripts/recheck.mjs",
-    "test": "node scripts/rollup.mjs --self-check && node scripts/validate.mjs --self-check && node scripts/recheck.mjs --self-check",
-    "review-list": "node scripts/review-list.mjs"
+    "test": "node scripts/rollup.mjs --self-check && node scripts/validate.mjs --self-check && node scripts/recheck.mjs --self-check && node scripts/repo-facts.mjs --self-check && node scripts/volumes.mjs --self-check",
+    "review-list": "node scripts/review-list.mjs",
+    "repo-facts": "node scripts/repo-facts.mjs",
+    "volumes": "node scripts/volumes.mjs"
   },
   "dependencies": {
     "@noble/hashes": "2.4.0",

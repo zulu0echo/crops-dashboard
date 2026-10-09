@@ -1,0 +1,8 @@
+FINMA, Authorised institutions, individuals and products (https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/)
+The page is client-rendered; its search calls POST https://www.finma.ch/en/api/search/getresult with form data
+query=Saphirstein&Order=4&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}
+Response retrieved with curl on 2026-10-09 by the AI research agent (operational), reproduced verbatim:
+
+{"Items":[{"Location":"Zürich ","Title":"SR Saphirstein AG ","Description":"&nbsp; ","Category":"Licensed persons pursuant to Article 1b BA (FinTech licence)","Timestamp":0}],"Groups":[{"group":"Licensed persons pursuant to Article 1b BA (FinTech licence)","totalCount":1,"page":0,"numPages":0,"groupitems":[{"Location":"Zürich ","Title":"SR Saphirstein AG ","Description":"&nbsp; ","Category":"Licensed persons pursuant to Article 1b BA (FinTech licence)","Timestamp":0}]}],"Searchstring":"Saphirstein","Count":1}
+
+Summary: one result, SR Saphirstein AG, Zürich, category "Licensed persons pursuant to Article 1b BA (FinTech licence)".

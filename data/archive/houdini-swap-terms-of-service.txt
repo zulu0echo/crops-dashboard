@@ -1,0 +1,761 @@
+Source: https://cdn.prod.website-files.com/69143df941a2491956546ef7/6a579a7d3db98c279dc6020b_Houdini%20Swap%20-%20Terms%20of%20Service-14673161-v6.pdf (linked from https://docs.houdiniswap.com/products/swap-transfer/terms-of-service, which redirects to the same PDF)
+Retrieved: 2026-10-09 with curl; text extracted from the PDF (19 pages, 'Last updated: July 14, 2026') with macOS PDFKit. Page footers kept as extracted.
+
+Terms of Service Agreement
+Last updated: July 14, 2026
+Welcome to Houdini Swap. Please read this Terms of Service Agreement (the
+“Agreement”) carefully. By accessing, browsing, or using the website
+www.houdiniswap.com or its contents (the “Website”), any other websites, subdomains,
+or applications (owned or not) owned or operated by us and to which these Terms of
+Service are posted (collectively, the “Sites”), or by using our non-custodial frontend
+interface, API integrations, or transactional functionalities (collectively, the “Apps” and
+together with the Sites and the Website, the “Services”), you acknowledge that you have
+read, understood, and agree to be legally bound to the terms of this Agreement in its
+entirety.
+Use of the words “we”, “us” or “our” herein refers to Houdini Swap LLC. “You”, “your”
+and “user” refers to any individual who accesses the Services. If you access the Services
+on behalf of a company or other legal entity, you represent and warrant that you have the
+authority to bind that entity to this Agreement and, in that case, “you”, “your” or “user” will
+refer to that entity.
+Please read this Agreement carefully before you start to use the Services. By using the
+Services or by clicking to accept or agree to this Agreement when this option is made
+available to you, you accept and agree to be bound and abide by this Agreement,
+including our Privacy Policy, which is incorporated herein by this reference and explains
+our personal data handling practices. If you do not want to agree to the terms of this
+Agreement (or our Privacy Policy) or any part thereof, you must not access or use the
+Services.
+Feel free to print and keep a copy but please understand that we reserve the right to
+change any of the terms and conditions herein at any time in our discretion, and may or
+may not provide you notice of such changes. The latest version of this Agreement, with
+its date of update, can be always found on this page. You agree and understand that by
+accessing or using the Services following any change to this Agreement your access or
+use of the Services shall constitute your agreement to the amended Agreement, and you
+agree to be legally bound by its terms and conditions as amended. You should, therefore,
+read this Agreement from time to time. In the event that you do not agree with any such
+amended terms and conditions, your sole and exclusive remedy is to cease your use of
+the Services.
+In the circumstance where any of the Services are subject to additional terms or
+agreements to this Agreement, in the event of conflict, the provisions of the additional
+terms or agreements shall prevail.
+IF ANY TERM OR CONDITION OF THIS AGREEMENT IS UNACCEPTABLE TO YOU,
+YOU SHOULD NOT ACCESS OR USE THE SERVICES.
+THE SERVICES WERE NOT DEVELOPED FOR, AND ARE NOT OFFERED TO
+POLITICALLY EXPOSED PERSONS (“PEPs”), OR PERSONS OR ENTITIES WHO
+#14673161v6\031305\0002
+RESIDE IN, ARE CITIZENS OF, ARE LOCATED IN, ARE INCORPORATED IN, OR
+HAVE A REGISTERED OFFICE OR PRINCIPAL PLACE OF BUSINESS IN THE
+UNITED STATES OF AMERICA (INCLUDING ITS TERRITORIES AND
+POSSESSIONS), ANY RESTRICTED JURISDICTION OR COUNTRY SUBJECT TO
+ANY SANCTIONS OR RESTRICTIONS PURSUANT TO ANY APPLICABLE LAW, OR
+ANY OTHER COUNTRY TO WHICH THE UNITED STATES, THE UNITED KINGDOM,
+CANADA, THE EUROPEAN UNION OR ANY OTHER JURISDICTION EMBARGOES
+GOODS OR IMPOSES SIMILAR SANCTIONS (COLLECTIVELY, THE “RESTRICTED
+JURISDICTIONS” AND EACH A “RESTRICTED JURISDICTION”), OR ANY PERSON
+OWNED, CONTROLLED, LOCATED IN OR ORGANIZED UNDER THE LAWS OF ANY
+RESTRICTED JURISDICTION OR AFFILIATED WITH ANY SUCH PERSON, ANY
+PERSON LISTED ON ANY SANCTIONS LIST MAINTAINED BY THE UNITED STATES,
+THE UNITED KINGDOM, CANADA, THE EUROPEAN UNION OR ANY OTHER
+JURISDICTION (COLLECTIVELY, “RESTRICTED PERSONS”). THERE ARE NO
+EXCEPTIONS. IF YOU ARE A RESTRICTED PERSON OR LOCATED IN A
+RESTRICTED JURISDICTION, THEN DO NOT USE OR ATTEMPT TO USE THE
+SERVICES. USE OF ANY TECHNOLOGY OR MECHANISM, SUCH AS A VIRTUAL
+PRIVATE NETWORK, TO CIRCUMVENT OR ATTEMPT TO CIRCUMVENT THE
+RESTRICTIONS SET FORTH HEREIN IS STRICTLY PROHIBITED.
+BY USING THE SERVICES, YOU REPRESENT THAT (A) YOU ARE NOT A
+RESTRICTED PERSON; AND (B) YOU (INCLUDING, IF APPLICABLE, YOUR
+INDIVIDUAL OWNERS, REPRESENTATIVES, EMPLOYEES, OR ANY OTHER
+PERSON WITH ACCESS TO YOUR ACCOUNT) WILL NOT COORDINATE, CONDUCT
+OR CONTROL (INCLUDING BY, IN SUBSTANCE OR EFFECT, MAKING DECISIONS
+WITH RESPECT TO) YOUR USE OF THE SERVICES FROM WITHIN ANY
+RESTRICTED JURISDICTION.
+NEITHER WE NOR OUR SERVICE PROVIDERS ARE RESPONSIBLE FOR ANY
+ACTIVITIES THAT YOU ENGAGE IN WHEN USING ANY ONLINE SERVICES OR
+BLOCKCHAIN TECHNOLOGIES NOT PROVIDED BY US.
+By using the Services, you represent and warrant that you are a valid legal person or
+entity, and if an entity, you are in good standing in your jurisdiction of
+organization/formation, or if an individual, of legal age to form a binding contract with us,
+and that you otherwise meet all of the foregoing eligibility requirements and will comply
+with the terms of this Agreement. You further represent and warrant that you are not
+engaged in the direct or indirect proceeds of any criminal, fraudulent or otherwise or illicit
+activity, you are not a PEP, Restricted Person or acting on their behalf or that of someone
+in a Restricted Jurisdiction, your access, or attempt to access the Services will not use
+any technology for the purposes of circumventing any restrictions set forth in this
+Agreement, and you agree to be legally bound by the terms and conditions of this
+Agreement in their entirety. If you do not meet all of these requirements, you must not
+access or use any of the Services.
+#14673161v6\031305\0002
+2
+Accessing the Services
+We reserve the right to withdraw or amend the Services, and any service or material we
+provide on the Services, in our sole discretion and without notice. We will not be liable if
+for any reason all or any part of the Services are unavailable at any time or for any period.
+From time to time, we may also restrict access to some parts of the Services, or the entire
+Services, by any user in our discretion.
+You are responsible for:
+• Making all arrangements necessary for you to have access to the Services.
+• Ensuring that all persons who access the Services on your behalf are aware
+of this Agreement and comply with it.
+To access the Services you may be required to connect a digital wallet or create login
+credentials. You agree to notify us immediately of any unauthorized access to or use of
+your digital wallet, login credentials or other means you use to access the Services, or
+any other breach of security. You should use caution when accessing your account from
+a public or shared computer so that others are not able to view or record your seed
+phrase, keys, password or other sensitive information, as applicable.
+We have the right to disable any username, password, digital wallet, or other identifier,
+whether chosen by you or provided by us, at any time in our sole discretion for any or no
+reason, including if, in our opinion, you have violated any provision of this Agreement.
+You understand and agree that your content may be transferred unencrypted and may
+involve (a) transmissions over various networks; and (b) posting of your Transactions on
+Blockchains, which are available for the public to see.
+Transactions
+The App is a web-based, non-custodial front-end aggregator platform bringing together
+access to third party networks/platforms through a single user interface. We do not
+operate a digital-asset exchange, we do not clear or settle transactions, and we do not
+custody any assets. You acknowledge that when you engage in transactions using the
+App, you are interacting with a third party blockchain (i.e., a distributed ledger with
+growing lists of records, known as blocks, that are linked together via cryptographic
+hashes, referred to herein as a “Blockchain”) networks or protocols operated by third
+parties, and that your activity on such networks or protocols is done in your sole discretion.
+Transactions you engage in on such third party networks or protocols, including a “swap”,
+“send” or “cross-chain swap,” (each such transaction you engage in will be referred to
+herein as a “Transaction”), requires the use of cryptocurrency, digital tokens or other
+digital assets (collectively, “Digital Assets”). In order for a Transaction to complete it
+must be confirmed and recorded on its associated Blockchain. Blockchains are
+decentralized, peer-to-peer networks supported by independent third parties, which we
+do not own, control, or operate. By accessing the Services, you acknowledge and agree
+#14673161v6\031305\0002
+3
+that any Transaction may not be completed, or may be substantially delayed, which can
+carry substantial risks, which you hereby accept.
+The Services do not store, transfer, transmit, convert, broker, hold, escrow, mint, mine,
+or otherwise interact with any Digital Assets, security, financial instruments, or other
+digital or physical assets. The performance of all Transactions occurs on third-party
+platforms and are subject to their associated third-party terms, which by engaging in such
+Transactions, you also accept and agree to comply with.
+You also acknowledge that once a Transaction posts to a Blockchain, it is immutable and
+cannot be undone or modified. If an issue arises due to network failure, smart contract
+bugs, protocol-level exploits, or due to other reasons, we have no ability to intervene,
+reverse, or resolve the issue. You assume all risks related to your Transactions, including
+those arising from incorrect inputs, network/protocol errors, and third party failures.
+You are responsible for all fees associated with interacting with any Blockchain network,
+including validation fees (commonly referred to as “gas” fees), as well as any other fees
+the third party network or protocol may impose. Such fees are determined by the
+applicable network or third-party providers, may fluctuate significantly, and are outside of
+our control. Any fee information provided through the Services is for informational
+purposes only and may not reflect the actual fees required to complete a Transaction.
+WE DO NOT GUARANTEE THAT ANY TRANSACTION WILL BE PROCESSED OR
+CONFIRMED, OR THAT ANY INFORMATION YOU OBTAIN PRIOR TO INITIATING A
+TRANSACTION, INCLUDING ASSOCIATED FEE INFORMATION WILL BE
+ACCURATE. WE CANNOT EFFECTUATE OR AFFECT THE TRANSFER OF TITLE
+OR RIGHT IN ANY DIGITAL ASSET, GIVEN THAT WE DO NOT OWN OR CONTROL
+THE NETWORKS/PROTOCOLS WITH WHICH YOU ENGAGE THROUGH THE USE
+OF THE SERVICES. YOU HEREBY ACCEPT AND ACKNOWLEDGE THAT WE ARE
+NOT RESPONSIBLE FOR ANY ERRORS OR OMISSIONS THAT YOU OR THE
+APPLICABLE NETWORK/PROTOCOL MAKE IN CONNECTION WITH ANY
+TRANSACTION, NOR ANY FEES YOU INCUR. IT IS YOUR RESPONSIBILITY ALONE
+TO CONFIRM ALL THE DETAILS OF A TRANSACTION BEFORE ENGAGING IN IT.
+iFrame Integration
+You agree and understand that by accessing, using, embedding or hosting our inline
+frame available on the Services (“iFrame”), you are agreeing to the terms of this
+Agreement. You further agree to the following additional terms, assuming we approve of
+your use of the iFrame:
+● We grant you a revocable, non-exclusive, non-transferable, non-
+sublicensable, license to display the iFrame solely to facilitate user access
+to the frontend interface.
+● You are solely responsible for ensuring that your platform’s end-users
+comply with our eligibility and geographic restrictions as same apply to you
+as set forth herein.
+#14673161v6\031305\0002
+4
+● You agree to fully indemnify, defend, and hold us harmless from any third-
+party claims, regulatory enforcement actions, or disputes arising directly or
+indirectly from your implementation, maintenance, or hosting of our iFrame
+or API tools.
+If you would like to integrate our iFrame you will need to contact us. Please feel free to
+contact us by clicking the following link: Partnership Enquiries
+Third-Party Services
+Our Services depend on, link to, or incorporate application programming interfaces
+(“APIs”) provided by the Blockchain networks/protocols you elect to use from the
+Services, and other service providers (such networks/protocols or service providers,
+each, a “Third-Party Service”). Third-Party Services are independent, and not owned or
+controlled by us. You use of such Third-Party Services is governed by their respective
+terms and conditions, privacy policies, fee schedules and other documentation. Such
+terms and conditions may include separate fees and charges, as well as disclaimers or
+risk warnings on the accuracy of the information or the services they individually provide
+which may include a privacy policy that differs from our Privacy Policy. You should read
+and understand the terms and conditions of Third-Party Services, including how they may
+collect and use your personal information. The respective terms and conditions of Third-
+Party Services also govern other matters, including but not limited to their eligible use
+requirements, restrictions on certain localities, prohibited users and other eligibility-
+related terms. As a result, you acknowledge that your access to and use of such Third-
+Party Services may be restricted, limited or prohibited, and you hereby accept this risk.
+You agree to comply with all applicable terms and conditions governing the use of Third-
+Party Services.
+YOU AGREE AND UNDERSTAND THAT TRANSACTIONS ARE NOT PROVIDED BY
+US. YOU ACCEPT THEY ARE THE SOLE RESPONSIBILITY OF THIRD-PARTY
+PROVIDERS. WE DO NOT ACCEPT, AND YOU HEREBY RELEASE US FROM ANY
+RESPONSIBILITY OR LIABILITY ARISING BASED ON YOUR USE OF ANY
+SERVICES, ACTIONS, OR ACTIVITIES CONDUCTED BY THIRD-PARTY SERVICE
+PROVIDERS.
+Third-Party Resources and Promotions
+The Services may contain references or links to third-party resources, information,
+materials, products, or services that we do not own or control. In addition, third-parties
+may offer promotions related to your access and use of the Services. We do not endorse
+or assume any responsibility for any such resources or promotions. If you access any
+such resources or participate in any such promotions, you do so at your own risk, and you
+understand that this Agreement does not apply to your dealings or relationships with any
+such third parties. You expressly relieve us of any and all liability arising from your use of
+any such resources or participation in any such promotions.
+Taxes
+#14673161v6\031305\0002
+5
+You are solely responsible for determining and fulfilling any tax obligations that may arise
+from your use of the Services. We do not report any taxes you may owe to any
+governmental authority as a result of your Transactions, and the third party
+networks/protocols with whom you interact may not do so either. It is your responsibility
+to report and remit any taxes, duties, or similar assessments that may be imposed by any
+governmental authority, and to maintain accurate records as required by applicable law.
+Intellectual Property Rights
+The Services and their entire contents, features, and functionality (including but not
+limited to all information, software, text, displays, images, video, and audio, and the
+design, selection, and arrangement thereof), are owned by us, our licensors, or other
+providers of such material and are protected by copyright, trademark, patent, trade secret,
+and other intellectual property or proprietary rights laws.
+You must not reproduce, distribute, modify, create derivative works of, publicly display,
+publicly perform, republish, download, store, or transmit any of the material on our
+Services, except as follows:
+● Your computer may temporarily store copies of such materials in RAM
+incidental to your accessing and viewing those materials.
+● You may store files that are automatically cached by your Web browser for
+display enhancement purposes.
+● You may print or download one copy of a reasonable number of pages of
+the Services for your own personal, non-commercial use and not for further
+reproduction, publication, or distribution.
+● If we provide desktop, mobile, or other applications for download, you may
+download a single copy to your computer or mobile device solely for your
+own use, provided you agree to be bound by our end user license
+agreement for such applications.
+● If we provide social media features with certain content, you may take such
+actions as are enabled by such features.
+You must not:
+● Modify copies of any materials from the Services or their underlying
+software or systems.
+● Use any illustrations, photographs, video or audio sequences, or any
+graphics separately from the accompanying text.
+● Delete or alter any copyright, trademark, or other proprietary rights notices
+from copies of materials from the Services.
+● You must not access or use for any commercial purposes any part of the
+Services or any services or materials available through the Services.
+If you print, copy, modify, download, or otherwise use or provide any other person with
+access to any part of the Services in breach of this Agreement, your right to use the
+#14673161v6\031305\0002
+6
+Services will stop immediately and you must then immediately destroy any copies of the
+materials you have made.
+No right, title, or interest in or to the Services or any content on the Services is transferred
+to you, and all rights not expressly granted are reserved by us. Any use of the Services
+not expressly permitted by this Agreement is a breach thereof and may violate copyright,
+trademark, and other laws.
+Trademarks
+Our name, logos, and all related names, logos, product and service names, designs, and
+slogans on the Services are our trademarks or those of our affiliates, third party networks,
+or licensors. You must not use any such materials, regardless of who posted them to the
+Services, without our prior written permission in each instance.
+Compliance
+The Services may not be available or appropriate for use in all jurisdictions. By accessing
+or using the Services, you agree that you are solely and entirely responsible for
+compliance with all laws and regulations that may apply to you. You further agree that we
+have no obligation to inform you of any potential liabilities or violations of law or regulation
+that may arise in connection with your access and use of the Services and that we are
+not liable in any respect for any failure by you to comply with any applicable laws or
+regulations.
+We reserve the right to use publicly available information, as well as personal information
+we collect subject to our Privacy Policy, to assess the risks associated with illicit or non-
+compliant activities, phishing, or other potential threats. You acknowledge and
+understand that when you access the Services compliance assessments of your use can
+be undertaken by Third-Party Services, the results of which are at the sole discretion of
+the third-party provider. We have no control over these Third-Party Services. We are not
+and cannot be responsible for the accuracy of the information or the services of such
+providers. These Third-Party Services are governed by their respective terms of use. We
+recommend you read them carefully prior to further accessing the Services.
+We reserve the right, but do not undertake an obligation, to deploy automated screening
+mechanisms (including third-party analytics and IP geolocation tools) to monitor for illicit
+activities, fraud, phishing threats, or sanctioned entities or persons. If you believe you or
+your wallet address has been blocked or restricted from using the Services in error, please
+contact our Support Team. Keep in mind, however, that if the issue arises as a result of
+a network/protocol delay, we may be unable to assist you or resolve the issue.
+You are strictly prohibited from utilizing virtual private networks, onion routing, proxy
+servers, or any other location-masking technologies to circumvent geographic restrictions
+or blockages implemented on the Services. Any such circumvention constitutes a material
+breach of this Agreement, and immediately voids your license to use the Services.
+#14673161v6\031305\0002
+7
+Phishing Alerts
+Houdini Swap may occasionally provide phishing and other potential risk alerts through
+the Services. These risk alerts are provided for informational purposes only, and we do
+not make any representations or warranties regarding their accuracy, completeness or
+reliability. You are solely responsible for the final decision as to the applicability and
+fitness of such alerts. You hereby acknowledge and agree that risk alerts are provided on
+an “as-is” basis, without any warranties or guarantees, and that you assume all the
+associated risks. Houdini Swap has no responsibility and shall not be held liable for any
+claims, damages or losses arising from or in any way relating to such alerts.
+Amendment, Suspension or Termination
+You agree and understand that we may, in our sole discretion, change, suspend,
+discontinue, or terminate any aspect of the Services, or its availability to you, at any time
+and without notice and we do not accept any responsibility for any losses, whether direct
+or indirect, that you may incur as a result our doing so.
+Prohibited Use
+We may suspend or cancel your use of the Services for any reason, including if we believe
+you have engaged in or are about to engage in any kind of fraud, if required pursuant to
+applicable laws, or if you violate these Terms of Use. We may provide you with notice of
+suspension but do not undertake an obligation to do so.
+You may use the Services only for lawful purposes and in accordance with this
+Agreement. In addition, you agree not to use the Services:
+● In any way that violates any applicable law or regulation (including, without
+limitation, any laws regarding the export of data or software to or from any
+jurisdiction).
+● To exploit, harm, or attempt to exploit or harm minors in any way by
+exposing them to inappropriate content, asking for personally identifiable
+information, or otherwise.
+● To transmit, or procure the sending of, any advertising or promotional
+material without our prior written consent, including any “junk mail,” “chain
+letter,” “spam,” or any other similar solicitation.
+● To impersonate or attempt to impersonate us, any of our employees,
+another user, or any other person or entity (including, without limitation, by
+using email addresses or screen names associated with any of the
+foregoing).
+● To engage in any other conduct that restricts or inhibits anyone’s use or
+enjoyment of the Services, or which, as determined by us, may harm us or
+users of the Services or expose them to liability.
+Additionally, you agree not to:
+#14673161v6\031305\0002
+8
+● Use the Services in any manner that could disable, overburden, damage,
+or impair them, or interfere with any other party’s use of the Services,
+including their ability to engage in real time activities.
+● Use any content available on or via the Services, any portion thereof, or any
+output generated, for training or fine tuning any machine learning or artificial
+intelligence tool, software or platform.
+● Use any content available on or via the Services, any portion thereof, or any
+output generated, for the purpose of identifying a specific individual or
+extracting personal information.
+● Use any robot, spider, or other automatic device, process, or means to
+access the Services for any purpose, including monitoring or copying any
+of the material on the Services.
+● Use any manual process to monitor or copy any of the material on the
+Services or for any other unauthorized purpose without our prior written
+consent.
+● Use any device, software, or routine that interferes with the proper working
+of the Services.
+● Introduce any viruses, Trojan horses, worms, logic bombs, or other material
+that is malicious or technologically harmful.
+● Attempt to gain unauthorized access to, interfere with, damage, or disrupt
+any parts of the Services, the server on which the Services are stored (if
+applicable), or any server, computer, or database connected to the Services
+or used to make them available.
+● Copy, mirror or otherwise attempt to replicate or reproduce the Services.
+● Attack the Services via a denial-of-service attack or a distributed denial-of-
+service attack.
+● Otherwise attempt to interfere with the proper working of the Services.
+● Violate or circumvent any legally imposed compliance measures
+implemented by us.
+● Use or attempt to use another user’s wallet or credentials without
+authorization or access the Services through unauthorized integrations or
+smart-contract calls.
+● Introduce, deploy, or interact with any smart contract or code designed to
+extract data or assets from other users or from the Services without
+consent.
+● Exploit or attempt to exploit any vulnerability, bug, or malfunction in the
+Services for any reason, including personal gain.
+● Collect, harvest, or attempt to collect wallet addresses, transaction data, or
+personal information from other users.
+● Attempt to deanonymize or re-identify any user or participant from
+blockchain data.
+● Provide false, inaccurate, or misleading information during registration,
+verification, or interaction with the Services.
+● Engage in any activity that, in our sole judgment, poses a risk of legal
+liability, regulatory exposure, reputational harm, or disruption to the integrity
+or operation of the Services.
+#14673161v6\031305\0002
+9
+● Engage in, promote, or facilitate money laundering, terrorist financing,
+sanctions evasion, or any other unlawful financial activity.
+● Transact on behalf of, or for the benefit of, any Restricted Person or any
+person or entity located in a Restricted Jurisdiction.
+● Engage in coordinated, collusive, or deceptive trading activity, including
+wash trading, spoofing, layering, front-running, or any conduct intended to
+mislead or distort market or event results.
+Feedback
+You may from time to time provide us or other users with comments, suggestions, ideas,
+bug reports, ideas or other feedback, including, without limitation, about how to improve
+the Services (collectively, “Feedback”).
+While you retain ownership of all intellectual property and other rights in Feedback, by
+forwarding to us or uploading such Feedback, you grant us a worldwide, royalty-free,
+unlimited, irrevocable, transferable, sublicensable, fully paid up and royalty free license
+to use, copy, distribute, publish, create derivative works of, display, perform and send
+such Feedback in any manner in accordance with applicable laws and regulations. All
+such Feedback will be considered non-confidential and non-proprietary.
+You represent and warrant that:
+● You own or control all rights in and to the Feedback, and have the right to
+grant the license granted above.
+● All of your Feedback does and will comply with this Agreement.
+Risks
+You are solely responsible for any Transactions or interactions you initiate on the
+Services, and for all fees that you may incur as a result of your use of the Services. The
+timing of Transactions can vary the fees you incur, and such timing is not always in your
+control.
+Under certain market conditions, it may be difficult to trade Digital Assets.
+Use of our Services may be subject to expropriation, theft, or unauthorized access.
+Hackers or other malicious actors may attempt to interfere with our Services or your use
+thereof in a variety of ways, including, but not limited to, use of malware, denial of service
+attacks, Sybil attacks, and spoofing.
+The information on our Services may not always be entirely accurate, complete, or
+current. You should verify all information before relying on it. We do not guarantee that
+our Services will be error free or available without interruption.
+The Services may be subject to system limitations, outages, latency, maintenance, and
+capacity constraints.
+#14673161v6\031305\0002
+10
+You should verify all information before relying on it. Information provided by us or Third-
+Party Services can be inaccurate or subject to sudden change.
+No Financial or Investment Advice
+You understand that we do not act as your financial advisor, investment manager,
+arranger, introducer, or commodity trading advisor, or otherwise interact with, or with
+respect to your activities on the Services. It is your responsibility and you are solely
+responsible for your decisions regarding how, when, and with whom you interact or
+transact through the Services. It is also your responsibility to ensure you understand
+Digital Assets, how they work, what their value is, and the risks involved in using or
+interacting with smart contracts, as there are significant risks in doing so, all of which you
+solely assume.
+You agree and understand that all decisions you make when using the Services are made
+solely by you. You agree and understand that under no circumstances will the operation
+of our Services or your use of them be deemed to create a relationship that includes the
+provision of or tendering of investment advice. NO FINANCIAL, INVESTMENT, TAX,
+LEGAL, OR SECURITIES ADVICE IS GIVEN THROUGH OR IN CONNECTION WITH
+THE SERVICES. No content found on our Services, whether created by us, our service
+providers, our business partners, Third-Party Services, or another user, is or should be
+considered same.
+You agree and understand that we accept no responsibility whatsoever for and shall in
+no circumstances be liable in connection with, your decisions or your use of the Services.
+Force Majeure
+You agree and understand that in no event shall we be liable for any delays, failure in
+performance or interruption of the Services, including those which result directly or
+indirectly from any cause or condition, whether or not foreseeable, beyond our reasonable
+control, including, but not limited to, any act of God, nuclear or natural disaster, epidemic,
+action or inaction of civil or military authorities, act of war, terrorism, sabotage, civil
+disturbance, strike or other labor dispute, accident, state of emergency or interruption,
+loss, or malfunction of equipment or utility, communications, computer (hardware or
+software), Internet or network provider services.
+Disclaimer of Warranties
+You understand that we cannot and do not guarantee or warrant that the Services or any
+content thereon or available therethrough will be free of viruses or other destructive code.
+You are responsible for implementing sufficient procedures and checkpoints to satisfy
+your particular requirements for anti-virus protection, accuracy of data input and output,
+and for maintaining a means external to our Services for any reconstruction of any lost
+data.
+#14673161v6\031305\0002
+11
+TO THE FULLEST EXTENT PROVIDED BY LAW, WE WILL NOT BE LIABLE FOR ANY
+LOSS OR DAMAGE CAUSED BY A DENIAL OF SERVICE ATTACK, DISTRIBUTED
+DENIAL-OF-SERVICE ATTACK, VIRUSES, OR OTHER TECHNOLOGICALLY
+HARMFUL MATERIAL THAT MAY INFECT YOUR DEVICES, COMPUTER
+EQUIPMENT, COMPUTER PROGRAMS, DATA, OR OTHER MATERIAL DUE TO
+YOUR USE OF THE SERVICES OR ANY SERVICES OR ITEMS OBTAINED
+THROUGH THE SERVICES.
+YOUR USE OF THE SERVICES, THEIR CONTENT, CONTENT PROVIDED BY OTHER
+USERS, AND ANY SERVICES OR ITEMS OBTAINED THROUGH THE SERVICES IS
+AT YOUR OWN RISK. THE SERVICES, THEIR CONTENT, CONTENT PROVIDED BY
+OTHER USERS, AND ANY SERVICES OR ITEMS OBTAINED THROUGH THE
+SERVICES, INCLUDING INFORMATION RELATING TO TRANSACTION
+CONVERSION RATES OR DIGITAL ASSET PRICES, ARE PROVIDED ON AN “AS IS”
+AND “AS AVAILABLE” BASIS, WITHOUT ANY WARRANTIES OF ANY KIND, EITHER
+EXPRESS, STATUTORY, IMPLIED OR OTHERWISE. NEITHER WE NOR ANY
+PERSON ASSOCIATED WITH US, MAKES ANY WARRANTY OR REPRESENTATION
+WITH RESPECT TO THE COMPLETENESS, SECURITY, RELIABILITY, QUALITY,
+ACCURACY, OR AVAILABILITY OF THE SERVICES. WITHOUT LIMITING THE
+FOREGOING, NEITHER WE NOR ANYONE ASSOCIATED WITH US REPRESENTS
+OR WARRANTS THAT THE SERVICES, THEIR CONTENT, CONTENT PROVIDED BY
+OTHER USERS, OR ANY SERVICES OR ITEMS OBTAINED THROUGH THE
+SERVICES WILL BE ACCURATE, RELIABLE, ERROR-FREE, OR UNINTERRUPTED,
+THAT DEFECTS WILL BE CORRECTED, THAT OUR SERVICES ARE FREE OF
+VIRUSES OR OTHER HARMFUL COMPONENTS, OR THAT THE SERVICES OR ANY
+SERVICES OR ITEMS OBTAINED THROUGH THE SERVICES WILL OTHERWISE
+MEET YOUR NEEDS OR EXPECTATIONS.
+TO THE FULLEST EXTENT PROVIDED BY LAW, WE HEREBY DISCLAIM ALL
+WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR
+OTHERWISE, INCLUDING ANY WARRANTIES OF MERCHANTABILITY, NON-
+INFRINGEMENT, TITLE, AND FITNESS FOR A PARTICULAR PURPOSE.
+Limitation of Liability
+All information provided in connection with your access and use of the Services is for
+informational purposes only and should not be construed as professional advice. You
+should not take, or refrain from taking, any action based on any information displayed in
+the Services or any other information that we make available at any time, including,
+without limitation, blog posts, articles, links to third-party content, news feeds, tutorials,
+tweets and videos. Before you make any financial, legal, or other decisions involving the
+Services, you should seek independent professional advice from an individual who is
+licensed and qualified in the area for which such advice is appropriate.
+This Agreement is not intended to, and expressly does not, create or impose any fiduciary
+duties on us. To the fullest extent permitted by law, you acknowledge and agree that we
+#14673161v6\031305\0002
+12
+owe no fiduciary duties or liabilities to you or any other party, and that to the extent any
+such duties or liabilities may exist at law or in equity, those duties and liabilities are hereby
+irrevocably disclaimed, waived, and eliminated. You further agree that the only duties and
+obligations that we owe you are those set forth expressly herein.
+WE AND OUR AFFILIATES OR ANY OF OUR OR THEIR RESPECTIVE OFFICERS,
+DIRECTORS, EMPLOYEES, CONTRACTORS, AGENTS, SERVICE PROVIDERS,
+LICENSORS, SUPPLIERS, SUCCESSORS, AND ASSIGNS (COLLECTIVELY, THE
+“COMPANY PARTIES”) SHALL NOT HAVE ANY LIABILITY FOR SPECIAL,
+INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR OTHER NON-DIRECT DAMAGES
+HEREUNDER REGARDLESS OF HOW ARISING OR IF SUCH PARTIES WERE
+AWARE OF THE POSSIBILITY OF THEM. TO THE MAXIMUM EXTENT PERMITTED
+BY LAW, IN NO EVENT SHALL THE COMPANY PARTIES’ TOTAL AGGREGATE
+LIABILITY HEREUNDER EXCEED ONE HUNDRED U.S. DOLLARS (US$100).
+THE FOREGOING DOES NOT AFFECT ANY LIABILITY THAT CANNOT BE
+EXCLUDED OR LIMITED UNDER APPLICABLE LAW.
+Indemnification
+You agree to defend and indemnify the Company Parties from and against any and all
+third party claims, suits, actions, proceedings, damages, judgments, awards, losses,
+liabilities, costs, and expenses (including reasonable attorneys’ and legal fees)
+(collectively, the “Claims”) arising out of or relating to: (a) your breach of any terms of this
+Agreement, (b) your use of the Services, (c) your content, inputs, prompts, instructions,
+or other materials you submit, transmit, publish, or make available through the Services,
+(d) your violation of applicable law or regulation, (e) your use of illicit funds or violation of
+any anti-money laundering or sanctions laws; or (f) your violation of any third party rights,
+including intellectual property or privacy rights.
+Release and Hold Harmless
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, AND WITHOUT LIMITING THE
+GENERALITY OF THE RISKS DISCLOSED IN THESE TERMS OF USE, THE
+COMPANY PARTIES SHALL HAVE NO LIABILITY FOR, AND YOU HEREBY
+RELEASE, WAIVE, AND HOLD HARMLESS THE COMPANY PARTIES FROM AND
+AGAINST ANY AND ALL CLAIMS ARISING OUT OF OR RELATING TO: (A) YOUR
+USE OF, OR INABILITY TO USE, THE SERVICES, OR ANY PART THEREOF; (B) ANY
+INACCURACIES, DELAYS, INTERRUPTIONS, ERRORS, OR OMISSIONS IN ANY
+INFORMATION, CONTENT, OR FUNCTIONALITY PROVIDED THROUGH THE
+SERVICES; (C) ANY MODIFICATION, SUSPENSION, INTERRUPTION, OR
+DISCONTINUATION OF THE SERVICES, INCLUDING OUTAGES, MAINTENANCE,
+SYSTEM FAILURES, OR DEGRADED PERFORMANCE; (D) YOUR DEVICES,
+NETWORKS, SYSTEMS, SOFTWARE, OR INTERNET CONNECTIVITY, INCLUDING
+ANY MALFUNCTIONS, DELAYS, SECURITY BREACHES, OR UNAUTHORIZED
+ACCESS AFFECTING YOUR USE OF THE SERVICES; (E) ANY THIRD-PARTY
+MATERIALS, NETWORKS OR PROTOCOLS, OR THEIR ACTIONS; (F) ANY ACTION
+#14673161v6\031305\0002
+13
+OR INACTION TAKEN BY ANY OF THE COMPANY PARTIES, OR BY LAW
+ENFORCEMENT OR GOVERNMENT AUTHORITIES, IN CONNECTION WITH ANY
+INVESTIGATION RELATED TO THE SERVICES OR OUR USERS; (G) YOUR FAILURE
+TO COMPLY WITH THESE TERMS OF USE OR ANY APPLICABLE LAWS,
+REGULATIONS, OR THIRD-PARTY TERMS; (H) ANY FEES OR CHARGES YOU
+INCUR WHILE USING THE SERVICES OR ANY THIRD PARTY NETWORK OR
+PROTOCOL; (I) ANY DECISIONS YOU MAKE OR ACTIONS YOU TAKE; (J) ANY
+INTERACTIONS, COMMUNICATIONS, TRANSACTIONS, OR DISPUTES BETWEEN
+YOU AND ANY OTHER PARTY; (K) ANY TAXES, DUTIES, OR GOVERNMENTAL
+CHARGES ARISING FROM YOUR USE OF THE SERVICES, INCLUDING YOUR
+FAILURE TO REPORT OR PAY SUCH TAXES; (L) ANY UNAUTHORIZED ACCESS
+TO OR USE OF YOUR ACCOUNT, INCLUDING ANY FAILURE TO MAINTAIN THE
+CONFIDENTIALITY OF YOUR SEED PHRASE OR KEYS TO YOUR DIGITAL WALLET,
+IF APPLICABLE; (M) ANY EVENTS BEYOND OUR REASONABLE CONTROL,
+INCLUDING ACTS OF THIRD PARTIES, ACTS OF GOD, NATURAL DISASTERS,
+WAR, TERRORISM, CIVIL UNREST, LABOR DISPUTES, INTERNET OR
+TELECOMMUNICATION FAILURES, OR GOVERNMENTAL ACTIONS; OR (N) ANY
+AUTOMATIC LIQUIDATION, FORECLOSURE, OR SIMILAR ENFORCEMENT EVENT,
+INCLUDING ANY PARTIAL OR FULL LIQUIDATION OF ASSETS, THAT OCCURS
+PURSUANT TO THE TERMS OF ANY SMART CONTRACT OR AS A RESULT OF
+MARKET CONDITIONS, ORACLE DATA, OR NETWORK/PROTOCOL RULES,
+WHETHER OR NOT NOTICE IS PROVIDED.
+Code of Conduct
+We expect that you treat our team members, including our Customer Support Team, with
+the same respect you would expect to be treated yourself. Any use of inappropriate or
+abusive language or conduct towards any of our team members is strictly prohibited.
+Examples include, but are not limited to, verbal threats, harassment, aggressive
+comments, or behavior that is disrespectful. This type of behavior is a direct violation of
+this Agreement. If you engage in this type of behavior, we will politely ask you to stop. If
+you continue to engage in this type of behavior, we will take any and all actions necessary
+to prevent you from communicating with us further.
+Press Guidelines
+We encourage and hereby authorize press and media to refer to Houdini Swap, provided
+that any reference is accompanied by: Attribution to Houdini Swap, and A hyperlink to
+Houdiniswap.com, when possible. For all press and media inquiries, please email
+ops@houdiniswap.com
+Dispute Resolution
+Subject to the remainder of the terms of this Agreement, you and Houdini Swap agree
+and understand that any controversy, claim, or dispute arising out of or relating to this
+Agreement or the Services – past, present, or future – (including the determination of the
+scope or applicability of this arbitration provision) shall be settled solely and exclusively
+#14673161v6\031305\0002
+14
+by final and binding arbitration administered pursuant to the rules of the Cayman
+International Mediation and Arbitration Center (the “Rules”) then in effect. Arbitration is
+to be held in Georgetown, Grant Cayman, or another mutually agreeable location,
+including remotely by way of video conference. A mediator may be appointed by mutual
+agreement or in accordance with the Rules.
+You and Houdini Swap expressly agree that any dispute about the scope of this
+Agreement to arbitrate and/or the arbitrability of any particular dispute shall be resolved
+in arbitration in accordance with this section. You and Houdini Swap expressly agree that
+an arbitrator may issue all appropriate declaratory and injunctive relief necessary to
+ensure the arbitration of disputes (but only in favor of the individual party seeking relief
+and only to the extent necessary to provide relief warranted by that party’s individual
+claim).
+You and Houdini Swap agree that the arbitrator shall have the authority to order any
+remedies, legal or equitable, which a party could obtain from a court of competent
+jurisdiction in an individual case based on the claims asserted, and nothing more. The
+arbitrator shall not award punitive or exemplary damages to either party, unless such
+remedies would otherwise be available under applicable law. You and Houdini Swap
+agree to keep any arbitration strictly confidential.
+You and Houdini Swap agree to act in good-faith, informal efforts to resolve any disputes.
+A party who intends to seek arbitration must first send to the other a written Notice of
+Dispute (“Dispute Notice”). Any Dispute Notice to Houdini Swap must be sent to
+ops@houdiniswap.com (“Notice Address”). Any Dispute Notice to you by Houdini Swap
+will be sent to the email address, or social media profile, made available to us through
+your accessing the Services. Any Dispute Notice must include: (a) the name, address,
+and email address of the party providing the Dispute Notice; (b) a description of the nature
+and basis of the claim or dispute; (c) an explanation of the specific relief sought and the
+basis for this relief. Any Dispute Notice from you must be individualized, meaning it can
+only concern your dispute and no other person’s dispute. Any Dispute Notice from Houdini
+Swap must be individualized, meaning it can only concern you and no other person. You
+also agree that, after sending a Dispute Notice to Houdini Swap, at our request you will
+personally participate in a discussion by telephone, or via an agreed third-party platform
+such as Telegram, with us to discuss whether an agreement can be reached to resolve
+the claim before arbitration is initiated. We also agree to participate in such a telephone
+discussion at your reasonable request. Any informal dispute resolution conferences shall
+be individualized, such that a separate conference must be held each time either party
+intends to commence individual arbitration; multiple individuals initiating claims cannot
+participate in the same informal telephonic dispute resolution conference, unless mutually
+agreed to by the parties. You agree that compliance with these informal dispute resolution
+procedures is a condition precedent to commencing arbitration, and that the arbitrator
+shall dismiss any arbitration filed without fully and completely complying with these
+informal dispute resolution procedures.
+#14673161v6\031305\0002
+15
+If you and Houdini Swap do not reach an agreement to resolve a claim within 60 days
+after a Dispute Notice is received, you or Houdini Swap may commence an arbitration
+proceeding; except that, if either you or Houdini Swap send the other an incomplete
+Dispute Notice, the 60-day period begins only after a complete Dispute Notice is received,
+and if either you or Houdini Swap request a telephone discussion, the 60-day period
+begins only after the discussion has occurred. Any statute of limitations and any filing fee
+deadlines shall be tolled while the parties engage in these informal dispute resolution
+procedures.
+Should any dispute proceed to arbitration, you and Houdini Swap agree that; (i) the
+arbitration shall be conducted by one neutral arbitrator; (ii) each side agrees to bear its
+own legal fees, costs, and expenses, unless such remedies would otherwise be available
+under applicable law, or unless the arbitrator finds that a claim, counterclaim, or defense
+is frivolous or brought for an improper purpose; and, (iii) all pleadings submitted in
+arbitration are subject to sanctions being imposed where the arbitrator finds the pleadings
+are submitted for an improper purpose, such as to harass, cause unnecessary delay, or
+needlessly increase the cost of litigation. The arbitrator may issue orders (including
+subpoenas to third-parties, to the extent permitted by law) allowing the parties to conduct
+discovery sufficient to allow each party to prepare that party’s claims and/or defenses,
+taking into consideration that arbitration is designed to be a speedy and efficient method
+for resolving disputes. You and Houdini Swap agree to abide by all decisions and awards
+rendered in such proceedings and you and Houdini Swap agree that such decisions and
+awards rendered by the arbitrator shall be final and conclusive.
+To the extent you or Houdini Swap seek emergency relief in connection with any
+controversy, claim, or dispute arising out of or relating to this Agreement or the breach
+thereof, or your relationship with Houdini Swap, you and Houdini Swap agree that the this
+Agreement restricts you or Houdini Swap from seeking emergency relief from any court,
+including without limitation temporary restraining orders and/or preliminary injunctions,
+and you and Houdini Swap agree that, to the extent either party breaches this Agreement
+by seeking such relief from a court, that party shall be responsible for paying the opposing
+party’s legal fees in opposing such relief, and the arbitrator shall render an award of such
+legal fees at the earliest possible time after such fees are incurred. You and Houdini Swap
+agree that you or Houdini Swap may, without inconsistency with this arbitration provision,
+apply to any competent court hereunder for an order enforcing the arbitral award. You
+and Houdini Swap irrevocably and unconditionally agree to waive any objection that you
+or Houdini Swap may now or hereafter have to the laying of a venue of any action or
+proceeding relating to enforcement of the arbitral award in the courts of the Cayman
+Islands.
+In arbitration the parties waive their rights to have a jury trial. If for any reason this
+arbitration section becomes not applicable or for any other reason litigation proceeds in
+court then you and Houdini Swap agree; (i) to the fullest extent permitted by applicable
+laws and regulations, hereby irrevocably waive all right to trial by jury as to any issue
+relating hereto in any action, proceeding, or counterclaim arising out hereof, or any other
+matter involving us hereto; and, (ii) submit to the exclusive jurisdiction and venue of the
+#14673161v6\031305\0002
+16
+relevant courts located in the Cayman Islands and you agree not to institute any such
+action or proceeding in any other court in any other jurisdiction.
+YOU AND HOUDINI SWAP AGREE TO ARBITRATE SOLELY ON AN INDIVIDUAL
+BASIS, AND AGREE AND UNDERSTAND THAT THIS AGREEMENT DOES NOT
+PERMIT A CLASS ACTION OR PRIVATE ATTORNEY GENERAL LITIGATION OR
+ARBITRATION OF ANY CLAIMS BROUGHT AS A PLAINTIFF OR CLASS MEMBER IN
+ANY CLASS OR REPRESENTATIVE ARBITRATION PROCEEDING OR LITIGATION
+(“CLASS ACTION WAIVER”). The arbitral or other tribunal may not consolidate more
+than one claimant’s claims and may not otherwise preside over any form of a
+representative or class proceeding. Nothing in this paragraph shall be construed to
+prohibit settlements on a class-wide or representative basis. If any portion of this
+arbitration clause is held to be invalid or unenforceable, the remaining portions will
+nevertheless remain in force. In any case in which (i) the dispute is filed as a class or
+representative action and (ii) there is a final judicial determination that all or part of the
+Class Action Waiver is unenforceable, the class and/or representative action to that extent
+must be litigated in a civil court of competent jurisdiction, but the portion of the Class
+Action Waiver that is enforceable shall be enforced in arbitration. Additionally, if a court
+determines that a public injunctive relief claim may proceed notwithstanding the Class
+Action Waiver, and that determination is not reversed on appeal, then the public injunctive
+relief claim will be decided by a court after any individual claims are arbitrated, and the
+parties will ask the court to stay the public injunctive relief claim until the other claims have
+been finally concluded in arbitration.
+Even if you and Houdini Swap have entered into any other agreement, this dispute
+resolution section shall govern the resolution of any and all disputes arising from or related
+to the relationship between you and Houdini Swap. You agree that this section herein has
+been included to rapidly and inexpensively resolve any disputes with respect to the
+matters described herein, and that this section shall be grounds for stay or dismissal of
+any court action commenced by you with respect to a dispute arising out of such matters.
+A printed version of this Agreement shall be admissible in judicial or administrative
+proceedings.
+Notwithstanding any of the foregoing agreements, you acknowledge and agree that we
+may initiate an action for injunctive relief in any applicable jurisdiction, to protect our
+Services, enforce our intellectual property rights, or seek protective measures to prevent
+you from causing us, our users or partners, or the Services harm.
+Miscellaneous Terms
+Severability. You agree that if any provision herein, or application thereof, shall be
+determined to be invalid or unenforceable under any rule, law, or regulation or by any
+governmental agency, local, state, or federal, such provision will be changed and
+interpreted to accomplish the objectives of the provision to the greatest extent possible
+under any applicable law. You further agree that the validity of or enforceability of any
+#14673161v6\031305\0002
+17
+other provision (or of such provision, to the extent its application is not invalid or
+unenforceable) of this Agreement shall not be affected.
+Change of Control. In the event that we or our business are acquired by or merged with
+a third-party entity, we reserve the right, in any of these circumstances, to transfer or
+assign the information we have collected from you as part of such merger, acquisition,
+sale, or other change of control.
+Survival. You agree that all provisions herein, which by their nature extend beyond the
+termination or expiration hereof, including, but not limited to, sections pertaining to
+suspension, investigations, remedies for breach, termination, debts owed, right to offset,
+unclaimed funds, general use of the Services, disputes with us, and general provisions,
+shall survive the termination or expiration hereof.
+Interpretation. Section headings herein are for convenience only, and do not govern the
+meaning or interpretation of any provision hereof. Unless the express context otherwise
+requires: (i) the words “hereof,” “herein,” “hereunder” “hereto” and words of similar import,
+when used herein, shall refer to this Agreement as a whole and not to any particular
+provision; (ii) the terms defined in the singular have a comparable meaning when used in
+the plural and vice versa; (iii) wherever the word “include,” “includes” or “including” is used
+herein, it shall be deemed to be followed by the words “without limitation”; (iv) the word
+“extent” in the phrase “to the extent” shall mean the degree to which a subject or other
+thing extends and such phrase shall not mean simply “if”; and (v) the word “or” shall not
+be interpreted to be exclusive.
+English Language Controls. Notwithstanding any other provision herein, any translation
+of this Agreement is provided for your convenience. The meanings of terms, conditions,
+and representations herein are subject to their definitions and interpretations in the
+English language.
+Assignment. This Agreement, or your rights and obligations hereunder, may not be
+transferred by you, but may be assigned by us without restriction. Any attempted transfer
+or assignment by you in violation hereof shall be null and void. Subject to the foregoing,
+this Agreement shall be binding and inure to the benefit of the parties hereto, our
+successors, and permitted assigns.
+Governing Law. This Agreement, your use of the Services, your rights and obligations,
+and all actions contemplated by, arising out of or related to herein thereto (including non-
+contractual disputes or claims) shall be governed and construed in accordance with the
+internal laws of the Cayman Islands, as if this Agreement is a contract wholly entered into
+and wholly performed within the Cayman Islands, without giving effect to any choice or
+conflict of law provision or rule (whether of the Cayman Islands or any other jurisdiction).
+No Third Party Beneficiaries. Except as expressly set forth in this Agreement with
+respect to Company Parties, this Agreement is for the sole benefit of you and us, and
+does not create any third-party beneficiary rights.
+#14673161v6\031305\0002
+18
+Entire Agreement. This Agreement comprises the entire understanding and agreement
+entered into by and between you and Houdini Swap as to the subject matter herein.
+#14673161v6\031305\0002
+19

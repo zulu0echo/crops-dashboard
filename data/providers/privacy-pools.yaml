@@ -1,0 +1,684 @@
+slug: privacy-pools
+name: Privacy Pools (0xbow)
+type: transfer
+website: https://privacypools.com
+primary_chain:
+  name: Ethereum
+  chain_id: 1
+  basis: >-
+    The core repo's deployments page (privacy-pools-core@d494b63e docs/docs/deployments.md L9-L17) lists only Ethereum mainnet, and the website's chainData.ts (privacy-pools-website@7df41112 L129-L142) lists mainnet first with 14 pools behind Entrypoint 0x6818…6b46. Onchain, the ETH pool's nonce is 6071 deposits at block 26153374. Unit: the Entrypoint proxy and the ETH, USDC and USDT pools (most deposits). Excluded: the 11 other mainnet pools (same code), the OP/BSC/Arbitrum Entrypoint 0x4419…d15E, Starknet and testnets.
+
+repos:
+  - url: https://github.com/0xbow-io/privacy-pools-core
+    role: contracts
+    license: Apache-2.0
+  - url: https://github.com/0xbow-io/privacy-pools-website
+    role: frontend
+    license: CC-BY-NC-4.0
+
+contracts:
+  - address: "0x6818809EefCe719E480a7526D76bD3e561526b46"
+    chain_id: 1
+    role: Entrypoint (UUPS proxy)
+    verified: sourcify
+  - address: "0x15e355024de1CDc74ADdea7EBDf98418Ba5B1a2c"
+    chain_id: 1
+    role: Entrypoint implementation
+    verified: sourcify
+  - address: "0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB"
+    chain_id: 1
+    role: ETH pool (PrivacyPoolSimple)
+    verified: sourcify
+  - address: "0xb419c2867aB3CBc78921660cB95150d95A94ce86"
+    chain_id: 1
+    role: USDC pool (PrivacyPoolComplex)
+    verified: sourcify
+  - address: "0xe859C0bD25f260BaEE534Fb52e307D3b64D24572"
+    chain_id: 1
+    role: USDT pool (PrivacyPoolComplex)
+    verified: sourcify
+  - address: "0x022891F938Ae7fDC8Ab9Ead0FBf50aBA8C897D6d"
+    chain_id: 1
+    role: Withdrawal Groth16 verifier
+    verified: sourcify
+  - address: "0xa45ACa8604a73D80C551fAad6355A5c3A5565eC6"
+    chain_id: 1
+    role: Ragequit (commitment) Groth16 verifier
+    verified: sourcify
+
+components:
+  - name: Privacy pool contracts (ETH, USDC, USDT) and verifiers
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: none (immutable; deposits only via the Entrypoint)
+    required: true
+    repo: https://github.com/0xbow-io/privacy-pools-core
+  - name: Entrypoint (UUPS proxy, roles OWNER_ROLE and ASP_POSTMAN)
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: 0xbow (owner Safe 2-of-4; postman EOA)
+    required: true
+    repo: https://github.com/0xbow-io/privacy-pools-core
+  - name: 0xbow Association Set Provider (deposit screening and root posting)
+    role: other
+    public: false
+    license: proprietary
+    operator: 0xbow
+    required: true
+  - name: Circuits and proving artifacts (packages/circuits)
+    role: other
+    public: true
+    license: Apache-2.0
+    operator: none (static artifacts)
+    required: true
+    repo: https://github.com/0xbow-io/privacy-pools-core
+  - name: Privacy Pools SDK (@0xbow/privacy-pools-core-sdk)
+    role: sdk
+    public: true
+    license: Apache-2.0
+    operator: user
+    required: true
+    repo: https://github.com/0xbow-io/privacy-pools-core
+  - name: Ethereum mainnet and a JSON-RPC endpoint of the user's choice
+    role: ledger
+    public: true
+    license: LGPL-3.0
+    operator: Ethereum validators; RPC chosen by the user
+    required: true
+    repo: https://github.com/ethereum/go-ethereum
+  - name: ASP tree data on IPFS (CID posted onchain with each root)
+    role: indexer
+    public: true
+    license: none
+    operator: 0xbow publishes; any IPFS gateway serves
+    required: false
+  - name: 0xbow ASP API (leaves, roots, events for the website)
+    role: api
+    public: false
+    license: proprietary
+    operator: 0xbow
+    required: false
+  - name: Relayers (Fast Relay, Cloaked Relay; reference relayer in packages/relayer)
+    role: relayer
+    public: true
+    license: Apache-2.0
+    operator: third-party relayer operators
+    required: false
+    repo: https://github.com/0xbow-io/privacy-pools-core
+  - name: privacypools.com website
+    role: frontend
+    public: true
+    license: CC-BY-NC-4.0
+    operator: 0xbow
+    required: false
+    repo: https://github.com/0xbow-io/privacy-pools-website
+  - name: Envio HyperSync proxy, Alchemy RPC and price API (website defaults)
+    role: indexer
+    public: false
+    license: proprietary
+    operator: Envio; Alchemy
+    required: false
+  - name: Google Analytics and Sentry (website)
+    role: other
+    public: false
+    license: proprietary
+    operator: Google; Sentry
+    required: false
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/PrivacyPool.sol#L43-L61
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/src/contracts/PrivacyPool.sol
+        detail: withdraw() requires the proof's ASP root to equal ENTRYPOINT.latestRoot() (L59); Entrypoint.updateRoot (Entrypoint.sol L93-L104) is onlyRole(ASP_POSTMAN), so the postman decides which deposit labels can be withdrawn privately. windDownPool (L256-L261, OWNER_ROLE) permanently stops deposits; ragequit (PrivacyPool.sol L132-L150) stays open to the original depositor.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x1f4Fe25Cf802a0605229e0Dc497aAf653E86E187
+        address: "0x1f4Fe25Cf802a0605229e0Dc497aAf653E86E187"
+        eoa: true
+        block_number: 26153374
+        detail: Entrypoint.hasRole(ASP_POSTMAN, 0x1f4F…E187) returns true at block 26153374; the address has no code (an EOA) and sent the latest updateRoot tx 0x6298b96d…ec83. RoleGranted logs show the postman role granted to this EOA and to the owner Safe only; the EOA's OWNER_ROLE was revoked at block 22169228.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x6818809EefCe719E480a7526D76bD3e561526b46 "hasRole(bytes32,address)(bool)" 0xfc84ade01695dae2ade01aa4226dc40bdceaf9d5dbd3bf8630b1dd5af195bbc5 0x1f4Fe25Cf802a0605229e0Dc497aAf653E86E187 --rpc-url https://ethereum-rpc.publicnode.com
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x6818809EefCe719E480a7526D76bD3e561526b46
+        address: "0x6818809EefCe719E480a7526D76bD3e561526b46"
+        block_number: 26153374
+        detail: Entrypoint.hasRole(ASP_POSTMAN, 0x1f4F…E187) = true at block 26153374 (raw word 1).
+        checked_at: "2026-10-09"
+        check:
+          call: "0x91d14854fc84ade01695dae2ade01aa4226dc40bdceaf9d5dbd3bf8630b1dd5af195bbc50000000000000000000000001f4fe25cf802a0605229e0dc497aaf653e86e187"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xAd7f9A19E2598b6eFE0A25C84FB1c87F81eB7159
+        address: "0xAd7f9A19E2598b6eFE0A25C84FB1c87F81eB7159"
+        block_number: 26153374
+        detail: OWNER_ROLE (windDownPool, registerPool, removePool, upgrade) is held by Safe 0xAd7f…7159 (v1.4.1), threshold 2 of 4 owners, no modules (getModulesPaginated empty), guard slot zero, no timelock; one owner is an EIP-7702-delegated account.
+        checked_at: "2026-10-09"
+        check:
+          call: "0xe75235b8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000002"
+    finding: >-
+      Two roles can stop or block settlement. The ASP postman, a single EOA, posts the association root; a deposit whose label is not in the latest root cannot be withdrawn privately, so the postman can exclude individual deposits without notice. Its only remaining exit is ragequit, which returns funds to the original depositor, not to a payee. OWNER_ROLE, held by a 2-of-4 Safe with no modules, guard or timelock, can wind down a pool (stopping deposits) and upgrade the Entrypoint. Scored 0: an EOA holds a role that can target individual deposits. The 0xbow terms describe this screening (see C4).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/Entrypoint.sol#L110-L176
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/src/contracts/Entrypoint.sol
+        detail: deposit() and relay() on the Entrypoint have no caller restriction; relay pays RelayData.recipient and feeRecipient with a fee capped by maxRelayFeeBPS, so a user can relay their own withdrawal with fee 0. PrivacyPool.withdraw (PrivacyPool.sol L110-L129) can also be called directly with processooor = msg.sender.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB
+        address: "0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB"
+        block_number: 26153374
+        detail: The ETH pool's ENTRYPOINT() is 0x6818…6b46 and dead() is false at block 26153374; its Sourcify source matches PrivacyPool.sol at d494b63e apart from a trailing newline.
+        checked_at: "2026-10-09"
+        recheck: cast call 0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB "ENTRYPOINT()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          call: "0xe8eb3cc6"
+          expect: "0x0000000000000000000000006818809eefce719e480a7526d76bd3e561526b46"
+    finding: >-
+      A payer deposits and a note holder withdraws by calling public contracts, with no 0xbow API or relayer; addresses and ABIs are in the repo and SDK. But a private withdrawal to a payee succeeds only if 0xbow's ASP has already put the deposit's label in the latest root. Without that, the only direct path is ragequit back to the depositor. Judgment call: 1 (partial). The refund path is fully direct, and the payout path is a direct call that depends on a prior provider approval, which C2 treats like a provider signature.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/layers/asp.md#L5-L21
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: docs/docs/layers/asp.md
+        detail: The ASP "controls which deposits can be privately withdrawn" and interacts with the Entrypoint via authorized postmen; no ASP service code exists in github.com/0xbow-io (8 repos listed).
+        checked_at: "2026-10-09"
+        recheck: gh repo list 0xbow-io --limit 50 --json name,description
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/relayer/README.md#L1-L53
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/relayer/README.md
+        detail: The relayer is public with self-host steps (env vars, Docker); relaying is optional because Entrypoint.relay is permissionless.
+        checked_at: "2026-10-09"
+    finding: >-
+      Relayers are optional and their code is public, and the ASP tree data is on IPFS under the CID posted onchain. The ASP approval itself is a required, closed, single-vendor service: only 0xbow's postman can add a deposit to the root that withdrawals must prove against. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L51-L80
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: docs/docs/toc.md
+        detail: The terms say 0xbow checks whether a wallet is high-risk or on a sanctions list, that each deposit undergoes due diligence, that 0xbow may remove any address at any time, and that non-whitelisted users may withdraw only to their deposit address.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/PrivacyPool.sol#L55-L60
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/src/contracts/PrivacyPool.sol
+        detail: The pool enforces the screening result onchain by requiring the latest ASP root in every withdrawal proof.
+        checked_at: "2026-10-09"
+    finding: >-
+      Filtering sits in the settlement contracts by design: the pool accepts a private withdrawal only for deposits the ASP has approved. It is disclosed in the versioned terms and ASP docs, but the screening criteria and data vendors are not named, and the private path cannot bypass it; only ragequit (to the depositor) does. Judgment call: anchor 0 is for filtering in the contracts without disclosure, and this is disclosed, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-website/blob/7df411128f7a18a61a77f7a0371bf0b857969e2a/src/config/chainData.ts#L129-L160
+        commit: 7df411128f7a18a61a77f7a0371bf0b857969e2a
+        path: src/config/chainData.ts
+        detail: Each pool is enumerated with chain, pool address, asset address, scope and deployment block; the Entrypoint's PoolRegistered events list the same 14 mainnet pools.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-website/contents/src/config/chainData.ts?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 129,160p
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xb419c2867aB3CBc78921660cB95150d95A94ce86
+        address: "0xb419c2867aB3CBc78921660cB95150d95A94ce86"
+        block_number: 26153426
+        detail: USDC isBlacklisted() is false for the USDC pool and the Entrypoint, and USDT isBlackListed() is false for the USDT pool and the Entrypoint, at block 26153426; both issuers can blacklist.
+        checked_at: "2026-10-09"
+    finding: >-
+      Tokens and pools are enumerated in code and onchain. We found no statement in the repos or terms that USDC and USDT can freeze a pool or the Entrypoint, which would lock every deposit in that pool. Ethereum L1 has no sequencer. Scored 2: enumerated in code, assumptions not stated.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x15e355024de1CDc74ADdea7EBDf98418Ba5B1a2c
+        address: "0x15e355024de1CDc74ADdea7EBDf98418Ba5B1a2c"
+        block_number: 26153374
+        detail: Sourcify returns match (partial) for the Entrypoint proxy and implementation, the ETH, USDC and USDT pools and both verifiers; the implementation slot of the proxy reads 0x15e3…1a2c at block 26153374.
+        checked_at: "2026-10-09"
+        recheck: for a in 0x6818809EefCe719E480a7526D76bD3e561526b46 0x15e355024de1CDc74ADdea7EBDf98418Ba5B1a2c 0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB 0xb419c2867aB3CBc78921660cB95150d95A94ce86 0xe859C0bD25f260BaEE534Fb52e307D3b64D24572; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x00000000000000000000000015e355024de1cdc74addea7ebdf98418ba5b1a2c"
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/foundry.toml#L11-L17
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/foundry.toml
+        detail: The Foundry profile pins solc 0.8.28 with bytecode_hash none and cbor_metadata false, which is why Sourcify can only give a partial match; deploy scripts are in packages/contracts/script.
+        checked_at: "2026-10-09"
+    finding: >-
+      Every settlement contract in scope is verified on Sourcify as a partial match, and the Sourcify sources equal the repo files at d494b63e and at the audited commits apart from a trailing newline. We did not rebuild the bytecode. Scored 2: partial match.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/tree/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages
+        detail: The core repo holds circuits, contracts with deploy scripts, the relayer and the SDK; privacy-pools-website holds the frontend.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-core/contents/packages?ref=d494b63e79f33bb2b0c8ece6cdacdca465c3b884" --jq '.[].name'
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-website/blob/7df411128f7a18a61a77f7a0371bf0b857969e2a/src/utils/aspClient.ts#L137-L180
+        commit: 7df411128f7a18a61a77f7a0371bf0b857969e2a
+        path: src/utils/aspClient.ts
+        detail: The closed ASP API's public endpoints (pool-info, events, mt-roots, mt-leaves, statistics) and their response types are defined in the website client.
+        checked_at: "2026-10-09"
+    finding: >-
+      Contracts, circuits, SDK, relayer, deploy scripts and frontend are public. The ASP backend (screening and root posting) and the ASP API are closed. Judgment call: the API has no published schema document, but its endpoints and response types are committed in the frontend client, which we accept as the schema for 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/README.md#L131-L193
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/README.md
+        detail: Build and deploy steps (env setup, keystore import, forge scripts) are documented; the relayer README covers self-hosting and the website README covers pnpm install and env config.
+        checked_at: "2026-10-09"
+    finding: >-
+      Build and deploy documentation exists for contracts, relayer and website. A self-hosted deployment would still need its own ASP, for which no code is published. Reproduction not attempted, so capped at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/interfaces/IPrivacyPool.sol#L39-L64
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/src/interfaces/IPrivacyPool.sol
+        detail: Event schemas (Deposited, Withdrawn, Ragequit, PoolDied) are in the interfaces, and ABIs for the Entrypoint and pool are in packages/sdk/src/abi.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-core/contents/packages/sdk/src/abi?ref=d494b63e79f33bb2b0c8ece6cdacdca465c3b884" --jq '.[].name'
+    finding: >-
+      ABIs and event schemas are in the repo, and the ASP API's shape is in the frontend client (see O2). We found no payee export in a non-proprietary format; account state is rebuilt from the user's mnemonic and chain data. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/LICENSE
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: LICENSE
+        detail: privacy-pools-core (contracts, circuits, SDK, relayer) is Apache-2.0.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-website/blob/7df411128f7a18a61a77f7a0371bf0b857969e2a/LICENSE.md
+        commit: 7df411128f7a18a61a77f7a0371bf0b857969e2a
+        path: LICENSE.md
+        detail: The website is licensed CC BY-NC 4.0 ("You may not use the material for commercial purposes without explicit permission"), although its package.json says MIT.
+        checked_at: "2026-10-09"
+    finding: >-
+      The contracts, circuits, SDK and relayer are Apache-2.0. The ASP service, which a private withdrawal requires, is closed, so F1 is 0 by rule. The website is non-commercial CC BY-NC 4.0, which is not an OSI licence; it is not required.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/4e6a7d2d3f73906d83f23219f773f57812a5cefb/LICENSE
+        commit: 4e6a7d2d3f73906d83f23219f773f57812a5cefb
+        path: LICENSE
+        detail: The root LICENSE was MIT (Wonderland, 2024) at the initial commit and was replaced with Apache-2.0 in 6ae88dbe (2025-02-17); packages/contracts/LICENSE changed MIT to Apache-2.0 in 3efc7e7b (2025-02-18). There is no CLA or CONTRIBUTING file in the repo.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-core/commits?path=LICENSE&sha=d494b63e79f33bb2b0c8ece6cdacdca465c3b884" --jq '.[].sha'
+    finding: >-
+      No CLA and no licence-stability commitment. The core repo was relicensed from MIT to Apache-2.0 before mainnet launch, both permissive. Judgment call: the anchor names any prior relicense event as 0; this one did not restrict users, but we follow the anchor and take the lower score.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/layers/asp.md#L5-L21
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: docs/docs/layers/asp.md
+        detail: The docs state that withdrawals require a valid ASP root and that the ASP provides inclusion data; no ASP implementation is published.
+        checked_at: "2026-10-09"
+    finding: >-
+      The pools, SDK and circuits run without proprietary code, but private withdrawal needs an ASP, and only 0xbow's closed one exists for this deployment. A fork could deploy its own Entrypoint with its own postman, but would have to write the ASP. Scored 1: documented that production needs a hosted service with no open alternative.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-website/blob/7df411128f7a18a61a77f7a0371bf0b857969e2a/src/app/layout.tsx#L27
+        commit: 7df411128f7a18a61a77f7a0371bf0b857969e2a
+        path: src/app/layout.tsx
+        detail: The root layout always mounts GoogleAnalytics with NEXT_PUBLIC_GA_ID or the hardcoded fallback G-D177C1SMBP; src/instrumentation-client.ts L5-L18 initialises Sentry with default integrations off and a sanitising beforeSend; package.json also lists @vercel/analytics.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/privacy-policy.md#L39
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: docs/docs/privacy-policy.md
+        detail: The privacy policy discloses automated collection of device IP address, device identifiers and usage patterns.
+        checked_at: "2026-10-09"
+    finding: >-
+      The SDK has no analytics. The website loads Google Analytics on every page by default, and Sentry error reporting, sanitised and with tracing and replay off. The privacy policy discloses automated collection. Scored 1: present, on by default, disclosed.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/privacy-policy.md#L19-L33
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: docs/docs/privacy-policy.md
+        detail: The policy lists name, email, phone, location, device data and AML/CFT due-diligence information as data 0xbow may collect, and uses device data for product analytics and marketing.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/Entrypoint.sol#L110-L126
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/src/contracts/Entrypoint.sol
+        detail: Onchain, deposit takes only asset, value and a precommitment.
+        checked_at: "2026-10-09"
+    finding: >-
+      The protocol needs only settlement data, and the ASP screens the public deposit address. The website and 0xbow collect more (analytics, device data, marketing), disclosed only in the privacy policy, which does not limit collection to a legal requirement. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/interfaces/IPrivacyPool.sol#L39-L59
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/src/interfaces/IPrivacyPool.sol
+        detail: Deposited emits depositor, commitment, label, value and precommitment hash; Withdrawn emits processooor, value, spent nullifier and new commitment; the proof hides which commitment the nullifier spends.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-core/contents/packages/contracts/src/interfaces/IPrivacyPool.sol?ref=d494b63e79f33bb2b0c8ece6cdacdca465c3b884" --jq .content | base64 -d | sed -n 39,59p
+    finding: >-
+      The chain shows who deposited and how much, and who received and how much, but not which deposit funded which withdrawal. There is no memo or invoice field. Amounts are arbitrary, not fixed denominations, so an unusual amount withdrawn in full can be matched to its deposit; partial withdrawals and round amounts reduce that. The ASP sees nothing beyond the chain. Judgment call: amount matching depends on user choices and is noted here, not scored; on what the code reveals, 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-website/blob/7df411128f7a18a61a77f7a0371bf0b857969e2a/src/config/chainData.ts#L129-L142
+        commit: 7df411128f7a18a61a77f7a0371bf0b857969e2a
+        path: src/config/chainData.ts
+        detail: Mainnet defaults are relayers fastrelay.xyz and api.clkd.xyz, an Alchemy RPC, an Envio HyperSync proxy for events, and the ASP URL from NEXT_PUBLIC_ASP_ENDPOINT_NON_TEST (src/config/env.ts L40-L49).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-website/contents/src/config/chainData.ts?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 129,142p
+    finding: >-
+      In the website flow, 0xbow's ASP API, Envio, Alchemy (RPC and prices), a third-party relayer and Google Analytics see requests. All are named in code; the RPC is user-configurable, the ASP and HyperSync endpoints are env-configurable, and relayers are a choice. On the SDK path only the user's RPC and an IPFS gateway are needed. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-website/blob/7df411128f7a18a61a77f7a0371bf0b857969e2a/src/containers/Modals/CustomRpc/CustomRpc.tsx#L391-L405
+        commit: 7df411128f7a18a61a77f7a0371bf0b857969e2a
+        path: src/containers/Modals/CustomRpc/CustomRpc.tsx
+        detail: The website has a per-chain custom RPC field; the ASP and HyperSync URLs come from env at build time; the SDK takes rpcUrl in its config (packages/sdk/src/core/data.service.ts).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-website/contents/src/containers/Modals/CustomRpc/CustomRpc.tsx?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 391,405p
+    finding: >-
+      The RPC is configurable in the UI and SDK. The indexer (ASP API) is configurable only via env, and its code is not public. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/PrivacyPool.sol#L110-L150
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: packages/contracts/src/contracts/PrivacyPool.sol
+        detail: Pool funds leave only through withdraw (to the processooor bound into the proof context) or ragequit (to the original depositor); no admin function moves pool funds. Relayed withdrawals pass through the Entrypoint, which forwards to RelayData.recipient.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xe859C0bD25f260BaEE534Fb52e307D3b64D24572
+        address: "0xe859C0bD25f260BaEE534Fb52e307D3b64D24572"
+        block_number: 26153374
+        detail: The USDT pool's EIP-1967 implementation slot is zero (not a proxy) and ENTRYPOINT is an immutable; the ETH and USDC pools read the same.
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      Funds sit in non-upgradeable pools that no role can sweep, so 0xbow cannot redirect them. But release to anyone other than the depositor depends on the ASP postman (an EOA, no timelock), and relayed withdrawals and ERC20 deposits pass through the upgradeable Entrypoint. Judgment call: anchor 2 needs the provider role over release to sit behind a timelock, which it does not, so 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x6818809EefCe719E480a7526D76bD3e561526b46
+        address: "0x6818809EefCe719E480a7526D76bD3e561526b46"
+        block_number: 26153374
+        detail: Entrypoint is a UUPS proxy; _authorizeUpgrade is onlyRole(OWNER_ROLE) (Entrypoint.sol L308). hasRole(OWNER_ROLE, Safe 0xAd7f…7159) = true; Upgraded events show implementations 0xdd8a…d4c1 (block 22153713) then 0x15e3…1a2c (block 22540812).
+        checked_at: "2026-10-09"
+        recheck: cast call 0x6818809EefCe719E480a7526D76bD3e561526b46 "hasRole(bytes32,address)(bool)" 0xb19546dff01e856fb3f010c267a7b1c60363cf8a4664e21cc89c26224620214e 0xAd7f9A19E2598b6eFE0A25C84FB1c87F81eB7159 --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          call: "0x91d14854b19546dff01e856fb3f010c267a7b1c60363cf8a4664e21cc89c26224620214e000000000000000000000000ad7f9a19e2598b6efe0a25c84fb1c87f81eb7159"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xAd7f9A19E2598b6eFE0A25C84FB1c87F81eB7159
+        address: "0xAd7f9A19E2598b6eFE0A25C84FB1c87F81eB7159"
+        block_number: 26153374
+        detail: The owner Safe has threshold 2 of 4, getModulesPaginated(0x1,10) returns no modules, and the guard slot is zero; there is no timelock.
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      The pools and verifiers cannot be upgraded. The Entrypoint, through which every deposit and relayed withdrawal passes and which supplies the ASP root the pools check, is upgradeable by a 2-of-4 Safe with no timelock; it was upgraded once in May 2025. A malicious upgrade could not take funds already in the pools, but could stop withdrawals except ragequit, redirect relayed withdrawals, or pull tokens users have approved to it. Signers are not disclosed. Scored 1: multisig admin, no timelock.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-website/blob/7df411128f7a18a61a77f7a0371bf0b857969e2a/src/hooks/useDeposit.ts#L489-L505
+        commit: 7df411128f7a18a61a77f7a0371bf0b857969e2a
+        path: src/hooks/useDeposit.ts
+        detail: The website approves exactly the deposit value to the Entrypoint, zeroing a partial allowance first; the SDK's approveERC20 (packages/sdk/src/core/contracts.service.ts L378-L398) approves the amount the caller passes.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-website/contents/src/hooks/useDeposit.ts?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 489,505p
+    finding: >-
+      ERC20 deposits approve the exact amount, so the code meets anchor 3. Judgment call: the frontend is not a distributed package and we ran no trace, so we cap at 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB
+        address: "0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB"
+        block_number: 26153374
+        detail: The ETH pool is not a proxy (implementation slot zero) and its ragequit (PrivacyPool.sol L132-L150) checks only the depositor and a ragequit proof, not the Entrypoint or ASP.
+        checked_at: "2026-10-09"
+        recheck: cast storage 0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      Derived from S1=1, C2=1, C3=0, O3=1. If 0xbow disappears, the latest root stays in place: deposits already in it can still be withdrawn privately, and every depositor can ragequit directly from the immutable pool, with no 0xbow service. New deposits could no longer be approved, so private settlement stops. A payee holding a note for an unapproved deposit cannot recover it; only the depositor can. Scored 2: funds retrievable through a verified direct path; settlement stops.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-website/blob/7df411128f7a18a61a77f7a0371bf0b857969e2a/src/config/env.ts#L3-L29
+        commit: 7df411128f7a18a61a77f7a0371bf0b857969e2a
+        path: src/config/env.ts
+        detail: NEXT_PUBLIC_ALCHEMY_KEY ships to the browser in RPC URLs; HYPERSYNC_KEY and ASP_API_JWT are server-only (getServerEnv) and used by the /api/hypersync-rpc proxy.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-website/contents/src/config/env.ts?ref=7df411128f7a18a61a77f7a0371bf0b857969e2a" --jq .content | base64 -d | sed -n 3,29p
+    finding: >-
+      Account secrets come from a mnemonic generated and kept client-side. There are no webhooks or merchant API keys. The website bundles an Alchemy RPC key, which grants only RPC quota, and keeps the HyperSync and ASP keys server-side. Judgment call: 2 for the bundled RPC key.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/audit/contracts_audit_oxorio.md#L39-L49
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: audit/contracts_audit_oxorio.md
+        detail: Oxorio's contracts audit pins initial commit 2d4627ba and final commit 532eaa8e and links fix commits per finding (e.g. 016a949f, L213); entrypoint_upgrade_audit_oxorio.md pins 238e3594; circuits and Auditware reports sit in the same folder.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/0xbow-io/privacy-pools-core/contents/packages/contracts/src/contracts/Entrypoint.sol?ref=238e3594053becde68aa40e1e4cef6c0c46e68da" --jq .content | base64 -d | diff - <(curl -s "https://sourcify.dev/server/v2/contract/1/0x15e355024de1CDc74ADdea7EBDf98418Ba5B1a2c?fields=sources" | jq -r '.sources["src/contracts/Entrypoint.sol"].content')
+      - tier: verified
+        kind: repo
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/SECURITY.md#L5-L18
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        path: SECURITY.md
+        detail: Vulnerability reports go to security@0xbow.io, with a bounty offered "in case it applies"; no bounty scope or programme is published.
+        checked_at: "2026-10-09"
+    finding: >-
+      The deployed Entrypoint implementation equals Entrypoint.sol at the audited commit 238e3594, and the pool sources equal the files at the audited final commit 532eaa8e, apart from a trailing newline. Oxorio links fix commits for its findings. There is no live bounty programme with scope, so not 3. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: blocklist
+  countries: [CU, KP, IR, SY]
+  note: >-
+    The 0xbow terms bar Cuba, North Korea, Iran, Syria and the Russian-occupied regions of Crimea, Donetsk and Luhansk (in UA, not listed as a whole country), and say the list may change. The contracts have no geographic check, so anyone can deposit and ragequit, but private withdrawal depends on passing 0xbow's ASP screening, which the terms say may exclude sanctioned or high-risk addresses. We did not inspect the hosted site for an IP geoblock.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L95-L112
+      commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+      path: docs/docs/toc.md
+      detail: Eligibility section 3.A.4 names the restricted jurisdictions (Cuba, DPRK, Iran, Syria, Crimea, Donetsk, Luhansk).
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"
+
+notes: >-
+  Unit: Ethereum Entrypoint 0x6818…6b46 with the ETH, USDC and USDT pools; 11 further mainnet pools (USDS, sUSDS, DAI, wstETH, WBTC, USDe, USD1, frxUSD, wOETH, fxUSD, BOLD) use the same contracts and are not scored separately. Reads at block 26153374 via publicnode (blacklist reads at 26153426); event history via rpc.mevblocker.io, which served full-range eth_getLogs. The deployments doc lists implementation 0xdd8a…d4c1, superseded by 0x15e3…1a2c in May 2025. The latest ASP tree (CID bafybeibshlh…fb3a) was retrievable from public IPFS gateways. No transactions, UI runs, traces or self-host attempts.

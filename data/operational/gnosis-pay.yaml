@@ -1,0 +1,1456 @@
+slug: gnosis-pay
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: gnosispay/account-kit
+          ok: false
+          detail: no security policy file
+        - repo: gnosispay/ui
+          ok: false
+          detail: no security policy file
+        - repo: gnosispay/docs
+          ok: false
+          detail: no security policy file
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: no security policy file
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: false
+          detail: no security policy file
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: false
+          detail: no security policy file
+        - repo: safe-global/safe-smart-account
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/contents/?ref=main
+        detail: "gnosispay/account-kit: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/contents/?ref=main
+        detail: "gnosispay/ui: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/contents/?ref=main
+        detail: "gnosispay/docs: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/contents/?ref=main
+        detail: "gnosispay/pse-react-native: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-delay: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-roles: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/contents/?ref=main
+        detail: "safe-global/safe-smart-account: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: gnosispay/ui
+          ok: true
+          detail: dependabot config present
+        - repo: gnosispay/docs
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: safe-global/safe-smart-account
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/contents/?ref=main
+        detail: "gnosispay/account-kit: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/contents/?ref=main
+        detail: "gnosispay/ui: dependabot config present"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/contents/?ref=main
+        detail: "gnosispay/docs: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/contents/?ref=main
+        detail: "gnosispay/pse-react-native: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-delay: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-roles: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/contents/?ref=main
+        detail: "safe-global/safe-smart-account: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: false
+          detail: no deployment configuration
+        - repo: gnosispay/ui
+          ok: true
+          detail: "deployment configuration: Dockerfile.pse-backend"
+        - repo: gnosispay/docs
+          ok: false
+          detail: no deployment configuration
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: no deployment configuration
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: false
+          detail: no deployment configuration
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: false
+          detail: no deployment configuration
+        - repo: safe-global/safe-smart-account
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/contents/?ref=main
+        detail: "gnosispay/account-kit: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/contents/?ref=main
+        detail: "gnosispay/ui: deployment configuration: Dockerfile.pse-backend"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/contents/?ref=main
+        detail: "gnosispay/docs: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/contents/?ref=main
+        detail: "gnosispay/pse-react-native: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-delay: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-roles: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/contents/?ref=main
+        detail: "safe-global/safe-smart-account: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: true
+          detail: "rules: deletion, non_fast_forward, required_linear_history, pull_request"
+        - repo: gnosispay/ui
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: gnosispay/docs
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request"
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: safe-global/safe-smart-account
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/rules/branches/main
+        detail: "gnosispay/account-kit: rules: deletion, non_fast_forward, required_linear_history, pull_request"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/rules/branches/main
+        detail: "gnosispay/ui: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/rules/branches/main
+        detail: "gnosispay/docs: rules: deletion, non_fast_forward, pull_request"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/rules/branches/main
+        detail: "gnosispay/pse-react-native: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/rules/branches/main
+        detail: "gnosisguild/zodiac-modifier-delay: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/rules/branches/main
+        detail: "gnosisguild/zodiac-modifier-roles: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/rules/branches/main
+        detail: "safe-global/safe-smart-account: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: true
+          detail: 2 workflow file(s)
+        - repo: gnosispay/ui
+          ok: true
+          detail: 8 workflow file(s)
+        - repo: gnosispay/docs
+          ok: false
+          detail: no .github/workflows
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: 1 workflow file(s)
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: true
+          detail: 2 workflow file(s)
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: true
+          detail: 3 workflow file(s)
+        - repo: safe-global/safe-smart-account
+          ok: true
+          detail: 2 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/contents/?ref=main
+        detail: "gnosispay/account-kit: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/contents/?ref=main
+        detail: "gnosispay/ui: 8 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/contents/?ref=main
+        detail: "gnosispay/docs: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/contents/?ref=main
+        detail: "gnosispay/pse-react-native: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-delay: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-roles: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/contents/?ref=main
+        detail: "safe-global/safe-smart-account: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: true
+          detail: test command in a workflow
+        - repo: gnosispay/ui
+          ok: true
+          detail: test command in a workflow
+        - repo: gnosispay/docs
+          ok: false
+          detail: test command in a workflow
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: test command in a workflow
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: false
+          detail: test command in a workflow
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: true
+          detail: test command in a workflow
+        - repo: safe-global/safe-smart-account
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/contents/?ref=main
+        detail: "gnosispay/account-kit: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/contents/?ref=main
+        detail: "gnosispay/ui: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/contents/?ref=main
+        detail: "gnosispay/docs: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/contents/?ref=main
+        detail: "gnosispay/pse-react-native: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-delay: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-roles: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/contents/?ref=main
+        detail: "safe-global/safe-smart-account: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: false
+          detail: coverage tooling referenced
+        - repo: gnosispay/ui
+          ok: false
+          detail: coverage tooling referenced
+        - repo: gnosispay/docs
+          ok: false
+          detail: coverage tooling referenced
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: coverage tooling referenced
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: true
+          detail: coverage tooling referenced
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: true
+          detail: coverage tooling referenced
+        - repo: safe-global/safe-smart-account
+          ok: true
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/contents/?ref=main
+        detail: "gnosispay/account-kit: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/contents/?ref=main
+        detail: "gnosispay/ui: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/contents/?ref=main
+        detail: "gnosispay/docs: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/contents/?ref=main
+        detail: "gnosispay/pse-react-native: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-delay: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-roles: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/contents/?ref=main
+        detail: "safe-global/safe-smart-account: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: true
+          detail: "latest tags: v5.1.1, v5.1.0, v5.0.1"
+        - repo: gnosispay/ui
+          ok: false
+          detail: no tags
+        - repo: gnosispay/docs
+          ok: false
+          detail: no tags
+        - repo: gnosispay/pse-react-native
+          ok: true
+          detail: "latest tags: v1.0.7, v1.0.6, v1.0.5"
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: true
+          detail: "latest tags: v1.1.0, v1.0.1"
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: false
+          detail: "latest tags: zodiac-roles-sdk-v4.1.3, zodiac-roles-sdk-v4.1.2, zodiac-roles-sdk-v4.1.1"
+        - repo: safe-global/safe-smart-account
+          ok: true
+          detail: "latest tags: v1.5.0, v1.5.0-base, v1.4.1"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/tags
+        detail: "gnosispay/account-kit: latest tags: v5.1.1, v5.1.0, v5.0.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/tags
+        detail: "gnosispay/ui: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/tags
+        detail: "gnosispay/docs: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/tags
+        detail: "gnosispay/pse-react-native: latest tags: v1.0.7, v1.0.6, v1.0.5"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/tags
+        detail: "gnosisguild/zodiac-modifier-delay: latest tags: v1.1.0, v1.0.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/tags
+        detail: "gnosisguild/zodiac-modifier-roles: latest tags: zodiac-roles-sdk-v4.1.3, zodiac-roles-sdk-v4.1.2, zodiac-roles-sdk-v4.1.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/tags
+        detail: "safe-global/safe-smart-account: latest tags: v1.5.0, v1.5.0-base, v1.4.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: gnosispay/ui
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: gnosispay/docs
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: 2 of 10 recent commits signed
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: false
+          detail: 2 of 10 recent commits signed
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: safe-global/safe-smart-account
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/commits?per_page=10
+        detail: "gnosispay/account-kit: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/commits?per_page=10
+        detail: "gnosispay/ui: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/commits?per_page=10
+        detail: "gnosispay/docs: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/commits?per_page=10
+        detail: "gnosispay/pse-react-native: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/commits?per_page=10
+        detail: "gnosisguild/zodiac-modifier-delay: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/commits?per_page=10
+        detail: "gnosisguild/zodiac-modifier-roles: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/commits?per_page=10
+        detail: "safe-global/safe-smart-account: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: true
+          detail: 7 release(s) with notes
+        - repo: gnosispay/ui
+          ok: false
+          detail: no changelog or release notes
+        - repo: gnosispay/docs
+          ok: false
+          detail: no changelog or release notes
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: no changelog or release notes
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: true
+          detail: 2 release(s) with notes
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: safe-global/safe-smart-account
+          ok: true
+          detail: CHANGELOG file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/contents/?ref=main
+        detail: "gnosispay/account-kit: 7 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/contents/?ref=main
+        detail: "gnosispay/ui: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/contents/?ref=main
+        detail: "gnosispay/docs: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/contents/?ref=main
+        detail: "gnosispay/pse-react-native: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-delay: 2 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-roles: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/contents/?ref=main
+        detail: "safe-global/safe-smart-account: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: gnosispay/account-kit
+          ok: true
+          detail: contribution section in README
+        - repo: gnosispay/ui
+          ok: false
+          detail: none found
+        - repo: gnosispay/docs
+          ok: false
+          detail: none found
+        - repo: gnosispay/pse-react-native
+          ok: false
+          detail: none found
+        - repo: gnosisguild/zodiac-modifier-delay
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: gnosisguild/zodiac-modifier-roles
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: safe-global/safe-smart-account
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/account-kit/contents/?ref=main
+        detail: "gnosispay/account-kit: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/ui/contents/?ref=main
+        detail: "gnosispay/ui: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/docs/contents/?ref=main
+        detail: "gnosispay/docs: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosispay/pse-react-native/contents/?ref=main
+        detail: "gnosispay/pse-react-native: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-delay/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-delay: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/gnosisguild/zodiac-modifier-roles/contents/?ref=main
+        detail: "gnosisguild/zodiac-modifier-roles: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safe-global/safe-smart-account/contents/?ref=main
+        detail: "safe-global/safe-smart-account: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: Published audits cover the Safe, Delay and Roles code that holds funds (CROPS S6); no independent review of Gnosis Pay's own Spender or Bouncer contracts, backend or app was found.
+    refs:
+      - criterion: S6
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Public status page at status.gnosispay.com (Upptime, open source in gnosispay/gnosispay-uptime) and a formal closure notice. No post-mortem for the June 2026 security incident was found; the help centre article on it gives recovery steps only.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.gnosispay.com
+        detail: Upptime status page for Gnosis Pay services, source in github.com/gnosispay/gnosispay-uptime.
+        checked_at: 2026-10-09
+        quote: Check the availability for GnosisPay services
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
+        archive: data/archive/gnosis-pay-closure-notice.txt
+        detail: Closure notice naming the licensed issuers and their regulator references.
+        checked_at: 2026-10-09
+        quote: Please read this notice carefully and keep a copy
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/8765952539-recovering-funds-after-the-2026-security-incident
+        archive: data/archive/gnosis-pay-ops-incident-recovery.txt
+        detail: Help centre article on the June 2026 incident; it explains how to withdraw from pre-incident Safes and gives no cause, timeline or loss figure.
+        checked_at: 2026-10-09
+        quote: In June 2026 we migrated everyone to a new card Safe following a security incident
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Sign-in is a Sign-In with Ethereum signature from the wallet that owns the Safe, exchanged for a JWT; no separate second factor is documented. Funds at rest also need that wallet's signature plus the Delay cooldown.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/auth.mdx#L6-L31
+        commit: "b0b8c668d044b543f794e6a91065045ec03c6cbb"
+        path: auth.mdx
+        detail: "Authentication flow: nonce, SIWE signature from an EOA or EIP-1271 account that owns a Gnosis Pay account, then a JWT."
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: Sign-In with Ethereum (SIWE) issues a JWT sent as a Bearer token; partner SIWE domains must be whitelisted.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/auth.mdx#L58-L73
+        commit: "b0b8c668d044b543f794e6a91065045ec03c6cbb"
+        path: auth.mdx
+        detail: Domain whitelisting for SIWE and the Authorization Bearer jwt header.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Partners get a Partner ID and an App ID from the Partners Dashboard; the App ID authenticates a mutual-TLS connection for Partner Secure Elements. Webhooks are Ed25519-signed (CROPS S5). Key scoping and rotation are not documented.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/integration-model.mdx#L50-L55
+        commit: "b0b8c668d044b543f794e6a91065045ec03c6cbb"
+        path: integration-model.mdx
+        detail: Partner ID and APP_ID; APP_ID authenticates with PSE over mTLS.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: S5
+        index: 0
+      - criterion: S5
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: JWT validity is set per sign-in between 1 and 24 hours (ttlInSeconds); anything above 2 hours exceeds the partner's 120-minute cap. Expired tokens need a new signed SIWE message.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/auth.mdx#L35-L41
+        commit: "b0b8c668d044b543f794e6a91065045ec03c6cbb"
+        path: auth.mdx
+        detail: "JWT length validity: minimum 1 hour, maximum 24 hours."
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: Cardholders can export card transactions as CSV (CROPS O4); no export limits or export logging were found.
+    refs:
+      - criterion: O4
+        index: 2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: evidenced
+    value: "No separation is stated: the privacy policy lists system administration, operation and testing as a purpose for all categories of personal data."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/7638555831
+        archive: data/archive/gnosis-pay-privacy.txt
+        detail: Privacy and Cookie Policy (last updated 13 February 2026), purposes table, "Conducting system testing".
+        checked_at: 2026-10-09
+        quote: Conducting system testing We collect, analyse, use and store your personal data for the purposes of system administration, operation, testing and support
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Identification, biometric, contact, financial, transaction, device and support data kept up to 7 years for partner and legal obligations (privacy policy); KYC and transaction records 5 years after closure per the data article (CROPS P2). After the card closes, dispute and chargeback support runs to 12 June 2028 and Monavate keeps transaction records for the legally required period.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/7638555831
+        archive: data/archive/gnosis-pay-privacy.txt
+        detail: Privacy and Cookie Policy section 11, How long we retain your personal data.
+        checked_at: 2026-10-09
+        quote: for a period of up to a maximum of 7 years
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
+        archive: data/archive/gnosis-pay-closure-notice.txt
+        detail: Closure notice naming the licensed issuers and their regulator references.
+        checked_at: 2026-10-09
+        quote: disputes and chargebacks ends 23:59 UTC, 12 June 2028
+    refs:
+      - criterion: P2
+        index: 2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Controller is Gnosis P. Tech, Unipessoal Lda (Lisbon) for EEA residents and Gnosis Pay Co Ltd (London) for non-EEA residents; KYC is run by Sumsub as a service provider. DPIA availability not found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/7638555831
+        archive: data/archive/gnosis-pay-privacy.txt
+        detail: Privacy and Cookie Policy section 2 defines "Gnosis Pay" per residence.
+        checked_at: 2026-10-09
+        quote: where you are resident in a non-EEA country, Gnosis Pay Co Ltd
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Integration and part of the logical architecture are documented in the public docs repo (SIWE auth, partner model, PSE, webhooks, and the Safe with Delay, Roles and Bouncer modules); infrastructure architecture is not published.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/gp-onchain/overview.mdx#L6-L24
+        commit: "b0b8c668d044b543f794e6a91065045ec03c6cbb"
+        path: gp-onchain/overview.mdx
+        detail: Onchain overview naming the Safe, Delay, Roles and Bouncer modules and the Account Kit SDK.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: "Platform agreement: Gnosis Pay Co Ltd (England and Wales, 14919639) for non-EEA residents or Gnosis P. Tech, Unipessoal Lda (Portugal, 517 666 898) for EEA residents. Card agreement: Monavate (UAB Monavate for EEA, Monavate Ltd for UK and non-EEA), with Gnosis Pay as technical services provider and programme manager."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/2178874711
+        archive: data/archive/gnosis-pay-terms.txt
+        detail: Terms of Service section 1 name the two Gnosis Pay contracting entities with company numbers and registered offices.
+        checked_at: 2026-10-09
+        quote: Gnosis Pay Co Ltd is a company registered in England and Wales under company number 14919639
+      - tier: documented
+        kind: document
+        url: https://find-and-update.company-information.service.gov.uk/company/14919639
+        detail: Companies House record for GNOSIS PAY CO LTD., active private limited company, incorporated 7 June 2023.
+        checked_at: 2026-10-09
+        quote: Incorporated on 7 June 2023
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
+        archive: data/archive/gnosis-pay-closure-notice.txt
+        detail: Closure notice naming the licensed issuers and their regulator references.
+        checked_at: 2026-10-09
+        quote: Gnosis Pay acts as a technical services provider
+    note: The Portuguese entity was not checked in a Portuguese company register.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: The consumer card and web app end at 23:59 UTC on 20 December 2026; the cardholder agreement then ends, refunds and chargeback rights survive, and assets stay in the user's self-custodial Safe with a withdrawal page kept open. Card closure or suspension otherwise follows Monavate's cardholder terms.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
+        archive: data/archive/gnosis-pay-closure-notice.txt
+        detail: Closure notice sections 5 and 6.
+        checked_at: 2026-10-09
+        quote: neither Gnosis Pay nor Monavate can take them or prevent you from moving them
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: absent
+    value: The privacy policy states that no automated decision making is used.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/7638555831
+        archive: data/archive/gnosis-pay-privacy.txt
+        detail: Privacy and Cookie Policy section 10 (Your rights as a data subject).
+        checked_at: 2026-10-09
+        quote: We do not make use of any automated decision making
+    note: Gnosis Pay's own statement. Screening by Sumsub and by the issuer Monavate is outside this statement and was not found described.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: not_applicable
+    reason: B12.1 is absent on the provider's own statement, so there is no AI control to document.
+    burden: none
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: payer
+      amount: no transaction fee on purchases; spends debit stablecoin 1:1
+      basis: Gnosis Pay fee and limits article (legacy help centre); Gnosis Pay may change fees with notice under Terms section 17.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: Visa exchange rate, no Gnosis Pay mark-up
+      basis: Same article; the rate is Visa's.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: card order free; replacement 4.99 EURe/GBPe/USDCe
+      basis: Same article; the Terms allow an Admin Fee for physical cards shown at order time.
+      evidence_index: 0
+    - kind: cashout
+      paid_by: payer
+      amount: ATM free for 5 withdrawals or 200 EURe/GBPe/USDCe a month, then 2% per withdrawal
+      basis: Same article (ATM fair usage policy); ATM operators may add their own charges.
+      evidence_index: 0
+    - kind: limit
+      paid_by: none
+      amount: spend 8,000 a day, 5,000 per transaction; ATM 500 a day, 250 per withdrawal (EURe/GBPe/USDCe)
+      basis: Same article.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: no gas on card spends; gas (xDAI) on onchain transfers from the Safe
+      basis: Same article and Terms (third-party charges).
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/6104401027
+      archive: data/archive/gnosis-pay-ops-fees.txt
+      detail: Fee and limits article (Understanding Your Card's Fees and Limits), linked from the Terms (section 7) as the Fee Schedule and kept published for reference after the closure notice.
+      checked_at: 2026-10-09
+      quote: Card Replacement 4.99 EURe/GBPe/USDCe
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/2178874711
+      archive: data/archive/gnosis-pay-terms.txt
+      detail: Terms of Service section 7, Charges; Monavate fees under the cardholder terms are third-party charges.
+      checked_at: 2026-10-09
+      quote: you will be liable for certain fees associated with your use of the Card which are charged to you by Monavate
+  note: Consumer card fees as published for the programme that closes at 23:59 UTC on 20 December 2026; partner card programmes set their own fees. Monerium charges for IBAN redemption were not checked.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 2
+    - criterion: S1
+      index: 4
+  note: Funds sit in the user's own Safe; card spends are pulled through a Gnosis Pay-controlled spend path bounded by a daily allowance to a fixed settlement address (S1 = 1).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: UAB Monavate
+      holder: partner
+      country: LT
+      regulator: Bank of Lithuania
+      type: Electronic money institution licence (non-limited activity)
+      number: LB002139
+      activities: E-money issuance, card issuing and acquiring, payment transactions, cash withdrawals; valid from 2022-03-31
+      register_url: https://www.lb.lt/en/sfi-financial-market-participants/uab-monavate
+      evidence_index: 0
+    - entity: Monavate Ltd
+      holder: partner
+      country: GB
+      regulator: Financial Conduct Authority
+      type: Authorised Electronic Money Institution
+      number: "901097"
+      activities: Issue e-money and provide payment services; authorised since 04/11/2020
+      register_url: https://register.fca.org.uk/s/firm?id=0014G00002UyCbDQAV
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.lb.lt/en/sfi-financial-market-participants/uab-monavate
+      detail: Bank of Lithuania register entry for UAB Monavate (company code 305628001), authorisation code LB002139, e-money institution licence valid from 2022-03-31; also lists a sanction of 2025-11-25 (fine EUR 270,000) under the AML/CTF law and e-money and safeguarding rules.
+      checked_at: 2026-10-09
+      quote: Electronic money institution licence
+    - tier: documented
+      kind: document
+      url: https://register.fca.org.uk/s/firm?id=0014G00002UyCbDQAV
+      archive: data/archive/gnosis-pay-ops-fca-monavate.txt
+      detail: FCA Register firm page for reference 901097 (client-rendered; text read in a browser and archived), Companies House number 12472532.
+      checked_at: 2026-10-09
+      quote: Authorised Electronic Money Institution
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
+      archive: data/archive/gnosis-pay-closure-notice.txt
+      detail: Closure notice names which Monavate entity issues the card for EEA and for UK and other non-EEA cardholders.
+      checked_at: 2026-10-09
+      quote: regulated by the Bank of Lithuania (authorisation code LB002139)
+  note: "Both licences are held by the issuer partner; Gnosis Pay itself holds none and describes itself as a technical services provider. The Bank of Lithuania register records an enforcement measure against UAB Monavate dated 2025-11-25: a EUR 270,000 fine for breaches of the AML/CTF law and of e-money institution governance and safeguarding rules. EURe and the IBAN service come from Monerium, an e-money institution regulated in Iceland (CROPS context); not checked in a register here."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_withdrawal
+      partner: Monavate (issuer), Visa
+      fee: none from Gnosis Pay; Visa FX rate
+      limits: Card spend at merchants (the schema has no card-spend value); 8,000 a day, 5,000 per transaction. Card stops at 23:59 UTC on 20 December 2026.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Monavate (issuer), Visa
+      fee: 5 withdrawals or 200 a month free, then 2%
+      limits: 500 a day, 250 per withdrawal; ends with the card on 20 December 2026.
+      evidence_index: 0
+    - countries: [EU, CH]
+      method: bank_transfer
+      partner: Monerium (EURe issuer, SEPA)
+      fee: not stated by Gnosis Pay
+      limits: EUR cards only; funds leave the Safe onchain to the user's own wallet, which Monerium redeems to a SEPA account. Continues after the card closes.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/6104401027
+      archive: data/archive/gnosis-pay-ops-fees.txt
+      detail: Fee and limits article covering purchases, ATM withdrawals and limits.
+      checked_at: 2026-10-09
+      quote: "After allowance is exceeded: 2% fee per additional withdrawal"
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/5556167633-getting-money-to-a-bank-account
+      archive: data/archive/gnosis-pay-ops-bank-cashout.txt
+      detail: Help centre article on the Monerium IBAN off-ramp.
+      checked_at: 2026-10-09
+      quote: IBANs are only available on EUR cards
+    - tier: verified
+      kind: repo
+      url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/on-off-ramps/iban-integration.mdx#L6-L14
+      commit: "b0b8c668d044b543f794e6a91065045ec03c6cbb"
+      path: on-off-ramps/iban-integration.mdx
+      detail: IBAN via Monerium for users in the EU and Switzerland; it operates independently of the GP Safe.
+      checked_at: 2026-10-09
+  note: ALL means every country in the availability list (EEA, CH, GB, AR, BO, BR, CO, MX). The withdrawal page for moving assets out of the Safe onchain stays open after 20 December 2026. No cash agents.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2023-12-13
+      block: 31420289
+      what: Gnosis Pay settlement Safe 0x4822521E...72EE on Gnosis Chain (receiver of every card spend, CROPS S1)
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://gnosisscan.io/tx/0x74f6c12fa5bc4c9a77dbb280ea98ade4a6a1c704df59384cd5e4391cda878ec2
+        address: "0x4822521E6135CD2599199c83Ea35179229A172EE"
+        block_number: 31420289
+        detail: Settlement Safe has code size 0 at block 31420288 and 171 at 31420289 (2023-12-13 11:44:00 UTC); creation tx 0x74f6c12f...8ec2 from 0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2 (Safe proxy factory).
+        checked_at: 2026-10-09
+        recheck: cast codesize 0x4822521E6135CD2599199c83Ea35179229A172EE --block 31420288 --rpc-url https://rpc.gnosischain.com; cast codesize 0x4822521E6135CD2599199c83Ea35179229A172EE --block 31420289 --rpc-url https://rpc.gnosischain.com
+    note: Dates the settlement address scored in CROPS. The spend-path modifiers in use today were redeployed after the June 2026 incident (account-kit f4b92878); earlier settlement or spender addresses, if any, were not traced.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Gnosis Pay Co Ltd
+      jurisdiction: GB
+      register_url: https://find-and-update.company-information.service.gov.uk/company/14919639
+      registration_number: "14919639"
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://find-and-update.company-information.service.gov.uk/company/14919639
+        detail: Companies House, GNOSIS PAY CO LTD., active, registered office 12 New Fetter Lane, London EC4A 1JP.
+        checked_at: 2026-10-09
+        quote: Incorporated on 7 June 2023
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/2178874711
+        archive: data/archive/gnosis-pay-terms.txt
+        detail: Terms of Service section 1 name Gnosis Pay Co Ltd (non-EEA residents) and Gnosis P. Tech, Unipessoal Lda (EEA residents, Portugal 517 666 898).
+        checked_at: 2026-10-09
+        quote: Gnosis P. Tech, Unipessoal Lda is a company registered in Portugal under company number 517 666 898
+    note: Recorded entity is the non-EEA contracting party, checked in Companies House. EEA residents contract with Gnosis P. Tech, Unipessoal Lda (Portugal, 517 666 898, per the Terms; not checked in a Portuguese register). The card itself is a contract with Monavate.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value:
+      - date: 2026-06-03
+        summary: Security incident; users migrated to new Safes and all three modifier mastercopies replaced (account-kit f4b92878). Gnosis Pay's help centre confirms the incident and keeps a withdraw-legacy page for funds left in pre-incident Safes; no cause or loss figure is published.
+        funds_lost: unknown
+        url: https://help.gnosispay.com/articles/8765952539-recovering-funds-after-the-2026-security-incident
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/8765952539-recovering-funds-after-the-2026-security-incident
+        archive: data/archive/gnosis-pay-ops-incident-recovery.txt
+        detail: Help centre article on the June 2026 incident (recovery instructions only).
+        checked_at: 2026-10-09
+        quote: If your old Safe was affected by the incident, anything sent there is lost
+    refs:
+      - criterion: S6
+        index: 1
+    note: No public post-mortem was found; funds_lost is unknown although the frontend's recovery list carries a balance_if_not_hacked field. The date is the account-kit commit date; Gnosis Pay gives the month only.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2025-12-01
+        summary: Revised Terms of Service (published 18 November 2025) take effect for existing customers.
+        url: https://help.gnosispay.com/articles/2178874711
+      - date: 2026-09-21
+        summary: "Consumer card programme closes: card and web app stop at 23:59 UTC on 20 December 2026; withdrawals remain open; dispute support ends 12 June 2028; Gnosis Pay moves to partner card programmes."
+        url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
+        archive: data/archive/gnosis-pay-closure-notice.txt
+        detail: Closure notice dated 21 September 2026.
+        checked_at: 2026-10-09
+        quote: Your card and the web app will stop working at 23:59 UTC on 20 December 2026
+      - tier: documented
+        kind: document
+        url: https://help.gnosispay.com/articles/2178874711
+        archive: data/archive/gnosis-pay-terms.txt
+        detail: Terms of Service header with publication and effective dates.
+        checked_at: 2026-10-09
+        quote: 1st December 2025 for existing customers onboarded prior to the date stated above
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_observable
+  reason: Card spends settle as EURe (or GBPe, USDCe) transfers from each user Safe to one settlement Safe; the transfer event carries no card data, and spends cannot be separated from ordinary transfers to that address without the provider's records.
+  note: The consumer card stops on 20 December 2026.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

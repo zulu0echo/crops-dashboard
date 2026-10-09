@@ -1,0 +1,13 @@
+Source: https://docs.coca.xyz/coca/banking-account/coca-card
+Fetched: 2026-10-09 (curl; GitBook page, intermittently slow). Visible text with tags stripped:
+COCA Card | COCA COCA ⌘ Ctrl k COCA 💸 Banking That Pays You Back 🤩 The Bank We All Deserve Why are rewards so high? Where is my money stored and who controls it? Is COCA safe? What is COCA's roadmap for 
+2026? 💳 Banking Account Overview COCA Card IBAN 🚀 CRYPTO ACCOUNT Overview Buy Crypto Exchange assets 💰 Membership & Rewards Membership you deserve 8% Cashback 50%-off subscriptions 5% Balance APY 👌 Only 
+UP! Tokenomics Token designed to work Address & Details Token allocations No new tokens until Dec 1, 2027 Powered by GitBook On this page For the complete documentation index, see llms.txt . This 
+page is also available as Markdown . Copy On this page 💳 Banking Account COCA Card The COCA Card is a modern debit card, making it easy to spend your money in everyday situations. You receive both a 
+virtual card and a physical card , so you can pay online, in apps, and in stores without limitations. Use your COCA Card for daily purchases such as coffee, groceries, transportation, online 
+shopping, rent-related payments, and subscriptions. The card is accepted anywhere standard card payments are supported. Add your COCA Card to Apple Pay and Google Pay . Pay quickly and securely 
+in-store or online using your phone or other compatible devices. COCA Virtual Card is free for all tiers. Plastic card is 5$ for Starter, Standard & Standard+ and is free for Premium, Premium+ & 
+Elite users. Purchase Limits Limit Type Amount/Count Period Max purchase amount per transaction 30,000 EUR Per transaction Max purchase amount per day 30,000 EUR Daily Max purchase amount per month 
+30,000 EUR Monthly Max purchase amount per 3 months 75,000 EUR Quarterly Max purchase amount per 6 months 100,000 EUR Semi-annually Max purchase count per day Unlimited for Visa cards Daily ATM Cash 
+Withdrawal Limits Limit Type Amount/Count Period Free ATM withdrawals worldwide Up to $250, 2% thereafter Monthly Max cash withdrawal amount per day 850 EUR Daily Max cash withdrawal amount per month 
+5,000 EUR Monthly Max cash withdrawal count per day 5 transactions Daily Previous Overview Next IBAN Last updated 5 months ago Purchase Limits ATM Cash Withdrawal Limits

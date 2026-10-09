@@ -1,0 +1,663 @@
+slug: worm
+name: WORM (BETH proof-of-burn)
+type: transfer
+website: https://worm.cx
+primary_chain:
+  name: Ethereum
+  chain_id: 1
+  basis: >-
+    The contracts README (worm@b34b507d README.md L9-L19) lists deployments only on Ethereum mainnet, and the official CLI maps network "mainnet" to BETH 0x5624…9Cf8 (worm-miner@fd23cd80 common/src/contracts/network.rs L58-L66). Unit: BETH (proof-of-burn mint and spend), its two Groth16 verifiers, the Staking reward pool that mintCoin pays, and the BETHToETH hook used by the official send flow. Excluded: the WORM mining token, distributors and ICO contracts (not in the payment path), and Sepolia.
+
+repos:
+  - url: https://github.com/worm-privacy/worm
+    role: contracts
+    license: MIT
+  - url: https://github.com/worm-privacy/proof-of-burn
+    role: contracts
+    license: MIT
+  - url: https://github.com/worm-privacy/worm-miner
+    role: sdk
+    license: none
+  - url: https://github.com/worm-privacy/worm-privacy.github.io
+    role: frontend
+    license: none
+  - url: https://github.com/worm-privacy/trusted-setup
+    role: deploy
+    license: none
+
+contracts:
+  - address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+    chain_id: 1
+    role: BETH (mintCoin, spendCoin)
+    verified: sourcify
+  - address: "0x7c155d52b78799d4975417a3815cDe8C5aec434f"
+    chain_id: 1
+    role: ProofOfBurnVerifier (Groth16)
+    verified: sourcify
+  - address: "0x5745a35b9c5938B2307F0287f45df5743A9D02e6"
+    chain_id: 1
+    role: SpendVerifier (Groth16)
+    verified: sourcify
+  - address: "0x03d4702b51a98661B89dF5fcBe8C4baeF84C60B7"
+    chain_id: 1
+    role: Staking (reward pool credited on every mint)
+    verified: sourcify
+  - address: "0xbA5A285806c343AaD955a40FE4b6e5e607B752b6"
+    chain_id: 1
+    role: BETHToETH swap hook (optional)
+    verified: sourcify
+
+components:
+  - name: BETH contract (proof-of-burn mint and spend)
+    role: contracts
+    public: true
+    license: MIT
+    operator: none (no owner, no proxy; initializer cleared)
+    required: true
+    repo: https://github.com/worm-privacy/worm
+  - name: ProofOfBurn and Spend Groth16 verifiers
+    role: contracts
+    public: true
+    license: GPL-3.0
+    operator: none
+    required: true
+    repo: https://github.com/worm-privacy/worm
+  - name: Staking reward pool (receives the 0.5% pool fee in mintCoin)
+    role: contracts
+    public: true
+    license: MIT
+    operator: none (no owner)
+    required: true
+    repo: https://github.com/worm-privacy/worm
+  - name: Proof-of-burn and spend circuits
+    role: other
+    public: true
+    license: MIT
+    operator: none
+    required: true
+    repo: https://github.com/worm-privacy/proof-of-burn
+  - name: Trusted-setup parameters (GitHub release assets)
+    role: other
+    public: true
+    license: none
+    operator: worm-privacy GitHub org
+    required: true
+    repo: https://github.com/worm-privacy/trusted-setup
+  - name: worm-miner CLI (local burn, proof and mint)
+    role: sdk
+    public: true
+    license: none
+    operator: user
+    required: true
+    repo: https://github.com/worm-privacy/worm-miner
+  - name: Ethereum mainnet and an RPC that serves eth_getProof
+    role: ledger
+    public: true
+    license: LGPL-3.0
+    operator: Ethereum validators; RPC (hardcoded dRPC in the CLI)
+    required: true
+    repo: https://github.com/ethereum/go-ethereum
+  - name: Hosted prover and broadcaster (prover-2.worm.cx, worm-miner server)
+    role: relayer
+    public: false
+    license: proprietary
+    operator: WORM team
+    required: false
+  - name: worm.cx frontend (GitHub Pages build of worm-privacy.github.io)
+    role: frontend
+    public: true
+    license: none
+    operator: WORM team
+    required: false
+    repo: https://github.com/worm-privacy/worm-privacy.github.io
+  - name: BETHToETH and BETHToERC20 hooks with CypherETH pool liquidity
+    role: contracts
+    public: true
+    license: MIT
+    operator: none (immutable hooks); liquidity from third parties
+    required: false
+    repo: https://github.com/worm-privacy/worm
+  - name: Public RPCs, WalletConnect and Uniswap Permit2 used by the frontend
+    role: other
+    public: false
+    license: proprietary
+    operator: various (dRPC, NodeReal, GetBlock, others; WalletConnect; Uniswap)
+    required: false
+
+scores:
+  C1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/src/BETH.sol#L10-L55
+        commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+        path: src/BETH.sol
+        detail: BETH inherits only ERC20, ReentrancyGuard and ERC20Permit; its one privileged role, initializer, can only set the reward pool once and then zeroes itself (L54). There is no pause, blacklist or allowlist. This file is identical to the Sourcify source of 0x5624…9Cf8.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm/contents/src/BETH.sol?ref=eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6" --jq .content | base64 -d | sed -n 10,55p
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 26153606
+        detail: initializer() returns the zero address and rewardPool() is the Staking contract 0x03d4…60B7, so the one-time role has been used and cleared.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 "initializer()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          call: "0x9ce110d7"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x03d4702b51a98661B89dF5fcBe8C4baeF84C60B7
+        address: "0x03d4702b51a98661B89dF5fcBe8C4baeF84C60B7"
+        block_number: 26153606
+        detail: Staking, which every mintCoin calls through depositReward, has no owner, no pause and no proxy (EIP-1967 implementation slot zero).
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      No one can stop, freeze or block a burn or mint. Burning is a plain ETH transfer to an address with no known key. Minting is open to any caller with a valid proof. BETH has no owner, and its one-time initializer has been cleared onchain. The Staking contract it pays a fee into also has no admin.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/src/BETH.sol#L163-L240
+        commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+        path: src/BETH.sol
+        detail: mintCoin is public with no caller check. The receiver, broadcaster fee and prover fee are bound into the burn address through burnExtraCommitment (L176-L187), so whoever submits cannot change the payee. The payer chooses the receiver at burn time.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-miner/blob/fd23cd8012f550cf4950dad02e79c1ce9d39b809/README.md#L37-L64
+        commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+        path: README.md
+        detail: The official CLI documents burn with a --receiver-address, and mint with a broadcaster that may be your own private key; --prover-fee defaults to 0 "in case you want to prove it yourself".
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm-miner/contents/README.md?ref=fd23cd8012f550cf4950dad02e79c1ce9d39b809" --jq .content | base64 -d | sed -n 37,64p
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 26153606
+        detail: The deployed BETH is a Sourcify exact match to that source and has no proxy (EIP-1967 implementation slot zero).
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      A payer can send ETH to a burn address that commits to the payee, and anyone can then call mintCoin with a locally generated proof. The payee receives BETH, or ETH through the optional swap hook. No signature, relayer or API from the provider is needed. Addresses are in the README and the CLI, and the ABI is committed in worm-miner. The proof must use a block hash from the last 256 blocks, which any client can choose at mint time. We did not run a transaction. Note that the payee receives BETH, a token whose ETH value depends on market liquidity; the burned ETH itself cannot be recovered.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-miner/blob/fd23cd8012f550cf4950dad02e79c1ce9d39b809/Makefile#L1-L20
+        commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+        path: Makefile
+        detail: The CLI fetches proving parameters from worm-privacy/trusted-setup GitHub release assets and proves locally; its server binary is the same prover/broadcaster that others can run for fees.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm-miner/contents/Makefile?ref=fd23cd8012f550cf4950dad02e79c1ce9d39b809" --jq .content | base64 -d | sed -n 1,20p
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/blob/5c309e254871bdda9a3537f35c7f06c7f25527e4/src/app/tools/burn-eth/mint-beth.tsx#L362-L366
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: src/app/tools/burn-eth/mint-beth.tsx
+        detail: The frontend's mint tool lists the WORM public prover and a local machine endpoint; its one-page send flow (src/app/wormhole/loading.tsx L169-L208) uses the default WORM prover for proving and relaying.
+        checked_at: "2026-10-09"
+    finding: >-
+      No hosted service is required. The CLI proves locally from public parameters and can broadcast from any key. Prover and broadcaster code is public (worm-miner server). Fees for a third-party prover or broadcaster are fixed in the burn commitment, so the market is open to anyone. The official one-page send flow does default to the WORM-run prover. Judgment call: 3, because the protocol path does not need it and the self-host code is in the repo; the frontend default is counted under P2 and P4.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/src/BETH.sol#L163-L240
+        commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+        path: src/BETH.sol
+        detail: mintCoin checks only the nullifier, the mint cap, a recent block hash and the proof; there is no address or country check.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/tree/5c309e254871bdda9a3537f35c7f06c7f25527e4/src
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: src
+        detail: A grep of the frontend source for country, geolocation, ipapi, sanction and chainalysis finds nothing.
+        checked_at: "2026-10-09"
+        recheck: S=5c309e254871bdda9a3537f35c7f06c7f25527e4; for f in $(gh api "repos/worm-privacy/worm-privacy.github.io/git/trees/$S?recursive=1" --jq '.tree[].path | select(test("^src/.*[.]tsx?$"))'); do gh api "repos/worm-privacy/worm-privacy.github.io/contents/$f?ref=$S" --jq .content | base64 -d | grep -iE "countr|geoloc|ipapi|sanction|chainalysis" && echo "^ $f"; done
+    finding: >-
+      The settlement contracts and the official clients contain no address or country filtering, and the direct path needs no provider service. Whether the hosted prover filters requests could not be seen. Judgment call: the substance fits 3, but 3 needs a distributed package or a trace, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xbA5A285806c343AaD955a40FE4b6e5e607B752b6
+        address: "0xbA5A285806c343AaD955a40FE4b6e5e607B752b6"
+        block_number: 26153606
+        detail: The BETHToETH hook is immutably wired to BETH and to the CypherETH swap router 0x20C5…b0Ab; the burned asset is native ETH only (proof-of-burn reads an account balance).
+        checked_at: "2026-10-09"
+        recheck: cast call 0xbA5A285806c343AaD955a40FE4b6e5e607B752b6 "swapRouterContract()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+    finding: >-
+      The only asset is native ETH, which no issuer can freeze. Ethereum L1 has no sequencer. The payee receives BETH, an immutable ERC-20, and the hooks sell it for ETH or tokens through one named AMM router. The repos do not state the liquidity or price risk of BETH against ETH, which is the main inherited exposure. Scored 2: enumerated in code, assumptions not stated.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 26153606
+        detail: Sourcify returns exact_match for BETH, both verifiers, Staking and both hooks. BETH was compiled with solc 0.8.28 and deployed at block 24436025. Its source equals src/BETH.sol at worm@eab0f53b (2026-02-11); main has since changed the pool-fee logic.
+        checked_at: "2026-10-09"
+        recheck: for a in 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 0x7c155d52b78799d4975417a3815cDe8C5aec434f 0x5745a35b9c5938B2307F0287f45df5743A9D02e6 0x03d4702b51a98661B89dF5fcBe8C4baeF84C60B7; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/foundry.toml#L1-L4
+        commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+        path: foundry.toml
+        detail: foundry.toml pins no solc version or optimizer settings, so the build that produced the deployed bytecode is recorded only in Sourcify metadata.
+        checked_at: "2026-10-09"
+    finding: >-
+      Every settlement contract is an exact Sourcify match, and the deployed BETH source matches an untagged commit (eab0f53b) in the public repo. Etherscan was not checked: it blocks automated access. No rebuild was attempted, and the repo does not pin compiler settings. Judgment call: 2, not 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/blob/5c309e254871bdda9a3537f35c7f06c7f25527e4/package.json#L1-L70
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: package.json
+        detail: The org publishes contracts (worm), circuits (proof-of-burn), the CLI and prover server (worm-miner), the trusted-setup transcript and the frontend that GitHub Pages serves at worm.cx (CNAME worm.cx; worm.cx answers with server GitHub.com).
+        checked_at: "2026-10-09"
+        recheck: gh repo list worm-privacy --limit 50 --json name,isArchived,pushedAt
+    finding: >-
+      Contracts, circuits, client, prover/broadcaster server, setup and frontend are all public, and no indexer is needed. The hosted prover at prover-2.worm.cx could not be tied to a specific public build. Judgment call: 2 rather than 3 for that reason.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-miner/blob/fd23cd8012f550cf4950dad02e79c1ce9d39b809/README.md#L1-L35
+        commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+        path: README.md
+        detail: The README gives build steps for the CLI and server (Rust toolchain, apt packages, cargo build) and a Docker option; the Makefile downloads parameters.
+        checked_at: "2026-10-09"
+    finding: >-
+      Build and run instructions exist for the CLI and prover server. Reproduction not attempted, so capped at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-miner/tree/fd23cd8012f550cf4950dad02e79c1ce9d39b809/common/src/contracts/abis
+        commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+        path: common/src/contracts/abis
+        detail: BETH, BETHToETH, Staking and WORM ABIs are committed; the prover server's HTTP endpoints (GET/POST /proof, GET /proof/{nullifier}, GET/POST /relay) are listed in the README.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm-miner/contents/common/src/contracts/abis?ref=fd23cd8012f550cf4950dad02e79c1ce9d39b809" --jq '.[].name'
+    finding: >-
+      ABIs and the optional prover API are in the repo. The API is a README list, not OpenAPI. There is no payee export; the CLI writes burn.json and note files for the user. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-miner/blob/fd23cd8012f550cf4950dad02e79c1ce9d39b809/README.md#L1-L5
+        commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+        path: README.md
+        detail: worm-miner, the only published proof-generation client, has no LICENSE file at this commit (top level holds .github, Cargo files, Dockerfile, Makefile, README.md, cli, common, server), and the GitHub licence API returns none. The frontend, trusted-setup and witness repos also have none.
+        checked_at: "2026-10-09"
+        recheck: for r in worm proof-of-burn worm-miner worm-privacy.github.io trusted-setup witness; do echo $r $(gh api repos/worm-privacy/$r --jq '.license.spdx_id // "none"'); done
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/LICENSE
+        commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+        path: LICENSE
+        detail: The contracts repo LICENSE is MIT, but BETH.sol, Staking.sol and the hooks carry SPDX UNLICENSED headers; the verifiers are GPL-3.0; proof-of-burn (circuits) is MIT.
+        checked_at: "2026-10-09"
+    finding: >-
+      The contracts and circuits repos carry MIT, though the deployed source files say UNLICENSED in their SPDX headers. The proof client a payer or payee needs to settle without the hosted prover, worm-miner, has no licence, and neither do the frontend and trusted-setup repos. Scored 0: a repository needed to run the product has no licence.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/LICENSE
+        commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+        path: LICENSE
+        detail: The LICENSE file has one commit (9e21f5f7, 2025-06-06); the repo has no CONTRIBUTING or CLA file.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm/commits?path=LICENSE&sha=eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6" --jq '.[].sha'
+    finding: >-
+      No CLA and no relicensing event; no written licence-stability commitment.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-miner/blob/fd23cd8012f550cf4950dad02e79c1ce9d39b809/Makefile#L1-L20
+        commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+        path: Makefile
+        detail: The proving parameters and circuit data come from public GitHub release assets; the CLI needs only an Ethereum RPC.
+        checked_at: "2026-10-09"
+        recheck: gh api repos/worm-privacy/trusted-setup/releases --jq '.[].tag_name'
+    finding: >-
+      No proprietary plugin or hosted-only service is needed. The hosted prover is optional. Judgment call: the code supports 3, but with no O3 reproduction we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/blob/5c309e254871bdda9a3537f35c7f06c7f25527e4/package.json#L16-L54
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: package.json
+        detail: The frontend dependencies include no analytics, telemetry, error-reporting or fingerprinting package; wallet connectors (RainbowKit, WalletConnect, @metamask/sdk, @base-org/account) are present.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm-privacy.github.io/contents/package.json?ref=5c309e254871bdda9a3537f35c7f06c7f25527e4" --jq .content | base64 -d | grep -iE "sentry|analytics|gtag|amplitude|mixpanel|segment|posthog|hotjar|fingerprint"
+    finding: >-
+      Neither the frontend nor the Rust CLI ships an analytics or error-reporting SDK. The wallet-connector libraries may send their own connection telemetry; we did not assess that, and we ran no trace. Judgment call: absence shown only in code is capped at 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/blob/5c309e254871bdda9a3537f35c7f06c7f25527e4/src/app/wormhole/loading.tsx#L163-L182
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: src/app/wormhole/loading.tsx
+        detail: The one-page send flow posts the burn key, receiver address, fees and the burn address's account proof to DEFAULT_ENDPOINT (https://prover-2.worm.cx), with no option to change it in this flow.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm-privacy.github.io/contents/src/app/wormhole/loading.tsx?ref=5c309e254871bdda9a3537f35c7f06c7f25527e4" --jq .content | base64 -d | sed -n 163,182p
+    finding: >-
+      The protocol needs nothing beyond the burn and mint data, and the CLI sends nothing elsewhere. The official one-page send flow, however, hands the WORM-run prover the burn key and receiver, which link the payer's burn to the payee. The prover cannot redirect funds, but it learns the payment. The code shows this, but no policy or UI text discloses it. Judgment call: anchor 2 needs the extra data to be clearly optional, and in this flow it is not. Anchor 0 means undisclosed collection, but this is visible in public code. We take 1, the lower of the two remaining anchors.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/src/BETH.sol#L133-L160
+        commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+        path: src/BETH.sol
+        detail: mintCoin calldata carries the block number, nullifier, remaining-coin commitment, fees, prover, revealedAmount and revealedAmountReceiver in plaintext. The burn itself is a plain ETH transfer to an address derived from a secret burn key.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 26153606
+        detail: MINT_CAP is 10 ETH per burn; amounts are arbitrary up to the cap.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 "MINT_CAP()(uint256)" --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          call: "0x98f1312e"
+          expect: "0x0000000000000000000000000000000000000000000000008ac7230489e80000"
+    finding: >-
+      The chain shows a payer sending ETH to what looks like an ordinary address, and later a mint to the payee. The proof hides which burn funded which mint. Both amounts are plaintext and arbitrary, so the burned amount and the revealed amount, minus fees, can be matched. Partial reveals through spendCoin weaken this. Judgment call: 2, minimal linkage, because amounts are revealed. The size of the anonymity set and any timing correlation are behavioural, so we leave them out of the score.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/blob/5c309e254871bdda9a3537f35c7f06c7f25527e4/src/components/tools/rainbowkit-root.tsx#L64-L83
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: src/components/tools/rainbowkit-root.tsx
+        detail: The frontend hardcodes twelve public mainnet RPCs (dRPC, merkle.io, LlamaRPC, NodeReal and GetBlock with keys, publicnode, MEV Blocker, Flashbots and others); eth_getProof for the burn address goes through them.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-miner/blob/fd23cd8012f550cf4950dad02e79c1ce9d39b809/common/src/contracts/network.rs#L49-L56
+        commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+        path: common/src/contracts/network.rs
+        detail: The CLI hardcodes https://eth.drpc.org for mainnet, with no flag to override it.
+        checked_at: "2026-10-09"
+    finding: >-
+      Third parties see the payment in both official clients. The frontend sends the burn address's proof request to a fixed list of public RPCs, and its send flow sends the burn key to the WORM prover. The CLI uses dRPC. All of these are named in public code, but none can be swapped by configuration. Judgment call: anchor 2 needs them to be swappable by config, which they are not; 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-miner/blob/fd23cd8012f550cf4950dad02e79c1ce9d39b809/common/src/contracts/network.rs#L49-L56
+        commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+        path: common/src/contracts/network.rs
+        detail: Network::url() returns a fixed URL per network (mainnet https://eth.drpc.org).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm-miner/contents/common/src/contracts/network.rs?ref=fd23cd8012f550cf4950dad02e79c1ce9d39b809" --jq .content | base64 -d | sed -n 49,56p
+    finding: >-
+      Both official clients hardcode their RPC endpoints: the CLI uses dRPC, and the frontend uses a fixed list. No indexer is involved. Scored 0: hardcoded.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/src/BETH.sol#L176-L240
+        commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+        path: src/BETH.sol
+        detail: The burn address commits to the receiver, fees and hook; mintCoin mints only to those parties, and spendCoin mints remaining value only to the recorded coinOwner. No function lets any role move or redirect value.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 26153606
+        detail: The verifiers are immutable constructor arguments; proofOfBurnVerifier() returns 0x7c15…434f.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 "proofOfBurnVerifier()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          call: "0x7151a471"
+          expect: "0x0000000000000000000000007c155d52b78799d4975417a3815cde8c5aec434f"
+    finding: >-
+      Between burn and mint, no one holds the value: the ETH is gone, and the right to mint is fixed to the payee by the burn-address commitment. A prover or broadcaster can only collect the fees the payer set. Whoever holds the burn key decides when to mint, but cannot change the recipient. The payee ends up with BETH, not ETH (see C2 and C5).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 26153606
+        detail: The EIP-1967 implementation slot is zero on BETH, both verifiers, Staking and BETHToETH; none has an upgrade function or owner.
+        checked_at: "2026-10-09"
+        recheck: cast storage 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      No one can change the code: every contract in the payment path is non-upgradeable with no admin. Later fixes on the main branch (configurable pool share) would need a new deployment, so they are not in force.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/blob/5c309e254871bdda9a3537f35c7f06c7f25527e4/src/lib/core/contracts/uniswap/burn-any-erc20.ts#L21-L46
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: src/lib/core/contracts/uniswap/burn-any-erc20.ts
+        detail: Burning ETH needs no approval. For the ERC-20 path the frontend approves maxUint256 to Permit2 once (permit2.ts L17-L24), then signs a PermitSingle for about 110% of the input with a 30-minute expiry to the Universal Router.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm-privacy.github.io/contents/src/lib/core/contracts/uniswap/burn-any-erc20.ts?ref=5c309e254871bdda9a3537f35c7f06c7f25527e4" --jq .content | base64 -d | sed -n 21,46p
+    finding: >-
+      The default ETH payment path needs no approval. The ERC-20 path uses Permit2 with a bounded, expiring permit to the router, on top of the standard unlimited approval to Permit2. In mintCoin, BETH approves the hook for the exact hook allowance and resets it to zero. Judgment call: the substance is close to 3, but 3 needs a distributed package or trace, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 26153606
+        detail: BETH is immutable with no admin (C1, S2), and mintCoin is callable by anyone with a proof (C2).
+        checked_at: "2026-10-09"
+        recheck: cast storage 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://ethereum-rpc.publicnode.com
+    finding: >-
+      Derived from S1=3, C2=3, C3=3 and O3=1. No one can redirect funds (S1). A payee or payer holding the burn key can mint with the public CLI and proving parameters (C2). No hosted service is required (C3). A public frontend build exists, but we did not reproduce it (O3=1). Judgment call: 2, not 3. Two caveats: the CLI's hardcoded dRPC endpoint would need a code edit if dRPC disappeared, and BETH's value depends on market liquidity.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/blob/5c309e254871bdda9a3537f35c7f06c7f25527e4/src/components/tools/rainbowkit-root.tsx#L64-L109
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: src/components/tools/rainbowkit-root.tsx
+        detail: The frontend source embeds NodeReal and GetBlock RPC keys in URLs and a WalletConnect project ID; there are no merchant API keys or webhooks. The burn key is generated client-side and saved to a local JSON backup (wormhole/rest.tsx L142).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/worm-privacy/worm-privacy.github.io/contents/src/components/tools/rainbowkit-root.tsx?ref=5c309e254871bdda9a3537f35c7f06c7f25527e4" --jq .content | base64 -d | sed -n 64,109p
+    finding: >-
+      The bundled keys grant only RPC quota. The user's secret, the burn key, is created and backed up client-side, but the one-page send flow sends it to the WORM prover (P2). That exposes the payment link, not the funds, because the recipient is fixed. Judgment call: 2 (minor issues).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm/blob/b34b507d4dfc4e57fcb2857c9816569e54526144/README.md#L1-L7
+        commit: b34b507d4dfc4e57fcb2857c9816569e54526144
+        path: README.md
+        detail: The contracts README says BETH was audited by Hashlock (hashlock.com/audits/worm) and yAudit (reports.yaudit.dev/2025-11-Worm).
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: document
+        url: https://reports.yaudit.dev/2025-11-Worm
+        quote: Worm | yAudit Reports
+        detail: The yAudit page (dated 2025-11-15, tagged zk and circom) embeds the PDF 2025-11-Worm-proofofburn.pdf.
+        checked_at: "2026-10-09"
+    finding: >-
+      Two audit reports are linked. The yAudit report predates the February 2026 BETH deployment and is tagged as a circuit review. We could not extract an audited commit from either report, so we cannot tie them to the deployed commit eab0f53b. We found no bug bounty and no SECURITY file. Scored 1: audit reports only.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: global
+  note: >-
+    BETH has no address or country check, and both official clients (the worm.cx frontend source and the worm-miner CLI) contain no geolocation or country gate. We found no terms page listing countries; the frontend source has no terms text. Judgment call: the hosted prover at prover-2.worm.cx, used by the frontend's send flow, might filter requests, which we could not see. The CLI path avoids it.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/src/BETH.sol#L163-L240
+      commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+      path: src/BETH.sol
+      detail: mintCoin has no caller, address or country restriction.
+      checked_at: "2026-10-09"
+    - tier: verified
+      kind: repo
+      url: https://github.com/worm-privacy/worm-privacy.github.io/tree/5c309e254871bdda9a3537f35c7f06c7f25527e4/src
+      commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+      path: src
+      detail: A grep of the frontend source for country, geolocation, ipapi, sanction and chainalysis finds nothing.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"
+
+notes: >-
+  Unit: BETH on Ethereum mainnet and the contracts it calls. Reads at block 26153606 via ethereum-rpc.publicnode.com. Deployed BETH source = worm@eab0f53b (2026-02-11); main (b34b507d) has later, undeployed changes. The payee receives BETH, an ERC-20 claim on burned ETH whose ETH value depends on market liquidity; the official send flow converts it to ETH through the BETHToETH hook. WORM (the mining token), distributors, ICO and Staking epochs are out of scope except where mintCoin pays the pool fee. No transactions, traces or self-host attempts.

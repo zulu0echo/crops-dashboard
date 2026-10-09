@@ -1,0 +1,93 @@
+Archived 2026-10-09 by AI research agent. Article text copied verbatim (table rows flattened to one line each) from https://support.oobit.com/en/articles/15262464-is-oobit-available-in-my-country.
+
+Oobit is available in 75 countries and territories across six continents, and we add new markets regularly. The table shows what you can do in each country. The app always shows what's available to you.  In all 75 countries you can get the Oobit Visa card, make bank transfers, send to Oobit users and earn cashback, except: Vietnam (card on waitlist, no cashback) and the United States (no sending to Oobit users). Brazil also has PIX, and Argentina, the Philippines and Vietnam have QR payments.
+
+Europe
+Country Oobit Visa card Bank transfers Send to Oobit users Cashback Local payments Albania Yes Yes Yes Yes  None
+Andorra Yes Yes Yes Yes  None
+Austria Yes Yes Yes Yes  None
+Belgium Yes Yes Yes Yes  None
+Bosnia and Herzegovina Yes Yes Yes Yes  None
+Bulgaria Yes Yes Yes Yes  None
+Croatia Yes Yes Yes Yes  None
+Cyprus Yes Yes Yes Yes  None
+Czechia Yes Yes Yes Yes  None
+Denmark Yes Yes Yes Yes  None
+Estonia Yes Yes Yes Yes  None
+Finland Yes Yes Yes Yes  None
+France Yes Yes Yes Yes  None
+Georgia Yes Yes Yes Yes  None
+Germany Yes Yes Yes Yes  None
+Gibraltar Yes Yes Yes Yes  None
+Greece Yes Yes Yes Yes  None
+Guernsey Yes Yes Yes Yes  None
+Iceland Yes Yes Yes Yes  None
+Ireland Yes Yes Yes Yes  None
+Italy Yes Yes Yes Yes  None
+Latvia Yes Yes Yes Yes  None
+Liechtenstein Yes Yes Yes Yes  None
+Lithuania Yes Yes Yes Yes  None
+Luxembourg Yes Yes Yes Yes  None
+Malta Yes Yes Yes Yes  None
+Moldova Yes Yes Yes Yes  None
+Monaco Yes Yes Yes Yes  None
+Montenegro Yes Yes Yes Yes  None
+Netherlands Yes Yes Yes Yes  None
+North Macedonia Yes Yes Yes Yes  None
+Norway Yes Yes Yes Yes  None
+Poland Yes Yes Yes Yes  None
+Portugal Yes Yes Yes Yes  None
+Romania Yes Yes Yes Yes  None
+Serbia Yes Yes Yes Yes  None
+Slovakia Yes Yes Yes Yes  None
+Slovenia Yes Yes Yes Yes  None
+Spain Yes Yes Yes Yes  None
+Sweden Yes Yes Yes Yes  None
+Switzerland Yes Yes Yes Yes  None
+United Kingdom Yes Yes Yes Yes None
+
+Asia and Middle East
+Country Oobit Visa card Bank transfers Send to Oobit users Cashback Local payments Kazakhstan Yes Yes Yes Yes  None
+Kyrgyzstan Yes Yes Yes Yes  None
+Malaysia Yes Yes Yes Yes  None
+Philippines Yes Yes Yes Yes QR payments
+Saudi Arabia Yes Yes Yes Yes  None
+South Korea Yes Yes Yes Yes  None
+Taiwan Yes Yes Yes Yes  None
+Thailand Yes Yes Yes Yes  None
+United Arab Emirates Yes Yes Yes Yes  None
+Vietnam Waitlist Yes Yes No QR payments
+
+North America and Caribbean
+Country Oobit Visa card Bank transfers Send to Oobit users Cashback Local payments Bahamas Yes Yes Yes Yes  None
+Costa Rica Yes Yes Yes Yes  None
+Dominican Republic Yes Yes Yes Yes  None
+El Salvador Yes Yes Yes Yes  None
+Greenland Yes Yes Yes Yes  None
+Guatemala Yes Yes Yes Yes  None
+Mexico Yes Yes Yes Yes  None
+Panama Yes Yes Yes Yes  None
+Puerto Rico Yes Yes Yes Yes  None
+United States Yes* Yes No Yes None
+
+South America
+Country Oobit Visa card Bank transfers Send to Oobit users Cashback Local payments Argentina Yes Yes Yes Yes QR payments
+Brazil Yes Yes Yes Yes PIX
+Chile Yes Yes Yes Yes  None
+Colombia Yes Yes Yes Yes  None
+Ecuador Yes Yes Yes Yes  None
+Paraguay Yes Yes Yes Yes  None
+Peru Yes Yes Yes Yes  None
+Uruguay Yes Yes Yes Yes None
+
+Africa
+Country Oobit Visa card Bank transfers Send to Oobit users Cashback Local payments Kenya Yes Yes Yes Yes  None
+South Africa Yes Yes Yes Yes  None
+Tanzania Yes Yes Yes Yes None
+
+Oceania
+Country Oobit Visa card Bank transfers Send to Oobit users Cashback Local payments Australia Yes Yes Yes Yes  None
+New Zealand Yes Yes Yes Yes  None
+* In the United States, the card is available in most states, and USDT isn't available to New York residents. The card works with Apple Pay and Google Wallet, so you can tap to pay wherever Visa is accepted.
+
+Not supported in: Afghanistan, Belarus, Central African Republic, China, Cuba, Ethiopia, Hong Kong, Iran, Iraq, Lebanon, Libya, Mali, Myanmar, Nicaragua, North Korea, Russia, Somalia, South Sudan, Sudan, Syria, Venezuela, and Yemen.

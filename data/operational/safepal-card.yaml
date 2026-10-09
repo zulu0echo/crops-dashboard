@@ -1,0 +1,523 @@
+slug: safepal-card
+facts:
+  B1.4:
+    status: unknown
+    note: Fiat24's documents mention no audit or bug bounty (CROPS S6 unknown); SafePal's wallet app is closed and not reviewed here.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Account access is by the cardholder's own Arbitrum wallet holding the Fiat24 account NFT (no separate login factor is documented); online card purchases are confirmed with a one-time password sent by email.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/payments/mastercard-debit
+        detail: Fiat24 user manual, MasterCard Debit, one-time password section.
+        checked_at: 2026-10-09
+        quote: One-time Password (OTP) per Email
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: Fiat24 Terms of Use, account token held in the user's wallet.
+        checked_at: 2026-10-09
+        quote: Without it, your wallet cannot connect to any Services
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: Fiat24 states only that it uses industry standard security measures; no data classification, encryption at rest or TLS commitment is published.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: Fiat24 Privacy Policy (effective 14 February 2023) section 5.
+        checked_at: 2026-10-09
+        quote: We employ industry standard security measures designed to protect the security of all information submitted through the Services
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Information is kept as long as necessary for the stated purposes and as required by law, then deleted or de-identified; no period is stated (see CROPS P2 for what is collected).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: Fiat24 Privacy Policy section 5.
+        checked_at: 2026-10-09
+        quote: We retain information we collect as long as it is necessary and relevant to fulfill the purposes outlined in this privacy policy
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: SR Saphirstein AG (Fiat24), Zurich, is the company responsible under its privacy policy; SafePal's own role as wallet front end is not described there. DPIA availability not found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: Fiat24 Privacy Policy opening paragraph.
+        checked_at: 2026-10-09
+        quote: entered in the Commercial Register of the Canton of Zurich under the number CHE-256.014.995
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Fiat24's developer guide documents contract addresses, functions and the card authorisation flow (integration and part of the logical architecture); infrastructure architecture and SafePal's app are not documented.
+    refs:
+      - criterion: O4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: SR Saphirstein AG (Fiat24), Zurich, Switzerland (CHE-256.014.995) provides the account and the card; SafePal says Fiat24 solely handles compliance and licensing.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: Fiat24 Terms of Use, section 1.
+        checked_at: 2026-10-09
+        quote: has a license as a fintech company according to Article 1b of the Swiss Banking Act
+      - tier: documented
+        kind: document
+        url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE256014995
+        detail: Swiss UID register, SR Saphirstein AG, Aktiengesellschaft, Bellerivestrasse 245, 8008 Zurich; commercial register status active.
+        checked_at: 2026-10-09
+        quote: CHE-256.014.995
+      - tier: documented
+        kind: document
+        url: https://www.safepal.com/en/bank
+        detail: SafePal card page, footnote 1.
+        checked_at: 2026-10-09
+        quote: which solely handles the compliance and licensing aspect
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Fiat24 may close an account with two months' notice (immediately if the balance is zero) or without notice on breach, and may force a payout of the client's assets and close the account on sanctions, PEP, fraud or recall grounds. Deposits are not covered by the Swiss deposit protection scheme.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: Fiat24 Terms of Use section 23 (When we can end these Terms of Use).
+        checked_at: 2026-10-09
+        quote: close your Fiat24 Account, or any Service associated with it by giving you two months prior notice
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/account-types/individual-account
+        detail: Fiat24 user manual, Individual Account, Forced Exit.
+        checked_at: 2026-10-09
+        quote: reserve the right to enforce a mandatory payout
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: Fiat24 Terms of Use section 7.
+        checked_at: 2026-10-09
+        quote: the Swiss Deposit Protection Scheme DOES NOT apply to client deposits with Fiat24
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: deposit and crypto top-up 0% (standard)
+      basis: SafePal fee article (updated 25 July 2026); SafePal's card page still says top-up fees from 0.4% and fiat transfer and deposit fees from 0.6%.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: 1% on Mastercard transactions settled in non-USD currencies
+      basis: SafePal fee article; the Fiat24 manual says a matching currency balance is charged first.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: refund processing 1 USD / 1 EUR / 1 CHF / 7 CNH per card refund; no account opening or management fee
+      basis: SafePal fee article and Fiat24 MasterCard Debit manual.
+      evidence_index: 0
+    - kind: cashout
+      paid_by: payer
+      amount: payout to own bank free (min 100 EUR or CHF); 10 EUR or 10 CHF if the payout is returned
+      basis: Fiat24 Cash Payout manual; SafePal says IBAN transfers to external banks are free.
+      evidence_index: 1
+    - kind: limit
+      paid_by: none
+      amount: card 1,600 EUR a day contactless, 5,000 EUR a day other; new individual accounts 30,000 USD a month
+      basis: SafePal card page FAQ and Fiat24 Individual Account manual (from 5 June 2026).
+      evidence_index: 2
+    - kind: network
+      paid_by: payer
+      amount: Arbitrum gas on every transaction
+      basis: SafePal fee article (all transactions are onchain).
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://safepalsupport.zendesk.com/hc/en-us/articles/22647224575643-Fee-Rates-for-the-SafePal-Fiat-Gateway-and-Mastercard
+      archive: data/archive/safepal-card-ops-fees.txt
+      detail: SafePal help centre, Fee Rates for the SafePal Fiat Gateway and Mastercard (linked from the card page as the Pricing and Fee disclosures).
+      checked_at: 2026-10-09
+      quote: Mastercard transactions settled in non-USD currencies will incur a 1% currency exchange fee
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/payments/cash-payout
+      detail: Fiat24 user manual, Cash Payout, Fee section.
+      checked_at: 2026-10-09
+      quote: Successful Payouts are free
+    - tier: documented
+      kind: document
+      url: https://www.safepal.com/en/bank
+      detail: SafePal card page FAQ on limits and fees.
+      checked_at: 2026-10-09
+      quote: with fiat transfer and deposit fees being as low as 0.6%
+  note: "Contradiction: SafePal's card page advertises top-up fees from 0.4% and fiat fees from 0.6%, while the fee article it links (updated 25 July 2026) sets the standard deposit and top-up fee at 0%. Recorded as the fee article states; the more recent and more specific source. Fiat24's Terms (section 11) also say crypto top-ups carry a percentage fee per its Pricing page."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: The card spends Fiat24 cash tokens, which are claims on client deposits at SR Saphirstein AG; they sit in the user's address but Fiat24 operators can move any balance (sendToSundry) and card pulls go to Fiat24-held accounts (S1 = 0).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: SR Saphirstein AG (Fiat24)
+      holder: partner
+      country: CH
+      regulator: Swiss Financial Market Supervisory Authority (FINMA)
+      type: FinTech licence under Article 1b of the Swiss Banking Act
+      activities: Accepts client deposits (not covered by Swiss deposit protection, no interest); issues the Mastercard debit card and Swiss IBAN account
+      register_url: https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/
+      archive: data/archive/safepal-card-ops-finma-register.txt
+      detail: FINMA authorised-institutions search for "Saphirstein" (client-rendered; result read in a browser and archived) lists SR Saphirstein AG, Zurich, under licensed persons pursuant to Article 1b BA (FinTech licence).
+      checked_at: 2026-10-09
+      quote: Licensed persons pursuant to Article 1b BA (FinTech licence)
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+      detail: Fiat24 Terms of Use section 1.
+      checked_at: 2026-10-09
+      quote: has a license as a fintech company according to Article 1b of the Swiss Banking Act
+  note: SafePal holds no licence for this product; its page says Fiat24 solely handles compliance and licensing. The FINMA entry gives no licence number or date. Card processing by Marqeta and the Mastercard principal membership behind the BIN were not checked.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_withdrawal
+      partner: Fiat24 (issuer), Mastercard
+      fee: 1% FX on non-USD settlement
+      limits: Virtual card only, spend at merchants and via Apple Pay or Google Pay (the schema has no card-spend value); 1,600 EUR a day contactless, 5,000 EUR a day other.
+      evidence_index: 0
+    - countries: [ALL]
+      method: bank_transfer
+      partner: Fiat24 (Swiss IBAN account)
+      fee: free; 10 EUR or 10 CHF if returned
+      limits: EUR or CHF payout to up to 10 registered accounts per currency in the client's name; minimum 100 EUR or CHF.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/payments/mastercard-debit
+      detail: Fiat24 user manual, MasterCard Debit (virtual only, no PIN; Apple Pay and Google Pay).
+      checked_at: 2026-10-09
+      quote: The Fiat24 Debit Card is a virtual card only without PIN
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/payments/cash-payout
+      detail: Fiat24 user manual, Cash Payout.
+      checked_at: 2026-10-09
+      quote: Minimal payout amount is 100 EUR or 100 CHF
+  note: ALL means every country in the availability list (42 Mastercard regions per SafePal). No ATM route is documented; the card is virtual without a PIN. The wider IBAN-only region list has a 1,000 USD monthly limit and no card.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2024-11-12
+      block: 273715521
+      what: Fiat24CardAuthorization proxy 0xe2e3B88B...5b14 on Arbitrum One (card debits); the Fiat24Account NFT dates from 16 January 2022
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/42161/0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14?fields=deployment
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        block_number: 273715521
+        detail: The receipt of tx 0x53392365...57a7 (status 1, from Fiat24 admin EOA 0x1272c99b...9D59) has contractAddress 0xe2e3B88B...5b14 at block 273715521 (2024-11-12 14:08:51 UTC); Sourcify's deployment record agrees. Fiat24Account NFT 0x133CAEec... was created at block 4699178 (2022-01-16 14:39:24 UTC, tx 0x758b303c...ca48).
+        checked_at: 2026-10-09
+        recheck: cast receipt 0x53392365e29a675af7378d8122c832ba12357427e12314c3f0cf83b2e91057a7 contractAddress --rpc-url https://arb1.arbitrum.io/rpc; cast block 273715521 --field timestamp --rpc-url https://arb1.arbitrum.io/rpc
+    note: Read from the creation receipt rather than code size at the prior block, because arb1.arbitrum.io does not serve historical state. The card authoriser may have replaced an earlier one; earlier card contracts were not traced. SafePal's card offering date was not found in a primary source.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: SR Saphirstein AG
+      jurisdiction: CH-ZH
+      register_url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE256014995
+      registration_number: CHE-256.014.995
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE256014995
+        detail: Swiss UID register, SR Saphirstein AG (SR Saphirstein Ltd), Aktiengesellschaft, Bellerivestrasse 245, 8008 Zurich; UID and commercial register status active, register reference CH-020.3.046.001-4.
+        checked_at: 2026-10-09
+        quote: SR Saphirstein AG
+    note: The contracting party for the account and card is Fiat24 (SR Saphirstein AG), not SafePal. SafePal's own legal entity was not identified in a primary source.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident notice or post-mortem was found in SafePal's help centre (Fiat Gateway section) or Fiat24's user manual and legal pages; neither publishes a status page that was found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2026-06-05
+        summary: Fiat24 caps new individual accounts at 30,000 USD of transactions a month after an internal policy change and stops accepting limit upgrades.
+        url: https://docs.fiat24.com/user/account-types/individual-account
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/account-types/individual-account
+        detail: Fiat24 user manual, Individual Account, Monthly Limit.
+        checked_at: 2026-10-09
+        quote: Starting from June 5, 2026, due to an internal policy change, all new individual clients will be subject to a monthly transaction limit of USD 30,000
+    note: Upgrades of the card authoriser proxy were not listed because Arbiscan and arbitrum.blockscout.com refuse scripted requests.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_observable
+  reason: Card debits are Authorized events on the shared Fiat24CardAuthorization contract, which serves every Fiat24 wallet provider (Bitget, SafePal and others). SafePal's share needs a walletProvider lookup per account (walletProviderMap 8026), which the spec format cannot express.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

@@ -1,0 +1,1045 @@
+slug: exa-card
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: exactly/exa
+          ok: false
+          detail: no security policy file
+        - repo: exactly/webauthn-owner-plugin
+          ok: false
+          detail: no security policy file
+        - repo: exactly/protocol
+          ok: false
+          detail: no security policy file
+        - repo: exactly/docs
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/contents/?ref=main
+        detail: "exactly/exa: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
+        detail: "exactly/webauthn-owner-plugin: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
+        detail: "exactly/protocol: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/contents/?ref=main
+        detail: "exactly/docs: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: exactly/exa
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: exactly/webauthn-owner-plugin
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: exactly/protocol
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: exactly/docs
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/contents/?ref=main
+        detail: "exactly/exa: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
+        detail: "exactly/webauthn-owner-plugin: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
+        detail: "exactly/protocol: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/contents/?ref=main
+        detail: "exactly/docs: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: exactly/exa
+          ok: false
+          detail: no deployment configuration
+        - repo: exactly/webauthn-owner-plugin
+          ok: false
+          detail: no deployment configuration
+        - repo: exactly/protocol
+          ok: false
+          detail: no deployment configuration
+        - repo: exactly/docs
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/contents/?ref=main
+        detail: "exactly/exa: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
+        detail: "exactly/webauthn-owner-plugin: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
+        detail: "exactly/protocol: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/contents/?ref=main
+        detail: "exactly/docs: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: exactly/exa
+          ok: true
+          detail: "rules: deletion, non_fast_forward, creation, required_linear_history, required_signatures, pull_request, required_status_checks, copilot_code_review"
+        - repo: exactly/webauthn-owner-plugin
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: exactly/protocol
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: exactly/docs
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/rules/branches/main
+        detail: "exactly/exa: rules: deletion, non_fast_forward, creation, required_linear_history, required_signatures, pull_request, required_status_checks, copilot_code_review"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/rules/branches/main
+        detail: "exactly/webauthn-owner-plugin: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/rules/branches/main
+        detail: "exactly/protocol: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/rules/branches/main
+        detail: "exactly/docs: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: exactly/exa
+          ok: false
+          detail: 13 workflow file(s)
+        - repo: exactly/webauthn-owner-plugin
+          ok: true
+          detail: 1 workflow file(s)
+        - repo: exactly/protocol
+          ok: true
+          detail: 2 workflow file(s)
+        - repo: exactly/docs
+          ok: true
+          detail: 1 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/contents/?ref=main
+        detail: "exactly/exa: 13 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
+        detail: "exactly/webauthn-owner-plugin: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
+        detail: "exactly/protocol: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/contents/?ref=main
+        detail: "exactly/docs: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: exactly/exa
+          ok: false
+          detail: test command in a workflow
+        - repo: exactly/webauthn-owner-plugin
+          ok: true
+          detail: test command in a workflow
+        - repo: exactly/protocol
+          ok: false
+          detail: test command in a workflow
+        - repo: exactly/docs
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/contents/?ref=main
+        detail: "exactly/exa: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
+        detail: "exactly/webauthn-owner-plugin: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
+        detail: "exactly/protocol: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/contents/?ref=main
+        detail: "exactly/docs: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: exactly/exa
+          ok: true
+          detail: coverage tooling referenced
+        - repo: exactly/webauthn-owner-plugin
+          ok: true
+          detail: coverage tooling referenced
+        - repo: exactly/protocol
+          ok: true
+          detail: coverage tooling referenced
+        - repo: exactly/docs
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/contents/?ref=main
+        detail: "exactly/exa: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
+        detail: "exactly/webauthn-owner-plugin: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
+        detail: "exactly/protocol: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/contents/?ref=main
+        detail: "exactly/docs: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: exactly/exa
+          ok: false
+          detail: "latest tags: @exactly/substreams@0.1.0, @exactly/server@0.2.125, @exactly/server@0.2.124"
+        - repo: exactly/webauthn-owner-plugin
+          ok: false
+          detail: no tags
+        - repo: exactly/protocol
+          ok: true
+          detail: "latest tags: v0.2.24, v0.2.23, v0.2.22"
+        - repo: exactly/docs
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/tags
+        detail: "exactly/exa: latest tags: @exactly/substreams@0.1.0, @exactly/server@0.2.125, @exactly/server@0.2.124"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/tags
+        detail: "exactly/webauthn-owner-plugin: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/tags
+        detail: "exactly/protocol: latest tags: v0.2.24, v0.2.23, v0.2.22"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/tags
+        detail: "exactly/docs: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: exactly/exa
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: exactly/webauthn-owner-plugin
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: exactly/protocol
+          ok: true
+          detail: 9 of 10 recent commits signed
+        - repo: exactly/docs
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/commits?per_page=10
+        detail: "exactly/exa: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/commits?per_page=10
+        detail: "exactly/webauthn-owner-plugin: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/commits?per_page=10
+        detail: "exactly/protocol: 9 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/commits?per_page=10
+        detail: "exactly/docs: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: exactly/exa
+          ok: true
+          detail: CHANGELOG file
+        - repo: exactly/webauthn-owner-plugin
+          ok: false
+          detail: no changelog or release notes
+        - repo: exactly/protocol
+          ok: true
+          detail: CHANGELOG file
+        - repo: exactly/docs
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/contents/?ref=main
+        detail: "exactly/exa: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
+        detail: "exactly/webauthn-owner-plugin: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
+        detail: "exactly/protocol: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/contents/?ref=main
+        detail: "exactly/docs: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: exactly/exa
+          ok: false
+          detail: none found
+        - repo: exactly/webauthn-owner-plugin
+          ok: false
+          detail: none found
+        - repo: exactly/protocol
+          ok: false
+          detail: none found
+        - repo: exactly/docs
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/exa/contents/?ref=main
+        detail: "exactly/exa: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
+        detail: "exactly/webauthn-owner-plugin: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
+        detail: "exactly/protocol: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/exactly/docs/contents/?ref=main
+        detail: "exactly/docs: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement for EXA LABS S.A.S. found in the help centre (sitemap, security and compliance collection), exactly/docs or the exa repository.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: No hosting or support organisation certification found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement of availability found. The help article "How secure is your card?" only says the card is issued and certified by Visa.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: Quantstamp audits of the Exa App Plugin (Mar 2025, Oct 2025 update) and WebAuthn plugin (Jul 2024), plus many Exactly Protocol audits; the deployed OP plugin is 23 commits past the Mar 2025 fix review. No review of the server or app found.
+    refs:
+      - criterion: S6
+        index: 0
+      - criterion: S6
+        index: 1
+    note: Cross-reference CROPS S6 (score 1). The Exactly Protocol bug bounty (Immunefi) is described in exactly/docs security/bug-bounty-program.md; its scope for the Exa plugin is not stated.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report or attestation found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    note: No vulnerability-scanning cadence stated; exactly/docs describes Hypernative onchain monitoring and Codecov coverage for the protocol, not platform scanning.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No patch service levels found in the terms, help centre or docs.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: evidenced
+    value: No time-bound notification commitment. The published emergency procedure says to communicate internally and externally "as appropriate" and to assign a security disclosure report; the Privacy Policy has no breach-notification clause.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/security/emergency-procedure.md#L115-L131
+        commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+        path: security/emergency-procedure.md
+        detail: Emergency checklist; communication step has no deadline.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    note: No statement on backups or restore testing found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: evidenced
+    value: Published emergency procedure (roles, war room, checklist) for loss-of-funds incidents in the protocol and contracts; not stated to be tested, and no recovery plan for the card backend. For the user exit path see CROPS S4.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/security/emergency-procedure.md#L1-L21
+        commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+        path: security/emergency-procedure.md
+        detail: Emergency procedure introduction and emergency definitions.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page and no post-mortem found (help centre sitemap, exactly/docs tree, GitHub code search in the exactly org for post-mortem or exploit). Exactly's Medium and Mirror pages return 403 to curl and were not read; a reviewer should check whether Exactly published post-mortems there.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: The account is owned by a device passkey (WebAuthn owner plugin); sign-in uses the passkey with no password. SIWE sign-in is also accepted.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/8977188-what-is-a-passkey-why-are-they-better-than-passwords
+        detail: Help article on passkeys in the Exa App.
+        checked_at: 2026-10-09
+        quote: instead of typing a password, your device will communicate with the service to prove your identity
+    refs:
+      - criterion: S4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: evidenced
+    value: Server session cookie expires 24 hours after sign-in (absolute expiry); no idle timeout found in the server code.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/common/AUTH_EXPIRY.ts#L1-L1
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: common/AUTH_EXPIRY.ts
+        detail: AUTH_EXPIRY = 24 * 60 * 60_000 ms.
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/api/auth/authentication.ts#L454-L463
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/api/auth/authentication.ts
+        detail: After WebAuthn or SIWE verification the server sets a signed, httpOnly, secure credential_id cookie expiring at now + AUTH_EXPIRY.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: Browser-to-server calls are authenticated with a signed httpOnly cookie issued after WebAuthn (passkey) or SIWE verification; not OAuth or OIDC.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/middleware/auth.ts#L6-L16
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/middleware/auth.ts
+        detail: Auth middleware rejects requests without a valid signed credential_id cookie (401).
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/api/auth/authentication.ts#L454-L463
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/api/auth/authentication.ts
+        detail: Cookie set after verifyAuthenticationResponse (WebAuthn) or SIWE validation.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Card-issuer (Rain, "panda") webhooks are authenticated by a signature header checked against a comma-separated list of signing keys, which allows key rotation; outbound calls to Rain, Persona and Sardine use API keys from environment variables.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/hooks/panda.ts#L110-L119
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/hooks/panda.ts
+        detail: Webhook handler verifies the signature header against each configured key and returns 401 otherwise.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: F3
+        index: 0
+    note: Cross-reference CROPS S5. Key scoping is not visible from the code.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: Session cookie lifetime 24 hours; no shorter token for sensitive data.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/common/AUTH_EXPIRY.ts#L1-L1
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: common/AUTH_EXPIRY.ts
+        detail: AUTH_EXPIRY = 24 * 60 * 60_000 ms.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: Privacy Policy states only "appropriate technical and organizational security measures"; no data classification, encryption-at-rest or TLS statement.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/9945134-privacy-policy
+        detail: Privacy Policy section 4 Data Security.
+        checked_at: 2026-10-09
+        quote: We use appropriate technical and organizational security measures to protect your personal data
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Retained only as long as necessary for the stated purposes, with periods set by record type and legal requirements; no fixed periods and no deletion-on-termination clause.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/9945134-privacy-policy
+        detail: Privacy Policy section 5 Duration of Data Processing.
+        checked_at: 2026-10-09
+        quote: Retention periods are determined based on the type of record
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: EXA LABS S.A.S. (Uruguay) is named as the company processing user data; KYC is run by Persona as a third-party provider. The policy does not use controller/processor terms and mentions no DPIA.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/9945134-privacy-policy
+        detail: Privacy Policy opening paragraph and KYC section.
+        checked_at: 2026-10-09
+        quote: a company incorporated under the laws of Uruguay
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No customer DPA found; the Privacy Policy says international transfers are made "on the basis of a previous agreement with the third-party processor".
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    note: exactly/docs describes Hypernative real-time monitoring of protocol contracts with automated pause; the server reports errors to Sentry. No SIEM or endpoint-detection statement found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: The Exa tech-stack page gives a three-layer logical view (Exactly Protocol, Alchemy modular account with WebAuthn and Exa plugins, Exa App); the full server and app source is public. No infrastructure or integration view of Rain, Persona and Sardine.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/the-exa-tech-stack.md#L5-L20
+        commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+        path: exa-app/the-exa-tech-stack.md
+        detail: Tech-stack page with a layer diagram.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: EXA LABS S.A.S., incorporated in Uruguay, under the App Terms; the card terms are between the user, Exa Labs SAS and the issuer Third National, governed by Puerto Rico law. Ramps add Bridge Ventures Inc. (USD/EUR) and Sixalime S.A.S. (Manteca, deposits).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/9942510-exa-app-terms-and-conditions
+        archive: data/archive/exa-card-app-terms.txt
+        detail: App Terms opening paragraph.
+        checked_at: 2026-10-09
+        quote: a corporation incorporated under the laws of Uruguay
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
+        detail: Card terms, definitions (Issuer) and section 14 Governing Law.
+        checked_at: 2026-10-09
+        quote: The issuer for this card program is Third National.
+    note: No Uruguayan company-register entry was checked.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Exa and the issuer may suspend, revoke or cancel the card at any time with or without notice; Exa may terminate app access for any reason without notice. Amounts owed survive. Funds stay in the user's self-custodial account and can be withdrawn through the contract path (CROPS S4).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
+        detail: Card terms section 9 Termination.
+        checked_at: 2026-10-09
+        quote: we may suspend, revoke or cancel your Account privileges
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Every card authorisation and refund is sent to Sardine for an automated risk level and score, but at 4fba32b the result only raises an error alert for high or very high risk; it does not decline the payment in code. Whether Sardine's scoring is machine-learning based is not stated by Exa.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/hooks/panda.ts#L192-L215
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/hooks/panda.ts
+        detail: assess() posts each transaction (amount, merchant, MCC, country) to Sardine's /v1/issuing/risks endpoint.
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: repo
+        url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/hooks/panda.ts#L271-L277
+        commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+        path: server/hooks/panda.ts
+        detail: The authorization assessment runs in a detached span; a high or very_high level only calls captureException.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    note: No documentation of monitoring, override or bias evaluation for the Sardine risk scoring was found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: fx
+      paid_by: payer
+      amount: Up to 1.5% foreign exchange fee plus up to 1.5% cross-border fee (card terms); help centre states 1.5% FX
+      basis: Card terms Important Disclosures (effective 12 Nov 2024); Exa may change fees on 30 days' notice.
+      evidence_index: 0
+    - kind: cashout
+      paid_by: payer
+      amount: ATM 1 USD + 0.65% per withdrawal, plus any ATM operator charge
+      basis: Help-centre ATM article.
+      evidence_index: 2
+    - kind: cashout
+      paid_by: payer
+      amount: "Bank off-ramp via Bridge: USD ACH 0.4%, US wire 1.0%, EUR SEPA 0.7% after the sponsored quota"
+      basis: Help-centre ramp fees article; Exa sponsors fees up to 3,000 USD or 60 transactions; wires are never sponsored.
+      evidence_index: 3
+    - kind: provider
+      paid_by: payer
+      amount: Origination fee on loans (pay-later installments), included in the interest; 0% APR on card purchases
+      basis: Help-centre fees article and card terms Important Disclosures.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
+      detail: Exa Labs Spend Card Terms, Important Disclosures, Fees.
+      checked_at: 2026-10-09
+      quote: "Foreign Exchange Fee (non USD): up to 1.5%"
+    - tier: documented
+      kind: document
+      url: https://help.exactly.app/en/articles/9055779-exa-card-associated-fees-and-costs
+      archive: data/archive/exa-card-ops-card-fees.txt
+      detail: Help article "Exa Card associated fees and costs" (Oct 2024).
+      checked_at: 2026-10-09
+      quote: We may charge an origination fee whenever you make a loan
+    - tier: documented
+      kind: document
+      url: https://help.exactly.app/en/articles/11758961-how-to-withdraw-cash-from-an-atm-with-your-exa-card
+      archive: data/archive/exa-card-ops-atm.txt
+      detail: ATM article, Limits & Fees.
+      checked_at: 2026-10-09
+      quote: "Fees: $1 + 0.65% per transaction"
+    - tier: documented
+      kind: document
+      url: https://help.exactly.app/en/articles/14093183-onramping-offramping-fees-limits
+      archive: data/archive/exa-card-ops-ramp-fees.txt
+      detail: Onramping and offramping fees and limits (Bridge and Manteca).
+      checked_at: 2026-10-09
+      quote: Fees are deducted from the fiat amount after USDC conversion, prior to the bank transfer
+  note: "No issuance, monthly or annual fee is stated; the card is virtual only (no physical card). Card terms and help centre differ on FX: the terms allow up to 1.5% FX plus up to 1.5% cross-border, the help centre says 1.5%. Judgment call: first-party help-centre pricing pages are treated as documented here."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: S1
+      index: 2
+  note: Funds rest in the user's own passkey-owned modular account as exaUSDC, but Exa's issuer signature plus keeper can debit any amount to a collector the admin Safe can repoint without a timelock. Agrees with the S1 finding (score 0, provider can redirect funds); the spend path is unbounded, which is the weakest form of hybrid.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: unknown
+  note: The card terms name Third National as issuer under a Visa licence with Puerto Rico governing law, and the help centre says the card is issued in the US with Rain's address in San Juan, PR. No first-party document states Third National's regulator, licence type or number. FDIC BankFind lists no active institution named Third National; the OCIF licence verification site failed the TLS handshake from this environment. Ramp partners Bridge Ventures Inc. and Sixalime S.A.S. (Manteca) were not checked against registers.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_withdrawal
+      partner: Third National (issuer), Rain, Visa
+      fee: FX up to 1.5% (+ up to 1.5% cross-border) on non-USD spend
+      limits: Card spend at merchants (the schema has no card-spend value); 10,000 USD weekly purchase limit before source-of-funds checks; not usable in CU, IR, KP, RU, SY, UA, VE.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Third National (issuer), Visa
+      fee: 1 USD + 0.65% per withdrawal
+      limits: 250 USD per withdrawal, 4 per day; contactless ATMs via Apple Pay or Google Wallet only (no physical card).
+      evidence_index: 1
+    - countries: [ALL]
+      method: bank_transfer
+      partner: Bridge Ventures Inc.
+      fee: USD ACH 0.4%, US wire 1.0%, EUR SEPA 0.7% after sponsored quota
+      limits: USDC converted to USD (ACH, wire) or EUR (SEPA) to an account in the user's name; Bridge may restrict by jurisdiction.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
+      detail: Card terms, purchases and restrictions; cash advances are not available under the card terms.
+      checked_at: 2026-10-09
+      quote: Cash advances and balance transfers are not available
+    - tier: documented
+      kind: document
+      url: https://help.exactly.app/en/articles/11758961-how-to-withdraw-cash-from-an-atm-with-your-exa-card
+      archive: data/archive/exa-card-ops-atm.txt
+      detail: ATM article; withdrawal by tapping a phone wallet at a contactless ATM.
+      checked_at: 2026-10-09
+      quote: Up to $250 per withdrawal
+    - tier: documented
+      kind: document
+      url: https://help.exactly.app/en/articles/13862897-bridge-terms-and-conditions
+      archive: data/archive/exa-card-ops-bridge-terms.txt
+      detail: Bridge Particular Terms, section 2.2 Offramp Service.
+      checked_at: 2026-10-09
+      quote: The Offramp Service enables users to send funds from their Exa Account to bank accounts
+  note: "Contradiction: the card terms say cash advances are not available while the help centre documents ATM withdrawals with fees. Recorded as the help centre states. Manteca (ARS, USD, BRL) is a deposit service only in its Exa terms and is not listed as a cash-out route."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2025-04-08
+      block: 134272952
+      what: IssuerChecker 0x59A644E490E48235adF8ba9b814A4f666C4fEb3A on OP Mainnet (current settlement path; ExaPlugin 0x3d73...7f3e followed at block 134273180)
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/tx/0xce519a2e7a8118af0be6598c4e19739b354a85ddd20fc46aab06e42924ce3fb5
+        address: "0x59A644E490E48235adF8ba9b814A4f666C4fEb3A"
+        block_number: 134272952
+        detail: IssuerChecker has code size 0 at block 134272951 and 4241 at 134272952 (2025-04-08 20:38:01 UTC), creation tx 0xce519a2e...3fb5. ExaPlugin 0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e goes from 0 to 24567 bytes at block 134273180 (2025-04-08 20:45:37 UTC), tx 0x23fa401b...a9ba.
+        checked_at: 2026-10-09
+        recheck: cast codesize 0x59A644E490E48235adF8ba9b814A4f666C4fEb3A --block 134272951 --rpc-url https://mainnet.optimism.io; cast codesize 0x59A644E490E48235adF8ba9b814A4f666C4fEb3A --block 134272952 --rpc-url https://mainnet.optimism.io
+    note: Dates the deployed contracts scored in CROPS. The card existed before this (card terms effective 12 Nov 2024, fee article Oct 2024) on earlier plugin versions; the exa repo keeps only run-latest broadcasts, so earlier deployments were not dated.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: EXA LABS S.A.S.
+      jurisdiction: UY
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/9942510-exa-app-terms-and-conditions
+        archive: data/archive/exa-card-app-terms.txt
+        detail: App Terms opening paragraph names EXA LABS S.A.S., incorporated under the laws of Uruguay.
+        checked_at: 2026-10-09
+        quote: a corporation incorporated under the laws of Uruguay
+    note: No company-register entry checked.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No primary-source incident report found in the help centre, exactly/docs, exactly/audits or a GitHub code search of the exactly org (post-mortem, exploit). Exactly's Medium and Mirror return 403 to curl and were not read. A reviewer should check for incidents on the underlying Exactly Protocol markets before the card launch.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2024-11-12
+        summary: Card terms Important Disclosures take effect (0% APR on purchases, FX and cross-border fees up to 1.5%); the terms were revised on 2 Oct 2025.
+        url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
+      - date: 2025-04-08
+        summary: New IssuerChecker and ExaPlugin deployed on OP Mainnet (the versions currently installed on user accounts).
+        url: https://explorer.optimism.io/tx/0x23fa401bbb4e594a974cdb6d0771caf6e66a59a331d011590cabec7fff2ca9ba
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
+        detail: Card terms Important Disclosures effective date.
+        checked_at: 2026-10-09
+        quote: Effective as of November 12th, 2024
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 10
+    addresses:
+      - "0x59A644E490E48235adF8ba9b814A4f666C4fEb3A"
+    topic0: "0x8f0c3d4726e2d22ccf850efced91f2d0c1bea40229449223d795a6cff3276236"
+    event: Collected(address indexed account, uint256 amount, uint256 timestamp)
+    amount_word: 0
+    token: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85"
+    decimals: 6
+    symbol: USDC
+    window_days: 30
+    exclusions: Sums the amount of every Collected event from the listed IssuerChecker (debit, credit and installment collections signed by Exa's issuer key). Refunds (Refunded event) are not subtracted. Word layout checked on sample debit tx 0x906cb586...e79b (word 0 = 43150000 = 43.15 USDC).
+  note: Card collections are recorded as Collected events on the listed IssuerChecker, so they can be separated from ordinary transfers. Not yet computed; the maintainer runs scripts/volumes.mjs. The amount is USD-denominated USDC per the plugin; the token is fixed to native USDC on OP.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

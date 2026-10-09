@@ -1,0 +1,24 @@
+Source: Terms and Conditions of the Shielder Service, version of 04 November 2025, PDF linked from https://docs.blanksquare.io/other/terms-and-conditions-shielder-service (file "2025_11_04 - Shielder Service Terms and Conditions.pdf", gitbook upload). Text transcribed 2026-10-09 by the AI research agent (seed); excerpts only.
+
+6.2. SERVICE PROVIDER does not provide the Shielder Service to Users who are Restricted Individuals, including those who are located in a Restricted Country, are citizens of a Restricted Country, or are residents of a Restricted Country. The list of Restricted Countries is set out in Annex no. 1 to these Terms. The User declares that the User is not a Restricted Individual, in particular that the User not located in a Restricted Country, is not a citizen of a Restricted Country nor is a resident of a Restricted Country during the whole duration of using the Shielder Service. SERVICE PROVIDER reserves the right to employ geo-blocking solutions or similar measures to ensure that the Users from Restricted Countries cannot access the Shielder Services. SERVICE PROVIDER has the right to terminate the Agreement with immediate effect if the User is a Restricted Individual.
+
+6.3. SERVICE PROVIDER is dedicated to protecting the User's privacy. However, if required by law, SERVICE PROVIDER may disclose User's personal data, including data related to the use of the Shielder Service, to the competent authorities in compliance with internal procedures and policies of SERVICE PROVIDER after ensuring that such request is lawful and binding.
+
+8.3. The User is authorized to use the Shielder Service exclusively for personal use. For the avoidance of doubt, any commercial or business use is strictly prohibited.
+
+9.1. For the avoidance of doubt, SERVICE PROVIDER does not safekeep or control any crypto-assets on behalf of the Users.
+
+19.1. These Terms will be governed by the law of Panama subject to Section 19.2 below.
+
+22.15. Restricted Countries - countries and their territories and dependencies as defined in Annex no. 3 to these Terms.
+
+22.18. SERVICE PROVIDER ("we", "our", "us", etc.) - Common Labs Inc. with its registered address at: Oceania Business Plaza, 21st floor, Tower 1000, Isaac Hanono Missri Street, Punta Pacifica, Panama City, Republic of Panama.
+
+25. ANNEX NO. 3 - LIST OF RESTRICTED COUNTRIES
+Countries listed below include their territories and dependencies.
+I. Countries on the EU Commission's list of high-risk third countries
+1. Afghanistan 2. Barbados 3. Burkina Faso 4. Cameroon 5. Democratic People's Republic of Korea (DPRK) 6. Democratic Republic of the Congo 7. Gibraltar 8. Haiti 9. Iran 10. Jamaica 11. Mali 12. Mozambique 13. Myanmar 14. Nigeria 15. Panama 16. Philippines 17. Senegal 18. South Africa 19. South Sudan 20. Syria 21. Tanzania 22. Trinidad and Tobago 23. Uganda 24. United Arab Emirates 25. Vanuatu 26. Vietnam 27. Yemen
+II. Countries on the FATF's black list and grey list
+1. Algeria 2. Angola 3. Bulgaria 4. Burkina Faso 5. Cameroon 6. Cote d'Ivoire 7. Croatia 8. Democratic People's Republic of Korea 9. Democratic Republic of the Congo 10. Haiti 11. Iran 12. Kenya 13. Lao People's Democratic Republic 14. Lebanon 15. Mali 16. Monaco 17. Mozambique 18. Myanmar 19. Namibia 20. Nepal 21. Nigeria 22. South Africa 23. South Sudan 24. Syria 25. Tanzania 26. Venezuela 27. Vietnam 28. Yemen
+III. Countries and territories subject to international sanctions
+1. Russian Federation 2. Republic of Belarus 3. Russian-occupied territories of Ukraine

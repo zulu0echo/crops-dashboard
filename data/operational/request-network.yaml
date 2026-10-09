@@ -1,0 +1,1484 @@
+slug: request-network
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: 0.9% per transaction, capped at $500 (hosted API path)
+      basis: Request Network pricing page; the docs say the rate can change, is not published there, and is returned per payment in metadata.protocolFee; the payer bears it by default.
+      evidence_index: 0
+    - kind: provider
+      paid_by: none
+      amount: none in the contract (open protocol path)
+      basis: ERC20FeeProxy takes no protocol fee; feeAmount and feeAddress are call parameters chosen by whoever builds the payment (for example an integrator's platform fee).
+      evidence_index: 2
+    - kind: network
+      paid_by: payer
+      amount: gas included on EVM chains (hosted API path)
+      basis: Pricing page; on Tron the payer pays a flat $3.99 per transaction.
+      evidence_index: 1
+    - kind: network
+      paid_by: payer
+      amount: Base sample 2026-10-07, about 0.0000025 ETH (217,904 gas at 0.0116 gwei plus L1 fee)
+      basis: Gas of one live payment on the open path (tx 0x2580…3d4e, block 52282170); that call also ran an Across fill, so a direct proxy call costs less. Varies with Base gas price.
+      evidence_index: 3
+    - kind: network
+      paid_by: payee
+      amount: 0.0999 xDAI per stored request (Gnosis storage fee, up to 1000 bytes)
+      basis: RequestOpenHashSubmitter.getFeesAmount(1000) on Gnosis Chain; paid by whoever stores the request (usually the payee or its Request Node); the fee parameters are set by the Request admin Safe.
+      evidence_index: 4
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://request.network/pricing/
+      detail: Pricing page states a flat 0.9% fee per transaction capped at $500, no monthly, setup or minimum fees.
+      checked_at: 2026-10-09
+      quote: Flat fee on transaction volume, capped at $500 per transaction
+    - tier: documented
+      kind: document
+      url: https://request.network/pricing/
+      detail: Pricing page says gas is included on EVM chains and Tron payers pay a flat $3.99.
+      checked_at: 2026-10-09
+      quote: On EVM chains gas is included
+    - tier: verified
+      kind: repo
+      url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/smart-contracts/src/contracts/ERC20FeeProxy.sol#L34-L58
+      commit: 749b13070bcb88be4a10b8d59fcf3705339d43e0
+      path: packages/smart-contracts/src/contracts/ERC20FeeProxy.sol
+      detail: transferFromWithReferenceAndFee moves _amount to the payee and _feeAmount to _feeAddress, both supplied by the caller; the contract has no fee of its own.
+      checked_at: 2026-10-09
+    - tier: verified
+      kind: onchain
+      url: https://basescan.org/tx/0x2580e807b575a321c20e3134eea8e18a0edba56ae97ca25b315215e0a7113d4e
+      chain_id: 8453
+      block_number: 52282170
+      detail: "Receipt read 2026-10-09: gasUsed 217904, effectiveGasPrice 11605490 wei, l1Fee 5950085349 wei; the ERC20FeeProxy TransferWithReferenceAndFee log pays 3.0 USDC with feeAmount 0. Block time 2026-10-07 06:14 UTC."
+      checked_at: 2026-10-09
+      recheck: cast receipt 0x2580e807b575a321c20e3134eea8e18a0edba56ae97ca25b315215e0a7113d4e --rpc-url https://mainnet.base.org
+    - tier: verified
+      kind: onchain
+      url: https://gnosisscan.io/address/0x268C146Afb4790902Ee26A6D2d3aff968623Ec80
+      address: "0x268C146Afb4790902Ee26A6D2d3aff968623Ec80"
+      chain_id: 100
+      block_number: 48666105
+      detail: getFeesAmount(1000) and minimumFee() on RequestOpenHashSubmitter both return 99900000000000000 wei (0.0999 xDAI) at Gnosis block 48666105.
+      checked_at: 2026-10-09
+      recheck: cast call 0x268C146Afb4790902Ee26A6D2d3aff968623Ec80 "getFeesAmount(uint256)(uint256)" 1000 --rpc-url https://rpc.gnosischain.com
+    - tier: verified
+      kind: repo
+      url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/api-features/protocol-fees.mdx#L6-L25
+      commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+      path: api-features/protocol-fees.mdx
+      detail: Docs say a protocol fee applies to all API payments, the rate can change and is not published in the docs, and the payer bears it by default.
+      checked_at: 2026-10-09
+  note: Two fee regimes. The open protocol path (the CROPS unit) charges no protocol fee in contract; the hosted API path charges 0.9% and includes gas. FX applies only to conversion payments, through Chainlink rates in ChainlinkConversionPath, and no FX margin is stated. No limits are published beyond the $500 fee cap and API rate limits.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: S1
+      index: 2
+  note: Agrees with S1 (score 1). Funds move payer to payee in one call and are never held. The disclosed risk is that the 3-of-7 admin Safe can repoint Erc20ConversionProxy's delegatecall target and so redirect future conversion payments or open allowances; it does not hold funds.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://request.network/legal-notice/
+      detail: Legal notice names the Swiss foundation and its register number and cites no licence or regulator.
+      checked_at: 2026-10-09
+      quote: Request Network is a Swiss Stiftung
+    - tier: documented
+      kind: document
+      url: https://request.network/api-terms-and-conditions/
+      detail: API terms (last update 2025-12-22) state the foundation does not custody funds or process financial transactions; no licence is cited anywhere in the terms.
+      checked_at: 2026-10-09
+      quote: REQUEST NETWORK DOES NOT CUSTODY FUNDS OR PROCESS FINANCIAL TRANSACTIONS
+    - tier: documented
+      kind: document
+      url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE422666391
+      archive: data/archive/request-network-ops-uid-register.txt
+      detail: Swiss UID register entry for the foundation (commercial register and VAT data only; the UID register carries no financial licences).
+      checked_at: 2026-10-09
+      quote: Request Network Stiftung
+  note: "Searched: the legal notice, API terms, privacy policy and pricing page (no licence or regulator named); the Swiss UID register entry; a finma.ch site search for \"Request Network\" (2 unrelated pages, no authorisation). Not searched: FINMA's authorised-institutions application and the Swiss AML self-regulatory organisations' member lists. Off-ramp flows on the hosted API run through Request Tech, whose licences were not looked up."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: not_applicable
+  reason: On the open protocol path the payee receives the token in its own wallet; converting it to local currency is outside the protocol.
+  burden: institution
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/api-features/crypto-to-fiat-payments.mdx#L8
+      commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+      path: api-features/crypto-to-fiat-payments.mdx
+      detail: The hosted API offers an optional crypto-to-fiat flow through Request Tech off-ramp infrastructure, with payer KYC and a registered bank account; the docs give no fee, limit or country terms for it.
+      checked_at: 2026-10-09
+  note: The optional Request Tech off-ramp is not recorded as a cash-out row because no first-party fee, limit or country terms were found for it.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2024-02-20
+      block: 10827274
+      what: ERC20FeeProxy 0.2.0 on Base (tx 0x6db84f…0055, CREATE2). EthereumFeeProxy was deployed at 10827264 and Erc20ConversionProxy at 10827277, the same day.
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x1892196E80C4c17ea5100Da765Ab48c1fE2Fb814?fields=deployment
+        address: "0x1892196E80C4c17ea5100Da765Ab48c1fE2Fb814"
+        chain_id: 8453
+        block_number: 10827274
+        detail: Sourcify creation data gives transactionHash 0x6db84fa34fc60ad3217e532fc9cbe1b7514e2a1abf50e2b45bb21e3ba0220055, blockNumber 10827274, deployer 0x4E64C2d06d19D13061e62E291b2C4e9fe5679b93; the block timestamp is 2024-02-20 UTC.
+        checked_at: 2026-10-09
+        recheck: curl -s "https://sourcify.dev/server/v2/contract/8453/0x1892196E80C4c17ea5100Da765Ab48c1fE2Fb814?fields=deployment" && cast block 10827274 --field timestamp --rpc-url https://mainnet.base.org
+    note: This is the Base deployment, the unit of assessment. Request Network ran on Ethereum mainnet years earlier; that history is outside the unit.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Request Network Stiftung (Request Network Foundation)
+      jurisdiction: CH-ZG
+      register_url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE422666391
+      registration_number: CHE-422.666.391
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE422666391
+        archive: data/archive/request-network-ops-uid-register.txt
+        detail: UID register entry, status active, legal form foundation (Stiftung), commercial-register reference CH-170.7.000.846-1, domicile c/o Coin Finance AG, Gartenstrasse 5, 6300 Zug.
+        checked_at: 2026-10-09
+        quote: CH-170.7.000.846-1
+      - tier: documented
+        kind: document
+        url: https://request.network/legal-notice/
+        detail: Legal notice names the foundation, its register number CHE-422.666.391 and a Baarerstrasse 82 (c/o Abafin Treuhand AG) address in Zug.
+        checked_at: 2026-10-09
+        quote: Request Network is a Swiss Stiftung
+    note: The legal notice and API terms give a Baarerstrasse 82 c/o address; the UID register (last checked 2026-09-28) gives Gartenstrasse 5 c/o Coin Finance AG. The register is the primary source.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/security-advisories
+        detail: The repository's published security advisories list is empty.
+        checked_at: 2026-10-09
+        recheck: gh api repos/RequestNetwork/requestNetwork/security-advisories --jq length
+    note: "Searched: GitHub security advisories for the monorepo, the docs repo release notes, the status page (status.request.network, history is client-rendered and was not read), and the CROPS S6 search (no audit, no bounty). No incident affecting the Base payment contracts was found. Third-party incident databases were not used."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2025-12-22
+        summary: API terms and conditions updated (current version); they name the Swiss foundation as operator of the API and reserve the right to suspend access without notice.
+        url: https://request.network/api-terms-and-conditions/
+      - date: 2026-07-01
+        summary: Hosted API release notes add an orchestrator fee layer stacking on the protocol fee, Safe multisig payers, gasless approvals and Merkle Science KYT (docs commit 9152cc23).
+        url: https://github.com/RequestNetwork/mintlify-docs/commit/9152cc23c6606b86e68606e2188408300de79092
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://request.network/api-terms-and-conditions/
+        detail: API terms page carries its update date.
+        checked_at: 2026-10-09
+        quote: "Last Update: December 22, 2025"
+      - tier: verified
+        kind: repo
+        url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/release-notes/request-api.mdx#L25-L30
+        commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+        path: release-notes/request-api.mdx
+        detail: 2026-Q2 release note introducing orchestrators and the configurable orchestrator fee model; git log dates the docs change to 2026-07-01 (9152cc23).
+        checked_at: 2026-10-09
+    note: The Base payment contracts are immutable and unchanged since deployment. Release notes are labelled by quarter, so dates come from the docs commit.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 8453
+    addresses:
+      - "0x1892196E80C4c17ea5100Da765Ab48c1fE2Fb814"
+      - "0x8296D56321cf207925a7804E5A8E3F579838e6Ad"
+    topic0: "0x9f16cbcc523c67a60c450e5ffe4f3b7b6dbe772e7abcadb2686ce029a9a0a2b6"
+    event: TransferWithReferenceAndFee(address tokenAddress, address to, uint256 amount, bytes indexed paymentReference, uint256 feeAmount, address feeAddress)
+    token_word: 0
+    amount_word: 2
+    window_days: 30
+    exclusions: Payee amount only (word 2); feeAmount (word 3) is excluded. Erc20ConversionProxy delegatecalls ERC20FeeProxy, so conversion payments emit the same event from 0x8296…e6Ad and are counted once. Native payments through EthereumFeeProxy (different event) are not counted. Gross observed, including tests and self-payments.
+  note: Spec checked against the live log in tx 0x2580…3d4e (word 0 USDC, word 2 = 3000000). Not computed; the maintainer runs scripts/volumes.mjs.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  reason: "not computed on 2026-10-09: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: false
+          detail: no security policy file
+        - repo: RequestNetwork/payments-subgraph
+          ok: false
+          detail: no security policy file
+        - repo: RequestNetwork/storage-subgraph
+          ok: false
+          detail: no security policy file
+        - repo: RequestNetwork/request-helm-charts
+          ok: false
+          detail: no security policy file
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: no security policy file
+        - repo: RequestNetwork/web-components
+          ok: false
+          detail: no security policy file
+        - repo: RequestNetwork/invoicing-template
+          ok: false
+          detail: no security policy file
+        - repo: RequestNetwork/easy-invoice
+          ok: false
+          detail: no security policy file
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/contents/?ref=master
+        detail: "RequestNetwork/requestNetwork: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/contents/?ref=main
+        detail: "RequestNetwork/payments-subgraph: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/contents/?ref=main
+        detail: "RequestNetwork/storage-subgraph: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/contents/?ref=main
+        detail: "RequestNetwork/request-helm-charts: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/contents/?ref=main
+        detail: "RequestNetwork/docker-images: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/contents/?ref=main
+        detail: "RequestNetwork/web-components: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/contents/?ref=main
+        detail: "RequestNetwork/invoicing-template: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/contents/?ref=main
+        detail: "RequestNetwork/easy-invoice: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/contents/?ref=main
+        detail: "RequestNetwork/mintlify-docs: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.2:
+    status: not_applicable
+    reason: No closed component is required on the open protocol path, so patching the components an institution runs falls to it. For the optional hosted API, no patch timeline is published; the docs promise only security fixes for the previous API version for 6 months.
+    burden: institution
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/release-notes/index.mdx#L31-L35
+        commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+        path: release-notes/index.mdx
+        detail: Version support says the previous API version gets security updates and critical bug fixes for 6 months; no time-to-patch commitment by severity.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: scanning step in a workflow
+        - repo: RequestNetwork/payments-subgraph
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: RequestNetwork/storage-subgraph
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: RequestNetwork/request-helm-charts
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: RequestNetwork/web-components
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: RequestNetwork/invoicing-template
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: RequestNetwork/easy-invoice
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/contents/?ref=master
+        detail: "RequestNetwork/requestNetwork: scanning step in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/contents/?ref=main
+        detail: "RequestNetwork/payments-subgraph: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/contents/?ref=main
+        detail: "RequestNetwork/storage-subgraph: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/contents/?ref=main
+        detail: "RequestNetwork/request-helm-charts: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/contents/?ref=main
+        detail: "RequestNetwork/docker-images: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/contents/?ref=main
+        detail: "RequestNetwork/web-components: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/contents/?ref=main
+        detail: "RequestNetwork/invoicing-template: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/contents/?ref=main
+        detail: "RequestNetwork/easy-invoice: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/contents/?ref=main
+        detail: "RequestNetwork/mintlify-docs: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Status page at status.request.network for the hosted API; no post-mortem found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.request.network
+        detail: Hosted status page (UptimeRobot) with uptime history and email subscription; incident history is client-rendered and was not read.
+        checked_at: 2026-10-09
+        quote: Request Network Status
+      - tier: verified
+        kind: repo
+        url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/release-notes/index.mdx#L25-L40
+        commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+        path: release-notes/index.mdx
+        detail: Docs point integrators to the status page for critical updates.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: Browser calls to the hosted API use a static x-client-id plus the Origin header, scoped to allowed domains and revocable; no OAuth, OpenID Connect or JWT.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/api-reference/authentication.mdx#L8-L20
+        commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+        path: api-reference/authentication.mdx
+        detail: Two modes, x-api-key for servers and x-client-id with Origin for browsers.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: S5
+        index: 2
+    note: Applies only to the optional hosted API; the open SDK path has no API.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Server calls use a static x-api-key header; webhooks are HMAC-SHA256 signed. No key scoping, expiry or rotation schedule is documented.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/api-reference/authentication.mdx#L22-L31
+        commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+        path: api-reference/authentication.mdx
+        detail: API key authentication for backend calls via the x-api-key header.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: S5
+        index: 1
+      - criterion: S5
+        index: 2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: Privacy policy lists encryption in transit and at storage, two-factor and role-based authentication, continuous monitoring and restricted admin server access; no data classification or TLS version is stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://request.network/privacy-policy/
+        detail: Protection measures section of the privacy policy (last update 2025-03-19).
+        checked_at: 2026-10-09
+        quote: Encryption during exchanges and storage
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Retention per purpose, from 2 years (account and service-use data, after last use if not closed) to 5 years (support requests); data stored in Europe. Termination of an API account is by email request; deletion on termination is not stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://request.network/privacy-policy/
+        detail: Retention table in the privacy policy.
+        checked_at: 2026-10-09
+        quote: 2 years after the last use of Your account if not closed
+      - tier: documented
+        kind: document
+        url: https://request.network/api-terms-and-conditions/
+        detail: API terms termination clause.
+        checked_at: 2026-10-09
+        quote: To request account closure, contact us at support.api@request.network
+    refs:
+      - criterion: P2
+        index: 2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Request Network is controller for its sites and services and acts as processor for data handled on a customer's behalf (that processing is outside the policy). No DPIA is mentioned.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://request.network/privacy-policy/
+        detail: Definitions section names the controller and excludes processing as processor.
+        checked_at: 2026-10-09
+        quote: Here, the Data controller is Request Network.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: RequestNetwork/payments-subgraph
+          ok: true
+          detail: "deployment configuration: docker-compose.yml"
+        - repo: RequestNetwork/storage-subgraph
+          ok: true
+          detail: "deployment configuration: docker-compose.yml"
+        - repo: RequestNetwork/request-helm-charts
+          ok: true
+          detail: "deployment configuration: charts/"
+        - repo: RequestNetwork/docker-images
+          ok: true
+          detail: "deployment configuration: docker-compose.yml"
+        - repo: RequestNetwork/web-components
+          ok: false
+          detail: no deployment configuration
+        - repo: RequestNetwork/invoicing-template
+          ok: false
+          detail: no deployment configuration
+        - repo: RequestNetwork/easy-invoice
+          ok: false
+          detail: no deployment configuration
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/contents/?ref=master
+        detail: "RequestNetwork/requestNetwork: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/contents/?ref=main
+        detail: "RequestNetwork/payments-subgraph: deployment configuration: docker-compose.yml"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/contents/?ref=main
+        detail: "RequestNetwork/storage-subgraph: deployment configuration: docker-compose.yml"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/contents/?ref=main
+        detail: "RequestNetwork/request-helm-charts: deployment configuration: charts/"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/contents/?ref=main
+        detail: "RequestNetwork/docker-images: deployment configuration: docker-compose.yml"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/contents/?ref=main
+        detail: "RequestNetwork/web-components: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/contents/?ref=main
+        detail: "RequestNetwork/invoicing-template: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/contents/?ref=main
+        detail: "RequestNetwork/easy-invoice: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/contents/?ref=main
+        detail: "RequestNetwork/mintlify-docs: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: RequestNetwork/payments-subgraph
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: RequestNetwork/storage-subgraph
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: RequestNetwork/request-helm-charts
+          ok: true
+          detail: "rules: pull_request, deletion, non_fast_forward"
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: RequestNetwork/web-components
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: RequestNetwork/invoicing-template
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: RequestNetwork/easy-invoice
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/rules/branches/master
+        detail: "RequestNetwork/requestNetwork: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/rules/branches/main
+        detail: "RequestNetwork/payments-subgraph: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/rules/branches/main
+        detail: "RequestNetwork/storage-subgraph: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/rules/branches/main
+        detail: "RequestNetwork/request-helm-charts: rules: pull_request, deletion, non_fast_forward"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/rules/branches/main
+        detail: "RequestNetwork/docker-images: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/rules/branches/main
+        detail: "RequestNetwork/web-components: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/rules/branches/main
+        detail: "RequestNetwork/invoicing-template: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/rules/branches/main
+        detail: "RequestNetwork/easy-invoice: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/rules/branches/main
+        detail: "RequestNetwork/mintlify-docs: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: 7 workflow file(s)
+        - repo: RequestNetwork/payments-subgraph
+          ok: true
+          detail: 4 workflow file(s)
+        - repo: RequestNetwork/storage-subgraph
+          ok: true
+          detail: 4 workflow file(s)
+        - repo: RequestNetwork/request-helm-charts
+          ok: false
+          detail: 4 workflow file(s)
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: 6 workflow file(s)
+        - repo: RequestNetwork/web-components
+          ok: true
+          detail: 5 workflow file(s)
+        - repo: RequestNetwork/invoicing-template
+          ok: true
+          detail: 6 workflow file(s)
+        - repo: RequestNetwork/easy-invoice
+          ok: true
+          detail: 6 workflow file(s)
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: 2 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/contents/?ref=master
+        detail: "RequestNetwork/requestNetwork: 7 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/contents/?ref=main
+        detail: "RequestNetwork/payments-subgraph: 4 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/contents/?ref=main
+        detail: "RequestNetwork/storage-subgraph: 4 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/contents/?ref=main
+        detail: "RequestNetwork/request-helm-charts: 4 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/contents/?ref=main
+        detail: "RequestNetwork/docker-images: 6 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/contents/?ref=main
+        detail: "RequestNetwork/web-components: 5 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/contents/?ref=main
+        detail: "RequestNetwork/invoicing-template: 6 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/contents/?ref=main
+        detail: "RequestNetwork/easy-invoice: 6 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/contents/?ref=main
+        detail: "RequestNetwork/mintlify-docs: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: test command in a workflow
+        - repo: RequestNetwork/payments-subgraph
+          ok: false
+          detail: test command in a workflow
+        - repo: RequestNetwork/storage-subgraph
+          ok: true
+          detail: test command in a workflow
+        - repo: RequestNetwork/request-helm-charts
+          ok: false
+          detail: test command in a workflow
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: test command in a workflow
+        - repo: RequestNetwork/web-components
+          ok: false
+          detail: test command in a workflow
+        - repo: RequestNetwork/invoicing-template
+          ok: false
+          detail: test command in a workflow
+        - repo: RequestNetwork/easy-invoice
+          ok: false
+          detail: test command in a workflow
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/contents/?ref=master
+        detail: "RequestNetwork/requestNetwork: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/contents/?ref=main
+        detail: "RequestNetwork/payments-subgraph: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/contents/?ref=main
+        detail: "RequestNetwork/storage-subgraph: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/contents/?ref=main
+        detail: "RequestNetwork/request-helm-charts: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/contents/?ref=main
+        detail: "RequestNetwork/docker-images: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/contents/?ref=main
+        detail: "RequestNetwork/web-components: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/contents/?ref=main
+        detail: "RequestNetwork/invoicing-template: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/contents/?ref=main
+        detail: "RequestNetwork/easy-invoice: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/contents/?ref=main
+        detail: "RequestNetwork/mintlify-docs: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: coverage tooling referenced
+        - repo: RequestNetwork/payments-subgraph
+          ok: false
+          detail: coverage tooling referenced
+        - repo: RequestNetwork/storage-subgraph
+          ok: false
+          detail: coverage tooling referenced
+        - repo: RequestNetwork/request-helm-charts
+          ok: false
+          detail: coverage tooling referenced
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: coverage tooling referenced
+        - repo: RequestNetwork/web-components
+          ok: false
+          detail: coverage tooling referenced
+        - repo: RequestNetwork/invoicing-template
+          ok: false
+          detail: coverage tooling referenced
+        - repo: RequestNetwork/easy-invoice
+          ok: false
+          detail: coverage tooling referenced
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/contents/?ref=master
+        detail: "RequestNetwork/requestNetwork: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/contents/?ref=main
+        detail: "RequestNetwork/payments-subgraph: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/contents/?ref=main
+        detail: "RequestNetwork/storage-subgraph: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/contents/?ref=main
+        detail: "RequestNetwork/request-helm-charts: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/contents/?ref=main
+        detail: "RequestNetwork/docker-images: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/contents/?ref=main
+        detail: "RequestNetwork/web-components: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/contents/?ref=main
+        detail: "RequestNetwork/invoicing-template: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/contents/?ref=main
+        detail: "RequestNetwork/easy-invoice: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/contents/?ref=main
+        detail: "RequestNetwork/mintlify-docs: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: "latest tags: v0.12.0, v0.10.0, requestnetworkartifacts@1.6.0"
+        - repo: RequestNetwork/payments-subgraph
+          ok: false
+          detail: no tags
+        - repo: RequestNetwork/storage-subgraph
+          ok: false
+          detail: no tags
+        - repo: RequestNetwork/request-helm-charts
+          ok: false
+          detail: "latest tags: request-node-0.9.0, request-node-0.8.1, request-node-0.8.0"
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: "latest tags: requestnetwork_request-ipfs_0.4.23-2, request-node-0.29.0, request-node-0.27.0"
+        - repo: RequestNetwork/web-components
+          ok: false
+          detail: no tags
+        - repo: RequestNetwork/invoicing-template
+          ok: true
+          detail: "latest tags: 0.13.0, 0.12.1, 0.12.0"
+        - repo: RequestNetwork/easy-invoice
+          ok: true
+          detail: "latest tags: 0.15.0, 0.14.0, 0.13.0"
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/tags
+        detail: "RequestNetwork/requestNetwork: latest tags: v0.12.0, v0.10.0, requestnetworkartifacts@1.6.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/tags
+        detail: "RequestNetwork/payments-subgraph: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/tags
+        detail: "RequestNetwork/storage-subgraph: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/tags
+        detail: "RequestNetwork/request-helm-charts: latest tags: request-node-0.9.0, request-node-0.8.1, request-node-0.8.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/tags
+        detail: "RequestNetwork/docker-images: latest tags: requestnetwork_request-ipfs_0.4.23-2, request-node-0.29.0, request-node-0.27.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/tags
+        detail: "RequestNetwork/web-components: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/tags
+        detail: "RequestNetwork/invoicing-template: latest tags: 0.13.0, 0.12.1, 0.12.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/tags
+        detail: "RequestNetwork/easy-invoice: latest tags: 0.15.0, 0.14.0, 0.13.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/tags
+        detail: "RequestNetwork/mintlify-docs: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: RequestNetwork/payments-subgraph
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: RequestNetwork/storage-subgraph
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: RequestNetwork/request-helm-charts
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: RequestNetwork/docker-images
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: RequestNetwork/web-components
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: RequestNetwork/invoicing-template
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: RequestNetwork/easy-invoice
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: RequestNetwork/mintlify-docs
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/commits?per_page=10
+        detail: "RequestNetwork/requestNetwork: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/commits?per_page=10
+        detail: "RequestNetwork/payments-subgraph: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/commits?per_page=10
+        detail: "RequestNetwork/storage-subgraph: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/commits?per_page=10
+        detail: "RequestNetwork/request-helm-charts: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/commits?per_page=10
+        detail: "RequestNetwork/docker-images: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/commits?per_page=10
+        detail: "RequestNetwork/web-components: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/commits?per_page=10
+        detail: "RequestNetwork/invoicing-template: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/commits?per_page=10
+        detail: "RequestNetwork/easy-invoice: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/commits?per_page=10
+        detail: "RequestNetwork/mintlify-docs: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: RequestNetwork/payments-subgraph
+          ok: false
+          detail: no changelog or release notes
+        - repo: RequestNetwork/storage-subgraph
+          ok: false
+          detail: no changelog or release notes
+        - repo: RequestNetwork/request-helm-charts
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: no changelog or release notes
+        - repo: RequestNetwork/web-components
+          ok: false
+          detail: no changelog or release notes
+        - repo: RequestNetwork/invoicing-template
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: RequestNetwork/easy-invoice
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/contents/?ref=master
+        detail: "RequestNetwork/requestNetwork: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/contents/?ref=main
+        detail: "RequestNetwork/payments-subgraph: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/contents/?ref=main
+        detail: "RequestNetwork/storage-subgraph: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/contents/?ref=main
+        detail: "RequestNetwork/request-helm-charts: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/contents/?ref=main
+        detail: "RequestNetwork/docker-images: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/contents/?ref=main
+        detail: "RequestNetwork/web-components: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/contents/?ref=main
+        detail: "RequestNetwork/invoicing-template: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/contents/?ref=main
+        detail: "RequestNetwork/easy-invoice: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/contents/?ref=main
+        detail: "RequestNetwork/mintlify-docs: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: RequestNetwork/requestNetwork
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: RequestNetwork/payments-subgraph
+          ok: true
+          detail: contribution section in README
+        - repo: RequestNetwork/storage-subgraph
+          ok: false
+          detail: none found
+        - repo: RequestNetwork/request-helm-charts
+          ok: true
+          detail: contribution section in README
+        - repo: RequestNetwork/docker-images
+          ok: false
+          detail: none found
+        - repo: RequestNetwork/web-components
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: RequestNetwork/invoicing-template
+          ok: false
+          detail: none found
+        - repo: RequestNetwork/easy-invoice
+          ok: true
+          detail: contribution section in README
+        - repo: RequestNetwork/mintlify-docs
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/requestNetwork/contents/?ref=master
+        detail: "RequestNetwork/requestNetwork: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/payments-subgraph/contents/?ref=main
+        detail: "RequestNetwork/payments-subgraph: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/storage-subgraph/contents/?ref=main
+        detail: "RequestNetwork/storage-subgraph: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/request-helm-charts/contents/?ref=main
+        detail: "RequestNetwork/request-helm-charts: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/docker-images/contents/?ref=main
+        detail: "RequestNetwork/docker-images: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/web-components/contents/?ref=main
+        detail: "RequestNetwork/web-components: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/invoicing-template/contents/?ref=main
+        detail: "RequestNetwork/invoicing-template: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/easy-invoice/contents/?ref=main
+        detail: "RequestNetwork/easy-invoice: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/RequestNetwork/mintlify-docs/contents/?ref=main
+        detail: "RequestNetwork/mintlify-docs: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Logical view (request lifecycle across IPFS, Gnosis storage and payment contracts) in the docs repo; integration and infrastructure for self-hosting in the Request Node README and Helm chart. No single architecture document covers all three views or the hosted API.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/resources/lifecycle-of-a-request.mdx#L1-L43
+        commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+        path: resources/lifecycle-of-a-request.mdx
+        detail: Lifecycle page with a diagram covering create, update, pay and detect, naming IPFS, the Gnosis storage contract, payment contracts and the payments subgraph.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: C3
+        index: 1
+      - criterion: O4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Request Network Stiftung (Request Network Foundation), Zug, Switzerland, CHE-422.666.391; API terms under Swiss law, courts of Zug.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE422666391
+        archive: data/archive/request-network-ops-uid-register.txt
+        detail: UID register entry for the foundation.
+        checked_at: 2026-10-09
+        quote: Request Network Stiftung
+      - tier: documented
+        kind: document
+        url: https://request.network/api-terms-and-conditions/
+        detail: API terms name the foundation as operator of the API.
+        checked_at: 2026-10-09
+        quote: Request Network Foundation, a Swiss foundation (Stiftung)
+    note: Only relevant to the optional hosted API; the open path needs no contract with anyone.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Per-transaction protocol fee on hosted API payments (0.9%, capped at $500) collected by the foundation; the open fee proxies carry no fee.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://request.network/pricing/
+        detail: Pricing page states the fee and that there are no monthly or setup fees.
+        checked_at: 2026-10-09
+        quote: Flat fee on transaction volume, capped at $500 per transaction
+    note: No annual report or treasury statement was found; the foundation's other funding (for example REQ token holdings) is not evidenced here.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Either side can end API access; Request may suspend or revoke credentials without notice, and deactivates credentials unused for 12 months with one month's notice. Funds are never held, so termination does not affect funds.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://request.network/api-terms-and-conditions/
+        detail: Account suspension and deletion section of the API terms.
+        checked_at: 2026-10-09
+        quote: Such actions may be taken without prior notice and shall not entitle you to any compensation
+    refs:
+      - criterion: S1
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Optional automated wallet screening (Hypernative by default, Merkle Science optional) on the hosted Secure Payment page, enabled per destination; the docs describe it as rules and exposure thresholds, not a learned model. No automated decision in the open protocol path.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/use-cases/hypernative-standard-screening-policy.mdx#L8-L19
+        commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+        path: use-cases/hypernative-standard-screening-policy.mdx
+        detail: Payer and recipient wallets are screened against Hypernative's risk database before authorisation when enabled; users may opt out; the policy uses rules and thresholds maintained by Hypernative.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: C4
+        index: 0
+      - criterion: C4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: Screening categories, thresholds and a per-destination opt-out (override) are published; monitoring, validation, decommissioning and bias evaluation of the screening are not documented.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/use-cases/hypernative-standard-screening-policy.mdx#L17-L64
+        commit: 1845bc537542f65a5e8c9826ebccc3ba053c4fd1
+        path: use-cases/hypernative-standard-screening-policy.mdx
+        detail: Opt-out statement, high-risk categories and exposure thresholds table.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending

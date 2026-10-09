@@ -1,0 +1,1072 @@
+slug: m-pesa
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: false
+          detail: no security policy file
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: no security policy file
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: no security policy file
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: no security policy file
+        - repo: safaricom/mpesa-php-sdk
+          ok: false
+          detail: no security policy file
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: no security policy file
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
+        detail: "safaricom/mpesa-node-library: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
+        detail: "safaricom/LNMOnlineAndroidSample: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
+        detail: "safaricom/mpesa_listener: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-php-sdk: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-java-sdk: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
+        detail: "safaricom/mpesa-api-C-Sharp: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: safaricom/mpesa-php-sdk
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
+        detail: "safaricom/mpesa-node-library: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
+        detail: "safaricom/LNMOnlineAndroidSample: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
+        detail: "safaricom/mpesa_listener: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-php-sdk: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-java-sdk: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
+        detail: "safaricom/mpesa-api-C-Sharp: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: false
+          detail: no deployment configuration
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: no deployment configuration
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: no deployment configuration
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: no deployment configuration
+        - repo: safaricom/mpesa-php-sdk
+          ok: false
+          detail: no deployment configuration
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: no deployment configuration
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
+        detail: "safaricom/mpesa-node-library: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
+        detail: "safaricom/LNMOnlineAndroidSample: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
+        detail: "safaricom/mpesa_listener: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-php-sdk: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-java-sdk: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
+        detail: "safaricom/mpesa-api-C-Sharp: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: safaricom/mpesa-php-sdk
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/rules/branches/master
+        detail: "safaricom/mpesa-node-library: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/rules/branches/master
+        detail: "safaricom/LNMOnlineAndroidSample: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/rules/branches/master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/rules/branches/master
+        detail: "safaricom/mpesa_listener: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/rules/branches/master
+        detail: "safaricom/mpesa-php-sdk: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/rules/branches/master
+        detail: "safaricom/mpesa-java-sdk: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/rules/branches/master
+        detail: "safaricom/mpesa-api-C-Sharp: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: false
+          detail: no .github/workflows
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: no .github/workflows
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: no .github/workflows
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: no .github/workflows
+        - repo: safaricom/mpesa-php-sdk
+          ok: false
+          detail: no .github/workflows
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: no .github/workflows
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
+        detail: "safaricom/mpesa-node-library: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
+        detail: "safaricom/LNMOnlineAndroidSample: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
+        detail: "safaricom/mpesa_listener: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-php-sdk: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-java-sdk: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
+        detail: "safaricom/mpesa-api-C-Sharp: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: false
+          detail: test command in a workflow
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: test command in a workflow
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: test command in a workflow
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: test command in a workflow
+        - repo: safaricom/mpesa-php-sdk
+          ok: false
+          detail: test command in a workflow
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: test command in a workflow
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
+        detail: "safaricom/mpesa-node-library: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
+        detail: "safaricom/LNMOnlineAndroidSample: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
+        detail: "safaricom/mpesa_listener: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-php-sdk: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-java-sdk: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
+        detail: "safaricom/mpesa-api-C-Sharp: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: false
+          detail: coverage tooling referenced
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: coverage tooling referenced
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: coverage tooling referenced
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: coverage tooling referenced
+        - repo: safaricom/mpesa-php-sdk
+          ok: false
+          detail: coverage tooling referenced
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: coverage tooling referenced
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
+        detail: "safaricom/mpesa-node-library: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
+        detail: "safaricom/LNMOnlineAndroidSample: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
+        detail: "safaricom/mpesa_listener: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-php-sdk: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-java-sdk: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
+        detail: "safaricom/mpesa-api-C-Sharp: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: true
+          detail: "latest tags: v0.1.3"
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: no tags
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: no tags
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: no tags
+        - repo: safaricom/mpesa-php-sdk
+          ok: true
+          detail: "latest tags: 1.0.8, 1.0.7, 1.0.6"
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: no tags
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/tags
+        detail: "safaricom/mpesa-node-library: latest tags: v0.1.3"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/tags
+        detail: "safaricom/LNMOnlineAndroidSample: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/tags
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/tags
+        detail: "safaricom/mpesa_listener: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/tags
+        detail: "safaricom/mpesa-php-sdk: latest tags: 1.0.8, 1.0.7, 1.0.6"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/tags
+        detail: "safaricom/mpesa-java-sdk: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/tags
+        detail: "safaricom/mpesa-api-C-Sharp: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: true
+          detail: 9 of 10 recent commits signed
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: 2 of 10 recent commits signed
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: 0 of 3 recent commits signed
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: 4 of 10 recent commits signed
+        - repo: safaricom/mpesa-php-sdk
+          ok: true
+          detail: 8 of 10 recent commits signed
+        - repo: safaricom/mpesa-java-sdk
+          ok: true
+          detail: 4 of 8 recent commits signed
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: 1 of 4 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/commits?per_page=10
+        detail: "safaricom/mpesa-node-library: 9 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/commits?per_page=10
+        detail: "safaricom/LNMOnlineAndroidSample: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/commits?per_page=10
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: 0 of 3 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/commits?per_page=10
+        detail: "safaricom/mpesa_listener: 4 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/commits?per_page=10
+        detail: "safaricom/mpesa-php-sdk: 8 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/commits?per_page=10
+        detail: "safaricom/mpesa-java-sdk: 4 of 8 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/commits?per_page=10
+        detail: "safaricom/mpesa-api-C-Sharp: 1 of 4 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: true
+          detail: 1 release(s) with notes
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: no changelog or release notes
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: no changelog or release notes
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: no changelog or release notes
+        - repo: safaricom/mpesa-php-sdk
+          ok: true
+          detail: 3 release(s) with notes
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: no changelog or release notes
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
+        detail: "safaricom/mpesa-node-library: 1 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
+        detail: "safaricom/LNMOnlineAndroidSample: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
+        detail: "safaricom/mpesa_listener: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-php-sdk: 3 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-java-sdk: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
+        detail: "safaricom/mpesa-api-C-Sharp: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: safaricom/mpesa-node-library
+          ok: true
+          detail: contribution section in README
+        - repo: safaricom/LNMOnlineAndroidSample
+          ok: false
+          detail: none found
+        - repo: safaricom/mpesa_c2b_php_confirmation_validation
+          ok: false
+          detail: none found
+        - repo: safaricom/mpesa_listener
+          ok: false
+          detail: none found
+        - repo: safaricom/mpesa-php-sdk
+          ok: false
+          detail: none found
+        - repo: safaricom/mpesa-java-sdk
+          ok: false
+          detail: none found
+        - repo: safaricom/mpesa-api-C-Sharp
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
+        detail: "safaricom/mpesa-node-library: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
+        detail: "safaricom/LNMOnlineAndroidSample: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
+        detail: "safaricom/mpesa_c2b_php_confirmation_validation: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
+        detail: "safaricom/mpesa_listener: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-php-sdk: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
+        detail: "safaricom/mpesa-java-sdk: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
+        detail: "safaricom/mpesa-api-C-Sharp: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: OAuth 2.0 client-credentials bearer tokens on every Daraja call.
+    refs:
+      - criterion: C2
+        index: 0
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Consumer key and secret issued per app; B2C and similar calls also carry an encrypted initiator security credential; callbacks are unsigned (see CROPS S5).
+    refs:
+      - criterion: C2
+        index: 0
+      - criterion: S5
+        index: 0
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    note: The Daraja docs say access tokens expire ("Regenerate a new token and use it before expiry") but the C2B, B2C, M-Pesa Express and Transaction Status docs read do not state the lifetime. The Authorization doc alias returned "Invalid ApiName Option" from populateApi.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "Observed: developer.safaricom.co.ke refuses TLS 1.1 and accepts TLS 1.2. No data classification or encryption-at-rest statement could be read (safaricom.co.ke returns 403)."
+    evidence:
+      - tier: documented
+        kind: trace
+        url: https://developer.safaricom.co.ke
+        detail: "openssl s_client -tls1_1 to developer.safaricom.co.ke:443 failed with alert protocol version; -tls1_2 negotiated ECDHE-RSA-AES128-GCM-SHA256. Run 2026-10-09. api.safaricom.co.ke was not scanned."
+        checked_at: "2026-10-09"
+        recheck: "echo | openssl s_client -connect developer.safaricom.co.ke:443 -servername developer.safaricom.co.ke -tls1_1; echo | openssl s_client -connect developer.safaricom.co.ke:443 -servername developer.safaricom.co.ke -tls1_2"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: unknown
+    note: The privacy statement returns 403 to automated access.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Integration architecture only (Daraja API docs with sequence diagrams, account types and environments); logical and infrastructure architecture of the M-Pesa platform are not published.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/apis/BusinessToCustomer
+        archive: data/archive/m-pesa-ops-daraja-b2c.txt
+        quote: "Account Types in C2B Organization"
+        detail: Daraja B2C documentation (client-rendered; GraphQL markdown archived).
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Safaricom PLC, Kenya (Safaricom House, Waiyaki Way, Westlands, Nairobi).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf
+        archive: data/archive/m-pesa-ops-cbk-psp-directory.txt
+        quote: "Date First Licensed: January 1, 2016"
+        detail: CBK Directory of Authorized Payment Service Providers as at August 10, 2026, entry 1 (PDF, text archived).
+        checked_at: "2026-10-09"
+    note: The M-Pesa customer terms (which name the contracting entity) return 403 and were not read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Transaction charges under Safaricom's tariff, levied on the organisation or split with the customer (Daraja account-type notes); Safaricom PLC is a listed company.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://developer.safaricom.co.ke/apis/MpesaExpressSimulate
+        archive: data/archive/m-pesa-ops-daraja-mpesa-express.txt
+        quote: "depending on the tariff, a charge is levied on the Organization or is split between the organization and the customer"
+        detail: Daraja M-Pesa Express documentation, Charges Paid Account.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: unknown
+    note: The M-Pesa customer terms return 403 to automated access.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: both
+      amount: per Safaricom tariff (amounts not published in Daraja)
+      basis: Daraja says that, depending on the tariff, the charge is levied on the organisation or split between organisation and customer; debited to the Charges Paid account.
+      evidence_index: 0
+    - kind: limit
+      paid_by: none
+      amount: customer daily transfer limit KES 500,000
+      basis: Daraja B2C result-code table ("currently Ksh 500,000").
+      evidence_index: 1
+    - kind: limit
+      paid_by: none
+      amount: maximum customer account balance KES 500,000
+      basis: Daraja B2C result-code table.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://developer.safaricom.co.ke/apis/MpesaExpressSimulate
+      archive: data/archive/m-pesa-ops-daraja-mpesa-express.txt
+      quote: "depending on the tariff, a charge is levied on the Organization or is split between the organization and the customer"
+      detail: Daraja M-Pesa Express documentation (client-rendered; GraphQL markdown archived).
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://developer.safaricom.co.ke/apis/BusinessToCustomer
+      archive: data/archive/m-pesa-ops-daraja-b2c.txt
+      quote: "the customer daily transfer amount limit is currently Ksh 500,000"
+      detail: Daraja B2C documentation, result codes 4 and 8.
+      checked_at: "2026-10-09"
+  note: Safaricom's consumer tariff pages (send, withdraw, pay) return 403 to automated access, and the Wayback Machine availability API returned 429, so no archived first-party tariff was used. Per-transaction amounts are unknown, not zero. The Daraja sample "Fee For B2C Payment|KES|22.40" is sandbox example data and is not recorded.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: Safaricom PLC
+      holder: provider
+      country: KE
+      regulator: Central Bank of Kenya
+      type: Authorised payment service provider (mobile money)
+      activities: Issue, process, store, send and facilitate mobile money payments; platform processing payments on behalf of merchants. First licensed January 1, 2016.
+      register_url: https://www.centralbank.go.ke/national-payments-system/
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf
+      archive: data/archive/m-pesa-ops-cbk-psp-directory.txt
+      quote: "To issue, process, store, send and facilitate mobile money payments."
+      detail: CBK Directory of Authorized Payment Service Providers as at August 10, 2026, entry 1 (PDF linked from the CBK national payments system page; text extracted and archived 2026-10-09).
+      checked_at: "2026-10-09"
+  note: Evidence is the regulator's own directory, extracted from the current PDF (it replaces the earlier transcription in data/archive/m-pesa-cbk-directory.txt). The register URL is the CBK payments page that links the directory.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [KE]
+      method: mobile_money
+      partner: Daraja B2C (business to customer M-Pesa wallet)
+      limits: customer daily transfer and balance limits KES 500,000
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://developer.safaricom.co.ke/apis/BusinessToCustomer
+      archive: data/archive/m-pesa-ops-daraja-b2c.txt
+      quote: "Transfers initiated to move funds from a financial institution or digital wallet to a customer’s account or for cash-out purposes."
+      detail: Daraja B2C use cases (salary, loan and financial-institution withdrawal payouts to customer wallets or bank accounts).
+      checked_at: "2026-10-09"
+  note: Agent cash-out is the product's core, but no readable first-party source for agent withdrawal terms or fees was found (safaricom.co.ke 403; Daraja does not cover agents). CBK states that M-Pesa launched with 307 agents in 2007 (Governor's 2013 speech), which is not a current terms source. Agent and ATM rows are therefore not recorded.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: "2007-03-01"
+      what: M-PESA launch in Kenya. CBK gives the month (March 2007) only; the day is a placeholder.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.centralbank.go.ke/wp-content/uploads/2023/02/Kenyas-Payments-Journey.pdf
+        archive: data/archive/m-pesa-ops-cbk-payments-journey.txt
+        quote: "starting with M-PESA (m – for ‘mobile’; Pesa – Swahili for ‘money’) in March 2007"
+        detail: Central Bank of Kenya publication "Kenya's Payments Journey" (PDF, excerpt archived).
+        checked_at: "2026-10-09"
+    note: The CBK licence date (January 1, 2016) is the date of the current authorisation under the 2011 Act, not the launch.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Safaricom PLC
+      jurisdiction: KE
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf
+        archive: data/archive/m-pesa-ops-cbk-psp-directory.txt
+        quote: "Physical Address: Safaricom House, Waiyaki Way, Westlands, Nairobi"
+        detail: CBK PSP directory entry 1.
+        checked_at: "2026-10-09"
+    note: The Kenyan Business Registration Service register was not checked, so no registration number is recorded.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No primary-source incident notice could be read. Safaricom's newsroom and status pages return 403, and no CBK enforcement notice naming M-Pesa was found in this pass.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: "2016-01-01"
+        summary: Safaricom PLC first licensed by CBK as a payment service provider under the current framework (per the CBK PSP directory).
+        url: https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf
+        archive: data/archive/m-pesa-ops-cbk-psp-directory.txt
+        quote: "Date First Licensed: January 1, 2016"
+        detail: CBK PSP directory entry 1.
+        checked_at: "2026-10-09"
+    note: Other changes (tariff changes, limit changes, product changes) need Safaricom announcements, which return 403.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: Closed ledger; no public chain to read. Safaricom and CBK publish aggregate figures, which are reported, not verifiable, and are not recorded here.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

@@ -667,5 +667,28 @@ scores:
 context: >-
   Not scored. Monavate's cardholder terms, linked from Crypto Life's legal page, state that UAB Monavate is authorised and regulated by the Bank of Lithuania (authorisation code LB002139) and is required by law to verify cardholder identity (https://public.withcl.com/Monavate-Issuer-Terms-2023-Nov.pdf). Crypto Life's platform terms state that its cryptocurrency-based services are not regulated financial services and are not covered by the Financial Ombudsman Service or the FSCS, and that KYC and transaction records are kept five years after account closure. US cards run under separate Baanx US terms with Cross River Bank (privacy notice linked in metamask-mobile constants.ts), and UK cards are moving to Immersve on Base (cards issued before 28 Sep 2026 stop on 29 Dec 2026); neither was assessed.
 
+availability:
+  model: allowlist
+  countries: [AD, AR, AT, BE, BG, BH, BR, CA, CH, CL, CO, CR, CY, DE, DK, DO, ES, FI, FR, GB, GG, GI, GR, GT, HR, HU, IE, IM, IS, IT, JE, LI, LU, MC, MT, MX, NL, NO, OM, PA, PL, PT, RO, SE, SI, SK, SV, UY]
+  note: >-
+    MetaMask's support article lists 48 countries eligible for sign-up. The list does not include the whole EU (for example Czechia, Estonia, Latvia and Lithuania are absent), so countries are listed one by one. The United States is excluded: the same page says the card is not currently available for sign-ups there, and existing US cardholders under the separate Baanx US / Cross River programme can keep using their cards. Product variants: the UK programme is migrating to Immersve on Base, and the US programme was not assessed. The Crypto Life platform terms require residence "in a country where Baanx products & services are available" and let CL restrict countries at its discretion, but they name none. The FAQ says ineligible regions limit sign-ups, not spending; the card can be used wherever Mastercard is accepted. Only virtual cards are open to new sign-ups.
+  evidence:
+    - tier: claimed
+      by: provider
+      kind: document
+      url: https://support.metamask.io/trade/metamask-card/what-is-metamask-card/
+      archive: data/archive/metamask-card-eligible-countries.txt
+      detail: MetaMask support article "What is MetaMask Card?" lists 48 countries under "What countries are eligible to sign up for MetaMask Card?" and says US sign-ups are not currently available.
+      checked_at: "2026-10-09"
+      quote: What countries are eligible to sign up for MetaMask Card?
+    - tier: documented
+      kind: document
+      url: https://cdn.prod.website-files.com/679758c14272c334b6975a26/67ed139f59c727d6e69de3ea_CL%20Platform%20Terms%20of%20Use%20-%20Monavate%202025.pdf
+      archive: data/archive/metamask-card-cl-platform-terms.txt
+      detail: CL Platform Terms (Monavate 2025), section 3 Eligibility, require residence in a country where Baanx products and services are available, without naming countries.
+      checked_at: "2026-10-09"
+      quote: Reside in a country where Baanx products & services are available.
+  checked_at: "2026-10-09"
+
 notes: >-
   Scored the Global FoxConnect spender on Linea at block 32253699, from the MetaMask Mobile card defaults at metamask-mobile b513a4b. MetaMask Card is run by Crypto Life (Baanx), issued by Monavate, on Mastercard. Funding works by an ERC-20 approval from the cardholder's own wallet; Baanx operator EOAs pull through FoxConnect.withdraw. No Baanx or FoxConnect repository exists; contract source comes from Sourcify and Lineascan only. The Baanx global privacy policy (secure.baanx.co.uk) timed out from this network and is not cited. No audit of FoxConnect was found, so S6 is unknown.

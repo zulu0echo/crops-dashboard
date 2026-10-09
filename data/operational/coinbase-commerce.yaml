@@ -1,0 +1,828 @@
+slug: coinbase-commerce
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payee
+      amount: 1% in the sampled payment (0.03 of 3.00 USDC to the operator fee destination)
+      basis: feeAmount is set per TransferIntent by Coinbase as operator and sent to its registered fee destination; the Terms point to a Fee page (coinbase.com returns 403 to curl) and allow changes with notice.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: Base sample 2026-04-01, about 0.0000012 ETH (235,051 gas at 0.005 gwei plus L1 fee)
+      basis: Gas of the last Commerce payment found on Base (swapAndTransferUniswapV3Native, tx 0xb20c…e2fb); varies with Base gas price and payment path.
+      evidence_index: 0
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://basescan.org/tx/0xb20c670013eb85ce88ed2353acca655f0c1463552be8c39b335908fe2cbfe2fb
+      chain_id: 8453
+      block_number: 44134913
+      detail: "Receipt read 2026-10-09: the payer spent 0.001405 ETH, swapped to 3.00 USDC; USDC Transfer of 30000 (0.03) to 0x6d86…29c8 and 2970000 (2.97) to recipient 0xFf56…6E8Af; Transferred log from 0x0305…b7a8 with operator 0x8fcC…73db. gasUsed 235051, effectiveGasPrice 5000150 wei, l1Fee 10808119346 wei."
+      checked_at: 2026-10-09
+      recheck: cast receipt 0xb20c670013eb85ce88ed2353acca655f0c1463552be8c39b335908fe2cbfe2fb --rpc-url https://mainnet.base.org
+    - tier: documented
+      kind: document
+      url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+      archive: data/archive/coinbase-commerce-terms.txt
+      detail: Commerce Terms (last updated 2025-10-29), Fees section.
+      checked_at: 2026-10-09
+      quote: We reserve the right to change those fee(s) at our discretion with notice
+  note: The fee rate is from one observed payment, not from a fee schedule; the Fee page the Terms cite could not be read. The swap path adds Uniswap pool fees and slippage, paid by the payer, which are not itemised. No limits were found.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 2
+    - criterion: S4
+      index: 2
+  note: Agrees with S1 (score 3). Payments move payer to merchant wallet atomically; the Terms say Coinbase does not store the crypto merchants receive. Stray balances in the contract can be swept by an owner-appointed sweeper; they are not payment funds.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.bma.bm/regulated-entities
+      archive: data/archive/coinbase-commerce-ops-bma-register.txt
+      detail: The Bermuda Monetary Authority's register of regulated entities lists two Coinbase affiliates (Coinbase Bermuda Limited and Coinbase Bermuda Services Limited, both Class F digital asset business licences) and no entry for Coinbase Bermuda Technologies Limited.
+      checked_at: 2026-10-09
+      quote: Coinbase Bermuda Services Limited
+    - tier: documented
+      kind: document
+      url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+      archive: data/archive/coinbase-commerce-terms.txt
+      detail: The Commerce Terms name Coinbase Bermuda Technologies Limited as the provider and cite no licence or regulator for it.
+      checked_at: 2026-10-09
+      quote: Coinbase Bermuda Technologies Limited
+  note: 'Absent for the contracting entity. Searched: the BMA regulated-entities register (full page, string "Coinbase Bermuda Technologies" not found), the Commerce Terms and Privacy Policy. The affiliate Coinbase Bermuda Services Limited holds a BMA Class F licence covering payment services with digital assets (registration 202302681, effective 2023-09-15), but no Commerce document names it, so it is not recorded as a partner licence. Other Coinbase group licences (US, EU, UK) were not searched because the Commerce Terms name only the Bermuda entity.'
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: not_applicable
+  reason: Payments settle to the merchant's own wallet; the Terms say Coinbase does not store the crypto received. Converting it to local currency is outside the product.
+  burden: institution
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+      archive: data/archive/coinbase-commerce-terms.txt
+      detail: Commerce Terms on the Merchant Wallet.
+      checked_at: 2026-10-09
+      quote: We do not store the cryptocurrency you receive as payment
+  note: The Privacy Policy mentions affiliates converting crypto to fiat and withdrawing to a bank account; no first-party cash-out terms for Commerce merchants were found (help.coinbase.com returns 403).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2024-10-14
+      block: 21073248
+      what: Transfers 0x0305…b7a8 on Base, the contract that carried Base payments; the README address 0xeADE…4971 was deployed earlier, at block 17832328 (2024-07-31).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x03059433BCdB6144624cC2443159D9445C32b7a8?fields=deployment
+        address: "0x03059433BCdB6144624cC2443159D9445C32b7a8"
+        chain_id: 8453
+        block_number: 21073248
+        detail: Sourcify creation data gives transactionHash 0x84f4bb975782746100fde2d23fd5250cfebb8efa26b9f6a97808cdaa22ae6f62, blockNumber 21073248, deployer 0x8899CECFD929504414696C734eAf6300FDbB428C (the owner EOA); block time 2024-10-14 UTC.
+        checked_at: 2026-10-09
+        recheck: curl -s "https://sourcify.dev/server/v2/contract/8453/0x03059433BCdB6144624cC2443159D9445C32b7a8?fields=deployment" && cast block 21073248 --field timestamp --rpc-url https://mainnet.base.org
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0xeADE6bE02d043b3550bE19E960504dbA14A14971?fields=deployment
+        address: "0xeADE6bE02d043b3550bE19E960504dbA14A14971"
+        chain_id: 8453
+        block_number: 17832328
+        detail: Sourcify creation data gives tx 0x29836b71657b710efae9c81e34220aca20a40049e410e2f68bdffb8cc69d82ea at block 17832328 by the same deployer; block time 2024-07-31 UTC.
+        checked_at: 2026-10-09
+        recheck: curl -s "https://sourcify.dev/server/v2/contract/8453/0xeADE6bE02d043b3550bE19E960504dbA14A14971?fields=deployment"
+    note: Judgment call. Recorded the primary settlement contract (0x0305…b7a8). The protocol has earlier Base deployments that are not in the provider's contracts list (DefiLlama tracks six Base addresses), so the rail is older than this date; those were not dated here.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Coinbase Bermuda Technologies Limited
+      jurisdiction: BM
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+        archive: data/archive/coinbase-commerce-terms.txt
+        detail: Commerce Terms (last updated 2025-10-29) name the provider of the Services.
+        checked_at: 2026-10-09
+        quote: Coinbase Bermuda Technologies Limited
+    note: From the Terms only; the Bermuda Registrar of Companies entry was not looked up (its search is not machine-readable), so there is no register URL or number.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value:
+      - date: 2024-03-27
+        summary: Web3 retail payments degradation (status page, impact minor).
+        funds_lost: unknown
+        url: https://status.commerce.coinbase.com/incidents/2ll0btt8tp4d
+      - date: 2024-04-21
+        summary: Payments from Coinbase retail accounts unavailable; self-custodial wallet payments continued (impact minor).
+        funds_lost: unknown
+        url: https://status.commerce.coinbase.com/incidents/5g16f3zz5jrj
+      - date: 2024-04-21
+        summary: Donations on Commerce unavailable; status update says funds are safe (impact minor).
+        funds_lost: no
+        url: https://status.commerce.coinbase.com/incidents/r07r2lxc8287
+      - date: 2025-09-17
+        summary: Delayed payment confirmations from Coinbase accounts and self-custodial wallets on Polygon; transactions submitted but did not confirm (impact minor).
+        funds_lost: unknown
+        url: https://status.commerce.coinbase.com/incidents/nb8gn8xlwcqh
+      - date: 2025-10-20
+        summary: Coinbase-wide login and transaction outage caused by an AWS outage; status update says funds are safe (impact minor).
+        funds_lost: no
+        url: https://status.commerce.coinbase.com/incidents/zmr4w5wymh0n
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.commerce.coinbase.com/api/v2/incidents.json
+        detail: Statuspage incidents feed, 50 incidents from 2021-01-06 to 2026-03-20; listed here are those since 2024 (the onchain-protocol period) with impact above none.
+        checked_at: 2026-10-09
+        quote: Delayed Payment Confirmation
+    note: "Service incidents only; no security incident or loss of payment funds was found. Searched: the Commerce status page feed, the protocol repo (no SECURITY file, no advisories) and the org SECURITY.md. The 2025 Coinbase customer data incident concerned Coinbase retail accounts and is not recorded for Commerce; no Commerce primary source mentions it."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2024-10-14
+        summary: New Transfers contract 0x0305…b7a8 deployed on Base from source that was never pushed to the repo (permit nonce fix); it carried Base payments from then on.
+        url: https://sourcify.dev/server/v2/contract/8453/0x03059433BCdB6144624cC2443159D9445C32b7a8
+      - date: 2025-10-29
+        summary: Commerce Terms of Service updated (current version).
+        url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+      - date: 2026-04-01
+        summary: Last Transferred event found on Base in the seed scan (block 44134913); none found since in sampled windows. Coinbase now directs Commerce merchants to the Coinbase Business Checkouts API.
+        url: https://basescan.org/tx/0xb20c670013eb85ce88ed2353acca655f0c1463552be8c39b335908fe2cbfe2fb
+      - date: 2026-09-22
+        summary: OnchainKit, the public checkout SDK, deprecated and its repository archived.
+        url: https://github.com/coinbase/onchainkit
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.cdp.coinbase.com/coinbase-business/checkout-apis/migrate-from-commerce/overview
+        detail: CDP migration guide from the Commerce Charge API to the Checkouts API (undated page).
+        checked_at: 2026-10-09
+        quote: Migrate from Commerce Charge API to the Checkouts API
+    refs:
+      - criterion: O1
+        index: 0
+      - criterion: O2
+        index: 1
+    note: The product appears to be winding down; no dated first-party retirement notice was found (coinbase.com returns 403).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 8453
+    addresses:
+      - "0x03059433BCdB6144624cC2443159D9445C32b7a8"
+      - "0xeADE6bE02d043b3550bE19E960504dbA14A14971"
+    topic0: "0xb7ee4fafa10d16ee883a136a3dcc9179d8e6041ba71cc29c2b0bce4f7bdd6e86"
+    event: Transferred(address indexed operator, bytes16 id, address recipient, address sender, uint256 spentAmount, address spentCurrency)
+    amount_word: 3
+    token_word: 4
+    window_days: 30
+    exclusions: spentAmount (word 3) is what the payer spent in spentCurrency (word 4; zero address = native ETH), including the operator fee and before any swap, so sums are per payer-side currency. All operators are counted, not only Coinbase's. Gross observed.
+  note: Spec checked against the log in tx 0xb20c…e2fb (word 3 = 1405295302545581, word 4 = 0). The seed scan found no Transferred event on Base after 2026-04-01, so a 30-day window will likely return zero events. Not computed; the maintainer runs scripts/volumes.mjs.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  reason: "not computed on 2026-10-09: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: no security policy file
+        - repo: coinbase/onchainkit (archived)
+          ok: false
+          detail: no security policy file
+        - repo: coinbase/coinbase-commerce-php
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
+        detail: "coinbase/commerce-onchain-payment-protocol: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
+        detail: "coinbase/onchainkit (archived): no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
+        detail: "coinbase/coinbase-commerce-php: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.2:
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+        archive: data/archive/coinbase-commerce-terms.txt
+        detail: The Commerce Terms contain no patch or vulnerability-remediation commitment.
+        checked_at: 2026-10-09
+        quote: Coinbase Commerce Terms of Service
+    refs:
+      - criterion: S6
+        index: 1
+    note: "Searched: Commerce Terms and Privacy Policy (archived), the protocol repo, and the coinbase org SECURITY.md (points to HackerOne, no timelines). coinbase.com/security returns 403 and has no Wayback snapshot."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: coinbase/onchainkit (archived)
+          ok: true
+          detail: scanning step in a workflow
+        - repo: coinbase/coinbase-commerce-php
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
+        detail: "coinbase/commerce-onchain-payment-protocol: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
+        detail: "coinbase/onchainkit (archived): scanning step in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
+        detail: "coinbase/coinbase-commerce-php: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B3.1:
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260611115217/https://www.coinbase.com/en-ca/legal/commerce/privacy-policy
+        archive: data/archive/coinbase-commerce-privacy.txt
+        detail: The Commerce Privacy Policy (2024-12-03) has no breach-notification commitment; the Terms have none either.
+        checked_at: 2026-10-09
+        quote: Coinbase Commerce Privacy Policy
+    note: Searched both documents for notify, notification, breach and incident; the only notice commitment concerns changes to the arbitration agreement.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Statuspage at status.commerce.coinbase.com with 50 incidents since 2021; updates are short status notes and no post-mortem with root cause was found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.commerce.coinbase.com
+        detail: Public status page with email and SMS subscription.
+        checked_at: 2026-10-09
+        quote: Coinbase Commerce Status
+      - tier: documented
+        kind: document
+        url: https://status.commerce.coinbase.com/api/v2/incidents.json
+        detail: Incident feed with update texts.
+        checked_at: 2026-10-09
+        quote: Donations on Commerce Unavailable
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: The SDK checkout calls Coinbase's JSON-RPC endpoint with a public CDP client key in the URL path; no OAuth, OpenID Connect or JWT on the Commerce path. The successor Checkouts API uses JWT bearer tokens.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.cdp.coinbase.com/coinbase-business/checkout-apis/migrate-from-commerce/overview
+        detail: Migration guide contrasts the Commerce X-CC-Api-Key header with the Checkouts API's bearer token with a CDP API key.
+        checked_at: 2026-10-09
+        quote: Switch from API key to JWT Bearer tokens
+    refs:
+      - criterion: S5
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Charge API calls use a static X-CC-Api-Key header held server-side; webhooks are HMAC-SHA256 signed and verified in constant time by the reference client. No key scoping or rotation is documented.
+    refs:
+      - criterion: S5
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Information is retained as needed under internal retention policies, with no fixed periods; on account closure data is retained or deleted per the policy. Coinbase may terminate access with immediate effect.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260611115217/https://www.coinbase.com/en-ca/legal/commerce/privacy-policy
+        archive: data/archive/coinbase-commerce-privacy.txt
+        detail: Section 4 of the Commerce Privacy Policy.
+        checked_at: 2026-10-09
+        quote: We retain your information as needed to provide our Services
+    refs:
+      - criterion: P2
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Coinbase Bermuda Technologies Limited processes merchant and user data under the policy; processing it does as processor on behalf of merchants is excluded from the policy. No DPIA is mentioned.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260611115217/https://www.coinbase.com/en-ca/legal/commerce/privacy-policy
+        archive: data/archive/coinbase-commerce-privacy.txt
+        detail: Scope paragraph of the Commerce Privacy Policy.
+        checked_at: 2026-10-09
+        quote: This Policy does not apply to any processing which Coinbase Commerce carries out as a processor on behalf of Customers
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: absent
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260611115217/https://www.coinbase.com/en-ca/legal/commerce/privacy-policy
+        archive: data/archive/coinbase-commerce-privacy.txt
+        detail: The policy says Coinbase acts as processor for merchants but neither it nor the Terms reference a data processing agreement.
+        checked_at: 2026-10-09
+        quote: as a processor on behalf of Customers
+    note: Searched the Terms and Privacy Policy for processing agreement, addendum and DPA; the Wayback Machine has no snapshot of coinbase.com/legal/commerce/data-processing-agreement; coinbase.com returns 403 to curl.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: no deployment configuration
+        - repo: coinbase/onchainkit (archived)
+          ok: false
+          detail: no deployment configuration
+        - repo: coinbase/coinbase-commerce-php
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
+        detail: "coinbase/commerce-onchain-payment-protocol: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
+        detail: "coinbase/onchainkit (archived): no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
+        detail: "coinbase/coinbase-commerce-php: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
+        - repo: coinbase/onchainkit (archived)
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
+        - repo: coinbase/coinbase-commerce-php
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/rules/branches/master
+        detail: "coinbase/commerce-onchain-payment-protocol: rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/rules/branches/main
+        detail: "coinbase/onchainkit (archived): rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/rules/branches/master
+        detail: "coinbase/coinbase-commerce-php: rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: no .github/workflows
+        - repo: coinbase/onchainkit (archived)
+          ok: true
+          detail: 14 workflow file(s)
+        - repo: coinbase/coinbase-commerce-php
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
+        detail: "coinbase/commerce-onchain-payment-protocol: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
+        detail: "coinbase/onchainkit (archived): 14 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
+        detail: "coinbase/coinbase-commerce-php: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: test command in a workflow
+        - repo: coinbase/onchainkit (archived)
+          ok: false
+          detail: test command in a workflow
+        - repo: coinbase/coinbase-commerce-php
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
+        detail: "coinbase/commerce-onchain-payment-protocol: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
+        detail: "coinbase/onchainkit (archived): test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
+        detail: "coinbase/coinbase-commerce-php: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: coverage tooling referenced
+        - repo: coinbase/onchainkit (archived)
+          ok: true
+          detail: coverage tooling referenced
+        - repo: coinbase/coinbase-commerce-php
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
+        detail: "coinbase/commerce-onchain-payment-protocol: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
+        detail: "coinbase/onchainkit (archived): coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
+        detail: "coinbase/coinbase-commerce-php: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: no tags
+        - repo: coinbase/onchainkit (archived)
+          ok: true
+          detail: "latest tags: v0.38.2, v0.38.1, v0.38.0"
+        - repo: coinbase/coinbase-commerce-php
+          ok: true
+          detail: "latest tags: v1.0.1, v1.0.0, 1.0.11"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/tags
+        detail: "coinbase/commerce-onchain-payment-protocol: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/tags
+        detail: "coinbase/onchainkit (archived): latest tags: v0.38.2, v0.38.1, v0.38.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/tags
+        detail: "coinbase/coinbase-commerce-php: latest tags: v1.0.1, v1.0.0, 1.0.11"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: true
+          detail: 4 of 8 recent commits signed
+        - repo: coinbase/onchainkit (archived)
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: coinbase/coinbase-commerce-php
+          ok: true
+          detail: 7 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/commits?per_page=10
+        detail: "coinbase/commerce-onchain-payment-protocol: 4 of 8 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/commits?per_page=10
+        detail: "coinbase/onchainkit (archived): 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/commits?per_page=10
+        detail: "coinbase/coinbase-commerce-php: 7 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: no changelog or release notes
+        - repo: coinbase/onchainkit (archived)
+          ok: true
+          detail: 6 release(s) with notes
+        - repo: coinbase/coinbase-commerce-php
+          ok: true
+          detail: 1 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
+        detail: "coinbase/commerce-onchain-payment-protocol: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
+        detail: "coinbase/onchainkit (archived): 6 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
+        detail: "coinbase/coinbase-commerce-php: 1 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: coinbase/commerce-onchain-payment-protocol
+          ok: false
+          detail: none found
+        - repo: coinbase/onchainkit (archived)
+          ok: true
+          detail: contribution section in README
+        - repo: coinbase/coinbase-commerce-php
+          ok: true
+          detail: contribution section in README
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
+        detail: "coinbase/commerce-onchain-payment-protocol: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
+        detail: "coinbase/onchainkit (archived): contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
+        detail: "coinbase/coinbase-commerce-php: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Logical view only. The protocol README explains operators, TransferIntent signing and the contract methods; no infrastructure or integration architecture for the Charge API, signer or checkout is published.
+    refs:
+      - criterion: C2
+        index: 0
+      - criterion: O3
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Coinbase Bermuda Technologies Limited, Bermuda; the Terms' dispute clauses provide for AAA arbitration.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+        archive: data/archive/coinbase-commerce-terms.txt
+        detail: Commerce Terms opening paragraph.
+        checked_at: 2026-10-09
+        quote: Coinbase Bermuda Technologies Limited
+    note: Company-register entry not looked up; see maturity.entity.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Transaction fees charged to merchants (1% observed in a 2026-04-01 payment, paid to the operator's fee destination), within the Coinbase group.
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://basescan.org/tx/0xb20c670013eb85ce88ed2353acca655f0c1463552be8c39b335908fe2cbfe2fb
+        chain_id: 8453
+        block_number: 44134913
+        detail: 0.03 USDC of a 3.00 USDC payment went to the operator fee destination 0x6d86…29c8.
+        checked_at: 2026-10-09
+        recheck: cast receipt 0xb20c670013eb85ce88ed2353acca655f0c1463552be8c39b335908fe2cbfe2fb --rpc-url https://mainnet.base.org
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Coinbase may terminate or suspend access with immediate effect, for any reason and without notice. Funds are already in the merchant's own wallet, so termination does not hold funds; data follows the privacy policy's retention rules.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
+        archive: data/archive/coinbase-commerce-terms.txt
+        detail: Termination section of the Commerce Terms.
+        checked_at: 2026-10-09
+        quote: We may terminate or suspend your access to and use of the Services with immediate effect
+    refs:
+      - criterion: S4
+        index: 2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: The Privacy Policy says Commerce analyses public blockchain data, including wallet addresses, to detect fraud and abuse, and the operator can refuse to sign intents; whether that screening is automated or uses AI is not stated, and the API and signer are closed. Searched the Terms, Privacy Policy and protocol README for automated, machine learning and artificial intelligence.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending

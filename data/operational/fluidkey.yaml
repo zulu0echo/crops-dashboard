@@ -1,0 +1,508 @@
+slug: fluidkey
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: false
+          detail: no security policy file
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: no security policy file
+        - repo: fluidkey/sara
+          ok: false
+          detail: no security policy file
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/contents/?ref=main
+        detail: "fluidkey/fluidkey-stealth-account-kit: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/contents/?ref=main
+        detail: "fluidkey/fluidkey-earn-module: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/contents/?ref=main
+        detail: "fluidkey/sara: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/contents/?ref=main
+        detail: "fluidkey/fluidkey-hydrator: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: fluidkey/sara
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/contents/?ref=main
+        detail: "fluidkey/fluidkey-stealth-account-kit: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/contents/?ref=main
+        detail: "fluidkey/fluidkey-earn-module: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/contents/?ref=main
+        detail: "fluidkey/sara: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/contents/?ref=main
+        detail: "fluidkey/fluidkey-hydrator: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: false
+          detail: no deployment configuration
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: no deployment configuration
+        - repo: fluidkey/sara
+          ok: false
+          detail: no deployment configuration
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/contents/?ref=main
+        detail: "fluidkey/fluidkey-stealth-account-kit: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/contents/?ref=main
+        detail: "fluidkey/fluidkey-earn-module: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/contents/?ref=main
+        detail: "fluidkey/sara: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/contents/?ref=main
+        detail: "fluidkey/fluidkey-hydrator: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: fluidkey/sara
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/rules/branches/main
+        detail: "fluidkey/fluidkey-stealth-account-kit: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/rules/branches/main
+        detail: "fluidkey/fluidkey-earn-module: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/rules/branches/main
+        detail: "fluidkey/sara: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/rules/branches/main
+        detail: "fluidkey/fluidkey-hydrator: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: true
+          detail: 3 workflow file(s)
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: no .github/workflows
+        - repo: fluidkey/sara
+          ok: false
+          detail: no .github/workflows
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: 1 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/contents/?ref=main
+        detail: "fluidkey/fluidkey-stealth-account-kit: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/contents/?ref=main
+        detail: "fluidkey/fluidkey-earn-module: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/contents/?ref=main
+        detail: "fluidkey/sara: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/contents/?ref=main
+        detail: "fluidkey/fluidkey-hydrator: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: false
+          detail: test command in a workflow
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: test command in a workflow
+        - repo: fluidkey/sara
+          ok: false
+          detail: test command in a workflow
+        - repo: fluidkey/fluidkey-hydrator
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/contents/?ref=main
+        detail: "fluidkey/fluidkey-stealth-account-kit: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/contents/?ref=main
+        detail: "fluidkey/fluidkey-earn-module: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/contents/?ref=main
+        detail: "fluidkey/sara: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/contents/?ref=main
+        detail: "fluidkey/fluidkey-hydrator: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: false
+          detail: coverage tooling referenced
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: coverage tooling referenced
+        - repo: fluidkey/sara
+          ok: false
+          detail: coverage tooling referenced
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/contents/?ref=main
+        detail: "fluidkey/fluidkey-stealth-account-kit: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/contents/?ref=main
+        detail: "fluidkey/fluidkey-earn-module: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/contents/?ref=main
+        detail: "fluidkey/sara: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/contents/?ref=main
+        detail: "fluidkey/fluidkey-hydrator: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: true
+          detail: "latest tags: v1.1.1, v1.1.0, v1.0.1"
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: no tags
+        - repo: fluidkey/sara
+          ok: false
+          detail: no tags
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/tags
+        detail: "fluidkey/fluidkey-stealth-account-kit: latest tags: v1.1.1, v1.1.0, v1.0.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/tags
+        detail: "fluidkey/fluidkey-earn-module: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/tags
+        detail: "fluidkey/sara: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/tags
+        detail: "fluidkey/fluidkey-hydrator: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: false
+          detail: 1 of 10 recent commits signed
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: 0 of 10 recent commits signed
+        - repo: fluidkey/sara
+          ok: false
+          detail: 0 of 10 recent commits signed
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: 1 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/commits?per_page=10
+        detail: "fluidkey/fluidkey-stealth-account-kit: 1 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/commits?per_page=10
+        detail: "fluidkey/fluidkey-earn-module: 0 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/commits?per_page=10
+        detail: "fluidkey/sara: 0 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/commits?per_page=10
+        detail: "fluidkey/fluidkey-hydrator: 1 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: no changelog or release notes
+        - repo: fluidkey/sara
+          ok: false
+          detail: no changelog or release notes
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/contents/?ref=main
+        detail: "fluidkey/fluidkey-stealth-account-kit: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/contents/?ref=main
+        detail: "fluidkey/fluidkey-earn-module: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/contents/?ref=main
+        detail: "fluidkey/sara: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/contents/?ref=main
+        detail: "fluidkey/fluidkey-hydrator: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: fluidkey/fluidkey-stealth-account-kit
+          ok: true
+          detail: contribution section in README
+        - repo: fluidkey/fluidkey-earn-module
+          ok: false
+          detail: none found
+        - repo: fluidkey/sara
+          ok: false
+          detail: none found
+        - repo: fluidkey/fluidkey-hydrator
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-stealth-account-kit/contents/?ref=main
+        detail: "fluidkey/fluidkey-stealth-account-kit: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-earn-module/contents/?ref=main
+        detail: "fluidkey/fluidkey-earn-module: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/sara/contents/?ref=main
+        detail: "fluidkey/sara: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/fluidkey/fluidkey-hydrator/contents/?ref=main
+        detail: "fluidkey/fluidkey-hydrator: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending

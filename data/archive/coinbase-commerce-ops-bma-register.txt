@@ -1,0 +1,8 @@
+Bermuda Monetary Authority, Regulated Entities register (https://www.bma.bm/regulated-entities)
+Transcribed 2026-10-09 by the AI research agent (operational) from the page as fetched by curl.
+The page lists every regulated entity in one HTML table; only the rows containing "Coinbase" are transcribed below.
+A search of the full page for "Coinbase Bermuda Technologies" returned no match.
+
+Coinbase Bermuda Limited | Digital Assets Business | Principal Address: Innovation House, Suite 1H, 46 Reid Street, Hamilton, HM12 Bermuda | License/Registration Type: Class F | Registration Number: 202302164 | License Effective Date: 19 Apr 2023 | Allowed Business Activities: (a) Issuing, selling, redeeming virtual coins, tokens or any other form of digital assets (c) Operating as a digital asset exchange (d) Providing custodial wallet services (da) Operating as a digital asset derivative exchange provider
+
+Coinbase Bermuda Services Limited | Digital Assets Business | Principal Address: Innovation House, Suite 1H, 46 Reid Street, Hamilton, HM12 Bermuda | License/Registration Type: Class F | Registration Number: 202302681 | License Effective Date: 15 Sep 2023 | Allowed Business Activities: (b) Operating as a payment service provider utilizing digital assets which includes the provision of services for the transfer of funds (c) Operating as a digital asset exchange (d) Providing custodial wallet services (e) Operating as a digital asset services vendor

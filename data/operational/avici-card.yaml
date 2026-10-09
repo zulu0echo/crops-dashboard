@@ -1,0 +1,697 @@
+slug: avici-card
+facts:
+  B1.1:
+    status: unknown
+    note: "No security page, trust centre or ISO 27001 statement on avici.money (pages: home, tos, tosavicicard, privacypolicy) or docs.avici.money. Rain lists SOC 2 Type II and PCI DSS, not ISO 27001."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: attested
+    value: "Avici states nothing. Issuer group (Rain): SOC 2 Type II and PCI DSS, reports available to partners on request through its trust center; not read."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
+        checked_at: 2026-10-09
+        quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: Rain privacy policy (last updated 16 July 2026), Security section.
+        checked_at: 2026-10-09
+        quote: Rain maintains SOC 2 Type II certification
+    note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No audit report for the card loan-escrow contract, whose chain and address are not disclosed (CROPS S6 unknown). Rain says its own contracts are audited, but the escrow is described as created by Avici and is not shown to be Rain's.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: attested
+    value: "Avici states nothing. Issuer group (Rain): a penetration test summary is available to partners through its trust center; it covers Rain, not the Avici app or backend."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
+        checked_at: 2026-10-09
+        quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
+    note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: evidenced
+    value: "Avici states nothing. Issuer group (Rain): code is peer-reviewed and automatically scanned before production; no cadence stated."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page, "Secure development".
+        checked_at: 2026-10-09
+        quote: Code is peer-reviewed and automatically scanned for vulnerabilities before it reaches production
+    note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No patch timelines from Avici or Rain.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: evidenced
+    value: "Avici makes no incident-notification commitment in its terms or privacy policy. Issuer group (Rain): a documented incident response plan that keeps partners informed; no time stated."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page, "Detection and response".
+        checked_at: 2026-10-09
+        quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
+    note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: "Avici publishes no status page. Issuer group (Rain): status.rain.xyz with incident history; no post-mortems found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/
+        detail: Rain Platform Status (cState), with components for onboarding, API, card issuing, authorizations, disputes and collateral, and a paged incident history back to 2025.
+        checked_at: 2026-10-09
+        quote: We continuously monitor the performance and availability of our services
+      - tier: documented
+        kind: trace
+        url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
+        detail: Read the incident pages listed on status.rain.xyz pages 1 to 3 (2025-06-12 to 2026-09-28) on 2026-10-09. Updates give a one-line cause at most (partner OS patching, payment processor, expired certificate, processor rules engine); the 2026-09-28 incident says the root cause is still being investigated, and no post-mortem is linked from any incident.
+        checked_at: 2026-10-09
+        recheck: curl -s https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/ | grep -i "root cause"
+    note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Wallet withdrawals require a biometric passkey; MCP sign-in uses email and a one-time code. No separate second factor for app login is described.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.avici.money/getting-started/avici-wallet/withdraw-funds.md
+        detail: Avici docs, Withdraw funds.
+        checked_at: 2026-10-09
+        quote: you will be prompted to verify the transaction using your biometric passkey
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: Avici's read-only MCP connector authenticates through a browser-based OAuth flow with email and a one-time code; the CLI signs in by QR approval in the mobile app and stores a session locally. No payment API is offered to customers.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.avici.money/getting-started/avici-cli-and-mcp/faqs.md
+        detail: Avici CLI & MCP FAQ, question 13.
+        checked_at: 2026-10-09
+        quote: MCP authentication happens through a browser-based OAuth flow, which uses your Avici email and a one-time code
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    note: The CLI and MCP FAQ says logins expire and must be renewed, without stating a period.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: The CLI and MCP are read-only (balances, card details, transactions); no export limits or export logging are described.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "Avici: administrative, technical and physical safeguards, limited access, connected-service tokens stored encrypted; no data classification or encryption-at-rest statement for other data. Issuer group (Rain): encryption in transit and at rest, PCI DSS for card data. Observed: avici.money refuses TLS 1.1 and accepts TLS 1.2."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/privacypolicy
+        detail: Avici privacy policy (last updated 7 October 2026), Security.
+        checked_at: 2026-10-09
+        quote: Access tokens for connected services are stored encrypted
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: "Rain privacy policy, Security section: encryption in transit and at rest, access controls, multifactor authentication, tokenization, PCI DSS for card data."
+        checked_at: 2026-10-09
+        quote: encryption of sensitive data in transit and at rest
+      - tier: documented
+        kind: trace
+        url: https://avici.money
+        detail: openssl s_client -tls1_1 to avici.money:443 failed with alert protocol version; -tls1_2 negotiated an ECDHE cipher. Run 2026-10-09.
+        checked_at: 2026-10-09
+        recheck: echo | openssl s_client -connect avici.money:443 -servername avici.money -tls1_1; echo | openssl s_client -connect avici.money:443 -servername avici.money -tls1_2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: KYC and AML records held by the verification provider for the relationship plus the legal period, typically five years; transaction and card records as financial regulation requires; Avi notes and connected-service tokens until deleted; data deleted or anonymised when no longer needed; account deletion available in the app subject to legal holds.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/privacypolicy
+        detail: Avici privacy policy, Data Retention.
+        checked_at: 2026-10-09
+        quote: for the period required by applicable law after it ends, typically five years
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Avici Inc (Delaware) is responsible for the personal data in its policy; the verification provider collects identity data directly and holds it under its own notice. Controller and processor roles are not named as such; no DPIA statement.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/privacypolicy
+        detail: Avici privacy policy, Who We Are.
+        checked_at: 2026-10-09
+        quote: Avici Inc is responsible for the personal data described in this policy
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No data processing agreement published.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: evidenced
+    value: "Avici states nothing. Issuer group (Rain): security events monitored centrally; no SIEM product or endpoint detection named."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.rain.xyz/security
+        detail: Rain security page, "Detection and response".
+        checked_at: 2026-10-09
+        quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
+    note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: 'Logical view only: the docs describe the card flow (USDC into a loan-escrow contract, USD credit on the card, Avici "spend attestation" charges, liquidation every 1 to 7 days to settle with Visa). No infrastructure or integration architecture, and no chain or contract address.'
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.avici.money/getting-started/secured-credit-cards.md
+        detail: Avici docs, Secured Credit Cards, "This is how the contract works".
+        checked_at: 2026-10-09
+        quote: we put a “charge” using the spend attestation
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Avici Inc, a Delaware corporation (651 N Broad St, Suite 201, Middletown, Delaware), under Delaware law for the Terms of Use; the card terms are three-party between the user, Avici Inc and the issuer Third National, under Puerto Rico law.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/tos
+        detail: Avici Terms of Use (last updated 25 June 2026), Contact.
+        checked_at: 2026-10-09
+        quote: 651 N Broad St, Suite 201 Middletown, Delaware 19709
+      - tier: documented
+        kind: document
+        url: https://avici.money/tosavicicard
+        detail: Avici Spend Card Terms, Governing Law.
+        checked_at: 2026-10-09
+        quote: These Card Terms will be interpreted in accordance with the laws of Puerto Rico
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: "Customer fees: card purchase and annual fees, ATM fees on Platinum cards, a $35 dispute fee, wire and SWIFT fees on virtual accounts; the Terms list cards, Credit Mode, Grow, Privacy Send and Avici Biz as paid features. No financial statements or funding statement found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/tos
+        detail: Avici Terms of Use, opening paragraph.
+        checked_at: 2026-10-09
+        quote: including paid features such as Avici cards, Credit Mode, Avici Grow, Privacy Send, or Avici Biz
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Avici may terminate, restrict or pause use at its discretion, including for compliance, fraud or risk reasons; Avici and the issuer may cancel the card at any time with or without cause or notice. Wallet funds stay in the self-custody wallet (Avici's claim); funds in the card escrow are subject to liquidation for outstanding charges. Account deletion is available, subject to legal retention (B6.3).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/tos
+        detail: Avici Terms of Use, section 20 Termination.
+        checked_at: 2026-10-09
+        quote: We may terminate, restrict, or pause your use of the Site or services at our discretion
+      - tier: documented
+        kind: document
+        url: https://avici.money/tosavicicard
+        detail: Avici Spend Card Terms, Termination.
+        checked_at: 2026-10-09
+        quote: with or without cause and with or without giving you notice
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Partly. Avici's AI assistant Avi and the CLI/MCP are read-only and cannot move money, so they are not in the payment path. Card compliance runs through Sumsub ongoing AML monitoring (Avici docs) and, at the issuer group, Rain's automated fraud, sanctions and transaction-monitoring systems; whether either uses machine learning is not stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.avici.money/getting-started/avici-cli-and-mcp.md
+        detail: Avici docs, CLI & MCP.
+        checked_at: 2026-10-09
+        quote: All current Avici CLI and MCP capabilities are read-only
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: Rain privacy policy, Automated Processing and Decision-Making.
+        checked_at: 2026-10-09
+        quote: We may use automated systems to support fraud detection, sanctions screening, transaction monitoring, identity verification, biometric matching, eligibility assessments, and risk management
+    note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: For Avi, the privacy policy limits model providers to those that do not train on user content and keep data briefly or not at all. For compliance decisions only Rain's override path is documented (human review where law grants it). No monitoring, validation, decommissioning or bias documentation.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/privacypolicy
+        detail: Avici privacy policy, How we use AI.
+        checked_at: 2026-10-09
+        quote: We work only with providers whose terms do not allow your content to be used to train their models
+      - tier: documented
+        kind: document
+        url: https://legal.raincards.xyz/legal/privacy-policy
+        detail: "Rain privacy policy, Automated Processing and Decision-Making: available where applicable law grants the right."
+        checked_at: 2026-10-09
+        quote: request human review, express your point of view, and contest the decision
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: payer
+      amount: Virtual Platinum $15 first card, $10 each further card; virtual Signature $30 first year then $20/year
+      basis: Docs Fees and Limits; card orders paid in-app.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: Physical Platinum $50 one-time; physical Signature $75 plus $20/year from year two
+      basis: Docs Fees and Limits; priority delivery adds $50 international or $15 US.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: FX up to 3% (currently 1%, by Visa); cross-border up to 3% (currently 0%); no Avici markup
+      basis: Avici Spend Card Terms Important Disclosures (maxima); the docs say Visa may charge 0.4-1% on non-USD.
+      evidence_index: 1
+    - kind: cashout
+      paid_by: payer
+      amount: "ATM: Platinum $1 + 0.65%, declined or balance inquiry $0.60; Signature $0"
+      basis: Docs Fees and Limits, ATM table.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: Dispute fee $35, non-refundable, disputes only above $30
+      basis: Docs card FAQ.
+      evidence_index: 2
+    - kind: card
+      paid_by: payer
+      amount: Late payment up to $40, returned payment up to $29 (card terms maxima)
+      basis: Avici Spend Card Terms Important Disclosures; the docs FAQ says there are no late penalties because spends auto-deduct.
+      evidence_index: 1
+    - kind: cashout
+      paid_by: payer
+      amount: "Virtual account payout: ACH $0, wire $15, SEPA EUR 0, SWIFT $25; minimum transfer $2"
+      basis: Docs Virtual Accounts Fees and Limits.
+      evidence_index: 3
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/secured-credit-cards/fees-and-limits.md
+      detail: Avici docs, Secured Credit Cards, Fees and Limits (card purchase fees, transaction and forex fees, ATM table).
+      checked_at: 2026-10-09
+      quote: "First card costs $15. Subsequent cards: $10 one-time fee, no recurring charges."
+    - tier: documented
+      kind: document
+      url: https://avici.money/tosavicicard
+      detail: "Avici Spend Card Terms (last updated 20 June 2025), Important Disclosures effective 5 December 2024: maxima, cross-border up to 3% currently 0%, late payment up to $40, returned payment up to $29."
+      checked_at: 2026-10-09
+      quote: "Foreign Exchange Fee (non USD): up to 3% , currently 1% (Charged by Visa"
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/secured-credit-cards/faqs.md
+      detail: Avici docs, card FAQs, disputes.
+      checked_at: 2026-10-09
+      quote: you will need to pay the **$35 dispute fee** in **USDC or USDT**
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/virtual-accounts/fees-and-limits.md
+      detail: Avici docs, Virtual Accounts, Fees and Limits (USD and EUR accounts).
+      checked_at: 2026-10-09
+      quote: Pay Out (Withdrawal) via Wire Transfer / USD | 15 USD
+  note: Gas for card top-ups is covered by Avici's relayer per the docs (CROPS components) and is not listed as a user fee. Swap and bridging fees for auto-top-up through Relay are not stated.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: unknown
+  note: "CROPS S1 is unknown: the loan-escrow contract's chain and address are not disclosed. The docs claim the escrow is self-custodial and only the user's wallet can withdraw, while Avici can charge it via spend attestations and liquidate spent USDC; the card terms say Avici and the issuer never hold custody. Unverified, so no custody model is recorded."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: attested
+  value:
+    - entity: Third National (Nimbus LLC d/b/a Third National, per Rain)
+      holder: partner
+      country: US
+      regulator: Not named in any document
+      type: Licensed lender and money transmitter; Visa-authorized card issuer (as stated by Rain)
+      activities: Card issuance and BIN sponsorship for the Avici card.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://avici.money/tos
+      detail: Avici Terms of Use, third-party services.
+      checked_at: 2026-10-09
+      quote: Third National (card issuance and BIN sponsorship)
+    - tier: documented
+      kind: document
+      url: https://legal.raincards.xyz/legal/privacy-policy
+      detail: "Rain privacy policy, Entity Roles and Data Flows: describes Nimbus LLC, doing business as Third National, without naming a regulator, state or licence number."
+      checked_at: 2026-10-09
+      quote: is a licensed lender, money transmitter and Visa-authorized card issuer
+    - tier: documented
+      kind: trace
+      url: https://api.fdic.gov/banks/institutions?search=NAME:%22Third%20National%22&fields=NAME,CERT,ACTIVE,CITY,STNAME&limit=20
+      detail: 'FDIC BankFind institutions API, run 2026-10-09: the closest matches for "Third National" are other banks (Fifth Third Bank, N.A. and inactive banks); a search for NAME:Nimbus with ACTIVE:1 returns 0 institutions. NMLS Consumer Access returned HTTP 403 to a scripted request and was not bypassed; the Puerto Rico OCIF licence check (concesionarios.ocif.pr.gov) failed the TLS handshake.'
+      checked_at: 2026-10-09
+      recheck: curl -s 'https://api.fdic.gov/banks/institutions?search=NAME:Nimbus&filters=ACTIVE:1&fields=NAME,CERT' | grep -o '"total":[0-9]*'
+  note: "Attested only, and only by Rain: Avici's documents name Third National as issuer without any licence, and say nothing of Rain. FDIC BankFind lists no institution named Third National or Nimbus; the card terms are governed by Puerto Rico law, but the OCIF licence check could not be reached; NMLS Consumer Access blocked scripted access. Ramp partners Moonpay and Bridge (named in the Terms) were not checked against registers. Avici Inc claims no licence."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries:
+        - ALL
+      method: card_spend
+      partner: Third National (issuer), Visa
+      fee: No Avici FX markup; Visa 0.4-1% on non-USD
+      limits: Spend up to the USDC in the card escrow; no transaction limits unless set by the user.
+      evidence_index: 0
+    - countries:
+        - ALL
+      method: atm
+      partner: Third National (issuer), Visa
+      fee: Platinum $1 + 0.65%; Signature $0
+      limits: $1,000 per transaction, $3,000 and 3 withdrawals per day; virtual cards at NFC ATMs.
+      evidence_index: 1
+    - countries:
+        - ALL
+      method: bank_transfer
+      partner: Virtual USD/EUR accounts (banking partners; Terms name Moonpay and Bridge for off-ramp)
+      fee: ACH $0, wire $15, SEPA EUR 0, SWIFT $25
+      limits: Annual limit 27,000 USD/EUR at tier 1, unlimited at tier 2 with source-of-funds proof; country risk table applies.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://avici.money/tosavicicard
+      detail: Avici Spend Card Terms, Defined Terms.
+      checked_at: 2026-10-09
+      quote: The issuer for this card program is Third National.
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/secured-credit-cards/fees-and-limits.md
+      detail: Avici docs, Fees and Limits, ATM Withdrawal table.
+      checked_at: 2026-10-09
+      quote: $1000 per txn
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/virtual-accounts/fees-and-limits.md
+      detail: Avici docs, Virtual Accounts Fees and Limits; virtual accounts are fiat on- and off-ramp channels that convert to and from USDC in the Avici wallet.
+      checked_at: 2026-10-09
+      quote: Pay Out (Withdrawal) via ACH / USD
+    - tier: documented
+      kind: document
+      url: https://avici.money/tos
+      detail: Avici Terms of Use, Introduction.
+      checked_at: 2026-10-09
+      quote: Fiat onramp and offramp services via Moonpay and Bridge
+  note: Bank payout is from the Avici wallet through a virtual account, not from the card escrow. The virtual-account country table prohibits some countries that are on the card allowlist (for example Bangladesh and Barbados) and limits others to SEPA or ACH; per-country rows were not split out, so ALL overstates bank payout availability in those countries. Which partner runs the virtual accounts is not named in the docs.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2024-12-05
+      what: Avici Spend Card Terms Important Disclosures effective; earliest dated first-party document for the card
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/tosavicicard
+        detail: Avici Spend Card Terms, Important Disclosures header.
+        checked_at: 2026-10-09
+        quote: Effective as of 5th December 2024
+    note: No dated launch announcement was found on avici.money or docs.avici.money.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Avici Inc
+      jurisdiction: US-DE
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/privacypolicy
+        detail: Avici privacy policy, Who We Are; the Terms give the Middletown, Delaware address.
+        checked_at: 2026-10-09
+        quote: operated by Avici Inc, a Delaware corporation in the United States
+    note: Not checked in the Delaware Division of Corporations register (interactive search), so no register_url or file number.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value:
+      - date: 2026-09-28
+        summary: "Rain platform: unexpected card declines and API issues for some partners, 18:53 to 19:35 UTC; root cause still under investigation. Rain-wide; which programmes were affected is not stated."
+        funds_lost: unknown
+        url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
+      - date: 2026-06-25
+        summary: "Rain platform: elevated API error rates for 3h32m, caused by an expired encryption certificate."
+        funds_lost: unknown
+        url: https://status.rain.xyz/issues/2026-06-25-elevated-api-error-rate/
+      - date: 2026-06-03
+        summary: "Rain platform: partial outage affecting card authorizations for 9 minutes, attributed to operating-system patching at a partner."
+        funds_lost: unknown
+        url: https://status.rain.xyz/issues/2026-06-03-payments-partner-outage/
+      - date: 2026-05-05
+        summary: "Rain platform: elevated card declines for 3h10m from a partial outage at its payment processor."
+        funds_lost: unknown
+        url: https://status.rain.xyz/issues/2026-05-05-elevated-authorization-declines/
+      - date: 2026-01-02
+        summary: "Rain platform: elevated card declines for 1h15m from an incident in the processor rules engine; Rain stated funds were safe."
+        funds_lost: no
+        url: https://status.rain.xyz/issues/2026-01-02-payementology-rules-declines/
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
+        detail: Rain status incident 2026-09-28.
+        checked_at: 2026-10-09
+        quote: We are investigating an issue that is causing unexpected declines for transactions
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-06-25-elevated-api-error-rate/
+        detail: Rain status incident 2026-06-25.
+        checked_at: 2026-10-09
+        quote: The issue was caused by an expired encryption certificate
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-06-03-payments-partner-outage/
+        detail: Rain status incident 2026-06-03.
+        checked_at: 2026-10-09
+        quote: Our partner has identified the cause as operating system patching activity on their side
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-05-05-elevated-authorization-declines/
+        detail: Rain status incident 2026-05-05.
+        checked_at: 2026-10-09
+        quote: The incident was related to our payment processor and has been mitigated
+      - tier: documented
+        kind: document
+        url: https://status.rain.xyz/issues/2026-01-02-payementology-rules-declines/
+        detail: Rain status incident 2026-01-02.
+        checked_at: 2026-10-09
+        quote: Funds are safe and Rain infrastructure is working as intended
+    note: No Avici incident report found on avici.money, docs.avici.money or its legal pages. The entries are Rain platform incidents from status.rain.xyz, included because the issuer Third National is a Rain affiliate; Avici does not name Rain, and the pages do not say which programmes were affected.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2024-12-05
+        summary: Avici Spend Card Terms Important Disclosures effective (issuer Third National; FX up to 3%, currently 1%).
+        url: https://avici.money/tosavicicard
+      - date: 2025-06-20
+        summary: Avici Spend Card Terms last updated (an earlier version dated 9 June 2025 is on the same page).
+        url: https://avici.money/tosavicicard
+      - date: 2026-06-25
+        summary: Avici Terms of Use last updated (previous version 21 April 2026 kept on the page).
+        url: https://avici.money/tos
+      - date: 2026-10-07
+        summary: Avici privacy policy last updated (adds the Avi assistant and connected-service data).
+        url: https://avici.money/privacypolicy
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://avici.money/tosavicicard
+        detail: Avici Spend Card Terms header.
+        checked_at: 2026-10-09
+        quote: SPEND CARD TERMS (last updated 20th June 2025)
+      - tier: documented
+        kind: document
+        url: https://avici.money/tos
+        detail: Avici Terms of Use header.
+        checked_at: 2026-10-09
+        quote: "Last updated: June 25, 2026"
+      - tier: documented
+        kind: document
+        url: https://avici.money/privacypolicy
+        detail: Avici privacy policy header.
+        checked_at: 2026-10-09
+        quote: "Last updated: October 7, 2026."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: "Incumbent: the provider file lists no contracts, so there is nothing a volume spec could be computed over; card settlement runs offchain through the issuer and Visa."
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+notes: Incumbent card from Avici Inc (Delaware), issued by Third National. Avici's own documents never name Rain; the Rain link rests on Rain's privacy policy identifying Third National as its affiliate Nimbus LLC and on the Rain card-terms template (see the CROPS research log). Partner-level facts are labelled "Issuer group (Rain)". Avici publishes no security page, trust centre or status page. No repository facts apply.

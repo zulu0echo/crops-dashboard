@@ -1,0 +1,11 @@
+Source: https://about.tuyo.com/Delete-your-Tuyo-account-272bde147092806ea058e39f02b4aae4 (Notion page rendered in a browser; text copied 2026-10-09)
+
+Delete your Tuyo account
+You can delete your Tuyo account by going into:
+'Settings > Keys & Security > Delete account & data'
+This is a non-reversible action as it will completely delete your private key from your device and all funds in the account currently or in the future will not be recoverable.
+Please be sure that you want to delete your account as we will not be able to help recover it under any circunstances.
+Deleting your account will also delete your account from all of Tuyo's providers so it will:
+Cancel your Tuyo Card
+Cancel your virtual bank account numbers
+As Tuyo is a financial product, all your provided KYC information might be kept by Tuyo and/or our providers for up to 5 years for regulatory reasons.

@@ -1,0 +1,627 @@
+slug: aztec
+fees:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value:
+    - kind: network
+      paid_by: payer
+      amount: Mana used x fee per mana, in Fee Juice; minimum about 2.27e-6 AZTEC per mana on 2026-10-09
+      basis: Rollup FeeLib minimum = sequencer cost (L1 gas and blobs) + prover cost (provingCostPerMana, set by governance) + congestion cost (burned), converted at an oracle ETH/fee-asset rate. Paid from a non-transferable Fee Juice balance or by a fee-paying contract.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: Optional priority fee per mana, set by the user in gas settings
+      basis: EIP-1559-style max and priority fee per mana chosen by the sender. Unburnt fees per epoch go 70% to the block proposer and 30% to provers.
+      evidence_index: 1
+  evidence:
+    - tier: verified
+      kind: repo
+      commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
+      checked_at: 2026-10-09
+      url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/core/libraries/rollup/FeeLib.sol#L269-L330
+      path: l1-contracts/src/core/libraries/rollup/FeeLib.sol
+      detail: getManaMinFeeComponentsAt sums sequencer, prover and congestion cost per mana. Read on Ethereum at block 26,154,934 (2026-10-09) with cast on Rollup 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 (chain 1, not recordable as onchain evidence for an aztec:mainnet row) gives getManaMinFeeAt = 2,269,387,395,825; components congestionCost 0, multiplier 1e9 (minimum), sequencerCost 122,988,048,037, proverCost 2,146,399,347,788; manaTarget 75,000,000.
+      recheck: cast call 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 "getManaMinFeeComponentsAt(uint256,bool)((uint256,uint256,uint256,uint256))" $(cast block latest --field timestamp --rpc-url https://ethereum-rpc.publicnode.com) true --rpc-url https://ethereum-rpc.publicnode.com
+    - tier: verified
+      kind: repo
+      commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
+      checked_at: 2026-10-09
+      url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-developers/docs/foundational-topics/fees.md#L46-L60
+      path: docs/docs-developers/docs/foundational-topics/fees.md
+      detail: fee = daMana x feePerDaMana + l2Mana x feePerL2Mana; Fee Juice is bridged AZTEC and non-transferable; base and priority fees per mana as in EIP-1559. L141-L143 says collected fees, minus burnt congestion, go to provers and block proposers once an epoch is proven.
+    - tier: verified
+      kind: repo
+      commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
+      checked_at: 2026-10-09
+      url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-participate/token/economics.md#L39-L51
+      path: docs/docs-participate/token/economics.md
+      detail: Congestion cost is burned; of the remainder 70% goes to the sequencer and 30% to provers.
+  note: No protocol or Aztec Labs fee. The payer needs Fee Juice bridged from AZTEC on Ethereum through the one-way FeeJuicePortal (an L1 transaction with its own ETH gas), or a third-party fee-paying contract, which may charge in other tokens and whose terms were not reviewed. The Fee Juice per transaction depends on its mana use, which was not sampled.
+  checked_at: 2026-10-09
+custody_model:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: Agrees with the S1 finding (anchor 3 in substance, held at 2). A private transfer nullifies the sender's notes and creates notes for the recipient; keys stay in the user's PXE. The L1 backing of a bridged token sits in that token's portal under its owner's control, and the docs call some circuits under-constrained.
+  checked_at: 2026-10-09
+licences:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://aztec-labs.com/terms-of-service.html
+      detail: Aztec Labs' terms name Spilsbury Holdings Limited as a software developer, disclaim investment advice and brokerage, and cite no licence or regulator.
+      quote: a private limited company incorporated and registered in England and Wales under company number 11093783
+      checked_at: 2026-10-09
+    - tier: documented
+      kind: document
+      url: https://find-and-update.company-information.service.gov.uk/company/11093783
+      detail: Companies House entry, active, nature of business SIC 62012 (business and domestic software development).
+      quote: Company Overview for SPILSBURY HOLDINGS LIMITED (11093783)
+      checked_at: 2026-10-09
+    - tier: documented
+      kind: document
+      url: https://aztec.network/terms-of-service
+      detail: Aztec Foundation (Swiss Stiftung, Zug) terms describe stewardship of open-source software and cite no licence or regulator.
+      quote: a Stiftung incorporated and registered in Zug, Switzerland
+      checked_at: 2026-10-09
+  note: "Searched: Aztec Labs and Aztec Foundation terms and privacy policies, the Companies House entry. Not searched: the FCA cryptoasset register and Financial Services Register (client-rendered) and FINMA's lists. Neither entity transmits or holds users' funds on the rail, so a licence would be expected only for services outside it."
+  checked_at: 2026-10-09
+cashout:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: No fiat leg. The payee receives notes of an app-deployed token on Aztec; leaving means bridging the token out through its third-party L1 portal and converting on Ethereum, outside the protocol.
+  burden: institution
+  checked_at: 2026-10-09
+maturity:
+  first_deployment:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      date: 2025-11-13
+      block: 23786836
+      what: First Aztec mainnet rollup (Registry index 0, 0x603b…CA12) at Ethereum block 23,786,836. The canonical v5 Rollup (0x91fF…8E34) was deployed at block 25,428,902 on 2026-06-30.
+    evidence:
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        address: "0x603bb2c05D474794ea97805e8De69bCcFb3bCA12"
+        block_number: 23786836
+        url: https://sourcify.dev/server/v2/contract/1/0x603bb2c05D474794ea97805e8De69bCcFb3bCA12?fields=deployment
+        detail: Sourcify records the creation transaction 0x2e76…a254 in Ethereum block 23,786,836 (timestamp 2025-11-13 00:52:35 UTC from the block header). Registry 0x35b2…e298 was created nine blocks earlier (23,786,827). Registry getRollup(0) returns this address; getVersion lists three versions (0, 2934756905, 4248422647).
+        checked_at: 2026-10-09
+        recheck: cast call 0x35b22e09Ee0390539439E24f06Da43D83f90e298 "getRollup(uint256)(address)" 0 --rpc-url https://ethereum-rpc.publicnode.com; cast block 23786836 --field timestamp --rpc-url https://ethereum-rpc.publicnode.com
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        address: "0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34"
+        block_number: 25428902
+        url: https://sourcify.dev/server/v2/contract/1/0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34?fields=deployment
+        detail: Canonical Rollup (Registry getCanonicalRollup) created in Ethereum block 25,428,902, 2026-06-30 07:08:47 UTC; exact Sourcify match.
+        checked_at: 2026-10-09
+        recheck: cast call 0x35b22e09Ee0390539439E24f06Da43D83f90e298 "getCanonicalRollup()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+    note: Judgment call. The first rollup in the mainnet Registry is recorded. State does not carry over between rollup versions (alpha.md L60-L77), so the deployment that holds today's notes dates from 2026-06-30, and the docs describe the network as Alpha. The block number is an Ethereum L1 block.
+    checked_at: 2026-10-09
+  entity:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      legal_name: Spilsbury Holdings Limited (trading as Aztec Labs)
+      jurisdiction: GB
+      register_url: https://find-and-update.company-information.service.gov.uk/company/11093783
+      registration_number: "11093783"
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://aztec-labs.com/terms-of-service.html
+        detail: Aztec Labs terms identify the company behind the Aztec Labs name; Aztec Labs runs the hosted mainnet RPC and the snapshot hosts.
+        quote: a private limited company incorporated and registered in England and Wales under company number 11093783
+        checked_at: 2026-10-09
+      - tier: documented
+        kind: document
+        url: https://find-and-update.company-information.service.gov.uk/company/11093783
+        detail: Companies House entry, status active, incorporated 2017-12-04.
+        quote: Company Overview for SPILSBURY HOLDINGS LIMITED (11093783)
+        checked_at: 2026-10-09
+    note: Judgment call. Aztec Labs is recorded as the maintaining organisation, as directed. Aztec Foundation (Swiss Stiftung, Zug) runs aztec.network, stewards development and since 2026-10-06 is the copyright holder in aztec-packages' LICENSE; its Swiss commercial-register entry was not looked up.
+    checked_at: 2026-10-09
+  incidents:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2026-05-11
+        summary: SECURITY.md reports 8 critical and 7 high vulnerabilities found internally and by external audits in Aztec Network v4 (the mainnet version until v5); no details or exploitation statement are given.
+        funds_lost: unknown
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/SECURITY.md#L37-L44
+      - date: 2026-07-28
+        summary: GHSA-778c-2h5c-8r96 (low) - a checkpoint of over 72 blocks pushed through the escape hatch and proven would halt L2 nodes (uncaught validation error in the archiver).
+        funds_lost: "no"
+        url: https://github.com/AztecProtocol/aztec-packages/security/advisories/GHSA-778c-2h5c-8r96
+      - date: 2026-10-08
+        summary: GHSA-2hc8-mq24-76v2 (high) - the native UltraHonk verifier in barretenberg accepted recursive proofs with a malformed pairing accumulator; fixed in v5.2.1, which the release notes say does not affect the Aztec network.
+        funds_lost: "no"
+        url: https://github.com/AztecProtocol/aztec-packages/security/advisories/GHSA-2hc8-mq24-76v2
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/security-advisories
+        detail: Three published advisories (GHSA-73xc-j27q-wg75 medium, GHSA-2hc8-mq24-76v2 high, GHSA-778c-2h5c-8r96 low) on 2026-10-09.
+        checked_at: 2026-10-09
+        recheck: gh api repos/AztecProtocol/aztec-packages/security-advisories --jq '.[] | [.ghsa_id,.severity,.published_at] | @tsv'
+      - tier: verified
+        kind: repo
+        commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
+        checked_at: 2026-10-09
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/SECURITY.md#L37-L44
+        path: SECURITY.md
+        detail: Table of high and critical vulnerabilities discovered in v4 by 2026-05-11.
+    note: The medium advisory (same verifier, abort on a point at infinity) is not listed separately. Release v4.2.1 (2026-05-07) was a mandatory hotfix restoring governance signalling, a liveness bug rather than an incident. No post-mortem of a mainnet halt was found. The docs say no part of the stack is fully audited and halts are expected during Alpha.
+    checked_at: 2026-10-09
+  changes:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2025-11-13
+        summary: Registry and first rollup deployed on Ethereum (blocks 23,786,827 and 23,786,836).
+        url: https://sourcify.dev/server/v2/contract/1/0x603bb2c05D474794ea97805e8De69bCcFb3bCA12?fields=deployment
+      - date: 2026-03-04
+        summary: Second rollup version (Registry version 2934756905, 0xAe20…4962) deployed at Ethereum block 24,586,322.
+        url: https://sourcify.dev/server/v2/contract/1/0xAe2001f7e21d5EcABf6234E9FDd1E76F50F74962?fields=deployment
+      - date: 2026-06-30
+        summary: Third rollup version (Registry version 4248422647, 0x91fF…8E34), now canonical, deployed at Ethereum block 25,428,902; v5.0.0 (2026-07-11) is the first release supported on mainnet for it. State does not migrate between versions.
+        url: https://github.com/AztecProtocol/aztec-packages/releases/tag/v5.0.0
+    evidence:
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        address: "0x35b22e09Ee0390539439E24f06Da43D83f90e298"
+        block_number: 26154934
+        url: https://sourcify.dev/server/v2/contract/1/0x35b22e09Ee0390539439E24f06Da43D83f90e298?fields=deployment
+        detail: Registry numberOfVersions() = 3; getRollup for versions 0, 2934756905 and 4248422647 returns 0x603b…CA12, 0xAe20…4962 and 0x91fF…8E34; getCanonicalRollup() = 0x91fF…8E34. Deployment blocks from Sourcify, dates from the block headers.
+        checked_at: 2026-10-09
+        recheck: for i in 0 1 2; do v=$(cast call 0x35b22e09Ee0390539439E24f06Da43D83f90e298 "getVersion(uint256)(uint256)" $i --rpc-url https://ethereum-rpc.publicnode.com | cut -d' ' -f1); cast call 0x35b22e09Ee0390539439E24f06Da43D83f90e298 "getRollup(uint256)(address)" $v --rpc-url https://ethereum-rpc.publicnode.com; done
+    note: The date each version became canonical (a governance action) was not read; deployment dates are recorded. Governance had 5 proposals at the seed read.
+    checked_at: 2026-10-09
+volume:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_observable
+  reason: Private transfers move value between encrypted notes inside the rollup; only nullifiers, note hashes and fee payers reach Ethereum, never amounts or tokens. Public L1 events (portal deposits and withdrawals, checkpoint proposals) are bridging and rollup bookkeeping, not payment settlement. The volume script reads EVM logs over the provider's listed contracts only, and this row lists none because its primary chain is aztec:mainnet.
+facts:
+  B2.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: true
+          detail: "security policy file: SECURITY.md"
+        - repo: AztecProtocol/networks
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
+        detail: "AztecProtocol/aztec-packages: security policy file: SECURITY.md"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
+        detail: "AztecProtocol/networks: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: true
+          detail: scanning step in a workflow
+        - repo: AztecProtocol/networks
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
+        detail: "AztecProtocol/aztec-packages: scanning step in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
+        detail: "AztecProtocol/networks: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: false
+          detail: no deployment configuration
+        - repo: AztecProtocol/networks
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
+        detail: "AztecProtocol/aztec-packages: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
+        detail: "AztecProtocol/networks: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request, required_status_checks"
+        - repo: AztecProtocol/networks
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/rules/branches/next
+        detail: "AztecProtocol/aztec-packages: rules: deletion, non_fast_forward, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/rules/branches/main
+        detail: "AztecProtocol/networks: rules: deletion, non_fast_forward, pull_request"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: true
+          detail: 26 workflow file(s)
+        - repo: AztecProtocol/networks
+          ok: true
+          detail: 2 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
+        detail: "AztecProtocol/aztec-packages: 26 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
+        detail: "AztecProtocol/networks: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: false
+          detail: test command in a workflow
+        - repo: AztecProtocol/networks
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
+        detail: "AztecProtocol/aztec-packages: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
+        detail: "AztecProtocol/networks: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: false
+          detail: coverage tooling referenced
+        - repo: AztecProtocol/networks
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
+        detail: "AztecProtocol/aztec-packages: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
+        detail: "AztecProtocol/networks: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: true
+          detail: "latest tags: v7.0.0-nightly.20261009, v7.0.0-nightly.20261008, v7.0.0-nightly.20261007"
+        - repo: AztecProtocol/networks
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/tags
+        detail: "AztecProtocol/aztec-packages: latest tags: v7.0.0-nightly.20261009, v7.0.0-nightly.20261008, v7.0.0-nightly.20261007"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/tags
+        detail: "AztecProtocol/networks: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: AztecProtocol/networks
+          ok: true
+          detail: 7 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/commits?per_page=10
+        detail: "AztecProtocol/aztec-packages: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/commits?per_page=10
+        detail: "AztecProtocol/networks: 7 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: true
+          detail: CHANGELOG file
+        - repo: AztecProtocol/networks
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
+        detail: "AztecProtocol/aztec-packages: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
+        detail: "AztecProtocol/networks: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: AztecProtocol/aztec-packages
+          ok: true
+          detail: CONTRIBUTING file
+        - repo: AztecProtocol/networks
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
+        detail: "AztecProtocol/aztec-packages: CONTRIBUTING file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
+        detail: "AztecProtocol/networks: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B6.3:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Aztec Labs' privacy policy keeps contact data, technical usage data and service-use data for 12 months, then may keep it in anonymised form. Its scope is the Aztec Labs website and services; it does not mention the hosted mainnet RPC, whose ingress logs every request (log sample rate 1.0) per the deployment config.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://aztec-labs.com/privacy-policy.html
+        detail: Section 8, Retention of Your Personal Data.
+        quote: your technical usage information for 12 months
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: repo
+        commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
+        checked_at: 2026-10-09
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/spartan/environments/mainnet.env#L18-L23
+        path: spartan/environments/mainnet.env
+        detail: The mainnet RPC ingress (mainnet.rpc.aztec-labs.com) sets session affinity by client IP, RPC_INGRESS_LOG_SAMPLE_RATE=1.0 and a Cloud Armor policy.
+    note: Position of a hosted service Aztec Labs runs; the rail does not require it (users can run their own node, see C3). Cross-reference CROPS P2.
+    checked_at: 2026-10-09
+  B8.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Partial. The hosted mainnet RPC is deployed on Google Cloud behind a named Cloud Armor (WAF) policy; the policy rules, host hardening benchmark, IDS/IPS and open ports are not published.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
+        checked_at: 2026-10-09
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/spartan/environments/mainnet.env#L18-L23
+        path: spartan/environments/mainnet.env
+        detail: RPC_CLOUD_ARMOR_POLICY_NAME=mainnet-rpc-policy for the mainnet RPC ingress; no policy rules in the repo.
+    note: Applies only to Aztec Labs' optional hosted RPC. No external port scan was run.
+    checked_at: 2026-10-09
+  B10.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Logical and integration views. The docs describe the client-side PXE, the public AVM on nodes, private and public state, L1-L2 messaging and the L1 contracts; the deployment configs in spartan/ describe Aztec Labs' own infrastructure but there is no prose infrastructure view for self-hosters beyond the node setup guide.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
+        checked_at: 2026-10-09
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-developers/docs/foundational-topics/index.md#L13-L61
+        path: docs/docs-developers/docs/foundational-topics/index.md
+        detail: Aztec overview with the high-level flow (aztec.js, PXE, public VM, rollup to Ethereum) and the private/public execution and state model; sibling pages cover PXE, messaging, accounts and fees.
+    checked_at: 2026-10-09
+  B11.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: No terms cover the hosted mainnet RPC. Aztec Labs' terms (Spilsbury Holdings Limited, England and Wales, English law, London arbitration) cover its website and testnet tools; Aztec Foundation's terms (Swiss Stiftung, Zug) cover aztec.network. The rail itself has no contracting party.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://aztec-labs.com/terms-of-service.html
+        detail: Terms last updated 2024-09-13; Services are defined as website information and the sandbox/testnet Testing Tools.
+        quote: a private limited company incorporated and registered in England and Wales under company number 11093783
+        checked_at: 2026-10-09
+      - tier: documented
+        kind: document
+        url: https://aztec.network/terms-of-service
+        detail: Aztec Foundation terms, last updated 2025-07-15.
+        quote: a Stiftung incorporated and registered in Zug, Switzerland
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+  B11.2:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Protocol rewards fund operators, not developers. AZTEC is minted in advance to a RewardDistributor and paid at 400 AZTEC per slot (70% sequencer, 30% provers), adjustable by governance; unburnt fees go to the same parties. Development is stewarded by Aztec Foundation and carried out by Aztec Labs, a private company; their funding was not read from a primary source.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
+        checked_at: 2026-10-09
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-participate/token/economics.md#L11-L51
+        path: docs/docs-participate/token/economics.md
+        detail: Reward sources, the per-slot checkpoint reward and the fee split.
+      - tier: documented
+        kind: document
+        url: https://aztec.network/terms-of-service
+        detail: Aztec Foundation describes its role as stewarding development.
+        quote: stewards the development of open-source, blockchain-based software
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+  B12.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    refs:
+      - criterion: C4
+        index: 0
+      - criterion: C4
+        index: 1
+    note: Inclusion depends on proofs, fees and a protocol allowlist of setup-phase public functions (a static list, not a screen of addresses). The seed code search for sanction, country and geoblock found no screening. The Cloud Armor policy on the hosted RPC is unpublished and is not in the payment path when a user runs a node.
+    checked_at: 2026-10-09

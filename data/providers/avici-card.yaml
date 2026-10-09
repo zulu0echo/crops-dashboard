@@ -327,3 +327,23 @@ context: >-
 
 notes: >-
   Classified as incumbent: I found no verified contract or public repository needed to run the card. Searched: avici.money (home, tos, tosavicicard, privacypolicy), docs.avici.money (llms.txt index and the card, wallet and FAQ pages), and GitHub (Avici-Labs org with 4 unrelated repos; users avici, avicimoney, aviciii; code search for avici.money). The docs say the card collateral sits in a self-custodial "Loan Escrow" contract "on EVM" that "only user's wallet" can withdraw from, but they give no chain, address, ABI or audit. These claims cannot be checked and were not used to score custody. The wallet supports ten EVM chains plus Solana. Re-assess as type card if the escrow contract address is published.
+
+availability:
+  model: allowlist
+  countries: [AE, AG, AR, AU, BB, BD, BO, BR, BS, BZ, CI, CO, CR, DO, EC, EG, GD, GH, GT, GY, HK, HN, JP, KE, KN, KY, LC, MA, MX, MY, NZ, PA, PE, PH, PK, PY, SG, SN, SR, SV, TC, TH, TT, UG, US, UY, VC, ZA, ZM]
+  note: >-
+    From the "Available Regions" tab of Avici's card regions page (50 entries, 49 codes). The list has both "Dominica Republica" and "Dominicana"; both names point to the Dominican Republic, so only DO is listed and Dominica (DM) is not, the more restrictive reading. US: only 31 states are supported for personal cards (AL, AK, AR, CA, CO, CT, FL, HI, IL, IN, IA, KS, KY, ME, MA, MI, MN, MT, NE, NH, NJ, NY, NC, OK, PA, SC, TX, UT, VA, WV, WY). The Avici Spend Card terms on avici.money require the holder to attest they are not a US citizen; US cardholders are on separate US card terms. The page also names 17 countries whose residents are prohibited (BY, CN, CU, IN, IR, IQ, IL, MM, NP, NI, KP, RU, SY, TR, UA, VE, VN, none of which are in the allowlist), says the card cannot be used to spend in CU, IR, KP, RU, SY, UA or VE, and says unlisted jurisdictions may still be restricted. The page also says the Avici self-custody smart wallet is available without restriction; this block covers the card only.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/secured-credit-cards/regions-and-prohibitions-for-avici-card.md
+      quote: Please find below the lists for Available and Prohibited regions
+      detail: Avici docs "Regions and Prohibitions for Avici Card" (GitBook Markdown copy listed in docs.avici.money/llms.txt), with tabs for Available Regions, Prohibited Regions and Supported US States.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/secured-credit-cards/regions-and-prohibitions-for-avici-card.md
+      quote: Avici Card services are unavailable for users to residents of the following countries
+      detail: Prohibited Regions tab of the same page (17 countries), plus the list of countries where the card cannot be used to spend.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -1,0 +1,13 @@
+Source: https://help.gnosispay.com/articles/8765952539-recovering-funds-after-the-2026-security-incident
+Retrieved: 2026-10-09 with curl (user-agent crops-dashboard-research); visible text extracted from the HTML, tags removed.
+
+ Last updated 23 days ago 
+ IF YOU ONLY READ ONE THING This is about the Safe you had before our security incident in June 2026 - not the Safe you use today. If you had an account then and didn't move your balance across afterwards, the funds may still be sitting there. Check at app.gnosispay.com/withdraw-legacy . Is this you? In June 2026 we migrated everyone to a new card Safe following a security incident. Most balances moved across automatically, but some accounts were left with funds in the old Safe that had to be moved manually. If you didn't do that at the time, the funds are still there and still yours. This isn't about moving to a partner app. If you've since moved to a partner app and have a new card Safe with them, that's a different thing - this page only covers the Safe you had before the incident. How to check Go to app.gnosispay.com/withdraw-legacy and connect the wallet that owns your Safe. If there's a balance, you'll see it. If there isn't, there's nothing to recover and nothing to do. There's no deadline on this - the page stays available. How to withdraw Before you start, make sure your connected wallet has some xDAI for gas . If you don't have any, get a small amount free from the Gnosis Chain faucet . In the To field, enter the Gnosis Chain address you want the funds sent to. You can tap Use connected address to fill in your currently connected wallet. Check the address carefully - it must be on Gnosis Chain, and you're responsible for its accuracy. Select the amount and token. EURe is selected by default; toggle Custom token for anything else, such as GNO. Click Withdraw and confirm in your wallet. Your transaction may queue. Wait for the timer to count down, then click Execute to complete it. Don't send funds to your old Safe address. If your old Safe was affected by the incident, anything sent there is lost. Only ever withdraw from it. If something doesn't work Email help@gnosispay.com with your Safe address and what you're seeing. 
+ Related Articles 
+ Getting money to a bank account 
+ Withdrawing after your card stops 
+ If you've lost access to your wallet 
+ Tags 
+ Get help 
+ Your Money 
+ Powered by Pylon

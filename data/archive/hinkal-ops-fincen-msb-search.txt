@@ -1,0 +1,11 @@
+FinCEN Money Services Business (MSB) Registrant Search (https://msb.fincen.gov/)
+Searched 2026-10-09 by the AI research agent (operational) with read-only POSTs to https://msb.fincen.gov/msbstateselector.php,
+all other fields empty. Registry page states: "Last updated on: 10/05/2026".
+
+Search 1: LEGAL NAME = "Novelty Today"
+Result text: System could not find matching data.
+
+Search 2: LEGAL NAME = "Hinkal"
+Result text: System could not find matching data.
+
+The page notes that criteria must match the Form 107 registration exactly, so variant spellings can return negative results.

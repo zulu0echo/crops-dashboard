@@ -1,0 +1,94 @@
+Source: https://help.ether.fi/en/articles/758758-bank-transfers-faqs
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+ Updated today
+Table of contents
+Which bank transfer methods are supported?
+We support a variety of bank transfer methods for deposits and withdrawals, depending on the currency and your eligibility.
+To view the complete list of supported payment methods, supported currencies, and whether each method can be used for deposits, withdrawals, or both, see https://help.ether.fi/en/articles/759961-supported-payment-methods-deposits-withdrawals
+💡Note: Supported payment methods may vary depending on your region, eligibility, and compliance requirements. Cash App, Apple Pay, and Debit Card via Stripe are currently available for USD deposits in the United States only.
+Can you receive third party deposits?
+Yes. Third party payments are supported, subject to applicable compliance and transaction monitoring requirements. For your first transfer, we recommend sending funds from a bank account in your own name where possible.
+Can you send bank transfers to third parties?
+Yes. Third party transfers are supported. If you are sending to a third party beneficiary for the first time, the transfer may be subject to manual verification before it is processed. Future transfers to the same beneficiary may not require additional review unless further compliance checks are necessary.
+Why do I need to upload additional documentation?
+Some transfers may require additional documentation, regardless of the amount transferred. This may trigger our banking provider’s compliance steps.
+This typically consists of confirmation of:
+that the payment instruction is authorized and legitimate;
+the purpose or nature of the transfer;
+the source of funds, especially if related to investments or cryptocurrency; and
+any supporting documentation, such as an invoice or agreement.
+What is the minimum amount I can send or receive?
+There is no universal ether.fi minimum for bank-transfer deposits. Some withdrawal or payout methods may have a provider- or rail-specific minimum; if one applies, you will see it before confirming the transfer.
+What bank-transfer funding fees apply?
+Funding and withdrawal fees are different and depend on the selected transfer method. The table below applies to eligible bank-transfer funding methods only. Fees may be updated at any time. The current funding fee is shown for the selected funding method in the app.
+Funding method
+Fee
+USD ACH
+$0.50 + 0.10%
+USD domestic wire
+$20.00 + 0.10%
+USD SWIFT
+$20.00 + 0.10%
+EUR SEPA to USDC
+€0.90 + 0.15%
+EUR SEPA to EURC
+€0.90
+GBP Faster Payments
+£0.90 + 0.20% FX
+AUD local transfer
+A$0.50
+MXN SPEI
+MX$4.10 + 0.20% FX
+COP BREB
+COP$1,000 + 0.45% FX
+AED local transfer
+0 AED + 0.25% FX
+Outgoing USD bank-transfer fees
+Withdrawal method
+Fee
+USD ACH
+$0.50 + 0.20%
+USD Fedwire / domestic wire
+$20.00 + 0.20%
+USD SWIFT
+$20.00 + 0.12%
+EUR SEPA
+€0.90 + any applicable FX conversion
+Bank-transfer funding fees are shown for the selected funding method. Outgoing fees for GBP Faster Payments and other local bank-transfer routes are shown in your quote before confirmation. These can vary based on the selected provider route and source asset, including any applicable FX conversion. For GBP Faster Payments, the quoted conversion can also vary on weekends and bank holidays.
+Can I receive micro-deposits on my account for verification?
+Yes. You can receive microdeposits to your assigned bank account or IBAN for account verification purposes.
+Microdeposits are supported and can be used by external financial institutions to verify your bank account before initiating transfers.
+Note: Standard compliance and transaction monitoring checks still apply.
+Are there any limits on what I can transfer?
+ether.fi does not apply membership-tier-based bank transfer limits or fees. Individual transfer methods may still have provider, compliance, transaction, or rolling limits. Any applicable limit or fee is shown before you confirm a transfer.
+My transfer is taking longer than usual
+First, open your Transaction History and select the transfer. If it shows Action Required, you can provide the requested information directly there and submit it.
+Commonly requested information includes:
+The date and time the transfer was initiated
+The transfer receipt or payment confirmation
+The amount and currency transferred
+The destination account (if applicable)
+Typical funding timeframes
+USD ACH: 1–2 business days (please allow up to 3–4 business days for provider and bank processing).
+USD Fedwire / domestic wire: typically same day (please allow up to 2 business days for provider and bank processing).
+USD SWIFT: 3–5 business days (please allow up to 7 business days for provider and bank processing).
+EUR SEPA Instant deposits: accepted where your sending bank supports SEPA Instant; transfers commonly arrive instantly or the same day.
+Standard EUR SEPA deposits: 1–2 business days.
+Withdrawal timing is shown in your quote before confirmation. Timing can vary based on the selected route, bank, provider processing, and any required review. If there is no Action Required status and the transfer remains pending beyond the applicable timeframe, contact support with the transfer details.
+How can I prove ownership of my bank account?
+You can generate a Proof of Ownership letter through Documents & Statements in the ether.fi web app.
+The letter confirms your account ownership, and you can choose to include your bank account details when generating the document.
+For instructions on downloading your Proof of Ownership letter, see:
+Personal accounts: https://help.ether.fi/en/articles/860132-how-do-i-download-statements-and-documents-for-my-personal-account
+Business accounts: https://help.ether.fi/en/articles/860133-how-do-i-download-statements-and-documents-for-my-business-account
+Acceptance of the letter depends on the requirements of the bank or financial institution requesting it.
+Still Have Questions?
+Please reach out to support through live chat.
+Please avoid contacting our banking partners directly, as they are not best suited to assist with payment-related inquiries.
+Related Articles
+FedWire and ACH Transfers (USD)
+Fund your Vault via FTS (AED)
+Send and Receive EUR via SEPA Bank Transfers
+Send and Receive GBP via FPS
+Supported Payment Methods (Deposits & Withdrawals)

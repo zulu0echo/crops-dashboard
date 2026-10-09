@@ -1,0 +1,1059 @@
+slug: anoma-pay
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: anoma/pa-evm
+          ok: false
+          detail: no security policy file
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: false
+          detail: no security policy file
+        - repo: anoma/anoma-app-sdk
+          ok: false
+          detail: no security policy file
+        - repo: anoma/arm-risc0
+          ok: false
+          detail: no security policy file
+        - repo: anoma/anomapay-erc20-resource
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/contents/?ref=main
+        detail: "anoma/pa-evm: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/contents/?ref=main
+        detail: "anoma/anomapay-erc20-forwarder: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/contents/?ref=main
+        detail: "anoma/anoma-app-sdk: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/contents/?ref=main
+        detail: "anoma/arm-risc0: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/contents/?ref=main
+        detail: "anoma/anomapay-erc20-resource: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: anoma/pa-evm
+          ok: true
+          detail: scanning step in a workflow
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: true
+          detail: scanning step in a workflow
+        - repo: anoma/anoma-app-sdk
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: anoma/arm-risc0
+          ok: true
+          detail: scanning step in a workflow
+        - repo: anoma/anomapay-erc20-resource
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/contents/?ref=main
+        detail: "anoma/pa-evm: scanning step in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/contents/?ref=main
+        detail: "anoma/anomapay-erc20-forwarder: scanning step in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/contents/?ref=main
+        detail: "anoma/anoma-app-sdk: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/contents/?ref=main
+        detail: "anoma/arm-risc0: scanning step in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/contents/?ref=main
+        detail: "anoma/anomapay-erc20-resource: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: anoma/pa-evm
+          ok: false
+          detail: no deployment configuration
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: false
+          detail: no deployment configuration
+        - repo: anoma/anoma-app-sdk
+          ok: false
+          detail: no deployment configuration
+        - repo: anoma/arm-risc0
+          ok: false
+          detail: no deployment configuration
+        - repo: anoma/anomapay-erc20-resource
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/contents/?ref=main
+        detail: "anoma/pa-evm: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/contents/?ref=main
+        detail: "anoma/anomapay-erc20-forwarder: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/contents/?ref=main
+        detail: "anoma/anoma-app-sdk: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/contents/?ref=main
+        detail: "anoma/arm-risc0: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/contents/?ref=main
+        detail: "anoma/anomapay-erc20-resource: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: anoma/pa-evm
+          ok: true
+          detail: "rules: deletion, non_fast_forward, required_signatures, pull_request, required_status_checks"
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: true
+          detail: "rules: deletion, non_fast_forward, required_signatures, pull_request, required_status_checks"
+        - repo: anoma/anoma-app-sdk
+          ok: true
+          detail: "rules: deletion, non_fast_forward, pull_request"
+        - repo: anoma/arm-risc0
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: anoma/anomapay-erc20-resource
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/rules/branches/main
+        detail: "anoma/pa-evm: rules: deletion, non_fast_forward, required_signatures, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/rules/branches/main
+        detail: "anoma/anomapay-erc20-forwarder: rules: deletion, non_fast_forward, required_signatures, pull_request, required_status_checks"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/rules/branches/main
+        detail: "anoma/anoma-app-sdk: rules: deletion, non_fast_forward, pull_request"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/rules/branches/main
+        detail: "anoma/arm-risc0: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/rules/branches/main
+        detail: "anoma/anomapay-erc20-resource: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: anoma/pa-evm
+          ok: true
+          detail: 2 workflow file(s)
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: true
+          detail: 2 workflow file(s)
+        - repo: anoma/anoma-app-sdk
+          ok: true
+          detail: 6 workflow file(s)
+        - repo: anoma/arm-risc0
+          ok: true
+          detail: 1 workflow file(s)
+        - repo: anoma/anomapay-erc20-resource
+          ok: true
+          detail: 1 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/contents/?ref=main
+        detail: "anoma/pa-evm: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/contents/?ref=main
+        detail: "anoma/anomapay-erc20-forwarder: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/contents/?ref=main
+        detail: "anoma/anoma-app-sdk: 6 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/contents/?ref=main
+        detail: "anoma/arm-risc0: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/contents/?ref=main
+        detail: "anoma/anomapay-erc20-resource: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: anoma/pa-evm
+          ok: true
+          detail: test command in a workflow
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: true
+          detail: test command in a workflow
+        - repo: anoma/anoma-app-sdk
+          ok: true
+          detail: test command in a workflow
+        - repo: anoma/arm-risc0
+          ok: true
+          detail: test command in a workflow
+        - repo: anoma/anomapay-erc20-resource
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/contents/?ref=main
+        detail: "anoma/pa-evm: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/contents/?ref=main
+        detail: "anoma/anomapay-erc20-forwarder: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/contents/?ref=main
+        detail: "anoma/anoma-app-sdk: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/contents/?ref=main
+        detail: "anoma/arm-risc0: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/contents/?ref=main
+        detail: "anoma/anomapay-erc20-resource: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: anoma/pa-evm
+          ok: false
+          detail: coverage tooling referenced
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: false
+          detail: coverage tooling referenced
+        - repo: anoma/anoma-app-sdk
+          ok: false
+          detail: coverage tooling referenced
+        - repo: anoma/arm-risc0
+          ok: false
+          detail: coverage tooling referenced
+        - repo: anoma/anomapay-erc20-resource
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/contents/?ref=main
+        detail: "anoma/pa-evm: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/contents/?ref=main
+        detail: "anoma/anomapay-erc20-forwarder: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/contents/?ref=main
+        detail: "anoma/anoma-app-sdk: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/contents/?ref=main
+        detail: "anoma/arm-risc0: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/contents/?ref=main
+        detail: "anoma/anomapay-erc20-resource: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: anoma/pa-evm
+          ok: true
+          detail: "latest tags: v1.0.0-rc.4, v1.0.0-rc.3, v1.0.0-rc.2"
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: false
+          detail: "latest tags: contracts/v2.0.0-rc.4, contracts/v2.0.0-rc.3, contracts/v2.0.0-rc.2"
+        - repo: anoma/anoma-app-sdk
+          ok: true
+          detail: "latest tags: v1.2.0, v1.1.0, v1.0.0"
+        - repo: anoma/arm-risc0
+          ok: true
+          detail: "latest tags: v2.0.0-rc.6, v2.0.0-rc.5, v2.0.0-rc.4"
+        - repo: anoma/anomapay-erc20-resource
+          ok: true
+          detail: "latest tags: v3.0.0-rc.3, v3.0.0-rc.2, v3.0.0-rc.1"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/tags
+        detail: "anoma/pa-evm: latest tags: v1.0.0-rc.4, v1.0.0-rc.3, v1.0.0-rc.2"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/tags
+        detail: "anoma/anomapay-erc20-forwarder: latest tags: contracts/v2.0.0-rc.4, contracts/v2.0.0-rc.3, contracts/v2.0.0-rc.2"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/tags
+        detail: "anoma/anoma-app-sdk: latest tags: v1.2.0, v1.1.0, v1.0.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/tags
+        detail: "anoma/arm-risc0: latest tags: v2.0.0-rc.6, v2.0.0-rc.5, v2.0.0-rc.4"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/tags
+        detail: "anoma/anomapay-erc20-resource: latest tags: v3.0.0-rc.3, v3.0.0-rc.2, v3.0.0-rc.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: anoma/pa-evm
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: anoma/anoma-app-sdk
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: anoma/arm-risc0
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: anoma/anomapay-erc20-resource
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/commits?per_page=10
+        detail: "anoma/pa-evm: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/commits?per_page=10
+        detail: "anoma/anomapay-erc20-forwarder: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/commits?per_page=10
+        detail: "anoma/anoma-app-sdk: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/commits?per_page=10
+        detail: "anoma/arm-risc0: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/commits?per_page=10
+        detail: "anoma/anomapay-erc20-resource: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: anoma/pa-evm
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: anoma/anoma-app-sdk
+          ok: true
+          detail: CHANGELOG file
+        - repo: anoma/arm-risc0
+          ok: true
+          detail: 9 release(s) with notes
+        - repo: anoma/anomapay-erc20-resource
+          ok: true
+          detail: 2 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/contents/?ref=main
+        detail: "anoma/pa-evm: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/contents/?ref=main
+        detail: "anoma/anomapay-erc20-forwarder: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/contents/?ref=main
+        detail: "anoma/anoma-app-sdk: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/contents/?ref=main
+        detail: "anoma/arm-risc0: 9 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/contents/?ref=main
+        detail: "anoma/anomapay-erc20-resource: 2 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: anoma/pa-evm
+          ok: false
+          detail: none found
+        - repo: anoma/anomapay-erc20-forwarder
+          ok: false
+          detail: none found
+        - repo: anoma/anoma-app-sdk
+          ok: false
+          detail: none found
+        - repo: anoma/arm-risc0
+          ok: false
+          detail: none found
+        - repo: anoma/anomapay-erc20-resource
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/contents/?ref=main
+        detail: "anoma/pa-evm: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-forwarder/contents/?ref=main
+        detail: "anoma/anomapay-erc20-forwarder: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anoma-app-sdk/contents/?ref=main
+        detail: "anoma/anoma-app-sdk: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/arm-risc0/contents/?ref=main
+        detail: "anoma/arm-risc0: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/anomapay-erc20-resource/contents/?ref=main
+        detail: "anoma/anomapay-erc20-resource: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement for Anoma Foundation or Heliax in the terms, docs or site.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: attested
+    value: The docs say the Vast.ai datacenters that run the prover provide ISO certifications; no certificate, standard, entity or scope is named. Hosting of the transaction service and indexer is not described.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.anoma.net/anoma-pay-trust-model
+        archive: data/archive/anoma-pay-docs.txt
+        detail: Trust model page, Vast.ai datacenters entry.
+        checked_at: 2026-10-09
+        quote: Vast.ai datacenters provide ISO certifications
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement of availability found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: Informal Systems (commit fc69013e, Oct 2025) and Nethermind (fee4f470, Oct-Nov 2025) audited the protocol adapter, and Informal Systems the forwarder (03e60b64); the deployed adapter tag is later. No review of the hosted transaction service, prover or indexer is listed.
+    refs:
+      - criterion: S6
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration test of the backend, indexer or web app found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: evidenced
+    value: Vulnerability reports go to security@anoma.foundation with a promise to resolve them "promptly"; no per-severity patch timelines.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/anoma/pa-evm/blob/e368e2738df6a28f1b7577215da6789283952cba/README.md#L58-L63
+        commit: e368e2738df6a28f1b7577215da6789283952cba
+        path: README.md
+        detail: Security section of the pa-evm README.
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: evidenced
+    value: The Foundation has breach procedures and will notify users and regulators of a personal data breach only where legally required; no time commitment.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://anomapay.app/terms-and-conditions
+        detail: Terms, privacy section, data security.
+        checked_at: 2026-10-09
+        quote: will notify you and any applicable regulator of a breach where the Foundation is legally required to do so
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: No recovery plan published. The docs say users may run the off-chain services themselves, but no code for them is public (S4 = 1).
+    refs:
+      - criterion: S4
+        index: 0
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page found (status.anoma.net does not resolve) and no post-mortems.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: unknown
+    note: Users sign in with a wallet or a passkey account (launch post); no statement on MFA.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: The SDK's TransferBackendClient, IndexerClient and EnvioClient take only a base URL in the docs; no authentication scheme is documented, and the backend code is closed.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "The terms state appropriate organisational and technical measures, with no detail; the trust model says the prover operator and Vast.ai see unencrypted witness data during proving. Observed: anomapay.app refuses TLS 1.1 and accepts TLS 1.2. No data classification."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://anomapay.app/terms-and-conditions
+        detail: Terms, data security paragraph.
+        checked_at: 2026-10-09
+        quote: The Foundation takes appropriate organizational and technical security measures
+      - tier: documented
+        kind: trace
+        url: https://anomapay.app
+        detail: openssl s_client -tls1_1 to anomapay.app:443 failed with alert protocol version; -tls1_2 negotiated ECDHE-ECDSA-CHACHA20-POLY1305. Run 2026-10-09.
+        checked_at: 2026-10-09
+        recheck: echo | openssl s_client -connect anomapay.app:443 -servername anomapay.app -tls1_1; echo | openssl s_client -connect anomapay.app:443 -servername anomapay.app -tls1_2
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: No fixed periods; data kept as long as needed for its purpose and legal retention duties, then destroyed. Onchain data cannot be erased.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://anomapay.app/terms-and-conditions
+        detail: Terms, data retention paragraph.
+        checked_at: 2026-10-09
+        quote: Upon expiry of the applicable retention period the Foundation will securely destroy your data
+    refs:
+      - criterion: P2
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The Foundation processes personal data under GDPR and the Swiss FADP; the terms do not use the words controller or processor for it. Recipients are named by category only. No DPIA mentioned.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://anomapay.app/terms-and-conditions
+        detail: Terms section 6, data protection.
+        checked_at: 2026-10-09
+        quote: The processing is aligned with the EU General Data Protection Regulation (GDPR) and the Federal Act on Data Protection (FADP)
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No DPA published; the terms prohibit commercial use, so no business-customer terms exist for the consumer app. The AnomaPay Business beta was not assessed.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Logical and integration views on docs.anoma.net (architecture overview and transaction lifecycle, trust model, protocol adapter, SDK API clients); no infrastructure view of the hosted services.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.anoma.net/anoma-pay-architecture
+        detail: Architecture overview and transaction lifecycle.
+        checked_at: 2026-10-09
+        quote: The Transaction Service submits this object to the Protocol Adapter
+    refs:
+      - criterion: O4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Anoma Foundation (Anoma Stiftung, CHE-264.379.335), Zug, Switzerland; Swiss law, courts of Zug. Personal, non-commercial use only under these terms.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://anomapay.app/terms-and-conditions
+        detail: Terms sections 1 and 10.
+        checked_at: 2026-10-09
+        quote: submitted to the exclusive jurisdiction of the ordinary courts of the city of Zug, Switzerland
+      - tier: documented
+        kind: document
+        url: https://www.zefix.ch/ZefixREST/api/v1/firm/1463475.json
+        detail: Zefix record.
+        checked_at: 2026-10-09
+        quote: CHE-264.379.335
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Foundation-funded. The registered purpose lets the Foundation issue project tokens (XAN) and spend its assets to fund development, which it may outsource; user fees cover gas and small transfer and withdrawal fees.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.zefix.ch/ZefixREST/api/v1/firm/1463475.json
+        detail: Registered purpose of Anoma Stiftung (German), on project tokens and funding of development.
+        checked_at: 2026-10-09
+        quote: Die Stiftung ist ermächtigt, Projekttoken für die Anoma Protokolle gegen Zahlung von FIAT-Währungen
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: absent
+    value: The terms have no termination clause and say nothing about funds or data on termination; the user's only remedy for changed terms is to stop using the Software. Funds stay in the forwarder; without the hosted services there is no public tooling to move them (S4 = 1).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://anomapay.app/terms-and-conditions
+        detail: Terms version 1.0, sections 1 to 11 read in full; no termination section.
+        checked_at: 2026-10-09
+        quote: If you do not agree with these Terms, please immediately cease all use of the Software.
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: The docs say the proving service operator runs checks for KYC and AML compliance, while the terms say the Foundation does no transaction monitoring; neither says how checks work or whether AI is used. The prover code is closed.
+    refs:
+      - criterion: C4
+        index: 1
+      - criterion: C4
+        index: 2
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: none
+      amount: Deposits free
+      basis: Launch post for the BNB Chain public beta; the terms say transactions are offered without fees apart from gas.
+      evidence_index: 1
+    - kind: provider
+      paid_by: payer
+      amount: Backend fee on transfers and withdrawals (flat + per-resource + percentage), in USDC, USDT, WETH or XAN
+      basis: The transaction service pays BSC gas and deducts the fee from the token sent; amounts come from backend.estimateFee and are not published. The terms describe the charge as gas, the launch post as small fees.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://anomapay.app/terms-and-conditions
+      detail: Terms and Conditions for AnomaPay, version 1.0, section 3.
+      checked_at: 2026-10-09
+      quote: Transactions executed through AnomaPay are offered without fees.
+    - tier: documented
+      kind: document
+      url: https://anoma.net/blog/the-anomapay-public-beta-is-live-on-bnb-chain
+      detail: Anoma blog, 2 April 2026, BNB Chain public beta.
+      checked_at: 2026-10-09
+      quote: Deposits are free, with small fees for transfers and withdrawals.
+    - tier: documented
+      kind: document
+      url: https://docs.anoma.net/transfers
+      detail: SDK transfers page, fee estimation; estimateFee returns base_fee, base_fee_per_resource and percentage_fee in the chosen fee token.
+      checked_at: 2026-10-09
+      quote: percentage of the transfer amount
+  note: No fee amounts or gas sample recorded. Fee quotes need a built transaction posted to the backend (not done), and public BSC RPCs refuse historical log queries, so no settled transaction was sampled. Neither contract charges a fee.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: Judgment call. In normal operation only a proof built from the user's keys moves tokens out of the non-upgradeable forwarder, and the terms call AnomaPay non-custodial. The S1 finding (score 0) shows that after a permanent adapter stop the same 3-of-5 signers can appoint an emergency caller who can send the forwarder's tokens anywhere. That is provider control over funds at rest, but only behind a public, irreversible stop, so hybrid rather than provider_custodial; a reviewer may prefer provider_custodial (as for Payy).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://anomapay.app/terms-and-conditions
+      detail: The terms describe a non-custodial wallet service by Anoma Foundation and cite no licence, SRO membership or regulator; they state the Foundation does no transaction monitoring.
+      checked_at: 2026-10-09
+      quote: AnomaPay is a non-custodial wallet service.
+    - tier: documented
+      kind: document
+      url: https://www.zefix.ch/ZefixREST/api/v1/firm/1463475.json
+      detail: Zefix (Swiss central business name index) entry for Anoma Stiftung, a foundation supervised by the Federal Department of Home Affairs; no financial-market authorisation is recorded there (Zefix does not record them).
+      checked_at: 2026-10-09
+      quote: CHE-264.379.335
+  note: "Searched: the terms, docs.anoma.net (trust model, compliance paragraph) and the Zefix entry. Not searched: FINMA's register of authorised institutions and the Swiss SRO member lists (interactive searches). The docs say the proving service operator runs KYC/AML checks; no licence is cited for it."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: not_applicable
+  reason: A withdrawal (burn) sends tokens to an EVM address the user names; converting them to local currency is outside the protocol. The AnomaPay Card advertised on the landing page was not assessed.
+  burden: institution
+  refs:
+    - criterion: P3
+      index: 1
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2026-03-05
+      block: 84845927
+      what: Protocol Adapter v1.1.0 0xFC44…2B68 on BNB Smart Chain, tx 0x3c145e76…93c7 from 0xcD56…Db7b; the ERC20 forwarder 0xDe6A…840e followed on 2026-03-06 (block 85055504).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/56/0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68?fields=deployment
+        address: "0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68"
+        block_number: 84845927
+        detail: Sourcify creation data gives tx 0x3c145e76e65329f6152b20b6ea76158c34c5cd318759c727088e145bee2f93c7 in block 84845927 (2026-03-05 16:06:13 UTC per the block header); for the forwarder, tx 0x0d97fadbf2da722aa6327b38f66a547af0fe75d2a744721c5b0402a20154dc2d in block 85055504 (2026-03-06 18:18:18 UTC).
+        checked_at: 2026-10-09
+        recheck: curl -s "https://sourcify.dev/server/v2/contract/56/0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68?fields=deployment" && cast block 84845927 --field timestamp --rpc-url https://bsc-dataseed.bnbchain.org
+    note: The public beta opened on BNB Chain on 2026-04-02.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Anoma Stiftung (Anoma Foundation)
+      jurisdiction: CH-ZG
+      register_url: https://www.zefix.ch/en/search/entity/list/firm/1463475
+      registration_number: CHE-264.379.335
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.zefix.ch/ZefixREST/api/v1/firm/1463475.json
+        detail: Zefix record for Anoma Stiftung, seat Zug, status existing, foundation under federal supervision; seat address Dammstrasse 16, Zug since the publication of 2026-05-11.
+        checked_at: 2026-10-09
+        quote: CHE-264.379.335
+      - tier: documented
+        kind: document
+        url: https://anomapay.app/terms-and-conditions
+        detail: The terms name Anoma Foundation in Zug as the counterparty.
+        checked_at: 2026-10-09
+        quote: Anoma Foundation, Gotthardstrasse 26, 6300 Zug, Switzerland
+    note: The terms still give the earlier address (Gotthardstrasse 26); the register moved the seat address to Dammstrasse 16 in May 2026. The 2025 announcement says AnomaPay is developed by Heliax; the operating counterparty in the terms is the Foundation.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/security-advisories
+        detail: No published security advisories for anoma/pa-evm (anoma/anomapay-erc20-forwarder also has none).
+        checked_at: 2026-10-09
+        recheck: for r in pa-evm anomapay-erc20-forwarder; do gh api repos/anoma/$r/security-advisories --jq length; done
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/56/0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68
+        address: "0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68"
+        block_number: 126642563
+        detail: isEmergencyStopped() is false on the adapter and getEmergencyCaller() is zero on the forwarder at block 126642563, so the emergency path has never been used.
+        checked_at: 2026-10-09
+        recheck: cast call 0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68 "isEmergencyStopped()(bool)" --rpc-url https://bsc-rpc.publicnode.com
+        check:
+          call: "0xfddd4837"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    note: Also searched the Anoma blog index and docs; no incident or post-mortem found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2026-01-27
+        summary: pa-evm contracts/v1.1.0 released, the version deployed on BSC (after the audited commits of Oct-Nov 2025).
+        url: https://github.com/anoma/pa-evm/releases/tag/contracts/v1.1.0
+      - date: 2026-03-05
+        summary: Protocol Adapter v1.1.0 deployed on BSC; ERC20 forwarder v1.0.1 deployed the next day.
+        url: https://sourcify.dev/server/v2/contract/56/0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68?fields=deployment
+      - date: 2026-04-02
+        summary: AnomaPay public beta opens on BNB Chain.
+        url: https://anoma.net/blog/the-anomapay-public-beta-is-live-on-bnb-chain
+      - date: 2026-06-02
+        summary: AnomaPay V1 out of beta on BNB Chain and Ethereum.
+        url: https://anoma.net/blog/anomapay-v1-is-live
+      - date: 2026-08-24
+        summary: First pa-evm contracts/v2.0.0 release candidate; rc.9 on 2026-10-09. Not deployed on BSC.
+        url: https://github.com/anoma/pa-evm/releases/tag/contracts/v2.0.0-rc.0
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/anoma/pa-evm/releases
+        detail: Release list with publication dates (contracts/v1.1.0 2026-01-27; contracts/v2.0.0-rc.0 2026-08-24 to rc.9 2026-10-09).
+        checked_at: 2026-10-09
+        recheck: gh api repos/anoma/pa-evm/releases --jq '.[] | [.tag_name, .published_at] | @tsv'
+      - tier: documented
+        kind: document
+        url: https://anoma.net/blog/anomapay-v1-is-live
+        detail: Anoma blog, 2 June 2026.
+        checked_at: 2026-10-09
+        quote: AnomaPay is now officially out of beta and open to the world on BNB Chain and Ethereum.
+    note: Neither contract is upgradeable, so no onchain upgrade events exist; the v2 contracts would be a new deployment.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 56
+    addresses:
+      - "0xDe6A308ed57AF26BFf059e6C550BD4908aC1840e"
+    topic0: "0x913c7ddda7bb2ef1a6490bd8ca12ced1ae8d832e1f6ed559b4766af855a5ea26"
+    event: Unwrapped(address indexed token, address indexed to, uint128 amount)
+    window_days: 30
+    exclusions: Counts withdrawals (burns to an EVM address) only. The token is an indexed topic, which the volume script cannot read, so no amount is summed (USDC, USDT, WETH and XAN would mix). Shielded transfers inside the pool emit only encrypted payloads and are not observable; Wrapped (deposits) excluded.
+  note: Not computed; BSC log ranges need an archive RPC (RPC_56). A token_topic option in scripts/volumes.mjs would allow per-token sums.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+notes: Transfer protocol whose required proving backend, indexer and Envio endpoint are closed, so all operator controls apply; custody is recorded as hybrid, so custodial controls apply too. The Foundation is the counterparty in the terms. The AnomaPay Card and Business beta were not assessed. Bot facts (B2.1, B2.3, B8.2, B9.x) untouched.

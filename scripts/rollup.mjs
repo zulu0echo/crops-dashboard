@@ -19,7 +19,12 @@ export function loadData(dir = 'data') {
     .filter((f) => f.endsWith('.yaml'))
     .sort()
     .map((f) => parse(readFileSync(join(dir, 'providers', f), 'utf8')));
-  return { criteria, providers, regions };
+  // Operational layer records (optional), keyed by slug.
+  const operational = {};
+  try { for (const f of readdirSync(join(dir, 'operational')).filter((x) => x.endsWith('.yaml'))) { const o = parse(readFileSync(join(dir, 'operational', f), 'utf8')); operational[o.slug] = o; } } catch { /* none yet */ }
+  let opsCriteria = { groups: [], controls: [] };
+  try { opsCriteria = parse(readFileSync(join(dir, 'operational-criteria.yaml'), 'utf8')); } catch { /* optional */ }
+  return { criteria, providers, regions, operational, opsCriteria };
 }
 
 // A cell is treated as unknown when it has no score, or when the nightly re-check found drift

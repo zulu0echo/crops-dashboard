@@ -1,0 +1,10 @@
+Source: https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/
+Retrieved: 2026-10-09 in a browser (the FINMA authorised-institutions search is client-rendered); search term "Saphirstein", visible result text.
+
+Search
+To check whether an individual, a company or a financial product has been authorised, you can search for the name here.
+1 result(s) found
+Licensed persons pursuant to Article 1b BA (FinTech licence)
+1 result(s) found
+Name	Location/Country	Details
+SR Saphirstein AG	Zürich

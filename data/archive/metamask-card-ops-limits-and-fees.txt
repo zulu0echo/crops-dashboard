@@ -1,0 +1,58 @@
+Source: https://support.metamask.io/trade/metamask-card/limits-and-fees/
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML (static HTML, default region).
+
+MetaMask Card limits and fees
+New to MetaMask Card? Start here.
+Fee typeFree tierMetal tier
+Annual subscription fee
+$0
+$199
+Physical card replacement fee
+n/a
+$99
+Token Fees
+Delegate funds for spending
+No fee (no min. balance)
+Stablecoin of non-US cardholder denominated in local currency
+No fee
+Stablecoin of US cardholder denominated in USD
+No fee
+Stablecoin denominated in currency not of cardholder country or merchant country
+0.5%1
+Stablecoin denominated in local currency of merchant country but not of cardholder country
+No fee
+DeFi token or tokenized yield (e.g., aUSDC)
+No fee up to $1,200 / mo, then 0.5%
+Other cryptocurrencies (e.g., wETH)
+0.875%
+Other Transaction Fees
+Network gas (e.g., Linea)
+Small, variable gas fee (typically $0.01)
+ATM withdrawal2
+2%
+No fee up to $1,200 / mo, then 2%
+Cross-border3
+1%
+No fee4
+Transaction Limits5
+Card transaction limit
+$10,000 / tx
+$15,000 / day
+$20,000 / tx
+$30,000 / day
+ATM withdrawal limit6
+$1,000 / tx
+$1,000 / day
+$1,000 / tx
+$5,000 / day
+1Exception: No fee in Argentina where card denomination is USD.
+2ATM operator may charge you additional fee.
+3Using card with merchant located outside of cardholder country.
+4Subject to fair usage.
+5Increased Metal limits will become available later this year. Reserve right to increase limits with usage.
+6ATM may impose a network specific limit at their discretion.
+Previous:
+Security and privacy
+Next:
+MetaMask Metal card
+Was this helpful?

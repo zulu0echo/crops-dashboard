@@ -47,3 +47,21 @@ No `availability` block: Payy's documents state a scope but name no country.
 - Terms of Service (archive data/archive/payy-card-terms.txt): card terms vary by issuing partner "in various jurisdictions" and add GLBA disclosures for US users; no country list. Privacy policy (payy.link/privacy): automated screening so that "no OFAC jurisdictions are utilizing Payy"; no list.
 - Card docs (docs.payy.network/payy-wallet/payy-card): US-based issuer, bank deposits from the US and Argentina only; no list of card countries. The repo's KYC rejection reasons include `WrongUserRegion`, but the region rule lives in closed services.
 - Judgment call: a blocklist with an empty `countries` would render every OFAC-sanctioned country as "available", contradicting the FAQ, and the brief says to omit the block when no first-party source lists countries. Omitted rather than expanding "OFAC-sanctioned countries" from outside sources.
+
+## Operational 2026-10-09
+
+File: `data/operational/payy-card.yaml`. Bot facts (B2.1, B2.3, B8.2, B9.x) left as filled.
+
+- **Sources read.** docs.payy.network (llms.txt index, Payy Card, Payy Wallet FAQ, Privacy Architecture); payy.link/privacy (Privacy Policy, May 2024, with the footer naming "Zeplo Inc. (6772334)" and a New York address); the archived Terms of Service (`data/archive/payy-card-terms.txt`).
+- **Onchain.** Blockscout gives creation tx 0x8d002955...8abd for the RollupV1 proxy, at block 24475975 on 2026-02-17. `eth_getCode` via eth.drpc.org returns 0x at 24475974 and code at 24475975; publicnode refuses archive reads.
+- **Not found.** Issuer name, regulator or licence; the "Pricing and Fees Disclosures" that the ToS refers to; any status page, post-mortem, ISO/SOC statement or breach-notification clause. The Delaware company search is CAPTCHA-protected and was not used.
+
+Judgment calls:
+- **Custody `provider_custodial`.** Payy calls itself non-custodial, and note keys sit on the device. But S1 = 0 (owner can overwrite the escrow root) and S4 = 0 (exits need Payy's prover) put the funds at rest under provider control. That is unlike Exa and MetaMask Card, where only the spend path is provider-controlled. A reviewer may prefer `hybrid`.
+- **B1.4 `attested`.** The FAQ claims audits but publishes no report.
+- **Entity jurisdiction `US`.** The number 6772334 looks like a Delaware file number, and the ToS is performed in Delaware, but no register was read, so the state is not recorded.
+- **Volume `not_observable`.** Card debits are private notes; L1 sees only roots and proofs.
+- **Cash-out.** Card spend (`card_withdrawal`) and an ATM private beta. No bank withdrawal is documented. `ALL` is used because Payy publishes no country list.
+- **Changes.** The Ethereum rollup deployment (Feb 2026) and the LICENSE removal (c4d2c902, Mar 2026, ref F2).
+
+Validator: offline 0 errors; online 0 errors.

@@ -1,0 +1,155 @@
+Source: https://www.getrizon.com/privacy-policy
+Retrieved: 2026-10-09 (text extracted from the server-rendered page; markup removed; getrizon.com intermittently serves pages without this text to scripted fetches)
+
+Rizon Privacy Policy | Protecting Your Data Product FEATURES Send Send money globally 89% cheaper Spend Spend with Visa card worldwide Deposit Deposit money multiple ways Receive Receive money 
+multiple ways Visa Platinum Card Tap, swipe, or withdraw globally USD and EUR accounts Get your virtual ACH & SEPA account Invest Buy stocks like Apple or Tesla TERMS APPLY MORE Security Dual-Layered 
+Security Demo Watch Rizon in action Banking that belongs to you You are in control of your money RizPoints Earn RizPoints with every $ spent Global dollar services outside the U.S. Access USD 
+savings, payments, and transfers globally in one simple app. Resources Blog Read the latest from our team Manifesto Read why we build Rizon Guides Everything you need to get started FAQs Quick 
+answers to your questions Rizon fees and limits Transparent rates and limits Global dollar services outside the U.S. Access USD savings, payments, and transfers globally in one simple app. Use cases 
+GENERAL USE CASES International Money Transfers 86% cheaper than traditional banks Deel, Gusto, Rippling payouts Receive money from payout platforms Getting paid as a freelancer Receive dollars or 
+stablecoins Receive payouts from platforms Receive money form AirBnB, Youtube Spend stablecoins easily Without offramps, banks or headaches CARD-POWERED USE CASES US-based Visa card Pay for western 
+services without limits Pay for ad services Buy Meta, Google, TikTok, and X ads Buy physical goods with stables From physical or online stores globally VPN × Rizon Visa Card US content, unlocked and 
+payable Global dollar services outside the U.S. Access USD savings, payments, and transfers globally in one simple app. Compare Rizon vs Kast Compare features and fees Rizon vs Nsave Compare features 
+and fees Rizon vs Avici Compare features and fees Rizon vs Redotpay Compare features and fees Rizon vs ZAR Compare features and fees Global dollar services outside the U.S. Access USD savings, 
+payments, and transfers globally in one simple app. Partner Program Business EN English Spanish Arabic Hindi/Urdu Global dollar services outside the U.S. Access USD savings, payments, and transfers 
+globally in one simple app. Download app EN English Spanish Brazilian Arabic Urdu Indonesian Get your US‑based Visa Download Rizon now This website uses cookies to improve our services and visitor 
+experience. Your preferences may be changed or withdrawn at any time. For more information, please see our Privacy Policy . Manage Cookies Accept all cookies Manage Cookie Preferences When you browse 
+this site, we may collect and store information on your device. This data helps the site work properly and can also support features like remembering your preferences, tailoring content, and 
+gathering insights through analytics. While some storage is essential for the site to function, others are optional. You can choose to disable certain types of cookies, but please note that doing so 
+may affect your browsing experience. Essential cookies Always active Used to ensure proper performance of the website, security of customers and their data, provision of high-quality services. 
+Advertising cookies Used to observer user online behaviour and optimize marketing campaigns according to such information. Analytics cookies Used to enhance the website user experience, analyse the 
+use of the system and in accordance to such improve the provision of services. Accept essential Accept all cookies Privacy Policy Effective Date: April 24, 2025 PURPOSE AND SCOPE Rizon Global, Inc. 
+is a Delaware C Corporation company established with its registered agent address at 131 Continental Dr Suite 305, Newark, DE 19713 US, data is kept and stored at the State Register of Legal Entities 
+(hereinafter referred to as "Rizon", „we" or „us"). The company also administers a website at www.getrizon.com and Rizon App. We respect your privacy and pledge to process and protect your personal 
+data in a fair and lawful way in accordance with the applicable legal requirements, such as the EU General Data Protection Regulation No. 2016/679 ("GDPR"), Law on the Legal Protection of Personal 
+Data of the Republic of Lithuania and other applicable legal acts. This Privacy Policy explains Rizon's main data processing purposes (i.e., why we collect your data in our daily business activities, 
+including your data collection via this website and Rizon App) and privacy rights you have in respect of your personal data. Our services enable users to select their preferred payment method for 
+executing orders and transactions via third-party credit and financial institutions and payment service providers. We do not retain your financial account information; the payment provider securely 
+handles it. Note that these vendors may, in turn, collect and process your personal information on their behalf and for their purposes and obligations. To learn more about how third-party payment 
+service providers and financial institutions collect, use and share your personal information, you are encouraged to read their privacy policies or notices provided on the official websites of the 
+respective service providers. PRINCIPLES OF PROCESSING OF PERSONAL DATA We are responsible for ensuring security of your personal data made available to us, in particular to prevent unauthorized 
+access to your data. When processing personal data, we follow the principles of: legality, fairness and transparency; purpose limitation; data minimisation; accuracy; storage limitation; integrity 
+and confidentiality. WHERE DO WE RECEIVE DATA FROM 3.1. You provide information yourself when opening an account with us of. 3.2. Information from Third Parties. In our continuous effort to provide 
+seamless and comprehensive Services, we may obtain personal data from third-party partners and vendors. In case of such integration, the information collected by our partners is shared with us. We 
+require our partners to have lawful purposes to collect, process and use your data before sharing it with us. These third-party partners and vendors play a vital role in enhancing the functionality 
+and utility of our platform. Here&#x27;s how personal data from these sources may be used: 3.3. Merchant VASPs We collaborate with third-party Merchant VASPs to facilitate transactions with Fiat 
+currencies. In such cases, we may receive information you shared with these Merchant VASPs as part of your transactions. This information may include transaction history, account details, and other 
+relevant financial data. Strict privacy and security standards govern our use of this data to ensure the confidentiality and integrity of your financial information. 3.4. API Integrations We may 
+integrate with third-party APIs to provide you with certain features and services. These integrations allow us to access and retrieve specific financial data with your explicit consent. The data 
+obtained through such integrations may include bank account information, transaction history, account balances, and other financial details. We utilise this data to offer enhanced features and allow 
+you to purchase StablecoinseCrypto Funds in exchange for fiat currency before depositing it into your account. Your consent is sought and obtained when accessing your financial data through API 
+integrations, and you retain control over the scope of data shared. 3.5. Public Databases We may obtain personal data from publicly available databases to enhance our services and fulfil our legal 
+and regulatory obligations. The information retrieved from these databases may include names, addresses, contact information, employment details, affiliations with restricted, sanctioned, or 
+prohibited groups and associations (as defined by relevant legal acts), and other publicly accessible data. This data assists us in various functions, such as identity verification, fraud prevention, 
+and compliance with relevant laws and regulations. 3.6. Identity Verification Partners To ensure the security and integrity of our services, we collaborate with identity verification partners who 
+provide us with access to specific personal data required for identity verification purposes. This data may comprise full names, address information, identification document images and data, personal 
+identification codes, identification document holder photos, date of birth, citizenship, place of birth and other relevant identity-related data. 3.7. Credit and Financial Institution We may obtain 
+personal data from financial and credit institutions in compliance with the law and industry standards. This data can encompass financial transaction history, account balances, credit scores, account 
+details, and other financial information. This information is crucial for enabling financial transactions and ensuring compliance with relevant regulations. 3.8. Google Single Sign-on (SSO) We may 
+collect the user's email address data in order to streamline user log-on through Google SSO authentication features. User data collection shall remain limited to the user&#x27;s email address and 
+will not encompass any other user data. 3.9. Blockchain Data We may collect publicly available blockchain data to monitor and detect illegal activities, including those defined by applicable laws and 
+regulations. This data may include blockchain transaction details, wallet addresses, and other relevant blockchain information. 3.10 Marketing Partners, Advertisers and Analytics In collaboration 
+with marketing partners, we may collect personal data to better understand your interaction with our app and services. This data aids us in refining our marketing strategies and offering you 
+personalised recommendations. In turn, advertisers may provide us with personal data to assess the effectiveness of advertising campaigns and optimise ad targeting. At the same time, analytics 
+partners help us understand how you use and interact with our platform. The partners&#x27; shared data may include user preferences, interaction patterns, user behaviour on our App, response to 
+marketing campaigns, interest-based data, click-through rates, conversion data, session durations, traffic sources, clickstream data, and other relevant data. WHAT ARE THE PURPOSES AND LEGAL BASES OF 
+DATA PROCESSING Purpose Legal basis Retention period To take steps at your request prior to entering into a contract* *To access and use our services, you must first register and create an account 
+with us and accept T&C. Taking necessary steps before conclusion of the contract and/or conclusion of the contract; Legal obligations - Law on Prevention of Money Laundering and Terrorist Financing 
+of the Republic of Lithuania, if applicable The personal data collected for the implementation of the obligations under the Law on the Prevention of Money Laundering and Terrorist Financing shall be 
+stored up to 8 (eight) years as provided in the Law on Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania. The retention period may be extended for a period not 
+exceeding 2 (two) years, provided there is a reasoned request from a competent authority. To perform the contract concluded with you, including (but not limited to): - providing and maintaining 
+services and the App: managing the operation and maintenance of our services to ensure their functionality and availability; - payment processing and order execution Performance of the contract; 
+Legal obligations - Law on Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania; and Order of the Financial Investigations Unit No V-314 Up to 8 (eight) years as 
+provided in the Law on Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania. The retention period may be extended for a period not exceeding 2 (two) years, provided 
+there is a reasoned request from a competent authority. To comply with legal obligations* (e.g., implementation of the obligations under the Law on Prevention of Money Laundering and Terrorist 
+Financing of the Republic of Lithuania and other fraud and crime prevention purposes) and risk management obligations *As instructed by our partners we facilitate the required KYC and AML procedures 
+Legal obligations - Law on Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania Up to 8 (eight) years after the contractual relationships end, as provided in the Law on 
+Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania. The retention period may be extended for a period not exceeding 2 (two) years, provided there is a reasoned 
+request from a competent authority. To identify you remotely Law on Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania Order No. V-314 of the Director of the 
+Financial Crime investigation service under Ministry of the Interior of the Republic of Lithuania dated 30 November 2016 Up to 8 years post contractual relationship. To prevent, limit and investigate 
+any misuse or unlawful use or disturbance of the services or to establish, exercise and defend legal claims Performance of the contract; Legitimate interest – defend against legal claims and prevent 
+fraud; Legal obligations – Law on Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania; Order of the Financial Investigations Unit No V-314 . Up to 8 years post 
+contractual relationship (+2-year extension). To prevent fraud (in case you are rejected, we will keep your onboarding results for the purposes of future applications) Legal obligations – Law on 
+Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania; Order of the Financial Investigations Unit No V-314 Up to 5 years For our internal business purposes, such as 
+statistics, analysing and managing our businesses, business mergers and acquisitions, market research, audits, developing new products/ services Our legitimate interest – to develop our services Data 
+shall be anonymized as necessary and stored until necessary for the purpose. Conducting research and development activities related to our Services, including the development of new features and 
+functionalities of the App and the introduction of new products and services Legitimate interest: to improve the functionality of our services and the App, to ensure the competitiveness of our 
+product, to grow our business and attract potential customers and users by introducing novel features and providing continuous development of the App Data shall be anonymized as necessary and stored 
+until necessary for the purpose. Enhancing our website and App, identifying usage trends, analyzing statistical data Our legitimate interest – to develop our website and App For this purpose we use 
+cookies and similar technologies. Retention period depends on the type of cookies used (please see section 11 "Cookies" below) Using social media channels for advertising, notification and customer 
+support, among others Our legitimate interest – to develop our business Up to 5 years. Direct marketing (please see clause 6 for more information) Consent Legitimate interest Until consent is 
+withdrawn If you provide us with personal data about other people (such as your spouse or family) or you ask us to share their personal data with third parties, you confirm that you have brought this 
+Privacy Policy to their attention beforehand. OUR IDENTIFICATION TOOLS We are currently performing performing a physical identity verification procedure. In case we start carrying out remote 
+identification via 2F authenticationauthetification and other tools. Without identificationidetification you cannot use our services.we this s , we will notify you. DIRECT MARKETING In case you are 
+an existing client (i.e., you already use our services), we may use your e-mail address for direct marketing purposes, but only with regard to our products and/or services that are similar or related 
+to the services you have obtained, and only if you do not object to such use of your e-mail address. You are also granted a clear, free of charge and easily enforceable possibility to object or 
+withdraw from such use of your contact details. In other cases, we may use your personal data for the purpose of direct marketing, only if you give us your prior explicit consent regarding such use 
+of the data. We are entitled to offer the services provided by our business partners or other third parties to you or find out your opinion on different matters in relation to our business partners 
+or other third parties only if you will specifically consent to this. YOU HAVE A RIGHT TO WITHHOLD YOUR CONSENT WITHOUT SUFFERING ANY ADVERSE EFFECT. If you provide your consent, you can withdraw it 
+at any time. We shall state in each notification sent by e-mail that you are entitled to object to the processing of the personal data, and to refuse receiving messages from us. You shall be able to 
+refuse receiving our marketing messages by clicking on the respective link in each marketing e-mail received from us. AUTOMATED DECISION MAKING We do not use automated decision-making technologies. 
+HOW WE SHARE YOUR PERSONAL DATA We may disclose your personal information to the recipients of the following categories: a) public authorities, institutions, organisations, courts and other third 
+parties, but only upon request and only when required by applicable laws, or in cases and under procedures provided for by applicable laws; b) third parties providing services to us including 
+providers of legal, financial, auditing, tax, business management, personnel administration, remote identification, accounting, advertising (including online advertising), direct marketing, 
+communications, data centers, hosting, cloud and/or other services. In each case, we provide third parties with only as much data as necessary to provide their services. Service providers engaged by 
+us may process your personal data only in accordance with our instructions and may not use them for other purposes; c) third parties for the purpose of performance of the contract concluded with you; 
+e) third parties, when we intend to enter into a business sale transaction and/or to perform legal and/or financial due diligence of us prior to such transaction; f) other persons with your consent. 
+INTERNATIONAL TRANSFER OF PERSONAL DATA In case your personal data must be transferred outside the European Economic Area (EEA), we will take necessary steps to ensure that your data is treated 
+securely and in accordance with this Privacy Policy and we will ensure that it is protected and transferred in a manner consistent with the legal requirements applicable to the personal data. This 
+can be done in several different ways, for example: the country to which we send the personal data, a territory or one or more specified sectors within that third country, or the international 
+organization is approved by the European Commission as having an adequate level of protection; the recipient has signed or contains in its terms of service (service agreement) standard contractual 
+clauses adopted by the European Commission; special permission has been obtained from a supervisory authority. HOW WE PROTECT YOUR PERSONAL DATA Please note that, although no system of technology is 
+completely secure, we have to implement appropriate security measures in order to minimize the risks of unauthorized access to or improper use of your personal information. We and our third-party 
+service providers that may be engaged in the processing of personal data on our behalf (for the purposes indicated above) are contractually obligated to respect the confidentiality of the personal 
+data. A variety of logical and physical security measures are used to keep your personal data safe and prevent unauthorized access, usage, or disclosure of it (the list indicated below is not 
+exhaustive): we use antivirus software, access control policies, we review our information collection, storage, and processing practices, including physical security measures, to prevent unauthorized 
+access to our systems, we use data encryption, etc. YOUR RIGHTS The right to be informed. You have the right to be provided with clear, transparent and easily understandable information about how we 
+use your personal data. The right to access. You have the right to request from us copies of your personal data. Where your requests are excessive, in particular if they are being sent with a 
+repetitive character, we may refuse to act on the request or charge a reasonable fee taking into account the administrative costs for providing the information. An assessment of the excessiveness of 
+the request will be made by us. The right to rectification. You have the right to request us to correct or update your personal data at any time, in particular if your personal data is incomplete or 
+incorrect. The right to data portability. The personal data provided by you is portable. You have the right to request that we transfer the data that we have collected to another organization, or 
+directly to you, under certain conditions. The right to be forgotten. When there is no good reason for us to process your personal data anymore, you can ask us to delete your data. We will take 
+reasonable steps to respond to your request. If your personal data is no longer needed and we are not required by law to retain it, we will delete it or destroy it. The right to restrict processing. 
+You have the right to restrict the processing of your personal data in certain situations (e.g. you want us to investigate whether it is accurate; we no longer need your personal data, but you want 
+us to continue holding it for you in connection with a legal claim). The right to object processing. Under certain circumstances you have the right to object to certain types of processing (e.g. 
+receiving notification emails). However, if you object to us using personal data which we need to provide our Services, we may need to close your payment account as we will not be able to provide the 
+Services. The right to file a complaint with a supervisory authority. You have the right to file a complaint directly the State Data Protection Inspectorate of Lithuania if you believe that the 
+personal data is processed in a way that violates your rights and legitimate interests stipulated by applicable legislation. You may apply in accordance with the procedures for handling complaints 
+that are established by the State Data Protection Inspectorate, and which may be found by this link: https://vdai.lrv.lt/lt/veiklos-sritys-1/skundu-nagrinejimas. Right to withdraw your permission. If 
+you have given us consent for processing your data, you can withdraw your consent at any time. It will have been lawful for us to use the personal data up to the point you withdrew your permission. 
+You also have a right to withhold your consent without any adverse effect. If you would like to exercise any of these rights, please contact us via e-mail: [email protected] . For security reasons, 
+we will not be able to process your request if we are not sure of your identity, so we may ask for your ID as proof. COOKIES We use cookies in a range of ways to improve your experience on our 
+website, including: keeping you signed in, understanding how you use our website. There are a number of different types of cookies, however, our website uses: Necessary Cookies. Necessary cookies 
+help us to make the websites available to you by providing the basic functions such as page navigation and access to secure areas of the website. Without these cookies, our website will not perform 
+as smoothly for you as we would like, and we may not be able to provide certain core functions and features of our website.. With regard to personal data collected by the necessary cookies our legal 
+basis for processing such personal data is our legitimate interest in providing the proper functioning and safety of the website. We do not provide an opt-out option for necessary cookies. You can 
+set your browser to block the necessary cookies, but then the website will not function properly. Functionality Cookies. We use these cookies so that we recognize you on our website and remember your 
+previously selected preferences. These could include what language you prefer and the location you are in. These cookies are activated on the website only after you have given your consent. Marketing 
+cookies. We use marketing cookies so that we could provide our advertisement as you browse the internet. These cookies are activated on the website only after you have given your consent. The cookies 
+used on our websites: Cookie Name Domain Valid until Description Strictly necessary session_id getrizon.com Maintains your session information while you browse our website. cookie_consent 
+getrizon.com Remembers your cookie preferences and consent settings. _fbp getrizon.com Meta (Facebook) Pixel cookie for tracking user interactions for marketing. Advertisement _gid getrizon.com 
+Google Analytics cookie used to track user behavior across pages. _ga getrizon.com Google Analytics cookie used to distinguish users for traffic analysis. When you enter our website for the first 
+time, we provide you with an opportunity to accept or decline the usage of cookies. You can also delete and block cookies at any time from this site through your browser, but some features on this 
+site will not function without cookies. You can change the preferences or settings in your web browser to control cookies. In some cases, you can choose to accept cookies from the primary site but 
+block them from third parties. In others, you can block cookies from specific advertisers or clear out all cookies. LINKS TO OTHER WEBSITES Our website may contain links to other websites which are 
+not operated by us. When you decide to click on these links and be led to such websites, we recommend familiarising yourself with their privacy policies or notices, cookie policies and/or other 
+documents. We assume no responsibility for the content, policies or practices of such third-party websites or services. CHANGES TO THIS PRIVACY POLICY We regularly review this Privacy Policy and 
+reserve the right to modify it at any time in accordance with applicable laws and regulations. We will inform you of any material changes in advance. CONTACT US You may contact us by email [email 
+protected] . Thank you! Your submission has been received! Oops! Something went wrong while submitting the form. Company Rizon Manifesto Partner Program Business Features Send Spend Deposit Visa 
+Platinum Card USD and EUR accounts Invest RizPoints Compare Rizon vs Redotpay Rizon vs Kast Rizon vs Zar Rizon vs Nsave Rizon vs Avici Use Cases Global remittances Deel payouts US-based Visa card Pay 
+for ad services Spend stablecoins directly Resources Blog Demo Support Help Center [email protected] Are there fees? Legal Terms of Service Privacy Policy Download app Social © 2026 Rizon. All rights 
+reserved. Rizon App is a technology platform and application developed by Rizon Global, Inc (Rizon), that provides a user interface enabling access to services offered by independent third-party 
+providers. Rizon does not offer, hold, or transmit funds, crypto-assets, or provide any financial, custodial, or regulated services.All wallet functionality is powered by Privy, a non-custodial 
+wallet infrastructure provider. Wallets are created and controlled solely by users and are not accessible by Rizon. All private keys remain under the exclusive control of the user.Any financial or 
+payment related services, including the issuance of payment cards, smart contract wallets and processing of digital asset transfers, are provided solely by Signify Holdings Inc. and its subsidiary 
+Nimbus LLC (Rain), a third-party licensed financial service provider. Rain operates under its own regulatory authorizations and is responsible for the compliance and performance of its services.By 
+using Rizon App, you acknowledge and agree that Rizon:acts solely as a software conduit and is not a financial institution or crypto-asset service provider under Regulation (EU) 2023/1114 (MiCAR) or 
+any similar legislation.Any transactions, transfers, or financial operations are executed exclusively through third-party providers and are subject to their respective terms and policies.Please 
+ensure you understand and agree to the terms and services of Rain, Privy, and any other applicable providers before using Rizon services accessed via Rizon App. The user is responsible for storing 
+their own recovery phrase. If the recovery phrase is lost, the user might not be able to retrieve their private keysAll forms of investments carry risks, including the risk of losing all of the 
+invested amount. Such activities may not be suitable for everyone. Services Restrictions ‍ The products and services referenced on this website are made available by Rizon Technologies, UAB and are 
+intended solely for individuals who are residents and domiciled in the United States or countries within Latin America (LATAM). Access to these services may be restricted or subject to regulatory 
+licensing requirements in other jurisdictions. This website and its contents do not constitute an offer, solicitation, or promotion of services to persons located outside the permitted regions. If 
+you are accessing this site from a jurisdiction where such services are not authorized or available, please exit this page. By clicking "OK", you confirm and represent that: You are located in the 
+United States or LATAM; You are accessing this site on your own initiative and not as a result of any solicitation or promotion by Rizon Technologies, UAB; You understand that any services referenced 
+are not intended for users outside the specified regions; You have read and agree to the above. OK

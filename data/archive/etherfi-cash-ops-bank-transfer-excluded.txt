@@ -1,0 +1,36 @@
+Source: https://help.ether.fi/en/articles/860027-in-which-countries-are-bank-transfers-not-available
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+ Updated yesterday
+Table of contents
+Bank transfers are not available in the jurisdictions listed below. Availability is subject to applicable eligibility and compliance requirements.
+Countries where bank transfers are not available
+Afghanistan
+Belarus
+Central African Republic
+China
+Democratic Republic of the Congo (DRC)
+Cuba
+Eritrea
+Guinea-Bissau
+Iran
+Iraq
+North Korea
+Lebanon
+Libya
+Mali
+Myanmar
+Nicaragua
+Russia
+Somalia
+South Sudan
+Sudan
+Syria
+Venezuela
+Yemen
+Zimbabwe
+Still have questions?
+If you have questions about bank transfer availability, reach out to Support by clicking the chat icon in the bottom-right corner.
+Related Articles
+In which countries is the Cash card available?
+In which countries are bank transfers available?

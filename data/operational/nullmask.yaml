@@ -1,0 +1,561 @@
+slug: nullmask
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: Protocol fee on deposits and on withdrawals, at most 1% each; current rates shown only in the app
+      basis: Terms 7.1 and 7.6; set by the operator and changeable without notice within the 1% cap. The rates in force were not read (the app needs a wallet; the contract is unverified).
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: Network and service fee set by the servers; sample 0.00197 ETH on a withdrawal whose gas cost 0.00130 ETH
+      basis: Docs fee formula is (latest or default gas) x 1.25 x current gas price, deducted from the shielded balance and paid to the relayer; terms 7.3 say it may exceed actual gas and the difference is not refunded. Sample from tx 0x789715bd…fd02 (2026-06-23).
+      evidence_index: 1
+    - kind: provider
+      paid_by: payer
+      amount: ETH added to each deposit; the operator keeps the crediting gas and an amount towards screening, the rest is returned
+      basis: Terms 5.1 and 7.4; amount not published.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: Screening fee of up to 1% on a returned deposit, if introduced, plus the network cost of the return
+      basis: Terms 5.7; not stated to be in force.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: Ethereum gas for deposits and key registration sent from the user's own wallet; Uniswap V2 fee on swaps
+      basis: Terms 6.5 and 7.5; set by Ethereum and Uniswap.
+      evidence_index: 0
+    - kind: limit
+      paid_by: none
+      amount: Minimum deposit per asset, enforced by the Pool; maximums may be set at any time
+      basis: Terms 5.9; values not published.
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://app.nullmask.io/terms
+      archive: data/archive/nullmask-ops-terms.txt
+      detail: Terms of Use (effective 2026-10-01) sections 5.7, 5.9, 6.5, 7.1, 7.3, 7.4 and 7.6.
+      checked_at: 2026-10-09
+      quote: We charge a protocol fee on deposits and on withdrawals. Each fee is at most 1% of the amount.
+    - tier: documented
+      kind: document
+      url: https://docs.nullmask.io/user-guide/fees.md
+      detail: Docs fee page, how the relayer fee is estimated.
+      checked_at: 2026-10-09
+      quote: It applies a 1.25x buffer and multiplies the result by the current gas price
+    - tier: verified
+      kind: onchain
+      url: https://eth.blockscout.com/tx/0x789715bdb90a5a938029ba63267bda6bd3a7cc1fda416b1a8b5a5a1c3f7ffd02
+      address: "0x88888888Eb71E1D68aD0C471C6893EdEEa00B026"
+      chain_id: 1
+      block_number: 25380622
+      detail: "ShieldedWithdrawal log (topic matches the docs' event signature) in block 25380622: amount 0.00128 ETH, fee 1973875227928586 wei in ETH; the relayer's transaction used 4,530,380 gas at 0.286 gwei (about 0.00130 ETH)."
+      checked_at: 2026-10-09
+      recheck: cast receipt 0x789715bdb90a5a938029ba63267bda6bd3a7cc1fda416b1a8b5a5a1c3f7ffd02 --rpc-url https://ethereum-rpc.publicnode.com
+  note: The rail's only path runs through the operator's servers, so these fees apply to every payment. Only 30 ShieldedWithdrawal logs existed from the pool's deployment to 2026-10-09, all before the announced 2026-10-01 launch; the sample is from that period.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: C2
+      index: 0
+  note: Judgment call. The terms say only the user's wallet can authorise spending and that assets are not held in an account with the operator, but the S1 finding (score 0) shows the pool is upgradeable through a controller whose admin is one EOA, and the operator says an upgrade can change who can move assets; C2 and S4 show every transfer and withdrawal needs its servers. The operator controls funds at rest, so provider_custodial rather than hybrid (as for Payy).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://app.nullmask.io/terms
+      archive: data/archive/nullmask-ops-terms.txt
+      detail: Terms 3.4 say the operator is not a bank, exchange, broker or payment institution; no licence, registration or regulator is named anywhere in the terms.
+      checked_at: 2026-10-09
+      quote: We are not a bank, exchange, broker, payment institution, investment adviser or trustee.
+    - tier: documented
+      kind: document
+      url: https://find-and-update.company-information.service.gov.uk/search/companies?q=nullmask
+      detail: Companies House name search for "nullmask" (the terms choose English law and London arbitration) returned no company.
+      checked_at: 2026-10-09
+      quote: No results found
+  note: "Searched: Terms of Use and Privacy Policy (both effective 2026-10-01), docs.nullmask.io (compliance, security, architecture pages) and Companies House by name. The operator is unnamed and the privacy policy says it is established outside the EEA and the UK, so no regulator register could be searched by entity."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: not_applicable
+  reason: Withdrawals send tokens to an Ethereum address the user names; converting them to local currency is outside the service. The terms list no fiat off-ramp.
+  burden: institution
+  refs:
+    - criterion: C2
+      index: 0
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2026-02-03
+      block: 24378139
+      what: Nullmask pool proxy 0x8888…B026 on Ethereum, created through the CreateX factory 0xba5E…a5Ed in tx 0x867dcf77…e7ed sent by 0xFf29…9CCd (now the upgrade controller's admin).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://eth.blockscout.com/tx/0x867dcf77c70fe11feac675c9a17352019a70ac9041d97acf28e0ebcffc88e7ed
+        address: "0x88888888Eb71E1D68aD0C471C6893EdEEa00B026"
+        chain_id: 1
+        block_number: 24378139
+        detail: Blockscout gives this as the proxy's creation transaction (creator 0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed); the receipt (status 1) carries the factory's ContractCreation log for 0x8888…B026, and block 24378139 is dated 2026-02-03 18:32:35 UTC. Sourcify has no record of the contract, so its creation data could not be used.
+        checked_at: 2026-10-09
+        recheck: curl -s https://eth.blockscout.com/api/v2/addresses/0x88888888Eb71E1D68aD0C471C6893EdEEa00B026 | jq .creation_transaction_hash && cast receipt 0x867dcf77c70fe11feac675c9a17352019a70ac9041d97acf28e0ebcffc88e7ed --rpc-url https://ethereum-rpc.publicnode.com
+    note: The public launch came later; the roadmap gave 1 October 2026 as the mainnet ETA and the terms take effect that day.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: attested
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-ops-terms.txt
+        detail: Terms 1.1 define the operator only as the company that operates the Services and offer its legal details on written request.
+        checked_at: 2026-10-09
+        quote: We will give the Operator's full legal details to any person who needs them to bring or answer a legal claim
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: The privacy policy says the operator is established outside the EEA and the UK.
+        checked_at: 2026-10-09
+        quote: It is established outside the European Economic Area and the United Kingdom.
+    note: Judgment call. The operator says an identified legal entity exists and is disclosed only on request, which is the attested state; no name, jurisdiction or register entry is public. Companies House has no "nullmask" company.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: "Searched: docs.nullmask.io (security, threat model), the terms and privacy policy, status.nullmask.io (does not resolve), security.txt (none on app.nullmask.io) and github.com/nullmask-io (one landing-page repo, no advisories). The operator publishes no incident or advisory channel, so absence of incidents cannot be shown. No pause events in the OpenZeppelin format appear in the pool's logs, but the contract is unverified and may log pauses differently."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2026-02-03
+        summary: Pool proxy created and first implementation 0xab88…db2f set (Upgraded log, tx 0x9d1188ec…84b8).
+        url: https://eth.blockscout.com/tx/0x9d1188ecbda1cb6641d1cb710e10bd9b86dc3f27c298e0dff8f34f19ca9b84b8
+      - date: 2026-02-09
+        summary: Ten further implementation upgrades between 2026-02-04 and 2026-02-09 (blocks 24380499 to 24420355); the last set 0xb801…eaea.
+        url: https://eth.blockscout.com/tx/0xd6ada552f161ab0226bf1a882483e884025c2422811a2b179528d3f8bf646c3e
+      - date: 2026-02-23
+        summary: Pool upgraded to the current implementation 0x4E50…0e91 (tx 0x27b938d9…fae0); no upgrade since.
+        url: https://eth.blockscout.com/tx/0x27b938d91dfd7b45eada7dd26911dcc45ae1e1b66d3d593396ac20f1271ffae0
+      - date: 2026-10-01
+        summary: Terms of Use and Privacy Policy take effect; the roadmap's Ethereum mainnet launch date.
+        url: https://app.nullmask.io/terms
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://eth.blockscout.com/address/0x88888888Eb71E1D68aD0C471C6893EdEEa00B026
+        address: "0x88888888Eb71E1D68aD0C471C6893EdEEa00B026"
+        chain_id: 1
+        block_number: 24520325
+        detail: Twelve EIP-1967 Upgraded logs on the proxy from block 24378139 to latest, at blocks 24378140, 24380499, 24385676, 24388785, 24389720, 24398907, 24398912, 24398997, 24401824, 24419542, 24420355 and 24520325; the last names 0x4E50…0e91, which the implementation slot still holds (S1).
+        checked_at: 2026-10-09
+        recheck: curl -s "https://eth.blockscout.com/api?module=logs&action=getLogs&fromBlock=24378139&toBlock=latest&address=0x88888888Eb71E1D68aD0C471C6893EdEEa00B026&topic0=0xbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b"
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/project-roadmap.md
+        detail: Roadmap, phase 1 Ethereum mainnet launch.
+        checked_at: 2026-10-09
+        quote: "**ETA: 1st October 2026**"
+    note: Upgrades are made by the controller whose admin is an EOA, with no notice (terms 8.3). Guard or relayer address changes were not traced because the contract is unverified.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: Incumbent-typed rail with no listed settlement contract; the pool is unverified, so its events can only be read against the operator's own docs. Volumes are computed over listed, verified contracts only.
+  note: The pool emits a ShieldedWithdrawal log whose topic matches the docs' event signature, with recipient, amount, token and fee in plaintext (30 such logs to 2026-10-09). If the pool is verified and listed, a spec over topic 0xe252471d…45d7 with amount in word 4 and token in word 5 would work.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement in the terms, privacy policy or docs; the operator is unnamed.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: The privacy policy says the servers are in Finland; no hosting provider or certification is named.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement of availability found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: absent
+    value: The operator states the pool contracts were not independently audited at the effective date; no review of the servers, relayer or guard is mentioned.
+    refs:
+      - criterion: S6
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration test of the RPC proxy, relayer, guard or app found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    note: The docs' code-quality page says CI runs a dependency audit (pnpm audit) on the private monorepo; no platform scanning cadence is stated.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No patch timelines in the terms, privacy policy or docs; no security.txt or disclosure page found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: The privacy policy says a breach could expose account keys and history but makes no notification commitment; the terms promise in-app notice only for changes to the terms and for a shutdown.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    note: The docs say per-user state is kept in LMDB on the RPC proxy; no backup or restore statement found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: No recovery plan is published. The terms say only that, if the Services stop, the operator will try to give notice and time to withdraw (8.5); without its servers shielded funds cannot be moved (S4 = 0).
+    refs:
+      - criterion: S4
+        index: 0
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: status.nullmask.io does not resolve and no status page or post-mortem is linked from the app or docs.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: No passwords or MFA. Sign-in is a wallet signature, from which the proxy derives an access token; the session cookie ends with the browser but the token stays valid server-side, and the credential saved in the wallet's network settings does not expire.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/security/access-tokens.md
+        detail: Access token derivation from the wallet signature and its delivery as cookie or query parameter.
+        checked_at: 2026-10-09
+        quote: Since wallets use deterministic signatures (RFC 6979), the same wallet always produces the same access token.
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 9 on the wallet network credential.
+        checked_at: 2026-10-09
+        quote: The credential gives read access to your balance and your own operations, and it does not expire.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    note: The privacy policy says server access is restricted to authorised personnel; no MFA or separate-account statement. The pool's upgrade authority is a single EOA (S2).
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: evidenced
+    value: The browser session cookie lasts until the browser closes, but the token behind it stays valid on the servers and the wallet-saved credential never expires; no idle timeout is stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 9, session cookie row.
+        checked_at: 2026-10-09
+        quote: The token is created from your wallet's signature and stays valid on our servers after the cookie is gone.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: A static per-wallet access token (16 bytes of keccak over the wallet signature) sent as an HTTP-only cookie or as a query parameter in the wallet's RPC URL; no OAuth, OpenID Connect, SAML or JWT.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/rpc-api-reference/rpc.md
+        detail: RPC API overview and authentication.
+        checked_at: 2026-10-09
+        quote: The proxy uses an **access token** to identify users and isolate their private data
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: unknown
+    note: No server-to-server or partner API is documented; the roadmap lists an SDK for Q4 2026.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: Access tokens do not expire; the same wallet always yields the same token.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 9.
+        checked_at: 2026-10-09
+        quote: The credential gives read access to your balance and your own operations, and it does not expire.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: No export function or limits documented; the privacy policy offers data in a portable format on request.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "Encryption in transit and access restricted to authorised personnel; servers in Finland. Observed: app.nullmask.io refuses TLS 1.1 and accepts TLS 1.2. No data classification or encryption at rest is stated."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 11.
+        checked_at: 2026-10-09
+        quote: Connections to the Services are encrypted in transit.
+      - tier: documented
+        kind: trace
+        url: https://app.nullmask.io
+        detail: openssl s_client -tls1_1 to app.nullmask.io:443 failed with alert protocol version; -tls1_2 negotiated ECDHE-ECDSA-CHACHA20-POLY1305. Run 2026-10-09.
+        checked_at: 2026-10-09
+        recheck: echo | openssl s_client -connect app.nullmask.io:443 -servername app.nullmask.io -tls1_1; echo | openssl s_client -connect app.nullmask.io:443 -servername app.nullmask.io -tls1_2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Account keys and private activity while the user uses the Services or until deletion is requested; deposit and screening records and the blocklist 5 years; recipient checks 24 hours; rate-limit IPs up to a day in memory; error logs 90 days; messages 12 months; website analytics 14 months. Screening records may be kept after a deletion request.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 10, retention table.
+        checked_at: 2026-10-09
+        quote: "Deposit and screening records, and the list of blocked addresses: 5 years after the deposit or check"
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The unnamed operator is the controller; processors are listed by type (hosting, node, analytics, data and error-monitoring providers) but not by name. No DPIA is mentioned.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 1.
+        checked_at: 2026-10-09
+        quote: is the controller of the personal data described here
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No data processing agreement published or offered; the service has no business-customer terms.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: evidenced
+    value: Administrative actions on the screening system are recorded; logging of other account or server activity is not described.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 11.
+        checked_at: 2026-10-09
+        quote: Administrative actions on the screening system require cryptographic authorisation and are recorded.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    note: The privacy policy names an unnamed error-monitoring provider; no SIEM or endpoint detection statement.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Logical and integration views on the hosted docs (system overview, components, data flow, protocol and circuit specs, contract interface and events, RPC API). Infrastructure only in outline (Fastify services on Node.js, LMDB state, servers in Finland). Not versioned in a public repository.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/architecture/components.md
+        detail: Components page (wallet, RPC proxy, relayer, guard, contract) and linked architecture and backend-services pages.
+        checked_at: 2026-10-09
+        quote: Nullmask consists of four main components that work together to provide privacy-preserving transactions.
+    refs:
+      - criterion: O4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: attested
+    value: Unnamed operator; legal details on written request to legal@nullmask.io. English law, LCIA arbitration seated in London.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-ops-terms.txt
+        detail: Terms 1.1 and 19.3.
+        checked_at: 2026-10-09
+        quote: We will give the Operator's full legal details to any person who needs them to bring or answer a legal claim
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: User fees - a protocol fee of up to 1% on deposits and withdrawals and a network and service fee set above relayer gas to cover the cost of running the Services. No treasury, token or funding statement beyond that.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-ops-terms.txt
+        detail: Terms 7.1 and 7.3.
+        checked_at: 2026-10-09
+        quote: It covers the network gas our relayer pays and our cost of running the Services.
+    note: The roadmap mentions a MASK token on Solana; the terms say it gives no claim on fees. Not treated as funding.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: The operator may end access at any time without notice; assets stay recorded in the pool and withdrawals to addresses passing screening are not refused for that reason alone, but they still run through the operator's servers. On a shutdown it will try to give notice and time to withdraw.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-ops-terms.txt
+        detail: Terms 18.2, 18.3 and 8.5.
+        checked_at: 2026-10-09
+        quote: We may restrict or end your access to the Services at any time and without notice.
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Automated screening of depositing, connected and recipient addresses decides whether deposits are credited and withdrawals sent, using sanctions lists, chain data and an unnamed analytics vendor; some cases go to a person. Whether AI or a learned model is used is not stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 13, automated decisions.
+        checked_at: 2026-10-09
+        quote: Screening decisions are made automatically from address risk data and the public history of the address.
+    refs:
+      - criterion: C4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: A person reviews a screening decision on request by email, with no response time; no monitoring, validation, decommissioning or bias evaluation is documented.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/privacy
+        archive: data/archive/nullmask-ops-privacy.txt
+        detail: Privacy policy section 13.
+        checked_at: 2026-10-09
+        quote: A person will consider the request.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+notes: Incumbent-typed (no verified contract, no public repository needed to run it), but its pool settles on Ethereum, so first deployment and changes are read from chain logs. Every operator and custodial control applies. Terms and privacy policy are client-rendered; the excerpts read in a browser are archived under data/archive/nullmask-ops-*.txt. No transactions, sign-ins or form submissions.

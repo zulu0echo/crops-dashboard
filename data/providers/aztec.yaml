@@ -1,0 +1,616 @@
+slug: aztec
+name: Aztec (Alpha mainnet private token transfers)
+type: transfer
+website: https://aztec.network
+primary_chain:
+  name: Aztec mainnet (Alpha)
+  caip2: "aztec:mainnet"
+  basis: >-
+    Aztec is a privacy L2 with its own state, sequencers and provers, settling to Ethereum. Unit: the mainnet the node follows. AztecProtocol/networks network_config.json L21-L32 names Registry 0x35b2…e298 on chain 1, whose canonical rollup is 0x91fF…8E34 (v5, Ethereum block 26,153,545). Scope: private transfers in tokens built on the reference Token contract. Excluded: testnet, older rollup versions, Fee Juice (not transferable). aztec:mainnet is not a registered CAIP-2 namespace.
+
+repos:
+  - url: https://github.com/AztecProtocol/aztec-packages
+    role: contracts
+    license: Apache-2.0
+  - url: https://github.com/AztecProtocol/networks
+    role: deploy
+    license: none
+
+contracts: []
+
+components:
+  - name: Aztec L1 rollup contracts on Ethereum (Registry, Rollup v5, Inbox, Outbox)
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: Aztec Governance (Registry owner; Rollup parameter owner)
+    required: true
+    repo: https://github.com/AztecProtocol/aztec-packages
+  - name: Aztec L2 network (staked sequencer committee, provers, escape hatch)
+    role: ledger
+    public: true
+    license: Apache-2.0
+    operator: 3,085 staked attesters at Ethereum block 26,153,545; permissionless provers
+    required: true
+    repo: https://github.com/AztecProtocol/aztec-packages
+  - name: Ethereum mainnet (L1 settlement and data availability)
+    role: ledger
+    public: true
+    license: LGPL-3.0
+    operator: Ethereum validators
+    required: true
+    repo: https://github.com/ethereum/go-ethereum
+  - name: Aztec node (own, or someone else's), with an Ethereum execution and beacon RPC
+    role: backend
+    public: true
+    license: Apache-2.0
+    operator: user or node operator
+    required: true
+    repo: https://github.com/AztecProtocol/aztec-packages
+  - name: PXE and wallet (aztec.js, wallet-sdk, aztec-wallet CLI)
+    role: wallet
+    public: true
+    license: Apache-2.0
+    operator: user
+    required: true
+    repo: https://github.com/AztecProtocol/aztec-packages
+  - name: Fee Juice and FeeJuicePortal (non-transferable fee asset bridged from L1)
+    role: other
+    public: true
+    license: Apache-2.0
+    operator: none (portal immutable); fee asset bridged from the AZTEC L1 token
+    required: true
+    repo: https://github.com/AztecProtocol/aztec-packages
+  - name: Token contract and L1 portal of the asset being paid (third-party)
+    role: contracts
+    public: true
+    license: Apache-2.0
+    operator: token and bridge owners (e.g. Nyx.money TokenVaultPortal, Ownable)
+    required: true
+    repo: https://github.com/AztecProtocol/aztec-packages
+  - name: Aztec Governance and GovernanceProposer (sequencer signalling, token vote)
+    role: other
+    public: true
+    license: Apache-2.0
+    operator: AZTEC token holders and sequencers
+    required: false
+    repo: https://github.com/AztecProtocol/aztec-packages
+  - name: Aztec Labs hosted RPC (mainnet.rpc.aztec-labs.com, Cloud Armor policy)
+    role: api
+    public: false
+    license: proprietary
+    operator: Aztec Labs
+    required: false
+  - name: Network config and snapshot hosts (networks repo, aztec-labs-snapshots.com)
+    role: other
+    public: true
+    license: none
+    operator: Aztec Labs
+    required: false
+    repo: https://github.com/AztecProtocol/networks
+  - name: Third-party browser wallets and fee payment contracts (not reviewed)
+    role: wallet
+    public: false
+    license: proprietary
+    operator: wallet and FPC developers
+    required: false
+
+scores:
+  C1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/core/RollupCore.sol#L265-L345
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: l1-contracts/src/core/RollupCore.sol
+        detail: The Rollup's owner-only functions set reward config, mana target, proving cost, staking-queue config, a time-delayed slasher swap and a set-once escape hatch; there is no pause, freeze or blacklist. Read on Ethereum at block 26,153,545 (not recordable as onchain evidence here, see notes) with cast, Rollup 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 owner() = Governance 0x1102471Eb3378FEE427121c9EfcEa452E4B6B75e, getEscapeHatch() = 0xF459348962F5eA3A9A101826B03A2CE1F459E51A.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 "owner()(address)" --rpc-url https://ethereum-rpc.publicnode.com; cast call 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 "getEscapeHatch()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/core/EscapeHatch.sol#L19-L30
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: l1-contracts/src/core/EscapeHatch.sol
+        detail: The escape hatch lets a bonded, randomly chosen candidate propose blocks during periodic windows, bypassing the sequencer committee.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr#L62-L77
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr
+        detail: The reference L2 Token contract's admin can change the admin and minters; it has no pause or blacklist.
+        checked_at: "2026-10-09"
+    finding: >-
+      The rollup contracts have no pause, freeze or blacklist, the Rollup is not a proxy, and the reference Token contract has none either. The committee of staked sequencers can censor by omission, but the escape hatch gives a bonded outsider periodic block-production windows. Any particular token on Aztec is deployed by a third party whose contracts may add controls; the one bridge we sampled (Nyx.money TokenVaultPortal) is Ownable. Judgment call: the substance supports 3 for the protocol layer, but the rollup contracts live on Ethereum while this row's chain is aztec:mainnet, so the dashboard cannot record the onchain reads as onchain evidence (see notes), and third-party token controls are unknown; we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr#L271-L277
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr
+        detail: transfer_in_private moves a private balance from one account to another, authorised by the sender's account (authorize_once); the user's PXE proves it locally and submits it to any node.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 271,277p
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/yarn-project/cli/src/utils/commands.ts#L35-L40
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: yarn-project/cli/src/utils/commands.ts
+        detail: The CLI's node option defaults to http://localhost:8080, the user's own node.
+        checked_at: "2026-10-09"
+    finding: >-
+      A payer proves a private transfer in their own PXE and sends it to any Aztec node, which gossips it to the sequencers; no company API or signature is needed. Judgment call: anchor 3 needs onchain evidence about deployed contracts that this row's chain id cannot carry, and the token contract being paid is third-party, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-operate/operators/full-node/setup.md#L8-L109
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: docs/docs-operate/operators/full-node/setup.md
+        detail: The repo documents running a full node against the user's own Ethereum execution and beacon endpoints; the CLI defaults to a local node.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/docs/docs-operate/operators/full-node/setup.md?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 8,48p
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/core/EscapeHatch.sol#L19-L30
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: l1-contracts/src/core/EscapeHatch.sol
+        detail: Block production is by a committee of 48 drawn from 3,085 staked attesters (getTargetCommitteeSize, getActiveAttesterCount on Rollup 0x91fF…8E34 at Ethereum block 26,153,545), with the escape hatch as fallback.
+        checked_at: "2026-10-09"
+    finding: >-
+      No relayer, paymaster or company API is required. Users can run their own node from public code, sequencing and proving are open to stakers and provers, and the escape hatch is a fallback if the committee censors. Fees need Fee Juice bridged from L1, which is a protocol asset rather than a service. Aztec Labs' hosted RPC, network-config and snapshot hosts are conveniences with overrides.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-developers/docs/aztec-js/how_to_use_private_fee_juice.md#L25-L27
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: docs/docs-developers/docs/aztec-js/how_to_use_private_fee_juice.md
+        detail: Nodes apply a protocol-level allowlist of public functions callable in a transaction's setup phase; it filters functions, not addresses or countries.
+        checked_at: "2026-10-09"
+        recheck: gh search code --repo AztecProtocol/aztec-packages sanction --json path --jq '.[].path'; gh search code --repo AztecProtocol/aztec-packages geoblock --json path --jq '.[].path'
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/core/RollupCore.sol#L265-L345
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: l1-contracts/src/core/RollupCore.sol
+        detail: The rollup checks proofs and attestations; it has no address or country rule. Code search on 2026-10-09 found no sanctions or geoblocking code (the only country hit is a testnet mock staking handler).
+        checked_at: "2026-10-09"
+    finding: >-
+      Settlement is neutral: the rollup and the reference token have no address or country checks, and private senders and recipients are not visible to sequencers. The setup-phase allowlist restricts which public functions may run before fees are paid, which shapes fee payment but does not target users. Aztec Labs' hosted RPC sits behind a Cloud Armor policy (spartan/environments/mainnet.env) whose rules are not public. Judgment call: 2, not 3, because 3 needs a distributed-package or trace record and because the hosted RPC's filtering is undisclosed (users can avoid it by running a node).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/noir-contracts/contracts/protocol/fee_juice_contract/src/main.nr#L11-L12
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: noir-projects/noir-contracts/contracts/protocol/fee_juice_contract/src/main.nr
+        detail: The protocol's own asset, Fee Juice, can only be bridged in, not withdrawn or transferred, so every payment uses a third-party token.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/networks/contents/network_config.json?ref=7182c14bbb32f5af995e06edcec0690633acae4a" --jq .content | base64 -d | sed -n 21,33p
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/networks/blob/7182c14bbb32f5af995e06edcec0690633acae4a/network_config.json#L21-L33
+        commit: "7182c14bbb32f5af995e06edcec0690633acae4a"
+        path: network_config.json
+        detail: The mainnet network config lists bootnodes, snapshot hosts, the Registry and the L1 chain, and no token list. Recent L1-to-L2 messages (Ethereum blocks 26,144,545 to 26,153,545) came from an OperationExecutor 0xe883…9e19 and a TokenVaultPortal 0xD0b1…80d0 by Nyx.money, both Sourcify exact matches; the portal is Ownable.
+        checked_at: "2026-10-09"
+    finding: >-
+      The rail does not enumerate the tokens a payee might receive: Fee Juice cannot be transferred, and payable assets are app-deployed token contracts bridged through third-party portals with their own owners, which the protocol neither lists nor describes. The sequencer, escape-hatch and upgrade assumptions are stated in the Alpha documentation. Scored 0: tokens not enumerated.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/tree/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: l1-contracts/src
+        detail: Sourcify on 2026-10-09 returns match (partial) for Registry 0x35b2…e298, Rollup 0x91fF…8E34, Governance 0x1102…B75e, GovernanceProposer 0x06Ef…63ef, GSE 0xa92e…7a4f, Inbox 0x7d4E…b8cA, Outbox 0x5B06…A2D7, FeeJuicePortal 0xaf73…691c, EscapeHatch 0xF459…E51A, Slasher 0xCD68…2548 and the AZTEC token 0xA27E…62D2, all on Ethereum.
+        checked_at: "2026-10-09"
+        recheck: for a in 0x35b22e09Ee0390539439E24f06Da43D83f90e298 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 0x1102471Eb3378FEE427121c9EfcEa452E4B6B75e 0x7d4Ef0676c2032bbCC09227501D34d86641ab8cA 0x5B062aB5fD3A66BC7e73b04CeD38587673b6A2D7 0xaf73Dd51D1eb8a079BB097f39c832cDD00ac691c; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done
+    finding: >-
+      All L1 rollup and governance contracts are partial matches on Sourcify. We did not check L2 contract classes (the token contracts users pay with) against source, and attempted no rebuild. Scored 2: partial matches.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/tree/49a592109ec4f18d79212b43d621891aaf36f7b6/yarn-project
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: yarn-project
+        detail: The monorepo at v5.2.0 contains the node, sequencer, prover, PXE, aztec.js, wallet-sdk and CLI wallet (yarn-project), the L1 contracts (l1-contracts), Noir protocol and app contracts (noir-projects), the proving backend (barretenberg) and network deployment (spartan).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq '.[].name'
+    finding: >-
+      The whole protocol stack is public in one Apache-2.0 monorepo, including node, sequencer, prover, client, contracts and deploy tooling. The hosted RPC's access policy and third-party browser wallets are not public, but neither is needed. Judgment call: we score the stack a user needs, not the hosted conveniences, at 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-operate/operators/full-node/setup.md#L8-L109
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: docs/docs-operate/operators/full-node/setup.md
+        detail: Step-by-step Docker Compose setup for a mainnet full node, with required environment variables.
+        checked_at: "2026-10-09"
+    finding: >-
+      Node setup documentation exists in the repo. Reproduction not attempted, so the score is capped at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr#L271-L300
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr
+        detail: Contract interfaces (Noir ABIs generated from source, L1 ABIs in l1-artifacts) and the node's typed API schemas (stdlib) are in the repo; a Transfer event is emitted for private transfers.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 271,300p
+    finding: >-
+      ABIs, events and the node API schema are versioned in the repo. We found no payee export format in the wallet tooling. Scored 2: interfaces present, export absent.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/LICENSE
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: LICENSE
+        detail: aztec-packages is Apache-2.0; AztecProtocol/networks (the default network config) has no licence file.
+        checked_at: "2026-10-09"
+        recheck: for r in aztec-packages networks; do echo $r $(gh api repos/AztecProtocol/$r --jq '.license.spdx_id // "none"'); done
+    finding: >-
+      Everything needed to run the protocol is Apache-2.0. The network-config repo the node reads by default has no licence; the same mainnet values are compiled into the CLI (chain_l2_config.ts), so it is not critical. Scored 2: one non-critical repo unlicensed.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/LICENSE
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: LICENSE
+        detail: The LICENSE file changed from GPL-2.0 to Apache-2.0 in commit 356db7c7 (2023-02-28), four days after the initial commit, and its copyright holder changed to Aztec Foundation in 82e3c33d (2026-10-06); CONTRIBUTING.md mentions no CLA.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/commits?path=LICENSE&per_page=10" --jq '.[]|[.sha[0:8],.commit.author.date,.commit.message[0:60]]|@tsv'
+    finding: >-
+      There is no CLA and no licence-stability commitment. The monorepo's licence changed from GPL-2.0 to Apache-2.0 days after the repo was created, before any release. Judgment call: anchor 0 names any prior relicense event; this one was early and permissive, but under the take-the-lower-anchor rule we score 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/yarn-project/cli/src/utils/commands.ts#L35-L40
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: yarn-project/cli/src/utils/commands.ts
+        detail: The client defaults to a local node; the node needs only Ethereum endpoints the operator chooses.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/cli/src/utils/commands.ts?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 35,40p
+    finding: >-
+      A production setup (own node, PXE, wallet) needs no proprietary plugin; hosted RPC, snapshots and third-party wallets are optional. Judgment call: the code supports 3, but with no O3 reproduction we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/yarn-project/pxe/package.json#L1-L120
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: yarn-project/pxe/package.json
+        detail: No analytics, telemetry or error-reporting dependency in the pxe, aztec.js, wallet-sdk or cli-wallet manifests; the node's OpenTelemetry export is operator-side and needs an endpoint configured.
+        checked_at: "2026-10-09"
+        recheck: for p in pxe aztec.js wallet-sdk cli-wallet; do gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/$p/package.json?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | jq -r '.dependencies|keys[]' | grep -iE 'telemetry|sentry|analytics|posthog'; done
+        package:
+          name: "@aztec/aztec.js"
+          version: "5.2.0"
+          integrity: "sha512-vQg1KZEqukjPXvF1UDjEHNhqhDzW+LPHSUCZu9VgFZ3XkLmmEv3qMCPbrsam6/bZZQ7oy+m12xExXlXb9kqhlg=="
+    finding: >-
+      The client libraries ship no analytics or telemetry. Third-party browser wallets were not inspected. Judgment call: absence shown in code and the published package, without a trace, is capped at 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr#L271-L277
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr
+        detail: A private transfer takes sender, recipient, amount and an authorisation nonce; nothing else.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 271,277p
+    finding: >-
+      The protocol and reference token collect only what settlement needs, and no required component holds identity data. A third-party node, if used, sees the user's IP and queries (P4).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-developers/docs/aztec-js/how_to_use_private_fee_juice.md#L67-L70
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: docs/docs-developers/docs/aztec-js/how_to_use_private_fee_juice.md
+        detail: Private calldata and identities are hidden, but the transaction's fee payer address is recorded onchain by the protocol.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/docs/docs-developers/docs/aztec-js/how_to_use_private_fee_juice.md?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 67,70p
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-developers/docs/resources/considerations/limitations.md#L30-L37
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: docs/docs-developers/docs/resources/considerations/limitations.md
+        detail: msg_sender leaks on private-to-public calls by default, and the counts of public calls and L2-to-L1 messages remain visible.
+        checked_at: "2026-10-09"
+    finding: >-
+      A private token transfer hides the recipient and amount. Unless the payer uses a private fee payment contract, the payer's own account pays the fee and is recorded publicly as fee payer, so the chain shows who sent a private transaction, though not to whom. Side-effect counts give transaction fingerprints, and the docs warn that the zk property is not yet guaranteed. All of this is documented. Judgment call: minimal, documented linkage is anchor 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-developers/docs/resources/considerations/limitations.md#L69-L73
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: docs/docs-developers/docs/resources/considerations/limitations.md
+        detail: The docs state there are no privacy-preserving queries to third-party nodes; a user who queries someone else's node may reveal who they are and their activity.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/cli/src/utils/commands.ts?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 35,40p
+    finding: >-
+      With a local node, only the user's Ethereum endpoints see anything. With a remote node (for example Aztec Labs' hosted RPC), that operator sees the user's IP, the transactions they send and the notes and logs they query. The node URL is named in code and swappable. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/yarn-project/cli/src/utils/commands.ts#L35-L40
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: yarn-project/cli/src/utils/commands.ts
+        detail: The node URL is a CLI option and AZTEC_NODE_URL environment variable; the node, which also serves as the indexer, is public code.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/cli/src/utils/commands.ts?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 35,40p
+    finding: >-
+      The data endpoint is configurable in the client, and the node that serves it is public. Scored 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr#L271-L277
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr
+        detail: A private transfer nullifies the sender's notes and creates notes owned by the recipient in the same transaction.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 271,277p
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-developers/docs/resources/considerations/limitations.md#L51-L61
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: docs/docs-developers/docs/resources/considerations/limitations.md
+        detail: The docs say some complex circuits are still under-constrained, so proof soundness is not guaranteed.
+        checked_at: "2026-10-09"
+    finding: >-
+      Funds move directly between users' notes; no one holds them in flight. The L1 backing of a bridged token sits in that token's portal, controlled by its owner, and the rollup's correctness rests on circuits the project itself calls under-constrained. Judgment call: direct transfer is anchor 3 in substance, but 3 needs onchain evidence this row cannot carry, and the soundness caveat argues against the top score; we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/governance/Governance.sol#L402-L407
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: l1-contracts/src/governance/Governance.sol
+        detail: Only the GovernanceProposer (sequencer signalling, 600 of 1,000 slots per round) can propose; execute() (L488-L506) runs arbitrary calls except to the governance asset. Read on Ethereum at block 26,153,545 with cast getConfiguration() on 0x1102…B75e - votingDelay 259200 s, votingDuration 604800 s, executionDelay 172800 s, gracePeriod 604800 s, quorum 20%, yea margin 33%; proposalCount 5.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x1102471Eb3378FEE427121c9EfcEa452E4B6B75e "getConfiguration()((uint256,uint256),uint256,uint256,uint256,uint256,uint256,uint256,uint256)" --rpc-url https://ethereum-rpc.publicnode.com
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/governance/Registry.sol#L59-L109
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: l1-contracts/src/governance/Registry.sol
+        detail: Upgrades add a new rollup version to the Registry (owner-only addRollup); Registry owner() and getGovernance() both return Governance 0x1102…B75e, numberOfVersions() is 3, and the Rollup's EIP-1967 implementation and admin slots are zero (no proxy) at block 26,153,545.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/docs/docs-participate/alpha.md#L60-L76
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: docs/docs-participate/alpha.md
+        detail: The Alpha page says a new rollup version becomes canonical while the old one stays accessible for bridging out, state does not carry over, and applications must redeploy.
+        checked_at: "2026-10-09"
+    finding: >-
+      Deployed rollup code cannot be changed in place: upgrades register a new rollup version, which needs sequencer signalling plus an AZTEC token vote, at least 12 days from proposal to execution (3-day delay, 7-day vote, 2-day execution delay), far longer than the roughly one-epoch exit to L1. The old rollup stays usable for exits. But state does not migrate, so users must move funds at each upgrade, and governance execution can call any contract. Judgment call: the timelock exceeds the user exit and the notice channel is the Alpha docs, which supports 3 in substance; we take 2 because 3 needs onchain evidence this row cannot carry and because forced migrations shift work and risk onto users.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr#L258-L277
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr
+        detail: Spending on another's behalf uses authwits (authorize_once) that authorise one exact call with a nonce and can be cancelled (cancel_authwit); the token has no standing allowance.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 258,277p
+    finding: >-
+      The reference token uses one-time authorisations for an exact action instead of allowances, and a direct transfer needs none. Judgment call: anchor 3 in substance, but 3 needs a distributed-package or trace record for the client, so we take 2; third-party tokens may differ.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/core/EscapeHatch.sol#L19-L30
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: l1-contracts/src/core/EscapeHatch.sol
+        detail: If the committee stops including a user's transactions, escape-hatch windows let a bonded candidate produce blocks; Outbox and FeeJuicePortal have no owner.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 "getEscapeHatch()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+    finding: >-
+      Derived from S1=2, C2=2, C3=3 and O3=1. Funds are notes under the user's keys (S1), any node accepts a transaction (C2), and no company service is required (C3). If Aztec Labs disappeared, users could run a node and exit through the token's portal and the ownerless Outbox. Fee Juice cannot be withdrawn at all, and a bridged token's exit depends on its portal owner. We did not reproduce a self-hosted setup (O3=1). Judgment call: 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/yarn-project/cli/src/utils/commands.ts#L28-L40
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: yarn-project/cli/src/utils/commands.ts
+        detail: Keys and API keys come from the user's environment (PRIVATE_KEY, MNEMONIC, API_KEY); nothing is bundled.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/AztecProtocol/aztec-packages/contents/yarn-project/cli/src/utils/commands.ts?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | sed -n 28,40p
+    finding: >-
+      Account keys stay in the user's PXE, and the protocol has no webhooks. The limitations page warns that the PXE does not yet enforce which apps can read a user's private data. Judgment call: 2, since 3 needs a package or trace record and the PXE data-access caveat is documented.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/audit-reports/tree/b3b60cefe2d136763d841957daa5e9bfcff0421f/l1-contracts
+        commit: "b3b60cefe2d136763d841957daa5e9bfcff0421f"
+        path: l1-contracts
+        detail: Cantina reports on the rollup contracts, governance, escape hatch and staking registry, Veridise on governance, and a governance formal verification are published; Barretenberg primitives have separate reports.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/SECURITY.md#L1-L12
+        commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+        path: SECURITY.md
+        detail: SECURITY.md says a limited-scope bug bounty is being prepared and also links a Cantina bounty page for submissions; scope is not in the repo.
+        checked_at: "2026-10-09"
+    finding: >-
+      Audit reports exist for the L1 contracts and parts of the proving library, but we did not read them for pinned commits, and the project's own docs say no part of the stack has been fully audited and some circuits are under-constrained. A bounty page is linked, with scope outside the repo. Scored 1: reports only, nothing pinned.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: global
+  note: >-
+    The rollup contracts and reference token have no country rule, and the node, PXE, aztec.js and CLI wallet contain no country or geolocation gate (code search on 2026-10-09; the only country hit is a testnet mock staking handler). Aztec Labs' hosted mainnet RPC (mainnet.rpc.aztec-labs.com) runs behind a Google Cloud Armor policy named in spartan/environments/mainnet.env whose rules are not public, so it may filter by region; users avoid it by running a node. Third-party wallets, bridges and token issuers may impose their own limits, which we did not evidence. Legality of use varies by jurisdiction; that is not an availability restriction by the protocol.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/spartan/environments/mainnet.env#L1-L30
+      commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+      path: spartan/environments/mainnet.env
+      detail: The hosted mainnet RPC is configured with RPC_CLOUD_ARMOR_POLICY_NAME=mainnet-rpc-policy; the policy's rules are not in the repo.
+      checked_at: "2026-10-09"
+      recheck: gh api "repos/AztecProtocol/aztec-packages/contents/spartan/environments/mainnet.env?ref=49a592109ec4f18d79212b43d621891aaf36f7b6" --jq .content | base64 -d | grep -n ARMOR
+    - tier: verified
+      kind: repo
+      url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/yarn-project/cli/src/utils/commands.ts#L35-L40
+      commit: "49a592109ec4f18d79212b43d621891aaf36f7b6"
+      path: yarn-project/cli/src/utils/commands.ts
+      detail: The client connects to a node URL of the user's choice (default localhost) with no location check.
+      checked_at: "2026-10-09"
+      recheck: gh search code --repo AztecProtocol/aztec-packages geoblock --json path --jq '.[].path'
+  checked_at: "2026-10-09"
+
+notes: >-
+  Unit: Aztec Alpha mainnet private token transfers. Pins: aztec-packages@49a59210 (v5.2.0; v5.2.1 changes only barretenberg), networks@7182c14b, audit-reports@b3b60cef. Ethereum reads at block 26,153,545 via publicnode: Registry 0x35b22e09Ee0390539439E24f06Da43D83f90e298, canonical Rollup 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 (proven checkpoint 99,016, pending 99,048), Governance 0x1102471Eb3378FEE427121c9EfcEa452E4B6B75e, GovernanceProposer 0x06Ef1DcF87E419C48B94a331B252819FADbD63ef, EscapeHatch 0xF459348962F5eA3A9A101826B03A2CE1F459E51A. These are Ethereum (chain 1) contracts, but this row's primary chain is aztec:mainnet, and the validator requires onchain evidence to match the primary chain, so the reads are recorded in repo evidence details with cast rechecks and contracts is empty; C1, C2, S1 and S2 are capped at 2 for that reason. No transactions, node runs, builds, traces or self-host attempts were made.

@@ -1,0 +1,465 @@
+slug: hesabpay
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: monthly maintenance, 15 points (active accounts) or AFN 15 (inactive accounts)
+      basis: Terms s4.1; HesabPay may adjust with reasonable notice.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: no issuance, periodic, 3DS or SMS fee on the Visa Card
+      basis: HesabPay Visa Card FAQ.
+      evidence_index: 1
+    - kind: fx
+      paid_by: payer
+      amount: about 1% when converting AFN to USD for card use
+      basis: HesabPay Visa Card FAQ; terms s1.4 says card currency exchange is at Da Afghanistan Bank rates.
+      evidence_index: 1
+    - kind: limit
+      paid_by: none
+      amount: Visa Card 20,000 AFN per week, 80,000 AFN per month
+      basis: HesabPay Visa Card FAQ, which says these limits are set by the Central Bank.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://hesab.com/terms
+      quote: "HesabPay reserves the right to adjust maintenance fees with reasonable notice."
+      detail: Terms and Conditions (effective 2026-04-06) s4.1 Monthly Maintenance Charges; s2.2 says statements carry no fee.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://hesab.com/visa/FAQs
+      quote: "An approximately 1% foreign-exchange fee may apply when converting funds from AFN to USD"
+      detail: HesabPay Visa Card FAQ items 05 (fees) and 06 (limits).
+      checked_at: "2026-10-09"
+  note: No published tariff for transfers, E-Hawala cash-out or agent cash-in was found on hesab.com (sitemap read 2026-10-09; /fees and /pricing return 404). Those components are unknown, not zero.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: C2
+      index: 0
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: Zinzir Ltd (HesabPay)
+      holder: provider
+      country: AF
+      regulator: Da Afghanistan Bank
+      type: Electronic money institution licence
+      number: EMI101005
+      activities: Electronic money institution; licence date 5 June 2023
+      register_url: https://www.dab.gov.af/non-banking-financial-institutions
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.dab.gov.af/non-banking-financial-institutions
+      quote: "Zinzir Ltd"
+      detail: "Da Afghanistan Bank list of licensed electronic money institutions: HesabPay, Name of EMI: Zinzir Ltd, license No: EMI101005, License Date: 5 June 2023, website https://hesab.com/."
+      checked_at: "2026-10-09"
+  note: The terms and privacy policy name HesabPay, Inc. (Delaware) as the contracting party. Neither document states how it relates to the licensee Zinzir Ltd. HesabPay's September 2026 security post says the official app is published under the Zinzir Ltd. brand. No US money-transmitter licence was looked for.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [AF]
+      method: cash_agent
+      partner: HesabPay agents (1,200+, E-Hawala)
+      evidence_index: 0
+    - countries: [AF]
+      method: bank_transfer
+      partner: Linked bank accounts
+      evidence_index: 1
+    - countries: [ALL]
+      method: atm
+      partner: HesabPay Visa Card (partner-issued), any Visa-enabled ATM
+      limits: 20,000 AFN per week, 80,000 AFN per month on the card
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://hesab.com/terms
+      quote: "Recipients receive an SMS notification and can collect cash from any of HesabPay"
+      detail: Terms s2.4 E-Hawala (cash-out transfers), also usable by recipients without a HesabPay account.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://hesab.com/terms
+      quote: "Sending and receiving money from linked bank accounts."
+      detail: Terms s1.2 services.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://hesab.com/terms
+      quote: "ATM cash withdrawals from any Visa-enabled ATM globally"
+      detail: Terms s1.4 HesabPay Visa Card. HesabPay's July 2026 announcement describes the card as virtual, so ATM use may depend on a physical card or a wallet-enabled ATM; this was not checked.
+      checked_at: "2026-10-09"
+  note: No cash-out fees are published. ALL for ATM follows the terms' "globally"; the card itself is offered only to HesabPay account holders.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: unknown
+    note: "No primary source dating the service launch was found. HesabPay's own July 2026 press release says Hesab was founded in 2018 (company, not service). The Da Afghanistan Bank EMI licence is dated 5 June 2023 (see changes)."
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: HesabPay, Inc.
+      jurisdiction: US-DE
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        quote: "where HesabPay, Inc. is incorporated in Delaware"
+        detail: Privacy Policy s8; terms s9 put the agreement under Delaware law; contact address 2093 Philadelphia Pike, Claymont, DE.
+        checked_at: "2026-10-09"
+    note: The Delaware company register was not read (its entity search sits behind a challenge page, which was not bypassed), so no registration number is recorded. The licensed entity in Afghanistan is Zinzir Ltd (see licences).
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No primary-source incident notice was found on hesab.com (sitemap and blog read 2026-10-09). HesabPay's 2026-09-01 security post warns about phishing and tampered APKs but reports no incident. No status page found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: "2023-06-05"
+        summary: Da Afghanistan Bank EMI licence EMI101005 granted to Zinzir Ltd (HesabPay).
+        url: https://www.dab.gov.af/non-banking-financial-institutions
+      - date: "2026-07-24"
+        summary: HesabPay announced the launch of Visa virtual cards in Afghanistan (own press release).
+        url: https://hesab.com/resources/blog/hesabpay-launches-visa-cards-what-users-should-know
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.dab.gov.af/non-banking-financial-institutions
+        quote: "EMI101005"
+        detail: DAB licensed EMI list entry for HesabPay.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: document
+        url: https://hesab.com/resources/blog/hesabpay-launches-visa-cards-what-users-should-know
+        quote: "today announced the launch of Hesab Visa Pay virtual cards in Afghanistan"
+        detail: HesabPay press release dated Kabul, July 24, 2026.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: Closed custodial ledger. HesabPay describes using Algorand, but no HesabPay document links a settlement address or asset, so nothing can be read and attributed from a chain. Reported figures are not recorded.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement or certificate found on hesab.com, the terms or the privacy policy.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: attested
+    value: The privacy policy states regular security audits and penetration testing; no report, date or tester is named.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        quote: "Regular security audits and penetration testing."
+        detail: Privacy Policy s4.2 Security Measures (also states PCI DSS compliance for card data).
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: The privacy policy commits to notify users of material policy changes, not of incidents.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page linked from hesab.com.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: The policy states multi-factor authentication for account access and high-value transactions; the September 2026 security post refers to PIN and OTP.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        quote: "Multi-factor authentication for account access and high-value transactions."
+        detail: Privacy Policy s4.2.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: The API reference at developers.hesab.com is a client-rendered app whose docs routes need a login; its public bundle shows no auth scheme.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "Policy states encryption at rest and in transit. Observed: hesab.com refuses TLS 1.1 and accepts TLS 1.2. No data classification found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        quote: "Your data is stored on secure servers with encryption at rest and in transit."
+        detail: Privacy Policy s4.1.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: trace
+        url: https://hesab.com
+        detail: "openssl s_client -tls1_1 to hesab.com:443 failed with alert protocol version; -tls1_2 negotiated ECDHE-ECDSA-AES128-GCM-SHA256. Run 2026-10-09."
+        checked_at: "2026-10-09"
+        recheck: "echo | openssl s_client -connect hesab.com:443 -servername hesab.com -tls1_1; echo | openssl s_client -connect hesab.com:443 -servername hesab.com -tls1_2"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Personal data kept while the account is active or as needed; transaction records at least 5 years; account deletion on request except where law requires retention.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/privacy
+        quote: "Transaction records are retained for a minimum of 5 years as required by financial regulations."
+        detail: Privacy Policy s4.3 Data Retention.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: unknown
+    note: The privacy policy speaks as HesabPay, Inc. but does not use controller or processor terms, and no DPIA is mentioned.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    note: The policy describes "blockchain-secured audit trails" for transaction records; no account-change or login logging statement was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: unknown
+    note: No public architecture document found; developer docs need a login.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: HesabPay, Inc. (Delaware, US), per the terms; Delaware law governs. Licensee in Afghanistan is Zinzir Ltd.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        quote: "This Agreement shall be governed by the laws of the State of Delaware, United States."
+        detail: Terms s9; s6 and the footer name HesabPay, Inc.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Customer fees (monthly maintenance charges, card FX); no other funding source was read.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        quote: "HesabPay reserves the right to adjust maintenance fees with reasonable notice."
+        detail: Terms s4.1.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Terms list termination grounds (fraud, breach, unregistered phone, court or government order) with no notice period and no statement of what happens to balances on termination; s2.3 says funds can be withdrawn at any time.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        quote: "Court or government orders mandating termination."
+        detail: Terms s7 Termination.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: "Yes: the Ask HesabPay AI assistant initiates transactions from natural-language commands (standard authentication still applies), and inputs go to third-party language-model providers. The policy also states automated fraud detection and real-time transaction monitoring."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hesab.com/terms
+        quote: "is an AI-powered payment assistant that allows users to initiate transactions"
+        detail: Terms s2.1 Ask HesabPay; privacy policy s3 names AI processing partners.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    note: The policy says AI inputs are not used to train third-party models; no monitoring, override or bias-evaluation documentation found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending

@@ -1,0 +1,476 @@
+slug: nullmask
+name: Nullmask
+type: incumbent
+website: https://nullmask.io
+repos: []
+contracts: []
+
+components:
+  - name: Nullmask Pool (UUPS proxy 0x8888…B026 and implementation; source not published)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Nullmask operator (unnamed company)
+    required: true
+  - name: AdminUpgradeController 0x6073…cFa1 (admin is an EOA)
+    role: contracts
+    public: false
+    license: proprietary
+    operator: Nullmask operator
+    required: true
+  - name: RPC proxy (wallet network endpoint; generates proofs, holds viewing keys)
+    role: backend
+    public: false
+    license: proprietary
+    operator: Nullmask operator
+    required: true
+  - name: Relayer (submits transfers, swaps and withdrawals)
+    role: relayer
+    public: false
+    license: proprietary
+    operator: Nullmask operator
+    required: true
+  - name: Guard deposit-screening service (EOA 0x3AAf…9239 approves deposits)
+    role: signer
+    public: false
+    license: proprietary
+    operator: Nullmask operator
+    required: true
+  - name: Third-party blockchain analytics provider (screening; unnamed)
+    role: kyc
+    public: false
+    license: proprietary
+    operator: unnamed
+    required: true
+  - name: Nullmask web app (app.nullmask.io)
+    role: frontend
+    public: false
+    license: proprietary
+    operator: Nullmask operator
+    required: false
+  - name: Uniswap V2 (swaps inside the pool)
+    role: other
+    public: true
+    license: GPL-3.0
+    operator: none (immutable)
+    required: false
+    repo: https://github.com/Uniswap/v2-core
+  - name: Ethereum mainnet
+    role: ledger
+    public: true
+    license: LGPL-3.0
+    operator: Ethereum validators
+    required: true
+    repo: https://github.com/ethereum/go-ethereum
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        url: https://etherscan.io/address/0x88888888Eb71E1D68aD0C471C6893EdEEa00B026
+        address: "0x88888888Eb71E1D68aD0C471C6893EdEEa00B026"
+        block_number: 26153596
+        detail: guard() on the Nullmask proxy returns 0x3AAfEd649423Ec28459D0Aadb7EdBAeff0FD9239 at block 26153596.
+        checked_at: "2026-10-09"
+        check:
+          call: "0x7ceab3b1"
+          expect: "0x0000000000000000000000003aafed649423ec28459d0aadb7edbaeff0fd9239"
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        url: https://etherscan.io/address/0x3AAfEd649423Ec28459D0Aadb7EdBAeff0FD9239
+        address: "0x3AAfEd649423Ec28459D0Aadb7EdBAeff0FD9239"
+        block_number: 26153596
+        eoa: true
+        detail: The guard address has no code (an EOA, nonce 95 at block 26153596).
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/compliance/guard-service.md
+        detail: Only the guard can approve or reject a pending deposit.
+        checked_at: "2026-10-09"
+        quote: Only the guard can call
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: The terms reserve upgrades, pauses of deposits, transfers, swaps and withdrawals, and fee changes, without notice.
+        checked_at: "2026-10-09"
+        quote: We can upgrade them, pause them and change fees without notice.
+    finding: >-
+      A single EOA decides, deposit by deposit, whether funds enter the pool, and the operator's keys can pause withdrawals with no notice and no maximum length. Scored 0: EOA-held role that can target individual addresses.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: The operator states transfers, swaps and withdrawals need its servers and relayer.
+        checked_at: "2026-10-09"
+        quote: These operations need our servers. The application offers no way to carry them out without them.
+    finding: >-
+      By the operator's own terms, every transfer and withdrawal is proved by its servers and submitted by its relayer, and no tooling to do otherwise is provided. The contract source is unpublished, so a direct path cannot be reconstructed. Scored 0 on the provider's admission; only a pending deposit can be taken back directly.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: The Services include the network endpoint, the screening service and the relayer, all run by the operator.
+        checked_at: "2026-10-09"
+        quote: including the network endpoint your wallet connects to, the screening service and the relayer
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/developer-guide/monorepo-structure.md
+        detail: The docs describe a web/ monorepo with rpc-proxy, relayer and guard apps; the only public repo in github.com/nullmask-io is nullmask-website (a SvelteKit landing page).
+        checked_at: "2026-10-09"
+        quote: is a Turborepo monorepo managed with pnpm
+    finding: >-
+      The RPC proxy, relayer and guard are required, closed and run by one operator. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/compliance/compliance.md
+        detail: Deposits wait in the contract until the guard approves them after chain-analysis screening.
+        checked_at: "2026-10-09"
+        quote: Every deposit to the Nullmask contract must be verified and approved by the guard service
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: Screening uses public sanctions lists, public blockchain data and an unnamed analytics provider, and withdrawal recipients are screened too.
+        checked_at: "2026-10-09"
+        quote: We use public sanctions lists, public blockchain data and a third-party blockchain analytics provider.
+    finding: >-
+      Filtering sits in the settlement path itself (guard approval of each deposit, screening of withdrawal recipients) and is disclosed in docs and terms, but the contract source is unpublished and the analytics vendor is unnamed. It cannot be bypassed. Judgment call: 1 (disclosed in documents only) rather than 0, since the filtering is disclosed.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: Supported assets are whatever the application shows; the docs describe a token whitelist without listing tokens.
+        checked_at: "2026-10-09"
+        quote: You can use only the assets shown as supported in the application.
+    finding: >-
+      Supported tokens are not enumerated in docs or public code. The terms do warn that a stablecoin issuer can freeze the pool. Scored 0: not enumerated.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        url: https://etherscan.io/address/0x4E502a53864c96f917a2062bBdf931c665A10e91
+        address: "0x4E502a53864c96f917a2062bBdf931c665A10e91"
+        block_number: 26153596
+        detail: The proxy's EIP-1967 implementation slot points at 0x4E50…0e91; Sourcify has no record of the proxy, the implementation or the upgrade controller 0x6073…cFa1, Etherscan shows all three unverified, and Blockscout reports none verified.
+        checked_at: "2026-10-09"
+        recheck: for a in 0x88888888Eb71E1D68aD0C471C6893EdEEa00B026 0x4E502a53864c96f917a2062bBdf931c665A10e91 0x60737197A1bC727ba66166ae6699F3e3Dd18cFa1; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done
+    finding: >-
+      The deployed contracts are unverified everywhere we looked, although the docs' threat model calls the smart contract "open-source, auditable". Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/developer-guide/monorepo-structure.md
+        detail: The documented monorepo (app, rpc-proxy, relayer, guard, circuits, contracts) is not public; github.com/nullmask-io has one public repo, a landing page.
+        checked_at: "2026-10-09"
+        quote: is a Turborepo monorepo managed with pnpm
+    finding: >-
+      Nothing in the payment path is public. Two repos under an unrelated account (rocket0xdev1025, created 2026-10-07) contain built site copies and are not first-party. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: The operator states it provides no tools to operate without its servers.
+        checked_at: "2026-10-09"
+        quote: Doing so would require technical tools that we do not provide.
+    finding: >-
+      No public code, so no path to self-host. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/smart-contract-reference/contracts.md
+        detail: The hosted docs describe contract hierarchy, events, errors and the RPC API; none is versioned in a public repo.
+        checked_at: "2026-10-09"
+        quote: The Nullmask smart contract is deployed behind a UUPS proxy for upgradeability
+    finding: >-
+      Interfaces are documented on a hosted site only; no ABI files, API schema or export in a repo. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/developer-guide/monorepo-structure.md
+        detail: The code needed to run the product is in an unpublished monorepo.
+        checked_at: "2026-10-09"
+        quote: is a Turborepo monorepo managed with pnpm
+    finding: >-
+      Required components are closed, so F1 is 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: Proofs, relaying and screening run only on the operator's servers.
+        checked_at: "2026-10-09"
+        quote: These operations need our servers. The application offers no way to carry them out without them.
+    finding: >-
+      The product cannot run without the operator's closed services. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 1
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: The operator's servers keep the viewing keys and can see each user's balance and full history.
+        checked_at: "2026-10-09"
+        quote: We can therefore see your private balance and your history inside the Pool
+      - tier: documented
+        kind: document
+        url: https://docs.nullmask.io/security/security.md
+        detail: The threat model says a compromised proxy can observe sender, recipient and amount in remote mode.
+        checked_at: "2026-10-09"
+        quote: Observe transaction details (sender, recipient, amount) in remote deployment mode
+    finding: >-
+      The operator holds every user's viewing keys and can link deposits to transfers and withdrawals; screening also covers connected addresses and fund sources. Disclosed in terms and docs. Scored 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: Screening uses an unnamed third-party blockchain analytics provider.
+        checked_at: "2026-10-09"
+        quote: We use public sanctions lists, public blockchain data and a third-party blockchain analytics provider.
+    finding: >-
+      The operator's proxy sees every request, and an unnamed analytics vendor receives depositor and connected addresses. Judgment call: 0 rather than 1, because the vendor's identity is not disclosed.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        url: https://etherscan.io/address/0x88888888Eb71E1D68aD0C471C6893EdEEa00B026
+        address: "0x88888888Eb71E1D68aD0C471C6893EdEEa00B026"
+        block_number: 26153596
+        detail: The pool is an ERC1967 proxy (implementation 0x4E50…0e91) holding about 0.26 ETH (balance read at block 26153477); upgradeController() is 0x6073…cFa1.
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000004e502a53864c96f917a2062bbdf931c665a10e91"
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: The terms state an upgrade can change who can move assets, with no notice.
+        checked_at: "2026-10-09"
+        quote: An upgrade can change any rule of the Pool, including the rules that decide who can move assets.
+    finding: >-
+      Funds sit in an upgradeable pool whose upgrade authority rests on an EOA (S2), and the operator says an upgrade can change who can move assets. Scored 0: the provider can redirect funds.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        url: https://etherscan.io/address/0x60737197A1bC727ba66166ae6699F3e3Dd18cFa1
+        address: "0x60737197A1bC727ba66166ae6699F3e3Dd18cFa1"
+        block_number: 26153596
+        detail: admin() of the upgrade controller returns 0xFf298cd8f82CAb44874d83507715d3dC245D9CCd; the controller's bytecode exposes only execute(address,bytes), transferAdmin(address), admin() and one view, with no delay function.
+        checked_at: "2026-10-09"
+        recheck: cast call 0x60737197A1bC727ba66166ae6699F3e3Dd18cFa1 "admin()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          call: "0xf851a440"
+          expect: "0x000000000000000000000000ff298cd8f82cab44874d83507715d3dc245d9ccd"
+      - tier: verified
+        kind: onchain
+        chain_id: 1
+        url: https://etherscan.io/address/0xFf298cd8f82CAb44874d83507715d3dC245D9CCd
+        address: "0xFf298cd8f82CAb44874d83507715d3dC245D9CCd"
+        block_number: 26153596
+        eoa: true
+        detail: The controller admin has no code (an EOA, nonce 81 at block 26153596).
+        checked_at: "2026-10-09"
+    finding: >-
+      Upgrades are authorised through a controller whose admin is a single EOA, with no timelock visible in its bytecode. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: Shielded funds can be moved only through the operator's servers.
+        checked_at: "2026-10-09"
+        quote: These operations need our servers. The application offers no way to carry them out without them.
+    finding: >-
+      Derived from S1=0, C2=0, C3=0, O3=0: if the operator disappeared, shielded balances could not be moved with any public tooling; only pending (unscreened) deposits can be taken back directly. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    unknown: true
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    score: 0
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://app.nullmask.io/terms
+        archive: data/archive/nullmask-terms.txt
+        detail: The terms state the pool contracts are unaudited.
+        checked_at: "2026-10-09"
+        quote: At the Effective Date the Pool contracts have not been independently audited.
+    finding: >-
+      No audit, by the operator's own statement; no bug bounty found. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: blocklist
+  countries: [CU, IR, KP, SY, AE]
+  note: >-
+    From section 2.3 of the Terms of Use (effective 1 Oct 2026). Also restricted: the Crimea, Donetsk and Luhansk regions of Ukraine (Ukraine itself is not listed), and "any other country or territory under comprehensive sanctions" of the UN, US, EU or UK, which the terms do not name, so only named countries are listed. The operator may block any address, device or network. The pool contracts gate deposits through the guard, so the protocol is not usable outside the operator's service.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://app.nullmask.io/terms
+      archive: data/archive/nullmask-terms.txt
+      detail: Section 2.3 defines the Restricted Territories.
+      checked_at: "2026-10-09"
+      quote: the Crimea, Donetsk and Luhansk regions of Ukraine;
+  checked_at: "2026-10-09"
+
+notes: >-
+  Eligibility: no verified contract and no public repository needed to run the product, so type is incumbent although Nullmask presents itself as a privacy transfer protocol. It is deployed: the Ethereum mainnet pool proxy 0x88888888Eb71E1D68aD0C471C6893EdEEa00B026 (also listed for Arbitrum, Base, BSC and MegaETH at 0x8888…b4A2) has code and holds ETH, and app.nullmask.io is live. Searched 2026-10-09: docs.nullmask.io (supported networks, contract reference, compliance, threat model, developer guide), app.nullmask.io terms (client-rendered; read in a browser and archived), github.com/nullmask-io (one repo, nullmask-website, a SvelteKit landing page with no licence), GitHub search for "nullmask", Sourcify, Etherscan and Blockscout. Mainnet reads at block 26153596 (guard, upgrade controller, admin) and 26153477 (implementation slot, balance). Re-assess as type transfer if the contracts are verified or the monorepo is published.

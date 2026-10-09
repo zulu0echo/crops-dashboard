@@ -1,0 +1,38 @@
+Source: https://www.coca.xyz/post/coca-monthly-update-september-2026
+Fetched: 2026-10-09 (curl; Wix page, served intermittently without body text). Visible text with tags stripped:
+COCA Monthly Update: September 2026 top of page Home Cashback Contacts Docs Press News More... Use tab to navigate through the menu items. Get Free Card Home Cashback Contacts Docs Press News Menu 
+Close COCA Monthly Update: September 2026 1 day ago 4 min read September was another record breaker. You spent more with your COCA Card in September than in any month before. The Loyalty Program got 
+a major update, $COCA staking jumped 273%, we launched a new app feature, ran three campaigns, went live on Paymentscan, and sat down with the community for an AMA. In other words, there was a lot 
+going on. Here&#x27;s the full September recap 👇 📈 Growth & Momentum Month after month, COCA Card transaction volume keeps hitting new records, and September was no exception. Card Transaction Volume: 
++11% MoM Loyalty Tier Upgrades: +89% MoM $COCA Staked: +273% MoM 🔎 Now you can follow our numbers yourself. In September, COCA went live on Paymentscan , a public tracker for crypto card activity. 
+There you can check the COCA Card&#x27;s spending volume and number of transactions, and follow its growth over time. See COCA on Paymentscan . 🎁 The Updated Loyalty Program On September 1, we 
+launched the updated COCA Loyalty Program, giving you more control over your rewards. Here&#x27;s what&#x27;s new: ⚡ Claim Rewards Anytime You can claim your rewards whenever you want. The 10th of the 
+month is no longer payout day. 💸 No Cap on Cashback Your tier&#x27;s cashback rate applies to all eligible purchases, with no monthly cap on how much you earn. 📊 Monthly Claim Capacity Each Loyalty 
+tier comes with a Monthly Claim Capacity: the amount of rewards you can claim each month. It depends on your tier and on how much $COCA you&#x27;ve staked. 🔥 Claim Capacity Boosters Your Claim 
+Capacity can also grow with three boosters: Payment Booster : the more you spend with your COCA Card, the higher your capacity next month. Loyalty Booster : stay on a paid tier, and your capacity 
+grows every 3 months. $COCA Staking Booster : every extra 100 $COCA you stake adds $1 to your capacity, with no full tier upgrade needed. Together, the Payment and Loyalty Boosters can grow your 
+Claim Capacity up to $450 a month. All three boosters are now in the app with COCA 3.9.0, and you can see how each one works in our Help Center . Want the full breakdown? Read the updated Loyalty 
+Program guide on our blog. 🪙 $COCA Distribution Lock Extended to 2027 Back in February this year, we locked all new $COCA token distributions until December 1, 2026. In September, we extended that 
+lock until December 1, 2027 . It&#x27;s a long-term step to keep the Loyalty Program sustainable. Read more about the Only Up! tokenomics. 🎂 The Loyalty Program Turns One In September, the COCA 
+Loyalty Program turned one. To mark the occasion and say thank you, we extended all discounted tiers that expire this year through December 31, 2026 🥳 To keep your tier and your Loyalty Booster after 
+that date, you can top up your stake to the full required amount before then. ⚙️ Product Updates & Improvements 💱 USD ↔ EUR Exchange We launched USD ↔ EUR exchange in the COCA app. You can now convert 
+between dollars and euros in Banking → Exchange. 🛠 Fixes & Improvements Some of the changes came straight from your feedback. Exchange rates are now easier to read: you see how much of your local 
+currency one USDC is worth. Transaction details also show which account currency you paid from. For card-to-card transfers, transaction details now show the fee as well. On the $COCA screen, the 
+"Exchange" button is now called "Sell". 💸 September Campaigns 🚀 30% Off Every Loyalty Tier All September, you could upgrade to any paid Loyalty tier with 30% fewer $COCA staked, saving up to 9,000 
+$COCA. The discounted tier benefits stay with you for 6 full months. Many of you took the chance. September saw 3x more Loyalty tier upgrades than usual. 🍎 Extra Cashback on Apple From September 18 to 
+30, every Apple purchase with your COCA Card earned an extra 1% cashback on top of your regular rate, up to $135 back. Any tier could join, with no minimum spend. Over those two weeks, Apple spending 
+with COCA hit 2.5x its usual level. 🇹🇷 End-of-Summer Harvest All September, the first 50 users who spent $100 with COCA got a $10 cashback. Those who also staked 300 $COCA and posted their summer 
+moment entered the draw for an iPhone 18. 💬 Staying Close to the Community On September 22, our Chief Product Officer Max Holub joined our Telegram chat for a Community AMA . He answered your 
+questions about the updated Loyalty Program and Monthly Claim Capacity, banking and transfers, the COCA Card, and what the team is building for the rest of 2026. Missed it? Read the full recap on our 
+blog . We also kept the Community FAQ going, with the team answering your most frequent questions. 📖 Sabre&#x27;s Story: No More Off-Ramp Grind In September, we published a new user story from our 
+community. Its hero, Sabre, is a developer from Cape Town who gets paid in crypto. Spending it used to mean P2P deals and days of waiting for fiat to reach his bank account. After one of those deals, 
+the bank froze his funds for a year. With COCA, his life became much easier. He pays with his crypto directly, without routing it through a bank first. His advice is simple: "Stop wasting time and 
+just tap." Read Sabre&#x27;s full story on our blog . 🌍 More People Are Talking About COCA COCA continues to grow traction, and every month we see more mentions of COCA on social media. Crypto card 
+reviewers, influencers, and media outlets are talking about COCA more and more. Many of the mentions also come from you, showing how you use your COCA Card in everyday life. Keep sharing your COCA 
+moments and tagging @coca_card . We read your posts and love seeing them. 💙 🚀 What&#x27;s Next October is already busy. Our CEO Vasili Paulau is attending TOKEN2049 Singapore to meet partners and 
+explore new opportunities to grow COCA. Meanwhile, here&#x27;s what the team is working on: Support tickets in the app : you&#x27;ll be able to reach our support team without leaving the COCA app. A 
+clearer look for boosters : an improved design that makes your Claim Capacity Boosters easier to follow. Refunds in your Activity : refunds will show up right there, next to your other transactions. 
+Plenty of UI improvements across the app . Thanks for all your support and making September a record month once again! 💙 Team COCA Recent Posts See All A Bank Froze His Money for a Year. Now He Pays 
+With COCA and Skips the Bank Community AMA Recap: Loyalty Program and What&#x27;s Next iPhone 18 Pro Is Here: Get Up to $135 Cashback on Any Apple Purchase With COCA Card Join over 1M+ crypto users 
+worldwide ALREADY EARNING CASHBACK, YIELD, AND REAL-LIFE PERKS WITH COCA Need Help? Home ​ Wallet Cashback Contacts Press Docs Policy & Docs ​ Privacy Policy Cookie Policy Terms and Conditions &copy; 
+2026 by ccalabs Home Cashback Contacts Docs Press News bottom of page

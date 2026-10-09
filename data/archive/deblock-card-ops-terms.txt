@@ -1,0 +1,63 @@
+Source: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
+Linked from the public help article https://intercom.help/deblock/en/articles/8915729-why-did-you-close-my-account ("You can see all T&Cs in this page").
+Document: Deblock SAS Client Terms and Conditions, Version 12.3, Date 23 Feb 2026 (51-page PDF, English translation; the French version prevails).
+Retrieved 2026-10-09 with curl (no token). Text read from the PDF; excerpts below are verbatim, page numbers in brackets.
+
+[p1] Deblock SAS Client Terms and Conditions
+Version: 12.3
+Date: 23 Feb 2026
+Deblock ("Deblock") is a simplified joint stock company with a capital of €2,500,000, whose registered office is located at Spaces Shake Building - 612 Rue de la chaude rivière 59800 Lille, France, registered under number 948 264 163 in the Trade and Companies Register of Lille. Deblock is registered as an electronic money institution licensed by the ACPR under number CIB 17748, and a Crypto-Assets services provider, licensed by the AMF under license number A2025-001.
+
+[p4] « Shard » Deblock will split the Private Key into two components, otherwise described as Shards. One shard will exist on the user's mobile device, and the other on the Deblock back-end. See Section 5.1 for more information.
+
+[p5] The Client's Non-Custodial Wallet will have a dual signing mechanism, whereby one encrypted shard of the private key will be stored in the Client's Deblock App and the other in the Deblock Backend.
+Deblock holds the right to reject the co-signature if it believes that fraudulent activity is taking place.
+
+[p6] The funds within this wallet are safeguarded in accordance with Directive 2015/2366/EU (PSD2).
+Physical Card Issuance: Deblock will issue the Client a unique Deblock Debit Card.
+
+[p7] ATM Withdrawals: The Client is able to retrieve cash from ATMs using the Client's Deblock card.
+
+[p8] The Customer declares that at the time of registration to the Service:
+He/she has permanent residency in France
+She/he isn't a "US Person" or assimilated to, i.e. they are not an American taxpayer within the meaning of the American tax administration and the Foreign Account Tax Compliance of March 18, 2010
+
+[p11] The Client must be 18 or over and a legal resident in France to open a Deblock Account.
+
+[p16] 4.1.3. Paypal top-ups
+Clients residing in Germany (i.e. Clients who provided an address in Germany) may add funds to their Account using their PayPal account via the Deblock application.
+
+[p17] Sometimes Deblock might charge the Client a fee for making withdrawals. The Client can read about these fees on Deblock's Fees page.
+
+[p23] In accordance with its Order Execution Policy, Deblock is currently working with Keyrock France.
+
+[p30] place it into one of the dedicated client money bank accounts that we hold with commercial or central banks (client money accounts keep the Client's money separated from Deblock's own money, and the types of banks we can use are set by regulations)
+
+[p32-33] 8.4. Strong Authentication
+Following connection to their Deblock account, which follows a strong authentication, the individual customer is invited to define a 4-digit code (hereinafter "4-digit code"), which will be requested when performing sensitive operations.
+If the individual customer wishes, the authentication via the 4-digit code can be replaced by a biometric authentication managed by their smartphone (fingerprint or facial recognition).
+
+[p34] In this respect, they may have to set up monitoring systems and, in the presence of transactions that appear to them to be inconsistent or suspicious, unusual or exceptional, to inquire the Client as to the origin or destination of the funds, the purpose and nature of the transaction or the identity of the person benefiting from it.
+
+[p37] 9. Suspending or closing the Client's account
+The Customer adheres to the Conditions for an indefinite period. Unless otherwise provided by law, Deblock Services may be terminated without cause and at any time.
+Deblock may terminate the Individual Client's access to the Deblock Services, at no cost to the Client, by notification via email, after the expiry of a two-month notice period. In accordance with the law, Deblock is not required to justify the termination decision.
+
+[p38] However, Deblock is exempted from respecting the two-month notice period and may immediately close the Customer Account for one of the following reasons:
+Following the termination notification and after settlement of the remaining transactions which have yet to settle, Deblock closes the Customer Account and makes a transfer of an amount corresponding to the balance available on its Payment Account, to the Bank Account of the Individual Customer whose contact details have been previously communicated to Deblock Support or registered in the application.
+
+[p39] 9.2.1. Termination
+The Client can close the Client's Account for free, and so end this agreement, at any time and without any delay by letting us know.
+9.3. Withdrawing money
+If you, or we, close the Client's account, we will give the Client at least 60 days to withdraw the money we hold for the Client (unless there are reasons preventing the transfer).
+
+[p40] For six years after the Client's account has closed or the Client's Deblock card has expired, you'll be able to contact customer services (at support@deblock.com) and ask them to send the Client the money we still hold for you.
+9.5. Accessing the Client's Non-Custodial Wallet
+When the Client opts to close their deblock account the Client will be given both shards of the Client's private key, meaning the Client will continue to have access to the Client's wallet and the Client's Crypto-Assets held at the wallet.
+
+[p46] 11.5. Continuity of services and malfunctions
+Deblock will make its best efforts to ensure the continuity of the Service.
+
+[p47] 13. Processing personal information
+Under data protection law, we are what is known as the 'data controller' of the Client's personal information.
+The Client can withdraw the Client's permission by closing the Client's account, which will end the agreement between the Client and us. If the Client does this, we'll stop using the Client's information for the purpose of providing Deblock's services, but we may need to keep the Client's information for other legal reasons.

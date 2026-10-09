@@ -38,3 +38,21 @@
 - Also read: the XPlace Card privacy policy, which has residents' disclosures for Nevada and Brazil but no country restrictions.
 - Recorded as a blocklist of 17, with the US states in `note`.
 - Judgment calls: the US is not blocked, because only 16 states are restricted. The s3.2 list also covers nationals of those countries, which a country-of-residence map cannot show; this is stated in `note`. No unnamed sanctioned jurisdictions were added.
+
+## Operational 2026-10-09
+
+File: `data/operational/xplace-card.yaml`. Bot facts (B2.1, B2.3, B8.2, B9.x) left as filled.
+
+- **XPlace docs read** (GitBook, `.md` variants via llms.txt; quotes checked against the HTML): product pages (membership, credit, collateral, portfolio, cashback, card overview, issue and use card), Terms (effective 20 May 2026), Privacy Policy (20 May 2026), Card Privacy Policy, Card Terms US and International (25 October 2025), EULA (15 October 2025). Homepage for the FYEO claim. status.x.place does not resolve; no security.txt.
+- **Registers.** CBN microfinance bank list (client-rendered; `/api/GetMFBs` record archived as `data/archive/xplace-card-ops-cbn-mfb-register.txt`): ODOAKPU MFB present. VARA public register (server-rendered): no Pontech or XPlace entry; Rain MENA FZE is listed (VL/26/10/001) but XPlace does not name it. No Meydan Free Zone register could be read.
+
+Judgment calls:
+- **Custody `hybrid`**: collateral in Kamino under the user's obligation (S1 = 1), card balance and settlement with Rain/issuer offchain.
+- **Licences evidenced for the Nigerian marketing partner only**; Rain, "Third National" and the US issuer are noted, not listed. Pontech's VARA absence is in the note rather than a separate `absent` state, because one partner licence is evidenced.
+- **Fees**: the May 2026 terms (FX 0 to 1% by tier plus Visa 1%) conflict with the October 2025 card terms (0% FX); both recorded with the basis.
+- **First deployment `unknown`**: no XPlace-owned program address; klend's deployment would date Kamino, not XPlace.
+- **Volume `not_observable`**: offchain settlement, Solana, no XPlace market identified.
+- **B1.4 `attested`** from the homepage FYEO line (no report). **B6.5 `attested`**: SCCs on request. **B10.1 `absent`** with the docs index as the search.
+- **Left `unknown`**: B1.1 to B1.3, B1.5, incidents.
+
+Validator: offline 0 errors; online 0 errors.

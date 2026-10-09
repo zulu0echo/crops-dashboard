@@ -1,0 +1,566 @@
+slug: tuyo-card
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: zerodevapp/kernel
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
+        detail: "zerodevapp/kernel: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: zerodevapp/kernel
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
+        detail: "zerodevapp/kernel: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: zerodevapp/kernel
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
+        detail: "zerodevapp/kernel: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: zerodevapp/kernel
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/rules/branches/dev
+        detail: "zerodevapp/kernel: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: zerodevapp/kernel
+          ok: true
+          detail: 1 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
+        detail: "zerodevapp/kernel: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: zerodevapp/kernel
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
+        detail: "zerodevapp/kernel: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: zerodevapp/kernel
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
+        detail: "zerodevapp/kernel: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: zerodevapp/kernel
+          ok: true
+          detail: "latest tags: v4.0.0-beta.15, v4.0.0-beta.13, v4.0.0-beta.12"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/tags
+        detail: "zerodevapp/kernel: latest tags: v4.0.0-beta.15, v4.0.0-beta.13, v4.0.0-beta.12"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: zerodevapp/kernel
+          ok: true
+          detail: 6 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/commits?per_page=10
+        detail: "zerodevapp/kernel: 6 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: zerodevapp/kernel
+          ok: true
+          detail: 9 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
+        detail: "zerodevapp/kernel: 9 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: zerodevapp/kernel
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
+        detail: "zerodevapp/kernel: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.4:
+    status: attested
+    value: The Tuyo legal hub lists a "Security audits" section with a file "Tuyo card.pdf" (374.1 KB). The file was not downloaded, so auditor, scope and date are not recorded.
+    evidence:
+      - tier: claimed
+        by: provider
+        kind: document
+        url: https://about.tuyo.com/
+        archive: data/archive/tuyo-card-ops-about-index.txt
+        detail: Tuyo legal hub (Notion, client-rendered) index, Security audits section.
+        checked_at: 2026-10-09
+        quote: Security audits
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Deleting the account in the app cancels the Tuyo Card and the virtual bank account numbers at Tuyo's providers; KYC data may be kept by Tuyo and its providers for up to 5 years. The privacy policy (2024) says technical logs are kept "for a limited period" without a figure.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Delete-your-Tuyo-account-272bde147092806ea058e39f02b4aae4
+        archive: data/archive/tuyo-card-ops-delete-account.txt
+        detail: Tuyo account deletion page.
+        checked_at: 2026-10-09
+        quote: all your provided KYC information might be kept by Tuyo and/or our providers for up to 5 years for regulatory reasons
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Privacy-Policy-ab80528d2dfa4860854dee593fbad459
+        archive: data/archive/tuyo-card-privacy.txt
+        detail: Privacy Policy (17 July 2024), technical information.
+        checked_at: 2026-10-09
+        quote: These logs are retained for a limited period for diagnostic and security purposes.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The Tuyo privacy policy (17 July 2024) names Tuyo and shares ramp data with Bridge under Bridge's own policy; it predates the card and uses no controller/processor terms. The issuer's notice (Third National) covers card data; BANEX handles Nigerian users' data under the Nigeria Data Protection Act. No DPIA statement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Privacy-Policy-ab80528d2dfa4860854dee593fbad459
+        archive: data/archive/tuyo-card-privacy.txt
+        detail: Privacy Policy, section 4 Sharing Your Information.
+        checked_at: 2026-10-09
+        quote: We share your personal information with our partner Bridge which provides you with on and offramp services.
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Account-Opening-Disclosure-1a2bde147092806b8713e3fe2ce0bd76
+        archive: data/archive/tuyo-card-ops-account-opening.txt
+        detail: Issuer privacy notice published as the Account Opening Disclosure.
+        checked_at: 2026-10-09
+        quote: WHAT DOES THIRD NATIONAL ("Issuer") DO WITH YOUR PERSONAL INFORMATION?
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: "Logical view only: Tuyo's help guides describe the signer (BIP-39 key on the device), the ZeroDev Kernel 3.2 smart account on Base, and the separate collateral account with its two release routes (counterparty-signed release, or depositor ejection after a cooldown). No infrastructure or integration architecture is published."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.tuyo.com/guides/understand-your-smart-account.html
+        detail: Guide "Your recovery phrase and smart-account address", verified by Tuyo on 15 September 2026.
+        checked_at: 2026-10-09
+        quote: "Normal release: requires the depositor and a valid counterparty signature."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: "Tuyo, Inc. under the Terms of Service (Delaware law); the card agreements are three-way between the user, Tuyo Inc. and the issuer, Third National; for Nigerian users the card is marketed by BANEX Microfinance Bank Limited. No company-register entry was found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
+        archive: data/archive/tuyo-card-ops-cardholder-international.txt
+        detail: Tuyo Cardholder Agreement (International), defined terms.
+        checked_at: 2026-10-09
+        quote: The issuer for this card program is Third National.
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Terms-of-Service-1f5bde14709281b2a8fff4a20910b4ed
+        archive: data/archive/tuyo-card-terms.txt
+        detail: Terms of Service governing-law clause.
+        checked_at: 2026-10-09
+        quote: These Terms of Service will be governed by the laws of the State of Delaware
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Tuyo may suspend or terminate an account at its sole discretion without prior notice and may delete account data; the issuer may cancel the card with or without notice. Because the wallet is self-custodial, the Terms say a suspended user can still export the wallet or withdraw via a block explorer; funds already in the card collateral account follow its release rules (counterparty signature or ejection cooldown).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Terms-of-Service-1f5bde14709281b2a8fff4a20910b4ed
+        archive: data/archive/tuyo-card-terms.txt
+        detail: Terms of Service s3.3 Self-Custodial Wallet.
+        checked_at: 2026-10-09
+        quote: you can utilize tokens by exporting your wallet or withdrawing funds via the block explorer on the applicable blockchain
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
+        archive: data/archive/tuyo-card-ops-cardholder-international.txt
+        detail: Cardholder Agreement (International) s4.
+        checked_at: 2026-10-09
+        quote: We may terminate or suspend your use of the Card or the Account, with or without notice to you
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: none
+      amount: No issuance, monthly or yearly fee
+      basis: help.tuyo.com Tuyo Card guide; US cardholder agreement lists 0 USD annual fee.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: 1% FX fee on non-USD spend plus 1% abroad fee (card provider) outside the US; up to 2% per purchase
+      basis: Card guide and FAQ. The international cardholder agreement allows up to 3% FX plus up to 3% cross-border; the US agreement states 1% on international transactions. Fees may change on 30 days' notice.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: "Ceiling in the international agreement: FX up to 3% and cross-border up to 3%"
+      basis: Tuyo Cardholder Agreement (International), Important Disclosures effective 7 March 2025.
+      evidence_index: 1
+    - kind: provider
+      paid_by: payer
+      amount: 0.25% volume fee on trades; bridging and stablecoin-to-stablecoin trades exempt
+      basis: Tuyo FAQ.
+      evidence_index: 2
+    - kind: cashout
+      paid_by: payer
+      amount: "ATM: no Tuyo fee stated; ATM operator fees and FX apply and count toward the 250 USD cap"
+      basis: ATM withdrawals guide.
+      evidence_index: 3
+    - kind: limit
+      paid_by: none
+      amount: Daily card limit up to 50,000 USD for new cards, rising to 100,000 and 200,000 USD with cumulative spend
+      basis: Card guide and card limits guide.
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/card.html
+      detail: Tuyo Card guide, card details table and FAQ.
+      checked_at: 2026-10-09
+      quote: 1% on any purchase made outside the US (charged by our card provider)
+    - tier: documented
+      kind: document
+      url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
+      archive: data/archive/tuyo-card-ops-cardholder-international.txt
+      detail: International cardholder agreement, Important Disclosures.
+      checked_at: 2026-10-09
+      quote: "Foreign Exchange Fee (non-USD): up to 3%"
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/faq.html
+      detail: Tuyo FAQ, fees.
+      checked_at: 2026-10-09
+      quote: Tuyo charges a volume fee of 25 basis points (0.25%)
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/atm-withdrawals.html
+      detail: ATM withdrawals guide, fees and FX.
+      checked_at: 2026-10-09
+      quote: ATM withdrawal fees and FX markups depend entirely on the ATM operator
+  note: Bank-transfer (off-ramp) fees and Bridge's conversion charges are not stated in the guides; the app shows them before confirming. The US agreement lists a 2% late-payment fee; the international agreement lists none.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: unknown
+  note: "Not recorded because CROPS S1 is unknown in the provider file and this value must agree with it. Tuyo's own guide now describes the structure: funds rest in the user's Kernel smart account; card funds move to a per-user collateral account (implementation 0x221677d8... on Base, Sourcify exact match) released only with a counterparty signature or by depositor ejection after a cooldown. That reads as hybrid; the provider file's S1 should be re-assessed with this collateral contract before this fact is set."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: attested
+  value:
+    - entity: BANEX Microfinance Bank Limited
+      holder: partner
+      country: NG
+      regulator: Central Bank of Nigeria
+      type: Microfinance bank licence (as stated by Tuyo)
+      activities: Markets the Tuyo Card to Nigerian users and is responsible for CBN requirements and Nigerian data protection for them.
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
+      archive: data/archive/tuyo-card-ops-cardholder-international.txt
+      detail: International cardholder agreement s7.4 Nigerian Users.
+      checked_at: 2026-10-09
+      quote: a financial institution licensed by the Central Bank of Nigeria (CBN)
+  note: "Attested from Tuyo's agreement only; the CBN register was not reached (its microfinance list page returned no list to curl). The issuer for both programmes is Third National; no Tuyo document states its regulator or licence number, FDIC BankFind lists no active institution of that name, and Puerto Rico's OCIF register was not reachable for sibling providers. Bank accounts are provided by Bridge, whose licences were not checked."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_spend
+      partner: Third National (issuer), Visa
+      fee: 1% FX and 1% abroad fee, up to 2%
+      limits: Virtual card with Apple Pay and Google Pay; daily limit up to 50,000 USD for new cards. Spending blocked in CU, IR, KP, RU, SY, UA, VE.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Third National (issuer), Visa ATMs
+      fee: ATM operator fee and FX only
+      limits: 250 USD per withdrawal including surcharge; 3 attempts per rolling 24 h; select Credit and enter the PIN.
+      evidence_index: 1
+    - countries: [ALL]
+      method: bank_transfer
+      partner: Bridge
+      fee: not stated (shown in app)
+      limits: USD (ACH, domestic wire), EUR (SEPA), MXN (SPEI where available); Bridge does not serve 20 listed countries or New York residents.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/card.html
+      detail: Tuyo Card guide.
+      checked_at: 2026-10-09
+      quote: Keep custody. Your funds stay in your control until the moment you spend them.
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/atm-withdrawals.html
+      detail: ATM withdrawals guide.
+      checked_at: 2026-10-09
+      quote: "Maximum per withdrawal: $250 USD"
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/wire-transfer-availability.html
+      detail: Bank accounts availability guide with Bridge's country table.
+      checked_at: 2026-10-09
+      quote: Not available means Bridge will not facilitate bank-account services
+    - tier: documented
+      kind: document
+      url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
+      archive: data/archive/tuyo-card-ops-cardholder-international.txt
+      detail: International cardholder agreement s4 says cash advances are not available.
+      checked_at: 2026-10-09
+      quote: Cash advances and balance transfers are not available under these Card Terms.
+  note: "Contradiction: the international cardholder agreement says cash advances are not available, while the help guide documents ATM withdrawals for the virtual card; the US agreement treats ATM use as a cash advance where enabled. Recorded as the help guide states."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2025-02-25
+      block: 26827639
+      what: CollateralAccount implementation 0x221677d88E507D21b4f7eC4D8D17e0f2FEd526af on Base, named by Tuyo as its card collateral implementation
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/8453/0x221677d88E507D21b4f7eC4D8D17e0f2FEd526af
+        address: "0x221677d88E507D21b4f7eC4D8D17e0f2FEd526af"
+        chain_id: 8453
+        block_number: 26827639
+        detail: Code size is 0 at Base block 26827638 and 9963 bytes at 26827639 (2025-02-25 00:50:25 UTC); Sourcify reports an exact runtime match for src/collateral/CollateralAccount.sol:CollateralAccount. Tuyo's smart-account guide links this address as the verified collateral implementation.
+        checked_at: 2026-10-09
+        recheck: cast codesize 0x221677d88E507D21b4f7eC4D8D17e0f2FEd526af --block 26827638 --rpc-url https://mainnet.base.org; cast codesize 0x221677d88E507D21b4f7eC4D8D17e0f2FEd526af --block 26827639 --rpc-url https://mainnet.base.org
+      - tier: documented
+        kind: document
+        url: https://help.tuyo.com/guides/understand-your-smart-account.html
+        detail: The guide links basescan.org/address/0x221677d8...#code as the collateral implementation it reviewed.
+        checked_at: 2026-10-09
+        quote: Verified collateral implementation and release rules
+    note: The collateral implementation is not in the provider file's contracts list (it was not known at seed time); per-user collateral proxies were not enumerated. The card agreements' disclosures are effective from 7 March 2025, consistent with this date.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Tuyo, Inc.
+      jurisdiction: US
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Terms-of-Service-1f5bde14709281b2a8fff4a20910b4ed
+        archive: data/archive/tuyo-card-terms.txt
+        detail: Terms of Service name Tuyo, Inc. and choose Delaware law.
+        checked_at: 2026-10-09
+        quote: These Terms of Service will be governed by the laws of the State of Delaware
+    note: "Judgment call: the Terms name Tuyo, Inc. but not its state of incorporation; US is inferred from the Delaware governing-law clause and the Delaware support number (302). No register entry: the Delaware ICIS search is CAPTCHA-gated (not bypassed) and SEC EDGAR full-text search has no filer named Tuyo."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident report or post-mortem found in help.tuyo.com guides (all 40 linked from the index), the about.tuyo.com legal hub, or the Terms. Tuyo has no public GitHub organisation to search.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2025-03-07
+        summary: Card disclosures effective (US cardholder agreement last updated; international Important Disclosures effective); issuer Third National.
+        url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-United-States-1a2bde147092805694e6db6d96273668
+      - date: 2025-11-25
+        summary: International cardholder agreement last updated; the current text names Third National as issuer and BANEX Microfinance Bank for Nigerian users.
+        url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
+      - date: 2026-07-28
+        summary: Terms of Service updated.
+        url: https://about.tuyo.com/Terms-of-Service-1f5bde14709281b2a8fff4a20910b4ed
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-United-States-1a2bde147092805694e6db6d96273668
+        archive: data/archive/tuyo-card-ops-cardholder-us.txt
+        detail: US cardholder agreement header.
+        checked_at: 2026-10-09
+        quote: "Last Updated: March 7th, 2025"
+      - tier: documented
+        kind: document
+        url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
+        archive: data/archive/tuyo-card-ops-cardholder-international.txt
+        detail: International cardholder agreement header.
+        checked_at: 2026-10-09
+        quote: "Last updated: November 25th, 2025"
+    note: "What changed on 2025-11-25 is not stated by Tuyo; the summary names the clause present now. Also announced without a date: card spending from vaults is being phased out in favour of Cash (help guide vault-to-Cash update)."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_observable
+  reason: Card funds are collected from per-user collateral proxies whose addresses Tuyo does not publish; the listed contracts (Kernel implementation and ECDSA validator) are shared by all ZeroDev accounts and emit no card-specific events, so card settlement cannot be separated from ordinary USDC transfers over listed contracts.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

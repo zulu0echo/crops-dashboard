@@ -1,0 +1,878 @@
+slug: worm
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: no security policy file
+        - repo: worm-privacy/proof-of-burn
+          ok: false
+          detail: no security policy file
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: no security policy file
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: no security policy file
+        - repo: worm-privacy/trusted-setup
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
+        detail: "worm-privacy/worm: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
+        detail: "worm-privacy/proof-of-burn: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
+        detail: "worm-privacy/worm-miner: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
+        detail: "worm-privacy/worm-privacy.github.io: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
+        detail: "worm-privacy/trusted-setup: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: worm-privacy/proof-of-burn
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: worm-privacy/trusted-setup
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
+        detail: "worm-privacy/worm: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
+        detail: "worm-privacy/proof-of-burn: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
+        detail: "worm-privacy/worm-miner: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
+        detail: "worm-privacy/worm-privacy.github.io: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
+        detail: "worm-privacy/trusted-setup: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: no deployment configuration
+        - repo: worm-privacy/proof-of-burn
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: worm-privacy/worm-miner
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: true
+          detail: "deployment configuration: Dockerfile"
+        - repo: worm-privacy/trusted-setup
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
+        detail: "worm-privacy/worm: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
+        detail: "worm-privacy/proof-of-burn: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
+        detail: "worm-privacy/worm-miner: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
+        detail: "worm-privacy/worm-privacy.github.io: deployment configuration: Dockerfile"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
+        detail: "worm-privacy/trusted-setup: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: worm-privacy/proof-of-burn
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: worm-privacy/trusted-setup
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/rules/branches/main
+        detail: "worm-privacy/worm: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/rules/branches/main
+        detail: "worm-privacy/proof-of-burn: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/rules/branches/stable
+        detail: "worm-privacy/worm-miner: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/rules/branches/main
+        detail: "worm-privacy/worm-privacy.github.io: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/rules/branches/main
+        detail: "worm-privacy/trusted-setup: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: worm-privacy/worm
+          ok: true
+          detail: 1 workflow file(s)
+        - repo: worm-privacy/proof-of-burn
+          ok: true
+          detail: 2 workflow file(s)
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: 1 workflow file(s)
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: 1 workflow file(s)
+        - repo: worm-privacy/trusted-setup
+          ok: false
+          detail: 5 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
+        detail: "worm-privacy/worm: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
+        detail: "worm-privacy/proof-of-burn: 2 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
+        detail: "worm-privacy/worm-miner: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
+        detail: "worm-privacy/worm-privacy.github.io: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
+        detail: "worm-privacy/trusted-setup: 5 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: worm-privacy/worm
+          ok: true
+          detail: test command in a workflow
+        - repo: worm-privacy/proof-of-burn
+          ok: false
+          detail: test command in a workflow
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: test command in a workflow
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: test command in a workflow
+        - repo: worm-privacy/trusted-setup
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
+        detail: "worm-privacy/worm: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
+        detail: "worm-privacy/proof-of-burn: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
+        detail: "worm-privacy/worm-miner: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
+        detail: "worm-privacy/worm-privacy.github.io: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
+        detail: "worm-privacy/trusted-setup: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: coverage tooling referenced
+        - repo: worm-privacy/proof-of-burn
+          ok: false
+          detail: coverage tooling referenced
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: coverage tooling referenced
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: coverage tooling referenced
+        - repo: worm-privacy/trusted-setup
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
+        detail: "worm-privacy/worm: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
+        detail: "worm-privacy/proof-of-burn: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
+        detail: "worm-privacy/worm-miner: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
+        detail: "worm-privacy/worm-privacy.github.io: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
+        detail: "worm-privacy/trusted-setup: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: no tags
+        - repo: worm-privacy/proof-of-burn
+          ok: false
+          detail: no tags
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: no tags
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: no tags
+        - repo: worm-privacy/trusted-setup
+          ok: false
+          detail: "latest tags: final, circuit_data, 0082_worm-privacy"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/tags
+        detail: "worm-privacy/worm: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/tags
+        detail: "worm-privacy/proof-of-burn: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/tags
+        detail: "worm-privacy/worm-miner: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/tags
+        detail: "worm-privacy/worm-privacy.github.io: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/tags
+        detail: "worm-privacy/trusted-setup: latest tags: final, circuit_data, 0082_worm-privacy"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: 2 of 10 recent commits signed
+        - repo: worm-privacy/proof-of-burn
+          ok: false
+          detail: 2 of 10 recent commits signed
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: 1 of 10 recent commits signed
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: true
+          detail: 5 of 10 recent commits signed
+        - repo: worm-privacy/trusted-setup
+          ok: true
+          detail: 5 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/commits?per_page=10
+        detail: "worm-privacy/worm: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/commits?per_page=10
+        detail: "worm-privacy/proof-of-burn: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/commits?per_page=10
+        detail: "worm-privacy/worm-miner: 1 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/commits?per_page=10
+        detail: "worm-privacy/worm-privacy.github.io: 5 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/commits?per_page=10
+        detail: "worm-privacy/trusted-setup: 5 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: no changelog or release notes
+        - repo: worm-privacy/proof-of-burn
+          ok: false
+          detail: no changelog or release notes
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: no changelog or release notes
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: no changelog or release notes
+        - repo: worm-privacy/trusted-setup
+          ok: true
+          detail: 4 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
+        detail: "worm-privacy/worm: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
+        detail: "worm-privacy/proof-of-burn: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
+        detail: "worm-privacy/worm-miner: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
+        detail: "worm-privacy/worm-privacy.github.io: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
+        detail: "worm-privacy/trusted-setup: 4 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: worm-privacy/worm
+          ok: false
+          detail: none found
+        - repo: worm-privacy/proof-of-burn
+          ok: true
+          detail: contribution section in README
+        - repo: worm-privacy/worm-miner
+          ok: false
+          detail: none found
+        - repo: worm-privacy/worm-privacy.github.io
+          ok: false
+          detail: none found
+        - repo: worm-privacy/trusted-setup
+          ok: true
+          detail: contribution section in README
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
+        detail: "worm-privacy/worm: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
+        detail: "worm-privacy/proof-of-burn: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
+        detail: "worm-privacy/worm-miner: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
+        detail: "worm-privacy/worm-privacy.github.io: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
+        detail: "worm-privacy/trusted-setup: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: The README links audits by Hashlock and yAudit (circuits, 2025-11); neither is tied to the deployed commit eab0f53b. No review of the hosted prover is listed.
+    refs:
+      - criterion: S6
+        index: 0
+      - criterion: S6
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No SECURITY file, disclosure page or patch timeline found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No status page for the hosted prover and no post-mortems found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: The hosted prover and relay API (prover-2.worm.cx) takes unauthenticated JSON POSTs; the frontend sends the burn key, receiver, fees and account proof with only a Content-Type header.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/worm-privacy.github.io/blob/5c309e254871bdda9a3537f35c7f06c7f25527e4/src/lib/core/miner-api/proof-post.ts#L4-L40
+        commit: 5c309e254871bdda9a3537f35c7f06c7f25527e4
+        path: src/lib/core/miner-api/proof-post.ts
+        detail: POST /proof with headers Content-Type only; the payload includes burn_key and receiver_address.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Logical view in the circuit and contract READMEs (burn address, nullifier, coin and commitment design; deployment addresses); integration view in the worm-miner README (CLI and server). No infrastructure view of the hosted prover.
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/worm-privacy/proof-of-burn/blob/92a7ecd1c5317ee383cf7b26b2977731ca6ff4fe/README.md#L9-L40
+        commit: 92a7ecd1c5317ee383cf7b26b2977731ca6ff4fe
+        path: README.md
+        detail: Circuit design, public inputs, burn-key, nullifier and coin definitions.
+        checked_at: 2026-10-09
+    refs:
+      - criterion: O3
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: The protocol's only fee (0.5% of each mint and spend) goes to the Staking contract for WORM stakers, not to a team address; no other funding source for the team or the hosted prover is published.
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 26153606
+        detail: rewardPool() is the Staking contract 0x03d4…60B7, which has no owner.
+        checked_at: 2026-10-09
+        check:
+          call: "0x66666aa9"
+          expect: "0x00000000000000000000000003d4702b51a98661b89df5fcbe8c4baef84c60b7"
+    refs:
+      - criterion: C1
+        index: 2
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: absent
+    value: No automated screening or AI in the payment path. mintCoin checks only nullifier, mint cap, block hash and proof, and the frontend has no country, sanctions or analytics code. The hosted prover's behaviour cannot be seen.
+    refs:
+      - criterion: C4
+        index: 0
+      - criterion: C4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: not_applicable
+    reason: No AI component in the payment path (B12.1 absent).
+    burden: none
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payee
+      amount: 0.5% pool fee on every mint and spend, minted to the Staking reward pool
+      basis: BETH constant POOL_SHARE_INV = 200, immutable (no owner, no proxy); deducted from the revealed amount, so the payee receives less.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payee
+      amount: Prover fee and broadcaster fee chosen by the payer at burn time; 0 when the payee proves and submits itself
+      basis: Bound into the burn-address commitment and paid from the revealed amount; the CLI defaults the prover fee to 0. Fees charged by the hosted prover-2.worm.cx are not published.
+      evidence_index: 1
+    - kind: network
+      paid_by: both
+      amount: "Ethereum gas: the burn is a plain ETH transfer; sample mintCoin 393,690 gas at 0.134 gwei (0.0000527 ETH)"
+      basis: The payer pays the burn transfer; whoever submits mintCoin (payee or broadcaster) pays its gas. Sample tx 0x2d9afb3d…c433 (2026-10-08).
+      evidence_index: 2
+    - kind: fx
+      paid_by: payee
+      amount: BETH to ETH conversion at the CypherETH pool price through the optional BETHToETH hook; no fixed rate
+      basis: The payee receives BETH; its ETH value depends on AMM liquidity. Pool fee and slippage not recorded.
+      evidence_index: 0
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/worm-privacy/worm/blob/eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6/src/BETH.sol#L163-L240
+      commit: eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6
+      path: src/BETH.sol
+      detail: mintCoin computes poolFee = revealedAmount / POOL_SHARE_INV (L187; constant 200 at L14) when a reward pool is set, requires proverFee + broadcasterFee to fit in the rest (L201), and mints the fees to the prover and msg.sender and the pool fee to the reward pool (L232-L239). spendCoin applies the same 0.5% (L270).
+      checked_at: 2026-10-09
+      recheck: gh api "repos/worm-privacy/worm/contents/src/BETH.sol?ref=eab0f53b111d016aaaedaeb05b5fbbc53b74c9c6" --jq .content | base64 -d | sed -n 185,240p
+    - tier: verified
+      kind: repo
+      url: https://github.com/worm-privacy/worm-miner/blob/fd23cd8012f550cf4950dad02e79c1ce9d39b809/README.md#L37-L64
+      commit: fd23cd8012f550cf4950dad02e79c1ce9d39b809
+      path: README.md
+      detail: CLI burn takes --broadcaster-fee and --prover-fee; the prover fee defaults to 0 for self-proving.
+      checked_at: 2026-10-09
+    - tier: verified
+      kind: onchain
+      url: https://eth.blockscout.com/tx/0x2d9afb3d106a4a4e6025b2910d42aacd1edd1ecc5dbb711aabc334629b99c433
+      address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+      block_number: 26146294
+      detail: mintCoin (selector 0x64a27e3c) in block 26146294, 2026-10-08 07:50:11 UTC, revealed 0.12 BETH, of which 0.0006 BETH (0.5%) was minted for the reward pool; the transaction used 393,690 gas at 0.134 gwei.
+      checked_at: 2026-10-09
+      recheck: cast receipt 0x2d9afb3d106a4a4e6025b2910d42aacd1edd1ecc5dbb711aabc334629b99c433 --rpc-url https://rpc.mevblocker.io
+  note: Between deployment (2026-02-11) and the reward-pool initialisation (2026-02-23) the pool fee was 0, because the contract skips it while no pool is set.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: Agrees with S1 (score 3). Between burn and mint no one holds the value; the right to mint is fixed to the payee by the burn-address commitment, and no role can move or redirect BETH. The holder of the burn key decides when to mint.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: absent
+  evidence:
+    - tier: verified
+      kind: api
+      url: https://api.github.com/orgs/worm-privacy
+      detail: The worm-privacy GitHub organisation names no company; worm.cx has no terms page (worm.cx/terms returns 404) and the frontend source contains no terms or licence text.
+      checked_at: 2026-10-09
+      recheck: gh api orgs/worm-privacy --jq '{name,company,blog}'
+  note: No operating entity is disclosed, so no register could be searched; no licence is claimed anywhere WORM publishes. The team runs the optional hosted prover and broadcaster at prover-2.worm.cx.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: not_applicable
+  reason: The payee receives BETH (or ETH through the optional swap hook) at its own Ethereum address; converting to local currency is outside the protocol.
+  burden: institution
+  refs:
+    - criterion: C2
+      index: 0
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2026-02-11
+      block: 24436025
+      what: BETH 0x5624…9Cf8 on Ethereum, tx 0x681f4deb…8516 from 0x8DC7…C0Bb.
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8?fields=deployment
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 24436025
+        detail: Sourcify creation data (exact match) gives tx 0x681f4debcc8ceb6c905e7f831cbcf48e79a6d09e6df93d1caa57ba68be6a8516 in block 24436025, deployer 0x8DC77b145d7009752D6947B3CF6D983caFA1C0Bb; the block is dated 2026-02-11 20:49:47 UTC.
+        checked_at: 2026-10-09
+        recheck: curl -s "https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8?fields=deployment"
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: absent
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/orgs/worm-privacy
+        detail: The organisation profile has no company field; it links only worm.cx.
+        checked_at: 2026-10-09
+        recheck: gh api orgs/worm-privacy --jq '{name,company,blog}'
+    note: "Searched: the GitHub org profile and repositories (READMEs, frontend source), worm.cx (no terms, imprint or company name; /terms is 404). No legal entity is named."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/worm-privacy/worm/security-advisories
+        detail: No published security advisories for worm-privacy/worm (worm-privacy/worm-miner also has none).
+        checked_at: 2026-10-09
+        recheck: for r in worm worm-miner; do gh api repos/worm-privacy/$r/security-advisories --jq length; done
+    note: No incident or post-mortem found in the repositories or on worm.cx.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2026-02-11
+        summary: BETH deployed with immutable verifiers and a one-time initializer; no reward pool set, so no pool fee.
+        url: https://eth.blockscout.com/tx/0x681f4debcc8ceb6c905e7f831cbcf48e79a6d09e6df93d1caa57ba68be6a8516
+      - date: 2026-02-23
+        summary: initRewardPool sets the Staking contract 0x03d4…60B7 as reward pool and clears the initializer (tx 0x3c0d39e1…f7dc); the 0.5% pool fee applies from then on.
+        url: https://eth.blockscout.com/tx/0x3c0d39e1d1910bfef250ce798b849473c318b8a9e5e0a8aa90c12a929033f7dc
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x5624344235607940d4d4EE76Bf8817d403EB9Cf8
+        address: "0x5624344235607940d4d4EE76Bf8817d403EB9Cf8"
+        block_number: 24518725
+        detail: rewardPool() changes from zero to 0x03d4…60B7 at block 24518725 (bisected with historical eth_call), where tx 0x3c0d39e1…f7dc from the deployer calls BETH with selector 0x1891708b; initializer() reads zero afterwards. Staking itself was deployed at block 24500500 (Sourcify).
+        checked_at: 2026-10-09
+        recheck: cast call 0x5624344235607940d4d4EE76Bf8817d403EB9Cf8 "rewardPool()(address)" --block 24518724 --rpc-url https://rpc.mevblocker.io
+    note: The contracts are immutable, so these are the only changes possible. The worm repository's main branch has later, undeployed changes (configurable pool share); they would need a new deployment.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_observable
+  reason: The payer's leg is a plain ETH transfer to an unlinkable burn address (no log). The payee's leg, mintCoin, emits only ERC-20 Transfer logs from the zero address; the sender is an indexed topic, which the volume spec cannot filter, so mints cannot be separated from ordinary BETH transfers and AMM swaps.
+  note: A from-topic filter in scripts/volumes.mjs would make mints countable (Transfer from 0x0 on BETH, amount in word 0, including the fee mints to prover, broadcaster and pool). 32 mint transactions in the last 200,000 blocks to 2026-10-09 (read for the gas sample).
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+notes: Operator-free transfer protocol (no required closed component); operator controls are recorded only for the WORM-run hosted prover and broadcaster, which the official send flow uses by default. Custodial controls are left unset (self-custody). Bot facts (B2.1, B2.3, B8.2, B9.x) untouched.

@@ -1,0 +1,28 @@
+Source: https://register.fca.org.uk/s/firm?id=0010X000047SC0tQAG
+Retrieved: 2026-10-09 in a browser (the FCA Register is client-rendered); visible text of the firm details section, abridged to the firm, status and protection blocks.
+
+Wirex Limited
+Reference number: 902025
+Firm details
+Address
+8 Devonshire Square
+London
+EC2M 3TY
+UNITED KINGDOM
+Website
+www.wirexapp.com/en-gb
+Firm reference number
+902025
+Registered company number
+09334596
+Firm status
+Type
+EMD
+Payment services / electronic money status
+Authorised Electronic Money Institution
+Since 17/08/2018
+A firm that we have given permission to issue electronic money (e-money) and provide payment services.
+Trading names
+This firm currently trades under 2 trading names.
+How are customers protected?
+The FSCS will not be able to provide compensation if this firm goes out of business owing you money.

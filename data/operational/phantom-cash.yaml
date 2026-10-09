@@ -1,0 +1,520 @@
+slug: phantom-cash
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement found for Phantom Technologies, Inc. on phantom.com/security, the Terms of Use, the Privacy Policy or the Cash help-centre section. Bridge, Stripe, Lead Bank and Galileo were not checked.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: Hosting provider and its certification are not named in any Phantom document read.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement found on phantom.com/security or in the legal pages.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: "Phantom publishes two third-party audit reports for its wallet (Kudelski Security 2021, Least Authority 2024) in github.com/phantom/audit-reports. Both predate Phantom Cash (announced 30 September 2025); no review covering the Cash backend, the Cash account or Bridge's debit-card contract was found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/security
+        detail: Security page, "Independently audited", links to github.com/phantom/audit-reports.
+        checked_at: 2026-10-09
+        quote: Our code has been audited by top software auditing firms
+      - tier: verified
+        kind: repo
+        url: https://github.com/phantom/audit-reports/tree/3450f82bc6c633f5d2eceee9a979f98ac1ca3cb3
+        commit: 3450f82bc6c633f5d2eceee9a979f98ac1ca3cb3
+        path: .
+        detail: Repository root at this commit holds Kudelski-Security-2021.pdf, Least_Authority-2024.pdf and a README saying it contains all third-party audit reports for Phantom.
+        checked_at: 2026-10-09
+        recheck: gh api repos/phantom/audit-reports/contents?ref=3450f82bc6c633f5d2eceee9a979f98ac1ca3cb3 --jq '.[].name'
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report or letter found. Phantom runs a bug bounty on Cantina (up to 50,000 USD per the security page; security.txt Policy points at phantom.com/bug-bounty), which is not a penetration test.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No patch service levels found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No customer incident-notification commitment found in the Terms of Use, Privacy Policy or Cash help articles.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: The help centre's compromise article tells users to move funds to a new wallet and contact support; no service recovery plan found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Public status page at status.phantom.com (StatusPal) covering the extension, mobile app, backend, website and external dependencies; it has no Cash, card or bank-transfer component and showed no incident history on 2026-10-09. No post-mortems found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.phantom.com
+        detail: StatusPal status page; components listed are Browser Extension, Mobile App, Phantom Backend, Phantom Website and external dependencies (Blowfish, CoinGecko, Magic Eden, Solana RPC).
+        checked_at: 2026-10-09
+        quote: Incident & maintenance history
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Sign-in to the Phantom profile (and so the Cash account) is by Google or Apple account, recovery phrase or private key; on mobile the app is protected by device authentication such as Face ID or fingerprint. No separate second factor is described for Cash.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/how-your-wallet-is-secured-49409417837843
+        detail: Help article "How your wallet is secured", device-level protections.
+        checked_at: 2026-10-09
+        quote: authentication such as Face ID or fingerprint
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: unknown
+    note: The Privacy Policy (last updated 7 July 2026) has no security or encryption section; no data classification or TLS statement found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: "Phantom keeps personal information as long as necessary for the purposes collected; no fixed periods. Phantom says it does not store KYC documents (Link does). Closing the Cash account (by request to support) deletes the virtual account numbers and closes the debit card, but Link's KYC data is not deleted and must be deleted at Link. See CROPS P2 for what is collected."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/privacy
+        detail: Privacy Policy (last updated 7 July 2026), US state section and Europe Retention section.
+        checked_at: 2026-10-09
+        quote: We retain personal information for as long as necessary to carry out the purposes for which we originally collected it
+      - tier: documented
+        kind: document
+        url: https://help.phantom.com/articles/understanding-what-happens-when-your-cash-account-is-closed-46791622675347
+        detail: Help article on Cash account closure.
+        checked_at: 2026-10-09
+        quote: Your Link account and identity verification (KYC) data are not deleted
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Phantom Technologies, Inc. publishes the policy; KYC data is processed by third-party service providers on Phantom's behalf, and Phantom says it may act as data controller for KYC only when sharing it with partners at the user's direction. GDPR lawful bases are listed for European users. No DPIA statement found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/privacy
+        detail: Privacy Policy, information collected directly from you (KYC).
+        checked_at: 2026-10-09
+        quote: we may act as a data controller with respect to your KYC information
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No data processing agreement is published. The Europe section offers access, on request, to the safeguards used for international transfers (possibly redacted).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: unknown
+    note: Help pages describe the partner roles (Link KYC, Stripe funding and card, Bridge bank transfers and programme management, Lead Bank issuer, Galileo disputes); no architecture document found.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: "Phantom Technologies, Inc. (Delaware corporation) under the Terms of Use and as Platform Provider for the card; the card agreement is with Lead Bank (Missouri state-chartered bank), with Bridge Ventures LLC (Delaware LLC) as Program Manager. Bank transfers run through Bridge; Stripe handles funding and, per a help article updated in October 2026, now issues replacement cards."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.bridge.xyz/card-agreements/phantom-card
+        detail: Lead Bank Prepaid Visa Cardholder Agreement, parties.
+        checked_at: 2026-10-09
+        quote: Phantom Technologies, Inc. , a Delaware Corporation
+      - tier: documented
+        kind: document
+        url: https://phantom.com/terms
+        detail: Terms of Use (last updated 17 March 2026) name Phantom Technologies, Inc. as the contracting party and include Phantom Cash in the Functionality.
+        checked_at: 2026-10-09
+        quote: "Last updated: March 17, 2026"
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Customer fees (0.85% on most Cash swaps, onramp fees, fast-withdrawal fee; see fees) plus revenue shared by execution partners (searchers, validators, market makers) under the Terms. Phantom is a private company; no financial statements found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/terms
+        detail: Terms of Use, Arrangements with Third Parties.
+        checked_at: 2026-10-09
+        quote: Partners may share fees they earn from these arrangements with Phantom
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: "Phantom may terminate access at any time without notice; the bank may cancel or suspend the card at any time without prior notice except as law requires. On card closure the fiat balance is returned to the Phantom wallet as stablecoin (balances under 1 USD may be withheld). Closing the Cash account is permanent, by request to support; CASH stays in the user's Solana account, and Link KYC data is not deleted."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/terms
+        detail: Terms of Use, Termination.
+        checked_at: 2026-10-09
+        quote: in our sole discretion, at any time and without notice to you
+      - tier: documented
+        kind: document
+        url: https://www.bridge.xyz/card-agreements/phantom-card
+        detail: Lead Bank cardholder agreement, closing the card and amendment and cancellation.
+        checked_at: 2026-10-09
+        quote: any Fiat Currency balance remaining will be returned to your Platform Provider wallet in the form of Stablecoins
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: unknown
+    note: The Privacy Policy describes fraud prevention using phone numbers, payment details, merchant location and wallet associations but does not say whether automated or AI systems decide. The Terms' AI Agent sections cover user-run agents, not Phantom's compliance.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: none
+      amount: Virtual card issuance free; domestic US purchases free; no fee for loading the card or replacing it
+      basis: Cash fees help article and Lead Bank cardholder agreement; the bank may change fees on notice.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: International purchases "fees may apply", shown before confirming; no figure published
+      basis: Cash fees help article.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: 0.85% on swaps out of Cash (except to USDC) and on non-stablecoin swaps into Cash; stablecoin swaps in free
+      basis: Cash fees help article; Terms say fees may change without notice and are shown before confirming.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: "Funding: debit card 1.75%, credit card 3.50% (Stripe, US and EU); ACH deposit 0.30%; domestic wire 1.00%"
+      basis: Cash fees help article; banks and card partners may add their own fees.
+      evidence_index: 1
+    - kind: cashout
+      paid_by: payer
+      amount: Standard ACH withdrawal free; fast ACH withdrawal 1.00 USD + 0.75% (min 1.50 USD)
+      basis: Cash fees help article; US except New York.
+      evidence_index: 2
+    - kind: network
+      paid_by: payer
+      amount: One-time Solana account setup fee when sending CASH to a wallet that has never held it (varies with SOL price)
+      basis: Cash fees help article, described as a network requirement, not a Phantom fee.
+      evidence_index: 3
+    - kind: limit
+      paid_by: none
+      amount: 2,000 USD per card transaction; 2,000 USD per day (up to 5,000 after 30 days); money-transfer merchants 500 USD per week
+      basis: Lead Bank cardholder agreement (per-transaction limit) and the debit card help article (daily and weekly limits).
+      evidence_index: 4
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/cash-fees-44800531617939
+      detail: Cash fees help article, Phantom debit card table.
+      checked_at: 2026-10-09
+      quote: Virtual card issuance Free Domestic purchases in the US Free
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/cash-fees-44800531617939
+      detail: Cash fees help article, onramps and offramps table.
+      checked_at: 2026-10-09
+      quote: Add cash by debit card, incl. Apple Pay (Stripe, US + EU) 1.75%
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/cash-fees-44800531617939
+      detail: Cash fees help article, onramps and offramps table.
+      checked_at: 2026-10-09
+      quote: Fast ACH withdrawal (US only) $1.00 flat + 0.75% (min $1.50)
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/cash-fees-44800531617939
+      detail: Cash fees help article, onchain actions.
+      checked_at: 2026-10-09
+      quote: Solana requires a one-time setup fee for wallets receiving CASH for the first time
+    - tier: documented
+      kind: document
+      url: https://www.bridge.xyz/card-agreements/phantom-card
+      detail: Lead Bank Prepaid Visa Cardholder Agreement, transaction limitations; the help article "Use your virtual Phantom debit card" gives the daily and weekly limits.
+      checked_at: 2026-10-09
+      quote: Your maximum per transaction limit will be $2,000.00
+  note: Swap fees of 0.85% also cover swaps from the Cash account into other Solana stablecoins (USDT, USDG, PYUSD). Bridge's spread on the CASH-to-USD conversion at card payment is not stated; the card agreement says Bridge and Phantom conduct the stablecoin sale and refers fee questions to them.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: The user holds the keys to the Cash account, but the CASH mint's permanent delegate (issuer side, Bridge) can move or burn CASH from any holder and a freeze authority can freeze accounts; at payment Bridge draws CASH into its debit-card contract. Agrees with the S1 finding (score 0), which contradicts the FAQ's "self-custodial" statement.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: Lead Bank
+      holder: partner
+      country: US
+      regulator: FDIC (primary federal regulator); state charter, Missouri
+      type: State-chartered commercial bank, FDIC-insured, non-member (BKCLASS NM)
+      number: FDIC certificate 8283
+      activities: Issuer of the Phantom debit card (Lead Bank Prepaid Visa); Kansas City, MO; active.
+      register_url: https://banks.data.fdic.gov/bankfind-suite/bankfind/details/8283
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://api.fdic.gov/banks/institutions?filters=CERT:8283&fields=NAME,CERT,CITY,STNAME,REGAGNT,ACTIVE,BKCLASS,CHRTAGNT,ESTYMD,FED_RSSD&limit=1
+      archive: data/archive/phantom-cash-ops-fdic-lead-bank.txt
+      detail: FDIC BankFind API record for certificate 8283, Lead Bank, Kansas City, Missouri; active, state charter, regulator FDIC, class NM.
+      checked_at: 2026-10-09
+      quote: '"NAME":"Lead Bank"'
+      recheck: curl -s 'https://api.fdic.gov/banks/institutions?filters=CERT:8283&fields=NAME,ACTIVE,REGAGNT,BKCLASS'
+    - tier: documented
+      kind: document
+      url: https://www.bridge.xyz/card-agreements/phantom-card
+      detail: The cardholder agreement names Lead Bank, a Missouri state-chartered bank, as issuer.
+      checked_at: 2026-10-09
+      quote: Missouri state-chartered bank
+  note: "Only the issuer is register-checked. Phantom says it is not a bank and names no licence of its own. Bridge's footer says US services are provided by Bridge Building Inc. (NMLS ID 2450917); NMLS Consumer Access returned 403 to curl and was not bypassed, so that licence is not recorded. Card funds are not FDIC insured (cardholder agreement). The Cash help article updated in October 2026 says Stripe now issues the card and replacement cards are Stripe-issued, while the same page and phantom.com/cash still name Lead Bank; the issuer of replacement cards was not identified."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [US]
+      method: card_spend
+      partner: Lead Bank (issuer), Bridge Ventures LLC (programme manager), Stripe, Visa
+      fee: Domestic free; international "fees may apply"
+      limits: Virtual card only, US except New York; 2,000 USD per transaction and per day (5,000 after 30 days).
+      evidence_index: 0
+    - countries: [US]
+      method: bank_transfer
+      partner: Bridge (US bank withdrawals, ACH)
+      fee: Standard free; fast 1.00 USD + 0.75% (min 1.50 USD)
+      limits: US except New York, KYC via Link; converted 1:1; to own or another person's linked US bank account.
+      evidence_index: 1
+    - countries: [ALL]
+      method: exchange
+      partner: Kraken (the only exchange that accepts CASH on Solana per Phantom)
+      fee: Solana network fees; exchange fees not recorded
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/use-your-virtual-phantom-debit-card-us-only-44800221533459
+      detail: Debit card help article; declined merchant categories include cash advances and ATM withdrawals.
+      checked_at: 2026-10-09
+      quote: The standard daily transaction limit is $2,000 USD
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/withdraw-money-from-your-cash-account-directly-to-a-us-bank-44800172520467
+      detail: Withdraw to a US bank help article.
+      checked_at: 2026-10-09
+      quote: converted at a 1:1 rate
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/cash-on-exchanges-and-brokerages-48631671713427
+      detail: CASH on exchanges and brokerages help article; Coinbase, Binance, OKX and others do not support CASH.
+      checked_at: 2026-10-09
+      quote: Kraken is currently the only exchange that supports sending and receiving CASH on Solana
+  note: No ATM cash-out; the card declines cash advances and ATM withdrawals, and the cardholder agreement bars cashback. Outside the US the Cash balance can only leave as CASH or swapped tokens to a Solana wallet.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2025-09-30
+      what: Phantom Cash announced with a waitlist; the post says it rolls out the following month. No dated general-availability source found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/learn/blog/introducing-phantom-cash
+        detail: Phantom blog post introducing Phantom Cash (New Money, Now in Your Wallet), 30 September 2025.
+        checked_at: 2026-10-09
+        quote: when it rolls out next month
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Phantom Technologies, Inc.
+      jurisdiction: US-DE
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.bridge.xyz/card-agreements/phantom-card
+        detail: Lead Bank cardholder agreement names Phantom Technologies, Inc., a Delaware corporation, as Platform Provider; the Terms of Use name the same company.
+        checked_at: 2026-10-09
+        quote: Phantom Technologies, Inc. , a Delaware Corporation
+    note: Not checked in the Delaware Division of Corporations register (interactive search), so no register_url or file number.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident report for Phantom Cash or the debit card found. Searched status.phantom.com (no Cash component, empty history), the Cash help-centre section and the Phantom blog post list. The help centre's card-replacement wording (Stripe-issued replacement cards) gives no reason or date.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2025-09-30
+        summary: Phantom Cash announced (waitlist; Lead Bank prepaid Visa via Bridge).
+        url: https://phantom.com/learn/blog/introducing-phantom-cash
+      - date: 2026-03-17
+        summary: Terms of Use last updated (Phantom Cash and AI Agent sections).
+        url: https://phantom.com/terms
+      - date: 2026-07-07
+        summary: Privacy Policy last updated.
+        url: https://phantom.com/privacy
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://phantom.com/terms
+        detail: Terms of Use header.
+        checked_at: 2026-10-09
+        quote: "Last updated: March 17, 2026"
+      - tier: documented
+        kind: document
+        url: https://phantom.com/privacy
+        detail: Privacy Policy header.
+        checked_at: 2026-10-09
+        quote: "Last updated: July 7, 2026"
+    note: "Undated change: help articles updated in October 2026 say Stripe issues the card and handles disputes, and refer to replacement Stripe-issued cards, while older text on the same pages names Lead Bank, Bridge and Galileo. Not entered as a dated change."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: No listed contracts. Card payments move CASH to Bridge's debit-card contract, whose address is not published and whose addresses rotate; the card settles over Visa on Lead Bank's closed ledger.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

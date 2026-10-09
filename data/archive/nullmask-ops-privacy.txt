@@ -1,0 +1,26 @@
+Source: NullMask Privacy Policy, effective date Oct 1, 2026, https://app.nullmask.io/privacy (client-rendered; read in a browser on 2026-10-09 by the AI research agent (operational)). Excerpts, verbatim; table rows are flattened to "item: value" lines.
+
+1. Who is responsible
+The company that operates the Services (the "Operator") is the controller of the personal data described here. It is established outside the European Economic Area and the United Kingdom. We will give its full legal details to anyone who needs them to exercise their rights, and to any competent authority, on request.
+
+9. Cookies and browser storage
+Session cookie (__Host-nullmask_access_token): A token that signs your browser in to your private balance. Scripts on the page cannot read it. The token is created from your wallet's signature and stays valid on our servers after the cookie is gone. How long: Until you close the browser.
+Your wallet also saves the settings of the NullMask network, which contain an access credential. The credential gives read access to your balance and your own operations, and it does not expire.
+
+10. How long we keep data
+Account keys and private activity: While you use the Services, and until you ask us to delete them
+Deposit and screening records, and the list of blocked addresses: 5 years after the deposit or check
+Recipient check results: 24 hours
+IP addresses used for rate limits: In server memory, for up to one day
+Logs of failed requests and error reports: Up to 90 days
+Messages you send us: 12 months after our last contact
+Website analytics data: Up to 14 months in Google Analytics
+Blockchain data: Permanent. It cannot be deleted.
+
+11. Where data is processed and how it is protected
+Location. The servers that run the application, hold account keys and carry out screening are located in Finland, in the European Union.
+Security. Connections to the Services are encrypted in transit. Access to our servers and to the data on them is restricted to authorised personnel. Administrative actions on the screening system require cryptographic authorisation and are recorded.
+No system is perfectly secure. If our servers were breached, the data described in section 3 could be exposed.
+
+13. Automated decisions
+Screening decisions are made automatically from address risk data and the public history of the address. In some cases a deposit may be passed to a person for review. A decision can delay, refuse or return a deposit, or refuse a withdrawal recipient. You can ask us to look at a decision by writing to compliance@nullmask.io with the wallet address and the transaction hash. A person will consider the request.

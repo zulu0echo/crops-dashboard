@@ -1,0 +1,48 @@
+Source: NullMask Terms of Use, effective date Oct 1, 2026, https://app.nullmask.io/terms (client-rendered; read in a browser on 2026-10-09 by the AI research agent (seed)). Excerpts, verbatim.
+
+Key points
+NullMask keeps your activity private from outside observers of the blockchain. It does not keep it private from us: our servers process the keys that read your private balance and history.
+Every deposit is screened before it enters the pool. A deposit can wait, be refused or be returned.
+We control the smart contracts. We can upgrade them, pause them and change fees without notice.
+The software is new and has not been independently audited. You can lose all assets you deposit.
+
+1.2 The Services. The "Services" are the website at nullmask.io, the web application at app.nullmask.io, our documentation, and the servers we run to support them, including the network endpoint your wallet connects to, the screening service and the relayer. The "Pool" is the set of NullMask smart contracts on Ethereum mainnet.
+
+2.3 Restricted Territories. You must not use the Services if you are located in, resident in, a citizen of, or organised in a Restricted Territory. "Restricted Territory" means:
+Cuba, Iran, North Korea and Syria;
+the Crimea, Donetsk and Luhansk regions of Ukraine;
+the United Arab Emirates; and
+any other country or territory under comprehensive sanctions of the United Nations, the United States, the European Union or the United Kingdom.
+We may change this list at any time.
+
+2.6 Your statements. We do not verify your identity or location. Each time you use the Services you confirm that this section 2 is true for you. We may block access from any address, device or network at our discretion.
+
+3.2 Network and assets. The Services work on Ethereum mainnet only. You can use only the assets shown as supported in the application. We may add or remove supported assets at any time.
+
+4.4 Account keys. When you first use the Services, your wallet signs a message. Our servers use that signature to create viewing and receiving keys for your NullMask account, and they keep those keys. The keys let our servers read your private balance and history. They do not allow spending.
+
+5.3 Screening. Before a deposit is credited, we screen the depositing address and addresses connected with the deposit, such as the sender of the transaction and recent sources of the funds. We use public sanctions lists, public blockchain data and a third-party blockchain analytics provider. Screening is carried out on wallet addresses. We do not ask for your identity.
+
+5.6 Taking a deposit back. While a deposit is pending, you can take it back from the depositing address. It is returned to that address only. You pay the network gas for this transaction. You can do this even while the Pool is paused.
+
+6.1 How these operations work. You sign each operation with your wallet. Our servers prepare the cryptographic proof, and our relayer submits the operation to Ethereum and pays the network gas.
+
+6.2 Dependence on our servers. These operations need our servers. The application offers no way to carry them out without them. Doing so would require technical tools that we do not provide.
+
+6.6 Withdrawals. A withdrawal sends assets from the Pool to an Ethereum address. The recipient address, the asset, the amount, the network and service fee and the time are public. We screen the recipient address and may refuse to send to it.
+
+8.1 We control the Pool contracts. The Pool contracts are upgradeable and are controlled by keys that we hold. NullMask is not a decentralised or community-governed protocol.
+
+8.3 No notice period. These changes can take effect immediately and without notice. An upgrade can change any rule of the Pool, including the rules that decide who can move assets.
+
+8.4 Pauses. While withdrawals are paused, you cannot withdraw or swap your private balance. We use pauses for security, legal or operational reasons. These Terms set no maximum length for a pause.
+
+9.2 Visible to us. Our servers process your account keys. We can therefore see your private balance and your history inside the Pool, and we can link your deposits to your transfers and withdrawals.
+
+10. Risks you accept
+New and unaudited software. At the Effective Date the Pool contracts have not been independently audited.
+Stablecoin issuers. The issuer of a token can freeze an address, including the Pool or your own address. Frozen tokens cannot leave the Pool or be returned to you, and we cannot reverse an issuer's freeze.
+
+14.1 Ownership. Parts of the software may be released under an open-source licence. Those parts are governed by that licence.
+
+19.1 Governing law. These Terms, and any dispute or claim connected with them or with the Services, are governed by the law of England and Wales.

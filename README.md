@@ -21,6 +21,7 @@ contract read at a block, or a file at a pinned commit.
 - How to contribute: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - Design choices: [`docs/decisions.md`](docs/decisions.md)
 - The dashboard's own CROPS review: [`docs/crops-self-review.md`](docs/crops-self-review.md)
+- Operational and procurement layer: [`docs/operational-layer-design.md`](docs/operational-layer-design.md), [`docs/operational-layer-plan.md`](docs/operational-layer-plan.md)
 
 ## Run it locally
 
@@ -37,6 +38,9 @@ python3 -m http.server 8000 --directory dist   # or open dist/index.html directl
 
 `npm run validate` (without `:offline`) also checks that every URL resolves and every
 pinned commit exists on GitHub. Set `GITHUB_TOKEN` to avoid the unauthenticated rate limit.
+If every online check times out while `curl` works, your machine's IPv6 route is probably
+broken and Node is trying IPv6 first; run with
+`NODE_OPTIONS="--dns-result-order=ipv4first --no-network-family-autoselection"`.
 
 ## Layout
 
@@ -48,6 +52,10 @@ scripts/validate.mjs        schema + evidence rules + URL/commit resolution (CI 
 scripts/rollup.mjs          pillar = min of criteria; also prints the PR rollup diff
 scripts/recheck.mjs         nightly onchain + license/lockfile drift check
 scripts/build.mjs           the static site, into dist/
+data/operational/*.yaml     operational and procurement facts (second layer, never scored)
+data/operational-criteria.yaml  the due-diligence controls for that layer
+scripts/repo-facts.mjs      fills repository-practice facts from GitHub (nightly)
+scripts/volumes.mjs         verified volumes from chain logs (nightly)
 site/                       static page fragments, CSS, config.json
 ```
 

@@ -1,0 +1,589 @@
+slug: umbra
+name: Umbra Cash
+type: transfer
+website: https://app.umbra.cash
+primary_chain:
+  name: Ethereum
+  chain_id: 1
+  basis: >-
+    umbra-js lists the same Umbra address on every chain, with mainnet first and the earliest start block (umbra-protocol@07a64aee umbra-js/src/classes/Umbra.ts L44-L92), and the frontend's supportedChains puts Mainnet first (frontend/src/components/models.ts L50-L61). Unit: the Umbra contract 0xFb2d…5401 and StealthKeyRegistry 0x31fe…38f3 on Ethereum. Excluded: Optimism, Polygon, Base, Arbitrum and Gnosis deployments of the same code, the optional UmbraBatchSend and Uniswap withdraw hook, and testnets.
+
+repos:
+  - url: https://github.com/ScopeLift/umbra-protocol
+    role: contracts
+    license: MIT
+  - url: https://github.com/ScopeLift/umbra-subgraph
+    role: indexer
+    license: none
+
+contracts:
+  - address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+    chain_id: 1
+    role: Umbra (payments and announcements)
+    verified: sourcify
+  - address: "0x31fe56609C65Cd0C510E7125f051D440424D38f3"
+    chain_id: 1
+    role: StealthKeyRegistry
+    verified: sourcify
+
+components:
+  - name: Umbra contract
+    role: contracts
+    public: true
+    license: MIT
+    operator: ScopeLift (owner EOA sets toll only; no proxy)
+    required: true
+    repo: https://github.com/ScopeLift/umbra-protocol
+  - name: StealthKeyRegistry (or ENS records) for receiver public keys
+    role: contracts
+    public: true
+    license: MIT
+    operator: none (no admin functions)
+    required: true
+    repo: https://github.com/ScopeLift/umbra-protocol
+  - name: umbra-js SDK (stealth key derivation, scanning, sends)
+    role: sdk
+    public: true
+    license: MIT
+    operator: user
+    required: true
+    repo: https://github.com/ScopeLift/umbra-protocol
+  - name: Ethereum mainnet and a JSON-RPC endpoint of the user's choice
+    role: ledger
+    public: true
+    license: LGPL-3.0
+    operator: Ethereum validators; RPC chosen by the user
+    required: true
+    repo: https://github.com/ethereum/go-ethereum
+  - name: Umbra API (token list, fee estimates, withdrawal relayer)
+    role: relayer
+    public: false
+    license: proprietary
+    operator: ScopeLift
+    required: false
+  - name: Hosted Ponder indexer behind the /api/ponder Netlify proxy
+    role: indexer
+    public: false
+    license: proprietary
+    operator: ScopeLift
+    required: false
+  - name: Umbra subgraph (The Graph)
+    role: indexer
+    public: true
+    license: none
+    operator: ScopeLift
+    required: false
+    repo: https://github.com/ScopeLift/umbra-subgraph
+  - name: app.umbra.cash frontend
+    role: frontend
+    public: true
+    license: MIT
+    operator: ScopeLift (Netlify)
+    required: false
+    repo: https://github.com/ScopeLift/umbra-protocol
+  - name: Etherscan-family APIs (recipient key lookup from tx history)
+    role: api
+    public: false
+    license: proprietary
+    operator: Etherscan
+    required: false
+  - name: Chainalysis sanctions oracle lookup in umbra-js (0x40C5…C8fb)
+    role: other
+    public: false
+    license: proprietary
+    operator: Chainalysis
+    required: false
+
+scores:
+  C1:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/contracts/Umbra.sol#L34-L145
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: contracts-core/contracts/Umbra.sol
+        detail: The only owner powers are setToll, setTollCollector and setTollReceiver (L67-L85). Every send must pay exactly the current toll (L112-L115, L138), and the toll has no upper bound; there is no pause, blacklist or allowlist, and withdrawals do not check the toll.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401
+        address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+        block_number: 26153546
+        detail: owner() is 0x5777…7232, an address with no code (EOA), also listed as admin in contracts-core/deploy-history/mainnet-latest.json; toll() is 0 at block 26153546.
+        checked_at: "2026-10-09"
+        recheck: cast call 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 "owner()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          call: "0x8da5cb5b"
+          expect: "0x0000000000000000000000005777aa6f437399af6cef2fce0be8d4b4ed7c7232"
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/address/0x5777Aa6F437399Af6cef2Fce0BE8D4B4eD7C7232
+        address: "0x5777Aa6F437399Af6cef2Fce0BE8D4B4eD7C7232"
+        eoa: true
+        block_number: 26153546
+        detail: The owner address has no code at block 26153546.
+        checked_at: "2026-10-09"
+    finding: >-
+      The contract cannot pause, freeze or block addresses, and withdrawals are untouched by any admin. But the owner, a single EOA, can set the per-payment toll to any value, which would make new sends uneconomic or impossible for everyone, with no delay. The toll is 0 today. Judgment call: a toll is an anti-spam fee, not a pause, but because it is unbounded and EOA-held it can stop settlement, so anchor 0 (EOA-held role).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/contracts/Umbra.sol#L106-L239
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: contracts-core/contracts/Umbra.sol
+        detail: sendEth and sendToken are open to any caller; withdrawToken is called by the stealth address itself, and withdrawTokenOnBehalf can be submitted by anyone holding the stealth address's signature.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/contracts-core/contracts/Umbra.sol?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 106,239p
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401
+        address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+        block_number: 26153546
+        detail: The deployed Umbra contract is an exact Sourcify match whose source equals Umbra.sol at 07a64aee apart from a trailing newline; the address is documented in umbra-js (Umbra.ts L44).
+        checked_at: "2026-10-09"
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      A payer sends by calling the contract directly; ETH goes straight to the stealth address, tokens wait in the contract until the stealth key withdraws them, directly or through anyone it signs for. The address and ABI are in the public SDK. We did not run a transaction.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/umbra-js/src/classes/Umbra.ts#L444-L470
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: umbra-js/src/classes/Umbra.ts
+        detail: Announcement scanning uses a subgraph if configured and falls back to RPC logs on failure; chainConfig may set subgraphUrl to false.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/umbra-js/src/classes/Umbra.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 444,470p
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/utils/umbra-api.ts#L34-L36
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: frontend/src/utils/umbra-api.ts
+        detail: The app's relayer and token list come from the hardcoded Umbra API (mainnet.api.umbra.cash), whose code is not public; the contract accepts withdrawTokenOnBehalf from any submitter.
+        checked_at: "2026-10-09"
+    finding: >-
+      Settlement needs only the contracts, the SDK and an RPC. The closed Umbra API relayer is optional: the stealth address can withdraw itself, or any account can submit its signed withdrawal. The indexer is optional too. Judgment call: withdrawing tokens without the relayer needs gas from elsewhere, which affects privacy, not settlement, so 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/umbra-js/src/utils/utils.ts#L927-L1192
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: umbra-js/src/utils/utils.ts
+        detail: assertSupportedAddress rejects recipients and destinations on hardcoded banned lists and, for single recipients, those flagged by the Chainalysis sanctions oracle 0x40C5…C8fb; it is called on send and withdraw (Umbra.ts L227, L268, L336, L397).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/umbra-js/src/utils/utils.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 1170,1192p
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401
+        address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+        block_number: 26153546
+        detail: The deployed contract has no address or country checks.
+        checked_at: "2026-10-09"
+    finding: >-
+      The contracts are neutral. The SDK screens addresses against public lists and the Chainalysis oracle, visibly in code, and the direct contract path bypasses it (C2 = 3). Judgment call: this meets anchor 3 in substance, but the repo's umbra-js 0.3.0 is not on npm (latest is 0.2.2), so there is no package to pin and we ran no trace; 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/utils/umbra-api.ts#L65-L80
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: frontend/src/utils/umbra-api.ts
+        detail: The app's supported-token list is fetched from the Umbra API (/tokens?chainId=) at runtime; the contract accepts any ERC20.
+        checked_at: "2026-10-09"
+    finding: >-
+      Chains are enumerated in the SDK, but supported tokens live only in a hosted API response, and we found no statement that issuer freezes can lock tokens held by the Umbra contract or a stealth address. Scored 0: not enumerated in code or docs.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x31fe56609C65Cd0C510E7125f051D440424D38f3
+        address: "0x31fe56609C65Cd0C510E7125f051D440424D38f3"
+        block_number: 26153546
+        detail: Sourcify returns exact_match for Umbra and StealthKeyRegistry (and UmbraBatchSend); their sources equal the repo files apart from a trailing newline.
+        checked_at: "2026-10-09"
+        recheck: for a in 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 0x31fe56609C65Cd0C510E7125f051D440424D38f3; do curl -s --max-time 30 https://sourcify.dev/server/v2/contract/1/$a | jq -r .match; done
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/hardhat.config.ts#L165-L195
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: contracts-core/hardhat.config.ts
+        detail: Hardhat pins solc 0.8.7 and 0.7.6 with optimizer runs 999999, matching the Sourcify compilation settings.
+        checked_at: "2026-10-09"
+    finding: >-
+      Both settlement contracts are full Sourcify matches and the build settings are in the repo. Judgment call: anchor 3 also needs a build from the pinned commit that reproduces the bytecode; the repo files differ by a trailing newline, which changes the metadata hash, and we did not rebuild, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/tree/07a64aeef305399a86afe72e502156d72babcc17/frontend
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: frontend
+        detail: The monorepo holds contracts-core (with deploy history), contracts-periphery, umbra-js and the frontend; umbra-subgraph holds the subgraph. The Umbra API and Ponder indexer code are not in any ScopeLift repo we found; their request and response types are in frontend/src/components/models.ts.
+        checked_at: "2026-10-09"
+        recheck: gh repo list ScopeLift --limit 100 --json name | jq -r '.[].name' | grep -i umbra
+    finding: >-
+      Contracts, SDK, frontend, subgraph and deploy history are public. The backend (Umbra API relayer and token list) and the production Ponder indexer are closed. Judgment call: their API types are committed in the frontend, which we accept as the schema for 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/README.md#L85-L140
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: README.md
+        detail: The README gives development instructions (install, env setup from .env.example, build and test per workspace).
+        checked_at: "2026-10-09"
+    finding: >-
+      Build and run documentation exists, with an .env.example. Reproduction not attempted, so capped at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/contracts/Umbra.sol#L12-L27
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: contracts-core/contracts/Umbra.sol
+        detail: Announcement and TokenWithdrawal event schemas are in the contract; ABIs ship in umbra-js, and the Umbra API types are in frontend/src/components/models.ts.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/contracts-core/contracts/Umbra.sol?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 12,27p
+    finding: >-
+      ABIs, events and the API's types are in the repo. We found no payee export in a non-proprietary format. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/LICENSE.txt
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: LICENSE.txt
+        detail: The umbra-protocol monorepo (contracts, SDK, frontend) is MIT; umbra-subgraph has no licence (GitHub license API returns null).
+        checked_at: "2026-10-09"
+        recheck: for r in umbra-protocol umbra-subgraph; do echo $r $(gh api repos/ScopeLift/$r --jq '.license.spdx_id // "none"'); done
+    finding: >-
+      Every required component is MIT. The optional subgraph repo has no licence. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/README.md#L223-L231
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: README.md
+        detail: Contributions are by fork and PR with no CLA; LICENSE.txt has been MIT since 2020-05-21 (commits ee79a21e, 6e31df6b, d0c1e113, ec1646d8 only changed copyright text).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/commits?path=LICENSE.txt&sha=07a64aeef305399a86afe72e502156d72babcc17" --jq '.[].sha'
+    finding: >-
+      No CLA and no relicensing; no written licence-stability commitment. Scored 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/utils/umbra-api.ts#L65-L80
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: frontend/src/utils/umbra-api.ts
+        detail: The frontend falls back to an empty token list if the Umbra API fails, so the hosted app's token sends and relayed withdrawals depend on the closed API; the SDK and contracts do not.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/frontend/src/utils/umbra-api.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 65,80p
+    finding: >-
+      The protocol runs with public code and any RPC. The closed Umbra API and Ponder indexer are optional for the protocol, but a self-hosted copy of the app loses token sends and relayed withdrawals without them. Scored 2: optional proprietary components.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/package.json#L21-L40
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: frontend/package.json
+        detail: No analytics, telemetry, error-reporting or fingerprinting dependency; bnc-notify is initialised without a dappId in UI-only mode (frontend/src/utils/alerts.ts L7-L10).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/frontend/package.json?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | grep -iE "sentry|analytics|gtag|amplitude|mixpanel|segment|posthog|fingerprint|datadog"
+    finding: >-
+      The SDK and frontend ship no analytics or telemetry. Judgment call: absence shown only in code, with no package for the current SDK and no trace, is capped at 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/PrivacyPolicy.vue#L5-L30
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: frontend/src/pages/PrivacyPolicy.vue
+        detail: The privacy policy says hosting providers may log request IP addresses, retained up to 90 days, and that no cookies are used.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/frontend/src/pages/PrivacyPolicy.vue?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 5,30p
+    finding: >-
+      The protocol takes only a stealth address, amount, token, ephemeral key and ciphertext; there is no account or form. The hosted app's servers and the Umbra API log IP addresses, disclosed in a privacy policy committed to the repo and avoidable by using the SDK. Judgment call: the only extra data is IP logging on optional hosted services, disclosed in a versioned document, so 2 rather than 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/contracts/Umbra.sol#L12-L27
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: contracts-core/contracts/Umbra.sol
+        detail: Announcement emits the stealth address, amount, token, ephemeral public key x-coordinate and a 32-byte ciphertext; TokenWithdrawal emits the stealth address and the acceptor.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/contracts-core/contracts/Umbra.sol?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 12,27p
+    finding: >-
+      Each payment goes to a fresh stealth address that observers cannot tie to the payee; the payer, amount and token are public. The link reappears if the payee withdraws to a known address, funds the stealth address from a known account, or batches withdrawals; the README states these limits. Judgment call: this is a stealth-address pattern with no invoice data, so 3 on what the code reveals; withdrawal hygiene is behavioural.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/umbra-js/src/classes/TxHistoryProvider.ts#L6-L25
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: umbra-js/src/classes/TxHistoryProvider.ts
+        detail: Recipient public-key lookup by transaction history calls Etherscan-family APIs; the app also calls the Umbra API (umbra-api.ts L36), the Ponder proxy, TxPrice and POAP APIs, and WalletConnect.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/umbra-js/src/classes/TxHistoryProvider.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 6,25p
+    finding: >-
+      Beyond the RPC, the app sends requests to ScopeLift's API and indexer and to Etherscan, TxPrice and POAP; the Chainalysis check is an RPC read. All are named in code. The Umbra API URL is hardcoded; the RPC and subgraph URLs come from env or SDK config. Judgment call: 2, as the hardcoded API is avoidable by using the SDK.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/umbra-js/src/classes/Umbra.ts#L100-L145
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: umbra-js/src/classes/Umbra.ts
+        detail: The SDK takes the provider from the caller and accepts a custom chainConfig with any subgraphUrl or false (RPC logs only); the app reads RPC and indexer URLs from env at build time.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/umbra-js/src/classes/Umbra.ts?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d | sed -n 100,145p
+    finding: >-
+      RPC and indexer are configurable in the SDK, and the subgraph code is public. Judgment call: the production indexer is a Ponder deployment whose code we did not find, and the app has no UI setting, so 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/contracts/Umbra.sol#L106-L278
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: contracts-core/contracts/Umbra.sol
+        detail: ETH is forwarded to the stealth address in the same call; tokens are recorded in tokenPayments and released only to an acceptor chosen by the stealth key. collectTolls moves only the contract's ETH balance (tolls).
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401
+        address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+        block_number: 26153546
+        detail: Implementation slot zero (no proxy); ETH balance 0 at block 26153546.
+        checked_at: "2026-10-09"
+        recheck: cast storage 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      ETH payments are direct transfers to an address only the payee controls; token payments sit in a non-upgradeable contract that releases them only on the stealth key's instruction. No role can redirect funds.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401
+        address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+        block_number: 26153546
+        detail: Umbra and StealthKeyRegistry have zero EIP-1967 implementation and admin slots, are exact Sourcify matches, and their source has no upgrade, delegatecall or selfdestruct path.
+        checked_at: "2026-10-09"
+        recheck: cast storage 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103 --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      Non-upgradeable. The owner can change only the toll settings (see C1).
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/AccountSend.vue#L1032-L1038
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: frontend/src/pages/AccountSend.vue
+        detail: When the allowance is short, the app approves MaxUint256 to the Umbra contract (and to UmbraBatchSend at L1157-L1163); no unlimited-approval wording was found in the en-US strings.
+        checked_at: "2026-10-09"
+    finding: >-
+      The app requests an unlimited allowance by default without saying so. The spender is immutable and pulls only from msg.sender, which limits the exposure, but the anchor concerns the scope requested. Scored 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401
+        address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+        block_number: 26153546
+        detail: The contract is not a proxy and withdrawToken / withdrawTokenOnBehalf are open to the stealth key or its signature (C2).
+        checked_at: "2026-10-09"
+        recheck: cast call 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 "toll()(uint256)" --rpc-url https://ethereum-rpc.publicnode.com
+        check:
+          call: "0x285aaa20"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    finding: >-
+      Derived from S1=3, C2=3, C3=3, O3=1. Payees keep their funds without ScopeLift: ETH is already in the stealth address, and tokens can be withdrawn by calling the contract with keys derived client-side. Sending can continue via the SDK and an RPC, provided the owner EOA does not raise the toll (C1). A public frontend exists but was not reproduced (O3=1). Judgment call: 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/umbra-js/src/classes/TxHistoryProvider.ts#L6-L25
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: umbra-js/src/classes/TxHistoryProvider.ts
+        detail: umbra-js reads ETHERSCAN_API_KEY and per-chain explorer keys from process.env, and the frontend .env.example lists them with RPC URLs, so a browser build embeds them; they authorise only explorer and RPC quota.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ScopeLift/umbra-protocol/contents/frontend/.env.example?ref=07a64aeef305399a86afe72e502156d72babcc17" --jq .content | base64 -d
+    finding: >-
+      Spending and viewing keys are derived from a wallet signature in the browser and never sent anywhere. There are no webhooks or merchant keys. Explorer and RPC keys ship in the client bundle. Judgment call: 2 for the bundled read-only keys.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/i18n/locales/en-US.json#L191-L195
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        path: frontend/src/i18n/locales/en-US.json
+        detail: The FAQ states the contracts were audited by ConsenSys Diligence (2021-03 report) and umbra-js by Least Authority; the Least Authority PDF resolves, while the ConsenSys page returned 403 to curl and was not read.
+        checked_at: "2026-10-09"
+    finding: >-
+      Audit reports are linked, but we could not read an audited commit from either report, so we cannot tie them to the deployed bytecode. No bug bounty or SECURITY file found. Scored 1: audit report only.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: global
+  note: >-
+    The contracts have no address or country checks, and neither umbra-js nor the app has a country gate; the app's terms name no restricted countries. umbra-js refuses sanctioned addresses (hardcoded lists and the Chainalysis oracle), which is address-level screening, not geographic.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/contracts/Umbra.sol#L106-L145
+      commit: 07a64aeef305399a86afe72e502156d72babcc17
+      path: contracts-core/contracts/Umbra.sol
+      detail: Sends check only the toll and amounts; a search of frontend/src, umbra-js/src and netlify for country, geo and restricted found no country gate.
+      recheck: gh api -X GET search/code -f q='country repo:ScopeLift/umbra-protocol' --jq '.items[].path'
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"
+
+notes: >-
+  Unit: Ethereum Umbra 0xFb2d…5401 and StealthKeyRegistry 0x31fe…38f3; the same addresses exist on Optimism, Polygon, Base and Arbitrum and were not read. Reads at block 26153546 via publicnode. tollCollector is an EOA (0x12aE…2615) and tollReceiver an account with EIP-7702 delegation code whose VERSION() returns 1.3.0 (0xb443…17F9). The ConsenSys Diligence audit page returned 403 and was not bypassed. No transactions, UI runs, traces or self-host attempts.

@@ -1,0 +1,24 @@
+Source: docs.anoma.net pages (server-rendered Next.js), read with curl on 2026-10-09 by the AI research agent (seed). Excerpts, verbatim text as extracted from the HTML.
+
+https://docs.anoma.net/anoma-pay-trust-model (Last updated on April 2, 2026)
+Proving Service Operator: Sees (temporarily) the unencrypted witness data. This is required to generate the zero-knowledge proofs and relay the transaction on your behalf. Witness data includes information about sender, receiver, asset, and amount. It does not, at any point in time, include authority to spend funds on any users' behalf.
+Vast.ai Datacenters: Sees (temporarily) the unencrypted witness data. Vast.ai datacenters provide ISO certifications.
+Compliance: AnomaPay is fully compliant with applicable laws and regulations (such as KYC and AML rules). The proving service operator implements consistent checks in order to ensure full compliance.
+
+https://docs.anoma.net/anoma-pay-protocol-adapter (Last updated on April 2, 2026)
+Even if the off-chain services go down, the funds on-chain are governed by the smart contract, which guarantees funds can only be moved with a valid proof. Any user can decide to run the off-chain infrastructure themselves and execute AnomaPay transactions powered by fully client-side proofs.
+
+https://docs.anoma.net/api-clients (Last updated on April 2, 2026)
+The api module provides four typed HTTP clients for communicating with Anoma Pay backend services.
+Communicates with the proving backend. This is the primary client for submitting transactions and monitoring their status.
+fee_token: "USDC" , // "USDC" | "USDT" | "WETH" | "XAN"
+Communicates with the Indexer service, which tracks and stores encrypted resource payloads on-chain.
+Fetches encrypted resource blobs from the Indexer for each contract. The Indexer uses the discovery private key to look up blobs tagged for that key.
+Queries the Envio GraphQL endpoint for public nullifier records.
+
+https://docs.anoma.net/transfers
+All three operations ultimately produce a Parameters object that is submitted to the proving backend via TransferBackendClient.transfer() .
+A burn withdraws tokens from the shielded pool back to an EVM wallet address.
+
+https://docs.anoma.net/anoma-pay-privacy-guarantees (Last updated on April 2, 2026)
+Shielding/Unshielding: When you move funds into or out of the system, the initial deposit or final withdrawal address is visible on-chain.

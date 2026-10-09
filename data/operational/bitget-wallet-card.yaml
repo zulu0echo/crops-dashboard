@@ -1,0 +1,564 @@
+slug: bitget-wallet-card
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: Crypto top-up 1.0% (5 to 8 digit account NFT), 0.5% (4 digits), 0.25% (3 digits)
+      basis: Fiat24 pricing for individuals (from 1 June 2024); the terms make the Pricing page part of the contract and say fees may change without notice.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: Low-value transaction fee 0.15 USD, EUR or CHF per card payment below 10 (CNH 1.00 below CNH 70)
+      basis: Fiat24 price adjust plan, in force from 15 June 2026.
+      evidence_index: 1
+    - kind: card
+      paid_by: payer
+      amount: Refund processing fee 1 USD, EUR or CHF (7 CNH) per card refund, capped at the refund amount
+      basis: Fiat24 MasterCard Debit page, from 15 May 2026.
+      evidence_index: 2
+    - kind: card
+      paid_by: payer
+      amount: No annual or monthly card fee
+      basis: Bitget card page, stated for all regional programmes; Fiat24's card page lists no issuance fee.
+      evidence_index: 5
+    - kind: fx
+      paid_by: payer
+      amount: Free between EUR24, USD24, CHF24 and CNH24 balances; card conversion rate not stated
+      basis: Fiat24 Money Exchange page; the card debits the matching currency balance first ("Direct Pay"), else converts to the default card currency.
+      evidence_index: 3
+    - kind: cashout
+      paid_by: payer
+      amount: Bank payout free; 10 EUR or 10 CHF if the payout is returned; minimum payout 100 EUR or 100 CHF
+      basis: Fiat24 Cash Payout page.
+      evidence_index: 4
+    - kind: limit
+      paid_by: none
+      amount: Card 10,000 EUR/day, 20,000 EUR/month (Standard); account 30,000 USD/30 days for new individuals
+      basis: Fiat24 MasterCard Debit and Individual Account pages; higher card tiers for 3 and 4 digit NFTs.
+      evidence_index: 2
+    - kind: network
+      paid_by: payer
+      amount: Arbitrum gas for approvals and top-ups
+      basis: Fiat24 terms, fee schedule clause d; varies with network conditions.
+      evidence_index: 6
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/products/pricing-for-individuals
+      detail: Fiat24 pricing for individuals, top-up fee by NFT length.
+      checked_at: 2026-10-09
+      quote: 1.0% Crypto topup fee
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/developer/price-adjust-plan
+      detail: Fiat24 price adjust plan, timeline for refund and low-value card transaction fees.
+      checked_at: 2026-10-09
+      quote: low-value card transaction fee
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/payments/mastercard-debit
+      detail: Fiat24 MasterCard Debit page, spending limits by tier and refund processing fee.
+      checked_at: 2026-10-09
+      quote: "USD refunds: 1 USD per transaction"
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/transactions/money-exchange
+      detail: Fiat24 Money Exchange page, fee section.
+      checked_at: 2026-10-09
+      quote: allows Fiat24 users to exchange one currency for another
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/payments/cash-payout
+      detail: Fiat24 Cash Payout page, minimum amount and returned-payout fee.
+      checked_at: 2026-10-09
+      quote: If a payout is returned, we charge a fee of 10 CHF or 10 EUR.
+    - tier: documented
+      kind: document
+      url: https://web3.bitget.com/card
+      detail: Bitget Wallet Card page, benefits and FAQ on fees (all regional programmes).
+      checked_at: 2026-10-09
+      quote: No interest markup, no monthly card fee, no hidden charges
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+      detail: Fiat24 terms (effective 21 April 2026), section 15 fee schedule.
+      checked_at: 2026-10-09
+      quote: there are fees deducted by the blockchain network itself
+  note: "Fees are Fiat24's, the issuer of this programme. Bitget's card FAQ says assetback 'typically covers most top-up and currency conversion fees' and that standard fees apply beyond the monthly allowance, without stating them; it does not say which programme that refers to. No card FX margin is published by Fiat24, so that component is unknown, not zero. Premium account NFTs cost 1,500 or 15,000 F24 to mint."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: S4
+      index: 0
+  note: "Agrees with S1 (score 0): the balance is a Fiat24 deposit claim represented by EUR24/USD24/CHF24/CNH24 tokens in the cardholder's address; Fiat24's operator EOA can move any balance with sendToSundry, transfers need a Fiat24-set Live status, and bank payouts need Fiat24's cash operator. Judgment call: recorded as provider_custodial rather than hybrid because the asset itself is a bank liability the issuer controls, not a token the user can exit with."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: SR Saphirstein AG (Fiat24)
+      holder: partner
+      country: CH
+      regulator: Swiss Financial Market Supervisory Authority (FINMA)
+      type: FinTech licence under Article 1b of the Swiss Banking Act
+      activities: Accepting public deposits up to the FinTech licence limits (no lending, no interest); issuer of the Fiat24 Mastercard debit card and the cash tokens.
+      register_url: https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/
+      archive: data/archive/bitget-wallet-card-ops-finma-register.txt
+      detail: FINMA register search for "Saphirstein" returns one entry, SR Saphirstein AG, Zürich, in the category of licensed persons under Article 1b BA (FinTech licence). The page is client-rendered, so the search API response is archived.
+      checked_at: 2026-10-09
+      quote: Licensed persons pursuant to Article 1b BA (FinTech licence)
+      recheck: "curl -s -X POST https://www.finma.ch/en/api/search/getresult --data 'query=Saphirstein&Order=4&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}'"
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+      detail: Fiat24 terms section 1 name SR Saphirstein AG, CHE-256.014.995, as a FINMA-supervised FinTech licensee.
+      checked_at: 2026-10-09
+      quote: has a license as a fintech company according to Article 1b of the Swiss Banking Act
+  note: "FinTech licensees are supervised by FINMA directly for anti-money-laundering purposes, so no self-regulatory organisation membership was looked for. FINMA's register shows no licence number. The provider file's context notes that Swiss deposit protection does not apply to Fiat24 deposits. Bitget Wallet's own entities and any licences they hold were not looked up: Bitget is the referring wallet, not a party to the Fiat24 card contract."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_spend
+      partner: SR Saphirstein AG (Fiat24) as issuer, Mastercard
+      fee: 0.15 per payment below 10 in the card currency; refunds 1 USD/EUR/CHF or 7 CNH
+      limits: 10,000 EUR per day, 20,000 EUR per month (Standard tier); virtual card only, no PIN, so no ATM withdrawals
+      evidence_index: 0
+    - countries: [ALL]
+      method: bank_transfer
+      partner: SR Saphirstein AG (Fiat24)
+      fee: Free; 10 EUR or 10 CHF if returned
+      limits: EUR and CHF only; minimum 100; only to a bank account that has first deposited into the Fiat24 account; payee bank not in a restricted country
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/payments/mastercard-debit
+      detail: Fiat24 MasterCard Debit page, card format, limits and fees.
+      checked_at: 2026-10-09
+      quote: The Fiat24 Debit Card is a virtual card only without PIN.
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/payments/cash-payout
+      detail: Fiat24 Cash Payout page, payout account rule, minimum and fee.
+      checked_at: 2026-10-09
+      quote: Minimal payout amount is 100 EUR or 100 CHF.
+  note: ALL means the availability list, which is CN (existing cardholders only). Whether Mainland China cardholders can use the EUR/CHF bank payout in practice depends on having deposited from an IBAN first, which the payout page says is required; no CNH payout is documented.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2024-11-12
+      block: 273715521
+      what: Fiat24CardAuthorization proxy 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 on Arbitrum One (card debits). The EUR24 cash token it debits dates from block 4699193 (2022-01-16).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://arbitrum.blockscout.com/tx/0x53392365e29a675af7378d8122c832ba12357427e12314c3f0cf83b2e91057a7
+        address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+        chain_id: 42161
+        block_number: 273715521
+        detail: The receipt of tx 0x53392365...57a7 (sender 0x1272...9D59, the Fiat24 admin EOA) has contractAddress 0xe2e3B88B...5b14 in block 273715521, timestamp 1731420531 (2024-11-12 14:08:51 UTC); Sourcify's creation data gives the same transaction and block.
+        checked_at: 2026-10-09
+        recheck: cast receipt 0x53392365e29a675af7378d8122c832ba12357427e12314c3f0cf83b2e91057a7 contractAddress --rpc-url https://arb1.arbitrum.io/rpc && cast block 273715521 --field timestamp --rpc-url https://arb1.arbitrum.io/rpc
+    note: The card authorizer is the settlement contract for card payments; Fiat24 docs announced the Mastercard debit card for December 2024. Bitget's referral of accounts (walletProviderMap 8088) has no deployment of its own.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: SR Saphirstein AG (Fiat24)
+      jurisdiction: CH-ZH
+      register_url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE256014995
+      registration_number: CHE-256.014.995
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE256014995
+        detail: Swiss UID register, SR Saphirstein AG (SR Saphirstein Ltd), Bellerivestrasse 245, 8008 Zürich, Aktiengesellschaft, commercial register status active, reference CH-020.3.046.001-4, last checked by the register 22.09.2026.
+        checked_at: 2026-10-09
+        quote: CH-020.3.046.001-4
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/payments/mastercard-debit
+        detail: Fiat24 names SR Saphirstein AG as the card issuer.
+        checked_at: 2026-10-09
+        quote: SR Saphirstein AG, based in Switzerland, owns the Fiat24 brand and serves as the principal issuer of MasterCard
+    note: The cardholder contracts with SR Saphirstein AG under the Fiat24 account and card terms; Bitget Wallet is the referring wallet and is not a party to them.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: "Searched: Fiat24 user manual, developer docs and release notice, legal pages, status.fiat24.com (history is client-rendered and failed to load), Bitget help articles on this programme. No incident disclosure found; Fiat24 publishes no incident log and its contracts are not in a public repository with advisories."
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2025-02-01
+        summary: Fiat24 API stops returning Visa card fields; cards are Mastercard only.
+        url: https://docs.fiat24.com/developer/release-notice/2025-02-01
+      - date: 2026-04-21
+        summary: Current Fiat24 terms for users and clients take effect.
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+      - date: 2026-05-15
+        summary: Card refund processing fee introduced (1 USD/EUR/CHF, 7 CNH; first charged 21 May 2026).
+        url: https://docs.fiat24.com/developer/price-adjust-plan
+      - date: 2026-06-05
+        summary: New individual clients capped at 30,000 USD per month, limit upgrades suspended.
+        url: https://docs.fiat24.com/user/account-types/individual-account
+      - date: 2026-06-15
+        summary: Low-value card transaction fee introduced (0.15 per payment below 10 USD/EUR/CHF).
+        url: https://docs.fiat24.com/developer/price-adjust-plan
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/release-notice/2025-02-01
+        detail: Fiat24 release notice of 2025-02-01.
+        checked_at: 2026-10-09
+        quote: Disable VISA cards
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: Terms effective date.
+        checked_at: 2026-10-09
+        quote: "Effective from: 21 April 2026"
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/price-adjust-plan
+        detail: Price adjust plan timeline (15 May and 15 June 2026).
+        checked_at: 2026-10-09
+        quote: refund processing fee
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/account-types/individual-account
+        detail: Individual account page, monthly limit change and current closure to new individual clients.
+        checked_at: 2026-10-09
+        quote: all new individual clients will be subject to a monthly transaction limit of USD 30,000
+    note: Undated changes not listed. Bitget help article 802 closes new Mainland China sign-ups for this programme, and Fiat24's individual account page says it is not accepting new individual clients "due to maintenance works"; neither gives a date. The contracts are upgradeable by one EOA (S2), and implementation changes were not enumerated.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 42161
+    addresses:
+      - "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+    topic0: "0xccd892fadc4aff70d2a87e68be8c4ea12542363d8f405acbf0949c6816b99ccb"
+    event: Authorized(string authorizationToken, uint256 indexed tokenId, address indexed sender, string cardId, address cardCurrency, uint256 paidAmount)
+    token_word: 2
+    amount_word: 3
+    decimals: 2
+    window_days: 30
+    exclusions: Card authorizations by all Fiat24 accounts, not only Bitget-referred ones (the event does not carry the wallet provider; filtering by tokenId would need walletProvider() per account). Incremented, Adviced and Reversed events are not counted, so reversals are not netted. Amounts are in the cash token's 2 decimals, per currency (USD24, EUR24, CHF24, CNH24). Gross observed.
+  note: Spec checked against the Authorized log in tx 0x568b9d28...e21f (word 2 USD24 0xbE00f3db..., word 3 = 484, i.e. 4.84 USD). Not computed; the maintainer runs scripts/volumes.mjs.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement found for SR Saphirstein AG in the Fiat24 user manual, developer docs, legal pages or fiat24.com, or for Bitget Wallet on its card and security technology pages.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: No hosting or support organisation certification found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement of availability found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No audit of the Fiat24 contracts, backend or card authorizer found (CROPS S6 unknown). Bitget's security technology page cites CertiK and SlowMist audits of Bitget Swap and the NFT marketplace, not the card.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report or attestation found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: The Fiat24 terms, card terms and privacy policy oblige the client to report incidents to Fiat24 but contain no commitment by Fiat24 to notify clients of security or data incidents.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Status page at status.fiat24.com (uptime monitor with status update history); no post-mortem found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.fiat24.com/
+        detail: Fiat24 status page; uptime and history are loaded client-side and failed to load when read.
+        checked_at: 2026-10-09
+        quote: Service status
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Account access is by wallet signature from the address holding the Fiat24 account NFT (one factor, the wallet key); online card payments may require 3-D Secure with a one-time password sent by email.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/payments/mastercard-debit
+        detail: MasterCard Debit page, OTP per email section.
+        checked_at: 2026-10-09
+        quote: may be asked to provide a one-time password (OTP) sent to their email
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-2-api-reference
+        detail: API reference, secured APIs require a header signed by the NFT holder's wallet.
+        checked_at: 2026-10-09
+        quote: Fiat24 does NOT use any standard protocol for authentication and authorisation
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: A custom header with tokenid, network, a personal_sign signature by the NFT holder's wallet, the signed text and a deadline; no OAuth, OpenID Connect, SAML or JWT.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-2-api-reference
+        detail: API reference, secured APIs section.
+        checked_at: 2026-10-09
+        quote: Fiat24 does NOT use any standard protocol for authentication and authorisation
+    refs:
+      - criterion: C3
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Platforms (beta Authorized Access Model) call the same APIs with a header signed by the address holding the platform NFT, after the client authorises that NFT; there are no API keys, and rotation would mean moving the NFT.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-5-authorized-access-model
+        detail: Authorized Access Model, authentication and access section.
+        checked_at: 2026-10-09
+        quote: Fiat24 does NOT use any standard protocol for authentication and authorization
+    note: Server-to-server links between Fiat24, Marqeta and Bitget are not documented.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: Signed request headers carry a deadline of at most 20 minutes; a card display token is valid for 5 minutes.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-2-api-reference
+        detail: API reference, signature deadline example and card token validity.
+        checked_at: 2026-10-09
+        quote: We only allow the signature to be valid for 20 minutes max.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: The privacy policy states only "industry standard security measures"; no data classification, encryption at rest or TLS version is stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: Fiat24 privacy policy (effective 14 February 2023), section 5.
+        checked_at: 2026-10-09
+        quote: We employ industry standard security measures designed to protect the security of all information submitted through the Services
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Fiat24 retains personal data as long as needed for the stated purposes and as required by law, with no fixed periods; deletion on termination is not stated. Balances and transactions are recorded on a public blockchain and cannot be deleted.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: Privacy policy, section 5.
+        checked_at: 2026-10-09
+        quote: We retain information we collect as long as it is necessary and relevant
+    refs:
+      - criterion: P2
+        index: 0
+      - criterion: P3
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The privacy policy describes SR Saphirstein AG as the company that collects, uses, shares and stores users' personal information; it does not use the terms controller or processor or mention a DPIA. Bitget Wallet's own policy covers its app separately.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/privacy-policy
+        detail: Privacy policy opening paragraph.
+        checked_at: 2026-10-09
+        quote: entered in the Commercial Register of the Canton of Zurich under the number CHE-256.014.995
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Fiat24's developer integration guide documents the logical and integration views (contracts, account NFT, cash tokens, card authorisation, API, onboarding); no infrastructure view.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
+        detail: Integration guide part 1, smart contracts on Arbitrum and Mantle.
+        checked_at: 2026-10-09
+        quote: The entire booking system of Fiat24 is managed transparently on the Arbitrum and Mantle blockchain
+    refs:
+      - criterion: O4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: SR Saphirstein AG (Fiat24), Zurich, Switzerland, CHE-256.014.995; terms under Swiss law with the ordinary courts of Zurich. Bitget Wallet is not a party to the card contract.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE256014995
+        detail: Swiss UID register entry for SR Saphirstein AG.
+        checked_at: 2026-10-09
+        quote: SR Saphirstein AG
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: Terms section 1, who we are.
+        checked_at: 2026-10-09
+        quote: has a license as a fintech company according to Article 1b of the Swiss Banking Act
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Fiat24 charges per-use fees (crypto top-up percentage, card refund and low-value transaction fees, premium NFT mint fees); its price adjust plan cites rising operational and compliance costs. No annual report was found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/products/pricing-for-individuals
+        detail: Pricing for individuals.
+        checked_at: 2026-10-09
+        quote: 1.0% Crypto topup fee
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/developer/price-adjust-plan
+        detail: Price adjust plan, rationale paragraph.
+        checked_at: 2026-10-09
+        quote: refund processing fee
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Fiat24 may close an account with two months' notice (immediately if the balance is zero) or without notice on breach, legal order or suspected crime; suspension is shown only as account status. The client may close the account in the dApp once all balances are zero; bank payouts need Fiat24's cash operator (S4).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
+        detail: Terms section 23.
+        checked_at: 2026-10-09
+        quote: by giving you two months prior notice
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/account-types/individual-account
+        detail: Individual account page, close account steps.
+        checked_at: 2026-10-09
+        quote: Before you close your account, all balances need to be zero.
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Automated screening is in the payment path, the cash tokens check an onchain sanctions list on every transfer (C4) and the card system blocks cards on detected unusual activity; neither document says whether AI or a learned model is used.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/payments/mastercard-debit
+        detail: MasterCard Debit page, card blocking section.
+        checked_at: 2026-10-09
+        quote: if the system detects some unusual or suspicious activity
+    refs:
+      - criterion: C4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: The only documented control is a user override, unblocking the card in the dApp (each block or unblock locks the status for 24 hours); monitoring, validation, decommissioning and bias evaluation are not documented.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.fiat24.com/user/payments/mastercard-debit
+        detail: MasterCard Debit page, protect your card section.
+        checked_at: 2026-10-09
+        quote: Each block or un-block action will lock the action for 24 hours
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending

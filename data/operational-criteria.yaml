@@ -1,0 +1,316 @@
+# Operational and procurement layer: criteria. Facts, not ratings. Each entry has an id,
+# group, title, question, `applies` (who the control is about) and `evidence` guidance.
+#   applies: any        every provider
+#            operator   providers with at least one required closed component or hosted service
+#            custodial  providers whose custody model is provider_custodial or hybrid
+#   auto: true          filled from public repositories by scripts/repo-facts.mjs
+# Group A (operational facts) is structured in schema/operational.schema.json; this file lists
+# group B (institutional due diligence) controls, derived from a UN agency's vendor requirements.
+groups:
+  - id: B1
+    name: Assurance and certifications
+  - id: B2
+    name: Vulnerability and patch management
+  - id: B3
+    name: Incident reporting and continuity
+  - id: B4
+    name: Identity and access (operator side)
+  - id: B5
+    name: API and integration
+  - id: B6
+    name: Data protection and privacy governance
+  - id: B7
+    name: Logging and monitoring
+  - id: B8
+    name: Hosting and network
+  - id: B9
+    name: Engineering practice in public repositories
+  - id: B10
+    name: Architecture documentation
+  - id: B11
+    name: Commercial and financial
+  - id: B12
+    name: AI components
+
+controls:
+  - id: B1.1
+    group: B1
+    title: ISO 27001, developer organisation
+    question: Is the organisation that develops the product ISO 27001 certified, and does the certificate name that entity?
+    applies: operator
+    evidence: Certificate number checked in the certifier's public directory (documented, primary); the provider's statement alone is attested.
+  - id: B1.2
+    group: B1
+    title: ISO 27001, hosting and support organisation
+    question: Is the organisation that hosts and supports the service ISO 27001 certified in its own name, with a scope covering the service?
+    applies: operator
+    evidence: Certifier directory entry with scope (documented); provider statement is attested.
+  - id: B1.3
+    group: B1
+    title: SOC 2 Type II or ISAE 3000/3402 reports
+    question: Does the provider undergo periodic SOC 2 Type II or ISAE 3402 Type II assessments and make reports available?
+    applies: operator
+    evidence: A report seen by the assessor (documented); a statement that one is available under NDA (attested).
+  - id: B1.4
+    group: B1
+    title: Independent source-code security review before go-live
+    question: Was the application reviewed by an independent party before launch, and is the report linked?
+    applies: operator
+    evidence: Report with scope and date (documented). For protocols this is CROPS S6; link it.
+  - id: B1.5
+    group: B1
+    title: Penetration testing
+    question: Is the service penetration-tested before go-live and at least every three years, with results available?
+    applies: operator
+    evidence: Report or attestation letter with date (documented or attested).
+  - id: B1.6
+    group: B1
+    title: Vulnerability scanning cadence
+    question: Are the platform and the application scanned for vulnerabilities at least every six months?
+    applies: operator
+    evidence: Security page or attestation stating cadence and tool (documented or attested).
+  - id: B2.1
+    group: B2
+    title: Security contact and disclosure policy
+    question: Is there a published way to report a vulnerability (SECURITY.md, security.txt, or a disclosure page)?
+    applies: any
+    auto: true
+    evidence: SECURITY.md or .well-known/security.txt in the repository (verified); a disclosure page (documented).
+  - id: B2.2
+    group: B2
+    title: Patch service levels
+    question: Does the provider commit to patch timelines for known vulnerabilities (the partner expects 30 days critical, 40 high, 90 medium)?
+    applies: operator
+    evidence: Terms, security page or contract template (documented).
+  - id: B2.3
+    group: B2
+    title: Dependency and vulnerability scanning in CI
+    question: Do the public repositories run dependency or code scanning automatically?
+    applies: any
+    auto: true
+    evidence: Dependabot, CodeQL, Snyk or equivalent configuration in the repository (verified).
+  - id: B3.1
+    group: B3
+    title: Incident reporting commitment
+    question: Does the provider commit to notify customers of security or data incidents within a stated time (the partner expects 24 hours)?
+    applies: operator
+    evidence: Terms, DPA or security page (documented).
+  - id: B3.2
+    group: B3
+    title: Backups and restore testing
+    question: Are customer records backed up daily and restores tested on a schedule?
+    applies: custodial
+    evidence: Security page or attestation (documented or attested).
+  - id: B3.3
+    group: B3
+    title: Recovery plan
+    question: Is there an approved and tested recovery plan for the service?
+    applies: custodial
+    evidence: Security page or attestation (documented or attested). For non-custodial rails see CROPS S4.
+  - id: B3.4
+    group: B3
+    title: Status page and post-mortems
+    question: Does the provider publish service status and post-mortems for incidents?
+    applies: operator
+    evidence: Status page URL and at least one post-mortem (documented).
+  - id: B4.1
+    group: B4
+    title: MFA for end users
+    question: Can or must end users protect accounts with multi-factor authentication?
+    applies: custodial
+    evidence: Help or security page (documented).
+  - id: B4.2
+    group: B4
+    title: MFA and separate accounts for privileged access
+    question: Is privileged access protected by MFA and kept on separate accounts?
+    applies: operator
+    evidence: Security page or attestation (documented or attested).
+  - id: B4.3
+    group: B4
+    title: Periodic access reviews
+    question: Are user access rights reviewed at least annually and privileged accounts at least six-monthly?
+    applies: operator
+    evidence: Attestation or audit report (attested or documented).
+  - id: B4.4
+    group: B4
+    title: Segregation of duties and joiner-mover-leaver controls
+    question: Is there a documented segregation-of-duties model and a joiner-mover-leaver process?
+    applies: operator
+    evidence: Attestation or audit report (attested or documented).
+  - id: B4.5
+    group: B4
+    title: Session timeout
+    question: Are idle interactive sessions terminated after a defined period (the partner expects 60 minutes)?
+    applies: custodial
+    evidence: Help page or observed behaviour with steps (documented).
+  - id: B5.1
+    group: B5
+    title: API authentication, browser to server
+    question: Which standard (OAuth 2.0, OpenID Connect, SAML, JWT) protects browser-to-server API calls?
+    applies: operator
+    evidence: API reference or SDK source (verified from a repo, documented from docs).
+  - id: B5.2
+    group: B5
+    title: API authentication, server to server
+    question: Are server-to-server calls authenticated with keys or PKI certificates, and are keys scoped and rotatable?
+    applies: operator
+    evidence: API reference or SDK source. Cross-reference CROPS S5.
+  - id: B5.3
+    group: B5
+    title: Token expiry
+    question: Do API tokens expire, and within what period (the partner caps it at 120 minutes for public data, 30 otherwise)?
+    applies: operator
+    evidence: API reference (documented) or SDK source (verified).
+  - id: B5.4
+    group: B5
+    title: Export controls
+    question: If an API exports data, does it limit volumes and log exports?
+    applies: operator
+    evidence: API reference (documented). Cross-reference CROPS O4.
+  - id: B6.1
+    group: B6
+    title: Data classification and encryption
+    question: Does the provider state a data classification and enforce encryption at rest and TLS 1.2 or better in transit?
+    applies: operator
+    evidence: Security page (documented); TLS observed with a dated scan (documented).
+  - id: B6.2
+    group: B6
+    title: Production data kept out of test environments
+    question: Does the provider state that production or real personal data is not used in development and testing?
+    applies: operator
+    evidence: Security page or attestation.
+  - id: B6.3
+    group: B6
+    title: Data retention and deletion on termination
+    question: What is retained, for how long, and is customer data removed on termination?
+    applies: operator
+    evidence: Privacy policy or terms with a quote (documented). Cross-reference CROPS P2.
+  - id: B6.4
+    group: B6
+    title: Data protection impact assessment and roles
+    question: For systems holding personal data, has a DPIA been completed and are controller and processor defined?
+    applies: operator
+    evidence: Privacy policy or DPA naming controller and processor (documented); DPIA availability (attested).
+  - id: B6.5
+    group: B6
+    title: Data processing or sharing agreement available
+    question: Can a customer obtain a data processing agreement or equivalent?
+    applies: operator
+    evidence: Published DPA (documented) or statement of availability (attested).
+  - id: B7.1
+    group: B7
+    title: Audit logging
+    question: Are account changes, logins and activity on important records logged and retained?
+    applies: operator
+    evidence: Security page or attestation.
+  - id: B7.2
+    group: B7
+    title: Central monitoring and endpoint detection
+    question: Are logs sent to a managed SIEM and is endpoint detection running on all platforms?
+    applies: operator
+    evidence: Attestation or audit report.
+  - id: B8.1
+    group: B8
+    title: Hardened hosting
+    question: Are hosts hardened to a recognised benchmark, with only essential ports open, IDS/IPS, a WAF for internet-facing applications and tenant isolation?
+    applies: operator
+    evidence: Attestation or audit report; a dated external scan for open ports (documented).
+  - id: B8.2
+    group: B8
+    title: Deployment configuration and infrastructure as code
+    question: Does the repository ship reproducible deployment configuration (containers, IaC, Helm) that a self-hoster can harden?
+    applies: any
+    auto: true
+    evidence: Dockerfile, compose, Terraform, Helm or equivalent in the repository (verified).
+  - id: B9.1
+    group: B9
+    title: Default branch protected
+    question: Does the default branch require reviews and passing checks, with no direct pushes?
+    applies: any
+    auto: true
+    evidence: GitHub branch rules API for the default branch (verified).
+  - id: B9.2
+    group: B9
+    title: CI runs on pull requests
+    question: Does every pull request trigger automated checks?
+    applies: any
+    auto: true
+    evidence: Workflow files with a pull_request trigger (verified).
+  - id: B9.3
+    group: B9
+    title: Tests run in CI
+    question: Do the CI workflows run the test suite?
+    applies: any
+    auto: true
+    evidence: Workflow steps invoking tests (verified).
+  - id: B9.4
+    group: B9
+    title: Coverage reported
+    question: Is test coverage measured and reported (the partner expects 85%)?
+    applies: any
+    auto: true
+    evidence: Coverage tooling configuration or badge in the repository (verified); the percentage itself only from a CI artifact or coverage service page (documented).
+  - id: B9.5
+    group: B9
+    title: Versioned releases
+    question: Are releases tagged with immutable semantic versions?
+    applies: any
+    auto: true
+    evidence: Tags and releases from the GitHub API (verified).
+  - id: B9.6
+    group: B9
+    title: Signed tags or commits
+    question: Are release tags or recent commits cryptographically signed?
+    applies: any
+    auto: true
+    evidence: Verification status on the latest tag and recent commits from the GitHub API (verified).
+  - id: B9.7
+    group: B9
+    title: Changelog
+    question: Is a changelog maintained with the code?
+    applies: any
+    auto: true
+    evidence: CHANGELOG file or GitHub release notes (verified).
+  - id: B9.8
+    group: B9
+    title: Contribution and branching model documented
+    question: Does the README or contribution guide state how changes are proposed, reviewed and released?
+    applies: any
+    auto: true
+    evidence: CONTRIBUTING file or a contribution section in the README (verified).
+  - id: B10.1
+    group: B10
+    title: Architecture documentation
+    question: Is there a public architecture document covering logical, infrastructure and integration architecture and the components used?
+    applies: any
+    evidence: Document in the repository (verified) or on a docs site (documented); say which of the three views it covers.
+  - id: B11.1
+    group: B11
+    title: Contracting entity
+    question: Which legal entity would an institution contract with, and in which jurisdiction?
+    applies: operator
+    evidence: Terms naming the entity (documented) and a company-register entry (documented, primary). Cross-reference maturity.entity.
+  - id: B11.2
+    group: B11
+    title: Funding of ongoing operation
+    question: How is ongoing operation and maintenance funded (revenue, foundation, grants, fee switch), per a primary source?
+    applies: any
+    evidence: Annual report, treasury page, onchain fee switch (verified) or foundation statement (documented).
+  - id: B11.3
+    group: B11
+    title: Termination terms
+    question: What happens to customer funds and data on termination by either side?
+    applies: operator
+    evidence: Terms with a quote (documented).
+  - id: B12.1
+    group: B12
+    title: AI in the payment path
+    question: Does an AI system take part in payment processing or compliance decisions (for example automated transaction screening)?
+    applies: any
+    evidence: Code (verified) or policy and docs (documented). If none is found, record absent with the search performed.
+  - id: B12.2
+    group: B12
+    title: AI controls documented
+    question: If AI is used, are monitoring, validation, override, decommissioning and bias evaluation documented?
+    applies: any
+    evidence: Published AI governance documentation (documented) or attestation. Not applicable when B12.1 is absent.

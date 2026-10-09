@@ -1,0 +1,18 @@
+Swiss Federal Statistical Office, UID register entry (https://www.uid.admin.ch/Detail.aspx?uid_id=CHE422666391)
+Transcribed 2026-10-09 by the AI research agent (operational) from the page as fetched by curl. Field labels are German as served.
+
+UID: CHE-422.666.391
+UID-Status: Aktiv
+UID-Ergänzung: HR/MWST
+Name: Request Network Stiftung
+c/o: Coin Finance AG
+Strasse / Nr.: Gartenstrasse 5
+PLZ / Ort: 6300 Zug
+Kanton: ZG
+Land: Schweiz
+Letzte Prüfung: 28.09.2026
+Rechtsform: 0110 - Stiftung
+Handelsregisterdaten: Status HR Aktiv
+Referenznummer: CH-170.7.000.846-1
+Status MWST-Register: Aktiv; MWST-Nummer CHE-422.666.391 MWST; Beginn MWST-Pflicht 01.01.2020
+LEI: 506700N9PCVV68198A56 (ISSUED, initial registration 14.11.2025, valid until 20.11.2027)

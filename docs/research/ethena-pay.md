@@ -57,3 +57,15 @@ All onchain reads are pinned to Avalanche C-Chain block **96949020** (RPC https:
   - El Salvador (s1.8), Pakistan (s3.4) and Morocco (s4.5) are left out: digital-asset services are unavailable unless Ethena Pay confirms them at onboarding, and the card spends stablecoin balances. These are the default-off readings; Ethena Pay may enable them per user.
   - Japan (s3.2) is kept with a `note`: services are limited to unregulated functions, and the document does not say the card is excluded.
   - The s4.6 Restricted Jurisdictions are not listed separately because an allowlist already excludes them; the sub-national ones (Crimea, Donetsk, Luhansk) and the unrecognised ones (Abkhazia, South Ossetia, Northern Cyprus, Somaliland) are in `note`.
+
+## Operational 2026-10-09
+
+- Sources (server-rendered, quotes checked): pay.ethena.fi/pricing (effective 1 Sep 2026, updated 30 Sep), /card-terms (effective 1 Jun 2026), /terms (22 Sep 2026), /privacy (18 May 2026), /legal, /faq, /blog/introducing-ethena-pay (3 Sep 2026). /security, /fees and /.well-known/security.txt return 404.
+- Fees: card issuance, replacement, account and closure are free; FX is Visa's fee passed through (about 1%) with no cross-border fee; ATM is 1 USD + 0.65% where available; late fee up to 40 USD and returned payment up to 29 USD; off-ramp fees are set by Iron / MoonPay at the time of the transaction. Outbound wires are not offered.
+- Licences: none found. The Terms say Ethena Pay Ltd. is not licensed by any financial regulator in the user's country. The card terms name Third National (issuer) and Signify Holdings, Inc. d/b/a Rain (programme manager) without licence details.
+- First deployment: Routescan getcontractcreation plus eth_getCode at the block before. The Rain collateral 0x6070848b... was created at block 87002584 (2026-06-02), by the same Rain EOA 0x21ebc2f2... seen on Plasma. The wallet factory 0xAc66ca9A... was created at block 87652557 (2026-06-10).
+- Volume: not_observable. The card spend's AllowanceSpent is emitted by each user's wallet proxy, not by a listed contract. The listed BatchExecutor event 0x1aa7a0dc... carries only counts (receipt of tx 0xec33bce0...).
+- Group B: the privacy policy is detailed. It names the GDPR controller, gives a retention table, describes generic safeguards, and discloses automated decision-making and profiling, with machine learning, in screening and fraud, plus a human-review right. These give B6.1, B6.3, B6.4, B12.1 and B12.2. B4.1 (passkeys plus biometrics), B11.1, B11.2 (launch post) and B11.3 are documented. Nothing was found on certifications, pen tests, patch SLAs, incident notification or status pages.
+- Judgment calls:
+  - first_deployment dates the Rain collateral as the settlement contract. Attribution to Ethena Pay is the provider file's inference.
+  - B12.2 is evidenced with a partial value: only the override path is documented.

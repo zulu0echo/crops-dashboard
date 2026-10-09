@@ -1,0 +1,8 @@
+Source: https://docs.coca.xyz/coca/crypto-account/exchange-assets
+Fetched: 2026-10-09 (curl; GitBook page, intermittently slow). Visible text with tags stripped:
+Exchange assets | COCA COCA ⌘ Ctrl k COCA 💸 Banking That Pays You Back 🤩 The Bank We All Deserve Why are rewards so high? Where is my money stored and who controls it? Is COCA safe? What is COCA's 
+roadmap for 2026? 💳 Banking Account Overview COCA Card IBAN 🚀 CRYPTO ACCOUNT Overview Buy Crypto Exchange assets 💰 Membership & Rewards Membership you deserve 8% Cashback 50%-off subscriptions 5% 
+Balance APY 👌 Only UP! Tokenomics Token designed to work Address & Details Token allocations No new tokens until Dec 1, 2027 Powered by GitBook On this page For the complete documentation index, see 
+llms.txt . This page is also available as Markdown . Copy On this page 🚀 CRYPTO ACCOUNT Exchange assets Swap assets with Zero COCA Fees – exchange one crypto asset for another (even across blockchains) 
+without incurring fees. Swap over 350 tokens across 12 blockchains, plus manually added tokens. Unlike others like MetaMask (1.5% fee) or Uniswap (1.1%), COCA offers significant savings: e.g., $1,500 
+saved on every $100,000 worth Bitcoin swap. Previous Buy Crypto Next Membership you deserve Last updated 7 months ago

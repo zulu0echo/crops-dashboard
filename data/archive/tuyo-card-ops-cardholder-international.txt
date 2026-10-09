@@ -1,0 +1,45 @@
+Source: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2 (Notion page rendered in a browser; excerpts copied verbatim 2026-10-09)
+
+Tuyo Cardholder Agreement (International)
+Last updated: November 25th, 2025
+This Tuyo Cardholder Agreement (the "Card Terms") are a binding agreement between you ("you", or "your"), Tuyo Inc., and Issuer, including its affiliates, successors, and assigns ("Issuer," "we", "us", or "our") that govern your use of the Tuyo Cards, including the process for obtaining and managing Tuyo Cards, access to which is provided to you by Tuyo Inc. ("Tuyo").
+Important Disclosures
+Rates, fees, and other important information about your Tuyo Card ("Card") are set forth in these Important Disclosures.
+Effective as of March 7th, 2025
+Interest Rates and Interest Charges
+0%
+Annual Percentage Rate (APR) for Purchases
+0%
+Fees
+Transaction Fee
+Foreign Purchases
+Foreign Exchange Fee (non-USD): up to 3%
+Cross Border Fee: up to 3%
+Penalty Fees
+Late payment: None
+Returned payment: None
+[...]
+Issuer
+The card program is issued by the Issuer under license from Visa. The information about the cost of the Card described in the above table is accurate as of March 7th, 2025.
+[...]
+Defined Terms
+"Issuer" refers to the issuer of the card program. The issuer for this card program is Third National.
+"Supported Blockchains" means the Ethereum Blockchain, Polygon Blockchain, Optimism Blockchain, Arbitrium Blockchain and other blockchain networks which may be added at the sole discretion of Issuer.
+[...]
+4. Purchases & Restrictions
+[...] We reserve the right to deny any purchase for any reason, such as account default, suspected fraudulent or unlawful activity, internet gambling, or any indication of increased risk related to the purchase. We may terminate or suspend your use of the Card or the Account, with or without notice to you, before or at the time we take such action. Cash advances and balance transfers are not available under these Card Terms.
+[...]
+6. Fees
+[...] We may update, add, or change Fees upon 30 days' notice to you. [...]
+6.2 Foreign Currency Transactions
+[...]
+Foreign Transaction Fees: up to 3%
+[...]
+7.4 Nigerian Users
+It is important to note that the card is marketed to you by BANEX MICROFINANCE BANK LIMITED (BANEX), a financial institution licensed by the Central Bank of Nigeria (CBN). Additionally, BANEX will be responsible for ensuring that the card meets all the requirements of the CBN (including but not limited to filing requisite returns with the CBN) and other Nigerian laws, and continues to operate within the bounds of the applicable laws. BANEX will also be responsible for ensuring that your personal data is processed in compliance with the Nigeria Data Protection Act and any other applicable data protection laws. Notwithstanding the foregoing, any complaint should be sent to Tuyo and it will be responsible for providing customer service support.
+[...]
+9. Termination
+Subject to applicable law, we may suspend, revoke, or cancel your Account privileges, your right to use the Tuyo Card, or deny any transaction, in our sole discretion at any time, with or without cause and with or without notice to you.
+[...]
+14. Governing Law
+These Card Terms will be interpreted in accordance with the laws of Delaware without regard to conflict-of-law provisions.

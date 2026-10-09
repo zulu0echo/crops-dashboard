@@ -1,0 +1,27 @@
+Source: https://help.exactly.app/en/articles/11758961-how-to-withdraw-cash-from-an-atm-with-your-exa-card
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+Written by Mate Updated over 2 weeks ago
+Table of contents
+Here’s how:
+Open your phone wallet
+Make sure your Exa Card is added to Apple Wallet or Google Pay.
+Look for a contactless-enabled ATM
+These usually have the NFC wave symbol (📶) near the card reader.
+Tap your phone
+Hold your phone near the reader and follow the on-screen steps.
+(ATM flows may differ slightly depending on the provider.)
+Enter your card PIN (from the Exa App Card section) and choose your amount
+That’s it. You’ll receive the cash just like with any other debit card.
+Limits & Fees
+Up to $250 per withdrawal
+Max 4 withdrawals per day
+Fees: $1 + 0.65% per transaction
+​(Some ATMs may charge extra — they’ll let you know before you confirm.)
+Tip: Avoid automatic currency conversion
+If the ATM offers to convert the currency for you, always decline.
+Let Visa handle it to get the best rate, and skip hidden fees.
+Look for options like:
+❌ “Convert with ATM rate”
+✅ “Decline conversion” 
+​

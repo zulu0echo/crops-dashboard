@@ -1,0 +1,597 @@
+slug: umbra
+fees:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: Toll 0 ETH per send on Ethereum (toll() = 0)
+      basis: Contract parameter; setToll is onlyOwner (an EOA), unbounded and emits no event. The sender commits to the current toll in sendEth, which blocks owner front-running of a single send.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payee
+      amount: Relayer fee for token withdrawals, quoted per token by the Umbra API and deducted from the withdrawn tokens
+      basis: Optional; set by ScopeLift's closed API (mainnet.api.umbra.cash/tokens/<token>/estimate). ETH withdrawals and self-withdrawals pay no relayer fee.
+      evidence_index: 1
+    - kind: network
+      paid_by: payer
+      amount: Ethereum gas for the send; gas for withdrawal paid by the stealth address or by the relayer
+      basis: Network fee, not set by the protocol.
+      evidence_index: 2
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401
+      address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+      block_number: 26153752
+      detail: toll() returns 0 on Ethereum mainnet. Umbra.sol L64-L69 lets the owner set any toll; sendEth (L95-L120) requires the sender's toll commitment to equal it and forwards msg.value minus toll.
+      checked_at: 2026-10-09
+      recheck: cast call 0xFb2dc580Eed955B528407b4d36FfaFe3da685401 "toll()(uint256)" --rpc-url https://ethereum-rpc.publicnode.com
+      check:
+        call: "0x285aaa20"
+        expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    - tier: verified
+      kind: repo
+      commit: 07a64aeef305399a86afe72e502156d72babcc17
+      checked_at: 2026-10-09
+      url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/utils/umbra-api.ts#L34-L93
+      path: frontend/src/utils/umbra-api.ts
+      detail: The app's relayer client uses https://mainnet.api.umbra.cash and fetches a fee estimate per token (getFeeEstimate, L89-L93); withdrawal-fees.ts L27-L30 returns a zero fee for the native token.
+    - tier: verified
+      kind: repo
+      commit: 07a64aeef305399a86afe72e502156d72babcc17
+      checked_at: 2026-10-09
+      url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/i18n/locales/en-US.json#L167-L173
+      path: frontend/src/i18n/locales/en-US.json
+      detail: The FAQ explains that ETH goes straight to the stealth address, tokens are withdrawn directly or through a relayer ("By default, the Umbra app uses a relayer from the Umbra team"), and that a toll is charged only on cheap networks to deter spam.
+  note: The toll is per chain; only Ethereum was read. The relayer's fee amounts are not published.
+  checked_at: 2026-10-09
+custody_model:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: Agrees with S1 (3). ETH goes directly to the stealth address; tokens wait in the non-upgradeable contract until the stealth key releases them.
+  checked_at: 2026-10-09
+licences:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: absent
+  evidence:
+    - tier: verified
+      kind: repo
+      commit: 07a64aeef305399a86afe72e502156d72babcc17
+      checked_at: 2026-10-09
+      url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/TermsOfService.vue#L1-L60
+      path: frontend/src/pages/TermsOfService.vue
+      detail: The Terms of Service name ScopeLift, a Pennsylvania LLC, as owner of the app and cite no licence, registration or regulator (searched for licen, regulat, money transmit); the privacy policy and FAQ say nothing either.
+  note: ScopeLift runs the optional relayer and the app, not a custodial service. No regulator register was searched by name.
+  checked_at: 2026-10-09
+cashout:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: Token-to-address rail. The payee withdraws ETH or tokens to an address it controls; converting them to local currency is outside the protocol.
+  burden: institution
+  checked_at: 2026-10-09
+maturity:
+  first_deployment:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      date: 2021-04-30
+      block: 12343914
+      what: Umbra contract 0xFb2d…5401 created (tx 0x1dbb9dfe…134a) by the owner EOA 0x5777…7232; StealthKeyRegistry followed at block 13098125 (2021-08-26).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401?fields=deployment
+        address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+        block_number: 12343914
+        detail: Sourcify creation data gives tx 0x1dbb9dfe4f83466be6ce1cdd19ac690636f02aeb2804785509ead7084fd7134a at block 12343914; the receipt has contractAddress 0xfb2d…5401 and status 1; block 12343914 is dated 2021-04-30 UTC, matching deploy-history/mainnet-2021-04-30T20:19:57.768Z.json and umbra-js's mainnet start block.
+        checked_at: 2026-10-09
+        recheck: cast receipt 0x1dbb9dfe4f83466be6ce1cdd19ac690636f02aeb2804785509ead7084fd7134a contractAddress --rpc-url https://rpc.mevblocker.io
+    checked_at: 2026-10-09
+  entity:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      legal_name: ScopeLift (Pennsylvania limited liability company)
+      jurisdiction: US-PA
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        checked_at: 2026-10-09
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/TermsOfService.vue#L8-L33
+        path: frontend/src/pages/TermsOfService.vue
+        detail: The terms define ScopeLift as "the Commonwealth of Pennsylvania Limited Liability Corporation that owns the Umbra App and Site".
+    note: The exact registered name and entity number were not read from the Pennsylvania Department of State register (its search is an interactive web app), so no register_url. The GitHub org lists Philadelphia, PA.
+    checked_at: 2026-10-09
+  incidents:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/security-advisories
+        detail: No published security advisories for ScopeLift/umbra-protocol.
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xFb2dc580Eed955B528407b4d36FfaFe3da685401
+        address: "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+        block_number: 26153752
+        detail: The contract is not upgradeable and its only OwnershipTransferred event is the constructor's (block 12343914, to 0x5777…7232); no admin path moves user funds (S1).
+        checked_at: 2026-10-09
+    note: No post-mortem found in the repo, FAQ or app pages. GitHub issue search in umbra-protocol for exploit, incident, vulnerability, hack and security returned no incident report.
+    checked_at: 2026-10-09
+  changes:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2021-04-30
+        summary: Umbra contract deployed on Ethereum mainnet.
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/deploy-history/mainnet-2021-04-30T20:19:57.768Z.json
+      - date: 2021-08-26
+        summary: StealthKeyRegistry deployed on mainnet.
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/deploy-history/registry-mainnet-2021-08-26T01:43:35.143Z.json
+      - date: 2021-10-29
+        summary: Same contracts deployed on Polygon.
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/deploy-history/polygon-2021-10-29T18:50:56.054Z.json
+      - date: 2022-03-02
+        summary: Deployed on Optimism and Arbitrum.
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/deploy-history/optimism-latest.json
+      - date: 2023-06-01
+        summary: Deployed on Gnosis Chain.
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/deploy-history/gnosis_chain-latest.json
+      - date: 2024-02-19
+        summary: Deployed on Base.
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/deploy-history/base-latest.json
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        checked_at: 2026-10-09
+        url: https://github.com/ScopeLift/umbra-protocol/tree/07a64aeef305399a86afe72e502156d72babcc17/contracts-core/deploy-history
+        path: contracts-core/deploy-history
+        detail: Timestamped deploy records per network (mainnet 2021-04-30, registry-mainnet 2021-08-26, polygon 2021-10-29, optimism and arbitrum 2022-03-02, gnosis_chain 2023-06-01, base 2024-02-19).
+    note: The mainnet contract has never been replaced. Toll changes emit no event, so any past toll changes on mainnet cannot be listed from logs; toll() reads 0 today.
+    checked_at: 2026-10-09
+volume:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: unknown
+  spec:
+    chain_id: 1
+    addresses:
+      - "0xFb2dc580Eed955B528407b4d36FfaFe3da685401"
+    topic0: "0x29877766fa2bfe3b90008d6d92f965eca91cbc5757ed775740e460799fb92219"
+    event: Announcement(address indexed receiver, uint256 amount, address indexed token, bytes32 pkx, bytes32 ciphertext)
+    window_days: 30
+    exclusions: Event count only. The token is an indexed topic (topic 2), which scripts/volumes.mjs cannot read, so amounts (data word 0) of ETH and different tokens would be summed together; amount_word is deliberately omitted. L2 deployments excluded.
+  note: Judgment call. Every send emits one Announcement with the amount in clear, so settlement is observable, but a per-token sum needs the script to read the token from topic 2. Until then the spec yields a payment count, not a value. Not computed; the maintainer runs scripts/volumes.mjs.
+facts:
+  B1.4:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: ConsenSys Diligence audited the contracts (2021-03) and Least Authority audited umbra-js; audited commits not tied to the deployed code. See CROPS S6.
+    refs:
+      - criterion: S6
+        index: 0
+    checked_at: 2026-10-09
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: false
+          detail: no security policy file
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
+        detail: "ScopeLift/umbra-protocol: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
+        detail: "ScopeLift/umbra-subgraph: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
+        detail: "ScopeLift/umbra-protocol: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
+        detail: "ScopeLift/umbra-subgraph: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B6.3:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: "Hosted services: server logs with IP addresses kept no more than 90 days; IP addresses of registered users and posts no more than 5 years. Stated aim to drop IP logging later."
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        checked_at: 2026-10-09
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/PrivacyPolicy.vue#L5-L30
+        path: frontend/src/pages/PrivacyPolicy.vue
+        detail: Privacy policy, data retention section (L23-L30).
+    note: Cross-reference CROPS P2. Applies to the optional hosted app, relayer and indexer, which ScopeLift runs.
+    checked_at: 2026-10-09
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: false
+          detail: no deployment configuration
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
+        detail: "ScopeLift/umbra-protocol: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
+        detail: "ScopeLift/umbra-subgraph: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/rules/branches/master
+        detail: "ScopeLift/umbra-protocol: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/rules/branches/main
+        detail: "ScopeLift/umbra-subgraph: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: true
+          detail: 1 workflow file(s)
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
+        detail: "ScopeLift/umbra-protocol: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
+        detail: "ScopeLift/umbra-subgraph: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: true
+          detail: test command in a workflow
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
+        detail: "ScopeLift/umbra-protocol: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
+        detail: "ScopeLift/umbra-subgraph: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: true
+          detail: coverage tooling referenced
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
+        detail: "ScopeLift/umbra-protocol: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
+        detail: "ScopeLift/umbra-subgraph: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: false
+          detail: "latest tags: @umbra/umbra-js@0.0.1-alpha.0, @umbra/frontend@0.0.2, @umbra/contracts@0.0.2"
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/tags
+        detail: "ScopeLift/umbra-protocol: latest tags: @umbra/umbra-js@0.0.1-alpha.0, @umbra/frontend@0.0.2, @umbra/contracts@0.0.2"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/tags
+        detail: "ScopeLift/umbra-subgraph: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: false
+          detail: 0 of 10 recent commits signed
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: 2 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/commits?per_page=10
+        detail: "ScopeLift/umbra-protocol: 0 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/commits?per_page=10
+        detail: "ScopeLift/umbra-subgraph: 2 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: false
+          detail: no changelog or release notes
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
+        detail: "ScopeLift/umbra-protocol: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
+        detail: "ScopeLift/umbra-subgraph: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: ScopeLift/umbra-protocol
+          ok: true
+          detail: contribution section in README
+        - repo: ScopeLift/umbra-subgraph
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
+        detail: "ScopeLift/umbra-protocol: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
+        detail: "ScopeLift/umbra-subgraph: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B10.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Logical architecture only, in the app FAQ (keys, stealth addresses, Announcement scanning, relayed withdrawals, hooks) and a code-reading guide; the FAQ says developer documentation is not yet written. No infrastructure view of the hosted API or indexer.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        checked_at: 2026-10-09
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/i18n/locales/en-US.json#L153-L239
+        path: frontend/src/i18n/locales/en-US.json
+        detail: FAQ answers how-does-it-work (L153), build-on-umbra (L234) and hooks (L239).
+    checked_at: 2026-10-09
+  B11.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: ScopeLift, a Pennsylvania limited liability company, owns the app and site and makes them available under the Terms of Service.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        checked_at: 2026-10-09
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/TermsOfService.vue#L8-L33
+        path: frontend/src/pages/TermsOfService.vue
+        detail: Terms preamble and definitions.
+    checked_at: 2026-10-09
+  B11.2:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: unknown
+    note: The onchain toll is 0 on Ethereum (see fees), so the protocol earns nothing there; how ScopeLift funds maintenance of the app, relayer and indexer is not stated in any source found. The toll on cheaper chains was not read.
+    checked_at: 2026-10-09
+  B11.3:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Either side may terminate; ScopeLift may suspend or end access to the app at its discretion without notice. Funds are unaffected because they sit at stealth addresses or in the non-upgradeable contract (CROPS S4).
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        checked_at: 2026-10-09
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/TermsOfService.vue#L140-L150
+        path: frontend/src/pages/TermsOfService.vue
+        detail: Section 5, Termination.
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+  B12.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: 07a64aeef305399a86afe72e502156d72babcc17
+        checked_at: 2026-10-09
+        url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/umbra-js/src/utils/utils.ts#L1171-L1190
+        path: umbra-js/src/utils/utils.ts
+        detail: The SDK's recipient screening is a hardcoded address list plus a call to the Chainalysis sanctions oracle (isSanctioned); no model or AI component. The contracts have no screening; the hosted API code is closed and its behaviour unknown.
+    checked_at: 2026-10-09

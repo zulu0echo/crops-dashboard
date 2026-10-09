@@ -1,0 +1,599 @@
+slug: zcash
+name: Zcash (shielded transfers)
+type: transfer
+website: https://z.cash
+primary_chain:
+  name: Zcash mainnet
+  caip2: "zcash:main"
+  basis: >-
+    Zcash is its own proof-of-work chain, so the unit is Zcash mainnet as defined by the maintained node, Zebra (v6.4.2, MAINNET_ACTIVATION_HEIGHTS in zebra-chain network_upgrade.rs L104-L120, NU6.3 at height 3,428,143). Scope: shielded ZEC transfers (Ironwood pool since NU6.3; Orchard spend-only per ZIP 258) and the transparent pool. Excluded: testnet, ZSAs (NU7 draft), exchanges and bridges. zcash:main is not a registered CAIP-2 namespace (ChainAgnostic/namespaces has none for Zcash); used as the brief directs.
+
+repos:
+  - url: https://github.com/ZcashFoundation/zebra
+    role: backend
+    license: Apache-2.0
+  - url: https://github.com/zcash/librustzcash
+    role: sdk
+    license: MIT
+  - url: https://github.com/zcash/orchard
+    role: sdk
+    license: MIT
+  - url: https://github.com/zcash/zips
+    role: docs
+    license: MIT
+  - url: https://github.com/zcash/lightwalletd
+    role: indexer
+    license: MIT
+  - url: https://github.com/zingolabs/zaino
+    role: indexer
+    license: Apache-2.0
+  - url: https://github.com/zcash/zallet
+    role: frontend
+    license: Apache-2.0
+  - url: https://github.com/zodl-inc/zodl-android
+    role: frontend
+    license: MIT
+  - url: https://github.com/zodl-inc/zodl-ios
+    role: frontend
+    license: MIT
+  - url: https://github.com/zodl-inc/zodl-android-wallet-sdk
+    role: sdk
+    license: AGPL-3.0-only
+  - url: https://github.com/zcash/zcash
+    role: backend
+    license: MIT
+
+contracts: []
+
+components:
+  - name: Zcash mainnet consensus (proof-of-work miners and full nodes)
+    role: ledger
+    public: true
+    license: Apache-2.0
+    operator: miners and node operators; rule changes ship as node releases (ZIP process)
+    required: true
+    repo: https://github.com/ZcashFoundation/zebra
+  - name: Zebra full node (zebrad), the maintained consensus node
+    role: backend
+    public: true
+    license: Apache-2.0
+    operator: Zcash Foundation (code); run by users, server operators and miners
+    required: true
+    repo: https://github.com/ZcashFoundation/zebra
+  - name: Protocol libraries in every listed wallet (librustzcash, orchard, halo2)
+    role: sdk
+    public: true
+    license: MIT
+    operator: user (runs inside the wallet)
+    required: true
+    repo: https://github.com/zcash/librustzcash
+  - name: Zodl mobile wallet (Android and iOS; reference light wallet)
+    role: wallet
+    public: true
+    license: MIT
+    operator: Znewco, Inc. (d/b/a Zodl)
+    required: false
+    repo: https://github.com/zodl-inc/zodl-android
+  - name: Zodl Android and iOS wallet SDKs (AGPL-3.0-only, CLA, dual-licensed)
+    role: sdk
+    public: true
+    license: AGPL-3.0-only
+    operator: Znewco, Inc.
+    required: false
+    repo: https://github.com/zodl-inc/zodl-android-wallet-sdk
+  - name: Zallet full-node wallet (beta)
+    role: wallet
+    public: true
+    license: Apache-2.0
+    operator: user
+    required: false
+    repo: https://github.com/zcash/zallet
+  - name: lightwalletd servers (Zodl defaults zec.rocks, zec.stardust.rest, or custom)
+    role: api
+    public: true
+    license: MIT
+    operator: independent server operators
+    required: false
+    repo: https://github.com/zcash/lightwalletd
+  - name: Zaino indexer (lightwalletd-compatible)
+    role: indexer
+    public: true
+    license: Apache-2.0
+    operator: server operators
+    required: false
+    repo: https://github.com/zingolabs/zaino
+  - name: zcashd (archived predecessor node and wallet)
+    role: backend
+    public: true
+    license: MIT
+    operator: none (archived 2026)
+    required: false
+    repo: https://github.com/zcash/zcash
+  - name: Zodl store-build integrations (Crashlytics, CoinMarketCap, Flexa, NEAR swaps)
+    role: other
+    public: false
+    license: proprietary
+    operator: Google, CoinMarketCap, Flexa, NEAR intents operators
+    required: false
+
+scores:
+  C1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0257.md#L51-L75
+        commit: "3af03aa3ad991874d86b8cf35919bc9b4671e8ba"
+        path: zips/zip-0257.md
+        detail: ZIP 257 records that from Mainnet height 3363426 until NU6.2 activated at height 3364600, transactions MUST NOT contain Orchard Actions; the rule shipped as an emergency hotfix in zcashd v6.12.5 and zebra v4.5.3 after an Orchard circuit soundness bug was reported on 2026-05-29, and a first attempt 60 blocks earlier failed because some mining pools had not upgraded.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zcash/zips/contents/zips/zip-0257.md?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 51,75p
+      - tier: verified
+        kind: repo
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebrad/src/components/sync/end_of_support.rs#L15-L41
+        commit: "e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291"
+        path: zebrad/src/components/sync/end_of_support.rs
+        detail: Each Zebra release panics ("Zebra refuses to run") on Mainnet 84 days after its estimated release height (L86-L101), so node operators must install a newer release roughly every 12 weeks; the check is in public code and can be patched out by whoever builds the node.
+        checked_at: "2026-10-09"
+    finding: >-
+      The Zcash consensus rules contain no admin key, pause, freeze, blacklist or allowlist role, and shielded addresses are not visible to anyone who could filter them. The rules can still be changed by coordinated node releases that miners and node operators adopt: in June 2026 the node teams shipped an emergency soft fork that disabled the whole Orchard pool for 1,174 blocks (about a day) without advance notice, to contain a balance-violation bug, documented after the fact in ZIP 257. That power is pool-wide, not per-address, and depends on miner adoption. Zebra releases also stop running 84 days after release, which forces operators to choose new software regularly. Judgment call: the substance is close to anchor 3 (no role that can target users), but the dashboard needs onchain evidence about a deployed contract for a 3, which a chain with no contract addresses cannot supply, and the June 2026 no-notice pool halt is recorded here, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebra-rpc/src/methods.rs#L262-L283
+        commit: "e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291"
+        path: zebra-rpc/src/methods.rs
+        detail: zebrad's sendrawtransaction RPC accepts any signed transaction into the local node's mempool, from where it is gossiped to peers and mined; no provider signature or API key is involved.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ZcashFoundation/zebra/contents/zebra-rpc/src/methods.rs?ref=e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291" --jq .content | base64 -d | sed -n 262,283p
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/lightwalletd/blob/d16d48124e9ad4157ebc2324b5090c6ba201470c/lightwallet-protocol/walletrpc/service.proto#L276-L279
+        commit: "d16d48124e9ad4157ebc2324b5090c6ba201470c"
+        path: lightwallet-protocol/walletrpc/service.proto
+        detail: Light wallets submit the same raw signed transaction to any lightwalletd server through SendTransaction(RawTransaction); the server only relays it to its node.
+        checked_at: "2026-10-09"
+    finding: >-
+      A payer builds and signs a transaction in their own wallet and can submit it to any Zcash node, their own or anyone's, or to any light-wallet server; the payee receives it by scanning the chain with their viewing key. No company sits in the path. Settlement is the consensus protocol itself, specified in the ZIPs and protocol specification. Judgment call: this is the strongest form of direct settlement, but anchor 3 is defined by direct calls to public contracts and needs onchain evidence about a deployed contract, which this chain has none of, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt#L13-L28
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt
+        detail: Zodl ships seven Mainnet lightwalletd endpoints from two operators (zec.rocks with regional hosts, zec.stardust.rest US and EU); ChooseServerVM.kt L148-L230 adds automatic selection and a custom server, and MultiEndpointTransactionSubmitter.kt L22-L47 submits each transaction to several endpoints.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zodl-inc/zodl-android/contents/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 13,28p
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/lightwalletd/blob/d16d48124e9ad4157ebc2324b5090c6ba201470c/README.md#L92-L128
+        commit: "d16d48124e9ad4157ebc2324b5090c6ba201470c"
+        path: README.md
+        detail: The lightwalletd README documents production self-hosting against a local zebrad; Zaino (zingolabs/zaino, Apache-2.0) is a second implementation.
+        checked_at: "2026-10-09"
+    finding: >-
+      No hosted service is required. A full-node user (Zebra plus Zallet) needs only peers. A light-wallet user needs a lightwalletd-compatible server; the code is public and self-hostable, and the reference wallet ships several independent default servers, picks one automatically, broadcasts each transaction to more than one, and accepts a custom server.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0224.rst#L232-L257
+        commit: "3af03aa3ad991874d86b8cf35919bc9b4671e8ba"
+        path: zips/zip-0224.rst
+        detail: Shielded actions carry encrypted notes; consensus checks proofs, nullifiers and pool balances, so validators cannot see or filter shielded senders and recipients.
+        checked_at: "2026-10-09"
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt#L13-L28
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt
+        detail: GitHub code search on 2026-10-09 for country, geolocation, geoip and restricted in zodl-android, zodl-ios, zebra, zallet and lightwalletd found no country or address screening (zodl-ios hits are a language-based layout tweak in WelcomeView.swift and SplashView.swift).
+        checked_at: "2026-10-09"
+        recheck: gh search code --repo zodl-inc/zodl-android country --json path --jq '.[].path'; gh search code --repo ZcashFoundation/zebra geoip --json path --jq '.[].path'
+    finding: >-
+      The settlement layer is neutral: consensus has no address or country rules, and shielded parties are not visible. We found no screening in the node, the beta full-node wallet, lightwalletd, or the reference mobile wallet. A light-wallet server operator could refuse to relay a transaction, but the wallet can switch server or the user can run a node. Optional swaps run through NEAR intents operators whose screening we did not inspect. Judgment call: the substance fits 3, but 3 needs a distributed-package or trace record for the client, which we do not have, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  C5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0224.rst#L242-L256
+        commit: "3af03aa3ad991874d86b8cf35919bc9b4671e8ba"
+        path: zips/zip-0224.rst
+        detail: Value moves only in ZEC across the transparent, Sprout, Sapling, Orchard and (since NU6.3) Ironwood pools, with per-pool turnstiles; there is no issued token with a freeze function and no sequencer.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zcash/zips/contents/zips/zip-0258.md?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 85,100p
+    finding: >-
+      The rail carries one asset, ZEC, on one proof-of-work chain, so there is no issuer freeze and no sequencer to inherit. Pool-level changes are the inherited risk: after NU6.3 the Orchard pool is spend-only (ZIP 258 L85-L100), and in June 2026 Orchard was disabled for about a day (see C1). The reference wallet does not state these assumptions to payees. Scored 2: enumerated in code, assumptions not stated.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O1:
+    unknown: true
+    finding: >-
+      Not applicable as worded: Zcash has no contracts, and its rules run in node software that each operator builds or downloads. Zallet documents StageX reproducible builds and Zebra publishes release binaries, but we did not verify any binary against source.
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ZcashFoundation/zebra/tree/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebrad
+        commit: "e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291"
+        path: zebrad
+        detail: Node (zebra@e3eef2f3, v6.4.2), protocol libraries (librustzcash@9181ef85, orchard@616a669d), light-wallet server (lightwalletd@d16d4812) and Zaino indexer (zaino@b8db9fed), full-node wallet (zallet@522b486d), mobile wallets (zodl-android@4248d469, zodl-ios@6a7dc6b3) and their SDKs (zodl-android-wallet-sdk@afe08faf) are all public; Zebra ships Docker deploy files.
+        checked_at: "2026-10-09"
+        recheck: for r in ZcashFoundation/zebra zcash/librustzcash zcash/orchard zcash/lightwalletd zingolabs/zaino zcash/zallet zodl-inc/zodl-android zodl-inc/zodl-ios zodl-inc/zodl-android-wallet-sdk; do echo $r $(gh api repos/$r --jq '[.archived,.pushed_at]|@tsv'); done
+    finding: >-
+      Every layer a payment touches has public, maintained source: node, protocol libraries, light-wallet server and indexer, wallets and SDKs, plus deploy files. The only closed parts are optional store-build integrations in the mobile wallet. Judgment call: light-wallet servers are run by third parties and we cannot see which build they run, but the wallet treats them as replaceable, so we score the stack, not the operators, at 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O3:
+    score: 1
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/README.md#L23-L60
+        commit: "e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291"
+        path: README.md
+        detail: The Zebra README gives Docker and manual build steps; the lightwalletd README L92-L128 covers production setup; Zodl and Zallet READMEs cover building the wallets.
+        checked_at: "2026-10-09"
+    finding: >-
+      Build and run documentation exists for the node, the light-wallet server and the wallets. Reproduction not attempted, so the score is capped at 1.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  O4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/lightwalletd/blob/d16d48124e9ad4157ebc2324b5090c6ba201470c/lightwallet-protocol/walletrpc/service.proto#L224-L330
+        commit: "d16d48124e9ad4157ebc2324b5090c6ba201470c"
+        path: lightwallet-protocol/walletrpc/service.proto
+        detail: The light-wallet API is a versioned gRPC schema (CompactTxStreamer); compact_formats.proto defines the block format, and the node's JSON-RPC methods are documented in zebra-rpc/src/methods.rs.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zcash/lightwalletd/contents/lightwallet-protocol/walletrpc/service.proto?ref=d16d48124e9ad4157ebc2324b5090c6ba201470c" --jq .content | base64 -d | sed -n 224,330p
+    finding: >-
+      Interfaces are versioned in the repos: the transaction format and consensus rules in the ZIPs, the light-wallet gRPC schema, and the node RPC. There are no contract ABIs to publish. We did not find a documented payee export format in the reference wallet. Judgment call: treating the protocol and RPC schemas as covering the ABI and API parts gives 2; no export, so not 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F1:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/orchard/blob/616a669df8c9a59c33d47064d3ce04b25d026b2e/COPYING.md
+        commit: "616a669df8c9a59c33d47064d3ce04b25d026b2e"
+        path: COPYING.md
+        detail: orchard, librustzcash, sapling-crypto and halo2 are MIT or Apache-2.0; Zebra is MIT or Apache-2.0; lightwalletd, zips and the archived zcashd are MIT; Zaino and Zallet Apache-2.0; Zodl apps MIT; the Zodl Android SDK AGPL-3.0-only.
+        checked_at: "2026-10-09"
+        recheck: for r in ZcashFoundation/zebra zcash/librustzcash zcash/orchard zcash/zips zcash/lightwalletd zingolabs/zaino zcash/zallet zodl-inc/zodl-android zodl-inc/zodl-ios zodl-inc/zodl-android-wallet-sdk zcash/zcash; do echo $r $(gh api repos/$r/contents --jq '[.[].name|select(test("^(LICEN|COPYING)";"i"))]|join(",")'); done
+    finding: >-
+      Every repository listed carries an OSI-approved licence, including the required node and protocol libraries. The Zodl Android SDK is AGPL-3.0-only, which is OSI-approved but copyleft, and is also sold under commercial terms.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F2:
+    score: 0
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android-wallet-sdk/blob/afe08faff918bf2cf4e4a1cd99913ad8bddac645/CONTRIBUTING.md#L290-L302
+        commit: "afe08faff918bf2cf4e4a1cd99913ad8bddac645"
+        path: CONTRIBUTING.md
+        detail: The Zodl Android SDK requires a signed CLA assigning or broadly licensing contributions to Znewco, Inc. to support dual licensing; its LICENSE changed from MIT to AGPL-3.0-only in commit 9ff67a5e (2026-08-24).
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zodl-inc/zodl-android-wallet-sdk/commits?path=LICENSE&per_page=5" --jq '.[]|[.sha[0:8],.commit.author.date,.commit.message[0:60]]|@tsv'
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/orchard/blob/616a669df8c9a59c33d47064d3ce04b25d026b2e/COPYING.md#L17-L22
+        commit: "616a669df8c9a59c33d47064d3ce04b25d026b2e"
+        path: COPYING.md
+        detail: orchard notes its licence changed from the Bootstrap Open Source License to MIT or Apache-2.0 in release 0.7.0 (commit ac4b5218, 2023-12-19). librustzcash, Zebra and lightwalletd CONTRIBUTING files mention no CLA.
+        checked_at: "2026-10-09"
+    finding: >-
+      The required node and protocol libraries have no CLA. There have been two relicensing events: orchard moved from the Bootstrap Open Source License to MIT or Apache-2.0 in 2023, which widened rights, and the Zodl Android SDK moved from MIT to AGPL-3.0-only in August 2026 under a CLA that lets Znewco sell commercial licences. No licence-stability commitment exists. Judgment call: anchor 0 names any prior relicense event; the Zodl change concerns an optional wallet SDK and the orchard change was permissive, but under the take-the-lower-anchor rule we score 0.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  F3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/crash-android-lib/src/foss/kotlin/co/electriccoin/zcash/crash/android/internal/ListCrashReportersImpl.kt#L6-L11
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: crash-android-lib/src/foss/kotlin/co/electriccoin/zcash/crash/android/internal/ListCrashReportersImpl.kt
+        detail: The foss build flavour registers only the local crash reporter; Firebase, Flexa and CoinMarketCap are store-flavour integrations, and the README says the f-droid.org build omits them.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zodl-inc/zodl-android/contents/crash-android-lib/src/foss/kotlin/co/electriccoin/zcash/crash/android/internal/ListCrashReportersImpl.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d
+    finding: >-
+      A production deployment (Zebra node, light-wallet server or Zallet, and a wallet) needs no proprietary component. The mobile wallet's store builds add optional proprietary services, and a FOSS flavour builds without them. Judgment call: the code supports 3, but with no O3 reproduction we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/app/src/main/java/co/electriccoin/zcash/app/ZcashApplication.kt#L141-L154
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: app/src/main/java/co/electriccoin/zcash/app/ZcashApplication.kt
+        detail: Crash reporters are enabled only when the stored preference is true, and otherwise disabled and their data deleted; the store flavour's preference (is_analytics_enabled) is a nullable boolean set only by the CrashReportOptIn screen, and the foss flavour hardcodes false.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zodl-inc/zodl-android/contents/app/src/main/java/co/electriccoin/zcash/app/ZcashApplication.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 141,154p
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/crash-android-lib/src/zcashmainnetStoreRelease/kotlin/co/electriccoin/zcash/crash/android/internal/ListCrashReportersImpl.kt#L7-L19
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: crash-android-lib/src/zcashmainnetStoreRelease/kotlin/co/electriccoin/zcash/crash/android/internal/ListCrashReportersImpl.kt
+        detail: The Mainnet store release registers Firebase Crashlytics alongside the local reporter.
+        checked_at: "2026-10-09"
+    finding: >-
+      The reference mobile wallet's store build includes Firebase Crashlytics, off by default and enabled only through an opt-in screen; the FOSS build has none. Zebra and Zallet are server software with no analytics SDK found. We ran no trace and did not inspect the iOS app in the same depth. Scored 2: present, off by default, opt-in visible in code.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P2:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/lightwalletd/blob/d16d48124e9ad4157ebc2324b5090c6ba201470c/lightwallet-protocol/walletrpc/service.proto#L224-L330
+        commit: "d16d48124e9ad4157ebc2324b5090c6ba201470c"
+        path: lightwallet-protocol/walletrpc/service.proto
+        detail: The light-wallet API carries block ranges, raw transactions, tree states and (for transparent use) addresses; it has no account, identity or contact fields.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zcash/lightwalletd/contents/lightwallet-protocol/walletrpc/service.proto?ref=d16d48124e9ad4157ebc2324b5090c6ba201470c" --jq .content | base64 -d | grep -n "rpc "
+    finding: >-
+      A transfer needs only the signed transaction; a shielded output carries the recipient, amount and an optional memo encrypted to the recipient. No component on the required path holds an account, identity or contact data. The mobile wallet's optional swaps and merchant payments go to third parties with their own data needs. Judgment call: we score the default send flow, which is anchor 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P3:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0224.rst#L232-L257
+        commit: "3af03aa3ad991874d86b8cf35919bc9b4671e8ba"
+        path: zips/zip-0224.rst
+        detail: Within a shielded pool, actions hide sender, recipient and value; moving value across the transparent turnstile reveals the amount, and wallets should warn users about this.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zcash/zips/contents/zips/zip-0224.rst?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 232,257p
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0258.md#L85-L100
+        commit: "3af03aa3ad991874d86b8cf35919bc9b4671e8ba"
+        path: zips/zip-0258.md
+        detail: Since NU6.3 (height 3,428,143), new shielded value goes to the Ironwood pool and Orchard is spend-only, so Orchard-to-Ironwood migrations cross a turnstile.
+        checked_at: "2026-10-09"
+    finding: >-
+      A fully shielded payment reveals no payer, payee, amount or memo onchain; the fee, timing, transaction size and the number of actions are visible. Transparent addresses are fully public, as on Bitcoin, and moving between pools reveals the amount. The anonymity set depends on how many users stay shielded and on pool migrations, which we do not score. Judgment call: we score what the protocol reveals for a shielded transfer, which is anchor 3.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt#L13-L28
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt
+        detail: The light-wallet server operators are named in code and replaceable in the server picker.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zodl-inc/zodl-android/contents/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/CMCApiProvider.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 48,60p
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/CMCApiProvider.kt#L30-L60
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/CMCApiProvider.kt
+        detail: Exchange rates come from pro-api.coinmarketcap.com and are fetched only over Tor (comment MOB-1378), so CoinMarketCap does not see the user's IP.
+        checked_at: "2026-10-09"
+    finding: >-
+      On the full-node path only the user's own node and its peers see the transaction. On the light-wallet path the chosen lightwalletd server sees the user's IP (unless Tor is on), the transactions they submit and the transactions they fetch; it is named in code and swappable. Optional features add CoinMarketCap (over Tor only), Flexa and NEAR intents. Scored 2: third parties present, named in code, swappable.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  P5:
+    score: 3
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/screen/chooseserver/ChooseServerVM.kt#L148-L230
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: ui-lib/src/main/java/co/electriccoin/zcash/ui/screen/chooseserver/ChooseServerVM.kt
+        detail: The server screen offers automatic selection, the listed servers and a custom server entry (ServerState.Custom); the server code is public as lightwalletd and Zaino.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zodl-inc/zodl-android/contents/ui-lib/src/main/java/co/electriccoin/zcash/ui/screen/chooseserver/ChooseServerVM.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 148,230p
+    finding: >-
+      The wallet's data endpoint (lightwalletd, which is both RPC and indexer for a light client) is configurable in the UI, and both server implementations are public. Full-node users set their own node.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S1:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0224.rst#L232-L257
+        commit: "3af03aa3ad991874d86b8cf35919bc9b4671e8ba"
+        path: zips/zip-0224.rst
+        detail: A transaction spends notes the payer controls and creates notes only the recipient's keys can spend; there is no escrow or intermediary account.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zcash/zips/contents/zips/zip-0224.rst?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 232,257p
+    finding: >-
+      Value moves directly from notes the payer controls to notes the payee controls, in one transaction; wallets hold keys on the user's device. No one holds funds in flight. Judgment call: this is anchor 3 in substance, but 3 needs onchain evidence about a deployed contract, which this chain has none of, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S2:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebra-chain/src/parameters/constants.rs#L74-L99
+        commit: "e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291"
+        path: zebra-chain/src/parameters/constants.rs
+        detail: Mainnet activation heights are compiled into the node (NU6.2 at 3,364,600, NU6.3 at 3,428,143); a rule change takes effect only for nodes and miners running a release that contains it.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/ZcashFoundation/zebra/contents/zebra-chain/src/parameters/constants.rs?ref=e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291" --jq .content | base64 -d | sed -n 74,99p
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0257.md#L51-L75
+        commit: "3af03aa3ad991874d86b8cf35919bc9b4671e8ba"
+        path: zips/zip-0257.md
+        detail: The June 2026 Orchard disabling was deployed as an emergency hotfix and documented retrospectively; ZIP 258 (NU6.3) was published on 2026-06-19 ahead of its 2026-07 activation.
+        checked_at: "2026-10-09"
+    finding: >-
+      No key can change the rules. Network upgrades are specified as ZIPs, compiled into node releases with fixed activation heights, and take effect only if miners and node operators run them; scheduled upgrades are announced weeks ahead in the ZIPs and release notes. The emergency soft fork of June 2026 had no advance notice, and the 84-day end-of-support halt pushes operators onto new releases. Judgment call: scheduled upgrades give notice but there is no enforced delay, and emergency changes give none; that resembles anchor 2 more than 3, and 3 would also need onchain evidence this chain cannot supply.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S3:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zcash/lightwalletd/blob/d16d48124e9ad4157ebc2324b5090c6ba201470c/lightwallet-protocol/walletrpc/service.proto#L276-L279
+        commit: "d16d48124e9ad4157ebc2324b5090c6ba201470c"
+        path: lightwallet-protocol/walletrpc/service.proto
+        detail: A wallet submits a fully signed transaction; the protocol has no allowance or delegated-spend mechanism for ZEC, so no wallet asks for one.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zcash/lightwalletd/contents/lightwallet-protocol/walletrpc/service.proto?ref=d16d48124e9ad4157ebc2324b5090c6ba201470c" --jq .content | base64 -d | sed -n 276,279p
+    finding: >-
+      There are no token approvals: each payment is a signed transaction spending exact notes, and nothing can pull funds later. Judgment call: this beats exact-amount approvals in substance, but 3 needs a distributed-package or trace record for the client, so we take 2.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S4:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/screen/chooseserver/ChooseServerVM.kt#L148-L230
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: ui-lib/src/main/java/co/electriccoin/zcash/ui/screen/chooseserver/ChooseServerVM.kt
+        detail: If default servers disappear, the wallet accepts a custom server; Zallet with a local Zebra node needs no server at all.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zcash/zallet/contents/README.md?ref=522b486d2e4acea9fd8868ac8331e25abd6ec145" --jq .content | base64 -d | sed -n 1,25p
+    finding: >-
+      Derived from S1=2 (anchor 3 in substance), C2=2 (direct in substance), C3=3 and O3=1. Funds are notes controlled by the user's keys (S1). Any node or light-wallet server can accept a payment (C2), and no hosted service is required (C3). If the reference wallet's company or the default servers disappeared, users could restore their seed in another open wallet or run Zebra plus Zallet. We did not reproduce a self-hosted setup (O3=1). Judgment call: 2, not 3, for that reason.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S5:
+    score: 2
+    evidence:
+      - tier: verified
+        kind: repo
+        url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/CMCApiProvider.kt#L30-L60
+        commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+        path: ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/CMCApiProvider.kt
+        detail: The store build sends a CoinMarketCap API key from the app in the X-CMC_PRO_API_KEY header; it authorises only price quotes.
+        checked_at: "2026-10-09"
+        recheck: gh api "repos/zodl-inc/zodl-android/contents/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/CMCApiProvider.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d | sed -n 30,46p
+    finding: >-
+      Spending keys stay on the user's device; the protocol has no API keys or webhooks. The mobile wallet ships a CoinMarketCap API key in its store build, a minor issue since it grants only price-quote quota. Judgment call: 2 for the shipped key.
+    provider_response: null
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+  S6:
+    unknown: true
+    finding: >-
+      We found no audit report pinned to a commit in the node, protocol-library or wallet repos, and could not load zodl.com (HTTP 403 to automated requests). Zebra's SECURITY.md (L107) says the Zcash Foundation runs no bug bounty. ZIP 257 records that the critical Orchard bug of May 2026 was found during a commissioned AI-assisted audit, but that is not an audit report. External audit reports exist by reputation only, which we do not score.
+    assessed_by: AI research agent (seed), 2026-10-09
+    review:
+      status: pending
+
+availability:
+  model: global
+  note: >-
+    The protocol has no country or address rules, and the node (Zebra), the beta full-node wallet (Zallet), the light-wallet server (lightwalletd) and the reference mobile wallet (Zodl Android and iOS) contain no country or IP-geolocation gate in GitHub code search on 2026-10-09. Zodl's own website (zodl.com) refused automated requests, so we could not read any terms there; app-store distribution and optional swap or merchant integrations may have their own regional limits, which we did not evidence. Legality of use varies by jurisdiction; that is not an availability restriction by the protocol.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt#L13-L28
+      commit: "4248d469c74a9a70c32c229ebb0600a4dd539689"
+      path: ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt
+      detail: The wallet's default servers span North America, South America, Europe and Asia-Pacific, and nothing in the wallet selects or blocks by country.
+      checked_at: "2026-10-09"
+      recheck: gh search code --repo zodl-inc/zodl-android country --json path --jq '.[].path'
+    - tier: verified
+      kind: repo
+      url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebra-rpc/src/methods.rs#L262-L283
+      commit: "e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291"
+      path: zebra-rpc/src/methods.rs
+      detail: The node accepts any valid transaction; code search of ZcashFoundation/zebra for country and geoip returns nothing.
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"
+
+notes: >-
+  Unit: Zcash mainnet shielded transfers. Pins: zebra@e3eef2f3 (v6.4.2), zips@3af03aa3, lightwalletd@d16d4812, orchard@616a669d, librustzcash@9181ef85, zallet@522b486d (v0.1.0-beta.3 line), zodl-android@4248d469, zodl-ios@6a7dc6b3, zodl-android-wallet-sdk@afe08faf, zcashd@558f6865 (archived). The chain has no contracts, so cells whose top anchor needs onchain contract evidence (C1, C2, S1, S2) are capped at 2 with the reason in each finding, and O1 is unknown. Events of 2026 recorded from primary sources: Orchard disabled by emergency soft fork (ZIP 257), NU6.2 fix, NU6.3 Ironwood pool (ZIP 258), zcashd archived, Zashi renamed Zodl under Znewco, Inc. No transactions, node runs, builds, traces or self-host attempts were made.

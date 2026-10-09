@@ -1,0 +1,7 @@
+Source: https://safepalsupport.zendesk.com/hc/en-us/articles/22647224575643-Fee-Rates-for-the-SafePal-Fiat-Gateway-and-Mastercard
+Retrieved: 2026-10-09 with curl (user-agent crops-dashboard-research); visible text of the article body extracted from the HTML, tags removed.
+
+ July 25, 2026 06:13 
+ Updated 
+   Thank you for choosing SafePal! This section will provide an overview of the SafePal Fiat24 IBAN Service rates! After you read this part, you will be familiar with SafePal Fiat24 IBAN fee rates for each service accordingly.   1. The standard deposit/top-up fee is set at 0% .    2. Mastercard transactions settled in non-USD currencies will incur a 1% currency exchange fee. A processing fee of 1 USD/1 EUR/1 CHF/7 CNH will be charged per refund, depending on the payment currency.   3. There are no account opening fees, management fees, or any other additional charges.    4. Transfers between accounts within the IBAN are free of charge.    5. Transferring funds to external banks is also free. While SafePal and Fiat24 do not charge IBAN transfer fees, there may be charges by other banks when making transfers from or to those IBAN accounts.   6. All financial transactions are conducted on the blockchain, which will result in gas fees.       
+ Was this article helpful? 

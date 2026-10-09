@@ -1,0 +1,26 @@
+Text extracted on 2026-10-09 (pypdf) from the Central Bank of Kenya "Directory of Authorized Payment Service Providers (PSPs) as at August 10, 2026", PDF https://www.centralbank.go.ke/wp-content/uploads/2026/09/Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf, linked from https://www.centralbank.go.ke/national-payments-system/ . Excerpt: page 1 header and entry 1 (Safaricom PLC), verbatim as extracted; email and phone lines omitted. The full directory lists other PSPs and continues to page 9.
+
+--- page 1 ---
+ 
+Page 1 of 9 
+ 
+C2: CBK - Official 
+CENTRAL BANK OF KENYA (CBK) 
+DIRECTORY OF AUTHORIZED PAYMENT SERVICE PROVIDERS (PSPs) 
+AS AT AUGUST 10, 2026 
+ 
+ INSTITUTION APPROVED SERVICES 
+1.  Safaricom PLC 
+Postal Address: P.O. Box 66827-00800, Nairobi 
+Website: https://www.safaricom.co.ke/    
+Physical Address: Safaricom House, Waiyaki Way, Westlands, Nairobi 
+Date First Licensed: January 1, 2016 
+Chief Executive Officer: Mr. Peter Ndegwa 
+To issue, process, store, send 
+and facilitate mobile money 
+payments. 
+ 
+To provide a platform that 
+facilitates processing of 
+payments on behalf of 
+merchants. 

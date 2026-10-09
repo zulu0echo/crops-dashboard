@@ -1,0 +1,640 @@
+slug: oobit-card
+facts:
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement found on oobit.com (legal hub, terms, card terms, privacy notice, GDPR page, about; /security returns 404) or in the 82 help articles at support.oobit.com. docs.oobit.com returned a bot challenge and was not read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: Same search as B1.1; the privacy notice names "cloud storage" processors by category only.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE 3402 statement found in the same search.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No independent code review report found; CROPS S6 is unknown for this provider.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report or attestation found. oobit.com/.well-known/security.txt lists a bug bounty mailbox (bugbounty@oobit.com) and expired on 2026-06-05; no programme terms or scope were found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No customer incident-notification commitment found. The GDPR page describes the regulation's 72-hour breach notice as a user right, not as an Oobit commitment; the privacy notice says Oobit cannot guarantee absolute security.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: "A status page exists (status.oobit.com, Atlassian Statuspage) but appears unmaintained: its components list Tap Payments, Pay Friends and per-coin deposits and withdrawals, with no card or ATM component, and its incident API returns a single 2022-06-30 maintenance entry. No post-mortems found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.oobit.com
+        detail: Oobit status page, all systems operational on 2026-10-09.
+        checked_at: "2026-10-09"
+        quote: follow the operational status of our platform
+      - tier: documented
+        kind: trace
+        url: https://status.oobit.com/api/v2/incidents.json
+        detail: The incidents API returned 1 incident (2022-06-30, Ethereum network upgrade maintenance) and no text mentioning a postmortem on 2026-10-09.
+        checked_at: "2026-10-09"
+        recheck: "curl -s https://status.oobit.com/api/v2/incidents.json | grep -o '\"created_at\":\"[^\"]*\"'"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Personal accounts sign in with a password or Apple/Google sign-in; revealing card details or the PIN needs Face ID or fingerprint. No second factor for personal login is described. Oobit Business gives every team member a login with two-factor authentication.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://support.oobit.com/en/articles/17324782-how-do-i-see-my-card-details-or-pin-or-lock-my-card
+        detail: Help article on card details, PIN and lock (biometric confirmation).
+        checked_at: "2026-10-09"
+        quote: tap to reveal your card details or PIN
+      - tier: documented
+        kind: document
+        url: https://support.oobit.com/en/articles/15684487-oobit-business-compliance-and-how-it-s-different
+        detail: Help article on Oobit Business verification and logins.
+        checked_at: "2026-10-09"
+        quote: Every team member also has their own login with two-factor authentication
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    note: Card number, CVV and PIN are shown in a secure session "for a short time only" (help article 15262452); no app idle-session timeout is stated.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: The Partner API and Plug & Pay SDK docs (docs.oobit.com) returned a bot challenge and were not read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: For Agent Payments on Oobit Business (beta), each agent authenticates with its own API key (prefix oobit_mcp_), one active key per agent, revocable and replaceable at any time, under a spending policy (defaults 500 USD per transaction and 2,000 USD per day). Partner API authentication not read (docs bot-protected).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://support.oobit.com/en/articles/17253226-what-are-agent-payments
+        detail: Help article on Agent Payments.
+        checked_at: "2026-10-09"
+        quote: Each agent signs in with an API key (starting with oobit_mcp_), not a login
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: The account-deletion article tells users to export their transaction history first; no API export limits or export logging found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "The privacy notice promises reasonable technical, administrative and organisational measures without naming encryption or a data classification. Observed: www.oobit.com still accepts TLS 1.1 (and TLS 1.2), below the partner's TLS 1.2 floor."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/privacy-notice
+        detail: Privacy Notice (last updated 8 September 2025), section on protecting personal data.
+        checked_at: "2026-10-09"
+        quote: adopt all reasonable technical, administrative, and organizational measures
+      - tier: documented
+        kind: trace
+        url: https://www.oobit.com
+        detail: "openssl s_client -tls1_1 to www.oobit.com:443 negotiated ECDHE-RSA-AES128-SHA; -tls1_2 negotiated ECDHE-ECDSA-CHACHA20-POLY1305. Run 2026-10-09 with LibreSSL 3.3.6."
+        checked_at: "2026-10-09"
+        recheck: "echo | openssl s_client -connect www.oobit.com:443 -servername www.oobit.com -tls1_1"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: On deletion, personal data is deleted except identity verification records and transaction history, kept for 7 years for AML and financial regulation. The privacy notice gives no periods (retention "for the time necessary"). See CROPS P2 for what is collected.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://support.oobit.com/en/articles/17423931-how-do-i-delete-my-oobit-account
+        detail: Help article on account deletion, section on what happens to data.
+        checked_at: "2026-10-09"
+        quote: which we keep for 7 years to meet anti-money laundering and financial regulations
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The current Privacy Notice is issued by Oobit Tecnologia LTDA (Brazil, CNPJ 61.020.917/0001-42) under the LGPD and GDPR, with processors named by category only and data transferred to a group headquartered in Singapore. The GDPR page says a Data Protection Officer was appointed. No DPIA statement and no controller for non-Brazilian users is named.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/privacy-notice
+        detail: Privacy Notice opening paragraph.
+        checked_at: "2026-10-09"
+        quote: CNPJ 61.020.917/0001-42, headquartered at Avenida Paulista
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/gdpr
+        detail: GDPR page listing compliance steps.
+        checked_at: "2026-10-09"
+        quote: Appoint a Data Protection Officer - COMPLETE
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: attested
+    value: The GDPR page says Oobit rewrote its Data Protection Agreement; no DPA is published and no request route is given.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/gdpr
+        detail: GDPR page, compliance checklist.
+        checked_at: "2026-10-09"
+        quote: Rewrite our Data Protection Agreement - COMPLETE
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    note: See B6.1 for the observed TLS 1.1 acceptance on www.oobit.com; no hosting or hardening statement found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: unknown
+    note: No architecture documentation found on oobit.com or the help centre; docs.oobit.com (partner integration docs) was bot-protected and not read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: "Split across entities. The card terms are with Oobit Technologies UAB (Lithuania, company code 306074900, registered 2022-05-06) and the issuer Third National (Rain programme per the help centre). The Terms of Use link now resolves to the Brazilian terms with Oobit Tecnologia LTDA (CNPJ 61.020.917/0001-42), which also issues the Privacy Notice. US crypto services run through Bakkt Financial Solutions I, LLC."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/card-terms
+        detail: Oobit Spend Card Terms (effective 1 August 2025), opening paragraph.
+        checked_at: "2026-10-09"
+        quote: access to which is provided to you by Oobit Technologies UAB
+      - tier: documented
+        kind: document
+        url: https://get.data.gov.lt/datasets/gov/rc/jar/iregistruoti/JuridinisAsmuo/:format/json?ja_pavadinimas.contains(%22Oobit%22)&limit(5)
+        detail: Lithuanian Register of Legal Entities open data (Registrų centras via data.gov.lt); Oobit Technologies UAB, code 306074900, registered 2022-05-06, no deregistration date.
+        checked_at: "2026-10-09"
+        quote: '"ja_kodas":306074900,"ja_pavadinimas":"Oobit Technologies UAB"'
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/brazil-terms-of-use
+        detail: Terms of Use (last updated 28 December 2025); www.oobit.com/legal/terms-of-use 301-redirects here on 2026-10-09.
+        checked_at: "2026-10-09"
+        quote: Oobit Tecnologia LTDA, CNPJ 61.020.917/0001-42
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Transaction fees (1% on card purchases, 2.5% on ATM, 0.95% to 3% on swaps, transfer fees) fund the service; Oobit describes itself as Tether-backed. No financial statements found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://support.oobit.com/en/articles/15262354-what-fees-does-oobit-charge
+        detail: Help article listing Oobit fees.
+        checked_at: "2026-10-09"
+        quote: Card purchase 1%, minimum $0.25
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: "Oobit and the issuer may suspend, revoke or cancel the card at any time with or without cause or notice (card terms s9); Oobit may terminate all or part of the Services without prior notice (Terms of Use s14.1). Users may close the account in the app; crypto must be withdrawn first and cashback or rewards cannot be withdrawn. On closure Oobit confirms any balance due and sends it (s14.10). The card is cancelled automatically after 90 days without purchases."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/card-terms
+        detail: Oobit Spend Card Terms s9 Termination.
+        checked_at: "2026-10-09"
+        quote: in our sole discretion at any time, with or without cause and with or without giving you notice
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/brazil-terms-of-use
+        detail: Terms of Use s14.1 Termination and Suspension Rights of Oobit.
+        checked_at: "2026-10-09"
+        quote: without prior notice, including for any regulatory or legal reasons
+      - tier: documented
+        kind: document
+        url: https://support.oobit.com/en/articles/17423931-how-do-i-delete-my-oobit-account
+        detail: Help article on account deletion.
+        checked_at: "2026-10-09"
+        quote: Move any crypto in your Oobit account to an external wallet or exchange before you close it
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: "AI agents can initiate payments: Agent Payments let AI assistants (via MCP) and automated systems pay with scoped Oobit cards under user-set limits. No statement found on automated or AI-based compliance or fraud decisions; the privacy notice lists fraud prevention processors by category only."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://support.oobit.com/en/articles/17253226-what-are-agent-payments
+        detail: Help article on Agent Payments.
+        checked_at: "2026-10-09"
+        quote: You can revoke a key and create a new one whenever you need to
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: For Agent Payments only spending controls are documented (per-agent scoped cards with spending and transaction-count limits that expire, revocable keys, merchant allow and block lists, policy checks before the card network). No monitoring, validation, bias or decommissioning documentation for any AI system found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://support.oobit.com/en/articles/17253226-what-are-agent-payments
+        detail: Help article on Agent Payments, spending policy section.
+        checked_at: "2026-10-09"
+        quote: Payments that break the policy are declined before they reach the card network
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: card
+      paid_by: payer
+      amount: 1% per card purchase, minimum 0.25 USD (Brazil 1%, no minimum)
+      basis: Help article 15262354 and Oobit Spend Card Terms (effective 1 August 2025); fees may change on 30 days' notice (card terms s6).
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: Foreign exchange fee up to 1.5% on non-USD purchases
+      basis: Oobit Spend Card Terms, Important Disclosures and s6.2; Brazil local card adds IOF tax and FX.
+      evidence_index: 1
+    - kind: cashout
+      paid_by: payer
+      amount: ATM 2.5%, minimum 0.25 USD, plus any ATM operator charge
+      basis: Help article 17253225.
+      evidence_index: 2
+    - kind: cashout
+      paid_by: payer
+      amount: Send Crypto to a bank account varies by currency (Unblock fee and FX margin), shown before sending
+      basis: Help article 15262354; no figure published.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: Swap 0.95% (3% when receiving OOB); crypto withdrawal flat network fee shown before confirming
+      basis: Help article 15262354.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: Returned payment fee 29 USD
+      basis: Oobit Spend Card Terms s6.1(b).
+      evidence_index: 1
+    - kind: limit
+      paid_by: none
+      amount: Card 1 to 2,000 USD per purchase, 10,000 USD per 24 hours; ATM 250 USD per withdrawal, 3 attempts per 24 hours
+      basis: Help article 15262360; limits may change.
+      evidence_index: 3
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://support.oobit.com/en/articles/15262354-what-fees-does-oobit-charge
+      detail: Help article "What fees does Oobit charge?".
+      checked_at: "2026-10-09"
+      quote: Card purchase 1%, minimum $0.25
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/legal/card-terms
+      detail: Oobit Spend Card Terms, Important Disclosures.
+      checked_at: "2026-10-09"
+      quote: "Foreign Exchange Fee (non USD): up to 1.5%"
+    - tier: documented
+      kind: document
+      url: https://support.oobit.com/en/articles/17253225-how-do-i-withdraw-cash-at-an-atm-with-my-oobit-card
+      detail: Help article on ATM withdrawals.
+      checked_at: "2026-10-09"
+      quote: Oobit charges 2.5% of the amount you withdraw, minimum $0.25
+    - tier: documented
+      kind: document
+      url: https://support.oobit.com/en/articles/15262360-what-are-oobit-s-limits
+      detail: Help article on limits.
+      checked_at: "2026-10-09"
+      quote: "$1 to $2,000 per purchase. Up to $10,000 in any 24 hours"
+  note: Deposits by bank transfer carry a conversion partner fee of about 0.65% (minimum 0.50 USD); Pix send 1% and receive 0.3% in Brazil; card purchases of crypto via Transak carry Transak's fees. Network gas for DePay/WalletConnect funding is not described as a user fee. Cashback is a reward, not recorded.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+  note: Card purchases are funded by default from the Oobit balance, which Oobit holds on a custodial basis (Terms of Use s7.19). An optional WalletConnect/DePay mode funds purchases from the user's own wallet under a spending approval, so funds stay there until each purchase; that mode is rolling out gradually and does not change the S1 finding.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: attested
+  value:
+    - entity: Third National (issuer per card terms); Rain (card issuer per help centre)
+      holder: partner
+      country: US
+      regulator: not stated
+      type: Card issuer under licence from Visa
+      activities: Issues the Oobit Visa card (credit secured by collateral, per the help centre)
+      evidence_index: 0
+    - entity: POMELO INSTITUIÇÃO DE PAGAMENTO LTDA.
+      holder: partner
+      country: BR
+      regulator: Banco Central do Brasil
+      type: Payment institution (as stated in Oobit's Terms of Use)
+      number: CNPJ 44.128.548/0001-97
+      activities: Banking-as-a-service and local card issuing in Brazil
+      evidence_index: 1
+    - entity: Bakkt Financial Solutions I, LLC
+      holder: partner
+      country: US
+      regulator: FinCEN
+      type: Money Services Business registration and state money transmitter licences (as stated by Oobit)
+      activities: US cryptocurrency services
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/legal/card-terms
+      detail: Card terms naming the issuer; the help centre (article 17324780) says the card is issued by Rain, a Visa Principal Member.
+      checked_at: "2026-10-09"
+      quote: The issuer for this card program is ThirdNational
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/legal/brazil-terms-of-use
+      detail: Terms of Use s6.4 naming the Brazilian regulated partner.
+      checked_at: "2026-10-09"
+      quote: a financial institution supervised by the Central Bank of Brazil (BCB), registered under CNPJ No. 44.128.548/0001-97
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/about
+      detail: Site footer disclosure.
+      checked_at: "2026-10-09"
+      quote: US Cryptocurrency services are provided in partnership with Bakkt Financial Solutions I, LLC
+  note: "All licences rest on Oobit's own pages; none was confirmed in a register. Not found: any licence held by an Oobit entity (Oobit Technologies UAB is not in ESMA's interim MiCA CASP register or its non-compliant list); an active FDIC-insured institution named Third National (FDIC BankFind search, 2026-10-09); a regulator for Rain. The Banco Central do Brasil open-data API returned errors, so Pomelo was not checked; FinCEN's MSB search is interactive and was not used."
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_spend
+      partner: Third National / Rain (issuer), Visa; Pomelo for the Brazil local card
+      fee: 1% (min 0.25 USD); FX up to 1.5%
+      limits: Virtual card only; 1 to 2,000 USD per purchase, 10,000 USD per 24 hours.
+      evidence_index: 0
+    - countries: [ALL]
+      method: atm
+      partner: Third National / Rain (issuer), Visa
+      fee: 2.5% (min 0.25 USD) plus operator charge
+      limits: Contactless (NFC) ATMs only, via Apple Pay or Google Wallet; 250 USD per withdrawal including operator charge; 3 attempts per 24 hours.
+      evidence_index: 1
+    - countries: [ALL]
+      method: bank_transfer
+      partner: Unblock
+      fee: Varies by currency, shown before sending
+      limits: Payouts in EUR, GBP, USD, BRL, MXN, PHP, TRY, INR, IDR, ARS and NGN; USD only for US residents; 1 to 2 business days.
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://support.oobit.com/en/articles/15262360-what-are-oobit-s-limits
+      detail: Help article on limits.
+      checked_at: "2026-10-09"
+      quote: "$1 to $2,000 per purchase. Up to $10,000 in any 24 hours"
+    - tier: documented
+      kind: document
+      url: https://support.oobit.com/en/articles/17253225-how-do-i-withdraw-cash-at-an-atm-with-my-oobit-card
+      detail: Help article on ATM withdrawals.
+      checked_at: "2026-10-09"
+      quote: Up to $250 per withdrawal
+    - tier: documented
+      kind: document
+      url: https://support.oobit.com/en/articles/15262362-how-do-i-send-money-to-a-bank-account-with-send-crypto
+      detail: Help article on Send Crypto to a bank account.
+      checked_at: "2026-10-09"
+      quote: Currencies include EUR, GBP, USD, BRL, MXN, PHP, TRY, INR, IDR, ARS and NGN
+  note: "ALL means every country in the provider file's availability list (73 countries where the Oobit Visa card is marked available). The help centre's country table also marks transfers per country, which is not reflected row by row here. Brazil also has Pix send and receive (partner Avenia, launched 2026-06-23). The SWIFT USD payout announced on 2026-07-15 extends bank payouts to about 200 countries (provider statement)."
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: "2019-01-01"
+      what: Oobit service launch; Oobit gives the year only, the day and month are a placeholder.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/about
+        detail: Oobit about page.
+        checked_at: "2026-10-09"
+        quote: Oobit was launched in 2019
+    note: No dated launch announcement of the Visa card was found; the current Oobit Spend Card Terms took effect on 2025-08-01 (see changes).
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Oobit Technologies UAB
+      jurisdiction: LT
+      register_url: https://get.data.gov.lt/datasets/gov/rc/jar/iregistruoti/JuridinisAsmuo/:format/json?ja_pavadinimas.contains(%22Oobit%22)&limit(5)
+      registration_number: "306074900"
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://get.data.gov.lt/datasets/gov/rc/jar/iregistruoti/JuridinisAsmuo/:format/json?ja_pavadinimas.contains(%22Oobit%22)&limit(5)
+        detail: Lithuanian Register of Legal Entities open data, registered 2022-05-06.
+        checked_at: "2026-10-09"
+        quote: '"ja_kodas":306074900,"ja_pavadinimas":"Oobit Technologies UAB"'
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/card-terms
+        detail: Card terms naming the Oobit party.
+        checked_at: "2026-10-09"
+        quote: access to which is provided to you by Oobit Technologies UAB
+    note: Recorded as the card-contracting entity. The Terms of Use and Privacy Notice now name Oobit Tecnologia LTDA (Brazil), and the privacy notice says the group is headquartered in Singapore (entity not named); see B11.1.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: The status page incident history holds one 2022 maintenance entry and is not maintained for the card (B3.4); no incident or breach notice found on oobit.com news, the legal pages or the help centre. Searched 2026-10-09.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: "2022-05-06"
+        summary: Oobit Technologies UAB registered in Lithuania (company code 306074900).
+        url: https://get.data.gov.lt/datasets/gov/rc/jar/iregistruoti/JuridinisAsmuo/:format/json?ja_pavadinimas.contains(%22Oobit%22)&limit(5)
+      - date: "2025-08-01"
+        summary: Oobit Spend Card Terms take effect (issuer Third National; 1% transaction fee, FX up to 1.5%).
+        url: https://www.oobit.com/legal/card-terms
+      - date: "2025-09-08"
+        summary: Privacy Notice updated, issued by Oobit Tecnologia LTDA (Brazil).
+        url: https://www.oobit.com/legal/privacy-notice
+      - date: "2025-12-28"
+        summary: Terms of Use with Oobit Tecnologia LTDA last updated; the generic Terms of Use link now redirects to them.
+        url: https://www.oobit.com/legal/brazil-terms-of-use
+      - date: "2026-06-23"
+        summary: Native Pix send and deposit launched in Brazil.
+        url: https://www.oobit.com/news/crypto-comes-to-pix-oobit-connects-the-digital-dollar-to-170-million-brazilians
+      - date: "2026-07-15"
+        summary: Bank off-ramp extended to USD payouts via SWIFT, powered by Unblock.
+        url: https://www.oobit.com/news/oobit-extends-crypto-off-ramp-to-usd-via-swift-unlocking-global-bank-withdrawals
+      - date: "2026-07-30"
+        summary: Contactless ATM cash withdrawals launched with the virtual card.
+        url: https://www.oobit.com/news/tether-backed-oobit-launches-global-atm-cash-withdrawals-eliminating-the-last-barrier-between-crypto-and-physical-money
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/legal/card-terms
+        detail: Card terms effective date.
+        checked_at: "2026-10-09"
+        quote: Effective as of August 1 st , 2025
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/news/tether-backed-oobit-launches-global-atm-cash-withdrawals-eliminating-the-last-barrier-between-crypto-and-physical-money
+        detail: Oobit news post dated 30 July 2026.
+        checked_at: "2026-10-09"
+        quote: has launched contactless crypto ATM cash withdrawals
+      - tier: documented
+        kind: document
+        url: https://www.oobit.com/news/oobit-extends-crypto-off-ramp-to-usd-via-swift-unlocking-global-bank-withdrawals
+        detail: Oobit news post dated 15 July 2026.
+        checked_at: "2026-10-09"
+        quote: adding support for USD payouts via SWIFT international wire
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: No listed contracts; the DePay spender and any Rain collateral contracts were not identified (provider file notes), and the custodial balance and card settlement run on Oobit's and the issuer's closed ledgers. Oobit's own volume claims (news, 18 August 2026) are provider-reported and not stored.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

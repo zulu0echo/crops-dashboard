@@ -29,3 +29,26 @@
 - Source: hyperbeat.org Terms (https://hyperbeat.org/terms), section 7 geographic restrictions. The Pay web app bundle (61 chunks from https://hyperbeat.org/dapp/pay) was searched for a country gate; it contains only a phone-prefix country list, no blocked-country list.
 - Model `blocklist`: CU, IR, KP, SD, SY, the five countries the Terms name.
 - Judgment calls: (1) "any other country subject to United States embargo, UN Security Council Resolutions, HM Treasury's ... sanctions regime" is not expanded, per the brief; this is stated in `note`. (2) The Ontario, Canada exclusion is sub-national and goes in `note`. (3) The 25-country list in the Terms applies to Beatpot only, not to the Pay Service, so it is not used. (4) US access depends on an unpublished "Hyperbeat Pay Cardholder Agreement (U.S.)"; US is not listed as blocked, and the dependence is in `note`.
+
+## Operational 2026-10-09
+
+File: `data/operational/hyperbeat-card.yaml`. No bot facts existed.
+
+- **Sources read:**
+  - hyperbeat.org/terms (1 March 2026), /privacy (21 August 2025)
+  - newsroom posts: introducing-liquid-banking (8 April 2026), real-world-credit, new-cashback-system
+  - docs.hyperbeat.org Liquid banking, Hyperbeat Pay and architecture pages
+  - all 87 articles at help.hyperbeat.org (Intercom), including the 15 currency and fee tables
+  - FDIC BankFind API
+- **New since the seed:**
+  - The Terms now name the issuer: "The Hyperbeat Card is issued by Third National" (the same clause mentions "Ether.Fi protocol", apparently copied from another programme).
+  - The help centre has fee pages (FX 0.4-1%, ATM 1 USD + 0.65%, fiat ramps via Noah), a supported-country list for the card (article 13512812) and a virtual-account country list (16199140). The provider file's availability is still the Terms blocklist; the help-centre lists could refine it (not done here).
+- **Judgment calls**
+  - `custody_model: hybrid` per S1 (user-owned account, Operator settles and gates withdrawals). Help article 16019217 says Hyperbeat "cannot steal, freeze, or lock" funds, which conflicts with the architecture docs. It is cited as Hyperbeat's position in B3.3 (with a ref to S4) and in the custody note, not used for the value.
+  - `licences: attested`. Third National is named only in Hyperbeat's Terms, and FDIC lists no active Third National. No Zoeion licence was claimed or found.
+  - `first_deployment` is 2026-04-08, the dated "live today" Liquid Banking announcement. The card predates it (help articles from January 2026, Zellic audit November 2025), and this is noted. The HyperEVM public RPC returns current code for any block number, so the Operator's deployment block could not be read.
+  - `entity` is Zoeion Ltd Corporation, Panama, from the Terms and Privacy Policy. The Panama register was not searched (interactive).
+  - B1.4 is evidenced by ref to S6 (public audits, unmatched to deployed code).
+  - B10.1 is evidenced as logical architecture only.
+  - B12.1 records Agent Cards (AI agents spending).
+- **Validator:** `--offline` 0 errors. Online: 0 errors with `NODE_OPTIONS="--network-family-autoselection-attempt-timeout=3000"`. A plain run hits the local Node connect-timeout issue (see the Deblock log).

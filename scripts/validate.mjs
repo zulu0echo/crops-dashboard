@@ -5,7 +5,7 @@
 //   node scripts/validate.mjs [--offline] [files...]   default: every data/providers/*.yaml
 //   node scripts/validate.mjs --self-check
 // Exit 1 on any error. Errors read "<file> <criterion>: <rule>".
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parse } from 'yaml';
@@ -31,6 +31,10 @@ let REGIONS = { countries: [], regions: {} };
 try { REGIONS = parse(readFileSync('data/regions.yaml', 'utf8')); } catch { /* optional */ }
 const COUNTRY = new Set([...REGIONS.countries, ...Object.keys(REGIONS.regions ?? {})]);
 const validateSchema = ajv.compile(schema);
+// Operational layer (facts, never scored). Its schema reuses the provider evidence shape by $ref.
+const validateOperational = ajv.compile(JSON.parse(readFileSync('schema/operational.schema.json', 'utf8')));
+const OPS = parse(readFileSync('data/operational-criteria.yaml', 'utf8'));
+const CONTROL = Object.fromEntries(OPS.controls.map((c) => [c.id, c]));
 
 export function isChecksummed(addr) {
   if (!addr.startsWith('0x')) return true; // base58 (non-EVM) addresses carry no EIP-55 checksum
@@ -138,6 +142,50 @@ export function checkProvider(p, file) {
   }
   return errs;
 }
+
+// Operational record rules. `provider` is the matching provider object (already validated).
+export function checkOperational(op, file, provider) {
+  const errs = [];
+  const err = (where, msg) => errs.push(`${file} ${where}: ${msg}`);
+  if (!validateOperational(op)) {
+    for (const e of validateOperational.errors) err(e.instancePath || '/', `schema: ${e.message}`);
+    return errs;
+  }
+  if (basename(file) !== `${op.slug}.yaml`) err('slug', `must match file name (${op.slug}.yaml)`);
+  if (!provider) { err('slug', `no provider data/providers/${op.slug}.yaml`); return errs; }
+  const operatorFree = !(provider.components ?? []).some((c) => c.required && !c.public);
+  const custody = op.custody_model?.status === 'evidenced' ? op.custody_model.value : null;
+  const facts = { ...(op.facts ?? {}), fees: op.fees, custody_model: op.custody_model, licences: op.licences, cashout: op.cashout, ...Object.fromEntries(Object.entries(op.maturity ?? {}).map(([k, v]) => ['maturity.' + k, v])) };
+  for (const [id, f] of Object.entries(facts)) {
+    if (!f) continue;
+    const ctl = CONTROL[id];
+    if (/^B/.test(id) && !ctl) { err(id, 'not a control in data/operational-criteria.yaml'); continue; }
+    const ev = f.evidence ?? [], refs = f.refs ?? [];
+    for (const [i, r] of refs.entries()) if (!provider.scores?.[r.criterion]?.evidence?.[r.index]) err(`${id} refs[${i}]`, `provider has no scores.${r.criterion}.evidence[${r.index}]`);
+    if (f.status === 'evidenced') {
+      if (!ev.length && !refs.length) err(id, 'evidenced needs evidence or refs');
+      if (ev.length && !refs.length && !ev.some((e) => e.tier === 'verified' || e.tier === 'documented')) err(id, 'evidenced needs verified or documented evidence; a provider statement alone is attested');
+      if (f.value === undefined) err(id, 'evidenced needs a value');
+    }
+    if (f.status === 'attested' && !ev.length) err(id, 'attested needs the provider statement as evidence (tier claimed, by: provider, or documented)');
+    if (f.status === 'absent' && !ev.length && !refs.length) err(id, 'absent needs evidence of absence (what was searched)');
+    if (ctl?.applies === 'operator' && operatorFree && f.status === 'absent') err(id, 'control applies to operators; this rail has no required closed component, so use not_applicable with reason and burden');
+    if (ctl?.applies === 'custodial' && custody === 'self_custody' && f.status === 'absent') err(id, 'control applies to custodial providers; custody_model is self_custody, so use not_applicable');
+    if (ctl?.auto && f.assessed_by && !/bot/i.test(f.assessed_by) && f.status === 'evidenced' && !ev.some((e) => e.kind === 'api' || e.kind === 'repo')) err(id, 'automatable control: evidence must be the repository or API state, not a document');
+  }
+  if (op.volume?.status === 'evidenced') {
+    const listed = new Set((provider.contracts ?? []).map((c) => c.address.toLowerCase()));
+    for (const a of op.volume.spec.addresses) if (!listed.has(a.toLowerCase())) err('volume', `${a} is not in the provider's contracts list; volumes are only computed over listed settlement contracts`);
+    if (op.volume.spec.chain_id !== provider.primary_chain?.chain_id) err('volume', 'spec.chain_id must be the provider primary chain');
+  }
+  return errs;
+}
+
+// Online checks for an operational record: reuse checkOnline over its document/repo/onchain evidence.
+export const operationalOnline = (op, file, provider) => checkOnline({
+  website: provider.website, repos: [], primary_chain: provider.primary_chain,
+  scores: { OPS: { evidence: [op.fees, op.custody_model, op.licences, op.cashout, ...Object.values(op.maturity ?? {}), ...Object.values(op.facts ?? {})].flatMap((f) => f?.evidence ?? []).filter((e) => e.kind !== 'api') } },
+}, file);
 
 // Network rules: every URL resolves; every pinned commit exists in its repo.
 // ponytail: plain fetch with a small fixed pool and no retry. Flaky hosts fail CI;
@@ -290,6 +338,27 @@ function selfCheck() {
   ok(has(p, /third-party claims alone cannot establish availability/), 'availability: third-party-only accepted');
   p = base(); p.availability = { model: 'allowlist', countries: ['EEA', 'GB'], evidence: [docEv], checked_at: '2026-10-09' };
   ok(errs(p).length === 0, 'availability: valid allowlist rejected: ' + errs(p));
+  // operational layer
+  const opBase = () => ({ slug: 'x', facts: {} });
+  const fact = (status, extra = {}) => ({ status, assessed_by: 'tester', review: { status: 'pending' }, checked_at: '2026-10-09', ...extra });
+  const prov = { ...base(), components: [{ name: 'API', role: 'api', public: false, license: 'proprietary', operator: 'X', required: true }], contracts: [{ address: '0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed', chain_id: 8453, role: 'r', verified: 'none' }] };
+  const free = base();
+  const oerrs = (o, pv = prov) => checkOperational(o, 'x.yaml', pv);
+  let o = opBase(); o.facts['B1.1'] = fact('attested', { evidence: [{ tier: 'claimed', by: 'provider', kind: 'document', url: 'https://x.org/security', detail: 'd', checked_at: '2026-10-09' }] });
+  ok(oerrs(o).length === 0, 'valid attested fact rejected: ' + oerrs(o));
+  o = opBase(); o.facts['B1.1'] = fact('evidenced', { value: 'ISO 27001 #123', evidence: [{ tier: 'claimed', by: 'provider', kind: 'document', url: 'https://x.org/security', detail: 'd', checked_at: '2026-10-09' }] });
+  ok(oerrs(o).some((e) => /provider statement alone is attested/.test(e)), 'evidenced on a claim accepted');
+  o = opBase(); o.facts['B1.1'] = fact('absent', { evidence: [docEv] });
+  ok(oerrs(o, free).some((e) => /no required closed component/.test(e)), 'operator control marked absent on an operator-free rail accepted');
+  ok(oerrs(o).length === 0, 'absent operator control on an operator rejected: ' + oerrs(o));
+  o = opBase(); o.facts['B1.1'] = fact('not_applicable');
+  ok(oerrs(o).some((e) => /schema/.test(e)), 'not_applicable without reason/burden accepted');
+  o = opBase(); o.facts['B9.9'] = fact('unknown');
+  ok(oerrs(o).some((e) => /not a control/.test(e)), 'unknown control id accepted');
+  o = opBase(); o.custody_model = fact('evidenced', { value: 'self_custody', refs: [{ criterion: 'S1', index: 0 }] });
+  ok(oerrs(o).some((e) => /has no scores.S1.evidence\[0\]/.test(e)), 'dangling ref accepted');
+  o = opBase(); o.volume = { status: 'evidenced', assessed_by: 't', review: { status: 'pending' }, spec: { chain_id: 8453, addresses: ['0x' + '9'.repeat(40)], topic0: '0x' + 'a'.repeat(64), window_days: 30 }, value: { from_block: 1, to_block: 2, computed_at: '2026-10-09', events: 0, results: [] } };
+  ok(oerrs(o).some((e) => /not in the provider's contracts list/.test(e)), 'volume over an unlisted contract accepted');
   console.log('validate self-check: ok');
 }
 
@@ -298,9 +367,18 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   if (args.includes('--self-check')) { selfCheck(); process.exit(0); }
   const offline = args.includes('--offline');
   let files = args.filter((a) => !a.startsWith('--'));
-  if (!files.length) files = readdirSync('data/providers').filter((f) => f.endsWith('.yaml')).map((f) => join('data/providers', f));
+  if (!files.length) files = [...readdirSync('data/providers').filter((f) => f.endsWith('.yaml')).map((f) => join('data/providers', f)), ...(existsSync('data/operational') ? readdirSync('data/operational').filter((f) => f.endsWith('.yaml')).map((f) => join('data/operational', f)) : [])];
   const errs = [];
-  for (const file of files) {
+  const providerOf = (slug) => { try { return parse(readFileSync(`data/providers/${slug}.yaml`, 'utf8')); } catch { return null; } };
+  for (const file of files.filter((f) => f.includes('data/operational/'))) {
+    let op;
+    try { op = parse(readFileSync(file, 'utf8'), { maxAliasCount: 0 }); } catch (e) { errs.push(`${file}: YAML parse error: ${e.message}`); continue; }
+    const provider = providerOf(op?.slug ?? basename(file, '.yaml'));
+    const local = checkOperational(op ?? {}, file, provider);
+    errs.push(...local);
+    if (!offline && !local.length && provider) errs.push(...(await operationalOnline(op, file, provider)));
+  }
+  for (const file of files.filter((f) => !f.includes('data/operational/'))) {
     let p;
     try {
       p = parse(readFileSync(file, 'utf8'), { maxAliasCount: 0 });

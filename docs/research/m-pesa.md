@@ -82,3 +82,22 @@ Migrated to the post-red-team evidence rules (docs/seed-brief.md, final section)
 - Source: Daraja `/apis/GettingStarted`, read through the same `populateApi` GraphQL query as the other Daraja pages and archived verbatim to `data/archive/m-pesa-daraja-getting-started.txt`. Its terminology section defines M-PESA as "A mobile money transfer service in Kenya for storing and transferring money via mobile phones".
 - Model `allowlist`, 1 code: KE.
 - Judgment calls: the file assesses Safaricom's M-Pesa and Daraja only, so other M-Pesa markets (Vodacom and other operators, separate ledgers and APIs) are excluded and explained in `note`. The Daraja statement is a definition rather than an eligibility rule; the Kenyan 254 MSISDNs throughout the C2B archive are consistent with it. Safaricom's customer terms (403) were not read, so finer limits are unknown.
+
+## Operational 2026-10-09
+
+File: `data/operational/m-pesa.yaml`. The worked example was kept and extended. Bot facts (B2.1, B2.3, B8.2, B9.x) were left untouched. B5.1, B5.2 and B6.4 were kept.
+
+- **CBK sources.** The licence and entity evidence now cite the CBK directory PDF itself, linked from centralbank.go.ke/national-payments-system/ as "Directory-of-Authorized-Payment-Service-Providers-August-10-2026.pdf". Its text was extracted and archived to `data/archive/m-pesa-ops-cbk-psp-directory.txt`. This replaces the earlier transcription in `data/archive/m-pesa-cbk-directory.txt`, which no longer matched the PDF wording exactly; that file is now unreferenced and was not deleted. The directory adds a second approved service, a merchant payment processing platform.
+- **Launch date.** `first_deployment` comes from CBK's "Kenya's Payments Journey" (2023 PDF; excerpt archived to `data/archive/m-pesa-ops-cbk-payments-journey.txt`), which says M-PESA launched in March 2007. The date is recorded as 2007-03-01, with the day flagged as a placeholder.
+- **Daraja docs.** The BusinessToCustomer and MpesaExpressSimulate docs were read through the portal's `populateApi` GraphQL query and archived verbatim to `data/archive/m-pesa-ops-daraja-b2c.txt` and `data/archive/m-pesa-ops-daraja-mpesa-express.txt`. They give:
+  - customer daily transfer and balance limits (KES 500,000 each)
+  - that charges follow a tariff and are levied on the organisation or split with the customer
+  - B2C payouts to customer wallets, including "for cash-out purposes"
+
+  An `Authorization` alias returned "Invalid ApiName Option".
+- **Tariffs.** Safaricom's tariff pages still return 403, and the Wayback availability API returned 429, so tariff amounts and agent cash-out terms are unknown. No archived first-party tariff text was used.
+- **Judgment calls**
+  - The fee row records the tariff mechanism with amounts unknown. The Daraja sandbox example "Fee For B2C Payment|KES|22.40" is not used.
+  - The cash-out row is B2C mobile money only. Agent cash-out is described in the note but not recorded, for lack of a current first-party terms source.
+  - `changes` holds only the CBK first-licensed date.
+- **Validator:** `--offline` 0 errors; online 0 errors.

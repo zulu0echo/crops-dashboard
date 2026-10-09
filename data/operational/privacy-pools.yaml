@@ -1,0 +1,557 @@
+slug: privacy-pools
+fees:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: Vetting fee 0.5% of each deposit (vettingFeeBPS = 50) on the ETH and USDC pools; 0 on the USDT pool
+      basis: Entrypoint assetConfig per asset, set by OWNER_ROLE (0xbow Safe) with no timelock and no event-free path (PoolConfigurationUpdated). Terms state 0.5% and that it may change at 0xbow's discretion; fees accrue in the Entrypoint and only OWNER_ROLE can withdraw them.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payee
+      amount: Relay fee set by the relayer, deducted from the withdrawal; onchain cap 10% (maxRelayFeeBPS 1000)
+      basis: Optional; only on withdrawals relayed through the Entrypoint. Each relayer sets fee_bps in its config (example config 500-1000); the Entrypoint reverts above the per-asset cap.
+      evidence_index: 1
+    - kind: limit
+      paid_by: none
+      amount: Minimum deposit 0.01 ETH (ETH pool); 25 USDC; 25 USDT
+      basis: assetConfig minimumDepositAmount, set by OWNER_ROLE.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: Ethereum gas for deposit; gas for withdrawal paid by the payee or by the relayer (recovered through the relay fee)
+      basis: Network fee, not set by the protocol.
+      evidence_index: 1
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://sourcify.dev/server/v2/contract/1/0x15e355024de1CDc74ADdea7EBDf98418Ba5B1a2c
+      address: "0x6818809EefCe719E480a7526D76bD3e561526b46"
+      block_number: 26153723
+      detail: "Entrypoint assetConfig at block 26153723: ETH (0xEeee…EEeE) pool 0xF241…C9fB, min 0.01 ETH, vettingFeeBPS 50, maxRelayFeeBPS 1000; USDC pool 0xb419…ce86, min 25 USDC, 50, 1000; USDT pool 0xe859…4572, min 25 USDT, 0, 1000."
+      checked_at: 2026-10-09
+      recheck: cast call 0x6818809EefCe719E480a7526D76bD3e561526b46 "assetConfig(address)(address,uint256,uint256,uint256)" 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE --rpc-url https://ethereum-rpc.publicnode.com
+      check:
+        call: "0xd6dbaf58000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        expect: "0x000000000000000000000000f241d57c6debae225c0f2e6ea1529373c9a9c9fb"
+    - tier: verified
+      kind: repo
+      commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+      checked_at: 2026-10-09
+      url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/Entrypoint.sol#L150-L175
+      path: packages/contracts/src/contracts/Entrypoint.sol
+      detail: relay() reverts if relayFeeBPS exceeds maxRelayFeeBPS, deducts the relay fee from the withdrawn amount and pays it to the feeRecipient chosen in the relay data; deposit (L320-L340) deducts vettingFeeBPS before the pool deposit; withdrawFees (L264-L272) is onlyRole(OWNER_ROLE).
+    - tier: verified
+      kind: repo
+      commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+      checked_at: 2026-10-09
+      url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L176-L192
+      path: docs/docs/toc.md
+      detail: Terms of Use section 5 sets a Vetting Fee of 0.5% of each deposit, changeable at 0xbow's discretion and non-refundable.
+  note: The USDT pool's vetting fee reads 0 onchain although the terms state 0.5%; the contract value is what is charged. ETH vettingFeeBPS was briefly set to 500 (5%) on 2025-11-23 and back to 50 on 2025-11-27 (see changes).
+  checked_at: 2026-10-09
+custody_model:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: Judgment call. Agrees with the S1 finding that no role can sweep or redirect pool funds and the depositor can always ragequit; the ASP's control over private release (why S1 is 1) is a release dependency, not custody, so self_custody rather than hybrid.
+  checked_at: 2026-10-09
+licences:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: absent
+  evidence:
+    - tier: verified
+      kind: repo
+      commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+      checked_at: 2026-10-09
+      url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L1-L40
+      path: docs/docs/toc.md
+      detail: The Terms of Use (556 lines) name 0xbow Limited as the counterparty and Delaware law, and describe the ASP due diligence and vetting fee; they cite no licence, registration or regulator (searched for licen, regulat, registered, money transmit). The privacy policy and 0xbow.io were searched the same way with no result.
+  note: Absent means no licence is claimed or cited anywhere 0xbow publishes. No regulator register (e.g. FinCEN MSB) was searched by entity name because the place of incorporation of 0xbow Limited is not stated.
+  checked_at: 2026-10-09
+cashout:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: not_applicable
+  reason: Token-to-address rail. The payee receives ETH or tokens at an address it controls; converting them to local currency is outside the protocol.
+  burden: institution
+  checked_at: 2026-10-09
+maturity:
+  first_deployment:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      date: 2025-03-29
+      block: 22153714
+      what: ETH pool (PrivacyPoolSimple) 0xF241…C9fB created in tx 0x6e3e14d7…cf75; the Entrypoint proxy was created one block earlier (22153713, tx 0x4987385c…776c).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB?fields=deployment
+        address: "0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB"
+        block_number: 22153714
+        detail: Sourcify creation data gives tx 0x6e3e14d7bcdfa838a8f7918de81d7b233e40d3afd493a864285fad8b360bcf75 at block 22153714 (deployer EOA 0x1f4F…E187, via a factory, so the receipt has no contractAddress); block 22153714 is dated 2025-03-29 UTC.
+        checked_at: 2026-10-09
+        recheck: curl -s "https://sourcify.dev/server/v2/contract/1/0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB?fields=deployment"
+    checked_at: 2026-10-09
+  entity:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: unknown
+    note: The terms name "0xbow Limited" (also "Oxbow Ltd.") as maintainer and counterparty, with Delaware governing law, but no place of incorporation or company number; the privacy policy, SECURITY.md, 0xbow.io and the GitHub org (no company field) give none. Recorded as unknown because the schema needs a jurisdiction; see B11.1 for the named counterparty.
+    checked_at: 2026-10-09
+  incidents:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/security-advisories
+        detail: No published security advisories for 0xbow-io/privacy-pools-core.
+        checked_at: 2026-10-09
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB
+        address: "0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB"
+        block_number: 26153723
+        detail: dead() returns false on the ETH pool (and on all 14 pools per the seed research); no PoolRemoved events on the Entrypoint.
+        checked_at: 2026-10-09
+        check:
+          call: "0x36cf7c87"
+          expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+    note: No post-mortem found in the core repo, docs or 0xbow.io. Audit findings fixed before launch (Oxorio, see S6) are not incidents.
+    checked_at: 2026-10-09
+  changes:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value:
+      - date: 2025-03-29
+        summary: Entrypoint proxy deployed with implementation 0xdd8a…d4c1; ETH pool deployed and registered.
+        url: https://etherscan.io/tx/0x4987385c58c49c9e3117244180094c5b7c5a0566c8547d13880df5e19076776c
+      - date: 2025-05-22
+        summary: Entrypoint upgraded to implementation 0x15e3…1a2c (audited Entrypoint upgrade, commit 238e3594).
+        url: https://etherscan.io/tx/0xde1c41f546e3b6064433e0db1309d8ca5a3ac78a8fc626f934b13d05ee67578f
+      - date: 2025-05-24
+        summary: ETH pool configuration set to vetting fee 50 bps, max relay fee 100 bps; minimum deposit raised to 0.1 ETH the same day.
+        url: https://etherscan.io/tx/0xd1bbd6fe30bddb8865b8c322fcce8aa3d256003799553a73dbd6d25823b0fffa
+      - date: 2025-07-14
+        summary: ETH pool max relay fee raised from 100 to 500 bps.
+        url: https://etherscan.io/tx/0xccb8ae46bf7cf305a82641d8381443e095ebf7ac259e01d2fd47a2c41b2ca902
+      - date: 2025-11-23
+        summary: Ten pools reconfigured in one transaction; ETH pool minimum lowered to 0.01 ETH, vetting fee set to 500 bps and max relay fee to 1000 bps.
+        url: https://etherscan.io/tx/0x0f0304222d94ea97675f978d714af8b082017aa3086bf10da17333d704b5cfb3
+      - date: 2025-11-27
+        summary: ETH pool vetting fee set back to 50 bps.
+        url: https://etherscan.io/tx/0xeb2f94c34062a8880af9175e47ba9cd4e752e635f3b497ea79553189347cc027
+      - date: 2025-12-15
+        summary: USDC pool vetting fee set from 0 to 50 bps.
+        url: https://etherscan.io/tx/0xac755a815639907c031f670c660658a95844e288090c281b02ff7a19d81c7097
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://sourcify.dev/server/v2/contract/1/0x6818809EefCe719E480a7526D76bD3e561526b46
+        address: "0x6818809EefCe719E480a7526D76bD3e561526b46"
+        block_number: 26153723
+        detail: Upgraded and PoolConfigurationUpdated logs on the Entrypoint from block 22153712 to latest (via rpc.mevblocker.io); dates from block headers. Upgraded at 22153713 and 22540812; PoolConfigurationUpdated at 22553626, 22553907, 22919769, 23864776 (10 pools), 23892246, 24020649.
+        checked_at: 2026-10-09
+        recheck: cast logs --address 0x6818809EefCe719E480a7526D76bD3e561526b46 0xfd8e5b01fa101008dcfcd9a7eab8692908a5493de0f49b63c0d4d7603efb7ede --from-block 22153712 --rpc-url https://rpc.mevblocker.io
+    note: Fee and minimum changes are made by OWNER_ROLE without a timelock or prior notice found. No governance proposals exist; the transactions are the primary source.
+    checked_at: 2026-10-09
+volume:
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+  status: unknown
+  spec:
+    chain_id: 1
+    addresses:
+      - "0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB"
+    topic0: "0x75e161b3e824b114fc1a33274bd7091918dd4e639cede50b78b15a4eea956a21"
+    event: Withdrawn(address indexed _processooor, uint256 _value, uint256 _spentNullifier, uint256 _newCommitment)
+    amount_word: 0
+    token: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+    decimals: 18
+    symbol: ETH
+    window_days: 30
+    exclusions: ETH pool only (most deposits); the USDC, USDT and 11 other pools are separate contracts with different tokens, which one fixed-token spec cannot sum. Amounts are gross of the relay fee. Ragequits (refunds to depositors) are a different event and excluded.
+  note: Withdrawals reveal amount and recipient onchain (only the link to the deposit is hidden), so private payouts are observable at pool level. Not computed; the maintainer runs scripts/volumes.mjs.
+facts:
+  B1.4:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Oxorio audited the contracts (final commit 532eaa8e) and the Entrypoint upgrade (238e3594); deployed sources match. Circuits and Auditware reports are in the same folder. See CROPS S6.
+    refs:
+      - criterion: S6
+        index: 0
+    checked_at: 2026-10-09
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-website: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.2:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        checked_at: 2026-10-09
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/SECURITY.md#L1-L29
+        path: SECURITY.md
+        detail: The security policy lists acknowledge, investigate, prepare a fix and disclose after deployment, with no time commitments for acknowledgement or patching. The terms and privacy policy state none either.
+    checked_at: 2026-10-09
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-website: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B3.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: absent
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        checked_at: 2026-10-09
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/privacy-policy.md#L125-L139
+        path: docs/docs/privacy-policy.md
+        detail: Neither the privacy policy nor the terms (docs/docs/toc.md) commit to notify users of security or data incidents; the only notification promise concerns policy changes (L139). SECURITY.md covers inbound reports only.
+    checked_at: 2026-10-09
+  B6.3:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: No fixed retention period; personal data kept "for the period of time needed for legitimate business purposes", longer where law requires. Deletion on request, with residual copies in backups removed over time.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        checked_at: 2026-10-09
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/privacy-policy.md#L105-L127
+        path: docs/docs/privacy-policy.md
+        detail: Privacy policy sections on deletion requests (L109) and retention (L125-L127).
+    note: Cross-reference CROPS P2.
+    checked_at: 2026-10-09
+  B6.4:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: The privacy policy calls 0xbow a data processor in general and a data controller for EU residents under GDPR. No DPIA is mentioned.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        checked_at: 2026-10-09
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/privacy-policy.md#L17-L59
+        path: docs/docs/privacy-policy.md
+        detail: L17 states 0xbow is the data processor unless stated otherwise; L57 states it is the Data Controller for EU residents.
+    note: The two roles are stated inconsistently in the same document.
+    checked_at: 2026-10-09
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-website: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: true
+          detail: "rules: required_signatures, pull_request, required_status_checks, deletion, non_fast_forward"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/rules/branches/main
+        detail: "0xbow-io/privacy-pools-website: rules: required_signatures, pull_request, required_status_checks, deletion, non_fast_forward"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: true
+          detail: 3 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-website: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-website: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-website: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: true
+          detail: "latest tags: v2.15.0, v2.14.10, v2.14.1"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/tags
+        detail: "0xbow-io/privacy-pools-website: latest tags: v2.15.0, v2.14.10, v2.14.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/commits?per_page=10
+        detail: "0xbow-io/privacy-pools-website: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: true
+          detail: CHANGELOG file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-website: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: 0xbow-io/privacy-pools-website
+          ok: true
+          detail: contribution section in README
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-website: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B10.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Logical and integration architecture (contracts, ZK, ASP layers; deposit, withdrawal and ragequit flows; SDK and relayer reference) in the core repo docs. No infrastructure view of the hosted ASP.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        checked_at: 2026-10-09
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/layers/asp.md#L1-L56
+        path: docs/docs/layers/asp.md
+        detail: docs/docs/layers (asp, contracts, zk), docs/docs/protocol (deposit, withdrawal, ragequit) and docs/docs/reference (circuits, contracts, sdk), also served at docs.privacypools.com.
+    checked_at: 2026-10-09
+  B11.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: 0xbow Limited (terms also say "Oxbow Ltd."); governing law and exclusive venue Delaware, JAMS arbitration. Place of incorporation not stated.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        checked_at: 2026-10-09
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L5-L31
+        path: docs/docs/toc.md
+        detail: Terms of Use preamble naming the counterparty; section 14 (L474-L479) sets Delaware law.
+      - tier: documented
+        kind: document
+        url: https://docs.privacypools.com/toc
+        detail: Terms of Use as served on the docs site.
+        quote: 0xbow Limited (hereinafter "0xbow", "we", or "us") maintains the website
+        checked_at: 2026-10-09
+    checked_at: 2026-10-09
+  B11.2:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: Onchain fee switch. The vetting fee (0.5% on ETH and USDC deposits) accrues in the Entrypoint and is withdrawable by OWNER_ROLE (0xbow's Safe). No other funding source is published.
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        checked_at: 2026-10-09
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/Entrypoint.sol#L264-L272
+        path: packages/contracts/src/contracts/Entrypoint.sol
+        detail: withdrawFees(asset, recipient) sends the Entrypoint's whole balance of an asset to a recipient chosen by OWNER_ROLE.
+    refs:
+      - criterion: C1
+        index: 3
+    checked_at: 2026-10-09
+  B11.3:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: evidenced
+    value: 0xbow may terminate access to the website and functionalities at any time without limit; vetting fees are non-refundable. Funds stay in the immutable pools and the depositor can always ragequit without 0xbow (CROPS S4).
+    evidence:
+      - tier: verified
+        kind: repo
+        commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
+        checked_at: 2026-10-09
+        url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L260-L270
+        path: docs/docs/toc.md
+        detail: Rules-of-conduct section reserving an unlimited right to terminate access; section 5 (L186-L192) makes vetting fees non-refundable.
+    refs:
+      - criterion: S4
+        index: 0
+    checked_at: 2026-10-09
+  B12.1:
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+    status: unknown
+    note: The ASP's vetting is closed. 0xbow.io says the ASP "continuously monitors transactions" and conducts "Know Your Transaction", and the terms describe a due diligence process, but no source says whether it is rule-based, vendor-supplied or uses AI. No ASP code is published.
+    checked_at: 2026-10-09

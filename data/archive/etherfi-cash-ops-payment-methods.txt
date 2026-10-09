@@ -1,0 +1,105 @@
+Source: https://help.ether.fi/en/articles/759961-supported-payment-methods-deposits-withdrawals
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+ Updated this week
+Table of contents
+Supported deposit methods
+You can fund your Vault using the following supported payment methods:
+Currency
+Supported deposit method
+EUR
+SEPA
+USD
+SWIFT, FedWire, ACH, Cash App (US only), Apple Pay (US only), Debit Card via Stripe (US only)
+BRL
+PIX
+MXN
+SPEI
+COP
+BREB
+GBP
+Faster Payments (FPS)
+AED
+FTS
+CAD
+Interac e-Transfer
+ARS
+Lemon or Bank Transfer
+AUD
+Australian Bank Transfer
+JPY
+JPYC Transfer
+Supported withdrawal (payout) methods
+You can withdraw funds from your Vault using the following supported payment methods:
+Currency
+Supported payout method
+USD
+SWIFT, ACH, FedWire
+AED
+Local Transfer
+AUD
+Local Transfer
+BRL
+PIX, Bank Transfer
+CAD
+Local Transfer
+CHF
+Local Transfer
+CLP
+Local Transfer
+CNY
+Alipay, WeChat Pay
+COP
+Local Transfer, BREB
+EGP
+Local Transfer
+EUR
+SEPA
+GBP
+Faster Payments (FPS)
+HKD
+Local Transfer
+HNL
+Local Transfer
+IDR
+Local Transfer
+ILS
+Local Transfer
+INR
+UPI
+JPY
+Local Transfer
+KRW
+Local Transfer
+MXN
+Local Transfer
+MYR
+Local Transfer
+NGN
+Local Transfer
+NOK
+Local Transfer
+PHP
+E-wallet
+PKR
+IBAN Transfer
+PLN
+Local Transfer
+SAR
+Local Transfer
+SGD
+Local Transfer
+UGX
+Local Transfer
+VND
+Local Transfer
+💡 Important notes
+Supported payment methods may vary depending on your region and verification status.
+Some payment methods are only available for specific currencies.
+Processing times, fees, and transfer limits vary depending on the payment method.
+Any applicable fees will be shown before you confirm your transaction.
+Still have questions?
+If you have any questions about supported payment methods or need help choosing the right deposit or withdrawal option, contact our support team via live chat or email at support@ether.fi.
+Related Articles
+FedWire and ACH Transfers (USD)
+Bank Transfers - FAQs

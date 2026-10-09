@@ -1,0 +1,715 @@
+slug: etherfi-cash
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/contents/?ref=master
+        detail: "etherfi-protocol/cash-v3: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/contents/?ref=master
+        detail: "etherfi-protocol/cash-v3: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/contents/?ref=master
+        detail: "etherfi-protocol/cash-v3: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: true
+          detail: "rules: copilot_code_review, pull_request, deletion, non_fast_forward, non_fast_forward"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/rules/branches/master
+        detail: "etherfi-protocol/cash-v3: rules: copilot_code_review, pull_request, deletion, non_fast_forward, non_fast_forward"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: true
+          detail: 3 workflow file(s)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/contents/?ref=master
+        detail: "etherfi-protocol/cash-v3: 3 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: true
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/contents/?ref=master
+        detail: "etherfi-protocol/cash-v3: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/contents/?ref=master
+        detail: "etherfi-protocol/cash-v3: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: true
+          detail: "latest tags: v3.0.0"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/tags
+        detail: "etherfi-protocol/cash-v3: latest tags: v3.0.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/commits?per_page=10
+        detail: "etherfi-protocol/cash-v3: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: true
+          detail: 1 release(s) with notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/contents/?ref=master
+        detail: "etherfi-protocol/cash-v3: 1 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: etherfi-protocol/cash-v3
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/etherfi-protocol/cash-v3/contents/?ref=master
+        detail: "etherfi-protocol/cash-v3: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement for ether.fi (Ether.Fi SEZC or Ether.Fi Cash Inc./Ltd.) found in the GitBook docs (full-text llms-full.txt), Security & Risks section, Terms of Use or Privacy Policy. The only ISO 27001 mentions are for third-party staking node operators. Issuer Third National not checked.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: No hosting or support organisation certification found; the docs do not name the hosting provider for the Cash app or backend.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement of availability found for ether.fi; the SOC 2 mentions in the docs concern staking node operators.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: Smart-contract audits (Certora, Paladin, Nethermind) pinned to cash-v3 commits with per-finding fix commits, plus an Immunefi bounty. No independent review of the closed app, card backend or Turnkey integration was found.
+    refs:
+      - criterion: S6
+        index: 0
+      - criterion: S6
+        index: 2
+    note: Cross-reference CROPS S6 (score 2). The audits cover contracts only.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration-test report or attestation found for the Cash app, web app or backend.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    note: The incident playbook describes 24/7 onchain monitoring by Hypernative, not vulnerability scanning of the platform or application; no scanning cadence is stated.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: The incident playbook sets containment and signer-replacement SLAs (containment within 1 h for SEV-1, compromised signer replaced within 24 h) but no patch timelines for known vulnerabilities.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: evidenced
+    value: Published playbook commits to an initial public acknowledgment within 4 hours of a confirmed SEV-1 (active or imminent loss of user funds) and status updates until resolution. No per-customer notification period for data incidents is stated in the Privacy Policy or cardholder agreements.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/security/security-and-risks/incident-management/incident-response-playbook
+        detail: Incident Response Playbook, Communications section; scope is protocol contracts, keys, oracles, bridges and user-facing infrastructure.
+        checked_at: 2026-10-09
+        quote: initial public acknowledgment within
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    note: No statement on backups or restore testing for cardholder records found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: evidenced
+    value: Published incident response playbook (since Nov 2024, revised July 2026) with runbooks for contract exploit, key compromise, signer loss, oracle and bridge anomalies. It covers the contracts and frontends; no recovery plan for the card backend or card programme is published. For the non-custodial part see CROPS S4.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/security/security-and-risks/incident-management/incident-response-playbook
+        detail: Playbook purpose and scope paragraph and the runbooks section.
+        checked_at: 2026-10-09
+        quote: It is the published version of the internal incident response policy in effect since November 24, 2024
+    refs:
+      - criterion: S4
+        index: 0
+    note: The playbook is not stated to be tested; testing is not evidenced.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Public incident log with post-mortems (domain account takeover attempt, Kelp rsETH fallout Apr 2026, legacy AtomicQueue exploit Sep 2026); the playbook commits to a post-mortem for every SEV-1 and SEV-2. No public status page found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/security/security-and-risks/incident-management/incident-response-playbook
+        detail: Post-incident section of the playbook.
+        checked_at: 2026-10-09
+        quote: Post-mortem published for every SEV-1 and SEV-2
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/security/security-and-risks/incident-management/sep-11-incident-legacy-atomicqueue-exploit
+        detail: Post-mortem for the 11 Sep 2026 legacy AtomicQueue exploit with timeline, exposure conditions and transaction hashes.
+        checked_at: 2026-10-09
+        quote: an attacker exploited a missing authorization check in the legacy Veda AtomicQueue contract
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Sign-in and approvals use a device passkey with no password; email one-time codes are used for account actions such as deletion.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/quickstart
+        detail: Quickstart, "Set up a passkey" step.
+        checked_at: 2026-10-09
+        quote: You use it to sign in and to approve actions. There is no password.
+    note: Whether a passkey is mandatory for every account is not stated; the MCP connector page says some accounts may have no passkey yet.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: evidenced
+    value: Stated only for key platforms after the 2024 domain incident (hardware authentication required); no general statement on privileged-access MFA or separate admin accounts.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/security/security-and-risks/incident-management/sep-24-incident-attempted-domain-account-takeover
+        detail: Incident note, prevention steps.
+        checked_at: 2026-10-09
+        quote: We preemptively upgraded our key platforms to require hardware authentication as an authentication method
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: The only documented API surface is the read-only MCP connector (mcp.ether.fi), which uses OAuth 2.1 with PKCE and passkey consent. The app's own browser-to-server API is not documented.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/mcp-server
+        detail: MCP Server page, section 6 "How it works" (OAuth 2.1 facade, authorize plus PKCE).
+        checked_at: 2026-10-09
+        quote: Connect an AI assistant to your ether.fi Cash account. Read-only, scope by scope, approved with your passkey.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: MCP connector access tokens last one hour; the grant (refresh) lasts 90 days and can be revoked, with access re-checked on every read.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/mcp-server
+        detail: MCP Server page, section 5 "Lifetime and revocation".
+        checked_at: 2026-10-09
+        quote: Within that window the assistant holds a one-hour access token and quietly renews it
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: Privacy Policy states encryption of sensitive personal information among its security measures; no data classification scheme or TLS version is stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/privacy-policy
+        detail: Privacy Policy, Security section.
+        checked_at: 2026-10-09
+        quote: including encryption of sensitive personal information
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Data kept as long as necessary for the purpose and as legally required; after account termination the user has 30 days to remove data before the account is deleted, and data may be retained after deletion for legal, tax or regulatory reasons. Self-service account deletion has a 14-day waiting period.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/privacy-policy
+        detail: Privacy Policy, Personal Information Retention section.
+        checked_at: 2026-10-09
+        quote: you will have 30 days to remove your data before we delete your account
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Controller is Ether.Fi SEZC (Cayman Islands), with an EU representative (Instant EU GDPR Representative Ltd.) and a UK representative (GDPR Local Ltd.). No DPIA is mentioned.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/privacy-policy
+        detail: Privacy Policy, Controller Details and representatives.
+        checked_at: 2026-10-09
+        quote: we have appointed an EU Representative to act as our data protection agent
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: The Privacy Policy says ether.fi enters into data processing agreements and standard contractual clauses for EEA/UK/Swiss/Brazil transfers, but no customer-facing DPA or statement that one is available to customers was found. The corporate agreement (international) was not read.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Cash Technical Documentation and Cash Modules pages cover the logical architecture (Vault, modules, hooks, roles) and integration (universal cross-chain addresses, Turnkey enclave, bridges). No infrastructure view of the closed backend.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/technical-documentation
+        detail: Technical Documentation sections 1-3 with ownership, cross-chain and modular-design diagrams.
+        checked_at: 2026-10-09
+        quote: Effortless Cross-chain via Universal Address
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: "Three parties: Ether.Fi SEZC (Cayman Islands special economic zone company) under the Terms of Use; Ether.Fi Cash Inc. or Ether.Fi Cash Ltd. as programme manager under the cardholder agreements; and the issuer Third National. Cardholder agreements are governed by Puerto Rico law."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/terms-of-use
+        detail: Terms of Use section 1(a).
+        checked_at: 2026-10-09
+        quote: a Special Economic Zone Company, organized under the laws of Cayman Islands
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international
+        detail: Cardholder Agreement - Inc. (International), opening paragraph and section 18 (governing law).
+        checked_at: 2026-10-09
+        quote: Ether.Fi Cash Inc. and its affiliates
+    note: No company-register entry was checked; the Cayman register is not publicly searchable without an account, and the jurisdiction of Ether.Fi Cash Inc. and Ether.Fi Cash Ltd. is not stated in the documents.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Either side may terminate the card terms on 30 days' notice; ether.fi and the issuer may also suspend or cancel at any time with or without notice. Amounts owed survive termination; prepaid subscriptions are refunded pro rata unless termination follows a breach. Funds in the Vault stay in the user's Safe (see CROPS S4).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international
+        detail: Cardholder Agreement - Inc. (International), section 14 Termination.
+        checked_at: 2026-10-09
+        quote: We may terminate your access to the Card Services and the Card Terms without cause
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: No statement that AI decides card authorisations or screening. The Privacy Policy allows machine-learning use of personal data for research and product development and lists device fingerprinting and behavioural biometrics for fraud prevention; a read-only AI connector (MCP) can read account data but has no write path.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/privacy-policy
+        detail: Privacy Policy, "How We Use Your Personal Information", research and development purposes.
+        checked_at: 2026-10-09
+        quote: testing, research, analysis, product development, and machine learning
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/mcp-server
+        detail: MCP Server page, section 3, no write path.
+        checked_at: 2026-10-09
+        quote: There is no write path anywhere in the system
+    note: Whether the fraud-prevention signals feed an automated model is not stated.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: fx
+      paid_by: payer
+      amount: 1% base plus up to 0.5% (Core) or up to 0.25% (Luxe); no added margin for Pinnacle and VIP
+      basis: International cardholder agreement section 10 (fee schedule dated 5 Feb 2026) and help-centre limits page; ether.fi may change fees on 30 days' notice.
+      evidence_index: 0
+    - kind: card
+      paid_by: payer
+      amount: 10 USD for the first virtual card in 14 listed countries; otherwise one free virtual card for Core
+      basis: Help-centre regional pricing article; shown in the app before ordering.
+      evidence_index: 2
+    - kind: cashout
+      paid_by: payer
+      amount: "Bank withdrawal: USD ACH 0.50 USD + 0.20%, Fedwire 20 USD + 0.20%, SWIFT 20 USD + 0.12%, EUR SEPA 0.90 EUR + FX"
+      basis: Help-centre bank transfer FAQ; other payout routes are quoted in the app before confirmation.
+      evidence_index: 3
+    - kind: limit
+      paid_by: payer
+      amount: ATM 1,000 USD per withdrawal, at most 5 per rolling 24 h; ATM fee not stated
+      basis: Help-centre limits page. The membership page lists ATM withdrawals as free up to 10 per month for Pinnacle and VIP only.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international
+      detail: Cardholder Agreement - Inc. (International), section 10 Foreign Currency Transactions.
+      checked_at: 2026-10-09
+      quote: This includes a base 1% foreign transaction fee
+    - tier: documented
+      kind: document
+      url: https://help.ether.fi/en/articles/303623-what-are-the-transaction-limits-and-fees-for-personal-cash-credit-cards
+      archive: data/archive/etherfi-cash-ops-limits-and-fees.txt
+      detail: Help-centre article on limits and fees per membership level (ATM limits, added FX margin table).
+      checked_at: 2026-10-09
+      quote: Maximum of five(5) ATM withdrawals in any rolling 24 hour period
+    - tier: documented
+      kind: document
+      url: https://help.ether.fi/en/articles/833743-why-is-there-a-10-fee-for-my-first-virtual-cash-card
+      archive: data/archive/etherfi-cash-ops-first-card-fee.txt
+      detail: Help-centre article listing the 14 countries where the first virtual card costs 10 USD.
+      checked_at: 2026-10-09
+      quote: regional pricing means the first virtual Cash card has a $10 fee instead
+    - tier: documented
+      kind: document
+      url: https://help.ether.fi/en/articles/758758-bank-transfers-faqs
+      archive: data/archive/etherfi-cash-ops-bank-transfer-faq.txt
+      detail: Bank transfers FAQ, funding fee table and outgoing USD bank-transfer fee table.
+      checked_at: 2026-10-09
+      quote: Outgoing USD bank-transfer fees
+  note: "No issuance, monthly or annual fee is stated for Core; membership levels above Core are unlocked by loyalty points (Luxe 5K, Pinnacle 25K) or invitation. The U.S. cardholder agreements reserve an annual fee and a foreign transaction fee whose amounts sit in Account Opening Disclosures that are not public. Judgment call: first-party help-centre pricing pages are treated as documented for fees here, while the CROPS seed cited the same help centre as claimed."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: hybrid
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: S1
+      index: 2
+  note: Funds rest in the user's beacon-proxy Safe (owner key in a Turnkey enclave); card spends move to an ether.fi-controlled, upgradeable settlement dispatcher that the 8 h timelock can redirect, and ether.fi plus a third party can recover a Safe after 3 days unless the owner cancels. Agrees with the S1 finding (score 1).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: unknown
+  note: The cardholder agreements name Third National as issuer under a Visa licence and choose Puerto Rico law, but no first-party document states Third National's regulator, licence type or number. The FDIC BankFind API lists no active institution named Third National (only closed Tennessee banks), which suggests it is not a US insured bank; the Puerto Rico OCIF licence verification site (concesionarios.ocif.pr.gov) failed the TLS handshake from this environment, so the register could not be checked. The provider file context mentions BANEX Microfinance Bank (Nigeria) without a first-party source. ether.fi's risks page says ether.fi itself is not a regulated financial institution.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ ALL ]
+      method: card_withdrawal
+      partner: Third National (issuer), Visa
+      fee: FX 1% plus tier margin on non-USD spend
+      limits: Card spend at merchants (the schema has no card-spend value); limits set by ether.fi and the issuer.
+      evidence_index: 0
+    - countries: [ ALL ]
+      method: atm
+      partner: Third National (issuer), Visa
+      fee: not stated for Core and Luxe; free up to 10 per month for Pinnacle and VIP
+      limits: 1,000 USD per withdrawal, 5 per rolling 24 h; not allowed in North Korea, Iran, Myanmar
+      evidence_index: 1
+    - countries: [ ALL ]
+      method: bank_transfer
+      partner: unnamed banking provider
+      fee: "USD ACH 0.50 USD + 0.20%; SWIFT 20 USD + 0.12%; SEPA 0.90 EUR + FX; others quoted in app"
+      limits: "Rails per currency: USD ACH/Fedwire/SWIFT, EUR SEPA, GBP FPS, BRL PIX, INR UPI, ~25 local routes. Excluded in 24 jurisdictions (no card country); Puerto Rico not listed."
+      evidence_index: 2
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/ether.fi-cash-cardholder-agreement-inc.-international
+      detail: Cardholder Agreement - Inc. (International), sections 2 and 6; also says cash advances are not available under the international card terms.
+      checked_at: 2026-10-09
+      quote: Cash advances and balance transfers are not available under these Card Terms
+    - tier: documented
+      kind: document
+      url: https://help.ether.fi/en/articles/303623-what-are-the-transaction-limits-and-fees-for-personal-cash-credit-cards
+      archive: data/archive/etherfi-cash-ops-limits-and-fees.txt
+      detail: Help-centre limits page, ATM withdrawal limits and FATF-country exclusions.
+      checked_at: 2026-10-09
+      quote: ATM withdrawals are not allowed due to platform integrity and global compliance
+    - tier: documented
+      kind: document
+      url: https://help.ether.fi/en/articles/759961-supported-payment-methods-deposits-withdrawals
+      archive: data/archive/etherfi-cash-ops-payment-methods.txt
+      detail: Supported payout methods by currency.
+      checked_at: 2026-10-09
+      quote: You can withdraw funds from your Vault using the following supported payment methods
+    - tier: documented
+      kind: document
+      url: https://help.ether.fi/en/articles/860027-in-which-countries-are-bank-transfers-not-available
+      archive: data/archive/etherfi-cash-ops-bank-transfer-excluded.txt
+      detail: The 24 jurisdictions where bank transfers are not available.
+      checked_at: 2026-10-09
+      quote: Bank transfers are not available in the jurisdictions listed below
+  note: "Contradiction: the international card terms say cash advances are not available, while the help centre lists ATM withdrawal limits per membership level and the U.S. agreements treat ATM use as a Cash Advance where enabled. Recorded as listed by the help centre; a reviewer should confirm ATM access outside the US."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2026-03-27
+      block: 149521158
+      what: CashModule proxy 0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0 on Optimism (core chain since the April 2026 account upgrade)
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://explorer.optimism.io/tx/0x96728edf8f7350ffa63384a2cd36f099f3fedc740a45a7c23a10d406909cf240
+        address: "0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0"
+        block_number: 149521158
+        detail: Creation tx 0x96728edf...f240 via deployer factory 0x59B5c9c09327b3Ed6a801BD035eA970f7a28b7ed; the CashModule proxy has code size 0 at block 149521157 and 122 bytes at 149521158 (timestamp 1774641093, 2026-03-27 19:51:33 UTC).
+        checked_at: 2026-10-09
+        recheck: cast codesize 0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0 --block 149521157 --rpc-url https://mainnet.optimism.io; cast codesize 0x7Ca0b75E67E33c0014325B739A8d019C4FE445F0 --block 149521158 --rpc-url https://mainnet.optimism.io
+    note: This dates the current core-chain deployment only. ether.fi Cash ran earlier on Scroll (same CashModule address in cash-v3 deployments/mainnet/534352, and before that the archived cash-contracts repo); those earlier deployments were not dated here.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Ether.Fi SEZC
+      jurisdiction: KY
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/terms-of-use
+        detail: Terms of Use section 1(a) names Ether.Fi SEZC, a Cayman Islands special economic zone company; the Privacy Policy gives its address at Strathvale House, George Town.
+        checked_at: 2026-10-09
+        quote: a Special Economic Zone Company, organized under the laws of Cayman Islands
+    note: The card programme is contracted through Ether.Fi Cash Inc. or Ether.Fi Cash Ltd. (cardholder agreements), whose jurisdictions are not stated. No company-register entry was checked (the Cayman General Registry has no free public search).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value: []
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/security/security-and-risks/incident-management/sep-11-incident-legacy-atomicqueue-exploit
+        detail: The 11 Sep 2026 legacy AtomicQueue exploit hit Liquid token holders; the post-mortem states Cash accounts were not exploitable.
+        checked_at: 2026-10-09
+        quote: Gnosis Safe and ether.fi Cash accounts were not exploitable through this path
+    note: "Searched ether.fi's incident log (three entries), the Risks page and the S6 audit evidence. None of the logged incidents affected Cash funds: the Sep 2026 AtomicQueue exploit excluded Cash accounts, the Apr 2026 Kelp rsETH fallout paused Liquid vaults only, and the domain account takeover attempt (dated 'Sep 24' with no year on the page) caused no loss."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2026-04-01
+        summary: "Account upgrade: the Cash core chain moves from Scroll to Optimism; a Safe is deployed for each user on Optimism and Scroll becomes a top-up chain. The page says April 2026 without a day; the date here is the month."
+        url: https://etherfi.gitbook.io/etherfi/products/cash/account-upgrade
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://etherfi.gitbook.io/etherfi/products/cash/account-upgrade
+        detail: Account upgrade page.
+        checked_at: 2026-10-09
+        quote: the core chain for Cash is updating in Apr 2026
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 10
+    addresses:
+      - "0x380B2e96799405be6e3D965f4044099891881acB"
+    topic0: "0x244f4cc0665ad7ee4709aa59b30d3ea581cecde1b0430a3f23a5dc609d4890fc"
+    event: Spend(address indexed safe, bytes32 indexed txId, uint8 indexed binSponsor, address[] tokens, uint256[] amounts, uint256[] amountInUsd, uint256 totalUsdAmt, uint8 mode)
+    amount_word: 3
+    decimals: 6
+    symbol: USD
+    window_days: 30
+    exclusions: Sums totalUsdAmt (USD value at spend, 6 decimals) of every Spend event from the CashEventEmitter on Optimism, all BIN sponsors and both direct and borrow modes. Refunds and cashback are not subtracted; legacy Scroll spends are excluded. Word layout checked on sample tx 0xdb50399e...f565 (word 3 = 0x5222a5 = 5.38 USD).
+  note: Card spends are recorded as Spend events by the listed CashEventEmitter, so they can be separated from ordinary transfers. Not yet computed; the maintainer runs scripts/volumes.mjs.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

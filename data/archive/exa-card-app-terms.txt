@@ -1,0 +1,252 @@
+Source: https://help.exactly.app/en/articles/9942510-exa-app-terms-and-conditions
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML, tags removed.
+
+All Collections Terms and conditions Exa App terms and conditions Exa App terms and conditions Written by Mate October 2, 2025 These terms and conditions of use, together with any other documents and 
+additional terms incorporated herein by reference ( “Terms” ), set out the terms and conditions under which EXA LABS S.A.S., a corporation incorporated under the laws of Uruguay (“ us ”, “ we ”, “Exactly” or 
+the “ Company ”), offers you or the company or other legal entity you represent (“ you ” or “ your ”) access to and use of the Exa App (the “ App ”), which will allow you to access a wide range of services 
+and features, including but not limited, application for, and use, of the Exa Card (as defined below) (the “ Services ”). Any reference herein to the App shall include any kind of technology developed 
+by Exactly, and/or any of its affiliates to provide the Services (including but not limited to our website at ( https://exactly.app/ ). Please read these Terms, including any other terms incorporated 
+herein by reference carefully, as these shall govern your use of the App in connection with the Services, and expressly cover your rights and obligations, and our disclaimers and limitations of legal 
+liability, relating to such use. Each time either you access to the App, click any “I agree” (or similar) button or checkbox presented with these Terms, or use any of the Services, you are deemed to 
+have read, understood and accepted all of these Terms and, therefore, you agree to be bound by these Terms. If you do not agree to these Terms, you will not be allowed to access or use the App or the 
+Services. These Terms are to be read in conjunction with the Exactly Protocol terms and conditions ( https://docs.exact.ly/legal/terms-and-conditions-of-use ); Exa App Privacy Policy, and the Exa 
+Card Terms of service, both can be found in the Exa App help center. ACCOUNT CREATION. WALLET In order to access the App, and to further access the Services, you must create an account (the “Account”). 
+In such connection, you agree that: (i) all the information that you provide to us in connection with your Account and/or these Terms is complete and accurate at all times; (ii) all activities on 
+your Account are deemed to be activities carried out by you or the entity that you declare you act on its behalf; and (iii) you will notify us immediately if there are any changes to the information 
+you have provided to us. Upon creation of your Account, we will provide you a self-custodial wallet, which will be owned and controlled exclusively by you (the “Wallet”), where you can deposit your 
+digital assets, as a collateral in relation to the use of the Exa Card, and which shall be connected to the Exactly Protocol (as defined below). Apart from the foregoing, the Wallet will allow you to 
+store digital assets as collateral and balance; and perform any additional services that we may add to the Wallet from time to time. The App provides a web or mobile-based means of access to the 
+“Exactly Protocol”, an open-source software deployed on the OP Mainnet blockchain, which software operates in an autonomous fashion on a decentralized network and, as a result, Exactly has no control 
+over user transactions in such protocol (the “Exactly Protocol”). The App is distinct from the Protocol and is one, but not the exclusive means of access. We do not have custody over the contents of 
+your Wallet, nor access to its private keys. By creating your Wallet through the App, you agree to be bound by this Agreement and all of the terms incorporated herein by reference. The Wallet will 
+need to be funded with crypto assets for the purposes of applying for the Exa Card. The Exa Card is a self-custodial digital payment card that you will be able to use, in accordance with the 
+following terms and conditions (the " Exa Card terms and conditions "). Exactly is not responsible for, does not endorse, shall not be held liable in connection with and does not make any warranties, 
+whether express or implied, as to the Wallet connected to, used by you in relation to, the App or the Services. Exactly will never have access or control over the private keys of your Wallet. 
+Therefore, you are solely responsible for securing your Wallet and credentials thereto. You will be able to withdraw your crypto assets through the App, provided that your credit situation regarding 
+loans taken allows you to do so. Any digital asset that you transfer to the Wallet will be transferred into the Exactly Protocol’s smart contract - behind the App - on a title transfer, free from any 
+encumbrance and will not be held by us or any third party in a custodial or sub-custodial basis. Such digital assets shall subject to the terms and conditions of the Exactly Protocol, incorporated to 
+these Terms by reference. 2. APP FEATURES AND SERVICES We grant to you a non-exclusive, non-transferable, revocable right (without the right to grant sub-licenses) to access and use the App on a 
+software-as-a-service basis via your Wallet in order to use and/or receive the Services and other services as described in this Sections 2.1. The App provides an interface that will allow you to 
+perform the following activities, among others that may added from time to time: Apply for the Exa Card; Use your Exa Card; Manage your Exa Card account (including but not limited to view your Exa 
+Card payment activity, spending limit, simulate payment plans, schedule payments, etc); Administer your Exa Card (including but not limited to view your card details, block and unblock your card, 
+dispute transactions, report fraud, etc) On-ramps and off-ramps; Investments in traditional financial assets; Swaps; and Fixed rate loans Regarding Fixed Rate Loans: The fixed-rate loans accessed 
+through the App are provided exclusively by the Exactly Protocol , which is a decentralized protocol. Exa Labs S.A.S. does not provide credit, liquidity, or financial recommendations in connection 
+with these loans. The App merely provides an interface to access the Exactly Protocol; all loan-related activities, including the extension of credit and the management of liquidity, are governed by 
+the Exactly Protocol's terms and conditions, over which we have no control. Regarding Swaps, Swap services facilitated through the App are provided by third-party providers, such as LiFi . We (Exa 
+Labs S.A.S.) act solely as an intermediary, providing an interface to access these third-party swap services. We do not provide swap functionality, liquidity, or recommendations. Your use of swap 
+services will be subject to the terms and conditions of the respective third-party provider. 2. We provide you with certain support services in relation to the App and in relation to the Exa Card. 
+Before signing any transaction through your Wallet using your security credentials, please always check the transaction is correct including the transaction amount and recipient address. Transactions 
+on the blockchain are generally irreversible and we are not responsible and disclaim all liability for any loss or damage you may suffer (whether in contract, tort (including negligence), breach of 
+statutory duty or otherwise) as a result of you entering incorrect amounts or recipient information. On-ramp and off-ramp services to convert your crypto assets to make payments in fiat, shall be 
+provided by third party providers and shall be subject to their terms and conditions, which should be accepted by you prior to performing such transactions. Card issuer has no relationship with 
+Exactly protocol.The Exactly Protocol is a decentralized finance platform that operates on the blockchain network and extends credit to you based on criteria established solely by Exactly Protocol 
+and set forth in the Exactly Protocol terms and conditions. Issuer does not originate or extend credit to you in connection with Exactly Protocol services but instead issues a Card that you may use 
+to access credit extended through the Exactly Protocol. The Exactly Protocol is solely responsible for its credit services, including evaluation, approval, and denial of your credit application. 
+Issuer has no responsibility for, and does not in any way participate in, the Exactly Protocol credit transaction. You understand that by using the Card you are agreeing that the Issuer does not have 
+any affiliation or liability related to any interactions between you and the Exactly Protocol. The Exactly Protocol services, and your access and use of those services, are governed by your separate 
+terms of service for the Exa App or the Exactly Protocol and you acknowledge Issuer is not a party to either of those Agreements. By using the Exa App, you understand that you are not buying or 
+selling digital assets from either the card Issuer, or Exa Labs. You understand that Issuer is not affiliated with and has no relationship to the Exactly Protocol, or any assets linked to the Exactly 
+Protocol. Any fees associated with the Exactly Protocol accrue to providers in the Exactly Protocol and neither the Issuer or Exa Labs have control over those fees. You also agree, and understand 
+that the Issuer does not have custody or control over the contents of your wallet and has no ability to retrieve or transfer its contents. You acknowledge and agree that you will access and use the 
+Services of the App, including, without limitation, the Exactly Protocol at your own risk and will not hold Issuer or its affiliates responsible for any interaction with the Exactly Protocol. Should 
+you have any issues with a transaction that is not a Card purchase, you should refer to your terms of service with either the Exa App or the Exactly Protocol. Should you have any issue with a 
+transaction completed with your Card, please contact Issuer through the customer service channels listed in your cardholder agreement. 3. REPRESENTATIONS AND WARRANTIES OF USER Each time you access 
+and use the App, you represent and warrant: that you have read, understood and accepted these Terms, in conjunction with the terms incorporated by reference; that you are of legal age in your 
+jurisdiction as required to access and use the App and enter into arrangements as provided therein, and that you are fully able and competent to enter into the terms, conditions, obligations, 
+affirmations, representations and warranties set forth in these Terms and to abide by and comply with these Terms; if you are an authorized representative of a legal entity, that you have full power 
+and authority to represent such legal entity and agree to these Terms, and enter into any agreements, transactions or use any service, on behalf of such legal entity, including without limitation the 
+App, the Services, or any other service offered by the Company through the App; you have not previously been suspended or removed from accessing to the App, whether on your behalf or otherwise; that 
+you are the legal owner of the funds or assets you use within the App and that the same funds or assets derive from a legitimate source; that you are aware of the risks of using the App and you are 
+aware of the high volatility risk of the crypto itself; that you will not be involved or initiate any form of market manipulation, including spoofing orders or otherwise; that all information to be 
+submitted by you through the App will be true, accurate and not incomplete or misleading and that the use of such information in connection with your application for the Services does not violate any 
+third-party right nor any law or regulation; you are acquiring the right to access and use the App and agreeing to these Terms for the purposes of a business and that, to the maximum extent permitted 
+by law, any statutory consumer guarantees or legislation intended to protect non-business consumers in any jurisdiction does not apply to the use of the App, the Services or these Terms; that you 
+have the amount of money or digital assets to return any kind of loan or credit to be taken within the App (including its applicable interests) and that you will use those funds for legitimate 
+purposes; you understand the operation, functionality, usage, storage, transmission mechanisms and other material characteristics of cryptocurrencies, blockchain-based software systems, 
+cryptocurrency wallets or other related digital assets storage mechanisms and blockchain technology; You are not a US Person and that you are not located, organized or resident in the United States 
+of America. You expressly acknowledge and agree that the US Persons are prohibited from accessing and using the Services in any way and that the App does not operate with US Persons. We reserve the 
+right to take whatever action we deem appropriate to prohibit your access to the App if we consider it necessary (including but not limited to any suspicion that you are a US Person). For purposes 
+herein “US Person” shall mean any United States citizen or alien admitted for permanent residence in the United States, and any corporation, partnership, or other organization organized under the laws 
+of the United States. the App is global and by accessing and using it, you further represent that you are legally permitted to use and own cryptographic tokens of value in your jurisdiction, and 
+interacting with the App in any way. Persons or entities which are considered as citizen, resident or taxpayer in any jurisdiction that deems the cryptographic tokens and/or digital assets as 
+securities and/or requires registration with any securities agencies and/or in which the access or use of the App is forbidden or restricted by law, are prohibited from accessing and using the App. 
+You acknowledge and agree that you are responsible for ensuring compliance with the laws of your jurisdiction and acknowledge that the Company or any of the Affiliates (as defined below) are not 
+liable for your compliance with such laws and, by accepting these Terms, you hereby undertake not to use the App for any illegal activity. 2. When accessing and using the App, you must: not attempt 
+to undermine the security or integrity of Exactly’s or third parties’ computing systems or networks related to the operation of the App; not use, or misuse, the App in any way which may impair the 
+functionality of such App, or other systems used to deliver the Services or impair the ability of any other user to use the Services or the App. not attempt to gain unauthorized access to the 
+computer system on which the App is hosted or to any materials other than those to which you have been given express permission to access; not transmit or input into the App any files that may damage 
+any other person’s computing devices or software; content that may be offensive; or material or data in violation of any law (including data or other material protected by copyright or trade secrets 
+which you do not have the right to use); not attempt to modify, copy, adapt, reproduce, disassemble, decompile or reverse engineer any computer programs used to operate the App. 4. INTELLECTUAL 
+PROPERTY. The App contains information that is protected by applicable intellectual property and other laws or licenses (including open source license, as applicable). Except as expressly authorized 
+by the terms of such license and/or by the Company, you agree not to copy, modify, rent, lease, loan, sell, distribute, perform, display or create derivative works based on the service, in whole or 
+in part. By accessing the App and downloading material (including contained in any temporary cache), you acknowledge that you do not acquire any intellectual property rights or ownership rights and 
+may not resell any of the products appearing on the online App, nor to hotlink, frame or otherwise present any version of the App to any other person or entity, without Company’s prior consent. 
+Company’s reserves all proprietary rights regarding the Company’s name and trademark and you may not use such name or trademark without Company’s prior consent. You may display on a computer screen or 
+print extracts from the App only for personal purpose and provided that you retain any copyright and other proprietary notices or any Exactly trademarks or logos, as shown on the initial printout or 
+download without alteration, addition or deletion. Except as expressly stated herein, you may not without Exactly’s prior written permission alter, modify, reproduce, distribute or use in any other 
+commercial context any materials from the App. We reserve the right to remove or disable access to any content or other materials from the App that violates or may infringe any person’s intellectual 
+property rights. 5. THIRD-PARTY LINKS AND WEBSITES. The App may contain links to third party websites (including all links related with the use of the Wallet within the App) that are not affiliated 
+or associated with Exactly (although Exactly branding, advertisements or links may appear on these websites) and Exactly may send e-mail messages to you containing advertisements or promotions 
+including links to third parties. Exactly makes no representation as to the quality, suitability, functionality or legality of the material on third party websites that are linked to, or to any goods 
+and services available from such websites. The material is only provided for your interest and convenience. Exactly does not monitor or investigate such third party websites and you acknowledge and 
+agree that Exactly or any related entity shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or 
+reliance on any content, goods or services available on or through any such third-party site or resource. When you use the App or the Services, you may also be using the products, services or content 
+of one or more third parties. Your use of such third party products, services or content may be subject to separate policies, terms of use and fees of these third parties, and you agree to abide by 
+and be responsible for such policies, terms of use and fees, as applicable. 6. SECURITY. You may not violate or attempt to violate the security of the App, or any of the products or services 
+described or contained herein. We may investigate occurrences which may involve such violations and may involve, and co-operate with, governmental, regulatory or law enforcement authorities in 
+investigation and prosecuting persons who have participated in such violations. You agree that it is your responsibility to install anti-virus software and related protections against viruses or 
+other computer programming routines or engines that are intended to damage, destroy, disrupt or otherwise impair a computers functionality or operation which may be transferred to your computer via 
+this App. The Company may, at its sole discretion, offer additional security features as part of the App, such as two-factor authentication (“2FA”). It is your responsibility to ensure and maintain 
+continuous security and control over any device or account that gives access to the App and the Services. Failure of any such security device or account may delay or restrict your access to the App 
+or the Services. 7. INFORMATION AVAILABLE IN THE PLATFORM. The information, opinions and data on or provided through the App may, in whole or in part, have been obtained from third party sources. 
+Accordingly, we do not guarantee the accuracy, validity, timeliness or completeness of such information, opinions or data for any purpose. You must seek the advice of professional advisors regarding 
+the evaluation of any specific information, opinion, advice or other content, and acknowledge that you have had the opportunity to take such advice before using the App or the Services. 8. COMPLIANCE 
+WITH LAWS AND REGULATION. You agree and acknowledge that it is your responsibility to comply with all applicable laws and regulations relating to the use of the App or any of the Services or any 
+transactions you make through the App, including without limitation the reporting of any transactions, and the calculation and payment of all applicable taxes within any jurisdiction applicable to 
+you. You assume full liability for seeking independent legal, accounting and/or taxation advice to learn which laws and regulations are applicable to you, and for ensuring that you comply with them. 
+The Company is not responsible for collecting, reporting, withholding or remitting any taxes arising from any transaction you conduct with the Company or through the App, but will comply with any 
+reporting or withholding obligations that apply to it. For that purpose, each time you access the App or conduct a transaction with us, any information or representation you have made as to your tax 
+residency is deemed to have been repeated at that time, and we will rely upon it for such reporting purposes, if required. 9. PROHIBITED USE. You may not use the App to engage in the following 
+categories of activity (" Prohibited Uses "). The specific types of use listed below are representative, but not exhaustive. By using the App, you confirm that you will not use it to do any of the 
+following: Unlawful Activity: Activity which would violate, or assist in violation of, any law, statute, ordinance, or regulation, sanctions programs administered in any relevant country, including 
+but not limited to the U.S. Department of Treasury's Office of Foreign Assets Control ("OFAC"), or which would involve proceeds of any unlawful activity; publish, distribute or disseminate any 
+unlawful material or information. Abuse of Other Users: Interfere with another individual's or entity's access to or use of the App; defame, abuse, extort, harass, stalk, threaten or otherwise 
+violate or infringe the legal rights (such as, but not limited to, rights of privacy, publicity and intellectual property) of others; incite, threaten, facilitate, promote, or encourage hate, racial 
+intolerance, or violent acts against others; harvest or otherwise collect information from the App about others, including without limitation email addresses, without proper consent Fraud: Activity 
+which operates to defraud the Company, the Services, other Users, or any other person; provide any false, inaccurate, or misleading information. Intellectual Property Infringement: Engage in 
+transactions involving items that infringe or violate any copyright, trademark, right of publicity or privacy or any other proprietary right under the law; use of Company’s intellectual property, 
+name, or logo, including use of Company trade or service marks, without express consent from Company or in a manner that otherwise harms the Company; any action that implies an untrue endorsement by 
+or affiliation with Company. 10. NOTICE TO USERS. ASSUMPTION OF RISKS. The following notices are duly given to Users and each person or entity accessing or using the App shall be deemed to have been 
+notified of the following: Risk warning: operating digital assets carries a high level of risk, and is not suitable for everyone. Before deciding to operate in the App with digital assets you should 
+carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your digital assets and therefore you 
+should not invest money that you cannot afford to lose. You should be aware of all the risks associated with digital assets, and seek advice from an independent financial adviser should you have any 
+doubts. Furthermore, there may be risks that are not disclosed in this disclaimer and any other terms or conditions that apply to our App. You must carefully consider your financial situation and 
+tolerance to risk before engaging in any activity involving digital assets. Independent, professional financial and legal advice must be sought where necessary. Sophistication and Risk of 
+Cryptographic Systems. By utilizing or interacting with the App in any way, you represent that you understand the inherent risks associated with cryptographic systems; and warrant that you have an 
+understanding of the usage and intricacies of native cryptographic tokens, smart contract based tokens, and blockchain-based software systems. None of the Company or its affiliates own or control any 
+of the underlying software through which blockchain networks are formed. In general, the underlying software for blockchain networks tends to be open source such that anyone can use, copy, modify, 
+and distribute it. By using the App, you acknowledge and agree (i) that the Company or related entities are not responsible for the operation of the underlying software and networks that there exists 
+no guarantee of functionality, security, or availability of such software and networks; and (ii) that the underlying protocols are subject to sudden changes in operating rules (known as "Forks"), and 
+that such Forks may materially affect the functionality of the App. It might be discretionarily decided not to support (or cease supporting) the Forked network entirely. You acknowledge and agree 
+that the Company and its affiliates assume absolutely no responsibility whatsoever in respect of any underlying software protocols, whether Forked or not. Risk of Regulatory Actions in One or More 
+Jurisdictions. The Digital Credit Card Services could be impacted by one or more regulatory inquiries or regulatory action, which could impede or limit the ability of the Company to continue to 
+develop, or which could impede or limit your ability to access or use the Services or the blockchain network, including access to your funds. You agree that the Company or the Affiliates are not 
+responsible for determining whether or which laws may apply to your use of the Services, including tax laws. You are solely responsible for reporting and paying any taxes arising from your use of the 
+Services and you should seek professional advice regarding applicable laws or regulations. Risk of Weaknesses or Exploits in the Field of Cryptography. You acknowledge and understand that 
+cryptography is a progressing field. Advances in code cracking or technical advances such as the development of quantum computers may present risks to cryptocurrencies, which could result in the 
+theft or loss of your cryptographic tokens or property. To the extent possible, it is intended to update the protocol underlying the Services to account for any advances in cryptography and to 
+incorporate additional security measures, but does not guarantee or otherwise represent full security of the system. By using or accessing the App, you acknowledge these inherent risks. Volatility of 
+Cryptocurrency. You understand that cryptocurrencies and other blockchain technologies and associated tokens are highly volatile due to many factors including but not limited to adoption, 
+speculation, technology and security risks. You also acknowledge that the cost of transacting on such technologies is variable and may increase at any time causing impact to any activities taking 
+place on the blockchain network. You acknowledge these risks and represent that the Company or any related entity or person cannot be held liable for such fluctuations or increased costs. Application 
+Security. You acknowledge that the App is subject to flaws and acknowledge that you are solely responsible for evaluating any code provided by the App. This warning and others later provided by the 
+Company in no way evidence or represent an on-going duty to alert you to all of the potential risks of utilizing the App. App Accuracy. Although it is intended to provide accurate and timely 
+information on the App and other related tools, the App or relevant tools may not always be entirely accurate, complete or current and may also include technical inaccuracies or typographical errors. 
+In an effort to continue to provide you with as complete and accurate information as possible, information may be changed or updated from time to time without notice, including without limitation 
+information regarding our policies. Accordingly, you should verify all information before relying on it, and all decisions based on information contained on the App or relevant tools are your sole 
+responsibility and the Company shall have no liability for such decisions. Links to third-party materials (including without limitation websites) may be provided as a convenience but are not 
+controlled by any entity. You acknowledge and agree that we are not responsible for any aspect of the information, content, or services contained in any third-party materials or on any third party 
+sites accessible or linked to the App or available via other relevant tools. Technical Knowledge. Any use or interaction with the App requires a comprehensive understanding of applied cryptography 
+and computer science in order to appreciate inherent risks, including those listed above. You represent and warrant that you possess relevant knowledge and skills. No advice: Any opinions, news, 
+research, analyses, prices or other information contained on or through the App is provided as general market commentary, and does not constitute investment or financial advice, nor should it be 
+relied on for any investment decision. We will not accept liability for any loss or damage, including without limitation to, any loss of profit, which may arise directly or indirectly from use of or 
+reliance on such information. The contents of any communications from us may have been prepared by personnel of the Company and/or by other divisions or entities. The material does not purport to be, 
+and is not intended to be a “research report”, “investment research” or “independent research” as may be defined in applicable laws or regulations worldwide. It is intended for your general information 
+about market conditions and recent events only, and neither we nor any individual sender is soliciting any particular action or transaction based upon it. Such communications do not represent 
+investment advice, and do not take into account any specific circumstances of any recipient. Any information provided by us or the individual sender should not form the primary basis for any decision 
+that you may take in relation to the matters referred to therein. We have not taken any steps to verify the adequacy, accuracy, completeness or suitability of any information or written material 
+provided to you. You are solely responsible for any investment or purchase decisions and should carefully review any information or written material that you receive. You should conduct any due 
+diligence that is necessary and appropriate on your own personal circumstances, including consultation with independent legal, tax, accountancy and/or other professional advisors. No representations: 
+No representation or warranty is given as to the achievement or reasonableness of any plans, future projections or prospects and nothing on the App should be relied upon as a promise or 
+representation as to the future. Risks associated with internet-trading and distributed ledger networks: There are risks associated with utilizing an internet-based system, such as the App, 
+including, but not limited to, the failure of hardware, software, internet connections and distributed ledger networks. Communications over the Internet may be subject to interruption, transmission 
+blackout, delayed transmission due to Internet traffic, or incorrect data transmission due to the public nature of the Internet. Please exercise caution, and confirm any relevant 
+details/communications by other means if you have any doubt about the accuracy of this communication. As we do not control the reliability or availability of the internet or of any distributed ledger 
+network, we cannot be responsible for communication failures, distortions or delays when operating via the Internet. No third-party affiliation or endorsements: References in the App to specific 
+companies and platforms are for illustrative purposes only. Except as expressly described on the App or otherwise notified in writing, the use of any company and/or platform names and trademarks does 
+not imply an affiliation with, or endorsement by, any of those parties. Restrict access. You agree that we have the right to restrict your access to certain features of the App and/or the Services 
+via any technically available methods if we suspect, in our sole discretion, that (a) you are using the App or the Services for money laundering or any illegal activity; (b) you have engaged in 
+fraudulent activity; (c) you have acquired cryptoassets using inappropriate methods, including the use of stolen funds to purchase such assets; (d) you are the target of any sanctions administered or 
+enforced by the U.S. Department of the Treasury’s Office of Foreign Assets Control (“OFAC”), the United Nations Security Council, the European Union, Her Majesty’s Treasury, or any other legal or 
+regulatory authority in any applicable jurisdiction; (e) either you, as an individual or an entity, or your wallet address is listed on the Specially Designated Nationals and Blocked Persons List 
+(“SDN List”), Consolidated Sanctions List (“Non-SDN Lists), or any other sanctions lists administered by OFAC; (f) you are located, organized, or resident in a country or territory that is, or whose 
+government is, the subject of sanctions, including but not limited to Afghanistan, Albania, Belarus, Bosnia and Herzegovina, Bulgaria, Burundi, North Korea, Croatia, Cuba, Eritrea, Slovenia, 
+Ethiopia, Greece, Guatemala, Guinea-Bissau, Haiti, Hong Kong, Iraq, Iran, Lebanon, Liberia, Libya, North Macedonia, Mali, Cyprus, Ecuador, Egypt, El Salvador, England, Estonia, Fiji, Gabon, Georgia, 
+Myanmar, Nicaragua, Niger, Central African Republic, Democratic Republic of the Congo, Rwanda, Russia, Serbia, Sierra Leone, Syria, Somalia, Sudan, South Sudan, Tunisia, Turkey, Ukraine, Venezuela, 
+Yemen, or Zimbabwe; or (g) you have otherwise acted in violation of these Terms. If we have a reasonable suspicion that you are utilizing the Site for illegal purposes, we reserve the right to take 
+whatever action we deem appropriate. 11. DISCLOSURE AND DISCLAIMER. YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE APP IS AT YOUR SOLE RISK. EXACTLY AND ALL PERSONS, ENTITIES, AGENTS, AND 
+VOLUNTEERS INVOLVED WITH THE CREATION OF THE APP ("AFFILIATES") MAKE NO AND EXPRESSLY DISCLAIM ALL REPRESENTATIONS AND WARRANTIES, EXPRESS, IMPLIED OR STATUTORY; AND WITH RESPECT TO THE DIGITAL 
+CREDIT CARD SERVICES, THE COMPANY, THE AFFILIATES AND ALL RELATED ENTITIES AND AGENTS SPECIFICALLY DO NOT REPRESENT AND WARRANT AND EXPRESSLY DISCLAIM ANY REPRESENTATION OR WARRANTY, EXPRESS, IMPLIED 
+OR STATUTORY, INCLUDING WITHOUT LIMITATION, ANY REPRESENTATIONS OR WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, USAGE, SECURITY, SUITABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE, OR AS TO 
+THE WORKMANSHIP OR TECHNICAL CODING THEREOF, OR THE ABSENCE OF ANY DEFECTS THEREIN, WHETHER LATENT OR PATENT. THE COMPANY, THE AFFILIATES OR ANY RELATED ENTITIES OR AGENTS DO NOT REPRESENT OR WARRANT 
+THAT THE DIGITAL CREDIT CARD SERVICES AND ANY RELATED INFORMATION ARE ACCURATE, COMPLETE, RELIABLE, CURRENT OR ERROR-FREE. TO THE FULLEST EXTENT PERMITTED BY LAW AND NOTWITHSTANDING ANY OTHER 
+PROVISION OF THIS AGREEMENT OR ANY OTHER AGREEMENT CONTEMPLATED HEREIN OR APPLICABLE PROVISIONS OF LAW OR EQUITY OR OTHERWISE, THE PARTIES HEREBY AGREE TO ELIMINATE ANY AND ALL FIDUCIARY DUTIES THAT 
+THE COMPANY, THE AFFILIATES OR ANY RELATED ENTITIES AND AGENTS MAY HAVE TO THE USER, ITS AFFILIATES, OR THE END USERS OF THE DIGITAL CREDIT CARD SERVICES, THE APP OR ITS CONTENT. YOU ACKNOWLEDGE THAT 
+YOUR DATA ON THE APP MAY BECOME IRRETRIEVABLY LOST OR CORRUPTED OR TEMPORARILY UNAVAILABLE DUE TO A VARIETY OF CAUSES, AND AGREE THAT, TO THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW, WE WILL 
+NOT BE LIABLE FOR ANY LOSS OR DAMAGE CAUSED BY DENIAL-OF-SERVICE ATTACKS, SOFTWARE FAILURES, VIRUSES OR OTHER TECHNOLOGICALLY HARMFUL MATERIALS (INCLUDING THOSE WHICH MAY INFECT YOUR COMPUTER 
+EQUIPMENT), INTERNET OUTAGES, OR SCHEDULED OR UNSCHEDULED MAINTENANCE. 12. LIMITATION OF LIABILITY. YOU ACKNOWLEDGE AND AGREE THAT YOU ASSUME FULL RESPONSIBILITY FOR YOUR USE OF THE APP. YOU 
+ACKNOWLEDGE AND AGREE THAT ANY INFORMATION YOU SEND OR RECEIVE DURING YOUR USE OF THE APP MAY NOT BE SECURE AND MAY BE INTERCEPTED OR LATER ACQUIRED BY UNAUTHORIZED PARTIES. YOU ACKNOWLEDGE AND AGREE 
+THAT YOUR USE OF THE APP IS AT YOUR OWN RISK. RECOGNIZING SUCH, YOU UNDERSTAND AND AGREE THAT, TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, NEITHER THE COMPANY NOR ANY RELATED ENTITIES, 
+SUPPLIERS OR LICENSORS WILL BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY OR OTHER DAMAGES OF ANY KIND, INCLUDING WITHOUT LIMITATION DAMAGES FOR 
+LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER TANGIBLE OR INTANGIBLE LOSSES OR ANY OTHER DAMAGES BASED ON CONTRACT, TORT, STRICT LIABILITY OR ANY OTHER THEORY (EVEN IF ANY OF THE COMPANY OR RELATED 
+ENTITIES HAD BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), RESULTING FROM THE APP; THE USE OR THE INABILITY TO USE THE APP; UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR TRANSMISSIONS OR DATA; 
+STATEMENTS OR CONDUCT OF ANY THIRD PARTY ON THE APP OR THE DIGITAL CREDIT CARD SERVICES; ANY ACTIONS WE TAKE OR FAIL TO TAKE AS A RESULT OF COMMUNICATIONS YOU SEND TO US; HUMAN ERRORS; TECHNICAL 
+MALFUNCTIONS; FAILURES, INCLUDING PUBLIC UTILITY OR TELEPHONE OUTAGES; OMISSIONS, INTERRUPTIONS, LATENCY, DELETIONS OR DEFECTS OF ANY DEVICE OR NETWORK, PROVIDERS, OR SOFTWARE; ANY INJURY OR DAMAGE 
+TO COMPUTER EQUIPMENT; INABILITY TO FULLY ACCESS THE APP; THEFT, TAMPERING, DESTRUCTION, OR UNAUTHORIZED ACCESS TO, IMAGES OR OTHER CONTENT OF ANY KIND; DATA THAT IS PROCESSED LATE OR INCORRECTLY OR 
+IS INCOMPLETE OR LOST; TYPOGRAPHICAL, PRINTING OR OTHER ERRORS, OR ANY COMBINATION THEREOF; OR ANY OTHER MATTER RELATING TO THE PLATFORM OR THE DIGITAL CREDIT CARD SERVICES. NOTWITHTANDING THE ABOVE, 
+IN NO EVENT SHALL OUR AGGREGATE LIABILITY (TOGETHER WITH OUR AFFILIATES, INCLUDING OUR AND OUR AFFILIATES’ RESPECTIVE SHAREHOLDERS, MEMBERS, DIRECTORS, OFFICERS, EMPLOYEES, ATTORNEYS, AGENTS, 
+REPRESENTATIVES, SUPPLIERS OR CONTRACTORS) ARISING OUT OF OR IN CONNECTION WITH THE APP (AND ANY OF THEIR CONTENT AND FUNCTIONALITY), ANY PERFORMANCE OR NON-PERFORMANCE OF THE APP OR ANY OTHER 
+PRODUCT, SERVICE OR OTHER ITEM PROVIDED BY OR ON BEHALF OF US, WHETHER UNDER CONTRACT, TORT (INCLUDING NEGLIGENCE), CIVIL LIABILITY, STATUTE, STRICT LIABILITY OR OTHER THEORY OF LIABILITY EXCEED THE 
+GREATER OF (A) AMOUNT OF FEES PAID BY YOU TO US UNDER THESE TERMS, IF ANY, IN THE TWELVE (12) MONTH PERIOD IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM FOR LIABILITY AND (B) $1,000. 13. 
+INDEMNITY. YOU AGREE TO RELEASE AND TO INDEMNIFY, DEFEND AND HOLD HARMLESS THE COMPANY, THE AFFILIATES AND ANY RELATED ENTITIES, AS WELL AS THE OFFICERS, DIRECTORS, EMPLOYEES, SHAREHOLDERS AND 
+REPRESENTATIVES OF ANY OF THE FOREGOING ENTITIES, FROM AND AGAINST ANY AND ALL LOSSES, LIABILITIES, EXPENSES, DAMAGES, COSTS (INCLUDING ATTORNEYS' FEES, FEES OR PENALTIES IMPOSED BY ANY REGULATORY 
+AUTHORITY AND COURT COSTS) CLAIMS OR ACTIONS OF ANY KIND WHATSOEVER ARISING OR RESULTING FROM YOUR USE OF THE APP, YOUR VIOLATION OF THESE TERMS, YOUR VIOLATION OF ANY LAW, RULE, OR REGULATION, OR 
+THE RIGHTS OF ANY THIRD PARTY, AND/OR ANY OF YOUR ACTS OR OMISSIONS. EACH OF THE COMPANY AND THE AFFILIATES RESERVE THE RIGHT, AT ITS OWN EXPENSE, TO ASSUME EXCLUSIVE DEFENSE AND CONTROL OF ANY 
+MATTER OTHERWISE SUBJECT TO INDEMNIFICATION BY YOU AND, IN SUCH CASE, YOU AGREE TO COOPERATE WITH THE COMPANY AND/OR THE AFFILIATES IN THE DEFENSE OF SUCH MATTER. 14. TERMINATION AND CANCELLATION. We 
+reserve the right at our own discretion to suspend and/or to prevent you from accessing and using the App. You acknowledge and agree that we may or may not be in a position to provide information to 
+you about the reasons for such closure or suspension, and that such closure or suspension may limit your access to your cryptocurrency assets. If you violate any provision of these Terms, your 
+permission from us to use the App will terminate automatically. In addition, we may in our sole discretion suspend or terminate your access to the App at any time for any reason or no reason, with or 
+without notice. In relation to the Services described in 1.1., Exactly may suspend, restrict, or terminate User’s access to the Services (or any portion thereof) if: (1) Exactly is so required by a 
+subpoena, court order, or binding government order; (2) Exactly reasonably suspects you of using your Wallet in connection with prohibited conduct described in these; (3) use of the Wallet or the 
+Services is subject to any pending litigation, investigation, or government proceeding or Exactly perceives a heightened risk of legal or regulatory non-compliance associated with Wallet activity; 
+(4) Exactly’s service partners are unable to support your use; (5) Exactly determines, in good faith, that the data, software, technology or other intellectual property used to provide the Services is 
+not commercially satisfactory in terms of legality, quality, volume, availability or significance, or the Services (in Exactly’s good faith determination) become unlawful, subject to a third party 
+claim or are to be otherwise discontinued, (6) you do not respond promptly and fully to any request by Exactly for additional information related to you; or (7) you take any action that Exactly deems 
+as prohibited conduct described in any of the terms applicable to the Services. User acknowledges that if you attempt to access the wallet from a jurisdiction subject to certain U.S. sanctions or if 
+User is ordinarily a resident in such a jurisdiction, or if Exactly believes that you are attempting such access or has become a resident in such a jurisdiction, Exactly may restrict your access to 
+the Services. User authorizes Exactly to suspend any pending transactions made with the App at the time of such suspension or termination of Services and User agrees that Exactly will not be liable 
+for any losses that User may suffer as a result. Likewise, if we are notified of a court order or other legal process affecting you, or if we otherwise believe we are required to do so in order to 
+comply with applicable law, we may be required to take certain actions, including suspending your use of the Services. We will decide, in our sole discretion, which action is required of us. We do 
+not have an obligation to contest or appeal any court order or legal process involving you or your Wallet. When we implement a hold or limitation as a result of a court order, applicable law, 
+regulatory requirement or other legal process, the hold or limitation may remain in place longer than one hundred eighty (180) days. We will not be liable for any losses suffered by you resulting 
+from any modification to the App or from any suspension or termination, for any reason, of your access to all or any portion of the App. The following Sections of the Terms survive any termination of 
+these Terms: 4, 5, 11, 12, 13, 14, 15, 16, 17, 18 and 20. 15. MODIFICATION OF TERMS OF USE. These Terms may be discretionarily modified or replaced at any time, unless stated otherwise herein. The 
+most current version of these Terms will be posted on the App with the "Last Revised" date at the top of the Terms changed. Any changes or modifications will be effective immediately upon posting the 
+revisions to the App. You shall be responsible for reviewing and becoming familiar with any such modifications. You waive any right you may have to receive specific notice of such changes or 
+modifications. Use of the App by you after any modification to the Terms constitutes your acceptance of the Terms as modified. If you do not agree to the Terms in effect when you access or use the 
+App, you must stop using the App. 16. NO WAIVER AND SEVERABILITY. Any right or remedy of Exactly set forth in these Terms is in addition to, and not in lieu of, any other right or remedy whether 
+described in these Terms, under applicable law, at law or in equity. If any of these Terms is determined to be illegal, invalid or otherwise unenforceable, then to the extent and within the 
+jurisdiction in which that term is illegal, invalid or unenforceable, it will be severed and deleted from these Terms and the remaining Terms will survive, remain in full force and effect and 
+continue to be binding and enforceable. Where applicable, the Company’s failure, delay or neglect in exercising any right, power, privilege, election or discretion under these Terms shall not operate 
+as a waiver thereof. 17. FORCE MAJEURE. Exactly shall not be liable or responsible for any failure, delay in performance of the App, or any loss caused you may incur, due to force majeure, riot, war 
+or natural events or due to other occurrences for which Exactly is not responsible (e.g. strike, lock-out, traffic hold-ups, epidemics, access by third parties (external cyberattacks, unauthorized or 
+fraudulent use of the App), administrative acts of domestic or foreign high authorities). 18. STATUTE OF LIMITATIONS. You agree that regardless of any statute or law to the contrary, any claim or 
+cause of action arising out of or related to the use of the App or the Terms must be filed within one (1) year after such claim or cause of action arose; otherwise, these shall be deemed as forever 
+barred. 19. GOVERNING LAW. These Terms are governed by the laws in force in Lithuania, without regard to the provisions of conflict of law. 20. DISPUTE RESOLUTION AND ARBITRATION. PLEASE READ THE 
+FOLLOWING SECTION CAREFULLY BECAUSE IT REQUIRES YOU TO SUBMIT TO BINDING ARBITRATION (JURY TRIAL WAIVER) OF ANY AND ALL DISPUTES WITH EXACTLY AND LIMITS THE MANNER IN WHICH YOU CAN SEEK RELIEF FROM 
+EXACTLY (NO CLASS ARBITRATIONS, CLASS ACTIONS OR REPRESENTATIVE ACTIONS OR ARBITRATIONS). You and Exactly agree to waive any right to a jury trial, or the right to have any dispute resolved in any 
+court, and instead accept the use of binding arbitration. You and Exactly agree that any dispute is personal to you and Exactly, and that any dispute shall only be resolved by an individual 
+arbitration and shall not be brought as a class arbitration, a class action, or any other representative proceeding. Neither party agrees to class arbitration, or an arbitration where a person brings 
+a dispute as a representative of any other person or persons. Any dispute, controversy, difference or claim arising out of or relating to these Terms, including the existence, validity, 
+interpretation, performance, breach or termination thereof or any dispute regarding non-contractual obligations arising out of or relating to these Terms will be referred to and finally resolved by 
+arbitration in accordance with Rules of Arbitration of the International Chamber of Commerce. The seat of arbitration shall be [Vilnius, Lithuania] The language to be used in the arbitral proceedings 
+shall be English. 21. ASSIGNABILITY AND THIRD-PARTY BENEFICIARIES. You shall not assign or transfer any rights or obligations under these Terms or the App, without our written consent, including by 
+operation of law. We may assign of transfer any of our rights and obligations under these terms, in whole or in part, without prior notice or approval of any party. Unless expressly provided in these 
+Terms, there shall be no third-party beneficiaries. 22. ENTIRE AGREEMENT. Upon your acceptance, these Terms, together with the Privacy Policy, will constitute the entire agreement between you and the 
+Company and supersede any prior agreement or document regarding the App. All other information provided on the App or oral/written statements made are provided for guidance only and does not 
+constitute a legal agreement between you and the Company. Notwithstanding the foregoing, these Terms are to be read in conjunction with (and subject to) any other policies, country or service 
+annexes, where applicable, that may be published by Exactly in the App from time to time. In case of conflict between the English version of these Terms and any version in other language, the English 
+version shall prevail. Any headings are for convenience and shall not limit or construe any of the rights and obligations set forth herein. 23. QUESTIONS? If you have any questions in relation to 
+these Terms, please contact us at our chat in https://exactly.app/ before accessing or using the App or the Services. You can also access the chat inside the mobile App. Did this answer your 
+question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃 Exa App Help Center Intercom We run on Intercom 
+

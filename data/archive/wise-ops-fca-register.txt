@@ -1,0 +1,37 @@
+Text read on 2026-10-09 from the FCA Financial Services Register firm page https://register.fca.org.uk/s/firm?id=001b000001EjC6SAAV (found by searching the Register for reference number 900507 at https://register.fca.org.uk/s/search?q=900507&type=Companies). The page is a client-rendered Salesforce application: curl receives only the application shell, so the text below was read from the rendered page in a browser and copied verbatim (excerpt; navigation, survey and generic help text omitted).
+
+Wise Payments Limited
+Reference number: 900507
+
+Firm details
+Address
+1st Floor
+Worship Square
+65 Clifton Street
+London
+EC2A 4JE
+UNITED KINGDOM
+Website
+https://wise.com
+Firm reference number
+900507
+Registered company number
+07209813
+Firm status
+Type
+EMD
+Payment services / electronic money status
+Authorised Electronic Money Institution
+Since 07/06/2018
+A firm that we have given permission to issue electronic money (e-money) and provide payment services.
+Trading names
+This firm currently trades under 2 trading names.
+
+How are customers protected?
+The Financial Services Compensation Scheme will not be able to consider a claim against this firm if it fails
+The firm may be required to safeguard funds it receives from, or on behalf of, customers when providing payment services or issuing electronic money
+If the firm becomes insolvent, you should contact the liquidator or administrator of the firm, who will be responsible for distributing any funds to customers.
+
+What can this firm do in the UK?
+Activities and services
+Payment services & E-money

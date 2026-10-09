@@ -98,6 +98,26 @@ code, with `quote` for documents) and `checked_at`. CI checks the codes and the 
 Comparison sites and press are not sufficient. If the provider publishes no country list, leave
 the block out; the site shows "no evidence either way".
 
+### Operational and procurement layer (displayed, never scored)
+
+Facts live in `data/operational/<slug>.yaml`, validated against `schema/operational.schema.json`
+and `data/operational-criteria.yaml`. Each fact has `status` (`evidenced`, `attested`, `unknown`,
+`absent`, `not_applicable`), a `value` where evidenced, `evidence` and/or `refs` (pointers to
+evidence already in the provider file, `{criterion, index}`), `assessed_by` and `review`.
+
+- `evidenced` needs verified or documented evidence; a provider's own statement makes a fact
+  `attested`, never evidenced. `absent` needs evidence of what was searched. `not_applicable`
+  needs a `reason` and a `burden` (`institution` or `none`).
+- Controls marked `applies: operator` or `custodial` cannot be `absent` on a rail with no required
+  closed component or with self-custody; use `not_applicable`. The site implies that state when
+  the fact is missing.
+- Automatable controls (B2.1, B2.3, B8.2, B9.x) are filled by `npm run repo-facts` from the
+  public repositories; do not hand-write them unless you have better evidence, and then set
+  `assessed_by` to yourself so the bot leaves them alone.
+- `volume` is computed by `npm run volumes` from `volume.spec` over the provider's listed
+  contracts only; never type a volume figure by hand. Use `not_observable` or `not_verifiable`
+  with a reason where settlement cannot be read from a chain.
+
 ### Right of reply
 
 Providers may set `provider_response` on any cell by PR. It is shown beside the score

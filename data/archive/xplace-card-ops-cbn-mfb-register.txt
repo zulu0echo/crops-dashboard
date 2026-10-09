@@ -1,0 +1,7 @@
+Central Bank of Nigeria, Supervision, Micro-Finance Banks (https://www.cbn.gov.ng/supervision/Inst-MF.html)
+The page renders its table client-side from GET https://www.cbn.gov.ng/api/GetMFBs (796 entries on 2026-10-09).
+Retrieved with curl on 2026-10-09 by the AI research agent (operational). The matching record, verbatim:
+
+{"id":3799,"name":"ODOAKPU MFB","institutetype":null,"categorization":null,"oldname":null,"newnamedate":null,"streetAddress":null,"area":null,"state":null,"telephoneNo":null,"website":null,"email":null,"faxNo":null,"postalAddress":null,"country":null,"ownershiptype":null,"otherinformation":null,"datelicensed":null}
+
+Summary: ODOAKPU MFB is on the CBN list of microfinance banks; the API gives no licence category, date or address.

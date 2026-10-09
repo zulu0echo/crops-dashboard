@@ -770,5 +770,36 @@ scores:
 context: >-
   Not scored. The Exa Card terms name Third National as issuer of the card program, "issued by the Issuer under license from Visa" (https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions). The help center says the card is issued in the United States and gives a legal address "provided by Rain" (https://help.exactly.app/en/articles/10209480-where-is-the-exa-card-issued). The app operator is EXA LABS S.A.S., incorporated in Uruguay (app terms and privacy policy), and the app terms let it suspend or terminate access with or without notice. Card terms for US citizens and Exa Business cards are separate documents, not assessed.
 
+availability:
+  model: allowlist
+  countries: [AE, AG, AR, AU, BB, BO, BR, BS, BZ, CI, CO, CR, DO, GD, GH, GY, HN, JP, KE, KN, KY, LC, MA, MX, MY, NZ, PA, PE, PH, PK, PY, SG, SN, SR, TC, TT, UG, UY, VC, ZA, ZM]
+  note: >-
+    The help-centre article "Card availability and usage" lists 46 countries and 31 US states where the card can be issued. Exa's documents disagree on six of these, and we take the more restrictive reading. Nigeria is listed as eligible "with conditional approval" but is on the separate List of prohibited countries (2026-01-15). Ecuador, El Salvador, Guatemala and Hong Kong are listed as eligible but are named among sanctioned jurisdictions in the Exa App Terms (2025-10-02). The United States is excluded: the help article lists eligible US states and Exa publishes card terms for US citizens (2025-05-20), but the App Terms say US Persons are prohibited from using the App, and the card is created in the App. The App Terms' sanctions list also names countries that are not on the help list (for example England, Greece, Estonia, Slovenia, Cyprus); those are already outside the allowlist. The card can be spent anywhere Visa is accepted except Cuba, Iran, North Korea, Russia, Syria, Ukraine and Venezuela. Protocol level: the Exa account contracts on Optimism are usable without the card.
+  evidence:
+    - tier: claimed
+      by: provider
+      kind: document
+      url: https://help.exactly.app/en/articles/8979641-card-availability-and-usage
+      archive: data/archive/exa-card-availability.txt
+      detail: Help article "Card availability and usage" lists 46 eligible countries, 31 eligible US states, 18 ineligible countries and 7 countries where the card cannot be spent.
+      checked_at: "2026-10-09"
+      quote: The Exa Card can be issued to residents of the following countries
+    - tier: claimed
+      by: provider
+      kind: document
+      url: https://help.exactly.app/en/articles/10715755-list-of-prohibited-countries-for-the-exa-card
+      archive: data/archive/exa-card-prohibited-countries.txt
+      detail: List of prohibited countries for the Exa Card (2026-01-15) names 32 countries where issuance is forbidden, including Nigeria.
+      checked_at: "2026-10-09"
+      quote: Exa card issuance is forbidden in the following countries
+    - tier: documented
+      kind: document
+      url: https://help.exactly.app/en/articles/9942510-exa-app-terms-and-conditions
+      archive: data/archive/exa-card-app-terms.txt
+      detail: Exa App Terms (2025-10-02) prohibit US Persons from using the App and list sanctioned jurisdictions, including Ecuador, El Salvador, Guatemala and Hong Kong.
+      checked_at: "2026-10-09"
+      quote: the US Persons are prohibited from accessing and using the Services in any way
+  checked_at: "2026-10-09"
+
 notes: >-
   Scored the OP Mainnet card on contracts pinned at exactly/exa aceb1b5 (which matches Sourcify), the backend and app at HEAD 4fba32b, and onchain reads at OP block 157885618. The card is issued by Third National through Rain, on Visa. Collateral sits in the user's own Alchemy modular account as exaUSDC in the Exactly Protocol market; Exa's keeper debits it with an Exa issuer signature. Explorer verification could not be checked because Optimistic Etherscan and Blockscout block automated requests.

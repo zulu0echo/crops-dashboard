@@ -1,0 +1,1207 @@
+slug: wise
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: no security policy file
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: no security policy file
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: no security policy file
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: no security policy file
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
+        detail: "transferwise/digital-signatures-examples: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
+        detail: "transferwise/digital-signatures: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
+        detail: "transferwise/public-api-postman-collection: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
+        detail: "transferwise/banks-reference-android: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
+        detail: "transferwise/wise-platform-samples: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
+        detail: "transferwise/digital-signatures-examples: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
+        detail: "transferwise/digital-signatures: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
+        detail: "transferwise/public-api-postman-collection: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
+        detail: "transferwise/banks-reference-android: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
+        detail: "transferwise/wise-platform-samples: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: no deployment configuration
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: no deployment configuration
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: no deployment configuration
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: no deployment configuration
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
+        detail: "transferwise/digital-signatures-examples: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
+        detail: "transferwise/digital-signatures: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
+        detail: "transferwise/public-api-postman-collection: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
+        detail: "transferwise/banks-reference-android: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
+        detail: "transferwise/wise-platform-samples: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: true
+          detail: "rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        - repo: transferwise/digital-signatures
+          ok: true
+          detail: "rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        - repo: transferwise/public-api-postman-collection
+          ok: true
+          detail: "rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        - repo: transferwise/banks-reference-android
+          ok: true
+          detail: "rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        - repo: transferwise/wise-platform-samples
+          ok: true
+          detail: "rules: non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/rules/branches/main
+        detail: "transferwise/digital-signatures-examples: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/rules/branches/master
+        detail: "transferwise/digital-signatures: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/rules/branches/master
+        detail: "transferwise/public-api-postman-collection: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/rules/branches/master
+        detail: "transferwise/banks-reference-android: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/rules/branches/main
+        detail: "transferwise/wise-platform-samples: rules: non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: no .github/workflows
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: 1 workflow file(s)
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: no .github/workflows
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: no .github/workflows
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
+        detail: "transferwise/digital-signatures-examples: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
+        detail: "transferwise/digital-signatures: 1 workflow file(s)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
+        detail: "transferwise/public-api-postman-collection: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
+        detail: "transferwise/banks-reference-android: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
+        detail: "transferwise/wise-platform-samples: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: test command in a workflow
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: test command in a workflow
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: test command in a workflow
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: test command in a workflow
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
+        detail: "transferwise/digital-signatures-examples: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
+        detail: "transferwise/digital-signatures: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
+        detail: "transferwise/public-api-postman-collection: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
+        detail: "transferwise/banks-reference-android: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
+        detail: "transferwise/wise-platform-samples: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: coverage tooling referenced
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: coverage tooling referenced
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: coverage tooling referenced
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: coverage tooling referenced
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
+        detail: "transferwise/digital-signatures-examples: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
+        detail: "transferwise/digital-signatures: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
+        detail: "transferwise/public-api-postman-collection: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
+        detail: "transferwise/banks-reference-android: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
+        detail: "transferwise/wise-platform-samples: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: "latest tags: v1.0"
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: "latest tags: 1.1, 1.0"
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: no tags
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: no tags
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/tags
+        detail: "transferwise/digital-signatures-examples: latest tags: v1.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/tags
+        detail: "transferwise/digital-signatures: latest tags: 1.1, 1.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/tags
+        detail: "transferwise/public-api-postman-collection: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/tags
+        detail: "transferwise/banks-reference-android: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/tags
+        detail: "transferwise/wise-platform-samples: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: true
+          detail: 9 of 9 recent commits signed
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: 2 of 5 recent commits signed
+        - repo: transferwise/public-api-postman-collection
+          ok: true
+          detail: 10 of 10 recent commits signed
+        - repo: transferwise/banks-reference-android
+          ok: true
+          detail: 6 of 10 recent commits signed
+        - repo: transferwise/wise-platform-samples
+          ok: true
+          detail: 10 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/commits?per_page=10
+        detail: "transferwise/digital-signatures-examples: 9 of 9 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/commits?per_page=10
+        detail: "transferwise/digital-signatures: 2 of 5 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/commits?per_page=10
+        detail: "transferwise/public-api-postman-collection: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/commits?per_page=10
+        detail: "transferwise/banks-reference-android: 6 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/commits?per_page=10
+        detail: "transferwise/wise-platform-samples: 10 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: no changelog or release notes
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: no changelog or release notes
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: no changelog or release notes
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: no changelog or release notes
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
+        detail: "transferwise/digital-signatures-examples: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
+        detail: "transferwise/digital-signatures: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
+        detail: "transferwise/public-api-postman-collection: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
+        detail: "transferwise/banks-reference-android: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
+        detail: "transferwise/wise-platform-samples: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: transferwise/digital-signatures-examples
+          ok: false
+          detail: none found
+        - repo: transferwise/digital-signatures
+          ok: false
+          detail: none found
+        - repo: transferwise/public-api-postman-collection
+          ok: false
+          detail: none found
+        - repo: transferwise/banks-reference-android
+          ok: false
+          detail: none found
+        - repo: transferwise/wise-platform-samples
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
+        detail: "transferwise/digital-signatures-examples: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
+        detail: "transferwise/digital-signatures: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
+        detail: "transferwise/public-api-postman-collection: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
+        detail: "transferwise/banks-reference-android: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
+        detail: "transferwise/wise-platform-samples: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.1:
+    status: evidenced
+    value: "Wise Payments Ltd, ISO/IEC 27001:2022, Coalfire Certification certificate 2020-080301 (registered 2020-08-03, latest 2026-06-30, expires 2029-08-03). Scope: the ISMS supporting Wise Account, Wise Business and Wise Platform, including Engineering, Product, Security and other teams."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://coalfirecertification.com/data/data.json
+        quote: '"registrant": "Wise Payments Ltd", "cert_number": "2020-080301"'
+        detail: Coalfire Certification's public client directory (client-directory.html loads this data file) lists Wise Payments Ltd, ISO/IEC 27001:2022, certificate 2020-080301, latest 06/30/2026, expiration 8/3/2029.
+        checked_at: "2026-10-09"
+        recheck: "curl -s https://coalfirecertification.com/data/data.json | grep -A8 '\"Wise Payments Ltd\"'"
+      - tier: documented
+        kind: document
+        url: https://coalfirecertification.com/Certificates/Wise%20ISO%2027001%20Certificate%20Award%20-%2006.30.2026.pdf
+        archive: data/archive/wise-ops-iso27001-certificate.txt
+        quote: "The certificate scope comprises the Information Security Management System supporting the operations underlying the"
+        detail: Certificate PDF linked from the certifier directory, text archived. Names Wise Payments Ltd (London) with satellite offices in Tallinn, Budapest, Singapore and Austin; issued July 3, 2026.
+        checked_at: "2026-10-09"
+    note: The copy linked from wise.com/security (gateway/v1/iso-certificate) is the previous certificate, which expired on 2026-08-03; the certifier directory carries the renewal.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: evidenced
+    value: "Same certificate (Wise Payments Ltd, 2020-080301): key activities at the listed offices include cloud engineering services and site reliability engineering. The underlying cloud infrastructure provider is not named, and its certification was not checked."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://coalfirecertification.com/Certificates/Wise%20ISO%2027001%20Certificate%20Award%20-%2006.30.2026.pdf
+        archive: data/archive/wise-ops-iso27001-certificate.txt
+        quote: "Cloud engineering services"
+        detail: Certificate page 2 lists cloud engineering services and site reliability engineering among the key processes in scope.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: attested
+    value: Wise states it holds SOC 1 Type 2 and SOC 2 Type 2 attestations; business customers can download the reports after signing an NDA.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/security
+        quote: "Business customers requiring our SOC 1 and SOC 2 attestations can sign an NDA and download the reports here"
+        detail: Wise security page FAQ lists SOC 1 Type 2, SOC 2 Type 2, PCI-DSS and ISO/IEC 27001; SOC reports are at wise.com/security/reports behind an NDA.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No independent source-code review report was found on wise.com/security, the privacy notice or docs.wise.com.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: Wise runs a Bugcrowd bug bounty (security.txt Policy field), but no penetration-test report or attestation letter was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    note: No stated scanning cadence was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: evidenced
+    value: Patching "in a timely manner" (UK personal privacy notice 9.1); no per-severity patch timelines are published.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/legal/privacy-notice-personal-en
+        quote: "We have procedures to update and patch our servers in a timely manner"
+        detail: UK personal privacy notice section 9.1.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: No general customer incident-notification time was found. Wise's Hong Kong acquiring terms (wise.com/hk/legal/wise-card-processing-agreement) set a one-business-day mutual notice for shared personal data, which covers that product only. In the 2024 Evolve Bank incident Wise emailed affected customers (see maturity.incidents).
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: evidenced
+    value: Public status page at status.wise.com with incident histories. No post-mortem was found among the 50 most recent incidents (2025-05-27 to 2026-09-28) returned by its API.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://status.wise.com
+        quote: "Past Incidents"
+        detail: Atlassian Statuspage for Wise with daily incident history.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: trace
+        url: https://status.wise.com/api/v2/incidents.json
+        detail: The 50 incidents returned on 2026-10-09 contain no update or text mentioning a postmortem.
+        checked_at: "2026-10-09"
+        recheck: "curl -s https://status.wise.com/api/v2/incidents.json | grep -ci postmortem"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Two-step authentication is applied from account creation to payments; biometric login in the app.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/security
+        quote: "Verifying it's you, from creating an account to making a payment"
+        detail: Wise security page, "Two-step authentication".
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    note: Access reviews may be covered by the SOC 2 Type 2 report, which is available only under NDA (see B1.3); not read.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: evidenced
+    value: Users can configure an auto log-out; no default idle period is stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/security
+        quote: "Hide your currencies, location permissions and auto log-out"
+        detail: Wise security page, "Customisable controls".
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: OAuth 2.0 for all Wise Platform partner accounts; mTLS, JOSE and SCA/2FA are optional additions.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.wise.com/guides/developer.md
+        quote: "Wise also offers the following enhanced security frameworks for partners requiring additional protection: mTLS, JOSE"
+        detail: Wise developer guide, Security section; the same paragraph says the Platform API implements OAuth 2.0 for all partner accounts.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Client credentials scoped per integration, rotatable and revocable in Developer Hub; optional mTLS endpoint (api-mtls.transferwise.com); webhooks signed (see CROPS S5).
+    refs:
+      - criterion: S5
+        index: 2
+      - criterion: S5
+        index: 1
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: Client-credentials access tokens expire after 12 hours, above the partner's 120-minute cap; the documented example refresh token is valid for about 20 years.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.wise.com/guides/developer/auth-and-security/client-credentials-token.md
+        quote: "Client credentials tokens expire after **12 hours**"
+        detail: Wise client-credentials token guide; the example response shows expires_in 43199 and refresh_token_expires_in 628639555 seconds.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: Statement export in open formats is documented (CROPS O4); no volume limits or export logging were found.
+    refs:
+      - criterion: O4
+        index: 0
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: "Encryption at rest for information not in active use and encrypted transport (privacy notice 9.1). Observed: wise.com refuses TLS 1.1 and accepts TLS 1.2. No data classification scheme was found."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/legal/privacy-notice-personal-en
+        quote: "When information you’ve given us is not in active use, it is encrypted at rest"
+        detail: UK personal privacy notice section 9.1.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: trace
+        url: https://wise.com
+        detail: "openssl s_client -tls1_1 to wise.com:443 failed with alert protocol version; -tls1_2 negotiated ECDHE-RSA-AES128-GCM-SHA256. Run 2026-10-09."
+        checked_at: "2026-10-09"
+        recheck: "echo | openssl s_client -connect wise.com:443 -servername wise.com -tls1_1; echo | openssl s_client -connect wise.com:443 -servername wise.com -tls1_2"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Kept only as long as necessary, but typically 5 to 10 years after account closure under financial-regulation retention duties (see CROPS P2 for what is collected).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/legal/privacy-notice-personal-en
+        quote: "Typically we are required to retain that personal data for between five and ten years following account closure"
+        detail: UK personal privacy notice section 8, Data Retention.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The controller is the Wise group company providing the service; third-party partners act as independent controllers unless stated otherwise. DPIA availability not found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/legal/privacy-notice-personal-en
+        quote: "responsible for the handling of your personal data (known as the"
+        detail: UK personal privacy notice section 1 (Data controller) and 4.2 (partners as independent, separate data controllers).
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No published data processing agreement was found for personal, business or Platform customers. The privacy notice offers details of transfer arrangements on request to privacy@wise.com.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    note: The privacy notice says the security team proactively monitors for abnormal and malicious activity; no SIEM or endpoint-detection statement was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: Integration architecture only (docs.wise.com developer guides covering environments, auth and webhooks); logical and infrastructure architecture are not published.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://docs.wise.com/guides/developer.md
+        quote: "Use the sandbox environment for development and testing your integration"
+        detail: Wise developer guide; sandbox and production base URLs, mTLS endpoints, Developer Hub.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Wise Payments Limited (England and Wales, company 07209813) for UK personal customers; other regions contract with other Wise entities (not recorded).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://find-and-update.company-information.service.gov.uk/company/07209813
+        quote: "WISE PAYMENTS LIMITED"
+        detail: Companies House record, active private limited company, incorporated 31 March 2010.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Customer fees (a fee on each transfer or conversion, card and ATM fees); Wise plc is a listed company.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/pricing/send-money
+        quote: "a small, upfront fee to cover our costs"
+        detail: Wise send-money pricing page.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: "Customer may close at any time; funds left at closure can be claimed through support for 6 years, subject to checks. Wise may terminate with 90 days' notice, or immediately for misuse or regulatory reasons (UK personal terms 9.2-9.7)."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/legal/terms-of-use-personal
+        quote: "You have the right to do this for a period of 6 years from the date your Wise Account is closed"
+        detail: UK personal terms clause 9.2.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/legal/terms-of-use-personal
+        quote: "by giving you ninety (90) days' prior notice"
+        detail: UK personal terms clause 9.7.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: "Yes: automated processes, including machine-learning models, take part in fraud and financial-crime prevention and may reject a transaction or close an account."
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/legal/privacy-notice-personal-en
+        quote: "These processes may make an automated decision to reject your application or a proposed transaction"
+        detail: UK personal privacy notice 6.2; section 3 says Wise may use AI, including machine-learning models and LLMs, in its financial crime and fraud prevention processes.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    note: The privacy notice offers the right to request further information about an automated decision; no published AI governance (monitoring, validation, bias evaluation) was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: from 0.24%, varies by currency
+      basis: UK personal pricing page (sending and converting money); set by Wise and shown in its calculator per route.
+      evidence_index: 0
+    - kind: fx
+      paid_by: payer
+      amount: mid-market rate, no markup
+      basis: Wise states it uses the live mid-market rate plus the upfront fee.
+      evidence_index: 1
+    - kind: cashout
+      paid_by: payee
+      amount: ATM free up to 250 GBP per month, then 2.69% of the excess
+      basis: UK card fees page; ATM operators may add their own fees.
+      evidence_index: 2
+    - kind: card
+      paid_by: payer
+      amount: 7 GBP card order
+      basis: UK pricing page.
+      evidence_index: 0
+    - kind: network
+      paid_by: payee
+      amount: receiving Swift 6.11 USD, 2.16 GBP or 2.39 EUR per payment; domestic receipts free
+      basis: UK pricing page.
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://wise.com/gb/pricing/
+      quote: "Fee varies by currency From 0.24%"
+      detail: Wise UK personal pricing page, fees at a glance (sending, converting, card, receiving).
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://wise.com/gb/pricing/send-money
+      quote: "We only use the live mid-market rate, and a small, upfront fee to cover our costs"
+      detail: Wise UK send-money pricing page.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://wise.com/gb/pricing/card-fees
+      quote: "a fee of 2.69% applies only to the amount in excess of that 250 GBP allowance"
+      detail: Wise UK card fees page.
+      checked_at: "2026-10-09"
+  note: UK personal prices; other regions and Wise Business differ. Transfer limits were not recorded.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: Wise Payments Limited
+      holder: provider
+      country: GB
+      regulator: Financial Conduct Authority
+      type: Authorised Electronic Money Institution
+      number: "900507"
+      activities: Issue e-money and provide payment services; authorised since 07/06/2018
+      register_url: https://register.fca.org.uk/s/firm?id=001b000001EjC6SAAV
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://register.fca.org.uk/s/firm?id=001b000001EjC6SAAV
+      archive: data/archive/wise-ops-fca-register.txt
+      quote: "Authorised Electronic Money Institution"
+      detail: FCA Register firm page for reference 900507 (client-rendered; text read in a browser and archived).
+      checked_at: "2026-10-09"
+  note: Only the UK entity is recorded. Wise operates other regulated entities (EEA, US, and others) under other regulators; not checked here.
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ ALL ]
+      method: bank_transfer
+      partner: Partner banks and local payment schemes
+      fee: Transfer fee from 0.24% (varies by currency)
+      evidence_index: 0
+    - countries: [ ALL ]
+      method: atm
+      partner: Wise card (Visa / Mastercard)
+      fee: UK card, free up to 250 GBP per month, then 2.69%
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://wise.com/gb/pricing/
+      quote: "Fee varies by currency From 0.24%"
+      detail: Sending money to bank accounts is the main cash-out route.
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://wise.com/gb/pricing/card-fees
+      quote: "Withdrawing money from an ATM"
+      detail: ATM withdrawals with the Wise card.
+      checked_at: "2026-10-09"
+  note: "ALL means every country in the availability list. Card eligibility is narrower than account availability, and send corridors vary by currency. No cash agents."
+  checked_at: "2026-10-09"
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: "2011-01-01"
+      what: Service launch (TransferWise). Wise gives the year only; the day and month are a placeholder.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/gb/about/our-story
+        quote: "Wise was launched in 2011"
+        detail: Wise's own company story page.
+        checked_at: "2026-10-09"
+    note: Secondary sources say January 2011; no primary source for the month was found.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Wise Payments Limited
+      jurisdiction: GB
+      register_url: https://find-and-update.company-information.service.gov.uk/company/07209813
+      registration_number: "07209813"
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://find-and-update.company-information.service.gov.uk/company/07209813
+        quote: "Incorporated on 31 March 2010"
+        detail: Companies House; formerly TRANSFERWISE LTD and EXCHANGE SOLUTIONS LTD.
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value:
+      - date: "2024-07-01"
+        summary: Data breach at Evolve Bank & Trust, Wise's US partner bank for USD account details in 2020-2023, exposed data Wise had shared (names, addresses, dates of birth, SSN/EIN or ID numbers). Wise says its own systems were not affected; resolved July 2024. The date is the month given, not a day.
+        funds_lost: "no"
+        url: https://wise.com/help/articles/1Tyvn34K9tp08aZ0y0Hqe0/data-breach-at-evolve-bank-trust-in-the-us
+      - date: "2026-01-15"
+        summary: Issue across iOS, Android and web preventing customers from adding, moving or sending money; also affected Wise Platform partners (status page, major).
+        funds_lost: unknown
+        url: https://status.wise.com/incidents/hby2019q9hfm
+      - date: "2026-09-16"
+        summary: Global outage across Wise services (status page, "Widespread unavailability").
+        funds_lost: unknown
+        url: https://status.wise.com/incidents/yt822bm200nl
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://wise.com/help/articles/1Tyvn34K9tp08aZ0y0Hqe0/data-breach-at-evolve-bank-trust-in-the-us
+        quote: "Evolve Bank & Trust is a regulated bank that we worked with from 2020 until 2023 to provide USD account details"
+        detail: Wise Help Centre notice, last updated 20 December 2024.
+        checked_at: "2026-10-09"
+    note: Selected from the status page's major or critical service incidents and Wise's own notices; the status API returns only the 50 most recent incidents (back to 2025-05-27), so older outages are not listed. No funds loss was stated in any source.
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: "2018-06-07"
+        summary: Authorised by the FCA as an Electronic Money Institution (FRN 900507).
+        url: https://register.fca.org.uk/s/firm?id=001b000001EjC6SAAV
+      - date: "2021-06-25"
+        summary: Company renamed from TRANSFERWISE LTD to WISE PAYMENTS LIMITED (Companies House).
+        url: https://find-and-update.company-information.service.gov.uk/company/07209813
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://find-and-update.company-information.service.gov.uk/company/07209813
+        quote: "TRANSFERWISE LTD 03 Aug 2012 - 25 Jun 2021"
+        detail: Companies House previous company names.
+        checked_at: "2026-10-09"
+      - tier: documented
+        kind: document
+        url: https://register.fca.org.uk/s/firm?id=001b000001EjC6SAAV
+        archive: data/archive/wise-ops-fca-register.txt
+        quote: "Since 07/06/2018"
+        detail: FCA Register firm status (archived).
+        checked_at: "2026-10-09"
+    checked_at: "2026-10-09"
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_verifiable
+  reason: Closed ledger with no public chain to read. Wise publishes reported volumes in its company reports; reported figures are not recorded here.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

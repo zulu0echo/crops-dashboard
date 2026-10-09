@@ -1,0 +1,62 @@
+Source: https://support.metamask.io/trade/metamask-card/card-faq/
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML (static HTML, default region).
+
+You are viewing guidance for United States. MetaMask Card features and availability differ by region — set your region below for guidance accurate to you.
+MetaMask Card features and availability in your region. iSelect your country based on where you currently reside. Proof of residency is required to sign up for MetaMask Card.🇺🇸US
+Signing up​
+Is MetaMask Card a credit card?
+No, MetaMask Card is not a credit card. It is a debit card that allows you to spend assets directly from your MetaMask wallet. Because it is not a credit card, there is no credit check.
+Can I create more than one card?
+No, you can only create one MetaMask Card.
+Will I get a physical card mailed to me?
+You will not get a physical card mailed to you when you sign up for MetaMask Card. New users receive a Virtual card.
+Are there any annual fees or maintenance fees associated with MetaMask Card?
+The Virtual card has no annual fees or maintenance fees associated with MetaMask Card. There is a small fee for each transaction, which you can read more about here.
+Does MetaMask Card report any data to local governments?
+MetaMask does not keep or report any data to local governments. We have, however, partnered with vetted providers who hold the necessary regulatory authorizations in the jurisdictions where the card is available. Crypto Life is the provider of the MetaMask Card, Monovate is the card issuer and Mastercard operates the payment network. Together with their local affiliates, Crypto Life and Mastercard are responsible for ensuring compliance with applicable financial regulations, including legally-mandated data reporting to local governments.
+Spending tokens​
+What are the tax implications of using MetaMask Card?
+MetaMask does not provide financial advice, and you should consult a tax professional. We've partnered with Summ to provide general information in this article.
+Is there a limit to how much I can spend?
+Check out the limits and fees page for more information on spending limits.
+You can also set a spending limit for your MetaMask Card. Read more here.
+Can I spend with MetaMask Card in an ineligible region?
+Yes, you can spend with MetaMask Card anywhere Mastercard is accepted. Ineligible regions limit sign-ups, not spending.
+Do foreign transaction fees apply when using MetaMask Card?
+MetaMask Card currently provides the best foreign exchange rate allowed by MasterCard, and doesn’t charge any additional fees. You can see a breakdown of fees by clicking on a transaction.
+Can I withdraw cash from an ATM with my MetaMask Card?
+Card users in the United States can withdraw cash from an ATM with their card.
+At this time, card users in other regions cannot withdraw cash from an ATM with their card.
+Benefits​
+How do I earn benefits?
+You can earn benefits by using your card to make purchases.
+Card transactions earn 1% mUSD back on all eligible transactions.
+How do I earn dining rewards?
+All MetaMask Card holders earn 5X $FLY when paying through the Blackbird app. Metal Card holders earn additional benefits like 7X $FLY and can opt in to activate a 90-day Club Regular trial, the second-highest Blackbird reward tier.
+To get started:
+Download the Blackbird app
+Add your MetaMask Card as your default payment method
+Make a reservation anywhere in the network and tap in at the Blackbird puck when you arrive
+After your meal, let your server know you’re paying with Blackbird and settle the check in the app using your MetaMask Card.
+Managing your card​
+How can I request a refund from a transaction?
+You should request a refund with the merchant where the transaction took place. If you have issues getting a refund from the merchant, you can request a chargeback from Crypto Life support at [email protected].
+I got a refund. Where did the money go?
+Refunds are automatically put into your 'Credits' balance, which is shown on your card’s homepage. When you make your next transaction, MetaMask Card will first draw upon your credit balance for funds, or you can withdraw the funds to your wallet. To withdraw, tap the 'Withdraw' button on the Card home screen in the MetaMask Mobile app.
+Can I cash out my credit balance?
+Yes! If you have an available credit balance, you’ll see a ‘Withdraw’ button on the Card home screen in the MetaMask Mobile app. Where your funds are sent depends on your wallet setup:
+If you have a Money Account linked, funds are withdrawn as Monad mUSD to your Money Account vault wallet.
+If you don’t have a Money Account, funds are withdrawn as Linea mUSD to your priority EVM wallet address.
+If you only have a Solana wallet: withdrawals are not supported.
+You can also claim credit from the web dashboard by navigating to the ‘Overview’ tab and selecting ‘Claim’.
+Note: If your withdrawal is routed via Monad, gas is sponsored — you receive the full amount with no gas deducted.
+My MetaMask Card balance is wrong. How can I fix it?
+Your MetaMask Card balance reflects the balance of the highest priority token you have set in ‘Manage.’ For example, if you have delegated 5 USDC and 5 USDT to your card, and set USDC as the number one priority, your card balance will show as 5 USDC.
+If your balance is still incorrect, confirm your balance in MetaMask and on Lineascan or another network explorer. If your balance in MetaMask or on Lineascan is different than the balance showing, you should try refreshing the page or contacting Crypto Life for more support at [email protected].
+How do I close my MetaMask Card?
+If you'd like to close your MetaMask Card, contact Crypto Life support at [email protected].
+Previous:
+MetaMask Metal card
+Next:
+MetaMask Rewards
+Was this helpful?

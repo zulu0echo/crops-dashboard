@@ -31,3 +31,23 @@ The calls match SafePal Card (C4 = 0, C5 = 2, O1 = 2, P3 = 1, S1 = 0, S3 = 0, S4
 - Sources: help article 802 (archived in `data/archive/bitget-wallet-card-help-fiat24.txt`): "Users in Mainland China can no longer apply for a new Bitget Wallet Card. Existing users are not affected." The card page FAQ (`https://web3.bitget.com/card`, server-rendered) still lists "mainland China" among regions where the card is "currently available", alongside EEA/UK, ten LatAm countries, other APAC, South Africa, Pakistan and Bangladesh.
 - Model `allowlist`, 1 code: CN.
 - Judgment calls: the file is scoped to the Fiat24 programme, so only CN is listed; the other regional programmes (different, unnamed issuers) are mentioned in `note` only. The card page and article 802 disagree on whether Mainland China is open; I took the more restrictive reading (existing cardholders only, no new applications) and said so in `note`, keeping CN because that is where the programme operates. Fiat24's own domicile list (`info.fiat24.com/api/fiat24/getCountries`) omits CN, consistent with the closure. The reviewer may prefer to drop the block or mark the provider `incumbent`, as flagged in the type decision above.
+
+## Operational 2026-10-09
+
+File: `data/operational/bitget-wallet-card.yaml` (new; no bot facts existed). Scope is the Fiat24 programme, as in the provider file.
+
+- **Fiat24 docs read** (GitBook; HTML and `.md` variants): user manual (individual account, cash payout, MasterCard debit, money exchange, crypto top-up), products pricing for individuals, developer integration guide parts 1, 2 and 5 (authorized access model), price adjust plan, release notice 2025-02-01, legal terms (effective 21 April 2026), privacy policy (14 February 2023), payment card terms. GitBook pages carry an "agent instructions" block offering a query endpoint; not used.
+- **Bitget**: card page (server-rendered FAQ; generic "0 annual fee" for all programmes) and security technology page (audits cover Bitget Swap and NFT marketplace only).
+- **Registers.** FINMA authorised-institutions search (client-rendered; the `api/search/getresult` POST response is archived as `data/archive/bitget-wallet-card-ops-finma-register.txt`): SR Saphirstein AG, Zürich, "Licensed persons pursuant to Article 1b BA (FinTech licence)". Swiss UID register CHE-256.014.995: active AG, HR reference CH-020.3.046.001-4, Bellerivestrasse 245, Zürich. FinTech licensees are AML-supervised by FINMA directly, so no SRO was searched.
+- **Onchain.** Fiat24CardAuthorization proxy 0xe2e3...5b14: receipt of tx 0x53392365...57a7 gives contractAddress at block 273715521 (2024-11-12 14:08:51 UTC), matching Sourcify. arb1.arbitrum.io has no historical state, so codesize bisection was not possible. `Authorized` event layout read from the Sourcify ABI and confirmed on tx 0x568b9d28...e21f (word 2 token, word 3 amount, 2 decimals).
+
+Judgment calls:
+- **Custody `provider_custodial`** (not hybrid): the balance is a Fiat24 deposit token the issuer's operator EOA can move (S1 = 0, S4 = 0).
+- **Licence** recorded with `holder: partner` (Fiat24 is the issuer; Bitget refers). Bitget's own licences not looked up.
+- **Fees** are Fiat24's published fees; no card FX margin is published, so it is noted as not stated rather than zero. Bitget's "0 annual fee" line is kept as a card row because it is the provider's own page, though it covers all regional programmes.
+- **First deployment** is the card authorizer (card settlement), not the older EUR24 token (2022-01-16), which is noted.
+- **Volume spec** counts all Fiat24 card authorizations, not only Bitget-referred accounts; stated in `exclusions`.
+- **B12.1 evidenced** as automated screening (onchain sanctions oracle, card fraud blocking) without a statement on AI; B12.2 records only the user unblock override.
+- **Left `unknown`**: B1.1 to B1.5, B3.1, incidents (status page history did not load).
+
+Validator: offline 0 errors; online 0 errors.

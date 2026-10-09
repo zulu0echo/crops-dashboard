@@ -309,3 +309,23 @@ context: >-
 
 notes: >-
   Eligibility: no verified contract and no public repository needed to run the card, so type is incumbent. Chain: the Card Terms define Supported Blockchains as Solana; product pages say the card is "built on Solayer Chain" (InfiniSVM). Neither names a deposit address or program, so I could not decide between them from evidence and recorded both. Searched 2026-10-07: docs.solayer.org llms.txt and every solayer-pay page (overview, card, portfolio, security, eligibility, fees, register, KYC, top-up, FAQ) and legal pages; github.com/solayer-labs (15 repos; card material only in solayer_docs); solayer.org/terms (website terms); solayer.org/privacy (404). The Card Terms are Rain's template (Third National, collateral, Supported Blockchains); Rain's Solana collateral program id is not published (SignifyHQ examples repo has IDLs only). Re-assess as type card if a deposit or collateral program is published.
+
+availability:
+  model: blocklist
+  countries: [AF, AL, AD, AU, AT, BY, BE, BA, BG, BF, BI, KH, CA, CF, CN, HR, CU, CY, CZ, CD, DK, ER, EE, FI, FR, GE, DE, GR, GN, GW, HT, HU, IS, IN, ID, IR, IQ, IE, IL, IT, JM, JO, XK, LA, LV, LB, LR, LY, LT, LU, MY, ML, MT, MD, MC, ME, MA, MZ, MM, NL, NZ, NI, NG, KP, NO, PS, PL, PT, QA, RO, RU, SM, RS, SK, SO, ZA, KR, ES, SD, SE, CH, SY, TH, TR, UG, UA, AE, GB, VU, VE, EH, YE, PW, NP, VN]
+  note: >-
+    Solayer's Eligibility page lists 96 restricted countries and territories, applying to residents or citizens regardless of where they live. Darfur is listed separately and is covered by Sudan (SD); "Eritea" is read as Eritrea (ER). Every EU member except Slovenia is listed, so the codes are given individually rather than as EU. Residents of 17 US states are also not eligible: Arizona, Delaware, Georgia, Idaho, Louisiana, Maryland, Montana, Nevada, New Mexico, North Dakota, Ohio, Oregon, Rhode Island, South Dakota, Vermont, Washington, Wisconsin. Two card programmes: the international card terms require attesting that you are not a US citizen; US residents get the separate US card agreement.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/solayer-pay/eligibility
+      detail: The Eligibility page lists the restricted US states and 96 restricted countries and territories for the Solayer Card.
+      quote: "are not eligible to sign up for the Solayer Card, regardless of their current place of residence"
+      checked_at: "2026-10-09"
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/resources/legal/intl-card-terms
+      detail: The international card terms are for non-US citizens; US users are covered by the separate US card terms.
+      quote: "You attest that you are not a United States citizen"
+      checked_at: "2026-10-09"
+  checked_at: "2026-10-09"

@@ -47,3 +47,27 @@ Result: **incumbent**, as briefed. Wise is a closed, custodial e-money ledger. I
 - Sources (both server-rendered, fetched with curl, quotes checked live): Help Centre "Where do I need to live to hold money with Wise?" (`/help/articles/2813542`), a table of 80 countries and territories with per-country restrictions; and "Where can I use Wise?" (`/help/articles/2978049`), which says "You can hold money if you live in a country where you can open a Wise account" and lists the places Wise does not serve at all.
 - Model `allowlist`: the 80 entries as `EEA` (all 30 EEA states are in the table) plus 50 ISO codes. French overseas departments and collectivities in the table (GF, GP, MQ, RE, YT, BL, MF, PM) are listed by their own codes.
 - Judgment calls: "where accounts can be opened" is read as the hold-money list, because Wise's own page equates the two. Registering and sending is wider ("from most countries"), so the no-service list (21 countries plus five Ukrainian regions) goes in `note` rather than turning this into a blocklist. Per-country limits (Nevada excluded; HK business-only; BH, IL, MY personal-only; BR BRL residents only; IN only while travelling; TH issuance paused) are kept in `note`, and those countries stay listed because Wise's table lists them. The card list (help article 2968915) is narrower and not used. I read only the UK (`/gb/`) help pages; regional sites may differ.
+
+## Operational 2026-10-09
+
+File: `data/operational/wise.yaml`. The repo-facts bot entries (B2.1, B2.3, B8.2, B9.x) were left untouched.
+
+- **Sources read** (curl, UA `crops-dashboard-validator`, all 200):
+  - wise.com/gb/pricing/, /gb/pricing/send-money and /gb/pricing/card-fees
+  - wise.com/security and /.well-known/security.txt
+  - wise.com/gb/about/our-story
+  - UK personal terms and UK personal privacy notice
+  - docs.wise.com developer.md, auth-and-security.md and client-credentials-token.md
+  - status.wise.com and its /api/v2/incidents.json
+  - the Evolve Bank help article
+  - Companies House 07209813
+- **FCA Register** (register.fca.org.uk) is a client-rendered Salesforce app, and its JSON API needs a key. I found the firm page (id 001b000001EjC6SAAV) by searching FRN 900507 in the browser pane, read the rendered text and archived an excerpt to `data/archive/wise-ops-fca-register.txt`.
+- **ISO 27001.** wise.com/security links a certificate PDF (`/gateway/v1/iso-certificate`) that expired on 2026-08-03. The certifier's public directory (Coalfire Certification, client-directory.html, which loads `/data/data.json`) lists Wise Payments Ltd, certificate 2020-080301, latest 06/30/2026, expiring 8/3/2029. I fetched the renewed certificate PDF from the certifier and archived its text to `data/archive/wise-ops-iso27001-certificate.txt`. I recorded B1.1 and B1.2 as evidenced from the certifier directory, not from Wise's statement.
+- **Judgment calls**
+  - `first_deployment`: Wise's own page gives only the year ("launched in 2011"). The date is recorded as 2011-01-01 and flagged as a placeholder in `what`; January 2011 appears only in secondary sources.
+  - Incidents: the Evolve Bank breach (Wise notice, dated by "resolved in July 2024"), plus the two broadest outages in the status API's 50 most recent incidents. Funds lost is "no" for Evolve, because Wise says its systems were not affected, and unknown for the outages.
+  - B2.2: evidenced as "timely, no timelines" rather than unknown, because the privacy notice states a position.
+  - B3.1: unknown, because the only notification clock found (one business day) is in the Hong Kong acquiring terms.
+  - B5.3: tokens last 12 hours, above the partner's cap; recorded as found.
+  - Fees and cash-out are UK personal prices. ALL in cash-out refers to the availability list.
+- **Validator:** `--offline` 0 errors; online 0 errors.

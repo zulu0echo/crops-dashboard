@@ -1,0 +1,3 @@
+Source: https://api.fdic.gov/banks/institutions?filters=NAME:%22Third%20National%22&fields=NAME,CERT,CITY,STNAME,ACTIVE&limit=20
+Fetched: 2026-10-09 (curl). FDIC BankFind institutions API, exact-name filter NAME:"Third National", verbatim response:
+{"meta":{"total":0,"parameters":{"filters":"NAME:\"Third National\"","fields":"NAME,CERT,CITY,STNAME,ACTIVE","limit":"20"},"index":{"name":"institutions_20261009090008","createTimestamp":"2026-10-09T12:00:05Z"}},"data":[],"totals":{"count":0}}

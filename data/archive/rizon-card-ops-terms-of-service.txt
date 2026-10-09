@@ -1,0 +1,244 @@
+Source: https://www.getrizon.com/terms-of-service
+Retrieved: 2026-10-09 (text extracted from the server-rendered page; markup removed; getrizon.com intermittently serves pages without this text to scripted fetches)
+
+Rizon Terms of Service | Card & Account Use Product FEATURES Send Send money globally 89% cheaper Spend Spend with Visa card worldwide Deposit Deposit money multiple ways Receive Receive money 
+multiple ways Visa Platinum Card Tap, swipe, or withdraw globally USD and EUR accounts Get your virtual ACH & SEPA account Invest Buy stocks like Apple or Tesla TERMS APPLY MORE Security Dual-Layered 
+Security Demo Watch Rizon in action Banking that belongs to you You are in control of your money RizPoints Earn RizPoints with every $ spent Global dollar services outside the U.S. Access USD 
+savings, payments, and transfers globally in one simple app. Resources Blog Read the latest from our team Manifesto Read why we build Rizon Guides Everything you need to get started FAQs Quick 
+answers to your questions Rizon fees and limits Transparent rates and limits Global dollar services outside the U.S. Access USD savings, payments, and transfers globally in one simple app. Use cases 
+GENERAL USE CASES International Money Transfers 86% cheaper than traditional banks Deel, Gusto, Rippling payouts Receive money from payout platforms Getting paid as a freelancer Receive dollars or 
+stablecoins Receive payouts from platforms Receive money form AirBnB, Youtube Spend stablecoins easily Without offramps, banks or headaches CARD-POWERED USE CASES US-based Visa card Pay for western 
+services without limits Pay for ad services Buy Meta, Google, TikTok, and X ads Buy physical goods with stables From physical or online stores globally VPN × Rizon Visa Card US content, unlocked and 
+payable Global dollar services outside the U.S. Access USD savings, payments, and transfers globally in one simple app. Compare Rizon vs Kast Compare features and fees Rizon vs Nsave Compare features 
+and fees Rizon vs Avici Compare features and fees Rizon vs Redotpay Compare features and fees Rizon vs ZAR Compare features and fees Global dollar services outside the U.S. Access USD savings, 
+payments, and transfers globally in one simple app. Partner Program Business EN English Spanish Arabic Hindi/Urdu Global dollar services outside the U.S. Access USD savings, payments, and transfers 
+globally in one simple app. Download app EN English Spanish Brazilian Arabic Urdu Indonesian Get your US‑based Visa Download Rizon now This website uses cookies to improve our services and visitor 
+experience. Your preferences may be changed or withdrawn at any time. For more information, please see our Privacy Policy . Manage Cookies Accept all cookies Manage Cookie Preferences When you browse 
+this site, we may collect and store information on your device. This data helps the site work properly and can also support features like remembering your preferences, tailoring content, and 
+gathering insights through analytics. While some storage is essential for the site to function, others are optional. You can choose to disable certain types of cookies, but please note that doing so 
+may affect your browsing experience. Essential cookies Always active Used to ensure proper performance of the website, security of customers and their data, provision of high-quality services. 
+Advertising cookies Used to observer user online behaviour and optimize marketing campaigns according to such information. Analytics cookies Used to enhance the website user experience, analyse the 
+use of the system and in accordance to such improve the provision of services. Accept essential Accept all cookies Terms of Service Effective Date: April 30, 2025 These Terms of Service (the Terms, 
+Terms and Conditions ) govern your access to, and use of the App operated by Rizon Global, Inc., a Delaware C Corporation company established with its registered agent address at 131 Continental Dr 
+Suite 305, Newark, DE 19713 US (the Rizon , Company , we , or us ). Rizon operates solely as an information society service provider. The Services provided by the Company consist exclusively of 
+supplying a non-custodial software platform that enables Users to access, interact with, and manage services offered by independent Third-Party Providers. By accessing and using our App and Services, 
+you agree to be bound by these Terms. These Terms and Conditions, along with the Privacy Policy and any other terms and conditions that apply to our Services and form a legal agreement between you 
+and Rizon. DEFINITIONS 1.1. Account refers to the User profile created on the App that enables access to and use of the Services, including integration with Third-Party Providers. The Account is 
+intended solely for interface access and only serves as a software layer for access to you Digital Assets. It does not constitute a crypto-asset wallet, a custodial account, a bank account, or a 
+payment/e-money account, and does not involve the holding, custody, or management of digital assets or Fiat funds by the Company. 1.2. Card Off-ramp refers to a service that enables the conversion of 
+Digital Assets, such as stablecoins, into Fiat Currency for spending via a virtual or physical payment card. This service is provided by our partner Rain and allows Users to use their crypto balances 
+to make purchases with merchants that accept traditional card payments. The Company does not issue, process, or control these cards or the underlying conversion process. 1.3. Digital Assets refers to 
+any digital representation of value that can be transferred, stored, or traded electronically, and that relies on cryptographic technology and/or distributed ledger systems (such as blockchain). This 
+includes, but is not limited to, cryptocurrencies (e.g., Bitcoin, Ethereum), stablecoins (e.g., USDC, USDT, DAI), and other tokens that may serve as a medium of exchange, unit of account, store of 
+value, or access to specific services or applications. 1.4. Digital Wallet means a software-based tool controlled by the User or provided by a Third-Party Provider (Privy) that allows for the secure 
+storage and management of Digital Assets and cryptographic keys. It enables Users to send, receive, and interact with blockchain-based assets. Only non-custodial Digital Wallets, where Users retain 
+sole control of their private keys can be accessed within the App, which functions purely as a software layer to enhance User convenience. At no point does Rizon have access to or control over the 
+User's Digital Wallet. Rizon is not involved in the creation of Digital Wallets; this process is facilitated by our partner, Privy. 1.5. Fees refer to any charges, commissions, or service costs 
+imposed by the Company for access to or use of certain functionalities within the App, including but not limited to transaction facilitation, premium features, and integrations with Third-Party 
+Providers. Fees may be payable in Fiat Currency or supported Digital Assets and will be disclosed transparently in accordance with these Terms. 1.6. Fiat Currency or Fiat Funds refers to traditional 
+currencies such as US Dollars, Euros, and British Pounds, issued and backed by governments and their central banks. 1.7. Financial and Digital Assets services refers to services involving the 
+custody, digital wallets, stablecoin and other cryptocurrencies transactions, off-ramping, payment account, transactions and payment card services. These services are provided independently by 
+Third-Party Providers and are governed by their own terms. The Company does not offer or control these services, and at no point does it act as a bank, CASP, custodian, or financial intermediary. 
+1.8. KYC means Know Your Customer, comprising customer identity verification processes and procedures. 1.9. Privacy Policy means the document provided on the website here that explains how we 
+collect, use, store, and protect your personal data when you use the App. It also outlines your rights under applicable data protection laws, including the GDPR. 1.10. Rizon App or App refers to our 
+seamless non-custodial solution, a mobile application, which serves as software-based interface layer and enables users to access, connect to, and interact with third-party crypto services and 
+financial tools. Rizon App acts as a user experience layer and conduit for initiating actions through integrated Third-Party Providers. It does not itself perform or control the underlying financial 
+transactions or custody of assets. 1.11. Services means the set of functionalities provided through the App that allow Users to connect with, initiate, and manage interactions with Third-Party 
+Providers offering crypto-asset-related services. These functionalities include, but are not limited to, user interface tools for initiating stablecoin-based off-ramping transactions via card 
+integrations, access to external digital wallets and payment processors, as well as the facilitation of identity verification and data integrations necessary for service execution. The Services do 
+not include the provision of financial, digital assets custodial, or investment services by the Company. 1.12. Third-Party Provider(s) or Partner(s) refer to independent entities that provide Digital 
+Wallets, Fiat off-ramping, card services, or related financial services accessible through our App as a front end software layer. We also partner with our group companies, like Rizon technologies, 
+UAB, which we have appointed to act as our commercial agent to represent us in the relationship with you. 1.13. User or you refers to any individual person who accesses and uses the App. ‍ Eligibility 
+and jurisdiction You must be at least 18 years old to use the App and our Services. The App is available in the countries and regions specified on our website here . We reserve the right to restrict 
+or deny access to our Services in certain jurisdictions or geographic regions. Information regarding such restricted areas is provided in the Terms and from time to time will be communicated to you 
+via the App or other communication channels outlined in these Terms. By accepting these Terms, you confirm that: you have read and understood these Terms; you have read, understood and accepted our 
+Privacy Policy available here ; you have provided correct and accurate contact information (including an email address that you check regularly) during the onboarding process; you are acting on your 
+own behalf, have full legal authority to conduct transactions related to the Account; and We currently do not actively market and offer our Services in the European Union (EU) and other regions 
+outside of US and LATAM regions. Users in jurisdictions subject to sanctions or restrictions under EU, OFAC, or UN laws are not allowed to access the App. YOUR ACCOUNT To access and use the Services, 
+you must first register and create an account with us. Your Account provides you with access to the Rizon App&#x27;s functionalities, which facilitate access and use of the Financial and Digital 
+Assets services provided by our Partners. The Account is for interface management purposes only and does not constitute a custodial crypto-asset wallet, a bank account, payment, or e-money account 
+held with us. We do not hold or manage any funds or Digital Assets on your behalf. The underlying Financial and Digital Assets services are provided by our Partners that we engage. As instructed by 
+our Partners we facilitate the required KYC and AML procedures. Creating your Account in the App is quick and easy, but because we engage with trustworthy Partners there are a few important steps 
+you&#x27;ll need to follow to get started: You will be required to complete KYC and Anti-Money Laundering (AML) verification procedures. These measures are in place to verify user identity and ensure 
+compliance with applicable regulatory standards. Following the completion of KYC/AML verification, user information will be screened for AML compliance and potential Politically Exposed Person (PEP) 
+status. This screening is intended to identify and manage risks related to financial activity, including transactions involving virtual assets. You will need to create your digital assets wallet to 
+access Third-Party services through the App. The wallet connection is provided the Third-Party Service provider Privy, and is referred to in these Terms as a " Linked Wallet ." This wallet is created 
+and controlled solely by you and is not stored or accessible by us. After successful Know Your Customer (KYC) verification through the Third-Party Provider Rain, a smart contract is assigned to you 
+("Smart Contract"), which is managed in part by Rain to enable Card Off-Ramp service. Your Linked Wallet becomes the sole administrator of this Smart Contract. The Linked Wallet and Smart Contract 
+enables you to interact with integrated Third-Party Providers on the App, including the ability to initiate Digital Assets transactions, store Digital Assets, and satisfy verification or collateral 
+requirements where applicable. Once your Linked Wallet is connected and verified, you may become eligible to request a virtual or physical debit card, issued by our Partner, Rain, which allows you to 
+convert and spend supported stablecoins for real-world purchases through traditional payment networks. Access to card services may be subject to additional eligibility checks, KYC/AML verification, 
+and the acceptance of Rain's terms and conditions. You can read more about the way we engage our Third-Party Providers further in these Terms. DESCRIPTION OF SERVICES Rizon App is a non-custodial 
+software layer and frontend interface that enables Users to interact seamlessly with selected Third-Party Providers offering a range of Financial or Digital asset services. The App acts solely as a 
+user interface and user experience tool. Non-custodial means that we and our Partners do not hold, control, or manage your Digital Assets and Funds, Digital Wallets, or private keys. Through the App, 
+the Users may: Use tools to access and manage Digital Assets services provided by Third-Party providers, including creating external wallets, viewing balances, and initiating stablecoin and other 
+Digital Assets based transactions. Access service provided by Third-Party Providers: Fiat off-ramping, including the issuance and use of crypto backed cards (Rain Cards), enabling Users to spend 
+stablecoins by converting them into Fiat through Rain's and their licensed partners infrastructure. Rizon does not: Provide Digital Wallet or custodial services or hold any user Fiat or Digital 
+Assets or private keys. Transmit, convert, or exchange Fiat or Digital Assets on behalf of Users. Offer banking, payment, investment advisory, or financial intermediation services. Each Third-Party 
+Provider integrated with the App (including Privy and Rain) operates independently and may require Users to accept separate terms of service, complete verification procedures, or undergo risk and 
+compliance checks. All actions taken via the App, such as wallet creation, card issuance, or Card Off-ramp are performed under the responsibility and terms of the respective Third-Party Provider. We 
+do not control the execution, success, or compliance of any services delivered by Third-Party Providers, and we do not guarantee their availability or approval processes. Users are solely responsible 
+for reviewing and agreeing to those providers&#x27; terms and for maintaining the security of their accounts, wallets, and private credentials when interacting with the App. ThiRD PARTY PROVIDERS We 
+cooperate with the following Partners: 5.1. Rain We partner with Signify Holdings, Inc., the entity operating the Rain solution, a Third-Party Provider that together with its subsidiary Nimbus LLC 
+facilitates off-ramp functionality via debit virtual or physical cards (" Rain Cards "). These cards allow Users to convert stablecoin balances into Fiat value for use with supported payment 
+networks. To utilize Rain Cards services through the App, you must apply for a Rain Account, which is subject to Rain's own terms and approval process. This is part of your Account opening process 
+through the App. You will be asked to provide specific information required by Rain to open Rain Account. Rizon does not store this information, as we do not provide the Rain Account to you. Your 
+Linked Wallet will be required to be eligible for Rain account. Rain reserves the right to block or reject any Linked Wallet that does not meet their diligence criteria, in which case you may not be 
+able to access Rain services. Additionally, Rain may cap or deny any Additional Wallets you attempt to link to your Rain Account. You agree that: You remain solely responsible for the security and 
+management of your Linked Wallet(s). Your ability to use the Rain Card is contingent upon Rain&#x27;s acceptance of your application and compliance with their separate platform terms and applicable 
+law. We do not guarantee access to or performance of any Rain services. You can read about Rain and their services on their website here . Separation of Functions and Regulatory Responsibility Rizon 
+provides only a software interface that enables Users to access financial and crypto-asset services offered by third-party licensed institutions. All regulated financial services, including card 
+issuance, custody, payment processing, and any services involving fiat or digital asset flows, are provided exclusively by Nimbus LLC, a Subsidiary of Signify Holdings, Inc., a licensed financial 
+institution authorized to provide such services under applicable laws and regulations. Nimbus LLC is responsible for maintaining all necessary regulatory approvals, including any required banking, 
+e-money, or payment institution licenses, as well as membership with relevant card networks, as applicable. By using the Services, you acknowledge and agree that Rizon acts solely as a technological 
+conduit, and that all regulated services are provided by Signify Holdings Inc. through its subsidiary Nimbus LLC under their own compliance, risk management, and legal framework. To the fullest 
+extent permitted by law, Rizon disclaims all liability for any acts or omissions of Nimbus LLC and Signify Holdings, Inc. or other Third-Party Providers and shall not be held responsible for any 
+losses, claims, or disputes arising from or related to the financial services accessed through the Rizon App. 5.2. Privy Privy is offered by Horkos, Inc., as a Third-Party Provider to facilitate User 
+onboarding, authentication, and Digital Wallet infrastructure. Privy enables you to create and access your Digital Wallet using familiar login methods such as email-based authentication or OAuth 
+logins (e.g., Google, Apple), significantly lowering the barrier to entry for accessing the Services. Privy acts as a software layer and is responsible for managing your login credentials, 
+authentication tokens, and user session data in a privacy-preserving, secure manner. At no point does Privy have access to your private keys or control over your Digital Wallet and Digital Assets. 
+The Digital Wallet that Privy helps to create is a non-custodial meaning that although the wallet may be initialized via Privy, the private key material is accessible and ultimately controlled only 
+by you, and not by the Company, Privy, or any other third party. This embedded wallet option allows you to seamlessly engage with compatible services on the App, including identity verification and 
+access to off-ramping tools like Rain Cards. You retain full responsibility for safeguarding access credentials (including access codes or device-based authentication) to this embedded wallet, just 
+as you would with any external wallet. Use of Privy's services is subject to its own privacy policy and terms of service, and by engaging with Privy's tools through the App, you consent to such use. 
+You can read more about Privy on their website here . To the fullest extent permitted by law, Rizon disclaims all liability for any acts or omissions of Horkos Inc. or other Third-Party Providers and 
+shall not be held responsible for any losses, claims, or disputes arising from or related to the Digital Assets services accessed through the Rizon App. 5.3. Rizon Technologies Rizon technologies, 
+UAB is a company within our group that we have appointed to act as our commercial agent . In this capacity, Rizon Technologies is authorised to negotiate and conclude agreements with you in our name 
+and on our behalf in relation to the Services, and to accept payments from you on our behalf. Rizon Technologies acts solely for us and not for you in connection with the Services. Rizon Technologies 
+does not provide Financial and Digital Assets services, payment services, e-money services, or Digital Asset services in its own name. Rizon Technologies does not hold, safeguard, administer, or 
+control Fiat Funds or Digital Assets on behalf of our Users. It does not operate payment accounts, wallets, or balances for Users. Any custody of Fiat Funds or Digital Assets, where applicable, are 
+performed by our Partner duly authorised third parties. Any payments accepted by Rizon Technologies are accepted solely in its capacity as our commercial agent, acting in our name and on our behalf, 
+and do not constitute the provision of payment or custody services. Nothing in these Terms should be understood as Rizon Technologies providing regulated Financial and Digital Assets services. Any 
+payments accepted by Rizon Technologies are accepted solely in its capacity as our commercial agent, acting in our name and on our behalf. Your payment obligation towards us shall be deemed 
+discharged once the relevant amount is received for the benefit of us in accordance with the applicable payment method and payment partner arrangements. 6.Fees and Pricing Use of the App may be 
+subject to certain fees and charges. These Fees are intended to cover the cost of facilitating access to Third-Party Services through our user interface, as well as optional App's features. By 
+accepting these Terms and using the Services, you agree to pay all applicable Fees as outlined herein or presented to you at the time of use. 6.1.Fee Types Transaction Facilitation Fees : A fee 
+charged by us for enabling transactions with certain Third-Party Providers (e.g., Card Off-ramp, wallet integrations, or smart contract interactions). These fees will be clearly disclosed at the time 
+of transaction execution. Partner Referral or Integration Fees : We may receive compensation from Third-Party Providers for user referrals, service integrations, or transaction volume. These fees are 
+paid by the Third-Party Providers and do not result in additional charges to you, unless explicitly stated otherwise. Premium Feature Fees : Certain advanced features of the App may be offered on a 
+subscription or one-time fee basis. These features will be optional and clearly marked as such. Card Issuance or Maintenance Fees (Rain Cards): Any fees associated with the issuance, use, or 
+maintenance of a Rain Card will be determined and charged by Rain or its issuing partner. These fees are governed by Rain's own terms and will be presented to you prior to activation or use. 6.2.Fee 
+Transparency We aim to maintain full transparency in our fee structure. You will be notified of applicable fees prior to confirming any transaction or subscribing to a paid feature. All fees will be 
+clearly presented either: on the transaction confirmation screen, or within the Fee Page available on our website or App interface. 6.3.Currency and Settlement Fees may be denominated in either Fiat 
+Currency or supported Digital Assets (e.g., USDC, ETH). Where applicable, conversion rates will be displayed before transaction confirmation. Fees are settled at the time of transaction and are 
+generally non-refundable, unless otherwise stated. 6.4.Changes to Fees We reserve the right to modify our Fees and their structure at any time by giving you 30 days prior notice. Any such changes 
+will be communicated through the App and other channels as provided in these Terms and will not apply retroactively. Continued use of the App following any fee updates constitutes your acceptance of 
+the revised fees. You can close your Account in case you disagree with the changes to the fees. We will not give you prior notice, if we decrease or remove any Fees. User Obligations and Acceptable 
+Use General Obligations By using the App and our Services, you agree to comply with these Terms, all applicable laws and regulations, and the acceptable use policies of any Third-Party Providers 
+accessible through the App. You are solely responsible for ensuring that your actions on or through the App are lawful in your jurisdiction. You also agree to: Provide accurate, current, and complete 
+information during Account creation and at all times thereafter. Maintain the security and confidentiality of your Account credentials, Digital Wallets, Linked Wallets and authentication methods. 
+Promptly notify us if you become aware of any unauthorized use of your Account or security breach affecting your wallet or associated devices. Prohibited Uses You agree not to use the App, or any 
+Services accessed through it, to engage in or promote activities that are unlawful, harmful, abusive, or otherwise inappropriate, including but not limited to: Violating any law, regulation, or 
+directive (including anti-money laundering, counter-terrorist financing, and sanctions laws). Engaging in or facilitating fraud, deception, or other dishonest behavior. Using the App in a manner that 
+may interfere with, disrupt, or negatively affect other Users or the functionality of the App. Attempting to gain unauthorized access to any systems, data, or information. Using automated tools 
+(e.g., bots, scrapers) to access or interact with the App without our express consent. Introducing or transmitting malware, viruses, or harmful code. Misrepresenting your identity or affiliation with 
+any person or entity. App Integrity and Respect for Services You shall not reverse engineer, decompile, disassemble, or otherwise attempt to extract the source code or underlying ideas of any part of 
+the App. You also agree not to exploit the App or any integrated service in a way that circumvents intended use cases or applicable access controls. Wallet and Asset Use You are solely responsible 
+for your use of any Linked Wallets connected to the App, including maintaining secure access to private keys, seed phrases, and passwords. You must ensure that any wallet you use is owned or 
+controlled by you or your authorized representative. You accept full responsibility for any actions conducted through such wallets. Enforcement We reserve the right to suspend, restrict, or terminate 
+your access to the App at our sole discretion if we suspect or determine that your use violates these Terms, applicable law, or the terms of any Third-Party Provider integrated into the App. CLOSING 
+YOUR ACCOUNT AND DATA PORTABILITY You may stop using the App and transition away from our Services at any time. As Digital Wallet accessed through the App is a non-custodial wallet and your Digital 
+Assets for the purposes of the Rain services are managed by a smart contract, you retain full control of your Digital Assets and can dissociate your Digital Wallet from the access via App interface 
+(and unlink the Linked Wallet from Rain account) to access it through any other compatible non-custodial wallet service (e.g., MetaMask or Ledger). To transition away from the App: Initiate the 
+Digital Wallet export process from within the App; Before exporting, ensure that any remaining Digital Assets held in your smart contract wallet (managed by Rain) are first transferred to your 
+non-custodial wallet (created by Privy); Complete the transfer, followed by a two-factor authentication (2FA) verification step; You will then be shown your secret recovery phrase; Once your smart 
+contract held balance reaches zero as reflect through the App, your Digital Wallet is effectively disconnected form the App and Rain account; You may then use your secret recovery phrase to access 
+your Digital Wallet via any external non-custodial service. Please remember: Export and disconnection are performed at your own discretion and responsibility; You are encouraged to back up your 
+credentials, recovery phrase, and any relevant metadata before initiating the process; Once you have dissociated your Digital Wallet, you will lose access to Rain services; Review and manage any 
+Third-Party provider accounts (e.g., Rain, Privy) according to their respective terms and conditions. Even after disconnection, we may retain certain information as required by law or for compliance 
+purposes, in accordance with our Privacy Policy. You may contact us to exercise your data portability rights under applicable data protection laws, including the GDPR. ACCOUNT SUSPENSION, 
+RESTRICTION, AND TERMINATION BY RIZON We on our Partners reserve the right to suspend, restrict, or terminate your Account and limit your access to the App, either temporarily or permanently, under 
+certain circumstances. These include, but are not limited to, the following: We reasonably believe that your actions may negatively affect the integrity, functionality, or reputation of the App or 
+our business operations. We are required to do so by applicable law, regulation, court order, law enforcement request, or a directive from a competent authority. There are reasonable grounds to 
+suspect a breach of these Terms or other policies applicable to your use of the App or Third-Party Providers services. We or Third-Party Provider detect or suspect technical errors, unusual activity, 
+or potentially invalid or unauthorized transactions initiated through your Linked Wallet. We have reason to believe that access to your Account has been compromised or initiated without your consent 
+or authorization. There is evidence of actual or attempted fraud, unauthorized use, or misuse of the App or the Services. We suspect any connection to money laundering, terrorist financing, sanctions 
+violations, or other illicit activity. Your Account is subject to ongoing legal proceedings, investigations, or regulatory scrutiny. Your use of the App appears to present heightened compliance or 
+operational risks, including violations of applicable financial services laws or Third-Party Provider terms. Your Account has been associated with any activity defined as a prohibited under these 
+Terms. In the event of suspension or termination, we may cancel, delay, or prevent the execution of any pending transactions or services accessed via the App, including interactions with Third-Party 
+Providers such as Linked Wallets or Card Offramp/Rain Cards. Where appropriate, we will provide you with a reason for the action taken, along with guidance on how to remedy the issue, such as by 
+providing missing documentation or resolving discrepancies. Once the underlying issue is resolved to our satisfaction, and if no legal or regulatory barrier exists, we may lift any restrictions and 
+restore access to your Account. In general, we will provide at least thirty (30) days' prior notice of termination, unless we or our Partners determine that earlier action is required to protect 
+system security, comply with legal obligations, or mitigate fraud or other risks. In certain cases, we may not disclose specific reasons for suspension or termination if doing so could compromise our 
+security controls, regulatory compliance, or legal duties. These internal criteria will remain confidential and will not be shared with unauthorized third parties. We aim to apply a fair, risk-based, 
+and transparent approach to any enforcement actions taken against Accounts and will endeavor to offer you the opportunity to resolve issues whenever feasible. Prohibited activities and JURISDICTIONS 
+Jurisdictional Restrictions Use of the Services in connection with the Rain and Rain Card is prohibited in certain high-risk or sanctioned jurisdictions, as determined by Rain and its compliance 
+obligations. This includes (but is not limited to): Cuba, Iran, North Korea, Syria, and the Crimea, Donetsk, and Luhansk regions of Ukraine. In addition, Rain does not permit individuals or entities 
+listed on international sanctions lists—including those maintained by the U.S. Treasury's OFAC, the EU, the U.K., or the U.N. to use its services. This includes users identified on the Denied Persons 
+List, Entity List, or any other relevant restricted party list. Accounts may not be opened or operated by individuals or businesses located in the following prohibited jurisdictions (subject to 
+update by Rain at its discretion): Afghanistan, Albania, Belarus, Bosnia, Central African Republic, Congo, Croatia, Cuba, Cyprus, Eritrea, Haiti, Iran, Iraq, Kosovo, Lebanon, Liberia, Libya, North 
+Macedonia, Moldova, Montenegro, North Korea, Russia, Serbia, Somalia, Syria, Ukraine, Venezuela, Vietnam, Yemen, Zimbabwe. Prohibited Activities You may not use the App and/or to access Rain services 
+if your activities directly or indirectly involve any of the following: Illegal or Regulated Activities: Sale of controlled substances in violation of applicable law. Weapons, firearms, ammunition, 
+or explosives. Child exploitation materials. Gambling, betting, or games of chance (where not legally authorized). Prostitution or unlicensed escort services. Counterfeit goods or grey market 
+products. Pyramid or Ponzi schemes. Intellectual Property Violations: Unauthorized sale or distribution of copyrighted material. Counterfeit goods or unauthorized brand use. Products or services 
+infringing third-party IP rights. Violent or Hateful Conduct: ‍ Content or actions promoting violence, hatred, or discrimination based on protected characteristics (e.g., race, gender, religion, 
+nationality, sexual orientation, or disability). Misuse of Services: Providing false or misleading information during onboarding or use. Acting on behalf of undisclosed third parties or undeclared 
+business activities. Unauthorized use of Rain trademarks, branding, or implied endorsements. Rain and its partners reserve the right to suspend or terminate access to the Services where prohibited 
+activities are suspected, and to update this list as required by applicable law, regulatory expectations, or internal compliance policies. Risk Disclosure Crypto and stablecoin risk Digital Assets, 
+including stablecoins, carry unique risks. Some stablecoins are designed to maintain a fixed value relative to Fiat Currencies (e.g., USD), but they are not guaranteed by any government or central 
+bank. The underlying assets, operational models, or issuers of stablecoins may fail, become insolvent, or lose regulatory approval, which may impact the value or usability of those assets. 
+Third-party service risk The App acts solely as an interface layer and does not operate or control any Third Party Providers, including digital wallets, payment processors, or card issuers. If a 
+Third-Party Provider experiences downtime, service suspension, fraud, regulatory enforcement, insolvency, or other operational failures, this may affect your ability to access funds, complete 
+transactions, or redeem balances. We do not assume any responsibility for the performance, compliance, or availability of such services. Market volatility The value of Digital Assets can fluctuate 
+significantly and unexpectedly due to market forces, regulatory developments, technological changes, or global economic factors. Price movements may be rapid and severe, and you may lose part or all 
+of the value of your Digital Assets. As the Company only provides App serving as interface layer, the Company cannot assume and does not provide any guarantee regarding the stability or future value 
+of any asset. Loss of private key or access to Linked Wallets Access to Digital Assets requires possession of private keys or secure authentication credentials linked to your digital wallet. If you 
+lose access to these credentials or if they are stolen or compromised, you may permanently lose access to your assets. The Company does not store or recover private keys and cannot assist in 
+recovering lost wallets or funds. You do not guarantee asset value or successful redemption via Card Off-ramp Card Off-ramp is subject to eligibility requirements, transaction limits, jurisdictional 
+restrictions, and approval by our issuing partner Rain. We do not guarantee that your card transaction will be accepted, processed, or settled, nor do we warrant the redemption of any Digital Assets 
+into Fiat Currency. Approval and functionality are governed by the terms and operational capacity of Rain or their partners. No protection over Financial and Digital Assets For U.S. users, Digital 
+Assets are not protected by the Federal Deposit Insurance Corporation (FDIC) or the Securities Investor Protection Corporation (SIPC). They are not backed by the U.S. government or any financial 
+institution. You acknowledge and accept the inherent risks associated with holding and transacting with Digital Assets, including but not limited to: Loss of access to your digital wallet due to 
+misplacement or compromise of private keys, seed phrases, or credentials; Unauthorized access by third parties; Irrecoverable loss of Digital Assets due to user error or software malfunction. You 
+must take all reasonable measures to secure your wallet and credentials. By using the Services, you acknowledge these risks and accept sole responsibility for any Digital Assets you choose to use in 
+connection with the App. To the fullest extent permitted under applicable law, including consumer protection laws, you release the Company from any liability arising from or related to your use, 
+storage, or loss of Digital Assets. Please remember, that at no time does the Company have access to, possession of, or control over any Digital Assets stored in your personal Digital Wallet. You are 
+solely responsible for the custody, security, and management of your Digital Assets when using the Services. We do not act as a custodian, and the Services do not include safeguarding or 
+administering Digital Assets on your behalf. Limitation of Liability The App and its associated Services are provided on an "as is" and "as available" basis without warranties of any kind, express or 
+implied. We do not guarantee that the App or any integrated services will be uninterrupted, error-free, or suitable for your specific use. We expressly disclaim any liability for the availability, 
+performance, or conduct of any Third-Party Provider integrated into the App, including but not limited to wallet services (e.g., Privy), identity verification services, or card-based off-ramp 
+services (e.g., Rain). We are not responsible for outages, service failures, declines, delays, or disruptions caused by such third parties, nor do we assume responsibility for their regulatory status 
+or actions. You acknowledge and accept that: We do not control or custody your Digital Assets, and we bear no liability for any loss, theft, or misuse of those assets. We are not responsible for 
+failed card transactions, including those that may result from Rain&#x27;s or their Partners decline policies, card network issues, or insufficient collateral. Any financial or crypto-asset 
+transactions initiated via the App are solely between you and the applicable Third-Party Provider, and we shall not be liable for any direct or indirect losses arising from such transactions. To the 
+maximum extent permitted by applicable law, our total liability to you for any claims arising out of or relating to these Terms or your use of the App shall be limited to the lesser of (i) $100 or 
+(ii) the total fees paid by you to us through the App in the preceding twelve (12) months. We shall not be liable for any indirect, incidental, punitive, or consequential damages, including but not 
+limited to lost profits, loss of data, or reputational harm. This limitation shall apply regardless of the legal theory on which the claim is based and even if we have been advised of the possibility 
+of such damages. Indemnity You agree to indemnify, defend, and hold harmless the Company, its affiliates, and service providers from and against any claims, losses, damages, liabilities, and expenses 
+(including legal fees) arising out of or related to: (i) your violation of any applicable laws or regulations; (ii) misuse of any Third-Party Provider services accessed via the App; or (iii) improper 
+or unauthorized use of the App interface. Privacy and Data Protection We are committed to protecting your personal data in accordance with applicable data protection laws, including the General Data 
+Protection Regulation (GDPR). Please refer to our Privacy Policy for detailed information on how we collect, use, store, and transfer your data. Depending on your use of the App, data may be 
+processed within the EU and transferred to third countries, including the United States and LATAM regions, under appropriate safeguards. By using the App, you consent to the processing of your 
+personal data as described in our Privacy Policy . Modifications to THE TERMS We may update or amend these Terms from time to time for various reasons, including but not limited to: Improving 
+clarity, accessibility, or usefulness for Users. Reflecting updates in how the App or any integrated Third-Party Provider operates. Complying with legal, regulatory, or industry developments. 
+Adjusting to changes in the costs or commercial landscape of operating the App. Introducing new features, services, or integrations, or modifying existing ones. Notice of Changes If we introduce a 
+new feature or service or make any changes that do not materially affect your existing rights or obligations under these Terms, we will make them available immediately and inform. For other changes, 
+we will provide you with at least thirty (30) days&#x27; notice via the App and/or email. If you do not agree to the changes, you may discontinue use of the App and close your Account at any time 
+before the changes take effect. Your continued use of the App after the notice period will be deemed acceptance of the updated Terms. We aim to provide a high standard of service and take all user 
+concerns seriously. If you have a complaint or believe we have not met your expectations, you may contact us using the details provided in the Contact section of these Terms. How to Submit a 
+Complaint If you are not happy with our Services, you can submit your complaint by email to: [email protected] . Please include the following information in your message: Your full name and contact 
+details. A clear description of the issue. Any relevant supporting documentation or screenshots (if applicable). Our Response Process We will acknowledge receipt of your complaint within a reasonable 
+time, typically within ten (10) business days. A thorough investigation will follow, and we will aim to respond with a resolution or provide an update within thirty (30) days of receiving the 
+complaint. IMPORTANT: Please be aware that we are not responsible for the products, services, or actions of our Third-Party Providers. If your concern or complaint pertains to a service, product, or 
+experience provided by one of our partners, we kindly ask that you reach out to them directly for resolution. Each partner operates independently and is solely responsible for their own services and 
+customer support. Governing Law AND Dispute Resolution These Terms, which govern your use of the App as a non-custodial, technology-only interface, shall be governed by the laws of the Republic of 
+Lithuania, without regard to conflict of law principles. These Terms do not govern any financial, custodial, or regulated services, which are separately provided by Third-Party Providers under their 
+own terms and applicable laws. Contact Info Support email: [email protected] Registered agent address: 131 Continental Dr, Suite 305, Newark, DE 19713 US. ‍ Thank you! Your submission has been 
+received! Oops! Something went wrong while submitting the form. Company Rizon Manifesto Partner Program Business Features Send Spend Deposit Visa Platinum Card USD and EUR accounts Invest RizPoints 
+Compare Rizon vs Redotpay Rizon vs Kast Rizon vs Zar Rizon vs Nsave Rizon vs Avici Use Cases Global remittances Deel payouts US-based Visa card Pay for ad services Spend stablecoins directly 
+Resources Blog Demo Support Help Center [email protected] Are there fees? Legal Terms of Service Privacy Policy Download app Social © 2026 Rizon. All rights reserved. Rizon App is a technology 
+platform and application developed by Rizon Global, Inc (Rizon), that provides a user interface enabling access to services offered by independent third-party providers. Rizon does not offer, hold, 
+or transmit funds, crypto-assets, or provide any financial, custodial, or regulated services.All wallet functionality is powered by Privy, a non-custodial wallet infrastructure provider. Wallets are 
+created and controlled solely by users and are not accessible by Rizon. All private keys remain under the exclusive control of the user.Any financial or payment related services, including the 
+issuance of payment cards, smart contract wallets and processing of digital asset transfers, are provided solely by Signify Holdings Inc. and its subsidiary Nimbus LLC (Rain), a third-party licensed 
+financial service provider. Rain operates under its own regulatory authorizations and is responsible for the compliance and performance of its services.By using Rizon App, you acknowledge and agree 
+that Rizon:acts solely as a software conduit and is not a financial institution or crypto-asset service provider under Regulation (EU) 2023/1114 (MiCAR) or any similar legislation.Any transactions, 
+transfers, or financial operations are executed exclusively through third-party providers and are subject to their respective terms and policies.Please ensure you understand and agree to the terms 
+and services of Rain, Privy, and any other applicable providers before using Rizon services accessed via Rizon App. The user is responsible for storing their own recovery phrase. If the recovery 
+phrase is lost, the user might not be able to retrieve their private keysAll forms of investments carry risks, including the risk of losing all of the invested amount. Such activities may not be 
+suitable for everyone. Services Restrictions ‍ The products and services referenced on this website are made available by Rizon Technologies, UAB and are intended solely for individuals who are 
+residents and domiciled in the United States or countries within Latin America (LATAM). Access to these services may be restricted or subject to regulatory licensing requirements in other 
+jurisdictions. This website and its contents do not constitute an offer, solicitation, or promotion of services to persons located outside the permitted regions. If you are accessing this site from a 
+jurisdiction where such services are not authorized or available, please exit this page. By clicking "OK", you confirm and represent that: You are located in the United States or LATAM; You are 
+accessing this site on your own initiative and not as a result of any solicitation or promotion by Rizon Technologies, UAB; You understand that any services referenced are not intended for users 
+outside the specified regions; You have read and agree to the above. OK

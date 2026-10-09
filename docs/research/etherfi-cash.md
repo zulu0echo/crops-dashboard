@@ -66,3 +66,24 @@ Assessed 2026-10-07 by AI research agent (seed). Unit: the Optimism (chain 10) c
   - US is included as a whole country. The state limit applies to physical cards only, and the article lists no state as ineligible for the virtual card, so the limit goes in `note`.
   - Puerto Rico is coded PR because the article lists it as its own jurisdiction.
 - The bank-transfer availability article (860025) covers a different feature and was not used.
+
+## Operational 2026-10-09
+
+File: `data/operational/etherfi-cash.yaml`. Bot facts (B2.1, B2.3, B8.2, B9.x) left as filled.
+
+- **Sources read.** GitBook: all four cardholder agreements (Inc./Ltd., International/U.S.), Terms of Use, Privacy Policy, Security & Risks, Incident Management, Incident Response Playbook and the three incident pages, Technical Documentation, Account upgrade, MCP Server, Quickstart, and `llms-full.txt` (full-text search for ISO 27001, SOC 2, penetration, status page). Help centre: limits and fees (303623), first-card fee (833743), payment methods (759961), bank transfer FAQ (758758), bank-transfer countries (860025, 860027), membership benefits (776152), account deletion (842150). Help-centre pages are archived as `data/archive/etherfi-cash-ops-*.txt`.
+- **Registers.** FDIC BankFind (`api.fdic.gov/banks/institutions`, search "Third National"): no active institution; only closed Tennessee banks. The cardholder agreements choose Puerto Rico law, so I tried OCIF: `concesionarios.ocif.pr.gov` (licence verification) fails the TLS handshake with curl. OCIF's home page carries 22 Sep 2026 orders revoking the IFE-37 licence of Banex International Bank, Inc. That entity is not linked to ether.fi in any first-party document, and the provider file's "BANEX Microfinance Bank" (Nigeria) is a different name; I did not connect them. The Cayman register has no free search.
+- **Onchain.** CashModule proxy on OP: creation tx 0x96728edf...f240, code size 0 at block 149521157 and 122 at 149521158 (2026-03-27 19:51:33 UTC). Spend event topic0 computed with `cast keccak` and checked against the sample tx 0xdb50399e...f565: emitter is the listed CashEventEmitter 0x380B...acB, word 3 is `totalUsdAmt` (6 decimals).
+
+Judgment calls:
+- **Fees and cash-out evidenced from help-centre pages.** These are first-party pricing pages, so I treat them as documented here. The CROPS seed cited the same help centre as `claimed`. The FX fee also appears in the cardholder agreement.
+- **ATM contradiction.** The international card terms say cash advances are not available. The help centre lists ATM limits. Both are recorded, and the reviewer should confirm.
+- **Card spend as `card_withdrawal`.** The schema has no card-spend method, so card spend at merchants is recorded as `card_withdrawal` and labelled in `limits`.
+- **Licences `unknown`, not `attested`.** No first-party page claims a licence for Third National; it only names the issuer.
+- **First deployment.** Dated to the OP core-chain CashModule (Mar 2026), not the earlier Scroll deployment, which I did not date.
+- **Volume spec, not `not_observable`.** Card spends emit a dedicated Spend event with a USD total on a listed contract.
+- **Changes date.** The account-upgrade page gives only "Apr 2026", so the change is dated 2026-04-01 and the summary says so.
+- **B4.2.** Recorded from the incident note ("key platforms" require hardware authentication). This is narrower than the control asks.
+- **Left `unknown`.** B1.1-B1.3, B1.5, B1.6, B2.2, B3.2 and B6.5: nothing was found. For ISO/SOC, the only mentions are about staking node operators.
+
+Validator: offline 0 errors; online 0 errors.

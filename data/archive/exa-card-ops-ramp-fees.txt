@@ -1,0 +1,35 @@
+Source: https://help.exactly.app/en/articles/14093183-onramping-offramping-fees-limits
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+Written by Mate July 29, 2026
+Table of contents
+Bridge
+Account Fees
+Account Creation & Maintenance: Fully sponsored — opening and maintaining your Virtual Account is completely free of charge.
+Sponsored Limits & Shared Quota
+Transaction Quota: Onramps and offramps through Bridge count toward a single, shared sponsored quota.
+Sponsored Limit: Exa sponsors your transaction fees up to $3,000 USD in cumulative volume or up to 60 transactions (whichever comes first).
+Wire Transfers: Wire transfers (US domestic) are not sponsored and carry standard fees from the first transaction.
+Post-Limit & Non-Sponsored Pricing
+Once you exceed your sponsored limit (or for non-sponsored transfer types like Wires), fees are automatically deducted per transaction.
+Onramping (Deposits to Exa)
+Fees are deducted from the received fiat amount prior to conversion to USDC:
+USD (ACH): 0.4%
+USD Wire (Domestic US): 1.0%
+EUR (SEPA): 0.7%
+GBP: 1.0%
+MXN: 1.0%
+Offramping (Withdrawals to Bank)
+Fees are deducted from the fiat amount after USDC conversion, prior to the bank transfer:
+USD (ACH): 0.4%
+USD Wire (Domestic US): 1.0%
+EUR (SEPA): 0.7%
+Note on Offramping Conversions: USD conversions (to/from USDC) execute at a direct 1:1 ratio. EUR transactions execute at the live market exchange rate displayed in the app prior to transaction confirmation.
+Manteca
+Fees
+There are no sponsored fees or separate transaction fees with Manteca. The currency conversion cost is already embedded in the exchange rate displayed to you — what you see is what you get.
+Limits
+Reset Period: Limits reset on a calendar monthly basis (not a rolling window).
+Scope: Limits are set per user, per currency.
+Reaching Your Limit
+When your limit is reached, your account will be temporarily blocked from creating new transactions. To request a limit increase, contact our support team — Manteca can expand your limits upon review of additional documentation.

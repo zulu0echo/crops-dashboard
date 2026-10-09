@@ -1,0 +1,761 @@
+slug: holyheld-card
+facts:
+  B2.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/contents/?ref=master
+        detail: "holyheld/hh-v1-sdk: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/contents/?ref=master
+        detail: "holyheld/hh-v1-sdk: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/contents/?ref=master
+        detail: "holyheld/hh-v1-sdk: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/rules/branches/master
+        detail: "holyheld/hh-v1-sdk: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/contents/?ref=master
+        detail: "holyheld/hh-v1-sdk: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/contents/?ref=master
+        detail: "holyheld/hh-v1-sdk: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/contents/?ref=master
+        detail: "holyheld/hh-v1-sdk: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: true
+          detail: "latest tags: 4.1.5, 4.1.4, 4.1.3"
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/tags
+        detail: "holyheld/hh-v1-sdk: latest tags: 4.1.5, 4.1.4, 4.1.3"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: 4 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/commits?per_page=10
+        detail: "holyheld/hh-v1-sdk: 4 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: all
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: true
+          detail: CHANGELOG file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/contents/?ref=master
+        detail: "holyheld/hh-v1-sdk: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: holyheld/hh-v1-sdk
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/holyheld/hh-v1-sdk/contents/?ref=master
+        detail: "holyheld/hh-v1-sdk: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: Holyheld's homepage says it is PCI DSS Level 1 compliant and undergoes independent security audits yearly. That is a card-data standard, not a SOC 2 or ISAE report, and no report or attestation of compliance is offered.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: unknown
+    note: No audit or independent code review of the top-up contract or the backend was found (CROPS S6 unknown); the deployed implementation is unverified.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: evidenced
+    value: Holyheld will notify the Swiss FDPIC and, where required, affected users of a data security breach where legally required; no notification time is stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/privacy-policy
+        detail: Privacy Policy (last updated 01.07.2026), data security section.
+        checked_at: 2026-10-09
+        quote: will notify the Federal Data Protection and Information Commissioner (FDPIC)
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: No public status page or post-mortem was found on holyheld.com (sitemap, legal pages, FAQ).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.1:
+    status: evidenced
+    value: Authenticator-app MFA protects all accounts and sensitive actions.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/
+        detail: Holyheld homepage, Security section.
+        checked_at: 2026-10-09
+        quote: All accounts and sensitive actions protected by authenticator app MFA
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: The SDK authenticates integrators with a Holyheld API key; the reference browser example ships it client-side (CROPS S5). Scoping and rotation are not documented.
+    refs:
+      - criterion: S5
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Personal data is kept while the account exists and then deleted or de-identified once no longer needed, subject to legal retention of transaction and account records; no period is stated (see CROPS P2 for what is collected).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/privacy-policy
+        detail: Privacy Policy, "For how long do we keep your data?".
+        checked_at: 2026-10-09
+        quote: We retain your Personal Data as long as you maintain an Account on the Platform
+    refs:
+      - criterion: P2
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: Holyheld Labs AG is the controller under the Swiss FADP; ID verification partners Sumsub and Idenfy supply verification data. The card issuer's role is not stated. DPIA availability not found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/privacy-policy
+        detail: Privacy Policy, opening paragraph and third-party sources.
+        checked_at: 2026-10-09
+        quote: is the data controller responsible for the collection of your personal data
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Holyheld Labs AG, Zug, Switzerland (CHE-207.939.735) for the platform; the card and e-money account are contracts with an issuer partner the Terms do not name.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/terms-and-conditions
+        detail: Terms and Conditions (last updated 01.07.2026), opening paragraph and clause 2.2.
+        checked_at: 2026-10-09
+        quote: Holyheld Labs AG is a member of a Self-Regulatory Organisation (SRO)
+      - tier: documented
+        kind: document
+        url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE207939735
+        detail: Swiss UID register, Holyheld Labs AG, Aktiengesellschaft, Bahnhofstrasse 20, 6300 Zug; commercial register status active.
+        checked_at: 2026-10-09
+        quote: CHE-207.939.735
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Customer fees. Individual membership is CHF 0 a year with 1% on-ramp and off-ramp fees and per-transfer fees; business membership is CHF 500 a year with 0.5% ramp fees.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/pricing/individual
+        detail: Individual pricing page.
+        checked_at: 2026-10-09
+        quote: Membership CHF 0 /YR
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/pricing
+        detail: Business pricing page.
+        checked_at: 2026-10-09
+        quote: CHF 500 /YR
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Holyheld may suspend, terminate or deactivate an account, including partner card services, at any time without notice, justification or liability. A user may close the account, including after a terms change within the 60-day notice period. Treatment of remaining balances is not stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/terms-and-conditions
+        detail: Terms and Conditions clause 17 (Termination).
+        checked_at: 2026-10-09
+        quote: You agree that Holyheld reserves the right to suspend, terminate and deactivate your Holyheld Account
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/terms-and-conditions
+        detail: Terms and Conditions clause 19 (changes and closing the account).
+        checked_at: 2026-10-09
+        quote: You acknowledge that you may close your Account without making any trades
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Automated fraud monitoring is listed as a feature; whether it uses AI and whether it can decline payments is not stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/pricing/individual
+        detail: Individual pricing page, Security and Support features.
+        checked_at: 2026-10-09
+        quote: Automated fraud monitoring
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.6:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B2.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.4:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B4.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.5:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B7.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B8.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: unknown
+    note: No first-party statement found in the documents listed in the research log (Operational 2026-10-09).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: 1% off-ramp (stablecoin to fiat) and 1% on-ramp transfers
+      basis: Individual pricing page; Terms clause 13 lets Holyheld change fees at any time with notice on the platform.
+      evidence_index: 0
+    - kind: cashout
+      paid_by: payer
+      amount: outgoing SEPA 1 EUR, same-day ACH 1 USD, wire 20 USD, FedNow and Faster Payments 0
+      basis: Individual pricing page.
+      evidence_index: 0
+    - kind: provider
+      paid_by: none
+      amount: membership CHF 0 a year (individual)
+      basis: Individual pricing page; membership is by invitation. No card issuance, card FX or ATM fees are published.
+      evidence_index: 0
+    - kind: network
+      paid_by: payer
+      amount: gas and any swap costs on the top-up transaction
+      basis: Terms clause 8.10 make the user responsible for fees to complete the transaction; the SDK's gasless options were not assessed.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/pricing/individual
+      detail: Holyheld individual pricing page (accounts, transfers and ramp fees).
+      checked_at: 2026-10-09
+      quote: 1% off-ramp transfers
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/legal/terms-and-conditions
+      detail: Terms and Conditions clause 8.10.
+      checked_at: 2026-10-09
+      quote: You are the sole responsible for executing the transaction correctly, which may include paying fees to complete the transaction
+  note: "Card fees (issuance, FX on non-base-currency spend, ATM) are not published on holyheld.com or in the Terms. Business pricing differs: CHF 500 a year, 0.5% ramp fees, wire 10 USD, SEPA 0 EUR. Whether the top-up into the card balance (CROPS S1) carries the 1% off-ramp fee is not stated."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: provider_custodial
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+    - criterion: S1
+      index: 2
+  note: A top-up sells the user's tokens to Holyheld; they go to a Holyheld EOA and the card balance is fiat held by the issuing partner (S1 = 0).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: evidenced
+  value:
+    - entity: Holyheld Labs AG
+      holder: provider
+      country: CH
+      regulator: VQF (self-regulatory organisation recognised by FINMA)
+      type: Financial intermediary, SRO member for AML/CTF supervision
+      activities: Financial-intermediary activity under the Swiss Anti-Money Laundering Act
+      register_url: https://www.finma.ch/en/authorisation/self-regulatory-organisations-sros/sro-member-search/
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.finma.ch/en/authorisation/self-regulatory-organisations-sros/sro-member-search/
+      archive: data/archive/holyheld-card-ops-finma-sro-search.txt
+      detail: FINMA SRO member search for "Holyheld" (client-rendered; result read in a browser and archived) lists Holyheld Labs AG, Zug, financial intermediary, SRO VQF.
+      checked_at: 2026-10-09
+      quote: "Self-regulatory organisation: VQF, Zug"
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/legal/terms-and-conditions
+      detail: Terms and Conditions opening paragraph on SRO membership and AML/CTF supervision.
+      checked_at: 2026-10-09
+      quote: Holyheld Labs AG is a member of a Self-Regulatory Organisation (SRO)
+  note: SRO membership is AML supervision, not a banking, payment or e-money licence. The card and e-money account come from a "licensed payment-instrument issuer" that the Terms, privacy policy, pricing and FAQ pages do not name, so its licence and regulator could not be checked. The pricing page also states PCI DSS Level 1, which is not a licence.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: evidenced
+  value:
+    - countries: [ALL]
+      method: card_withdrawal
+      partner: Unnamed licensed card issuer
+      fee: not published
+      limits: Card spend at merchants from the fiat balance created by a top-up (the schema has no card-spend value); limits not published.
+      evidence_index: 0
+    - countries: [ALL]
+      method: bank_transfer
+      partner: Holyheld's e-money partners (personal IBAN)
+      fee: 1% off-ramp; SEPA 1 EUR, ACH 1 USD, wire 20 USD
+      limits: Not published.
+      evidence_index: 1
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/legal/terms-and-conditions
+      detail: Terms definition of Card (debit card issued by the partnered payment-instrument issuer).
+      checked_at: 2026-10-09
+      quote: issued by the licensed payment-instrument issuer partnered with us
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/legal/terms-and-conditions
+      detail: Terms clause 3.5, bank transfer from the personal IBAN.
+      checked_at: 2026-10-09
+      quote: initiate a bank transfer to send Funds from your personal IBAN directly to other bank accounts
+  note: ALL means every country in the availability list (CH only, the scope of the published Terms). ATM withdrawal is not documented. Fees are from the individual pricing page (see fees).
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2023-03-12
+      block: 16810662
+      what: Card top-up proxy 0x6fC79dDD...3d13 (TransparentUpgradeableProxy) on Ethereum
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://etherscan.io/tx/0x05a9db2ba6842b60849608a661ff7e6b7c765c46fbf3e07fb8cd869fe1710e10
+        address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+        block_number: 16810662
+        detail: eth_getCode for the proxy returns 0x at block 16810661 and the proxy bytecode at 16810662 (2023-03-12 08:09:47 UTC); creation tx 0x05a9db2b...0e10 from deployer EOA 0xa1391419CC2fEc5235161d7A6Deb988cB9A1d043, which emits the first Upgraded event.
+        checked_at: 2026-10-09
+        recheck: cast codesize 0x6fC79dDD0379Fd11d67dD73056465e822b843d13 --block 16810661 --rpc-url https://eth.drpc.org; cast codesize 0x6fC79dDD0379Fd11d67dD73056465e822b843d13 --block 16810662 --rpc-url https://eth.drpc.org
+    note: Read on an archive-capable public RPC (eth.drpc.org) because ethereum-rpc.publicnode.com refuses historical state without a token.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Holyheld Labs AG
+      jurisdiction: CH-ZG
+      register_url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE207939735
+      registration_number: CHE-207.939.735
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE207939735
+        detail: Swiss UID register (Federal Statistical Office), Holyheld Labs AG, Aktiengesellschaft, Bahnhofstrasse 20, 6300 Zug; UID and commercial register status active, register reference CH-170.3.047.396-4.
+        checked_at: 2026-10-09
+        quote: Holyheld Labs AG
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/terms-and-conditions
+        detail: Terms and Conditions name the operator and its UID.
+        checked_at: 2026-10-09
+        quote: Holyheld Labs AG is a member of a Self-Regulatory Organisation (SRO)
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: unknown
+    note: No incident notice, status page or post-mortem was found on holyheld.com (sitemap including guides and case studies, legal pages, FAQ) or in the hh-v1-sdk repository.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2023-06-04
+        summary: Top-up proxy implementation upgraded to 0x49982cf8...eb17 (Upgraded event, block 17405136).
+        url: https://etherscan.io/tx/0x668cd053091a50d79df152c7525c3ed91099ca93826c6c3203541d0d44109355
+      - date: 2023-08-18
+        summary: Top-up proxy implementation upgraded to 0x177ad381...760d (block 17940103).
+        url: https://etherscan.io/tx/0x48588e8221c7d2e949cdd8798ed0fc526cd62423059b98c049983c2733a085d3
+      - date: 2023-11-16
+        summary: Top-up proxy implementation upgraded to 0x4ba2c617...e3a9 (block 18582243).
+        url: https://etherscan.io/tx/0x958030fe857d1097cd5b6ea0bb81723d00deb3266081ded004d93feb4e35e7cc
+      - date: 2024-07-11
+        summary: Top-up proxy implementation upgraded to 0xef84faa1...0972 (block 20281063).
+        url: https://etherscan.io/tx/0x4680b0d2fa6aff0c3cd65742b3013fc65d87fe4d519d974e57a895e14f60e698
+      - date: 2025-09-16
+        summary: Top-up proxy implementation upgraded to 0xa7dd4d0a...daab (block 23373807).
+        url: https://etherscan.io/tx/0x5a3ee8ca718953934136e24d7a6b2e15d6c01790cd5089b5ecdda503c7e7d6b0
+      - date: 2026-04-02
+        summary: Top-up proxy implementation upgraded to the current, unverified 0x1Fd0FB3F...A94a (block 24794076).
+        url: https://etherscan.io/tx/0xc7f491d8a7b184e5ebfbde4a71469de20a31f580a4820c43ee63d6a89e1df802
+      - date: 2026-07-01
+        summary: Terms and Conditions and Privacy Policy updated (last update 01.07.2026).
+        url: https://holyheld.com/legal/terms-and-conditions
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://eth.blockscout.com/address/0x6fC79dDD0379Fd11d67dD73056465e822b843d13
+        address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+        block_number: 24794076
+        detail: The proxy has emitted seven Upgraded(address) events (topic 0xbc7cd75a...2d3b), one at deployment (block 16810662) and six later upgrades listed here; upgrades go through ProxyAdmin 0xaf3d7e4c... whose owner is EOA 0xa1391419... (CROPS research log).
+        checked_at: 2026-10-09
+        recheck: curl -s "https://eth.blockscout.com/api?module=logs&action=getLogs&address=0x6fC79dDD0379Fd11d67dD73056465e822b843d13&topic0=0xbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b&fromBlock=0&toBlock=latest" | jq -r '.result[] | [(.blockNumber|tonumber), .topics[1], .transactionHash] | @tsv'
+      - tier: documented
+        kind: document
+        url: https://holyheld.com/legal/terms-and-conditions
+        detail: Terms and Conditions header.
+        checked_at: 2026-10-09
+        quote: Last Update 01.07.2026
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: unknown
+  spec:
+    chain_id: 1
+    addresses:
+      - "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+    topic0: "0x9ceec115c2a45921e2600d2b755ebc616954095419bc7f65758e65de024dbd33"
+    event: CardTopup(address indexed, address token, uint256, uint256, bytes32)
+    amount_word: 2
+    token: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+    decimals: 6
+    symbol: USDC
+    window_days: 30
+    exclusions: Sums data word 2 of every CardTopup event from the listed proxy, read as the USDC amount credited after any swap. Word layout inferred from the 73 events since block 25,500,000 (word 0 = input token, word 1 = input amount, word 2 = USDC amount; words 1 and 2 are equal on all 45 USDC top-ups and word 2 is 6-decimal on ETH, USDT, stETH and AAVE top-ups). The implementation is unverified, so the field meaning is not confirmed by source. Base and Solana top-ups are not included.
+  note: Top-ups into the card balance are logged as CardTopup events on the listed Ethereum proxy, so they can be separated from ordinary transfers. This counts value moved into card balances, not card spend. Not yet computed; the maintainer runs scripts/volumes.mjs.
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

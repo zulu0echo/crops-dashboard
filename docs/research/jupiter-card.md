@@ -31,3 +31,14 @@
 - Source: Jupiter docs, Jupiter Card page, "Supported Countries" and "Supported US States" (https://docs.jup.ag/user-docs/global/spend/jupiter-card). Archived as data/archive/jupiter-card-supported-countries.txt (one live fetch missed the quote). The Spend FAQ and Risks pages point to this list. No terms of service or cardholder agreement exists to cross-check (see above), so there is no prohibited-country list.
 - Model `allowlist`, 51 ISO codes: 50 of the 52 listed countries plus US.
 - Judgment calls: (1) Bangladesh and Nigeria are "on pause until further notice", so they are left out and named in `note`. (2) US is included because the page lists 31 supported states; the states are in `note`. (3) The page says unlisted countries are reviewed case by case during KYC; that is in `note`, and only listed countries are coded. (4) Evidence is `documented`, matching how this file already cites the Jupiter docs.
+
+## Operational 2026-10-09
+
+- Sources (Mintlify .md copies, quotes checked): docs.jup.ag Spend overview, Jupiter Card, Fees & Limits, Risks & Security, FAQ; docs.jup.ag/user-docs/legal terms-of-use (interface; Grand Cayman address, Panama law) and privacy-policy (Block Raccoon S.A., Panama, controller). Neither legal document mentions Spend. status.jup.ag covers trading APIs only. Rain pages as for the other Rain cards.
+- Fees: no annual fee; physical card $13.13 plus shipping; FX 1% (Rain) or 1.8% (DCS); ATM $1 + 0.65% (Rain only); deposit processing on non-Solana chains; Noah payout fees per corridor; DCS limits $50k/day.
+- Licences: attested (Jupiter says "regulated financial partners"; Rain's policy on Nimbus LLC). DCS and Noah not identified.
+- Cash-out: card spend everywhere in the availability list; ATM and Noah bank payout only for Rain-issued countries (bank also excludes Pakistan and Panama).
+- Custody: provider_custodial, refs S1[0] (S1 = 1).
+- Maturity: first_deployment unknown (no dated source; the public jup-ag/docs repo has no Spend pages); entity unknown (interface entities only); incidents = Rain platform incidents (Rain-issued cards only); changes unknown.
+- Note for the CROPS file: Fees & Limits now documents a "Wallet" withdrawal of USDC/USDT to a Solana address for some cards, which the S4 finding says is not documented. Not changed here (out of scope).
+- Group B: B4.1 (email code or Google/Apple, no second factor), B6.1, B6.3 (Global ID cannot be deleted), B6.4, B10.1, B11.1, B11.2, B11.3, B12.1 (dynamic merchant restriction by risk systems) from Jupiter docs; Rain-level facts for Rain-issued cards only.

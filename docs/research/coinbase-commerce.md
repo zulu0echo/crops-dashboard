@@ -63,3 +63,22 @@ Base. OnchainKit Checkout hard-switches to base.id and USDC on Base. The new Che
   - "Sudan" is mapped to SD only; South Sudan is not named.
   - The Terms bind merchants, but their supply clause also covers serving customers in those countries, so the blocklist applies to the product as a whole.
   - The protocol-level access (permissionless contract, self-operator path) is explained in `note`, not modelled, because the official product restricts these countries.
+
+## Operational 2026-10-09
+
+Facts are in `data/operational/coinbase-commerce.yaml`. The bot's B2.1, B2.3, B8.2 and B9.x facts are unchanged.
+
+- **Fees.** The Terms point to a Fee page that cannot be read (coinbase.com returns 403), and they allow fee changes with notice. Onchain, the last Base payment found (tx 0xb20c…e2fb, 2026-04-01) sent 0.03 of 3.00 USDC (1%) to the operator's fee destination and 2.97 USDC to the merchant. Gas for that payment: 235,051 at 0.005 gwei.
+- **Custody.** `self_custody`, consistent with S1 = 3.
+- **Licences.** Recorded as `absent` for Coinbase Bermuda Technologies Limited. The BMA regulated-entities register lists only two affiliates, Coinbase Bermuda Limited and Coinbase Bermuda Services Limited (both Class F). The relevant rows are archived at `data/archive/coinbase-commerce-ops-bma-register.txt`. No Commerce document names an affiliate, so no partner licence is recorded.
+- **Cash-out.** `not_applicable`: payments go to the merchant's own wallet ("We do not store the cryptocurrency you receive").
+- **First deployment.** 0x0305…b7a8 at block 21073248 (2024-10-14), per Sourcify. The README address 0xeADE…4971 was deployed earlier, on 2024-07-31. Older Base deployments not in the contracts list are not dated.
+- **Entity.** Coinbase Bermuda Technologies Limited, BM, taken from the Terms. No registrar lookup was done.
+- **Incidents.** From the Statuspage feed (status.commerce.coinbase.com/api/v2/incidents.json, 50 incidents since 2021). Recorded: the five incidents since 2024 with impact above "none". No security or fund-loss incident was found.
+- **Changes.** New Transfers contract (2024-10); Terms update (2025-10-29); last Base payment found (2026-04-01); OnchainKit deprecated (2026-09-22).
+- **Volume spec.** Transferred (topic0 0xb7ee…6e86) on both Base Transfers contracts, amount word 3 (spentAmount), token word 4 (spentCurrency), 30 days. The window will likely be empty.
+- **Group B recorded:**
+  - `absent` with search: B2.2, B3.1, B6.5.
+  - `evidenced`: B3.4 (status page, no post-mortems), B5.1, B5.2, B6.3, B6.4, B10.1, B11.1, B11.2, B11.3.
+  - `unknown`: B12.1. The policy says Commerce analyses blockchain data for fraud, but it does not say whether this is automated or AI.
+- **Not done.** coinbase.com security and trust pages return 403 and have no Wayback copy, so B1.x was not recorded.

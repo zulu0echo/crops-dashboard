@@ -1,0 +1,48 @@
+Source: https://help.ether.fi/en/articles/303623-what-are-the-transaction-limits-and-fees-for-personal-cash-credit-cards
+Retrieved: 2026-10-09 with curl; visible text extracted from the HTML.
+
+ Updated over 3 weeks ago
+Table of contents
+Core
+All ether.fi Cash members
+Luxe
+Unlocked at 5K Loyalty points
+Pinnacle
+Unlocked at 25K Loyalty points
+VIP
+Invitation only
+ATM withdrawals
+$1000 per transaction. Maximum of five(5) ATM withdrawals in any rolling 24 hour period ($5,000 total).
+$1000 per transaction. Maximum of five(5) ATM withdrawals in any rolling 24 hour period ($5,000 total).
+​
+​
+$1000 per transaction. Maximum of five(5) ATM withdrawals in any rolling 24 hour period ($5,000 total).
+⭐
+Foreign Exchange (FX) Fees and Refunds
+Where a transaction requires a currency conversion, ether.fi applies the prevailing FX base rate (~1%) and may add a foreign exchange margin on top of that base rate.
+The added margin varies depending on the applicable FX base rate and on the user's tier, within the following ranges. The added FX fee is charged in addition to the underlying FX base rate and is reflected in the converted amount applied to the transaction.
+Membership Level
+Added FX fee
+Core
+0-0.5%
+Luxe
+0-0.25%
+Pinnacle
+None
+VIP
+None
+For information on the VISA rate used, please visit https://usa.visa.com/support/consumer/travel-support/exchange-rate-calculator.html
+Refund transactions are processed based on the FX rate applied at the time the refund is settled, not necessarily the same rate as the original purchase or the one shown on the Visa FX calculator for that date.
+The Visa FX calculator provides indicative rates, but the final settlement rate can differ due to intermediary bank fees, network adjustments, or timing differences in how Visa processes the refund. These factors can lead to slight deviations, sometimes unfavorable, compared to the public reference rate.
+Can the Cash card be denominated in other currencies?
+The card uses USD-based currency currently, but will include native EURO currency support soon.
+💡 Note: ATM withdrawals are not allowed due to platform integrity and global compliance for the following FATF blacklist countries:
+Democratic People's Republic of Korea
+Iran
+Myanmar
+Related Articles
+What are the benefits of a personal Cash credit card?
+What's the foreign exchange (FX) rate used on Cash transactions?
+Managing your card and vault limits
+What's the FX markup on Cash transactions?
+What are the transaction limits for different Merchant Category Codes (MCCs)?

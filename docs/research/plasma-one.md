@@ -45,3 +45,20 @@ All onchain reads are pinned to Plasma block **34429835** (RPC https://rpc.plasm
   - The s1.1 catch-all (any OFAC, EU, OFSI or UN sanctioned jurisdiction) names no further countries, so none were added.
   - The occupied Ukrainian regions are sub-national; Ukraine as a whole is on the s1.2 list.
   - The US is not blocked: the US card programme exists alongside the International one.
+
+## Operational 2026-10-09
+
+- Sources (server-rendered, quotes checked): www.plasma.org/personal, /personal/core, /plasma-one-international-card-terms (disclosures effective 26 Feb 2026), /plasma-one-us-card-terms (last updated 12 Feb 2026), /terms-of-service (15 Jun 2026), /privacy-policy, /plasma-one-rewards, and Companies House 16405367. /security and /trust return 404.
+- Fees:
+  - International card: FX up to 1%, no cross-border fee; late fee up to 40 USD, returned payment up to 29 USD.
+  - US card: 1% international fee, no annual fee, 2% late fee.
+  - Core tier: 199 USD per year or 20,000 XPL locked. Plasma charges no added fees; partner FX and off-ramp fees are shown in the app.
+  - Per-tier card fees are in a Help Center that was not read.
+- Issuer contradiction: both card agreements define the issuer as Third National, while the site footer says the card is "issued by Rain, a Visa Principal Member". Licences are `unknown`: no regulator or licence number is given for either, and Bridge's entities were not checked.
+- Cash-out: card spend and Bridge off-ramp (rails by region). ATM access is not documented.
+- First deployment: bisecting eth_getCode on rpc.plasma.to puts Rain's collateral factory 0x36F5A315... (and the beacon) at block 17026601 (2026-03-19), creation tx 0x3885b508... from Rain EOA 0x21ebc2f2.... The Coordinator in use (0xd5dd7939..., block 33757874) and the Collateral implementation (block 33757857) were deployed on 2026-09-29 and are recorded under changes.
+- Volume: spec written over the listed Coordinator's AssetPulled event (topic0 0x114ae074..., from the Plasmascan-verified source). Data word 0 is the asset and word 1 the amount, checked on tx 0x32bbf2f4.... In a 3,000-block sample, 126 of 134 Coordinator logs were AssetPulled. Status `unknown` until the maintainer runs volumes.mjs. The figure would include any other Rain programme using this Coordinator.
+- Group B: B4.1 (authentication methods; MFA optional), B6.3 (retention), B6.4 (joint controllers), B11.1, B11.3, B12.1 (automated KYC/AML processing, not stated as AI) and B12.2 (human review only) are documented.
+- Judgment calls:
+  - The entity is Plasma (Cayman, CO-412800), not the UK affiliate.
+  - first_deployment dates the factory and beacon, not the newer Coordinator.

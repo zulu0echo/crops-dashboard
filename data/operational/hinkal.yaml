@@ -1,0 +1,1174 @@
+slug: hinkal
+facts:
+  B2.1:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: no security policy file
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: no security policy file
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: no security policy file
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: no security policy file
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: true
+          detail: "security policy file: SECURITY.md"
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: no security policy file
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-go: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/contents/?ref=main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: security policy file: SECURITY.md"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: no security policy file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B2.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: false
+          detail: no scanning config or workflow step found
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: no scanning config or workflow step found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-go: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/contents/?ref=main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: no scanning config or workflow step found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B8.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: no deployment configuration
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: no deployment configuration
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: no deployment configuration
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: no deployment configuration
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: false
+          detail: no deployment configuration
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: no deployment configuration
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-go: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/contents/?ref=main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: no deployment configuration"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.1:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/rules/branches/main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/rules/branches/main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/rules/branches/main
+        detail: "Hinkal-Protocol/hinkal-go: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/rules/branches/main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/rules/branches/main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/rules/branches/main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.2:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: no .github/workflows
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: no .github/workflows
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: no .github/workflows
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: no .github/workflows
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: false
+          detail: no .github/workflows
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: no .github/workflows
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-go: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/contents/?ref=main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: no .github/workflows"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.3:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: test command in a workflow
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: test command in a workflow
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: test command in a workflow
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: test command in a workflow
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: false
+          detail: test command in a workflow
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: test command in a workflow
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-go: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/contents/?ref=main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: test command in a workflow"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.4:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: false
+          detail: coverage tooling referenced
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: coverage tooling referenced
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-go: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/contents/?ref=main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: coverage tooling referenced"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.5:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: no tags
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: "latest tags: v20261008-bab6aa1, v20261008-22a9088, v20261006-c47f928"
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: true
+          detail: "latest tags: v0.1.0"
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: true
+          detail: "latest tags: 0.1.3, 0.1.2, 0.1.1"
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: true
+          detail: "latest tags: v0.0.4"
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: no tags
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/tags
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/tags
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: latest tags: v20261008-bab6aa1, v20261008-22a9088, v20261006-c47f928"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/tags
+        detail: "Hinkal-Protocol/hinkal-go: latest tags: v0.1.0"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/tags
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: latest tags: 0.1.3, 0.1.2, 0.1.1"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/tags
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: latest tags: v0.0.4"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/tags
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: no tags"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.6:
+    status: absent
+    value:
+      summary: none
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: 2 of 6 recent commits signed
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: 0 of 10 recent commits signed
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: 0 of 10 recent commits signed
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: 0 of 4 recent commits signed
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: false
+          detail: 3 of 10 recent commits signed
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: 1 of 10 recent commits signed
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/commits?per_page=10
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: 2 of 6 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/commits?per_page=10
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: 0 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/commits?per_page=10
+        detail: "Hinkal-Protocol/hinkal-go: 0 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/commits?per_page=10
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: 0 of 4 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/commits?per_page=10
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: 3 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/commits?per_page=10
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: 1 of 10 recent commits signed"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.7:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: no changelog or release notes
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: true
+          detail: 10 release(s) with notes
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: false
+          detail: no changelog or release notes
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: true
+          detail: 1 release(s) with notes
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: true
+          detail: CHANGELOG file
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: no changelog or release notes
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: 10 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-go: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: 1 release(s) with notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/contents/?ref=main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: CHANGELOG file"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: no changelog or release notes"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B9.8:
+    status: evidenced
+    value:
+      summary: some
+      repos:
+        - repo: Hinkal-Protocol/Hinkal-Contracts-Circuits
+          ok: false
+          detail: none found
+        - repo: Hinkal-Protocol/Hinkal-API-Enclave
+          ok: false
+          detail: none found
+        - repo: Hinkal-Protocol/hinkal-go
+          ok: true
+          detail: contribution section in README
+        - repo: Hinkal-Protocol/hinkal-ios-sdk
+          ok: false
+          detail: none found
+        - repo: Hinkal-Protocol/wdk-wallet-evm-hinkal
+          ok: false
+          detail: none found
+        - repo: Hinkal-Protocol/Hinkal-Demo-App
+          ok: false
+          detail: none found
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Contracts-Circuits: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-API-Enclave/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-API-Enclave: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-go/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-go: contribution section in README"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/hinkal-ios-sdk/contents/?ref=main
+        detail: "Hinkal-Protocol/hinkal-ios-sdk: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/wdk-wallet-evm-hinkal/contents/?ref=main
+        detail: "Hinkal-Protocol/wdk-wallet-evm-hinkal: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Demo-App/contents/?ref=main
+        detail: "Hinkal-Protocol/Hinkal-Demo-App: none found"
+        checked_at: 2026-10-09
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+    checked_at: 2026-10-09
+    assessed_by: repo-facts bot (scripts/repo-facts.mjs)
+    review:
+      status: pending
+  B1.1:
+    status: unknown
+    note: No ISO 27001 statement found for Novelty Today, Inc. in the docs (security audits, compliance, WaaS enclave pages), terms or privacy policy.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.2:
+    status: unknown
+    note: The docs say the enclave runs in a GCP Confidential VM; no certification of Hinkal's own hosting and support organisation was found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.3:
+    status: unknown
+    note: No SOC 2 or ISAE report or statement of availability found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.4:
+    status: evidenced
+    value: Contracts and circuits reviewed by zkSecurity, Zokyo, Quantstamp, Secure3, Hexens and Neodyme (reports mostly as Google Drive links, not read); Immunefi boost completed and HackenProof bounty ongoing. No review of the hosted backend, relayer or enclave service is listed.
+    refs:
+      - criterion: S6
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B1.5:
+    status: unknown
+    note: No penetration test of the hosted API, enclave or apps found.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.1:
+    status: unknown
+    note: The privacy policy (effective 21 July 2026) and terms contain no commitment to notify users or customers of security or data incidents.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B3.4:
+    status: unknown
+    note: status.hinkal.io does not resolve and no status page or post-mortem is linked from the docs.
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.1:
+    status: evidenced
+    value: Hosted API calls use a session (created by a wallet signature, bound to the address) plus a secp256k1 request signature per call bound to the route; no passwords, OAuth or JWT. Partner publishable keys work only from allowlisted Origins and are for attribution and fees, not authentication.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-api/description/authentication
+        detail: Hinkal API authentication page.
+        checked_at: 2026-10-09
+        quote: no passwords, and no API key is needed to authenticate
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/api-keys
+        detail: Partner API keys page, publishable and secret keys and origin checks.
+        checked_at: 2026-10-09
+        quote: Each API key is a publishable and secret pair
+    note: Applies only to the hosted API; the self-submitted contract path needs no API.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.2:
+    status: evidenced
+    value: Server-side partner calls use a secret key (hk_sk_live_ plus 64 hex) with no origin check; keys can be turned off, renamed or revoked (effective within a minute), 10 per company, no scopes, no expiry or rotation schedule, and no test keys.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/api-keys
+        detail: Partner API keys page, lifecycle and limits.
+        checked_at: 2026-10-09
+        quote: Revoke permanently disables both halves of the pair
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.3:
+    status: evidenced
+    value: API sessions are valid for 24 hours by default, with a caller-set expiry; partner API keys do not expire; partner portal sign-ins last 12 hours, with a 10-minute recent sign-in for sensitive actions.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-api/description/authentication
+        detail: Authentication page, sessions.
+        checked_at: 2026-10-09
+        quote: valid for 24 hours by default
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/settings-and-security
+        detail: Partner settings and security, sessions.
+        checked_at: 2026-10-09
+        quote: A sign-in lasts 12 hours.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B5.4:
+    status: evidenced
+    value: Partner transaction CSV exports are capped at 10,000 rows and rate-limited per company; logging of exports is not stated. Users get viewing keys and a downloadable history (O4).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/errors-and-limits
+        detail: Partner errors and limits page, limits and rate-limit tables.
+        checked_at: 2026-10-09
+        quote: CSV export
+    refs:
+      - criterion: O4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.1:
+    status: evidenced
+    value: The privacy policy states encryption in transit, access controls and least-privilege access; the enclave behind the API and WaaS runs in a GCP Confidential VM (AMD SEV memory encryption) in a separate GCP project. No data classification, encryption at rest for other systems or TLS version is stated.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal.io/privacy-policy
+        detail: Privacy policy, security section.
+        checked_at: 2026-10-09
+        quote: We use encryption in transit, access controls, and least-privilege access
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-waas/overview/secure-enclave
+        detail: WaaS secure enclave page.
+        checked_at: 2026-10-09
+        quote: GCP Confidential VM
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.3:
+    status: evidenced
+    value: Google Analytics 14 months from last visit; Microsoft Clarity recordings 30 days and saved data 9 months; visitor identification 12 months; contact details until unsubscribe or deletion request (email kept on a suppression list); on-chain data permanent. Deletion on request; no customer-termination clause.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal.io/privacy-policy
+        detail: Privacy policy (effective 21 July 2026), how long we keep it.
+        checked_at: 2026-10-09
+        quote: until you unsubscribe or ask us to delete them
+    refs:
+      - criterion: P2
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B6.4:
+    status: evidenced
+    value: The privacy policy is issued by Novelty Today, Inc. (Delaware) for its site, apps, SDK and API and names Chainalysis, analytics and hosting providers; it does not use controller or processor roles and mentions no DPIA. EEA/UK transfers use standard contractual clauses.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal.io/privacy-policy
+        detail: Privacy policy, contact paragraph.
+        checked_at: 2026-10-09
+        quote: Novelty Today, Inc., Delaware, United States
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B10.1:
+    status: evidenced
+    value: The docs cover the logical view (core concepts, cryptographic setup, circuits, EVM/TRON contracts, Solana program) and the integration view (API, SDKs, WaaS); infrastructure is described only for the enclave (GCP Confidential VM). Not versioned in a repository.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/protocol/core-concepts
+        detail: Protocol core concepts page and its sub-pages.
+        checked_at: 2026-10-09
+        quote: Core Concepts
+    refs:
+      - criterion: O4
+        index: 0
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.1:
+    status: evidenced
+    value: Novelty Today, Inc., Delaware, United States; terms under Delaware law with binding individual arbitration. Only relevant to the hosted interface, apps, SDK and API.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal.io/tos
+        detail: Terms of Service, governing law.
+        checked_at: 2026-10-09
+        quote: governed by the laws of the State of Delaware
+      - tier: documented
+        kind: document
+        url: https://hinkal.io/privacy-policy
+        detail: Privacy policy contact.
+        checked_at: 2026-10-09
+        quote: Novelty Today, Inc., Delaware, United States
+    note: The Delaware Division of Corporations search requires a CAPTCHA and was not used, so no register entry is cited.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.2:
+    status: evidenced
+    value: Per-transaction privacy fees on the hosted apps (25 to 35 bps) and a 10 bps Hinkal fee plus flat relay fee on API traffic, part of which is shared with partners. No treasury or annual report was found.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/fees-and-revenue-share
+        detail: Partner fees and revenue share.
+        checked_at: 2026-10-09
+        quote: "Hinkal fee: 10 bps"
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B11.3:
+    status: evidenced
+    value: Novelty Today may suspend or terminate interface access at any time without notice; users cancel by email. Funds stay in the Hinkal contract, which accepts self-submitted withdrawals, but proving still needs Hinkal-hosted zkeys (S4 = 0).
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal.io/tos
+        detail: Terms section 9, termination.
+        checked_at: 2026-10-09
+        quote: We may suspend or terminate your access to and use of the Interface at our sole discretion, at any time and without notice to you
+    refs:
+      - criterion: S4
+        index: 0
+      - criterion: S4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.1:
+    status: evidenced
+    value: Automated Chainalysis screening of depositing addresses before funds enter the private balance, with continuous re-screening; failing funds stay public and can only leave publicly. No statement on whether AI or a learned model is used.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/security-and-compliance/security-audits
+        detail: Security page, KYT screening section.
+        checked_at: 2026-10-09
+        quote: Every deposit is screened against Chainalysis before it enters the private balance
+    refs:
+      - criterion: C4
+        index: 1
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  B12.2:
+    status: evidenced
+    value: Screening outcomes are documented (funds failing screening remain public under the owner's control); no appeal or override, monitoring, validation, decommissioning or bias evaluation is documented.
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal-team.gitbook.io/hinkal/hinkal-compliance-gateway/screening-outcomes
+        detail: Compliance Gateway screening outcomes.
+        checked_at: 2026-10-09
+        quote: Funds that do not pass screening never enter the private balance.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+fees:
+  status: evidenced
+  value:
+    - kind: provider
+      paid_by: payer
+      amount: Hinkal Pay and Prime 25 bps on sends and unshield; shielding free
+      basis: Hinkal Pay fees page; deducted by the hosted relayer; Hinkal can change it.
+      evidence_index: 0
+    - kind: provider
+      paid_by: payer
+      amount: Hinkal Wallet 25 bps (shield, unshield, private sends), 35 bps swaps and bridges
+      basis: Hinkal Wallet fees page.
+      evidence_index: 1
+    - kind: provider
+      paid_by: payer
+      amount: API 10 bps Hinkal fee plus 0 to 100 bps partner fee, plus a flat relay fee
+      basis: Partner fees page; deposits are free; on EVM the fee is grossed up so the recipient gets the full amount.
+      evidence_index: 2
+    - kind: provider
+      paid_by: none
+      amount: None in the contract when the user submits the call (relay = 0)
+      basis: Hinkal.sol charges a relay fee only when a relayer is used.
+      evidence_index: 3
+    - kind: network
+      paid_by: payer
+      amount: Ethereum gas, paid directly or folded into the relay fee
+      basis: Fees pages say network gas is separate; varies with gas price.
+      evidence_index: 0
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://hinkal-team.gitbook.io/hinkal/hinkal-pay/fees
+      detail: Hinkal Pay fees table.
+      checked_at: 2026-10-09
+      quote: Depositing funds into a private balance is free
+    - tier: documented
+      kind: document
+      url: https://hinkal-team.gitbook.io/hinkal/hinkal-wallet/fees
+      detail: Hinkal Wallet fees table.
+      checked_at: 2026-10-09
+      quote: Public send bridge (cross-chain send)
+    - tier: documented
+      kind: document
+      url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/fees-and-revenue-share
+      detail: Partner fees and revenue share.
+      checked_at: 2026-10-09
+      quote: covers network and relaying costs
+    - tier: verified
+      kind: repo
+      url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/contracts/Hinkal.sol#L172-L230
+      commit: 61b6839aa80fc0c33bfdcde0323753c83cb2ce67
+      path: contracts/Hinkal.sol
+      detail: _internalTransact pays the relay fee only when relay is non-zero.
+      checked_at: 2026-10-09
+  note: Three fee regimes. The self-submitted contract path (the CROPS unit) charges no protocol fee; the hosted apps and API charge per operation. The flat relay fee amount comes from GET /get-fee and is not published.
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+custody_model:
+  status: evidenced
+  value: self_custody
+  refs:
+    - criterion: S1
+      index: 0
+    - criterion: S1
+      index: 1
+  note: "Agrees with S1 (score 1): funds sit in the non-upgradeable Hinkal pool and only the note owner's proof releases them; the terms say Novelty Today has no custody. The disclosed risk is that the timelock (6 h, 2-of-3 Safe) can swap the helper or verifiers, and withdrawals need Hinkal-hosted proving keys (S4 = 0). WaaS managed wallets, which hold keys in Hinkal's enclave, are outside the unit."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+licences:
+  status: absent
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://msb.fincen.gov/
+      archive: data/archive/hinkal-ops-fincen-msb-search.txt
+      detail: FinCEN MSB registrant search by legal name for "Novelty Today" and "Hinkal" returned no match (registry updated 10/05/2026).
+      checked_at: 2026-10-09
+      quote: System could not find matching data.
+    - tier: documented
+      kind: document
+      url: https://hinkal.io/tos
+      detail: Terms describe the company as a platform provider that does not hold, send or receive funds, and cite no licence.
+      checked_at: 2026-10-09
+      quote: we do not store, send, or receive any funds or cryptoassets
+  note: "Searched: FinCEN MSB registry (two names), the terms, privacy policy and compliance and security docs (no licence or regulator named). Not searched: state money-transmitter registers (NMLS), and registers outside the US. Integrity Check partners (zkMe, Galxe, AiPrise and others) were not looked up."
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+cashout:
+  status: not_applicable
+  reason: Withdrawals send tokens to an address the user chooses; converting them to local currency is outside the protocol and outside Hinkal's hosted services.
+  burden: institution
+  refs:
+    - criterion: C2
+      index: 1
+  checked_at: 2026-10-09
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending
+maturity:
+  first_deployment:
+    status: evidenced
+    value:
+      date: 2026-07-16
+      block: 25543753
+      what: Hinkal pool 0x7cb6…Cfa4 on Ethereum, created by factory 0x0c61…923c in tx 0x85f1ad3b…3284 (sender 0x0a0e…445c).
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://eth.blockscout.com/tx/0x85f1ad3bc33e75b4ad2f487f3976012c288343bbba7ff19c504546cc2c433284
+        address: "0x7cb60446d7635C68EDf1c568cac74A1f98c1Cfa4"
+        chain_id: 1
+        block_number: 25543753
+        detail: Blockscout shows tx 0x85f1ad3b…3284 in block 25543753 at 2026-07-16 07:32:11 UTC, a call to factory 0x0c61…923c whose internal create produced 0x7cb6…Cfa4; Sourcify's creation data gives the same transaction and block.
+        checked_at: 2026-10-09
+        recheck: curl -s "https://sourcify.dev/server/v2/contract/1/0x7cb60446d7635C68EDf1c568cac74A1f98c1Cfa4?fields=deployment" && curl -s https://eth.blockscout.com/api/v2/transactions/0x85f1ad3bc33e75b4ad2f487f3976012c288343bbba7ff19c504546cc2c433284 | jq .timestamp
+    note: This is the deployment in the unit of assessment. Hinkal ran earlier contract versions; those are outside the unit and were not dated.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  entity:
+    status: evidenced
+    value:
+      legal_name: Novelty Today, Inc.
+      jurisdiction: US-DE
+    evidence:
+      - tier: documented
+        kind: document
+        url: https://hinkal.io/privacy-policy
+        detail: Privacy policy names Novelty Today, Inc., Delaware, United States.
+        checked_at: 2026-10-09
+        quote: Novelty Today, Inc., Delaware, United States
+      - tier: documented
+        kind: document
+        url: https://hinkal.io/tos
+        detail: Terms name Novelty Today Inc. as the company providing the site, apps, SDK and API, under Delaware law.
+        checked_at: 2026-10-09
+        quote: governed by the laws of the State of Delaware
+    note: No company register entry; the Delaware search is CAPTCHA-protected.
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  incidents:
+    status: evidenced
+    value: []
+    evidence:
+      - tier: verified
+        kind: api
+        url: https://api.github.com/repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/security-advisories
+        detail: The contracts repository's published security advisories list is empty.
+        checked_at: 2026-10-09
+        recheck: gh api repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/security-advisories --jq length
+    note: "Searched: GitHub advisories, the docs (security audits, risks pages), terms and privacy policy. No incident affecting the Ethereum deployment found. Third-party incident databases were not used."
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+  changes:
+    status: evidenced
+    value:
+      - date: 2026-08-25
+        summary: HinkalTimelockController accepts ownership of the Hinkal pool (tx 0x3edad43a…fdaa) and its delay is set to 180 s.
+        url: https://eth.blockscout.com/tx/0x3edad43af4d9d5e3d18e116ecacd5e43ae94e7a9403465d75bb11467b942fdaa
+      - date: 2026-09-10
+        summary: Timelock minimum delay raised from 180 s to 21,600 s (6 h), tx 0x406f2509…5681.
+        url: https://eth.blockscout.com/tx/0x406f2509ce69313639c2c11b4a12f716d010bc13e400f0bd935055c4034f5681
+      - date: 2026-09-24
+        summary: Relayer allowlist changed through the timelock, addRelay 0xe6bd…ca5e and removeRelay of the deployer 0x0a0e…445c (txs 0x28dffe7c…b14d and 0xbc815985…491a).
+        url: https://eth.blockscout.com/tx/0x28dffe7c0e8d73f8f74d4c502eaf9be2273b22cbfd55f72c276f99571459b14d
+    evidence:
+      - tier: verified
+        kind: onchain
+        url: https://eth.blockscout.com/address/0xF04310839973454155d9886a4023451F8D3Db7D0
+        address: "0xF04310839973454155d9886a4023451F8D3Db7D0"
+        chain_id: 1
+        detail: Timelock logs since block 25500000. MinDelayChange events at blocks 25830061 (0 to 180) and 25948466 (180 to 21600). CallExecuted events decode to acceptOwnership() on Hinkal (25830662), updateDelay(21600) (25948466), acceptOwnership() on 0x7958…17a1 (25997086), and addRelay and removeRelay on the helper (26048813, 26048968).
+        checked_at: 2026-10-09
+        recheck: curl -s "https://eth.blockscout.com/api?module=logs&action=getLogs&fromBlock=25500000&toBlock=latest&address=0xF04310839973454155d9886a4023451F8D3Db7D0&topic0=$(cast keccak 'CallExecuted(bytes32,uint256,address,uint256,bytes)')"
+    note: The helper swap from 0x62Af…03F5 to 0x5f91…7C1b (S1) happened before the timelock took ownership and was not dated. Docs and terms changes are not versioned except the privacy policy date (21 July 2026).
+    checked_at: 2026-10-09
+    assessed_by: AI research agent (operational), 2026-10-09
+    review:
+      status: pending
+volume:
+  status: not_observable
+  reason: Hinkal's emitted events carry no public amount. NewCommitment has encrypted outputs and Nullified only a nullifier; NewTransaction and NewUtxo, which carry amounts, are declared in the ABI but no such logs exist from the pool since deployment (Blockscout, 2026-10-09). Deposit and withdrawal amounts appear only as ERC-20 Transfer logs on token contracts, which the spec cannot filter by counterparty.
+  note: Event topics counted from Blockscout getLogs over the pool since block 25543753 (NewCommitment 412, Nullified 343, BlockedUtxosCreated 99, VerifierRegistered 123, others administrative).
+  assessed_by: AI research agent (operational), 2026-10-09
+  review:
+    status: pending

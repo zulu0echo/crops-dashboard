@@ -327,6 +327,7 @@ availability:
       url: https://support.oobit.com/en/articles/15262464-is-oobit-available-in-my-country
       detail: Oobit's help article lists 75 countries and territories with whether the Oobit Visa card, transfers, sending and cashback are available in each, plus a not-supported list.
       quote: "Oobit is available in 75 countries and territories across six continents"
+      archive: data/archive/oobit-card-availability.txt
       checked_at: "2026-10-09"
     - tier: documented
       kind: document
