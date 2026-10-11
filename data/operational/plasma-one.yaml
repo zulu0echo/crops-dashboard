@@ -209,13 +209,13 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_spend
       partner: Third National (issuer), Rain (programme manager), Visa
       fee: FX up to 1% (International) or 1% (US); covered on Platinum
       limits: US card for US residents, International card for non-US citizens; spend is funded by Rain pulling USDT0 into collateral.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: Bridge (Bridge Building Inc. / Sp. z o.o. / Limited by residence)
       fee: partner fee shown in the app
@@ -348,3 +348,4 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
+  reason: "not computed on 2026-10-11: no blocks-per-day estimate for chain 9745"

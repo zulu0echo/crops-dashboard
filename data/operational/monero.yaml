@@ -226,21 +226,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
         detail: "monero-project/monero: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
         detail: "monero-project/monero-gui: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
         detail: "monero-project/monero-site: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -263,21 +263,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
         detail: "monero-project/monero: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
         detail: "monero-project/monero-gui: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
         detail: "monero-project/monero-site: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -300,21 +300,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
         detail: "monero-project/monero: deployment configuration: Dockerfile"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
         detail: "monero-project/monero-gui: deployment configuration: Dockerfile.android"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
         detail: "monero-project/monero-site: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -337,21 +337,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/rules/branches/master
         detail: "monero-project/monero: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/rules/branches/master
         detail: "monero-project/monero-gui: rules: deletion, non_fast_forward"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/rules/branches/master
         detail: "monero-project/monero-site: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -374,21 +374,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
         detail: "monero-project/monero: 3 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
         detail: "monero-project/monero-gui: 3 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
         detail: "monero-project/monero-site: 4 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -411,21 +411,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
         detail: "monero-project/monero: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
         detail: "monero-project/monero-gui: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
         detail: "monero-project/monero-site: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -448,21 +448,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
         detail: "monero-project/monero: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
         detail: "monero-project/monero-gui: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
         detail: "monero-project/monero-site: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -485,21 +485,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/tags
         detail: "monero-project/monero: latest tags: v0.18.5.3, v0.18.5.1, v0.18.5.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/tags
         detail: "monero-project/monero-gui: latest tags: v0.18.5.3, v0.18.5.2, v0.18.5.1"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/tags
         detail: "monero-project/monero-site: latest tags: 2026-07-21, 2026-07-08, 2026-05-12"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -522,21 +522,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/commits?per_page=10
         detail: "monero-project/monero: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/commits?per_page=10
         detail: "monero-project/monero-gui: 9 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/commits?per_page=10
         detail: "monero-project/monero-site: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -559,21 +559,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
         detail: "monero-project/monero: 10 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
         detail: "monero-project/monero-gui: 10 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
         detail: "monero-project/monero-site: 7 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -596,21 +596,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/monero-project/monero/contents/?ref=master
         detail: "monero-project/monero: CONTRIBUTING file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-gui/contents/?ref=master
         detail: "monero-project/monero-gui: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/monero-project/monero-site/contents/?ref=master
         detail: "monero-project/monero-site: CONTRIBUTING file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

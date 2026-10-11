@@ -241,6 +241,7 @@ scores:
         detail: monero, monero-gui and monero-site carry the BSD 3-clause licence; the meta repo (process documents) has no licence file and no running component needs it.
         checked_at: "2026-10-09"
         recheck: gh api "repos/monero-project/monero-gui/contents/LICENSE?ref=d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c" --jq .content | base64 -d | head -12
+        drift: true
     finding: >-
       Every repository needed to run the rail (node, wallet library, CLI and GUI) is BSD-3-Clause. The meta repository (process documents) has no licence file, but nothing needs it to run. It is not listed under repos because nothing runs from it.
     provider_response: null
@@ -266,6 +267,7 @@ scores:
         path: LICENSE
         detail: The LICENSE file's commit history since 2016 (14f75384) shows only copyright-year updates.
         checked_at: "2026-10-09"
+        drift: true
     finding: >-
       There is no CLA, copyright stays with each contributor, and the repo's contribution contract forbids copyright assignment, so no single party can relicense the code. No relicensing has happened. Judgment call: we read the no-assignment and share-alike rules as the written licence-stability commitment anchor 3 asks for.
     provider_response: null

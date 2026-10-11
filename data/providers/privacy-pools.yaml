@@ -399,6 +399,7 @@ scores:
         detail: The root LICENSE was MIT (Wonderland, 2024) at the initial commit and was replaced with Apache-2.0 in 6ae88dbe (2025-02-17); packages/contracts/LICENSE changed MIT to Apache-2.0 in 3efc7e7b (2025-02-18). There is no CLA or CONTRIBUTING file in the repo.
         checked_at: "2026-10-09"
         recheck: gh api "repos/0xbow-io/privacy-pools-core/commits?path=LICENSE&sha=d494b63e79f33bb2b0c8ece6cdacdca465c3b884" --jq '.[].sha'
+        drift: true
     finding: >-
       No CLA and no licence-stability commitment. The core repo was relicensed from MIT to Apache-2.0 before mainnet launch, both permissive. Judgment call: the anchor names any prior relicense event as 0; this one did not restrict users, but we follow the anchor and take the lower score.
     provider_response: null
@@ -667,7 +668,7 @@ scores:
 
 availability:
   model: blocklist
-  countries: [CU, KP, IR, SY]
+  countries: [ CU, KP, IR, SY ]
   note: >-
     The 0xbow terms bar Cuba, North Korea, Iran, Syria and the Russian-occupied regions of Crimea, Donetsk and Luhansk (in UA, not listed as a whole country), and say the list may change. The contracts have no geographic check, so anyone can deposit and ragequit, but private withdrawal depends on passing 0xbow's ASP screening, which the terms say may exclude sanctioned or high-risk addresses. We did not inspect the hosted site for an IP geoblock.
   evidence:

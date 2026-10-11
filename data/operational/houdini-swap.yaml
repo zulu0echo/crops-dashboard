@@ -16,15 +16,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -44,15 +44,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -72,15 +72,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -100,15 +100,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/rules/branches/main
         detail: "HoudiniSwap/houdiniswap-agent: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/rules/branches/main
         detail: "HoudiniSwap/houdini-api-examples: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -128,15 +128,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: 2 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -156,15 +156,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,15 +184,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -212,15 +212,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/tags
         detail: "HoudiniSwap/houdiniswap-agent: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/tags
         detail: "HoudiniSwap/houdini-api-examples: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -240,15 +240,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/commits?per_page=10
         detail: "HoudiniSwap/houdiniswap-agent: 3 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/commits?per_page=10
         detail: "HoudiniSwap/houdini-api-examples: 0 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -268,15 +268,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -296,15 +296,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -714,7 +714,7 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: exchange
       partner: Exchange partners selected by Houdini's routing engine (12 named CEXs)
       fee: Included in the all-in quote

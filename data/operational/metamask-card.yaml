@@ -13,9 +13,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -32,9 +32,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: dependabot config present"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -51,9 +51,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -70,9 +70,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/rules/branches/main
         detail: "MetaMask/metamask-mobile: rules: pull_request, non_fast_forward, required_status_checks, merge_queue, pull_request"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -89,9 +89,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: 93 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -108,9 +108,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -127,9 +127,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -146,9 +146,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/tags
         detail: "MetaMask/metamask-mobile: latest tags: v8.14.0, v8.13.1, v8.13.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -159,15 +159,15 @@ facts:
       repos:
         - repo: MetaMask/metamask-mobile
           ok: true
-          detail: 8 of 10 recent commits signed
+          detail: 10 of 10 recent commits signed
     evidence:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/commits?per_page=10
-        detail: "MetaMask/metamask-mobile: 8 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        detail: "MetaMask/metamask-mobile: 10 of 10 recent commits signed"
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,9 +184,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: CHANGELOG file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -203,9 +203,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: CONTRIBUTING file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -458,13 +458,13 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_withdrawal
       partner: Monavate (issuer), Mastercard
       fee: 0.5% token conversion where applicable; 1% cross-border on Free tier
       limits: Card spend at merchants (the schema has no card-spend value); 10,000 USD per transaction and 15,000 USD per day on Free tier.
       evidence_index: 0
-    - countries: [US]
+    - countries: [ US ]
       method: atm
       partner: Baanx US programme
       fee: 2% (Free tier); Metal free up to 1,200 USD per month

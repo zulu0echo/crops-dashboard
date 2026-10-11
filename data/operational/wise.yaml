@@ -25,33 +25,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -80,33 +80,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -135,33 +135,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -190,33 +190,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/rules/branches/main
         detail: "transferwise/digital-signatures-examples: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/rules/branches/master
         detail: "transferwise/digital-signatures: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/rules/branches/master
         detail: "transferwise/public-api-postman-collection: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/rules/branches/master
         detail: "transferwise/banks-reference-android: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/rules/branches/main
         detail: "transferwise/wise-platform-samples: rules: non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -245,33 +245,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -300,33 +300,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -355,33 +355,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -410,33 +410,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/tags
         detail: "transferwise/digital-signatures-examples: latest tags: v1.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/tags
         detail: "transferwise/digital-signatures: latest tags: 1.1, 1.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/tags
         detail: "transferwise/public-api-postman-collection: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/tags
         detail: "transferwise/banks-reference-android: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/tags
         detail: "transferwise/wise-platform-samples: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -465,33 +465,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/commits?per_page=10
         detail: "transferwise/digital-signatures-examples: 9 of 9 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/commits?per_page=10
         detail: "transferwise/digital-signatures: 2 of 5 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/commits?per_page=10
         detail: "transferwise/public-api-postman-collection: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/commits?per_page=10
         detail: "transferwise/banks-reference-android: 6 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/commits?per_page=10
         detail: "transferwise/wise-platform-samples: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -520,33 +520,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -575,33 +575,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

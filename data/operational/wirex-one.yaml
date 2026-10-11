@@ -13,9 +13,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
         detail: "wirexapp/wirex-baas-agent-skills: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -32,9 +32,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
         detail: "wirexapp/wirex-baas-agent-skills: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -51,9 +51,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
         detail: "wirexapp/wirex-baas-agent-skills: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -70,9 +70,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/rules/branches/main
         detail: "wirexapp/wirex-baas-agent-skills: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -89,9 +89,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
         detail: "wirexapp/wirex-baas-agent-skills: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -108,9 +108,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
         detail: "wirexapp/wirex-baas-agent-skills: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -127,9 +127,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
         detail: "wirexapp/wirex-baas-agent-skills: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -146,9 +146,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/tags
         detail: "wirexapp/wirex-baas-agent-skills: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -165,9 +165,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/commits?per_page=10
         detail: "wirexapp/wirex-baas-agent-skills: 0 of 1 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,9 +184,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
         detail: "wirexapp/wirex-baas-agent-skills: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -203,9 +203,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/wirexapp/wirex-baas-agent-skills/contents/?ref=main
         detail: "wirexapp/wirex-baas-agent-skills: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -637,19 +637,19 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_withdrawal
       partner: Wirex Limited (Novatti in AU and NZ), Visa or Mastercard
       fee: FX mark-up not published
       limits: Card spend at merchants from the smart-account balance (the schema has no card-spend value); limits not published.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: Wirex Card
       fee: not published for Wirex One
       limits: ATM withdrawals need the card PIN; limits not published.
       evidence_index: 1
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: Wirex and regulated third-party providers (account identifiers)
       fee: not published for Wirex One

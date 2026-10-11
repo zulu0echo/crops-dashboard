@@ -179,7 +179,7 @@ maturity:
     review:
       status: pending
 volume:
-  status: evidenced
+  status: unknown
   spec:
     chain_id: 1
     addresses:
@@ -203,17 +203,7 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
-  value:
-    from_block: 25940350
-    to_block: 26154850
-    computed_at: 2026-10-09
-    events: 8977
-    results:
-      - token: n/a
-        count: 8977
-        sum: "0"
-    calls: 215
-    rpc: configured
+  reason: "not computed on 2026-10-11: no RPC configured for chain 1 (set RPC_1)"
 facts:
   B2.1:
     status: absent
@@ -252,57 +242,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/contents/?ref=master
         detail: "tornadocash/tornado-core (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/contents/?ref=master
         detail: "tornadocash/tornado-classic-ui (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/contents/?ref=master
         detail: "tornadocash/tornado-cli (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/contents/?ref=master
         detail: "tornadocash/tornado-relayer (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/contents/?ref=master
         detail: "tornadocash/tornado-governance (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/contents/?ref=master
         detail: "tornadocash/tornado-subgraph (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/contents/?ref=master
         detail: "tornadocash/websnark (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/contents/?ref=master
         detail: "tornadocash/snarkjs (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/contents/?ref=master
         detail: "tornadocash/circomlib (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -343,57 +333,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/contents/?ref=master
         detail: "tornadocash/tornado-core (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/contents/?ref=master
         detail: "tornadocash/tornado-classic-ui (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/contents/?ref=master
         detail: "tornadocash/tornado-cli (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/contents/?ref=master
         detail: "tornadocash/tornado-relayer (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/contents/?ref=master
         detail: "tornadocash/tornado-governance (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/contents/?ref=master
         detail: "tornadocash/tornado-subgraph (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/contents/?ref=master
         detail: "tornadocash/websnark (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/contents/?ref=master
         detail: "tornadocash/snarkjs (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/contents/?ref=master
         detail: "tornadocash/circomlib (archived): no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -434,57 +424,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/contents/?ref=master
         detail: "tornadocash/tornado-core (archived): no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/contents/?ref=master
         detail: "tornadocash/tornado-classic-ui (archived): deployment configuration: Dockerfile"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/contents/?ref=master
         detail: "tornadocash/tornado-cli (archived): no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/contents/?ref=master
         detail: "tornadocash/tornado-relayer (archived): deployment configuration: Dockerfile"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/contents/?ref=master
         detail: "tornadocash/tornado-governance (archived): no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/contents/?ref=master
         detail: "tornadocash/tornado-subgraph (archived): no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/contents/?ref=master
         detail: "tornadocash/websnark (archived): no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/contents/?ref=master
         detail: "tornadocash/snarkjs (archived): no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/contents/?ref=master
         detail: "tornadocash/circomlib (archived): no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -525,57 +515,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/rules/branches/master
         detail: "tornadocash/tornado-core (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/rules/branches/master
         detail: "tornadocash/tornado-classic-ui (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/rules/branches/master
         detail: "tornadocash/tornado-cli (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/rules/branches/master
         detail: "tornadocash/tornado-relayer (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/rules/branches/master
         detail: "tornadocash/tornado-governance (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/rules/branches/master
         detail: "tornadocash/tornado-subgraph (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/rules/branches/master
         detail: "tornadocash/websnark (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/rules/branches/master
         detail: "tornadocash/snarkjs (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/rules/branches/master
         detail: "tornadocash/circomlib (archived): no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -616,57 +606,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/contents/?ref=master
         detail: "tornadocash/tornado-core (archived): 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/contents/?ref=master
         detail: "tornadocash/tornado-classic-ui (archived): 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/contents/?ref=master
         detail: "tornadocash/tornado-cli (archived): no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/contents/?ref=master
         detail: "tornadocash/tornado-relayer (archived): 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/contents/?ref=master
         detail: "tornadocash/tornado-governance (archived): 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/contents/?ref=master
         detail: "tornadocash/tornado-subgraph (archived): 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/contents/?ref=master
         detail: "tornadocash/websnark (archived): no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/contents/?ref=master
         detail: "tornadocash/snarkjs (archived): no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/contents/?ref=master
         detail: "tornadocash/circomlib (archived): no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -707,57 +697,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/contents/?ref=master
         detail: "tornadocash/tornado-core (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/contents/?ref=master
         detail: "tornadocash/tornado-classic-ui (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/contents/?ref=master
         detail: "tornadocash/tornado-cli (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/contents/?ref=master
         detail: "tornadocash/tornado-relayer (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/contents/?ref=master
         detail: "tornadocash/tornado-governance (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/contents/?ref=master
         detail: "tornadocash/tornado-subgraph (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/contents/?ref=master
         detail: "tornadocash/websnark (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/contents/?ref=master
         detail: "tornadocash/snarkjs (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/contents/?ref=master
         detail: "tornadocash/circomlib (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -798,57 +788,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/contents/?ref=master
         detail: "tornadocash/tornado-core (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/contents/?ref=master
         detail: "tornadocash/tornado-classic-ui (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/contents/?ref=master
         detail: "tornadocash/tornado-cli (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/contents/?ref=master
         detail: "tornadocash/tornado-relayer (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/contents/?ref=master
         detail: "tornadocash/tornado-governance (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/contents/?ref=master
         detail: "tornadocash/tornado-subgraph (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/contents/?ref=master
         detail: "tornadocash/websnark (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/contents/?ref=master
         detail: "tornadocash/snarkjs (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/contents/?ref=master
         detail: "tornadocash/circomlib (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -889,57 +879,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/tags
         detail: "tornadocash/tornado-core (archived): latest tags: v2.1, v2.0, 1.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/tags
         detail: "tornadocash/tornado-classic-ui (archived): no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/tags
         detail: "tornadocash/tornado-cli (archived): no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/tags
         detail: "tornadocash/tornado-relayer (archived): latest tags: v5.0.0-beta.12, v5.0.0-beta.11, v5.0.0-beta.10"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/tags
         detail: "tornadocash/tornado-governance (archived): latest tags: v3.0.0, v2.0.0, v1.0.3"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/tags
         detail: "tornadocash/tornado-subgraph (archived): no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/tags
         detail: "tornadocash/websnark (archived): latest tags: v0.0.10, v0.0.9, v0.0.8"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/tags
         detail: "tornadocash/snarkjs (archived): latest tags: v0.1.20, v0.1.19, v0.1.18"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/tags
         detail: "tornadocash/circomlib (archived): latest tags: v0.2.4, v0.2.3, v0.2.2"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -980,57 +970,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/commits?per_page=10
         detail: "tornadocash/tornado-core (archived): 7 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/commits?per_page=10
         detail: "tornadocash/tornado-classic-ui (archived): 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/commits?per_page=10
         detail: "tornadocash/tornado-cli (archived): 3 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/commits?per_page=10
         detail: "tornadocash/tornado-relayer (archived): 0 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/commits?per_page=10
         detail: "tornadocash/tornado-governance (archived): 1 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/commits?per_page=10
         detail: "tornadocash/tornado-subgraph (archived): 3 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/commits?per_page=10
         detail: "tornadocash/websnark (archived): 0 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/commits?per_page=10
         detail: "tornadocash/snarkjs (archived): 8 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/commits?per_page=10
         detail: "tornadocash/circomlib (archived): 8 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -1071,57 +1061,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/contents/?ref=master
         detail: "tornadocash/tornado-core (archived): 3 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/contents/?ref=master
         detail: "tornadocash/tornado-classic-ui (archived): no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/contents/?ref=master
         detail: "tornadocash/tornado-cli (archived): no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/contents/?ref=master
         detail: "tornadocash/tornado-relayer (archived): 9 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/contents/?ref=master
         detail: "tornadocash/tornado-governance (archived): no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/contents/?ref=master
         detail: "tornadocash/tornado-subgraph (archived): no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/contents/?ref=master
         detail: "tornadocash/websnark (archived): no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/contents/?ref=master
         detail: "tornadocash/snarkjs (archived): no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/contents/?ref=master
         detail: "tornadocash/circomlib (archived): no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -1162,57 +1152,57 @@ facts:
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-core/contents/?ref=master
         detail: "tornadocash/tornado-core (archived): none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-classic-ui/contents/?ref=master
         detail: "tornadocash/tornado-classic-ui (archived): CONTRIBUTING file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-cli/contents/?ref=master
         detail: "tornadocash/tornado-cli (archived): none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-relayer/contents/?ref=master
         detail: "tornadocash/tornado-relayer (archived): none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-governance/contents/?ref=master
         detail: "tornadocash/tornado-governance (archived): none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/tornado-subgraph/contents/?ref=master
         detail: "tornadocash/tornado-subgraph (archived): none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/websnark/contents/?ref=master
         detail: "tornadocash/websnark (archived): none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/snarkjs/contents/?ref=master
         detail: "tornadocash/snarkjs (archived): none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/tornadocash/circomlib/contents/?ref=master
         detail: "tornadocash/circomlib (archived): none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

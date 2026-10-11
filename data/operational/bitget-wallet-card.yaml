@@ -139,13 +139,13 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_spend
       partner: SR Saphirstein AG (Fiat24) as issuer, Mastercard
       fee: 0.15 per payment below 10 in the card currency; refunds 1 USD/EUR/CHF or 7 CNH
       limits: 10,000 EUR per day, 20,000 EUR per month (Standard tier); virtual card only, no PIN, so no ATM withdrawals
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: SR Saphirstein AG (Fiat24)
       fee: Free; 10 EUR or 10 CHF if returned
@@ -287,6 +287,7 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
+  reason: "not computed on 2026-10-11: eth_getLogs: Too Many Requests"
 facts:
   B1.1:
     status: unknown

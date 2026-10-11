@@ -16,15 +16,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: security policy file: SECURITY.md"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -44,15 +44,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -72,15 +72,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: deployment configuration: Dockerfile"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -100,15 +100,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/rules/branches/main
         detail: "Squads-Protocol/v4: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/rules/branches/main
         detail: "Squads-Protocol/public-v4-client: rules: deletion, non_fast_forward, pull_request"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -128,15 +128,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: 5 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -156,15 +156,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,15 +184,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -212,15 +212,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/tags
         detail: "Squads-Protocol/v4: latest tags: release-0.1.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/tags
         detail: "Squads-Protocol/public-v4-client: latest tags: v1.4.1, v1.4.0, v1.3.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -240,15 +240,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/commits?per_page=10
         detail: "Squads-Protocol/v4: 9 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/commits?per_page=10
         detail: "Squads-Protocol/public-v4-client: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -268,15 +268,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: CHANGELOG file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -296,15 +296,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-11
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-11
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -601,19 +601,19 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_spend
       partner: Lead Bank (issuer), Bridge (programme manager), Visa
       fee: none stated; 0% international
       limits: Virtual card only (Apple Pay in store); daily limit up to 2,000 USD by default. Available where the card is offered (see availability).
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: none
       fee: n/a
       limits: Not available; the cardholder agreement says ATM withdrawals are not available and the support page says the card cannot be used at ATMs.
       evidence_index: 1
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: not named on the page (Fuse's virtual bank accounts are powered by Bridge)
       fee: 1 USD ACH or 1 USD SEPA; no Fuse fee

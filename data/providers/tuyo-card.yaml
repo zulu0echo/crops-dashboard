@@ -213,6 +213,7 @@ scores:
         path: LICENSE.txt
         detail: Kernel is MIT (Copyright 2023 ZeroDev, Inc.).
         checked_at: "2026-10-07"
+        drift: true
     finding: >-
       The account contracts are MIT, but the required app, backend and card services are closed. 0.
     provider_response: null
@@ -366,7 +367,7 @@ notes: >-
 
 availability:
   model: blocklist
-  countries: [AF, BD, BY, CN, CD, CU, IN, IR, IQ, LB, LY, ML, MM, NP, NG, KP, RU, SO, SS, SD, SY, TR, UA, GB, VE, VN, YE, IL, NI, PR, VI, AS, GU, MP]
+  countries: [ AF, BD, BY, CN, CD, CU, IN, IR, IQ, LB, LY, ML, MM, NP, NG, KP, RU, SO, SS, SD, SY, TR, UA, GB, VE, VN, YE, IL, NI, PR, VI, AS, GU, MP ]
   note: >-
     Two layers, both from Tuyo's help guides (verified by Tuyo on 16 July 2026 against its Prohibitions page, last updated 15 July 2026). The 27 platform-wide prohibited jurisdictions block all Tuyo services, the card included. The card provider adds issuance exceptions; of these only Israel and Nicaragua are not already platform-wide prohibitions. The card provider also blocks card payments (spending) in CU, IR, KP, RU, SY, UA and VE. In the US, the card cannot be issued to residents of Arizona, Delaware, Georgia, Idaho, Louisiana, Maryland, Mississippi, Missouri, Nevada, New Mexico, North Dakota, Ohio, Oregon, Rhode Island, South Dakota, Tennessee, Vermont, Washington, Wisconsin or the District of Columbia. Puerto Rico, the U.S. Virgin Islands, American Samoa, Guam and the Northern Mariana Islands are also excluded. They have their own ISO codes, so they are in the list. The Terms of Service add a general exclusion of US-embargoed or sanctioned jurisdictions without naming them.
   evidence:

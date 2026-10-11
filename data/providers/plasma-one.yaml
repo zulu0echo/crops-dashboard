@@ -115,6 +115,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x00000000000000000000000021ebc2f23a91fd7eb8406cdce2fd653de280b5fc"
+        drift: true
       - tier: documented
         kind: document
         url: https://www.plasma.org/plasma-one-international-card-terms
@@ -414,6 +415,7 @@ scores:
           call: "0x8da5cb5b"
           expect: "0x00000000000000000000000021ebc2f23a91fd7eb8406cdce2fd653de280b5fc"
         recheck: cast call 0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb "allowance(address,address)(uint256)" 0xDc4930f1A410554D95ecd03A12500c573595BEB5 0xe0C209DbE0A57e664Bc63Df4247E25939AECb959 --block 34429835 --rpc-url https://rpc.plasma.to
+        drift: true
       - tier: claimed
         by: provider
         kind: document
@@ -502,7 +504,7 @@ notes: >-
 
 availability:
   model: blocklist
-  countries: [CU, IR, KP, AF, BY, BA, CF, CN, CD, GN, GW, HT, IN, IQ, IL, LY, ML, MM, NP, NI, RU, SO, SS, SD, SY, TR, UA, VE, VN, YE, ZW]
+  countries: [ CU, IR, KP, AF, BY, BA, CF, CN, CD, GN, GW, HT, IN, IQ, IL, LY, ML, MM, NP, NI, RU, SO, SS, SD, SY, TR, UA, VE, VN, YE, ZW ]
   note: >-
     From Appendix I (Prohibited Activities List) of the Terms of Service, last updated 15 June 2026. s1.1 prohibits Cuba, Iran and North Korea; the Crimea, Donetsk, Luhansk, Kherson and Zaporizhzhia regions of Ukraine; and any other jurisdiction under OFAC, EU, UK OFSI or UN sanctions, which are not named and so are not listed here. s1.2 lists 28 "Additional Restricted Jurisdictions" where Plasma "may" restrict or terminate access. They are included as the more restrictive reading, although the wording is discretionary. All of Ukraine is listed because s1.2 names Ukraine outside the s1.1 regions. FATF grey-list countries may face case-by-case review. The card comes in two programmes, both issued by Rain: a US card for US residents (US Consumer Card Terms) and an International card for non-US citizens. Bridge provides the account services through separate US, EEA and rest-of-world entities. Vault Services are additionally unavailable to New York residents.
   evidence:
