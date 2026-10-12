@@ -25,6 +25,7 @@ jobs:
         if: github.event_name != 'pull_request'
         run: npm run validate:offline
       - run: npm run build
+      - run: npm run check-links
       - name: No third-party scripts or fonts in the build
         run: |
           ! grep -rEn '<script|<link[^>]+href="https?://|@import|fonts\.(googleapis|gstatic)' dist --include='*.html' --include='*.css'

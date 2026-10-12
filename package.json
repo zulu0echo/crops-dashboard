@@ -10,6 +10,7 @@
     "validate": "node scripts/validate.mjs",
     "validate:offline": "node scripts/validate.mjs --offline",
     "build": "node scripts/build.mjs",
+    "check-links": "node scripts/check-links.mjs",
     "recheck": "node scripts/recheck.mjs",
     "test": "node scripts/rollup.mjs --self-check && node scripts/validate.mjs --self-check && node scripts/recheck.mjs --self-check && node scripts/repo-facts.mjs --self-check && node scripts/volumes.mjs --self-check",
     "review-list": "node scripts/review-list.mjs",
