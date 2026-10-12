@@ -3,7 +3,7 @@ name: AnomaPay
 type: transfer
 website: https://anomapay.app
 primary_chain:
-  name: BNB Smart Chain
+  name: BNB Chain
   chain_id: 56
   basis: >-
     Anoma's launch post and press release (2 Apr 2026) put the AnomaPay public beta on BNB Chain, and pa-evm bindings/src/addresses.rs (L32-L35) and the forwarder's addresses.rs map BinanceSmartChain to protocol adapter 0xFC44…2B68 and ERC20 forwarder 0xDe6A…840e. Unit: those two contracts and the RISC Zero verifier they call. Excluded: deployments on Ethereum, Base, Optimism, Arbitrum, Monad, Stable, MegaETH and Aurora (Base had a private beta), and the Solana adapter.

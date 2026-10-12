@@ -124,20 +124,17 @@ const pillarOf = (p, pl) => { const r = rollups[p.slug][pl.id]; return { ...r, u
 const critsOf = (pl) => criteria.criteria.filter((c) => c.pillar === pl.id);
 
 const BASELINE_NOTE = 'Incumbent rails have no public chain settlement and no public code. They are scored with the same rubric as every other row. Their low ratings show the verifiability gap between rails whose behaviour can be inspected and rails whose behaviour must be trusted; that gap is the point of the comparison, not a claim that the incumbent is unsafe.';
-const GROUPS = [['checkout', 'Checkout and invoicing'], ['card', 'Cards'], ['remittance', 'Remittance and wallets'], ['transfer', 'Transfers and privacy'], ['incumbent', 'Incumbent baseline']];
-// Within a group: strongest weakest-pillar first, then most evidence, then name. Ordering only; there is no composite score.
-const order = (a, b) => {
-  const k = (p) => [Math.min(...criteria.pillars.map((pl) => rollups[p.slug][pl.id].score)), criteria.criteria.filter((c) => !isUnknown(p.scores[c.id])).length];
-  const [x, y] = [k(a), k(b)];
-  return y[0] - x[0] || y[1] - x[1] || a.name.localeCompare(b.name);
-};
+const GROUPS = [['checkout', 'Checkout and invoicing'], ['card', 'Cards'], ['remittance', 'Remittance and wallets'], ['transfer', 'Protocols for privacy-preserving transfers', 'Privacy transfers'], ['incumbent', 'Incumbent baseline']];
+// Within a group: alphabetical by chain, then by name. Off-chain rails (no primary chain) sort by name. Ordering only; there is no ranking.
+const chainName = (p) => p.primary_chain?.name ?? '';
+const order = (a, b) => chainName(a).localeCompare(chainName(b)) || a.name.localeCompare(b.name);
 const grouped = GROUPS.map(([t, label]) => [t, label, providers.filter((p) => p.type === t).sort(order)]).filter(([, , list]) => list.length);
 const evidenced = (p) => criteria.criteria.filter((c) => !isUnknown(p.scores[c.id])).length;
 const reviewed = (p) => Object.values(p.scores).filter((c) => c.review?.status === 'reviewed').length;
 const provHead = (p, up = '') => `<th scope="row" class="rowhead"><a class="pname" href="${up}provider/${esc(p.slug)}/index.html">${esc(p.name)}</a><span class="psub">${p.primary_chain ? esc(p.primary_chain.name) : 'Off-chain'}</span></th>`;
 const filter = `<fieldset class="seg"><legend>Show</legend>
 <input class="sr" type="radio" name="t" id="t-all" checked><label for="t-all">All</label>
-${GROUPS.map(([t, label]) => `<input class="sr" type="radio" name="t" id="t-${t}"><label for="t-${t}">${label.split(' ')[0]}</label>`).join('')}
+${GROUPS.map(([t, label, short]) => `<input class="sr" type="radio" name="t" id="t-${t}"><label for="t-${t}">${esc(short ?? label.split(' ')[0])}</label>`).join('')}
 </fieldset>`;
 
 // One table, rows grouped by type. `cellsFor(p)` returns the <td>s; `head` the column headers.
@@ -171,7 +168,7 @@ page('index.html', 'Ratings', `
 <ul class="rules">
 <li><strong>A pillar is only as strong as its weakest criterion.</strong> One unchecked admin key is not averaged away. Each cell names the weakest criteria.</li>
 <li><strong>"No evidence" counts as zero.</strong> The burden of proof is on the evidence, not on you. The Evidence column shows how much of each provider has been assessed.</li>
-<li><strong>The CROPS tally counts, it does not score.</strong> It shows how many of the ${criteria.criteria.length} criteria hold up (Partial or Strong), fall short (Weak or Fails) or have no evidence. Every criterion counts once, so a high tally can still hide a pillar that fails. Read it next to the pillar ratings. Rows are grouped by type and ordered for scanning, not ranked; how to weigh the pillars is your call.</li>
+<li><strong>The CROPS tally counts, it does not score.</strong> It shows how many of the ${criteria.criteria.length} criteria hold up (Partial or Strong), fall short (Weak or Fails) or have no evidence. Every criterion counts once, so a high tally can still hide a pillar that fails. Read it next to the pillar ratings. Rows are grouped by type and sorted by chain, then name. The order is not a ranking; how to weigh the pillars is your call.</li>
 <li><strong>This is not a full risk assessment.</strong> It does not rate regulation, safeguarding of funds, legal recourse, operational track record, liquidity or cost. <a href="methodology/index.html#scope">What is out of scope</a></li>
 </ul>
 ${legend}

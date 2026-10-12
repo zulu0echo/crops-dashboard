@@ -65,7 +65,7 @@ Add an `availability` block to a provider file (schema: `properties.availability
 
 ## Privacy transfer protocols (added 2026-10-09)
 
-- Type: `transfer`. Group label on the site: "Transfers and privacy". Assess each as a payment rail: can a payer send value to a payee through it, and how does that flow score on the 23 criteria. See data/providers/tornado-cash.yaml for a complete, validated example of this type.
+- Type: `transfer`. Group label on the site: "Protocols for privacy-preserving transfers". Assess each as a payment rail: can a payer send value to a payee through it, and how does that flow score on the 23 criteria. See data/providers/tornado-cash.yaml for a complete, validated example of this type.
 - PSE's Private Transfers Analysis (private-transfers.pse.dev) is a third-party analysis: use it only to find the product and its links. It is never evidence (it would be `claimed`, `by: third_party`).
 - Own-chain protocols (Zcash, Monero, Aleo, Aztec, Miden, Intmax): `primary_chain` with `caip2` (e.g. `zcash:main`, `monero:mainnet`, `aztec:mainnet`), `basis` stating why that chain, and `contracts: []` if the chain has no contract addresses; eligibility then rests on the public repos needed to run the protocol (node, wallet). Where the address format does not fit the schema, cite repo and document evidence and say so in the research log instead of editing scripts.
 - Deployed means usable on a mainnet today. If a protocol is testnet-only, not yet launched, or shut down with no live contracts, do not create a provider file; report it in your final reply with the evidence.

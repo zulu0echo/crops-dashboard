@@ -3,7 +3,7 @@ name: ether.fi Cash
 type: card
 website: https://etherfi.gitbook.io/etherfi/products/cash
 primary_chain:
-  name: Optimism
+  name: OP Mainnet
   chain_id: 10
   basis: >-
     Optimism is the Cash core chain: ether.fi's deployed-contracts page says Cash v3 contracts are deployed on Optimism, the technical docs name it the core chain, and the April 2026 account upgrade moved Safes from Scroll. cash-v3 a5024d0 keeps the live roles and timelocks for chain 10 only (deployments/mainnet/10/roles.json#L1-L80); every read is pinned to OP block 157880645. Excluded: Scroll (534352, legacy core, no Spend events in the last 50,000 blocks) and the top-up chains (Ethereum, Base, Arbitrum, HyperEVM).
