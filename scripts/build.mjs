@@ -138,9 +138,14 @@ ${grouped.map(([t, name, list]) => `<tbody data-type="${t}"><tr class="group-row
 ${list.map((p) => `<tr>${provHead(p, up)}${cellsFor(p)}</tr>`).join('\n')}</tbody>`).join('\n')}
 </table></div>`;
 
+// CROPS tally: a count of criteria by outcome, the same split as the provider page's "At a glance". A count, not a weighted score.
+const tally = (p) => { const cs = criteria.criteria.map((c) => p.scores[c.id]); const unk = cs.filter(isUnknown).length; const holds = cs.filter((c) => !isUnknown(c) && c.score >= 2).length; return { holds, short: cs.length - unk - holds, unk, total: cs.length }; };
+const tallyCell = (p) => { const t = tally(p); const pct = (n) => `${((100 * n) / t.total).toFixed(2)}%`; return `<td class="tally"><a class="cell-link" href="provider/${esc(p.slug)}/index.html#h-glance"><span class="tally-num"><b>${t.holds}</b> of ${t.total} hold up</span><span class="tallybar" role="img" aria-label="${t.holds} hold up, ${t.short} fall short, ${t.unk} no evidence" style="--h:${pct(t.holds)};--s:${pct(t.short)}"></span><span class="spread">${t.short} fall short${t.unk ? ` · ${t.unk} no evidence` : ''}</span></a></td>`; };
+
 const overview = groupedTable('Ratings by pillar',
-  criteria.pillars.map((pl) => `<th scope="col"><a href="compare/index.html#pillar-${pl.id}">${esc(pl.name)}</a></th>`).join('') + '<th scope="col">Evidence</th>',
+  criteria.pillars.map((pl) => `<th scope="col"><a href="compare/index.html#pillar-${pl.id}">${esc(pl.name)}</a></th>`).join('') + '<th scope="col">CROPS tally<span class="cid">criteria held</span></th><th scope="col">Evidence</th>',
   (p) => criteria.pillars.map((pl) => { const r = pillarOf(p, pl); return `<td><a class="cell-link" href="provider/${esc(p.slug)}/index.html#pillar-${pl.id}">${rating(r.score, r.unknown)}</a><span class="spread">Weakest: ${r.limiting.slice(0, 2).map((id) => esc(byId[id].short)).join('; ')}${r.limiting.length > 2 ? ` +${r.limiting.length - 2}` : ''}</span></td>`; }).join('')
+    + tallyCell(p)
     + `<td class="cov"><span class="covbar" style="--v:${Math.round((100 * evidenced(p)) / criteria.criteria.length)}%"></span><span class="spread">${evidenced(p)} of ${criteria.criteria.length} evidenced<br>${reviewed(p)} reviewed</span></td>`);
 
 const legend = `<dl class="legend">${[3, 2, 1, 0].map((n) => `<div><dt>${rating(n)}</dt><dd>${MEANS[n]}</dd></div>`).join('')}<div><dt>${rating(0, true)}</dt><dd>Nobody has submitted checkable evidence yet. Counts as 0.</dd></div></dl>`;
@@ -157,7 +162,7 @@ page('index.html', 'Ratings', `
 <ul class="rules">
 <li><strong>A pillar is only as strong as its weakest criterion.</strong> One unchecked admin key is not averaged away. Each cell names the weakest criteria.</li>
 <li><strong>"No evidence" counts as zero.</strong> The burden of proof is on the evidence, not on you. The Evidence column shows how much of each provider has been assessed.</li>
-<li><strong>There is no overall score.</strong> Rows are grouped by type and ordered for scanning, not ranked. How to weigh the pillars is your call.</li>
+<li><strong>The CROPS tally counts, it does not score.</strong> It shows how many of the ${criteria.criteria.length} criteria hold up (Partial or Strong), fall short (Weak or Fails) or have no evidence. Every criterion counts once, so a high tally can still hide a pillar that fails. Read it next to the pillar ratings. Rows are grouped by type and ordered for scanning, not ranked; how to weigh the pillars is your call.</li>
 <li><strong>This is not a full risk assessment.</strong> It does not rate regulation, safeguarding of funds, legal recourse, operational track record, liquidity or cost. <a href="methodology/index.html#scope">What is out of scope</a></li>
 </ul>
 ${legend}
@@ -391,12 +396,12 @@ page('methodology/index.html', 'Methodology', `<div class="prose">${readFileSync
 page('contribute/index.html', 'Contribute', `<div class="prose">${readFileSync('site/contribute.html', 'utf8').replaceAll('%REPO%', repo)}</div>`, { section: 'contribute' });
 copyFileSync('site/style.css', join(OUT, 'style.css'));
 
-writeFileSync(join(OUT, 'data.json'), JSON.stringify({ generated: today, criteria, providers: providers.map((p) => ({ ...p, rollup: rollups[p.slug] })), operational_criteria: opsCriteria, operational }, null, 2));
+writeFileSync(join(OUT, 'data.json'), JSON.stringify({ generated: today, criteria, providers: providers.map((p) => ({ ...p, rollup: rollups[p.slug], tally: tally(p) })), operational_criteria: opsCriteria, operational }, null, 2));
 // CSV cells are quoted, and a leading = + - @ is neutralised so spreadsheets don't execute contributor text.
 const csv = (v) => { const s = String(v ?? ''); return '"' + (/^[=+\-@]/.test(s) ? "'" + s : s).replace(/"/g, '""') + '"'; };
 writeFileSync(join(OUT, 'grid.csv'), [
-  ['slug', 'name', 'type', 'chain', ...criteria.pillars.flatMap((pl) => [pl.id, `${pl.id}_limiting`])].map(csv).join(','),
-  ...providers.map((p) => [p.slug, p.name, p.type, p.primary_chain?.name ?? '', ...criteria.pillars.flatMap((pl) => [rollups[p.slug][pl.id].score, rollups[p.slug][pl.id].limiting.join(' ')])].map(csv).join(',')),
+  ['slug', 'name', 'type', 'chain', ...criteria.pillars.flatMap((pl) => [pl.id, `${pl.id}_limiting`]), 'holds_up', 'falls_short', 'no_evidence'].map(csv).join(','),
+  ...providers.map((p) => [p.slug, p.name, p.type, p.primary_chain?.name ?? '', ...criteria.pillars.flatMap((pl) => [rollups[p.slug][pl.id].score, rollups[p.slug][pl.id].limiting.join(' ')]), ...(({ holds, short, unk }) => [holds, short, unk])(tally(p))].map(csv).join(',')),
 ].join('\n') + '\n');
 
 writeFileSync(join(OUT, 'operational.csv'), [['slug', 'custody_model', 'licences', 'cashout_methods', 'first_deployment', 'entity', 'volume_status', 'volume_events', ...opsCriteria.controls.map((c) => c.id)].map(csv).join(','), ...providers.map((p) => { const op = operational[p.slug]; return [p.slug, op?.custody_model?.status === 'evidenced' ? op.custody_model.value : (op?.custody_model?.status ?? 'unknown'), op?.licences?.value?.length ?? '', (op?.cashout?.value ?? []).map((x) => x.method).join(' '), op?.maturity?.first_deployment?.value?.date ?? '', op?.maturity?.entity?.value?.legal_name ?? '', op?.volume?.status ?? 'unknown', op?.volume?.value?.events ?? '', ...opsCriteria.controls.map((c) => effectiveFact(p, op, c).status)].map(csv).join(','); })].join('\n') + '\n');
