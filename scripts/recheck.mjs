@@ -19,7 +19,8 @@ import { existsSync } from 'node:fs';
 import { parseDocument } from 'yaml';
 
 const RPC = { 1: 'https://ethereum-rpc.publicnode.com', 10: 'https://mainnet.optimism.io', 100: 'https://rpc.gnosischain.com', 137: 'https://polygon-bor-rpc.publicnode.com', 8453: 'https://mainnet.base.org', 42161: 'https://arb1.arbitrum.io/rpc', 42220: 'https://forno.celo.org', 534352: 'https://rpc.scroll.io', 43114: 'https://api.avax.network/ext/bc/C/rpc', 59144: 'https://rpc.linea.build', 122: 'https://rpc.fuse.io', 999: 'https://rpc.hyperliquid.xyz/evm', 9745: 'https://rpc.plasma.to', 56: 'https://bsc-rpc.publicnode.com' };
-const rpcFor = (chainId) => process.env[`RPC_${chainId}`] ?? RPC[chainId];
+// An unset repository variable arrives as an empty string; fall back to the public default.
+const rpcFor = (chainId) => process.env[`RPC_${chainId}`] || RPC[chainId];
 const WATCHED = /(^|\/)(LICEN[CS]E[^/]*|COPYING|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb?|Cargo\.lock|foundry\.lock|go\.sum|poetry\.lock|uv\.lock)$/i;
 const GH = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/blob\/([0-9a-f]{40})\/([^#?]+)/;
 const UA = { 'user-agent': 'crops-dashboard-refresh' };
