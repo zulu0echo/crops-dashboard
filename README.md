@@ -50,12 +50,12 @@ data/providers/*.yaml       one file per provider
 schema/                     JSON Schemas for both
 scripts/validate.mjs        schema + evidence rules + URL/commit resolution (CI on every PR)
 scripts/rollup.mjs          pillar = min of criteria; also prints the PR rollup diff
-scripts/recheck.mjs         nightly onchain + license/lockfile drift check
+scripts/recheck.mjs         weekly refresh: re-reads every cited source, marks drift
 scripts/build.mjs           the static site, into dist/
 data/operational/*.yaml     operational and procurement facts (second layer, never scored)
 data/operational-criteria.yaml  the due-diligence controls for that layer
-scripts/repo-facts.mjs      fills repository-practice facts from GitHub (nightly)
-scripts/volumes.mjs         verified volumes from chain logs (nightly)
+scripts/repo-facts.mjs      fills repository-practice facts from GitHub (weekly)
+scripts/volumes.mjs         verified volumes from chain logs (weekly)
 site/                       static page fragments, CSS, config.json
 ```
 
@@ -64,7 +64,7 @@ site/                       static page fragments, CSS, config.json
 GitHub Pages deploys from `.github/workflows/ci.yml` on every merge to `main`. In the
 repository settings, set **Pages → Source** to **GitHub Actions**. No secrets are needed.
 
-The nightly drift check (`.github/workflows/recheck.yml`) uses public RPC endpoints. To
+The weekly refresh (`.github/workflows/recheck.yml`, Mondays 03:17 UTC) uses public RPC endpoints. To
 use your own, set repository variables `RPC_1`, `RPC_100`, `RPC_8453` (or any
 `RPC_<chainId>`; add the variable to the workflow's `env`).
 

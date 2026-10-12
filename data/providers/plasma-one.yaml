@@ -115,12 +115,14 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x00000000000000000000000021ebc2f23a91fd7eb8406cdce2fd653de280b5fc"
+        drift: true
       - tier: documented
         kind: document
         url: https://www.plasma.org/plasma-one-international-card-terms
         quote: Plasma and Issuer reserve the right to block and terminate transactions and suspend access to your Account
         detail: Card Terms s5 let Plasma and the issuer block transactions and suspend accounts at any time.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The card settlement contracts are controlled by a single Rain EOA, and the Card Terms let Plasma and Rain block any cardholder's transactions at any time. Users cannot pull collateral out without a Rain signature because unsigned timelock withdrawals are switched off. EOA-held role with per-account blocking, so 0.
     provider_response: null
@@ -154,6 +156,7 @@ scores:
         quote: Plasma is not the program manager or the issuer of the Plasma One Card
         detail: The Terms place the card program with third parties; the International Card Terms name Rain as issuer under licence from Visa.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
@@ -177,6 +180,7 @@ scores:
         quote: "Prohibited jurisdictions include: Cuba, Iran, and North Korea"
         detail: Terms list prohibited and restricted jurisdictions and OFAC/EU/UK sanctions screening.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Geographic and sanctions restrictions are disclosed in the Terms and enforced in the closed backend, Rain and Sumsub, so the neutrality of the settlement layer cannot be shown from code and the screening cannot be bypassed (C2 = 0). Disclosed in docs only, so 1.
     provider_response: null
@@ -198,12 +202,14 @@ scores:
           call: "0x9be918e6000000000000000000000000b8ce59fc3717ada4c02eadf9682a9e934f625ebb"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
         recheck: cast call 0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077 "isSupportedAsset(address)(bool)" 0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb --block 34429835 --rpc-url https://rpc.plasma.to
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://www.plasma.org/terms-of-service
         quote: stablecoin issuers may have the contractual or technical ability to freeze, block, or blacklist tokens or addresses
         detail: The Terms warn of issuer freeze powers in general terms; no chain or validator assumptions are stated.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The collateral asset (USDT0) is enumerated in onchain Coordinator config read from verified source, and the Terms warn that stablecoin issuers can freeze addresses, without naming USDT0's blocklist. Plasma's validator set and inclusion assumptions are not stated. Judgment call: the generic freeze warning is not a per-token statement, so 2, not 3.
     provider_response: null
@@ -224,6 +230,7 @@ scores:
         check:
           call: "0x5c60da1b"
           expect: "0x00000000000000000000000005263d2448d8bd3dfb9b0b63b6585450c823c1a9"
+        confirmed_at: 2026-10-12
     finding: >-
       Rain's Coordinator and Collateral logic are verified on Plasmascan, but the beacon that decides which Collateral logic runs is not, nothing is on Sourcify, and the user wallet contract is not identified. Some contracts verified, so 1.
     provider_response: null
@@ -331,6 +338,7 @@ scores:
         quote: we may use Google Analytics for this purpose
         detail: The Privacy Policy discloses Google Analytics on the Service and other tracking technologies.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Analytics is present and disclosed in the privacy policy. The app is closed, so whether it is on by default or opt-in cannot be checked in code. Judgment call: disclosed analytics with no code to show opt-in is anchor 1.
     provider_response: null
@@ -347,6 +355,7 @@ scores:
         quote: Identity verification (KYC) conducted by SumSub
         detail: The Privacy Policy describes ID numbers, ID images, biometric face matching via Sumsub, and AML data.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Collection goes beyond settlement needs (identity documents, biometrics, AML data) and is disclosed in the privacy policy only. 1.
     provider_response: null
@@ -371,6 +380,7 @@ scores:
         quote: will be visible to other users of the Service and the public
         detail: The Privacy Policy says data interacting with the Plasma blockchain is visible to the public.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       No merchant data goes onchain, but each card funding is a public pull from a long-lived wallet into its own collateral, tagged with a Rain transaction id, so amounts and timing are linkable to the wallet. Public visibility is disclosed. Minimal linkage, documented, so 2. Judgment call: the sample is a Rain collateral on Plasma not confirmed as a Plasma One account.
     provider_response: null
@@ -387,6 +397,7 @@ scores:
         quote: key-management infrastructure provided by Privy
         detail: The Terms name Privy for wallet keys and Bridge for account services; the card terms name Rain and Visa; the privacy policy names Sumsub and Google Analytics.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Rain, Visa, Privy, Sumsub and Google see payment or identity data; they are disclosed in documents only and cannot be swapped. 1.
     provider_response: null
@@ -414,6 +425,7 @@ scores:
           call: "0x8da5cb5b"
           expect: "0x00000000000000000000000021ebc2f23a91fd7eb8406cdce2fd653de280b5fc"
         recheck: cast call 0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb "allowance(address,address)(uint256)" 0xDc4930f1A410554D95ecd03A12500c573595BEB5 0xe0C209DbE0A57e664Bc63Df4247E25939AECb959 --block 34429835 --rpc-url https://rpc.plasma.to
+        drift: true
       - tier: claimed
         by: provider
         kind: document
@@ -421,6 +433,7 @@ scores:
         quote: Plasma cannot access raw private key information for you
         detail: Plasma says it cannot access keys or initiate actions; this covers Plasma, not Rain.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Funds in collateral are released only by Rain's Coordinator, and users cannot withdraw without a Rain signature. The observed account grants its collateral an unlimited USDT0 allowance that Rain's pull operator uses, and a single Rain EOA can swap the collateral logic through the beacon. Rain can redirect funds, so 0. Judgment call: the allowance sample is not confirmed as a Plasma One account.
     provider_response: null
@@ -441,6 +454,7 @@ scores:
         check:
           slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
           expect: "0x0000000000000000000000006f3b5fd970ffe143e04f636b0d7c8a62def58740"
+        confirmed_at: 2026-10-12
     finding: >-
       Every collateral contract can be upgraded at once by a single Rain EOA through the beacon, with no timelock or notice; the factory is upgradeable by the same EOA. EOA admin, so 0.
     provider_response: null
@@ -478,6 +492,7 @@ scores:
         check:
           call: "0xe5b90e49"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
     finding: >-
       S1: collateral is Rain-controlled. C2: no direct settlement (0). C3: closed single-vendor (0). O3: no self-host path. Funds already in collateral cannot leave without Rain's signature, so they depend on Rain's liveness; balances left in the user's wallet stay under the user's Privy-managed key, but that wallet is not public code. 0.
     provider_response: null
@@ -502,7 +517,7 @@ notes: >-
 
 availability:
   model: blocklist
-  countries: [CU, IR, KP, AF, BY, BA, CF, CN, CD, GN, GW, HT, IN, IQ, IL, LY, ML, MM, NP, NI, RU, SO, SS, SD, SY, TR, UA, VE, VN, YE, ZW]
+  countries: [ CU, IR, KP, AF, BY, BA, CF, CN, CD, GN, GW, HT, IN, IQ, IL, LY, ML, MM, NP, NI, RU, SO, SS, SD, SY, TR, UA, VE, VN, YE, ZW ]
   note: >-
     From Appendix I (Prohibited Activities List) of the Terms of Service, last updated 15 June 2026. s1.1 prohibits Cuba, Iran and North Korea; the Crimea, Donetsk, Luhansk, Kherson and Zaporizhzhia regions of Ukraine; and any other jurisdiction under OFAC, EU, UK OFSI or UN sanctions, which are not named and so are not listed here. s1.2 lists 28 "Additional Restricted Jurisdictions" where Plasma "may" restrict or terminate access. They are included as the more restrictive reading, although the wording is discretionary. All of Ukraine is listed because s1.2 names Ukraine outside the s1.1 regions. FATF grey-list countries may face case-by-case review. The card comes in two programmes, both issued by Rain: a US card for US residents (US Consumer Card Terms) and an International card for non-US citizens. Bridge provides the account services through separate US, EEA and rest-of-world entities. Vault Services are additionally unavailable to New York residents.
   evidence:
@@ -512,16 +527,19 @@ availability:
       detail: Appendix I s1.1 Sanctioned Jurisdictions, which are prohibited for the platform and the card.
       quote: "Prohibited jurisdictions include: Cuba, Iran, and North Korea"
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://www.plasma.org/terms-of-service
       detail: Appendix I s1.2 Additional Restricted Jurisdictions, 28 countries from Afghanistan to Zimbabwe.
       quote: Afghanistan, Belarus, Bosnia and Herzegovina, Central African Republic, China (Mainland), the Democratic Republic of the
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://www.plasma.org/plasma-one-international-card-terms
       detail: The International Card is for non-US citizens; US residents use the separate US Consumer Card Terms.
       quote: you are signing up for a card that is intended for those outside of the United States
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
   checked_at: "2026-10-09"

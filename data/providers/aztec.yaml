@@ -114,6 +114,7 @@ scores:
         path: l1-contracts/src/core/EscapeHatch.sol
         detail: The escape hatch lets a bonded, randomly chosen candidate propose blocks during periodic windows, bypassing the sequencer committee.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/noir-projects/noir-contracts/contracts/app/token_contract/src/main.nr#L62-L77
@@ -171,6 +172,7 @@ scores:
         path: l1-contracts/src/core/EscapeHatch.sol
         detail: Block production is by a committee of 48 drawn from 3,085 staked attesters (getTargetCommitteeSize, getActiveAttesterCount on Rollup 0x91fF…8E34 at Ethereum block 26,153,545), with the escape hatch as fallback.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       No relayer, paymaster or company API is required. Users can run their own node from public code, sequencing and proving are open to stakers and provers, and the escape hatch is a fallback if the committee censors. Fees need Fee Juice bridged from L1, which is a protocol asset rather than a service. Aztec Labs' hosted RPC, network-config and snapshot hosts are conveniences with overrides.
     provider_response: null
@@ -221,6 +223,7 @@ scores:
         path: network_config.json
         detail: The mainnet network config lists bootnodes, snapshot hosts, the Registry and the L1 chain, and no token list. Recent L1-to-L2 messages (Ethereum blocks 26,144,545 to 26,153,545) came from an OperationExecutor 0xe883…9e19 and a TokenVaultPortal 0xD0b1…80d0 by Nyx.money, both Sourcify exact matches; the portal is Ownable.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       The rail does not enumerate the tokens a payee might receive: Fee Juice cannot be transferred, and payable assets are app-deployed token contracts bridged through third-party portals with their own owners, which the protocol neither lists nor describes. The sequencer, escape-hatch and upgrade assumptions are stated in the Alpha documentation. Scored 0: tokens not enumerated.
     provider_response: null
@@ -310,6 +313,7 @@ scores:
         detail: aztec-packages is Apache-2.0; AztecProtocol/networks (the default network config) has no licence file.
         checked_at: "2026-10-09"
         recheck: for r in aztec-packages networks; do echo $r $(gh api repos/AztecProtocol/$r --jq '.license.spdx_id // "none"'); done
+        confirmed_at: 2026-10-12
     finding: >-
       Everything needed to run the protocol is Apache-2.0. The network-config repo the node reads by default has no licence; the same mainnet values are compiled into the CLI (chain_l2_config.ts), so it is not critical. Scored 2: one non-critical repo unlicensed.
     provider_response: null
@@ -328,6 +332,7 @@ scores:
         detail: The LICENSE file changed from GPL-2.0 to Apache-2.0 in commit 356db7c7 (2023-02-28), four days after the initial commit, and its copyright holder changed to Aztec Foundation in 82e3c33d (2026-10-06); CONTRIBUTING.md mentions no CLA.
         checked_at: "2026-10-09"
         recheck: gh api "repos/AztecProtocol/aztec-packages/commits?path=LICENSE&per_page=10" --jq '.[]|[.sha[0:8],.commit.author.date,.commit.message[0:60]]|@tsv'
+        confirmed_at: 2026-10-12
     finding: >-
       There is no CLA and no licence-stability commitment. The monorepo's licence changed from GPL-2.0 to Apache-2.0 days after the repo was created, before any release. Judgment call: anchor 0 names any prior relicense event; this one was early and permissive, but under the take-the-lower-anchor rule we score 0.
     provider_response: null
@@ -490,6 +495,7 @@ scores:
         detail: Only the GovernanceProposer (sequencer signalling, 600 of 1,000 slots per round) can propose; execute() (L488-L506) runs arbitrary calls except to the governance asset. Read on Ethereum at block 26,153,545 with cast getConfiguration() on 0x1102…B75e - votingDelay 259200 s, votingDuration 604800 s, executionDelay 172800 s, gracePeriod 604800 s, quorum 20%, yea margin 33%; proposalCount 5.
         checked_at: "2026-10-09"
         recheck: cast call 0x1102471Eb3378FEE427121c9EfcEa452E4B6B75e "getConfiguration()((uint256,uint256),uint256,uint256,uint256,uint256,uint256,uint256,uint256)" --rpc-url https://ethereum-rpc.publicnode.com
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/AztecProtocol/aztec-packages/blob/49a592109ec4f18d79212b43d621891aaf36f7b6/l1-contracts/src/governance/Registry.sol#L59-L109
@@ -540,6 +546,7 @@ scores:
         detail: If the committee stops including a user's transactions, escape-hatch windows let a bonded candidate produce blocks; Outbox and FeeJuicePortal have no owner.
         checked_at: "2026-10-09"
         recheck: cast call 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 "getEscapeHatch()(address)" --rpc-url https://ethereum-rpc.publicnode.com
+        confirmed_at: 2026-10-12
     finding: >-
       Derived from S1=2, C2=2, C3=3 and O3=1. Funds are notes under the user's keys (S1), any node accepts a transaction (C2), and no company service is required (C3). If Aztec Labs disappeared, users could run a node and exit through the token's portal and the ownerless Outbox. Fee Juice cannot be withdrawn at all, and a bridged token's exit depends on its portal owner. We did not reproduce a self-hosted setup (O3=1). Judgment call: 2.
     provider_response: null
@@ -582,6 +589,7 @@ scores:
         path: SECURITY.md
         detail: SECURITY.md says a limited-scope bug bounty is being prepared and also links a Cantina bounty page for submissions; scope is not in the repo.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Audit reports exist for the L1 contracts and parts of the proving library, but we did not read them for pinned commits, and the project's own docs say no part of the stack has been fully audited and some circuits are under-constrained. A bounty page is linked, with scope outside the repo. Scored 1: reports only, nothing pinned.
     provider_response: null

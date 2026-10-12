@@ -70,7 +70,7 @@ Unknown is not zero in meaning, but it is zero in the pillar rollup. If you cann
 the artifact, the cell stays `unknown`. Never score from reputation. Where you make a
 judgment call between two anchors, say so in `finding`.
 
-### Onchain items the nightly job can re-check
+### Onchain items the weekly job can re-check
 
 Add a `check` to an onchain item that records a role or parameter (owner, pauser, proxy
 admin, Safe threshold, timelock delay):
@@ -85,7 +85,7 @@ check:
   expect: "0x...64 hex..."
 ```
 
-`expect` is the raw 32-byte word returned at `block_number`. The nightly job reads the
+`expect` is the raw 32-byte word returned at `block_number`. The weekly job reads the
 same word at the latest block and flags `drift: true` if it changed. It never edits scores, but a
 drifted cell counts as unknown in the pillar rollup until a human re-checks it and removes the flag.
 

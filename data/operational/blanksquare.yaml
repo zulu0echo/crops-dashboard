@@ -465,6 +465,7 @@ facts:
         detail: The fee quote is a POST to the relayer with a token and pocket-money payload only.
         checked_at: 2026-10-09
         quote: is equivalent to making a POST request to the `/quote_fees` endpoint of the relayer API
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/Cardinal-Cryptography/blanksquare-monorepo/blob/5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e/crates/shielder-relayer/README.md#L30-L65
@@ -472,6 +473,7 @@ facts:
         path: crates/shielder-relayer/README.md
         detail: The relayer's options cover RPC, keys, pricing, ports and fees, with no client authentication setting; the OpenAPI spec is served at /api.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -495,6 +497,7 @@ facts:
         detail: Docs index listing the protocol-details and integration-guides pages.
         checked_at: 2026-10-09
         quote: TEE-based Proof Delegation
+        confirmed_at: 2026-10-12
     refs:
       - criterion: O3
         index: 0
@@ -531,6 +534,7 @@ facts:
         check:
           call: "0xb1a076ea"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -601,6 +605,7 @@ fees:
       check:
         call: "0xb1a076ea"
         expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       url: https://github.com/Cardinal-Cryptography/blanksquare-monorepo/blob/5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e/contracts/ProtocolFee.sol#L13-L109
@@ -608,6 +613,7 @@ fees:
       path: contracts/ProtocolFee.sol
       detail: MAX_FEE_BPS is 500; the setters (called by onlyOwner functions in Shielder.sol L168-L184) revert above it; fees round up.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       url: https://github.com/Cardinal-Cryptography/blanksquare-monorepo/blob/5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e/crates/shielder-relayer/README.md#L49-L60
@@ -615,12 +621,14 @@ fees:
       path: crates/shielder-relayer/README.md
       detail: Relayer configuration table, service-fee-percent default 15%, relay gas estimate 2,000,000, max pocket money 0.1 native token, quote validity 15 s.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.blanksquare.io/integration-guides/fees.md
       detail: Understanding Fees page, protocol fee and relayer fee structure.
       checked_at: 2026-10-09
       quote: the amount the relayer charges for the service (calculated as a percentage of `relayer_cost`)
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: onchain
       url: https://basescan.org/tx/0x7abb4a49363a5a338df618ea184eeac84c5417103c4de8a5b4dfa662365c8c3e
@@ -753,6 +761,7 @@ maturity:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x000000000000000000000000fff44d366dedf9b2a531109e1a08bf9873c58b53"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.blanksquare.io/other/terms-and-conditions-shielder-service

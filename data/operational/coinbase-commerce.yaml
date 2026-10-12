@@ -28,6 +28,7 @@ fees:
       detail: Commerce Terms (last updated 2025-10-29), Fees section.
       checked_at: 2026-10-09
       quote: We reserve the right to change those fee(s) at our discretion with notice
+      confirmed_at: 2026-10-12
   note: The fee rate is from one observed payment, not from a fee schedule; the Fee page the Terms cite could not be read. The swap path adds Uniswap pool fees and slippage, paid by the payer, which are not itemised. No limits were found.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -58,6 +59,7 @@ licences:
       detail: The Bermuda Monetary Authority's register of regulated entities lists two Coinbase affiliates (Coinbase Bermuda Limited and Coinbase Bermuda Services Limited, both Class F digital asset business licences) and no entry for Coinbase Bermuda Technologies Limited.
       checked_at: 2026-10-09
       quote: Coinbase Bermuda Services Limited
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://web.archive.org/web/20260930113606/https://www.coinbase.com/legal/commerce/terms-of-service
@@ -65,6 +67,7 @@ licences:
       detail: The Commerce Terms name Coinbase Bermuda Technologies Limited as the provider and cite no licence or regulator for it.
       checked_at: 2026-10-09
       quote: Coinbase Bermuda Technologies Limited
+      confirmed_at: 2026-10-12
   note: 'Absent for the contracting entity. Searched: the BMA regulated-entities register (full page, string "Coinbase Bermuda Technologies" not found), the Commerce Terms and Privacy Policy. The affiliate Coinbase Bermuda Services Limited holds a BMA Class F licence covering payment services with digital assets (registration 202302681, effective 2023-09-15), but no Commerce document names it, so it is not recorded as a partner licence. Other Coinbase group licences (US, EU, UK) were not searched because the Commerce Terms name only the Bermuda entity.'
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -82,6 +85,7 @@ cashout:
       detail: Commerce Terms on the Merchant Wallet.
       checked_at: 2026-10-09
       quote: We do not store the cryptocurrency you receive as payment
+      confirmed_at: 2026-10-12
   note: The Privacy Policy mentions affiliates converting crypto to fiat and withdrawing to a bank account; no first-party cash-out terms for Commerce merchants were found (help.coinbase.com returns 403).
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -131,6 +135,7 @@ maturity:
         detail: Commerce Terms (last updated 2025-10-29) name the provider of the Services.
         checked_at: 2026-10-09
         quote: Coinbase Bermuda Technologies Limited
+        confirmed_at: 2026-10-12
     note: From the Terms only; the Bermuda Registrar of Companies entry was not looked up (its search is not machine-readable), so there is no register URL or number.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -166,6 +171,7 @@ maturity:
         detail: Statuspage incidents feed, 50 incidents from 2021-01-06 to 2026-03-20; listed here are those since 2024 (the onchain-protocol period) with impact above none.
         checked_at: 2026-10-09
         quote: Delayed Payment Confirmation
+        confirmed_at: 2026-10-12
     note: "Service incidents only; no security incident or loss of payment funds was found. Searched: the Commerce status page feed, the protocol repo (no SECURITY file, no advisories) and the org SECURITY.md. The 2025 Coinbase customer data incident concerned Coinbase retail accounts and is not recorded for Commerce; no Commerce primary source mentions it."
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -193,6 +199,7 @@ maturity:
         detail: CDP migration guide from the Commerce Charge API to the Checkouts API (undated page).
         checked_at: 2026-10-09
         quote: Migrate from Commerce Charge API to the Checkouts API
+        confirmed_at: 2026-10-12
     refs:
       - criterion: O1
         index: 0
@@ -269,6 +276,7 @@ facts:
         detail: The Commerce Terms contain no patch or vulnerability-remediation commitment.
         checked_at: 2026-10-09
         quote: Coinbase Commerce Terms of Service
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S6
         index: 1
@@ -324,6 +332,7 @@ facts:
         detail: The Commerce Privacy Policy (2024-12-03) has no breach-notification commitment; the Terms have none either.
         checked_at: 2026-10-09
         quote: Coinbase Commerce Privacy Policy
+        confirmed_at: 2026-10-12
     note: Searched both documents for notify, notification, breach and incident; the only notice commitment concerns changes to the arbitration agreement.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -339,12 +348,14 @@ facts:
         detail: Public status page with email and SMS subscription.
         checked_at: 2026-10-09
         quote: Coinbase Commerce Status
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://status.commerce.coinbase.com/api/v2/incidents.json
         detail: Incident feed with update texts.
         checked_at: 2026-10-09
         quote: Donations on Commerce Unavailable
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -359,6 +370,7 @@ facts:
         detail: Migration guide contrasts the Commerce X-CC-Api-Key header with the Checkouts API's bearer token with a CDP API key.
         checked_at: 2026-10-09
         quote: Switch from API key to JWT Bearer tokens
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S5
         index: 1
@@ -387,6 +399,7 @@ facts:
         detail: Section 4 of the Commerce Privacy Policy.
         checked_at: 2026-10-09
         quote: We retain your information as needed to provide our Services
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 1
@@ -405,6 +418,7 @@ facts:
         detail: Scope paragraph of the Commerce Privacy Policy.
         checked_at: 2026-10-09
         quote: This Policy does not apply to any processing which Coinbase Commerce carries out as a processor on behalf of Customers
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -419,6 +433,7 @@ facts:
         detail: The policy says Coinbase acts as processor for merchants but neither it nor the Terms reference a data processing agreement.
         checked_at: 2026-10-09
         quote: as a processor on behalf of Customers
+        confirmed_at: 2026-10-12
     note: Searched the Terms and Privacy Policy for processing agreement, addendum and DPA; the Wayback Machine has no snapshot of coinbase.com/legal/commerce/data-processing-agreement; coinbase.com returns 403 to curl.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -780,6 +795,7 @@ facts:
         detail: Commerce Terms opening paragraph.
         checked_at: 2026-10-09
         quote: Coinbase Bermuda Technologies Limited
+        confirmed_at: 2026-10-12
     note: Company-register entry not looked up; see maturity.entity.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -812,6 +828,7 @@ facts:
         detail: Termination section of the Commerce Terms.
         checked_at: 2026-10-09
         quote: We may terminate or suspend your access to and use of the Services with immediate effect
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 2

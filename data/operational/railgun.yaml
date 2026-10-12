@@ -37,6 +37,7 @@ fees:
       check:
         call: "0x053ed12a"
         expect: "0x0000000000000000000000000000000000000000000000000000000000000019"
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       url: https://github.com/Railgun-Privacy/contract/blob/36bcf5ed7cf94bfafb6e1a303e1832c769c16780/contracts/logic/RailgunLogic.sol#L316-L358
@@ -44,12 +45,14 @@ fees:
       path: contracts/logic/RailgunLogic.sol
       detail: transferTokenOut splits the note value with getFee(value, inclusive, unshieldFee), sends the base to the recipient and the fee to the treasury, and emits Unshield(to, token, base, fee). changeFee (L141-L155) is onlyOwner and caps each fee at BASIS_POINTS / 2.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.railgun.org/wiki/learn/railgun-deductions.md
       detail: Railgun's docs describe the 0.25% protocol deduction and broadcaster premiums set by individual broadcasters.
       quote: Broadcaster Premiums are up to the individual Broadcasters themselves
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
   checked_at: 2026-10-09
 custody_model:
   assessed_by: AI research agent (operational), 2026-10-09
@@ -113,6 +116,7 @@ maturity:
         detail: The docs describe changes as onchain protocol requests decided by RAIL stakers and name no company; the full docs index (docs.railgun.org/wiki/llms.txt), railgun.org and the Railgun-Privacy and Railgun-Community GitHub organisations (no company field) were searched for a legal entity.
         quote: Treasury funds never pass through a developer or team wallet, during an upgrade or otherwise.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: api
         url: https://api.github.com/orgs/Railgun-Privacy
@@ -1317,6 +1321,7 @@ facts:
         detail: The privacy-system page and its children (zero-knowledge cryptography, trusted setup, community broadcasters) describe the components; integrating-railgun pages cover SDKs and Adapt Modules.
         quote: The RAILGUN privacy system is a series of smart contracts that privatizes blockchain interactions.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B11.2:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1335,12 +1340,14 @@ facts:
         check:
           call: "0x01c37790"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000019"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.railgun.org/wiki/rail-token/rail-security-rewards.md
         detail: Treasury allocation to RAIL stakers.
         quote: 4.2% of the treasury tokens are allocated to the claiming mechanism every 2 weeks.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     note: The fees reward stakers, not a named maintainer; how contract and SDK development is paid for is not documented.
     checked_at: 2026-10-09
   B12.1:
@@ -1355,4 +1362,5 @@ facts:
         detail: The only screening in the path is the optional PPOI layer, which checks new shields against public lists; the contracts process transactions with or without it. Contracts (grep for sanction/ofac/country) and SDK (OFAC list check) contain list lookups only, no model or AI component.
         quote: is an optional compliance layer, separate from the core RAILGUN contracts, that screens new shields against public bad-actor lists.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09

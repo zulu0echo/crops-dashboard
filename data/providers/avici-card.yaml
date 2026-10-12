@@ -67,12 +67,14 @@ scores:
         detail: Avici's terms let it decline, restrict, suspend or pause any account or service at its discretion, which can stop card spending.
         quote: "We may decline, restrict, suspend, or pause access to any account or service at our discretion"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://avici.money/tosavicicard
         detail: The card terms let Avici and the issuer block transactions and suspend account access.
         quote: "Avici and Issuer reserve the right to block and terminate transactions and suspend access to your Account"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       No settlement contract could be assessed. The terms let Avici and the issuer block an individual's card and account at their discretion, with no notice period. That meets anchor 0.
     provider_response: null
@@ -90,12 +92,14 @@ scores:
         detail: Avici's docs say spends are charged against the escrow using its own "spend attestation", and that Avici periodically liquidates the spent USDC to settle with Visa.
         quote: "we liquidate the spent USDC amount from the card contract"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://avici.money/tosavicicard
         detail: The card program is issued by Third National under licence from Visa.
         quote: "The issuer for this card program is Third National"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       By Avici's own description, settlement needs Avici's spend attestation and its periodic liquidation, plus the issuer and Visa. No contract or ABI is published for a direct path. The provider's admission holds this at 0.
     provider_response: null
@@ -112,6 +116,7 @@ scores:
         detail: Avici's terms describe cards issued via Third National, ZeroDev wallet infrastructure, and onramps through Moonpay and Bridge.
         quote: "Visa cards issued via our card partner Third National"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The card flow depends on Avici's closed backend (escrow creation, spending-power API, attestations, liquidation), Sumsub, Third National and Visa. None of these is public or has a fallback.
     provider_response: null
@@ -128,6 +133,7 @@ scores:
         detail: Card access requires KYC with sanctions, watchlist and fraud screening.
         quote: "Sanctions, watchlist, and fraud screening"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Screening is disclosed in the terms but runs in closed services. The settlement contract is undisclosed, so its neutrality cannot be shown. Docs only, so 1.
     provider_response: null
@@ -145,6 +151,7 @@ scores:
         detail: The FAQ says only that the loan contract "is on EVM" and accepts deposits bridged from Solana. It names no chain or contract.
         quote: "The contract is on EVM but can accept deposits from Solana"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The token (USDC) is named, but the chain holding card collateral is not, and no freeze or sequencer assumptions are stated. Judgment call: without a chain, the dependencies are not enumerated, so 0.
     provider_response: null
@@ -168,6 +175,7 @@ scores:
         path: README.md
         detail: Avici-Labs has four public repos (v-mcp, redirectAvici, octane, meme50). None is the card, escrow contract, app or backend; octane is a 2024 Solana gasless relayer.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Nothing in the card payment path is public. Absence is the finding.
     provider_response: null
@@ -196,6 +204,7 @@ scores:
         detail: The required components (Avici backend, escrow contract, ZeroDev wallet stack, Sumsub, Third National, Visa) are third-party or provider services with no published source.
         quote: "Our EVM smart wallet infrastructure is powered by ZeroDev"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Required components are closed, so F1 is 0.
     provider_response: null
@@ -219,6 +228,7 @@ scores:
         detail: Avici's docs say Avici creates the escrow loan contract and provides the API for spending power, transaction history and card creation.
         quote: "We then create the escrow loan contract and provide the API"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       By the provider's own account, the card cannot run without Avici's hosted API and partners. Provider admission, so 0.
     provider_response: null
@@ -235,6 +245,7 @@ scores:
         detail: The privacy policy lists analytics and error reporting among the third parties it shares personal information with.
         quote: "analytics and error reporting"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Analytics and error reporting are disclosed in the policy. The app is closed and no trace was run, so presence and default state are unconfirmed. Documented cap, so 1.
     provider_response: null
@@ -251,6 +262,7 @@ scores:
         detail: For cards, the verification provider collects ID documents, personal details, address, tax identifiers, a selfie and liveness check, and biometric facial data.
         quote: "verification provider collects your identity documents"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Full KYC, including biometrics, is required for the card and disclosed in policy only. The wallet alone needs none. Collection goes beyond settlement needs. Disclosed in policy, so 1.
     provider_response: null
@@ -273,6 +285,7 @@ scores:
         detail: The policy lists sharing with identity verification, card issuing and payment networks, onramps, wallet infrastructure, hosting, analytics and AI model providers.
         quote: "card issuing and payment networks"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Third parties are disclosed by category, and some by name in docs (Sumsub, Third National, Visa, ZeroDev, Relay, Moonpay, Bridge). None can be swapped. No trace was run, so 1.
     provider_response: null
@@ -330,7 +343,7 @@ notes: >-
 
 availability:
   model: allowlist
-  countries: [AE, AG, AR, AU, BB, BD, BO, BR, BS, BZ, CI, CO, CR, DO, EC, EG, GD, GH, GT, GY, HK, HN, JP, KE, KN, KY, LC, MA, MX, MY, NZ, PA, PE, PH, PK, PY, SG, SN, SR, SV, TC, TH, TT, UG, US, UY, VC, ZA, ZM]
+  countries: [ AE, AG, AR, AU, BB, BD, BO, BR, BS, BZ, CI, CO, CR, DO, EC, EG, GD, GH, GT, GY, HK, HN, JP, KE, KN, KY, LC, MA, MX, MY, NZ, PA, PE, PH, PK, PY, SG, SN, SR, SV, TC, TH, TT, UG, US, UY, VC, ZA, ZM ]
   note: >-
     From the "Available Regions" tab of Avici's card regions page (50 entries, 49 codes). The list has both "Dominica Republica" and "Dominicana"; both names point to the Dominican Republic, so only DO is listed and Dominica (DM) is not, the more restrictive reading. US: only 31 states are supported for personal cards (AL, AK, AR, CA, CO, CT, FL, HI, IL, IN, IA, KS, KY, ME, MA, MI, MN, MT, NE, NH, NJ, NY, NC, OK, PA, SC, TX, UT, VA, WV, WY). The Avici Spend Card terms on avici.money require the holder to attest they are not a US citizen; US cardholders are on separate US card terms. The page also names 17 countries whose residents are prohibited (BY, CN, CU, IN, IR, IQ, IL, MM, NP, NI, KP, RU, SY, TR, UA, VE, VN, none of which are in the allowlist), says the card cannot be used to spend in CU, IR, KP, RU, SY, UA or VE, and says unlisted jurisdictions may still be restricted. The page also says the Avici self-custody smart wallet is available without restriction; this block covers the card only.
   evidence:
@@ -340,10 +353,12 @@ availability:
       quote: Please find below the lists for Available and Prohibited regions
       detail: Avici docs "Regions and Prohibitions for Avici Card" (GitBook Markdown copy listed in docs.avici.money/llms.txt), with tabs for Available Regions, Prohibited Regions and Supported US States.
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.avici.money/getting-started/secured-credit-cards/regions-and-prohibitions-for-avici-card.md
       quote: Avici Card services are unavailable for users to residents of the following countries
       detail: Prohibited Regions tab of the same page (17 countries), plus the list of countries where the card cannot be used to spend.
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
   checked_at: "2026-10-09"

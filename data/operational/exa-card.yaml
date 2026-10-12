@@ -566,6 +566,7 @@ facts:
         path: security/emergency-procedure.md
         detail: Emergency checklist; communication step has no deadline.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -587,6 +588,7 @@ facts:
         path: security/emergency-procedure.md
         detail: Emergency procedure introduction and emergency definitions.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -610,6 +612,7 @@ facts:
         detail: Help article on passkeys in the Exa App.
         checked_at: 2026-10-09
         quote: instead of typing a password, your device will communicate with the service to prove your identity
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 1
@@ -628,6 +631,7 @@ facts:
         path: common/AUTH_EXPIRY.ts
         detail: AUTH_EXPIRY = 24 * 60 * 60_000 ms.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/api/auth/authentication.ts#L454-L463
@@ -635,6 +639,7 @@ facts:
         path: server/api/auth/authentication.ts
         detail: After WebAuthn or SIWE verification the server sets a signed, httpOnly, secure credential_id cookie expiring at now + AUTH_EXPIRY.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -650,6 +655,7 @@ facts:
         path: server/middleware/auth.ts
         detail: Auth middleware rejects requests without a valid signed credential_id cookie (401).
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/api/auth/authentication.ts#L454-L463
@@ -657,6 +663,7 @@ facts:
         path: server/api/auth/authentication.ts
         detail: Cookie set after verifyAuthenticationResponse (WebAuthn) or SIWE validation.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -672,6 +679,7 @@ facts:
         path: server/hooks/panda.ts
         detail: Webhook handler verifies the signature header against each configured key and returns 401 otherwise.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     refs:
       - criterion: F3
         index: 0
@@ -691,6 +699,7 @@ facts:
         path: common/AUTH_EXPIRY.ts
         detail: AUTH_EXPIRY = 24 * 60 * 60_000 ms.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -705,6 +714,7 @@ facts:
         detail: Privacy Policy section 4 Data Security.
         checked_at: 2026-10-09
         quote: We use appropriate technical and organizational security measures to protect your personal data
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -719,6 +729,7 @@ facts:
         detail: Privacy Policy section 5 Duration of Data Processing.
         checked_at: 2026-10-09
         quote: Retention periods are determined based on the type of record
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -736,6 +747,7 @@ facts:
         detail: Privacy Policy opening paragraph and KYC section.
         checked_at: 2026-10-09
         quote: a company incorporated under the laws of Uruguay
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -763,6 +775,7 @@ facts:
         path: exa-app/the-exa-tech-stack.md
         detail: Tech-stack page with a layer diagram.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -778,12 +791,14 @@ facts:
         detail: App Terms opening paragraph.
         checked_at: 2026-10-09
         quote: a corporation incorporated under the laws of Uruguay
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
         detail: Card terms, definitions (Issuer) and section 14 Governing Law.
         checked_at: 2026-10-09
         quote: The issuer for this card program is Third National.
+        confirmed_at: 2026-10-12
     note: No Uruguayan company-register entry was checked.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -799,6 +814,7 @@ facts:
         detail: Card terms section 9 Termination.
         checked_at: 2026-10-09
         quote: we may suspend, revoke or cancel your Account privileges
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -817,6 +833,7 @@ facts:
         path: server/hooks/panda.ts
         detail: assess() posts each transaction (amount, merchant, MCC, country) to Sardine's /v1/issuing/risks endpoint.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/hooks/panda.ts#L271-L277
@@ -824,6 +841,7 @@ facts:
         path: server/hooks/panda.ts
         detail: The authorization assessment runs in a detached span; a high or very_high level only calls captureException.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -864,6 +882,7 @@ fees:
       detail: Exa Labs Spend Card Terms, Important Disclosures, Fees.
       checked_at: 2026-10-09
       quote: "Foreign Exchange Fee (non USD): up to 1.5%"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/9055779-exa-card-associated-fees-and-costs
@@ -871,6 +890,7 @@ fees:
       detail: Help article "Exa Card associated fees and costs" (Oct 2024).
       checked_at: 2026-10-09
       quote: We may charge an origination fee whenever you make a loan
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/11758961-how-to-withdraw-cash-from-an-atm-with-your-exa-card
@@ -885,6 +905,7 @@ fees:
       detail: Onramping and offramping fees and limits (Bridge and Manteca).
       checked_at: 2026-10-09
       quote: Fees are deducted from the fiat amount after USDC conversion, prior to the bank transfer
+      confirmed_at: 2026-10-12
   note: "No issuance, monthly or annual fee is stated; the card is virtual only (no physical card). Card terms and help centre differ on FX: the terms allow up to 1.5% FX plus up to 1.5% cross-border, the help centre says 1.5%. Judgment call: first-party help-centre pricing pages are treated as documented here."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -915,19 +936,19 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_withdrawal
       partner: Third National (issuer), Rain, Visa
       fee: FX up to 1.5% (+ up to 1.5% cross-border) on non-USD spend
       limits: Card spend at merchants (the schema has no card-spend value); 10,000 USD weekly purchase limit before source-of-funds checks; not usable in CU, IR, KP, RU, SY, UA, VE.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: Third National (issuer), Visa
       fee: 1 USD + 0.65% per withdrawal
       limits: 250 USD per withdrawal, 4 per day; contactless ATMs via Apple Pay or Google Wallet only (no physical card).
       evidence_index: 1
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: Bridge Ventures Inc.
       fee: USD ACH 0.4%, US wire 1.0%, EUR SEPA 0.7% after sponsored quota
@@ -940,6 +961,7 @@ cashout:
       detail: Card terms, purchases and restrictions; cash advances are not available under the card terms.
       checked_at: 2026-10-09
       quote: Cash advances and balance transfers are not available
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/11758961-how-to-withdraw-cash-from-an-atm-with-your-exa-card
@@ -947,6 +969,7 @@ cashout:
       detail: ATM article; withdrawal by tapping a phone wallet at a contactless ATM.
       checked_at: 2026-10-09
       quote: Up to $250 per withdrawal
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/13862897-bridge-terms-and-conditions
@@ -954,6 +977,7 @@ cashout:
       detail: Bridge Particular Terms, section 2.2 Offramp Service.
       checked_at: 2026-10-09
       quote: The Offramp Service enables users to send funds from their Exa Account to bank accounts
+      confirmed_at: 2026-10-12
   note: "Contradiction: the card terms say cash advances are not available while the help centre documents ATM withdrawals with fees. Recorded as the help centre states. Manteca (ARS, USD, BRL) is a deposit service only in its Exa terms and is not listed as a cash-out route."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -993,6 +1017,7 @@ maturity:
         detail: App Terms opening paragraph names EXA LABS S.A.S., incorporated under the laws of Uruguay.
         checked_at: 2026-10-09
         quote: a corporation incorporated under the laws of Uruguay
+        confirmed_at: 2026-10-12
     note: No company-register entry checked.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1021,6 +1046,7 @@ maturity:
         detail: Card terms Important Disclosures effective date.
         checked_at: 2026-10-09
         quote: Effective as of November 12th, 2024
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

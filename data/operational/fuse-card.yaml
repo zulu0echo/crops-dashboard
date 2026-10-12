@@ -325,6 +325,7 @@ facts:
         detail: Squads Trust Center (Comp AI) compliance overview listing SOC 2 Type 1 as the only framework, with a security questionnaire and documents on request.
         checked_at: 2026-10-09
         quote: SOC 2 Type 1
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -350,6 +351,7 @@ facts:
         detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
         checked_at: 2026-10-09
         quote: Vulnerability & Patch Management
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -365,6 +367,7 @@ facts:
         detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
         checked_at: 2026-10-09
         quote: Incident Response & Breach Notification
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -380,6 +383,7 @@ facts:
         detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
         checked_at: 2026-10-09
         quote: Disaster Recovery Policy
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -403,12 +407,14 @@ facts:
         detail: Fuse security overview, key roles and thresholds.
         checked_at: 2026-10-09
         quote: these keys operate on a 1/2 threshold
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://fusewallet.com/support/fuse-security
         detail: Fuse security overview, 2FA Key.
         checked_at: 2026-10-09
         quote: A 2FA Key that adds two-factor authentication for all transactions
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -423,6 +429,7 @@ facts:
         detail: Squads privacy policy (covers Fuse), section 7 Retention of Personal Information.
         checked_at: 2026-10-09
         quote: We retain the personal information we collect as described in this Privacy Policy for as long as you use the Services
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -437,6 +444,7 @@ facts:
         detail: Squads privacy policy, opening paragraph.
         checked_at: 2026-10-09
         quote: processing of personal information by Selimor Investments Limited d/b/a Squads
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -451,6 +459,7 @@ facts:
         detail: Fuse Pay announcement describing the Card Account and the Bridge spending limit.
         checked_at: 2026-10-09
         quote: You can set a daily Spending Limit for Bridge
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -465,12 +474,14 @@ facts:
         detail: Fuse Wallet and Card Terms of Service, opening paragraph.
         checked_at: 2026-10-09
         quote: entered into by and between Squads Inc.
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://www.bridge.xyz/card-agreements/fuse-card
         detail: Lead Bank Prepaid Visa Cardholder Agreement for Fuse Card.
         checked_at: 2026-10-09
         quote: issued to you by Lead Bank
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -485,12 +496,14 @@ facts:
         detail: Cardholder agreement, termination clause.
         checked_at: 2026-10-09
         quote: such amounts will be credited to your Platform Provider wallet in the form of Stablecoin
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://squads.xyz/legal/terms-of-service
         detail: Squads Terms s10.2 Termination.
         checked_at: 2026-10-09
         quote: Squads may terminate this Agreement at any time, with or without reason, upon thirty (30) days notice
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -530,24 +543,28 @@ fees:
       detail: Lead Bank Prepaid Visa Card long-form fee disclosure.
       checked_at: 2026-10-09
       quote: There are no fees to purchase a Card.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://www.bridge.xyz/card-agreements/fuse-card
       detail: Long-form disclosure, using the card outside the U.S.
       checked_at: 2026-10-09
       quote: A fee of 0% applies to the U.S. dollar amount of each transaction conducted with merchants outside of the U.S.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://fusewallet.com/support/fuse-visa-card
       detail: Fuse Card support page, card overview and FAQ.
       checked_at: 2026-10-09
       quote: No top-up fees or card transaction fees
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://fusewallet.com/support/bank-transfers
       detail: Fuse bank transfer options and fees.
       checked_at: 2026-10-09
       quote: "Fee: Zero Fuse fees. $1 ACH fees still apply."
+      confirmed_at: 2026-10-12
   note: The cardholder agreement leaves the annual-fee and per-transaction rows blank in its long-form table and says Platform Provider or Program Manager fees may apply to stablecoin sales; Fuse's pages state none. Spread on the USDC-to-USD conversion by Bridge is not stated.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -587,12 +604,14 @@ licences:
       checked_at: 2026-10-09
       quote: '"NAME":"Lead Bank"'
       recheck: curl -s 'https://api.fdic.gov/banks/institutions?filters=CERT:8283&fields=NAME,ACTIVE,REGAGNT,BKCLASS'
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://fusewallet.com/legal/terms-of-service
       detail: Fuse Terms name Lead Bank as the issuing FDIC member bank.
       checked_at: 2026-10-09
       quote: issued by Lead Bank, FDIC member bank
+      confirmed_at: 2026-10-12
   note: "Only the issuer is register-checked. Bridge Ventures LLC (programme manager) holds no stated licence for the card; Bridge's legal page says US account services are provided by Bridge Building Inc. (NMLS ID 2450917), which was not checked in NMLS Consumer Access. Squads says it is not a bank or a digital asset custodian. The cardholder agreement says card funds are not FDIC insured."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -601,19 +620,19 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_spend
       partner: Lead Bank (issuer), Bridge (programme manager), Visa
       fee: none stated; 0% international
       limits: Virtual card only (Apple Pay in store); daily limit up to 2,000 USD by default. Available where the card is offered (see availability).
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: none
       fee: n/a
       limits: Not available; the cardholder agreement says ATM withdrawals are not available and the support page says the card cannot be used at ATMs.
       evidence_index: 1
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: not named on the page (Fuse's virtual bank accounts are powered by Bridge)
       fee: 1 USD ACH or 1 USD SEPA; no Fuse fee
@@ -626,24 +645,28 @@ cashout:
       detail: Fuse Card support page, fees and international use.
       checked_at: 2026-10-09
       quote: There are no fees associated with using your Fuse Card.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://www.bridge.xyz/card-agreements/fuse-card
       detail: Cardholder agreement long-form disclosure, Get cash.
       checked_at: 2026-10-09
       quote: ATM withdrawals are not available.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://fusewallet.com/support/bank-transfers
       detail: Fuse bank transfer page with fees and the list of restricted countries of residence.
       checked_at: 2026-10-09
       quote: Bank transfers are not available for those with a primary residence in a country listed below
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://fusewallet.com/blog/fuse-off-ramp
       detail: Fuse Off-Ramp announcement, eligibility.
       checked_at: 2026-10-09
       quote: Fuse Off-Ramp is accessible to most users across the US and Europe.
+      confirmed_at: 2026-10-12
   note: The off-ramp announcement says US and Europe; the support page lists residence-based exclusions instead of an allowlist. Recorded as ALL with the exclusions in limits.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -692,12 +715,14 @@ maturity:
         detail: Squads Terms (of which the Fuse Terms form part) name Selimor Investments Limited, governed by BVI law; the privacy policy gives 19 Waterfront Drive, Road Town, Tortola.
         checked_at: 2026-10-09
         quote: Selimor Investments Limited
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://fusewallet.com/legal/terms-of-service
         detail: The Fuse Wallet and Card Terms name Squads Inc. as counterparty, with no jurisdiction.
         checked_at: 2026-10-09
         quote: entered into by and between Squads Inc.
+        confirmed_at: 2026-10-12
     note: "Judgment call. Three names appear: Squads Inc. (Fuse Terms counterparty), Squads Labs Inc. (card disclosures) and Selimor Investments Limited d/b/a Squads (Squads Terms and privacy policy, BVI). Selimor is recorded because it is the only one with a stated jurisdiction and the Fuse Terms form part of its terms. The BVI register is not publicly searchable; no register entry was checked."
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

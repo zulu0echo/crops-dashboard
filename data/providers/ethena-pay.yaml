@@ -174,6 +174,7 @@ scores:
           call: "0x112b6a67764c53bd00000000000000000000000000000000000000000000000000000000"
           expect: "0x00000000000000000000000074bd26adac5661dc02a7ecbffeb2defd3e928ee4"
         recheck: cast call 0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f "executor()(address)" --block 96949020 --rpc-url https://api.avax.network/ext/bc/C/rpc
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://snowscan.xyz/address/0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28
@@ -184,6 +185,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000dd2332ca4a4f8842ef7a4722ec087a236732b985"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://snowscan.xyz/address/0xdD2332Ca4A4f8842EF7a4722ec087A236732b985
@@ -194,12 +196,14 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000005"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://pay.ethena.fi/card-terms
         quote: reserve the right to block and terminate transactions and suspend access to your Account
         detail: Card Terms s5 let Ethena Pay and the Issuer block and terminate transactions and suspend account access at any time and for any reason.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Every card spend needs a co-signature from Ethena Pay's executor EOA, and the BatchExecutor that relays spends has an owner pause and recipient blocklist held by a 5-of-10 Safe with undisclosed signers and no timelock. The Card Terms let Ethena Pay and the issuer block transactions for any reason, so an individual cardholder can be cut off with no notice. The user's own funds are not frozen by these powers (direct mode, see S4), but the payment path is. Judgment call: as for other card products, the documented per-account block meets anchor 0.
     provider_response: null
@@ -244,12 +248,14 @@ scores:
         check:
           call: "0xdead610a0000000000000000000000006070848bd19c37488d0516058f2933dd992733de"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://pay.ethena.fi/card-terms
         quote: The card program is managed by Signify Holdings, Inc. d/b/a Rain
         detail: Card Terms name Rain as program manager and Third National as issuer under license from Visa.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       A card payment needs Ethena Pay's closed backend (authorisation, executor co-signer, relayer), Rain, Third National and Visa. No component of that path is public or has a fallback. Ethena Pay publishes no repository at all.
     provider_response: null
@@ -266,6 +272,7 @@ scores:
         quote: identity verification, sanctions screening, transaction monitoring, fraud screening
         detail: Terms of Use s4.8 subject access to identity verification, sanctions screening and transaction monitoring; s4.6 lists Restricted Jurisdictions and lets Ethena Pay refuse access for any reason.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0x27f6358aaa8b0F400Ef09135f9Bdf267c7b2Fc28
@@ -301,12 +308,14 @@ scores:
         check:
           call: "0xbd102430"
           expect: "0x00000000000000000000000000fec99ef111911f4c84e8a3c0bba93f3891d572"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://pay.ethena.fi/card-terms
         quote: means the Ethereum Blockchain, Polygon Blockchain, Optimism Blockchain, Arbitrum Blockchain
         detail: The Card Terms' Supported Blockchains list omits Avalanche, where the collateral actually sits; neither the Terms nor the FAQ state issuer freeze powers or chain assumptions.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Spendable tokens (USDe and USDC) are enumerated in verified onchain factory config. USDC carries Circle's blacklister and pauser, and payees are not told about these powers or about Avalanche's validator set. The Card Terms' Supported Blockchains list does not name Avalanche (it reserves the right to add others). Judgment call: onchain config read from a verified-source factory counts as "enumerated in code"; the generic chain list is not treated as a misstatement because it is explicitly open-ended. 2.
     provider_response: null
@@ -444,6 +453,7 @@ scores:
         quote: government-issued photo identification and related information
         detail: Privacy Policy lists name, address, date of birth, government ID, taxpayer ID, proof of address, source of funds and biometric or liveness data, plus device and usage data, shared with KYC/AML providers, card issuers and networks.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Collection goes well beyond settlement needs (identity, biometrics, source of funds, device data). It is disclosed in the privacy policy, with GDPR lawful bases for EEA/UK users, but not in any code or versioned repo document, so the documented cap applies: 1.
     provider_response: null
@@ -467,6 +477,7 @@ scores:
         quote: identity verification and KYC/AML service providers
         detail: The privacy policy describes collecting public wallet addresses from public blockchain networks but does not tell users that card spends are publicly visible and linkable to their wallet.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       No merchant data goes onchain, but every card spend is a public transfer from one long-lived wallet to a known Ethena Pay/Rain collateral address, so anyone can read a cardholder's spend amounts and timing; daily USDe boost payouts from a single Safe tag the wallet further. No fresh addresses. Judgment call: linkage is minimal but not documented to users, so below 2; it is not plaintext metadata, so 1 rather than 0.
     provider_response: null
@@ -483,6 +494,7 @@ scores:
         quote: The Sumsub Identity Verification Services Terms
         detail: Terms incorporate third-party terms for Sumsub (identity verification), Privy (authentication and embedded wallet) and Iron (fiat), and the Card Terms name Rain, Third National and Visa.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Rain, Third National, Visa, Sumsub and Privy all see payment or identity data; they are disclosed in the Terms only and cannot be swapped by the user. The app is closed, so further third parties (analytics, RPC) cannot be inventoried.
     provider_response: null
@@ -510,6 +522,7 @@ scores:
           call: "0xf3f514150000000000000000000000005d3a1ff2b6bab83b63cd9ad0787074081a52ef34"
           expect: "0x00000000000000000000000000000000000000000000021e19e0c9bab2400000"
         recheck: cast call 0x6455888e603177016cb1B266CFe86A0f7898C623 "dailyLimit(address)(uint256)" 0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34 --block 96949020 --rpc-url https://api.avax.network/ext/bc/C/rpc
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api?module=contract&action=getsourcecode&address=0xD71Fd74187f81a42e322E0A33945F9C263E37624
@@ -520,6 +533,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000dd2332ca4a4f8842ef7a4722ec087a236732b985"
+        confirmed_at: 2026-10-12
       - tier: claimed
         by: provider
         kind: document
@@ -527,6 +541,7 @@ scores:
         quote: Ethena Pay does not hold, manage, custody, or have access to your funds
         detail: The FAQ states Ethena Pay has no access to user funds.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Balances sit in the user's own wallet contract, but the Ethena Pay executor key can move up to 10,000 USDe and 10,000 USDC per wallet per day to an arbitrary address without the user's signature; the relayer contract's recipient allowlist does not bind direct calls to the wallet. At spend, funds pass to a Rain-controlled collateral pool. This contradicts the FAQ's "no access" statement. The provider can redirect funds (bounded per day), so 0.
     disputed: true
@@ -548,6 +563,7 @@ scores:
         check:
           slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
           expect: "0x000000000000000000000000ddaffdb1c5f0774ee734cf3491aafd4f0a678127"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://repo.sourcify.dev/43114/0xc831Ea25DEB7654679a438C78c4C5D1C313c8448
@@ -558,6 +574,7 @@ scores:
         check:
           call: "0x5c60da1b"
           expect: "0x000000000000000000000000b4446da2e3970776dcfd44e78b034c8243f91c75"
+        confirmed_at: 2026-10-12
     finding: >-
       All wallet logic is upgradeable through the factory, which a 5-of-10 Safe with undisclosed EOA signers can upgrade instantly via its ProxyAdmin; the 48-hour UPGRADE_DELAY inside the factory does not bind that path. The factory implementation is unverified. Multisig admin, no effective timelock, so 1.
     provider_response: null
@@ -595,6 +612,7 @@ scores:
         check:
           call: "0x112b6a6735f48b0400000000000000000000000000000000000000000000000000000000"
           expect: "0x000000000000000000000000badea7a22bc59e4e17de82fbfd476a02057ca56f"
+        confirmed_at: 2026-10-12
     finding: >-
       S1: funds sit in the user's wallet contract. C2: no direct settlement path (0). C3: closed single-vendor backend (0). O3: no self-host path. If Ethena Pay disappears, the card stops, but a user can enter direct mode and withdraw with their own key after 1 hour, by calling the verified facets manually (no public frontend or documented procedure exists). The path depends on facet mappings the admin Safe can change instantly (S2). Judgment call: a working exit exists only as a manual contract call, so 1, not 2.
     provider_response: null
@@ -619,7 +637,7 @@ notes: >-
 
 availability:
   model: allowlist
-  countries: [AR, BZ, BO, BR, CO, CR, EC, GT, GY, HN, MX, PA, PY, PE, SR, UY, BS, BB, KY, DM, DO, GD, KN, LC, VC, TT, TC, HK, JP, MY, PH, SG, TH, AE, CI, EG, GH, KE, SN, ZA, UG, ZM, NZ]
+  countries: [ AR, BZ, BO, BR, CO, CR, EC, GT, GY, HN, MX, PA, PY, PE, SR, UY, BS, BB, KY, DM, DO, GD, KN, LC, VC, TT, TC, HK, JP, MY, PH, SG, TH, AE, CI, EG, GH, KE, SN, ZA, UG, ZM, NZ ]
   note: >-
     The Terms of Use (s4.5) make the Services available only where Ethena Pay has expressly authorized them, and Appendix 1 (Country-Specific Terms) has sections for 47 countries. The list here is those 47, less four where Appendix 1 withholds the card or digital-asset services by default. Australia: the Spend Card is "not generally available" unless offered through a local issuer. El Salvador, Pakistan and Morocco: digital-asset services are unavailable unless Ethena Pay confirms them at onboarding, and the card spends stablecoin balances. Japan is kept, but Appendix 1 limits Japanese users to functions that are not regulated crypto or electronic-payment services. The /jurisdictions page lists 48 live countries; it adds Antigua and Barbuda, which has no section in Appendix 1, so AG is left out as the more restrictive reading. The Spend Card is not offered to US persons. s4.6 Restricted Jurisdictions (always excluded) include Crimea and the Donetsk and Luhansk regions of Ukraine, Abkhazia, South Ossetia, Northern Cyprus and Somaliland. "Live soon": USA, EU, United Kingdom, Switzerland, Canada, Taiwan, South Korea.
   evidence:
@@ -629,34 +647,40 @@ availability:
       detail: Terms of Use s4.5. The Services are offered only in expressly authorized jurisdictions, which Appendix 1 lists country by country.
       quote: a jurisdiction where we have expressly authorized them to be available to residents
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/terms
       detail: Appendix 1 s5.1 (Australia) withholds the Spend Card by default.
       quote: The Ethena Pay Spend Card is not generally available to Australian users unless expressly offered through a local issuer
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/terms
       detail: Appendix 1 s3.4 (Pakistan) withholds digital-asset services by default. s4.5 (Morocco) and s1.8 (El Salvador) say the same.
       quote: Services involving transactions in virtual currencies or other digital assets are not available to Pakistani users
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/terms
       detail: s4.6 Restricted Jurisdictions, which are never served regardless of Appendix 1.
       quote: Afghanistan; Abkhazia; Belarus; Burma (Myanmar); Burundi; Central African Republic; Crimea; Cuba
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/jurisdictions
       detail: The Available Jurisdictions page lists 48 live countries by region. It is the same as Appendix 1 plus Antigua and Barbuda.
       quote: Ethena Pay is live in 48 countries across Latin America, the Caribbean, Asia & the Middle East, Africa, and Oceania
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/faq
       detail: The card is not offered to US persons.
       quote: The Ethena Pay Spend Card is offered only to non-U.S. persons
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
   checked_at: "2026-10-09"

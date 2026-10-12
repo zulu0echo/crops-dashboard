@@ -760,12 +760,14 @@ facts:
         detail: Hinkal API authentication page.
         checked_at: 2026-10-09
         quote: no passwords, and no API key is needed to authenticate
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/api-keys
         detail: Partner API keys page, publishable and secret keys and origin checks.
         checked_at: 2026-10-09
         quote: Each API key is a publishable and secret pair
+        confirmed_at: 2026-10-12
     note: Applies only to the hosted API; the self-submitted contract path needs no API.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -781,6 +783,7 @@ facts:
         detail: Partner API keys page, lifecycle and limits.
         checked_at: 2026-10-09
         quote: Revoke permanently disables both halves of the pair
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -795,12 +798,14 @@ facts:
         detail: Authentication page, sessions.
         checked_at: 2026-10-09
         quote: valid for 24 hours by default
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/settings-and-security
         detail: Partner settings and security, sessions.
         checked_at: 2026-10-09
         quote: A sign-in lasts 12 hours.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -815,6 +820,7 @@ facts:
         detail: Partner errors and limits page, limits and rate-limit tables.
         checked_at: 2026-10-09
         quote: CSV export
+        confirmed_at: 2026-10-12
     refs:
       - criterion: O4
         index: 1
@@ -832,12 +838,14 @@ facts:
         detail: Privacy policy, security section.
         checked_at: 2026-10-09
         quote: We use encryption in transit, access controls, and least-privilege access
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hinkal-team.gitbook.io/hinkal/hinkal-waas/overview/secure-enclave
         detail: WaaS secure enclave page.
         checked_at: 2026-10-09
         quote: GCP Confidential VM
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -852,6 +860,7 @@ facts:
         detail: Privacy policy (effective 21 July 2026), how long we keep it.
         checked_at: 2026-10-09
         quote: until you unsubscribe or ask us to delete them
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 1
@@ -869,6 +878,7 @@ facts:
         detail: Privacy policy, contact paragraph.
         checked_at: 2026-10-09
         quote: Novelty Today, Inc., Delaware, United States
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -883,6 +893,7 @@ facts:
         detail: Protocol core concepts page and its sub-pages.
         checked_at: 2026-10-09
         quote: Core Concepts
+        confirmed_at: 2026-10-12
     refs:
       - criterion: O4
         index: 0
@@ -900,12 +911,14 @@ facts:
         detail: Terms of Service, governing law.
         checked_at: 2026-10-09
         quote: governed by the laws of the State of Delaware
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hinkal.io/privacy-policy
         detail: Privacy policy contact.
         checked_at: 2026-10-09
         quote: Novelty Today, Inc., Delaware, United States
+        confirmed_at: 2026-10-12
     note: The Delaware Division of Corporations search requires a CAPTCHA and was not used, so no register entry is cited.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -921,6 +934,7 @@ facts:
         detail: Partner fees and revenue share.
         checked_at: 2026-10-09
         quote: "Hinkal fee: 10 bps"
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -935,6 +949,7 @@ facts:
         detail: Terms section 9, termination.
         checked_at: 2026-10-09
         quote: We may suspend or terminate your access to and use of the Interface at our sole discretion, at any time and without notice to you
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -954,6 +969,7 @@ facts:
         detail: Security page, KYT screening section.
         checked_at: 2026-10-09
         quote: Every deposit is screened against Chainalysis before it enters the private balance
+        confirmed_at: 2026-10-12
     refs:
       - criterion: C4
         index: 1
@@ -971,6 +987,7 @@ facts:
         detail: Compliance Gateway screening outcomes.
         checked_at: 2026-10-09
         quote: Funds that do not pass screening never enter the private balance.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -1010,18 +1027,21 @@ fees:
       detail: Hinkal Pay fees table.
       checked_at: 2026-10-09
       quote: Depositing funds into a private balance is free
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://hinkal-team.gitbook.io/hinkal/hinkal-wallet/fees
       detail: Hinkal Wallet fees table.
       checked_at: 2026-10-09
       quote: Public send bridge (cross-chain send)
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://hinkal-team.gitbook.io/hinkal/hinkal-partner/fees-and-revenue-share
       detail: Partner fees and revenue share.
       checked_at: 2026-10-09
       quote: covers network and relaying costs
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/contracts/Hinkal.sol#L172-L230
@@ -1029,6 +1049,7 @@ fees:
       path: contracts/Hinkal.sol
       detail: _internalTransact pays the relay fee only when relay is non-zero.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
   note: Three fee regimes. The self-submitted contract path (the CROPS unit) charges no protocol fee; the hosted apps and API charge per operation. The flat relay fee amount comes from GET /get-fee and is not published.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -1063,6 +1084,7 @@ licences:
       detail: Terms describe the company as a platform provider that does not hold, send or receive funds, and cite no licence.
       checked_at: 2026-10-09
       quote: we do not store, send, or receive any funds or cryptoassets
+      confirmed_at: 2026-10-12
   note: "Searched: FinCEN MSB registry (two names), the terms, privacy policy and compliance and security docs (no licence or regulator named). Not searched: state money-transmitter registers (NMLS), and registers outside the US. Integrity Check partners (zkMe, Galxe, AiPrise and others) were not looked up."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -1113,12 +1135,14 @@ maturity:
         detail: Privacy policy names Novelty Today, Inc., Delaware, United States.
         checked_at: 2026-10-09
         quote: Novelty Today, Inc., Delaware, United States
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hinkal.io/tos
         detail: Terms name Novelty Today Inc. as the company providing the site, apps, SDK and API, under Delaware law.
         checked_at: 2026-10-09
         quote: governed by the laws of the State of Delaware
+        confirmed_at: 2026-10-12
     note: No company register entry; the Delaware search is CAPTCHA-protected.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

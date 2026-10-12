@@ -22,12 +22,14 @@ facts:
         detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
         checked_at: 2026-10-09
         quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: Rain privacy policy (last updated 16 July 2026), Security section.
         checked_at: 2026-10-09
         quote: Rain maintains SOC 2 Type II certification
+        confirmed_at: 2026-10-12
     note: Rizon names Rain (Signify Holdings Inc. and its subsidiary Nimbus LLC) as provider of the card, smart contract wallets and transfers, so Rain's security and status pages are recorded as the partner's position.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -43,12 +45,14 @@ facts:
         detail: Rizon help centre, "Secure & reliable" (30 April 2025).
         checked_at: 2026-10-09
         quote: This vault is deployed and maintained by Rain Cards
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://www.rain.xyz/security
         detail: Rain security page, "Smart contract audits"; no report is linked from the page.
         checked_at: 2026-10-09
         quote: Our smart contracts are reviewed by independent auditors before launch and again for each new chain we support
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -63,6 +67,7 @@ facts:
         detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
         checked_at: 2026-10-09
         quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
+        confirmed_at: 2026-10-12
     note: Rizon names Rain (Signify Holdings Inc. and its subsidiary Nimbus LLC) as provider of the card, smart contract wallets and transfers, so Rain's security and status pages are recorded as the partner's position.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -78,6 +83,7 @@ facts:
         detail: Rain security page, "Secure development".
         checked_at: 2026-10-09
         quote: Code is peer-reviewed and automatically scanned for vulnerabilities before it reaches production
+        confirmed_at: 2026-10-12
     note: Rizon names Rain (Signify Holdings Inc. and its subsidiary Nimbus LLC) as provider of the card, smart contract wallets and transfers, so Rain's security and status pages are recorded as the partner's position.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -100,6 +106,7 @@ facts:
         detail: Rain security page, "Detection and response".
         checked_at: 2026-10-09
         quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
+        confirmed_at: 2026-10-12
     note: Rizon names Rain (Signify Holdings Inc. and its subsidiary Nimbus LLC) as provider of the card, smart contract wallets and transfers, so Rain's security and status pages are recorded as the partner's position.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -127,6 +134,7 @@ facts:
         detail: Rain Platform Status (cState), with components for onboarding, API, card issuing, authorizations, disputes and collateral, and a paged incident history back to 2025.
         checked_at: 2026-10-09
         quote: We continuously monitor the performance and availability of our services
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: trace
         url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
@@ -148,6 +156,7 @@ facts:
         detail: Rizon help centre, "How secure is Rizon?" (20 January 2026).
         checked_at: 2026-10-09
         quote: We use advanced encryption, multi-factor authentication, and biometric login to keep your account safe
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -204,12 +213,14 @@ facts:
         detail: Rizon help centre, "How secure is Rizon?".
         checked_at: 2026-10-09
         quote: We use advanced encryption
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: "Rain privacy policy, Security section: encryption in transit and at rest, access controls, multifactor authentication, tokenization, PCI DSS for card data."
         checked_at: 2026-10-09
         quote: encryption of sensitive data in transit and at rest
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: trace
         url: https://www.getrizon.com
@@ -236,12 +247,14 @@ facts:
         checked_at: 2026-10-09
         quote: Up to 8 (eight) years as provided in the Law on Prevention of Money Laundering and Terrorist Financing of the Republic of Lithuania
         archive: data/archive/rizon-card-ops-privacy-policy.txt
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: Rain privacy policy, Retention section.
         checked_at: 2026-10-09
         quote: Customer identification records, transaction records, and related regulated financial services records may be retained for five years or longer following account closure
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -260,12 +273,14 @@ facts:
         checked_at: 2026-10-09
         quote: such as the EU General Data Protection Regulation
         archive: data/archive/rizon-card-ops-privacy-policy.txt
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: "Rain privacy policy, Entity Roles and Data Flows: Nimbus LLC d/b/a Third National is controller for card issuance."
         checked_at: 2026-10-09
         quote: For card issuance and customer account services, Nimbus LLC generally acts as a controller
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -290,6 +305,7 @@ facts:
         detail: Rain security page, "Detection and response".
         checked_at: 2026-10-09
         quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
+        confirmed_at: 2026-10-12
     note: Rizon names Rain (Signify Holdings Inc. and its subsidiary Nimbus LLC) as provider of the card, smart contract wallets and transfers, so Rain's security and status pages are recorded as the partner's position.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -310,6 +326,7 @@ facts:
         detail: Rizon help centre, "Secure & reliable".
         checked_at: 2026-10-09
         quote: This vault is deployed and maintained by Rain Cards
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -325,12 +342,14 @@ facts:
         checked_at: 2026-10-09
         quote: a Delaware C Corporation company established with its registered agent address at 131 Continental Dr Suite 305, Newark, DE 19713 US
         archive: data/archive/rizon-card-ops-terms-of-service.txt
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://intercom.help/rizon/en/articles/11822548-rizon-global-inc-spend-card-terms
         detail: Rizon Global, Inc. Spend Card Terms, Defined Terms.
         checked_at: 2026-10-09
         quote: The issuer for this card program is Third National.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -345,6 +364,7 @@ facts:
         detail: Rizon help centre, "Are there any fees for using Rizon?" (26 August 2026), plan comparison.
         checked_at: 2026-10-09
         quote: Monthly Price Free $3.99/mo $6.99/mo
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -360,6 +380,7 @@ facts:
         checked_at: 2026-10-09
         quote: We on our Partners reserve the right to suspend, restrict, or terminate your Account
         archive: data/archive/rizon-card-ops-terms-of-service.txt
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://www.getrizon.com/terms-of-service
@@ -367,6 +388,7 @@ facts:
         checked_at: 2026-10-09
         quote: Once your smart contract held balance reaches zero as reflect through the App, your Digital Wallet is effectively disconnected form the App and Rain account
         archive: data/archive/rizon-card-ops-terms-of-service.txt
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -382,12 +404,14 @@ facts:
         checked_at: 2026-10-09
         quote: We do not use automated decision-making technologies
         archive: data/archive/rizon-card-ops-privacy-policy.txt
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: Rain privacy policy, Automated Processing and Decision-Making.
         checked_at: 2026-10-09
         quote: We may use automated systems to support fraud detection, sanctions screening, transaction monitoring, identity verification, biometric matching, eligibility assessments, and risk management
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -402,6 +426,7 @@ facts:
         detail: "Rain privacy policy, Automated Processing and Decision-Making: available where applicable law grants the right."
         checked_at: 2026-10-09
         quote: request human review, express your point of view, and contest the decision
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -452,24 +477,28 @@ fees:
       checked_at: 2026-10-09
       quote: Card spend (non-USD transactions) 1.7% + $0.1 1.02 % 1.7% + $0.1
       archive: data/archive/rizon-card-ops-fees-and-limits.txt
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://intercom.help/rizon/en/articles/13441035-are-there-any-fees-for-using-rizon
       detail: Rizon help centre, "Are there any fees for using Rizon?", full plan comparison (FX, small-transaction, ATM, card prices).
       checked_at: 2026-10-09
       quote: Physical Visa Platinum Card $49.99 $24.99 (50% off) Free Virtual Visa Platinum Card $10 Free Free
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://intercom.help/rizon/en/articles/11822548-rizon-global-inc-spend-card-terms
       detail: Rizon Global, Inc. Spend Card Terms, Important Disclosures effective 2026-06-27; virtual card issuance $10 per card.
       checked_at: 2026-10-09
       quote: "Foreign Exchange Fee (non USD): 1.7% + $0.3 - Cross Border Fee: 0%"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://intercom.help/rizon/en/articles/11822498-rizon-us-spend-card-terms
       detail: Rizon US Spend Card Terms, account opening disclosures (international transaction fee).
       checked_at: 2026-10-09
       quote: 1.7% + $0.1 of each transaction in U.S. dollars
+      confirmed_at: 2026-10-12
   note: The FX fixed component differs between the Global card terms ($0.30) and the pricing pages ($0.10); both are recorded. Pay-in and pay-out fees for virtual accounts are discounted by plan but the base amounts are not published.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -500,12 +529,14 @@ licences:
       checked_at: 2026-10-09
       quote: provided solely by Signify Holdings Inc. and its subsidiary Nimbus LLC (Rain), a third-party licensed financial service provider
       archive: data/archive/rizon-card-ops-fees-and-limits.txt
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://legal.raincards.xyz/legal/privacy-policy
       detail: "Rain privacy policy, Entity Roles and Data Flows: describes Nimbus LLC, doing business as Third National, without naming a regulator, state or licence number."
       checked_at: 2026-10-09
       quote: is a licensed lender, money transmitter and Visa-authorized card issuer
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: trace
       url: https://api.fdic.gov/banks/institutions?search=NAME:%22Third%20National%22&fields=NAME,CERT,ACTIVE,CITY,STNAME&limit=20
@@ -548,18 +579,21 @@ cashout:
       detail: Rizon Global, Inc. Spend Card Terms, Defined Terms.
       checked_at: 2026-10-09
       quote: The issuer for this card program is Third National.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://intercom.help/rizon/en/articles/14896266-rizon-visa-platinum-physical-card
       detail: "Rizon help centre, Visa Platinum physical card (8 August 2026): ATM limits and delivery countries."
       checked_at: 2026-10-09
       quote: The ATM withdrawal fee is $1 + 0.65% of the withdrawn amount.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://intercom.help/rizon/en/articles/14883654-rizon-virtual-accounts-global-payouts
       detail: Rizon help centre, virtual accounts and global payouts (9 June 2026), with the payout currency list.
       checked_at: 2026-10-09
       quote: Local Currency Payouts allow you to send funds directly to bank accounts in 50+ countries
+      confirmed_at: 2026-10-12
   note: The physical-card delivery list differs from the nationality allowlist in the provider file (it adds, for example, Bolivia, Kenya and South Africa); ALL follows the availability list. The payout partner and per-country fees are not published.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -579,12 +613,14 @@ maturity:
         checked_at: 2026-10-09
         quote: "Effective Date: April 30, 2025"
         archive: data/archive/rizon-card-ops-terms-of-service.txt
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://www.getrizon.com/blog/spend-stablecoins-anywhere-rizons-partnership-with-rain
         detail: Rizon blog post dated 18 August 2025 announcing the Rain partnership.
         checked_at: 2026-10-09
         quote: partnered with Rain to turn stablecoins into money
+        confirmed_at: 2026-10-12
     note: The current Terms may have been revised since without a new effective date. The Rain partnership was announced on the Rizon blog on 2025-08-18; the current Global card terms are effective 2026-06-27.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -603,6 +639,7 @@ maturity:
         checked_at: 2026-10-09
         quote: a Delaware C Corporation company established with its registered agent address at 131 Continental Dr Suite 305, Newark, DE 19713 US
         archive: data/archive/rizon-card-ops-terms-of-service.txt
+        confirmed_at: 2026-10-12
     note: Not checked in the Delaware register (interactive search). The commercial agent Rizon Technologies, UAB (Lithuania) was not checked in the Lithuanian Register of Legal Entities.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -638,30 +675,35 @@ maturity:
         detail: Rain status incident 2026-09-28.
         checked_at: 2026-10-09
         quote: We are investigating an issue that is causing unexpected declines for transactions
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-06-25-elevated-api-error-rate/
         detail: Rain status incident 2026-06-25.
         checked_at: 2026-10-09
         quote: The issue was caused by an expired encryption certificate
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-06-03-payments-partner-outage/
         detail: Rain status incident 2026-06-03.
         checked_at: 2026-10-09
         quote: Our partner has identified the cause as operating system patching activity on their side
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-05-05-elevated-authorization-declines/
         detail: Rain status incident 2026-05-05.
         checked_at: 2026-10-09
         quote: The incident was related to our payment processor and has been mitigated
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-01-02-payementology-rules-declines/
         detail: Rain status incident 2026-01-02.
         checked_at: 2026-10-09
         quote: Funds are safe and Rain infrastructure is working as intended
+        confirmed_at: 2026-10-12
     note: No Rizon incident report found on getrizon.com, its blog or help centre. The entries are Rain platform incidents from status.rain.xyz (Rizon names Rain as its card provider); the pages do not say which programmes were affected.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -690,12 +732,14 @@ maturity:
         checked_at: 2026-10-09
         quote: "Effective Date: April 24, 2025"
         archive: data/archive/rizon-card-ops-privacy-policy.txt
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://intercom.help/rizon/en/articles/11822548-rizon-global-inc-spend-card-terms
         detail: Rizon Global, Inc. Spend Card Terms, Important Disclosures.
         checked_at: 2026-10-09
         quote: Effective as of 2026-06-27
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

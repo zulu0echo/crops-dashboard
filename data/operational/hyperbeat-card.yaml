@@ -73,6 +73,7 @@ facts:
         detail: Help article (21 July 2026) on custody and recovery if Hyperbeat disappears.
         checked_at: "2026-10-09"
         quote: Hyperbeat cannot steal, freeze, or lock your funds, and you can always withdraw them
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -97,6 +98,7 @@ facts:
         detail: Help article on Agent Cards; issuing a card is confirmed with the user's passkey.
         checked_at: "2026-10-09"
         quote: sign with your passkey
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P4
         index: 0
@@ -164,6 +166,7 @@ facts:
         detail: Help article on KYC data handling (21 July 2026).
         checked_at: "2026-10-09"
         quote: All personal data is encrypted at rest on servers located in Tier III data centres in Germany (EU)
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: trace
         url: https://hyperbeat.org
@@ -190,12 +193,14 @@ facts:
         detail: Privacy Policy (last updated 21 August 2025), Retention.
         checked_at: "2026-10-09"
         quote: We will retain your personal data only for so long as necessary to fulfill the purposes for which it was collected
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.hyperbeat.org/en/articles/14196937-how-is-my-kyc-data-handled-and-protected
         detail: Help article on KYC data retention.
         checked_at: "2026-10-09"
         quote: for AML-regulated services, applicable law requires personal data to be retained for 5 years
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -213,12 +218,14 @@ facts:
         detail: Privacy Policy opening paragraph.
         checked_at: "2026-10-09"
         quote: the Organization is the data controller
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.hyperbeat.org/en/articles/14196937-how-is-my-kyc-data-handled-and-protected
         detail: Help article naming Sumsub's role.
         checked_at: "2026-10-09"
         quote: Sumsub acts as a data processor
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -258,6 +265,7 @@ facts:
         detail: Liquid Banking architecture page.
         checked_at: "2026-10-09"
         quote: Liquid Banking uses Turnkey to provide secure, non-custodial key management
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -272,12 +280,14 @@ facts:
         detail: Terms of Use (last updated 1 March 2026), opening paragraph.
         checked_at: "2026-10-09"
         quote: provided and operated by Zoeion Ltd Corporation
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hyperbeat.org/privacy
         detail: Privacy Policy giving the company address.
         checked_at: "2026-10-09"
         quote: PH Iver 77, Calle José Matilde Perez, San Francisco, Panama City
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -292,6 +302,7 @@ facts:
         detail: Terms of Use, Payment, Gas Fees and Taxes.
         checked_at: "2026-10-09"
         quote: such fees for the utilisation of the Platform
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -306,12 +317,14 @@ facts:
         detail: Terms of Use, Term and Termination.
         checked_at: "2026-10-09"
         quote: The Company reserves the right to terminate these Terms at any time for any reason, or for no reason, with or without notice to you
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hyperbeat.org/terms
         detail: Terms of Use, effect of termination.
         checked_at: "2026-10-09"
         quote: you will continue to be able to access and use your Digital Wallet
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -326,12 +339,14 @@ facts:
         detail: Help article on Agent Cards (12 May 2026).
         checked_at: "2026-10-09"
         quote: Let Claude, ChatGPT, or other AI agents buy things for you online
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hyperbeat.org/privacy
         detail: Privacy Policy, Automated decision-making.
         checked_at: "2026-10-09"
         quote: will not take decisions producing legal effects concerning you
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -346,6 +361,7 @@ facts:
         detail: Help article on Agent Cards, spending controls.
         checked_at: "2026-10-09"
         quote: Instant revocation
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -390,24 +406,28 @@ fees:
       detail: Help article on virtual card cost.
       checked_at: "2026-10-09"
       quote: Issuing a virtual card is free
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.hyperbeat.org/en/articles/12674592-what-are-the-rates-and-fees-for-consumer-hyperbeat-pay-cards
       detail: Help article "What are the rates and fees for consumer Hyperbeat Pay cards?" (18 March 2026).
       checked_at: "2026-10-09"
       quote: "Withdrawals: $1 + 0.65%"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.hyperbeat.org/en/articles/14107075-what-are-the-fees-for-fiat-withdrawals
       detail: Help article on fiat withdrawal fees.
       checked_at: "2026-10-09"
       quote: USD (ACH transfers) $0.25 0.12%
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://hyperbeat.org/terms
       detail: Terms of Use, Platform Fee clause.
       checked_at: "2026-10-09"
       quote: such fees for the utilisation of the Platform
+      confirmed_at: 2026-10-12
   note: Fiat deposits cost 0.12% + 0.25 USD (ACH) to 0.12% + 35 USD (SWIFT) and 0.2% + 1 EUR (SEPA) (help article 14107006). No card purchase fee is published; the Hyperbeat Pay Cardholder Agreement, where card fees would be set, is not public. Gas for Operator settlement is not described as a user fee.
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -441,6 +461,7 @@ licences:
       detail: Terms of Use, Card clause (the same clause also refers to "Ether.Fi protocol", apparently copied from another programme's terms).
       checked_at: "2026-10-09"
       quote: The Hyperbeat Card is issued by Third National
+      confirmed_at: 2026-10-12
   note: "No licence held by Zoeion Ltd Corporation was found or claimed. Not found in a register: an active FDIC-insured institution named Third National (FDIC BankFind search, 2026-10-09). Noah, which processes fiat deposits and withdrawals, is named without a licence. The help centre says availability depends on licensing and partner rails without naming licences."
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -449,19 +470,19 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_spend
       partner: Third National (issuer), Visa
       fee: FX 0.4% to 1%; no purchase fee published
       limits: 100,000 USD default monthly; Cash Mode spends the USD balance, Credit Mode borrows against collateral up to the Spending Cap.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: Third National (issuer), Visa
       fee: 1 USD + 0.65%; 0.60 USD per inquiry or decline
       limits: Physical card only; 250 USD per transaction, 3 per day; not allowed in North Korea, Iran or Myanmar.
       evidence_index: 1
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: Noah
       fee: Fixed + variable per currency (e.g. USD ACH 0.25 USD + 0.12%)
@@ -474,18 +495,21 @@ cashout:
       detail: Help article on card rates, fees and limits.
       checked_at: "2026-10-09"
       quote: "$100,000 default monthly spending limit"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.hyperbeat.org/en/articles/12898397-can-i-withdraw-cash-from-an-atm-will-there-be-an-extra-fee
       detail: Help article on ATM withdrawals.
       checked_at: "2026-10-09"
       quote: Please note the ATM limit of $250 per transaction and only 3 atm withdrawals per day
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.hyperbeat.org/en/articles/14107061-how-do-i-withdraw-fiat-currency-to-my-bank-account
       detail: Help article on fiat withdrawals.
       checked_at: "2026-10-09"
       quote: Noah processes the transfer and sends funds to your bank account
+      confirmed_at: 2026-10-12
   note: "ALL means every country not blocked in the provider file's availability (blocklist of five embargoed countries). Narrower first-party lists exist: help article 13512812 lists supported card jurisdictions (about 50 countries, \"Europe\" and 35 US states), and help article 16199140 lists countries per virtual bank account; neither is reflected row by row here. The withdrawal-currency article says 13 currencies in its summary but marks 15 as available."
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -504,6 +528,7 @@ maturity:
         detail: Newsroom post "Introducing Liquid Banking", dated 8 April 2026.
         checked_at: "2026-10-09"
         quote: It is live today
+        confirmed_at: 2026-10-12
     note: The card predates this announcement - help-centre card articles are dated from 15 January 2026, the Zellic audit of Hyperbeat Pay is dated 6 November 2025, and the privacy policy from 21 August 2025 - but no dated first launch of the card was found. The Operator contract's deployment block could not be read (HyperEVM public RPC ignores the block parameter for eth_getCode; contracts unverified).
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -521,12 +546,14 @@ maturity:
         detail: Terms of Use naming the operator.
         checked_at: "2026-10-09"
         quote: provided and operated by Zoeion Ltd Corporation
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hyperbeat.org/privacy
         detail: Privacy Policy giving the Panama City address.
         checked_at: "2026-10-09"
         quote: PH Iver 77, Calle José Matilde Perez, San Francisco, Panama City
+        confirmed_at: 2026-10-12
     note: Not checked in Panama's Registro Público (interactive search), so no register_url or registration number.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -564,18 +591,21 @@ maturity:
         detail: Terms of Use header.
         checked_at: "2026-10-09"
         quote: "Last updated: March 1, 2026"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hyperbeat.org/privacy
         detail: Privacy Policy header.
         checked_at: "2026-10-09"
         quote: "Last updated: August 21, 2025"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hyperbeat.org/blog/introducing-liquid-banking
         detail: Newsroom post dated 8 April 2026.
         checked_at: "2026-10-09"
         quote: It is live today
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:

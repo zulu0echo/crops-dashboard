@@ -137,6 +137,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: setRelayer(address,bool) is onlyOwner and is the only admin function; no pause, freeze, or blacklist function exists in DepositAddressManager, DepositAddress, DepositAddressFactory, DaimoPayExecutor, or DaimoPayPricer at this commit.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DepositAddressManager.sol#L203-L207
@@ -144,6 +145,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: onlyRelayer gates start, sameChainFinish, fastFinish, claim, hopStart and refundFulfillment (L258, L406, L483, L569, L697, L876), so de-authorizing relayers halts all forwarding to payees.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xfca14E46d74d7673168e95b5f625bf2847B009b6
@@ -155,6 +157,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000d4cfb1c394dacc70f0cb6d7b36806328e0ecb131"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xfca14E46d74d7673168e95b5f625bf2847B009b6
@@ -166,6 +169,7 @@ scores:
         check:
           call: "0x1e473a74000000000000000000000000a9c38348c35baf44aa269d52cdfafc3afe274e2f"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xd4cFb1c394DaCc70F0cB6D7b36806328e0ECb131
@@ -194,6 +198,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: sameChainFinish (and start for cross-chain) is onlyRelayer and requires PriceData signed by the pricer's trustedSigner (L413-L418); a payer or payee cannot call it.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DepositAddressManager.sol#L829-L860
@@ -201,6 +206,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: refundDepositAddress is callable by anyone after params.expiresAt and sends the deposit address balance only to params.refundAddress; this is the sole permissionless entrypoint.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xA8DCDF1f1D624d37949b54c34E9A85394c72936a
@@ -212,6 +218,7 @@ scores:
         check:
           call: "0xf74d5480"
           expect: "0x000000000000000000000000e1432f86d711925d788bba98cfc006516188aa25"
+        confirmed_at: 2026-10-12
     finding: >-
       A payer pays with a plain ERC-20 transfer to a deposit address, which needs no provider. Delivery from that address to the payee does need the provider. Every forwarding entrypoint is relayer-only and also needs a price signed by Daimo's key within the last 300 seconds. Neither party can finish settlement by calling the contracts directly. The direct path that does exist is a refund to the payer's refundAddress once the deposit address expires. Settlement to the payee has no direct path.
     provider_response: null
@@ -229,6 +236,7 @@ scores:
         path: packages/sdk/src/web/hooks/DaimoClientContext.tsx
         detail: DaimoSDKProvider defaults to https://api.daimo.com (apiUrl prop overrides it); every session, deposit-address, and payment-method call goes to this API.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DaimoPayPricer.sol#L12-L58
@@ -236,6 +244,7 @@ scores:
         path: packages/contract/src/DaimoPayPricer.sol
         detail: validatePrice accepts only EIP-191 signatures from the immutable trustedSigner; there is no fallback oracle.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xfca14E46d74d7673168e95b5f625bf2847B009b6
@@ -247,6 +256,7 @@ scores:
         check:
           call: "0x1e473a74000000000000000000000000c88fd3c032406f64c70a6c1aac9831602362ee04"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        confirmed_at: 2026-10-12
     finding: >-
       Each payment depends on three services that only Daimo runs: the Daimo API, which creates sessions and deposit-address parameters; the relayer, which is allowlisted by the owner EOA; and the price signer. No repository in the daimo-eth org contains code for the API, the relayer service, or the price signer. Self-hosting would not help even if that code were published, because a third-party relayer must first be added to the allowlist by Daimo. The SDK lets an integrator change the API URL, but no alternative backend exists to point it at.
     provider_response: null
@@ -264,12 +274,14 @@ scores:
         path: packages/sdk/src/web/api/index.ts
         detail: The SDK renders a "server-effective location" and a nav tree built by the API; a search of packages/sdk/src for sanction, OFAC, blocklist, geoblock, chainalysis, and TRM returns nothing.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.daimo.com/guides/payment-methods
         detail: Docs state payment methods are localized per user country server-side, and that deposit addresses and self-custody wallets are available everywhere.
         checked_at: "2026-10-07"
         quote: Daimo localizes the deposit experience to the user
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DepositAddressManager.sol#L203-L207
@@ -277,12 +289,14 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: The settlement contracts contain no list or country check, but every forwarding entrypoint is onlyRelayer, so which deposits settle is decided by Daimo's closed relayer service; neutrality of the settlement path cannot be shown from code.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://daimo.com/terms-of-use
         detail: Terms of use (last updated 2025-04-01; linked from the SDK account flow at packages/sdk/src/web/components/account/AccountOtpPage.tsx L61) reserve the right to deny access to anyone for any reason, including by blocking IP addresses; no list source is named.
         checked_at: "2026-10-07"
         quote: deny access to and use of the services (including blocking certain ip addresses), to any person for any reason or for no reason
+        confirmed_at: 2026-10-12
     finding: >-
       Re-assessed under the updated anchor (neutral settlement plus disclosed, bypassable edge filtering). The SDK contains no address or geographic filtering. The closed API decides which payment methods a user sees by country, and the docs disclose this. The terms reserve a blanket right to deny access, including by IP, without naming any list. The settlement contracts hold no list, but only Daimo's allowlisted relayers can forward a deposit, so whether settlement is neutral cannot be shown from code, and there is no direct path to bypass edge filtering (C2 = 0). Both of those facts match anchor 1. Judgment call: we score 1 and not 0 because the only filtering we can see is disclosed in docs and terms, and we have no evidence of undisclosed screening; we could not rule it out either, because the API and relayer are closed. A trace or provider statement showing screening not covered by those documents would lower this to 0. A 3 is not reachable while required components are closed and no trace exists.
     provider_response: null
@@ -302,6 +316,7 @@ scores:
         checked_at: "2026-10-07"
         recheck: >-
           gh api 'repos/daimo-eth/sdk/contents/packages/sdk/src/common/token.ts?ref=ac0a71453ac249aa991d71059c621e2424322d61' -H 'Accept: application/vnd.github.raw' | sed -n '945,966p'   # 16 chain entries in knownTokensByChain
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/script/Constants.s.sol#L48-L70
@@ -309,12 +324,14 @@ scores:
         path: packages/contract/script/Constants.s.sol
         detail: Deploy constants pin USDC, DAI, and USDT addresses per chain, including Base USDC 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.daimo.com/supported-chains
         detail: Supported-chains page lists destination chains and USDC addresses but says nothing about issuer freeze powers or sequencer assumptions.
         checked_at: "2026-10-07"
         quote: deposits can be delivered to any of these chains
+        confirmed_at: 2026-10-12
     finding: >-
       Tokens and chains are listed in code and in the docs. Neither the repo nor docs.daimo.com tells payees that USDC, USDT, and EURC issuers can freeze balances. Neither tells them that Base and the other L2 destinations depend on a centralized sequencer. A search of SDK, docs, and README for freeze, blacklist, and sequencer found nothing.
     provider_response: null
@@ -358,6 +375,7 @@ scores:
         path: packages/contract/foundry.toml
         detail: Foundry config pins solc 0.8.26, via_ir, optimizer_runs 999999, evm london; the Makefile build target is forge install && forge build.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       All six settlement contracts have source verified on Basescan or Sourcify. Four are exact matches on Sourcify. DepositAddressManager is only a partial match on Sourcify, and DaimoPayExecutor is verified on the explorer only, so the cell cannot reach 3. A pinned Foundry build config exists, but we did not try to reproduce the deployed bytecode from it. The DaimoPayRelayer wrapper at 0xc88f…eE04 is an authorized relayer and is not verified anywhere. Judgment call: we class it as operator tooling rather than a settlement contract, which keeps the score at 2. If it counted as a settlement contract, the score would be 1.
     provider_response: null
@@ -381,6 +399,7 @@ scores:
         detail: An OpenAPI 3.1.0 spec (10 paths) for the merchant API is published on the hosted docs site, not in the repo.
         checked_at: "2026-10-07"
         quote: create deposit sessions, manage payment methods, and check session status
+        confirmed_at: 2026-10-12
     finding: >-
       The contracts, the deploy scripts, the SDK, and its embeddable React modal are public. The Daimo API, the relayer, the price signer, the indexer, and the hosted deposit flow that DaimoFrame loads from daimo.com are all private. The SDK cannot run without those private services. Judgment call: we score 1 and not 2, because the frontend and indexer are closed as well as the backend. We score 1 and not 0, because the public contracts and deploy scripts are more than a client shell.
     provider_response: null
@@ -398,6 +417,7 @@ scores:
         path: packages/contract/README.md
         detail: The contracts README covers only installing Foundry, make full, make test, and make coverage; the SDK README covers pnpm add @daimo/sdk; neither documents running a relayer, price signer, or API.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Re-assessed under the updated anchor; the score is unchanged. No README can get a stranger to a working deployment, because the relayer, the price signer, the indexer, and the API are closed required components (see `components` and O2). The relayer slot is also owner-gated (see C1). The repo has no deploy script that completes a test payment. We did not attempt a reproduction. Anchor 1 ("docs exist; reproduction not attempted") would apply if the docs described a path; judgment call: we score 0 ("No path"), because the documented steps only build and test contracts and stop short of anything that settles a payment.
     provider_response: null
@@ -415,6 +435,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: Event schemas (Start, FastFinish, Claim, SameChainFinish, FinalCallExecuted, HopStart, RefundDepositAddress, RefundFulfillment) are defined in source; no generated ABI JSON is committed and the Makefile codegen target references a root npm script that does not exist.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/sdk/src/common/api.ts#L28-L105
@@ -422,12 +443,14 @@ scores:
         path: packages/sdk/src/common/api.ts
         detail: Zod schemas cover the client-side session endpoints only (payment method, check, token options, nav logging); merchant endpoints such as create session and webhooks are absent.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.daimo.com/openapi.json
         detail: The full merchant API schema exists only as a hosted OpenAPI file, not versioned with the code; no payee data export format is documented in repo or docs.
         checked_at: "2026-10-07"
         quote: create deposit sessions, manage payment methods, and check session status
+        confirmed_at: 2026-10-12
     finding: >-
       ABIs can be derived from the verified source, and the event schemas are in the repo. The repo's API schema covers only the endpoints the browser uses. The full merchant API is described only in a hosted OpenAPI file, which is the documented common failure. No payee data export exists in any format. Judgment call: we score 1 and not 2, because the API schema is not in the repo.
     provider_response: null
@@ -445,6 +468,7 @@ scores:
         path: license.txt
         detail: Root license.txt is BSD 2-Clause (Copyright 2026 Daimo, Inc.); packages/sdk/package.json L6 declares BSD-2-Clause.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DepositAddressManager.sol#L1-L2
@@ -452,6 +476,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: All 32 Solidity files under packages/contract/src carry SPDX-License-Identifier GPL-3.0-or-later.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Every public repo needed for the product carries an OSI-approved license: the SDK is BSD-2-Clause and the contracts are GPL-3.0-or-later. The product also needs four closed components that carry no license a third party can use: the Daimo API, the relayer service, the price signer, and the indexer (see `components`). Under the updated rule a closed required component counts as unlicensed, because it cannot be forked, so F1 is 0. The public repos alone would score 3. Two housekeeping issues remain: the root LICENSE file is a symlink to packages/connectkit/LICENSE, a path that does not exist at any commit, and the root BSD text does not mention the GPL headers on the contracts, so GitHub reports the license as NOASSERTION. Neither restricts forking the public code.
     provider_response: null
@@ -478,6 +503,7 @@ scores:
         checked_at: "2026-10-07"
         recheck: >-
           gh api 'repos/daimo-eth/sdk/commits?path=license.txt&sha=ac0a71453ac249aa991d71059c621e2424322d61' --jq '.[] | .sha[0:8] + " " + .commit.author.date'   # expect 4a32d7b4 2026-02-28, f4ff7c83 2025-05-27; and gh api 'repos/daimo-eth/sdk/git/trees/ac0a71453ac249aa991d71059c621e2424322d61?recursive=1' --jq '[.tree[].path | select(test("(?i)(contributing|cla|security)") and (test("/lib/")|not))]' returns []
+        confirmed_at: 2026-10-12
     finding: >-
       The repo has no CLA and we found no CLA bot. The license has never changed in substance. The repo makes no written commitment to keep the license stable.
     provider_response: null
@@ -495,6 +521,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: start requires an authorized relayer and two prices signed by the pricer's trustedSigner; no code path settles without both.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/sdk/README.md#L24-L33
@@ -502,6 +529,7 @@ scores:
         path: packages/sdk/README.md
         detail: The README requires a server-side Daimo API key to create sessions; the SDK has no mode that works without the hosted API.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       A production deployment cannot run without services only Daimo runs: the API (an API key is required), the allowlisted relayer, and the price-signing key. The open SDK and contracts do not work without them.
     provider_response: null
@@ -519,6 +547,7 @@ scores:
         path: packages/sdk/src/web/hooks/navEvent.ts
         detail: createNavLogger fires-and-forgets UI events (nav_open/close/select, flow_amount_continue with amountUsd, copy_address with the address, qr_toggle, error_shown, coinbase_widget_error) to POST /v1/sessions/{id}/internal/nav (createDaimoClient.ts L493-L498); no opt-out flag exists.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/sdk/package.json#L40-L52
@@ -526,12 +555,14 @@ scores:
         path: packages/sdk/package.json
         detail: Runtime dependencies include no Sentry, PostHog, Segment, Mixpanel, Amplitude, Datadog, or fingerprinting package; @privy-io/react-auth is a dependency. The committed package-lock.json is stale (1.0.0-rc.1, no Privy), so transitive deps are not locked.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://daimo.com/privacy
         detail: Privacy notice (last updated 2026-02-28) says usage information, IP, device characteristics, and "how and when you use our Services" are collected for internal analytics.
         checked_at: "2026-10-07"
         quote: for our internal analytics and reporting purposes
+        confirmed_at: 2026-10-12
     finding: >-
       The SDK has no third-party analytics package, but it does ship first-party UI telemetry. That telemetry is on by default and sends navigation steps, amounts, copied addresses, and errors to Daimo's API. The privacy notice discloses analytics in general terms, which fits anchor 1. We did not review Privy's transitive dependencies or the hosted daimo.com flow, because the lockfile is stale and no trace was run. Without a trace this cell cannot reach 3.
     provider_response: null
@@ -549,6 +580,7 @@ scores:
         path: packages/sdk/src/common/api.ts
         detail: The crypto payment-method request carries only method type, amountUsd, and (for Solana) wallet address and token mint; fiat is a separate payment-method type.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/sdk/src/web/components/account/formSchemas.ts#L3-L52
@@ -556,12 +588,14 @@ scores:
         path: packages/sdk/src/web/components/account/formSchemas.ts
         detail: Fiat/account flows collect legal first and last name, email, date of birth, and SSN last 4 (Apple Pay verification), plus phone OTP via Privy.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://daimo.com/privacy
         detail: Policy says crypto-to-crypto needs no personal information but IP, OS, device, country, and usage data are collected automatically; fiat ramps require KYC via a third-party partner, which the policy says is required by applicable law.
         checked_at: "2026-10-07"
         quote: we may store limited technical information related to api usage
+        confirmed_at: 2026-10-12
     finding: >-
       Re-assessed under the updated anchor; the score is unchanged. In code, the crypto deposit flow asks only for what settlement needs. The privacy notice says IP, device, and location data are collected on every flow. That is collection beyond settlement needs, it is not legally required, and it is disclosed only in the policy, which is anchor 1. KYC applies only to fiat flows, which the code keeps separate. The policy says that KYC is required by applicable law, but it names no specific requirement, and neither the basis nor the limit appears in code or a versioned repo document, so the KYC fields alone could not reach 2 either. Following the common-failures note, we do not treat that KYC as undisclosed.
     provider_response: null
@@ -579,6 +613,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: Every Start/Claim/SameChainFinish/Refund event emits the full DAParams, including toAddress (payee), refundAddress (normally the payer), and finalCallData.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://basescan.org/tx/0x8d3d409f5ca6bef78bf3b88f48bc92cf085cc192ee04399b2b7323edf417bd00
@@ -593,6 +628,7 @@ scores:
         detail: The policy states that crypto transactions are processed on public blockchains using smart contracts.
         checked_at: "2026-10-07"
         quote: transactions are processed on public blockchains using smart contracts
+        confirmed_at: 2026-10-12
     finding: >-
       Each session gets a fresh CREATE2 deposit address. That freshness does not protect privacy, because the manager's events publish the payee, the refund address (usually the payer), and any integrator calldata together in one log. Anyone can join payer to payee from a single event. The sample transaction also shows integrator tags in plaintext onchain. Judgment call: we score 1 and not 0, because the event definitions are in public verified source and the policy says payments are onchain. No user-facing document describes this linkage.
     provider_response: null
@@ -610,6 +646,7 @@ scores:
         path: packages/sdk/src/web/components/account/AccountFlowProvider.tsx
         detail: Account flows mount PrivyProvider with a privyAppId supplied by the API response (web/api/index.ts L37-L40), not by integrator config; Coinbase onramp iframe (useCoinbaseWalletPayWidget.ts) and Stripe onramp popup (StripeOnrampPage.tsx) are also wired in.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/sdk/src/web/hooks/useWalletFlow.ts#L648-L668
@@ -617,12 +654,14 @@ scores:
         path: packages/sdk/src/web/hooks/useWalletFlow.ts
         detail: The EVM wallet path talks only to the user's injected EIP-1193 provider; balances and token options come from the Daimo API (tokenOptions with evmAddress), not a client-side RPC.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://daimo.com/privacy
         detail: Policy says technical API-usage data may be shared with unnamed third parties "such as for log aggregation" and fiat identity data with a third-party KYC partner and ramp provider.
         checked_at: "2026-10-07"
         quote: with specific third parties in specific situations, such as for log aggregation
+        confirmed_at: 2026-10-12
     finding: >-
       In the crypto wallet flow, the client talks only to Daimo's API and the user's wallet. The API receives the payer's address in order to list balances. The fiat and account flows name Privy, Coinbase, and Stripe in code, and Sumsub in the docs. An integrator cannot replace any of them through config. The backend's own vendors, such as indexers, price sources, and log aggregation, are not visible to us, and the policy names them only by category. No trace was run. Judgment call: we score 1 and not 0, because the third parties that are visible are named and disclosed.
     provider_response: null
@@ -642,6 +681,7 @@ scores:
         checked_at: "2026-10-07"
         recheck: >-
           gh api 'repos/daimo-eth/sdk/contents/packages/sdk/src/web/hooks/DaimoClientContext.tsx?ref=ac0a71453ac249aa991d71059c621e2424322d61' -H 'Accept: application/vnd.github.raw' | sed -n '6,16p'   # apiUrl ?? "https://api.daimo.com"
+        confirmed_at: 2026-10-12
     finding: >-
       An integrator can change the API and hosted-flow endpoints in code, so traffic can go through the integrator's own proxy. The UI offers no endpoint setting. The indexer and API code are not public, so the integrator can reroute data but cannot keep it inside their own perimeter.
     provider_response: null
@@ -659,6 +699,7 @@ scores:
         path: packages/contract/src/DepositAddress.sol
         detail: Each deposit address holds funds and releases them only via sendBalance called by params.escrow (the manager), with no upgrade function.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DaimoPayExecutor.sol#L36-L113
@@ -666,6 +707,7 @@ scores:
         path: packages/contract/src/DaimoPayExecutor.sol
         detail: The executor runs arbitrary relayer-supplied calls on the payer's funds and only checks that the payee receives at least minOutputAmount; any surplus goes to the relayer (execute L73-L77).
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/SwapMath.sol#L31-L80
@@ -673,6 +715,7 @@ scores:
         path: packages/contract/src/SwapMath.sol
         detail: minOutputAmount is computed solely from the two Daimo-signed USD prices and params slippage bps (sample session used 100/10/500 bps).
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xA8DCDF1f1D624d37949b54c34E9A85394c72936a
@@ -684,6 +727,7 @@ scores:
         check:
           call: "0x1584410a"
           expect: "0x000000000000000000000000000000000000000000000000000000000000012c"
+        confirmed_at: 2026-10-12
     finding: >-
       A deposit sits in a per-session contract that cannot be upgraded. It can only be released to the fixed payee, or refunded to the fixed refund address. Even so, the provider can take funds in flight. The payee's minimum is computed from prices that Daimo's own key signs. The relayer runs arbitrary calls on the funds and keeps any surplus. A relayer working with the signer can push the minimum close to zero and take the difference, and an honest relayer can still keep up to the slippage bound. Funds bridged cross-chain sit in fulfillment contracts that only relayers can release (see S4).
     provider_response: null
@@ -707,6 +751,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0x392d3A24FAE804e7fbe5BED599A723348070b846
@@ -718,6 +763,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x00000000000000000000000023ee5dd38d902cabba4f0229532f1eb1b0346673"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DepositAddressFactory.sol#L15-L53
@@ -725,6 +771,7 @@ scores:
         path: packages/contract/src/DepositAddressFactory.sol
         detail: The factory's depositAddressImpl is immutable; the executor's escrow and the pricer's signer and maxPriceAge are immutable; DepositAddressBridger has no owner (owner() reverts).
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Re-assessed under the updated anchor; the score is unchanged because the first branch of anchor 3 (non-upgradeable) applies, so the Safe, module, guard, and timelock conditions do not arise. None of the settlement contracts can be upgraded. Each deposit address uses an ERC-1967 proxy, but its implementation exposes no upgrade function and the admin slot is empty. Daimo can deploy new manager versions and have the API point new sessions at them. A deposit address that already exists stays bound to its original escrow, so this does not change open sessions. The bridge protocols used for cross-chain routes, such as CCTP and Stargate, have their own admin keys, which are outside this cell.
     provider_response: null
@@ -742,6 +789,7 @@ scores:
         path: packages/sdk/src/web/hooks/useWalletFlow.ts
         detail: The EVM payment is a single ERC-20 transfer(depositAddress, amount) or native value send via eth_sendTransaction; a search of packages/sdk/src finds no approve, permit, or maxUint call.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DepositAddress.sol#L158-L180
@@ -749,6 +797,7 @@ scores:
         path: packages/contract/src/DepositAddress.sol
         detail: The contract also supports pullFromPermit with an EIP-2612 permit whose spender is the deposit address itself and which carries a deadline; the SDK does not use it.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://registry.npmjs.org/@daimo/sdk/1.8.8
@@ -761,12 +810,14 @@ scores:
           integrity: sha512-KSB6kGwPZjxfhj7jjEvUBwLR8UpeyB7jBDiemx562YvfTxdXECmQzGgdLdFi7ZX0lNCy7fy6t1hm+IT0g5Rmsw==
         recheck: >-
           npm view @daimo/sdk@1.8.8 dist.integrity && curl -sL https://registry.npmjs.org/@daimo/sdk/-/sdk-1.8.8.tgz | tar xzO package/dist/web/hooks/useWalletFlow.js | grep -n 'functionName'   # only line 522 "transfer"; then grep -rniE 'approve|permit|maxuint' over the extracted package/dist/*.js finds no approval call outside tests
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.daimo.com/guides/payment-methods
         detail: Fiat rails, the only flows that use the Privy account wallet, are off unless the merchant's org enables them.
         checked_at: "2026-10-07"
         quote: fiat rails appear only when enabled for your org
+        confirmed_at: 2026-10-12
     finding: >-
       Re-assessed under the updated anchor; the score is unchanged and now rests on the distributed package as well as the source. In the default crypto flow the SDK asks for no token allowance: the payer sends the exact amount straight to the session's deposit address, both at the pinned commit and in the published @daimo/sdk 1.8.8 bundle. The only other route in the contracts, pullFromPermit, uses EIP-2612 with a deadline and the deposit address as spender. Limit: the optional fiat/account flow (off unless the merchant enables fiat) has the Daimo-provisioned Privy wallet sign server-supplied EIP-712 "routing authorization" data or send a server-supplied sponsored transaction (packages/sdk/src/common/account.ts L857-L876, web/hooks/useDraftDeposit.ts L231-L256); the scope of those authorizations is set by the closed API and cannot be read from client code. Judgment call: a default flow with no approval at all is stricter than the anchor-3 bar of exact-amount approvals, so we score it 3.
     provider_response: null
@@ -784,6 +835,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: refundFulfillment and claim (L561-L569) are onlyRelayer; DAFulfillment.pull (L1169-L1179) is callable only by the manager, so bridged funds have no permissionless exit.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src/DepositAddressManager.sol#L829-L860
@@ -791,6 +843,7 @@ scores:
         path: packages/contract/src/DepositAddressManager.sol
         detail: refundDepositAddress lets anyone return an expired deposit address's balance to its refundAddress, but only if the caller knows the full DAParams (held by the Daimo API, or recoverable from a prior event).
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Re-assessed under the updated anchor; the score is unchanged, because anchor 2 needs a verified withdrawal path that works without the provider and none exists for funds in flight. Derived from S1=0, C2=0, C3=0, and O3=0. If Daimo disappeared, payees would keep funds already delivered, but no new payment could settle (C2, C3). A payer whose deposit has not been forwarded can get it back after expiry through refundDepositAddress. That call needs the full DAParams, which the API holds and which are not emitted onchain until Daimo acts on the session. Funds already bridged to a destination-chain fulfillment contract can only be claimed or refunded by an allowlisted relayer, so they depend on Daimo staying live.
     provider_response: null
@@ -810,12 +863,14 @@ scores:
         checked_at: "2026-10-07"
         recheck: >-
           gh api 'repos/daimo-eth/sdk/contents/packages/sdk/README.md?ref=ac0a71453ac249aa991d71059c621e2424322d61' -H 'Accept: application/vnd.github.raw' | sed -n '24,33p'   # "never expose that key in browser code"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.daimo.com/guides/webhooks
         detail: Webhooks are signed with a Daimo-Signature header (HMAC-SHA256 over t.rawBody) and the docs give a timingSafeEqual verification snippet; no verification helper exists in the repo and secret rotation is not described.
         checked_at: "2026-10-07"
         quote: every webhook delivery includes a daimo-signature header for verifying authenticity
+        confirmed_at: 2026-10-12
     finding: >-
       The client bundle contains no long-lived secrets. Webhooks are HMAC-signed, but the only verification reference code is on the hosted docs, not in the repo. Neither the repo nor the docs describe API-key scoping or rotation. Judgment call: we score 2 and not 3, because the reference verification is not in the repo and rotation is not shown.
     provider_response: null
@@ -858,12 +913,14 @@ availability:
       detail: Payment Methods guide lists localized methods by country and states that self-custody wallets and deposit addresses are offered in every country.
       checked_at: "2026-10-09"
       quote: plus self-custody wallets and deposit addresses everywhere
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.daimo.com/guides/fiat
       detail: Fiat guide's supported-rails table gives each fiat rail's region (US, Canada, Europe (SEPA), Japan/Singapore/South Korea/Philippines, Argentina, Colombia); users in other countries see crypto, exchange and wallet methods.
       checked_at: "2026-10-09"
       quote: Users in a country with no enabled fiat rail see crypto, exchange, and wallet
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       url: https://github.com/daimo-eth/sdk/tree/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/src

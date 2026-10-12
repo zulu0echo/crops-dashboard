@@ -150,6 +150,7 @@ scores:
         path: contracts/proxy/Proxy.sol
         detail: The proxy admin can upgrade, pause and unpause; while paused every call reverts (notPaused, L49-L53), including unshield. The implementation also has an owner-only TokenBlocklist (blocks tokens from being shielded, not addresses) and fee setters.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9
@@ -161,6 +162,7 @@ scores:
         check:
           slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
           expect: "0x0000000000000000000000004f8e20f55f879bee7bc010bd6bd2138b34ac65c8"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0xB6d513f6222Ee92Fff975E901bd792E2513fB53B
@@ -171,6 +173,7 @@ scores:
         check:
           call: "0x8ad2f2890000000000000000000000000219b4c1adcec8f4206b528832f66ab76766873d0000000000000000000000004f8e20f55f879bee7bc010bd6bd2138b34ac65c876a67a5100000000000000000000000000000000000000000000000000000000"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0xc480F68A3dcC3EdD82134FAB45C14A0FcF1dA3CC
@@ -181,6 +184,7 @@ scores:
         check:
           call: "0x9f31490d"
           expect: "0x0000000000000000000000000000000000000000000000000000000000093a80"
+        confirmed_at: 2026-10-12
     finding: >-
       Pause, upgrade and token blocklisting sit with RAIL token governance: ProxyAdmin is owned by the Delegator, which is owned by the Voting contract, and no other address holds pause permission today (three EOA pausers granted in 2021 were revoked). A pause takes at least 7 days from the vote being called, and a pause would also stop unshielding. Nothing in the contracts blocks individual addresses. Judgment call: anchor 2 is written for a Safe; we treat public onchain token voting with a 7-day minimum execution delay as meeting it, since user exit (unshield) is immediate. No notice channel beyond the onchain proposal is named in the repo.
     provider_response: null
@@ -198,6 +202,7 @@ scores:
         path: contracts/logic/RailgunSmartWallet.sol
         detail: shield() and transact() (private transfer and unshield) are external with no caller check; validity rests on the token blocklist, commitment preimage checks and the SNARK proof.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/Railgun-Community/deployments/blob/68d93979600d93b46200c2c4c6a006a4d80e38a1/src/chains/ethereum.ts#L20-L39
@@ -206,6 +211,7 @@ scores:
         detail: Proxy and implementation addresses are published with ABIs in src/abi (implementation.ts, proxy.ts).
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railgun-Community/deployments/contents/src/chains/ethereum.ts?ref=68d93979600d93b46200c2c4c6a006a4d80e38a1" --jq .content | base64 -d | sed -n 20,39p
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0xD662C4B1F22AcEb0BEaCdf3A493De6f478686A0C
@@ -216,6 +222,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x000000000000000000000000d662c4b1f22aceb0beacdf3a493de6f478686a0c"
+        confirmed_at: 2026-10-12
     finding: >-
       A payer can shield, send privately to a payee's 0zk address and the payee can unshield by calling the proxy directly and self-signing; no broadcaster, API or provider signature is involved. Addresses and ABIs are published in the deployments repo. We did not run a transaction.
     provider_response: null
@@ -234,6 +241,7 @@ scores:
         detail: After the optional quick sync, the engine slow-syncs commitments from the contract's events over the user's RPC (getHistoricalEvents), so the hosted indexer is not required.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railgun-Community/engine/contents/src/railgun-engine.ts?ref=6e2614d53a106dd62abad91e7ce03ee4a3956138" --jq .content | base64 -d | sed -n 719,760p
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/Railgun-Community/wallet/blob/5c9d04c844879b8377d91775052e88c836b48730/src/services/railgun/core/init.ts#L142-L182
@@ -241,6 +249,7 @@ scores:
         path: src/services/railgun/core/init.ts
         detail: startRailgunEngine takes poiNodeURLs as optional and initialises POI only if they are given; broadcasters are an optional transport (waku-broadcaster-client, MIT).
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Settlement needs only the contracts, the SDK, the proving artifacts and an RPC. Broadcasters, the hosted Subsquid indexer and the POI aggregator are optional, and each has public code. Judgment call: self-signing without a broadcaster exposes the gas-paying address; that is a privacy cost (P3), not a settlement dependency, so 3.
     provider_response: null
@@ -263,6 +272,7 @@ scores:
           name: "@railgun-community/wallet"
           version: 10.9.0
           integrity: sha512-y2ncKCWkG3rWSYysBzXzPsTQvKMGE2lCFVwCgKjS3JnkZAHiKRYWjWrcMw1mSrFYmNjTO1/loYO4qALGz09cbg==
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/Railway-Wallet/Railway-Wallet/blob/e9398a1ccf94ff016062592fc310a8a697d94f2b/desktop/src/react-shared/src/utils/poi.tsx#L37
@@ -270,6 +280,7 @@ scores:
         path: desktop/src/react-shared/src/utils/poi.tsx
         detail: Railway explains that Private Proofs of Innocence use the OFAC list published by Chainalysis, and that blocked shields can only be unshielded to origin.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0xD662C4B1F22AcEb0BEaCdf3A493De6f478686A0C
@@ -294,6 +305,7 @@ scores:
         path: contracts/logic/RailgunSmartWallet.sol
         detail: Any ERC20, ERC721 or ERC1155 token can be shielded unless governance has put it on the TokenBlocklist; there is no allowlist.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Chains are enumerated in shared-models, but tokens are an open set, and we found no statement in the repos or docs that issuer freezes (USDC, USDT) can lock the RAILGUN contract's balance of a token. Judgment call: an open token set cannot be enumerated, and the anchor names "not enumerated" as 0; we take the lower anchor.
     provider_response: null
@@ -319,6 +331,7 @@ scores:
         path: hardhat.config.ts
         detail: The Hardhat config pins solc 0.8.17 with optimizer runs 200; deploy tasks are in tasks/ and scripts/.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       All in-scope contracts are verified on Sourcify; the implementation, which holds the logic, is a partial match. No rebuild attempted. Scored 2.
     provider_response: null
@@ -354,6 +367,7 @@ scores:
         path: README.md
         detail: The contracts README gives only install and Hardhat help steps; the SDK and Railway READMEs cover installation.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Minimal build documentation exists. Reproduction not attempted, so capped at 1.
     provider_response: null
@@ -372,6 +386,7 @@ scores:
         detail: Event schemas (Action, Transact, Shield, Unshield, Nullified) are defined in the contract; ABIs are in the deployments repo (src/abi).
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railgun-Community/deployments/contents/src/abi?ref=68d93979600d93b46200c2c4c6a006a4d80e38a1" --jq '.[].name'
+        confirmed_at: 2026-10-12
     finding: >-
       ABIs and event schemas are in the repos, and no API is required. We found no payee export in a non-proprietary format in the SDK; Railway and the docs point to viewing keys and a Koinly tax export, which we did not inspect. Scored 2.
     provider_response: null
@@ -389,6 +404,7 @@ scores:
         path: package.json
         detail: The contracts repo has no LICENSE file; package.json says "UNLICENSED" and 38 of 39 Solidity files carry SPDX UNLICENSED. A License.md added in 2021 (d2c63577) read "No License is provided for any party under any circumstances" and was removed in 77af7cf5 (2022).
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/Railgun-Privacy/circuits-v2/blob/0aa2d13763a9fcfbb7b7ea9c02e004e71f1394bb/License.md
@@ -396,6 +412,7 @@ scores:
         path: License.md
         detail: The circuits repo's License.md says "No License is provided for any party under any circumstances."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       The SDK repos are MIT and Railway is AGPL-3.0, but the settlement contracts and circuits, both required, carry no licence and explicitly grant none. Scored 0.
     provider_response: null
@@ -414,6 +431,7 @@ scores:
         detail: Engine and wallet LICENSE files are MIT with no change since 2022-09-29; no CLA or CONTRIBUTING file exists in contract, engine, wallet or shared-models.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railgun-Community/engine/commits?path=LICENSE&sha=6e2614d53a106dd62abad91e7ce03ee4a3956138" --jq '.[].sha'
+        confirmed_at: 2026-10-12
     finding: >-
       No CLA, no relicensing event in the SDKs, and no licence-stability commitment. The contracts and circuits have never been licensed, which F1 records. Scored 2.
     provider_response: null
@@ -432,6 +450,7 @@ scores:
         detail: Proving artifacts are fetched by IPFS hash through the gateway ipfs-lb.com unless the integrator supplies an artifact store; the engine needs only an RPC.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railgun-Community/wallet/contents/src/services/artifacts/artifact-util.ts?ref=5c9d04c844879b8377d91775052e88c836b48730" --jq .content | base64 -d | sed -n 1,10p
+        confirmed_at: 2026-10-12
     finding: >-
       No proprietary plugin or hosted-only service is needed: the artifacts are content-addressed on IPFS and the indexer, POI node and broadcasters are optional. Judgment call: the code supports 3, but with no O3 reproduction we take 2. The contracts and circuits being unlicensed is scored under F1.
     provider_response: null
@@ -449,6 +468,7 @@ scores:
         path: desktop/src/views/screens/pages/app-protect-view/AppProtectView.tsx
         detail: Railway desktop loads @fingerprintjs/fingerprintjs (package.json L36, resolved 3.4.2) and uses the browser fingerprint visitorId as the AES key for the locally stored password hash.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/Railgun-Community/wallet/blob/5c9d04c844879b8377d91775052e88c836b48730/package.json
@@ -456,6 +476,7 @@ scores:
         path: package.json
         detail: The wallet, engine and shared-models manifests list no analytics, telemetry or error-reporting packages; Railway's mobile manifest has none either.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       The SDK ships no analytics or telemetry. Railway desktop includes a fingerprinting library; in the code we read it is used locally to derive an encryption key, and we saw no network send. Judgment call: the anchor names fingerprinting libraries as 0 regardless of use, so we take 0; on the SDK alone this cell would score higher.
     provider_response: null
@@ -474,6 +495,7 @@ scores:
         detail: A shield request carries a commitment preimage (npk, token, value) and an encrypted ciphertext; transactions carry proofs, nullifiers, commitments and encrypted ciphertexts. There is no account, identity or contact field.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railgun-Privacy/contract/contents/contracts/logic/Globals.sol?ref=36bcf5ed7cf94bfafb6e1a303e1832c769c16780" --jq .content | base64 -d | sed -n 21,90p
+        confirmed_at: 2026-10-12
     finding: >-
       The flow collects only what settlement needs; there is no sign-up, KYC or form. A broadcaster, if used, sees the transaction it relays and its fee; a POI node sees blinded commitments. Railway states it collects no logs, a claim we did not verify.
     provider_response: null
@@ -492,6 +514,7 @@ scores:
         detail: Shield emits commitment preimages (token, amount, note public key) and ciphertext; Transact emits only commitment hashes and ciphertext; Unshield emits recipient, token, amount and fee; Action emits the caller (gas payer or broadcaster).
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railgun-Privacy/contract/contents/contracts/logic/RailgunLogic.sol?ref=36bcf5ed7cf94bfafb6e1a303e1832c769c16780" --jq .content | base64 -d | sed -n 56,82p
+        confirmed_at: 2026-10-12
     finding: >-
       Shielding is public (who, which token, how much) and unshielding is public (to whom, which token, how much), but a private transfer between 0zk addresses reveals no sender, recipient, token or amount onchain; ciphertexts are encrypted to the parties. Linkage can come from the shield/unshield amounts and timing, and from self-signing with a known gas address (the Action event names the caller). Judgment call: behavioural linkage is noted, not scored; on what the code reveals, 3.
     provider_response: null
@@ -510,6 +533,7 @@ scores:
         detail: The wallet SDK hardcodes the Subsquid endpoint rail-squid.squids.live for quick sync, and artifact-util.ts L7 hardcodes the ipfs-lb.com gateway; Railway adds price APIs (CoinGecko, CoinPaprika, DefiLlama), its remote config at railway.xyz and the POI aggregator ppoi.fdi.network.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railgun-Community/wallet/contents/src/services/railgun/quick-sync/V2/graphql/index.ts?ref=5c9d04c844879b8377d91775052e88c836b48730" --jq .content | base64 -d | sed -n 3180,3184p
+        confirmed_at: 2026-10-12
     finding: >-
       Beyond the RPC, the SDK's default path touches a hosted Subsquid indexer and an IPFS gateway, and Railway adds price, config and POI services. All are named in code. The indexer and gateway can be replaced only in code (engine init functions, artifact store); the RPC and POI node URLs are configurable. Scored 2.
     provider_response: null
@@ -528,6 +552,7 @@ scores:
         detail: Railway has a custom RPC modal; the indexer endpoint is fixed in the wallet SDK's generated GraphQL client, replaceable only by passing a different quickSync function to the engine; the indexer code is public (subsquid-integration, MIT).
         checked_at: "2026-10-09"
         recheck: gh api "repos/Railway-Wallet/Railway-Wallet/contents/desktop/src/views/screens/modals/settings/AddCustomRPCModal/AddCustomRPCModal.tsx?ref=e9398a1ccf94ff016062592fc310a8a697d94f2b" --jq .content | base64 -d | sed -n 95,110p
+        confirmed_at: 2026-10-12
     finding: >-
       RPC is configurable in the UI and SDK; the indexer is configurable only in code, though its code is public and the engine can fall back to RPC scanning. Scored 2.
     provider_response: null
@@ -545,6 +570,7 @@ scores:
         path: contracts/logic/RailgunSmartWallet.sol
         detail: Tokens leave the contract only through unshield in a transaction carrying a valid proof over the note owner's keys; no admin function moves user balances. Fees go to the treasury at shield and unshield (25 bps each at block 26153471).
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0x4F8E20f55f879beE7Bc010Bd6bD2138B34aC65c8
@@ -556,6 +582,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000b6d513f6222ee92fff975e901bd792e2513fb53b"
+        confirmed_at: 2026-10-12
     finding: >-
       Funds sit in one upgradeable contract, controlled by the note owner's keys; nobody can move them under the current code. An upgrade could, but only after a public RAIL vote and at least 7 days, while users can unshield at any time. Judgment call: we read this as "escrow with a provider role bounded by a timelock and a documented exit" (2), not "upgradeable escrow" without a delay (1).
     provider_response: null
@@ -577,6 +604,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000c480f68a3dcc3edd82134fab45c14a0fcf1da3cc"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/Railgun-Privacy/contract/blob/36bcf5ed7cf94bfafb6e1a303e1832c769c16780/contracts/governance/Voting.sol#L16-L26
@@ -584,6 +612,7 @@ scores:
         path: contracts/governance/Voting.sol
         detail: Sponsor window 30 days, voting starts 2 days after callVote, execution window 7 to 14 days after; quorum 2M RAIL.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       The RailgunSmartWallet is upgradeable by RAIL governance only: ProxyAdmin → Delegator → Voting, with at least 7 days between a vote being called and execution, longer than the immediate user exit. There is no Safe; the voters are onchain. The repo names no user notice channel beyond the onchain proposal, and governance can also set verification keys via the VKeySetters. Judgment call: 2 (delay longer than exit, no notice channel named).
     provider_response: null
@@ -601,6 +630,7 @@ scores:
         path: desktop/src/views/screens/drawer/shield/ShieldTokens/ShieldInitial/ShieldERC20sInitial.tsx
         detail: Railway's shield flow sets the approval amount to maxBigIntForTransaction() (2^256-1, util.tsx L254-L256) for the RAILGUN proxy; no "unlimited" label was found in the approval screens.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Railway asks for an unlimited allowance to the upgradeable RAILGUN proxy when shielding, and we found no disclosure of that in the UI code. The SDK has no approval helper; integrators choose. Scored 0 on the reference wallet.
     provider_response: null
@@ -622,6 +652,7 @@ scores:
         check:
           slot: "0x8dea8703c3cf94703383ce38a9c894669dccd4ca8e65ddb43267aa0248711450"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
     finding: >-
       Derived from S1=2, C2=3, C3=3, O3=1. Funds are held by keys the user controls, behind an upgrade path that needs a 7-day governance process (S1). A user can unshield and keep sending privately by calling the contract directly with the public SDK and an RPC (C2, C3). A public frontend exists (Railway), but no build was reproduced (O3=1). Judgment call: 2, not 3, for that reason.
     provider_response: null
@@ -644,6 +675,7 @@ scores:
           name: "@railgun-community/wallet"
           version: 10.9.0
           integrity: sha512-y2ncKCWkG3rWSYysBzXzPsTQvKMGE2lCFVwCgKjS3JnkZAHiKRYWjWrcMw1mSrFYmNjTO1/loYO4qALGz09cbg==
+        confirmed_at: 2026-10-12
     finding: >-
       No secrets ship in the SDK or the Railway source, and the protocol has no merchant keys or webhooks. User secrets stay client-side. The npm package 10.9.0 was published from the pinned commit (gitHead 5c9d04c8). Scored 3.
     provider_response: null
@@ -661,6 +693,7 @@ scores:
         path: railgun/ABDK_Railgun_CircomSolidity_v_2_0.pdf
         detail: ABDK's Circom and Solidity review covers contract commit 6281cb (Commitments, RailgunLogic, Snark, TokenWhitelist, Types, Verifier) and circuits commit 2c3c31, an early version; findings are listed as Opened in this report.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       An audit report exists for an early version of the contracts and circuits; it does not cover the deployed implementation (deployed at block 25641630, with Action events and TokenBlocklist). We found no audit report, SECURITY file or bounty programme in the Railgun repos or docs. Judgment call: 1 for an audit of a prior version, as for Tornado Cash; no audit of the deployed code was found.
     provider_response: null

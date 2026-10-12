@@ -2,3 +2,4 @@ node_modules/
 dist/
 .claude/
 drift-report.json
+refresh-report.json

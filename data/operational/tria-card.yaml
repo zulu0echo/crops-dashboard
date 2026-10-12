@@ -81,12 +81,14 @@ facts:
         detail: Help article on login methods (4 May 2026).
         checked_at: "2026-10-09"
         quote: You can log in to your account using either your primary Google email or your Apple account
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.tria.so/en/articles/14854386-card-security-and-troubleshooting
         detail: Help article on card security.
         checked_at: "2026-10-09"
         quote: Complete the biometric security check
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -150,6 +152,7 @@ facts:
         detail: Privacy Policy s11, How We Protect Your Information.
         checked_at: "2026-10-09"
         quote: including encryption at rest and during transit
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: trace
         url: https://www.tria.so
@@ -176,6 +179,7 @@ facts:
         detail: Privacy Policy s12, Information Storage.
         checked_at: "2026-10-09"
         quote: We retain your information for as long as necessary to provide the Services
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -193,6 +197,7 @@ facts:
         detail: Privacy Policy opening paragraph and s5 Biometric Data.
         checked_at: "2026-10-09"
         quote: This Privacy Policy describes how Threely Dimensions, Inc.
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -232,6 +237,7 @@ facts:
         detail: The Security and TSS page now shows a password gate; docs.tria.so/tx-flow and /network-construct show the same gate.
         checked_at: "2026-10-09"
         quote: This section is password-protected and intended for authorized use only
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -246,18 +252,21 @@ facts:
         detail: Terms of Service, governing law.
         checked_at: "2026-10-09"
         quote: laws of the State of Delaware
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.tria.so/card-terms-international
         detail: International Card Terms (last updated 9 January 2026), opening paragraph naming the issuer.
         checked_at: "2026-10-09"
         quote: Nimbus, LLC a Delaware U.S. corporation
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.tria.so/card-terms-us
         detail: US Cardholder Agreement (last updated 9 January 2026), opening paragraph naming the issuer.
         checked_at: "2026-10-09"
         quote: and Third National, including its affiliates, successors, and assigns
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -272,6 +281,7 @@ facts:
         detail: International Card Terms, Important Disclosures (fee disclosure date 31 October 2025).
         checked_at: "2026-10-09"
         quote: "Virtual Card: $25 Plastic Card: $109 Metal Card: $250"
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -286,12 +296,14 @@ facts:
         detail: International Card Terms s10 Termination.
         checked_at: "2026-10-09"
         quote: Tria and/or Issuer may suspend, revoke or cancel your Account privileges
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.tria.so/platform-agreement
         detail: Terms of Service s11.2 Effect of Termination.
         checked_at: "2026-10-09"
         quote: delete or deactivate your Tria Account and all related information
+        confirmed_at: 2026-10-12
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -344,18 +356,21 @@ fees:
       detail: International Card Terms, Important Disclosures.
       checked_at: "2026-10-09"
       quote: "ATM Fee (Withdraw): Up to $2 + 3%"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.tria.so/en/articles/14780504-atm-withdrawals
       detail: Help article on ATM withdrawals (15 May 2026).
       checked_at: "2026-10-09"
       quote: "Per Transaction: Maximum of $750"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.tria.so/en/articles/14854432-what-are-provider-fees
       detail: Help article on provider fees (1 May 2026).
       checked_at: "2026-10-09"
       quote: we do not charge any direct service fees for card deposits at this time
+      confirmed_at: 2026-10-12
   note: "Fees in the card terms are maxima (\"up to\"); interest is 0% and late, returned and over-limit fees are not charged. Gas for top-ups is sponsored on most chains (not Solana or Tron)."
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -402,18 +417,21 @@ licences:
       detail: US Cardholder Agreement naming the issuer.
       checked_at: "2026-10-09"
       quote: and Third National, including its affiliates, successors, and assigns
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.tria.so/card-terms-international
       detail: International Card Terms naming the issuer.
       checked_at: "2026-10-09"
       quote: Nimbus, LLC a Delaware U.S. corporation
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.tria.so/card-terms-international
       detail: International Card Terms, Nigeria users.
       checked_at: "2026-10-09"
       quote: BANEX MICROFINANCE BANK LIMITED (BANEX), a financial institution licensed by the Central Bank of Nigeria (CBN)
+      confirmed_at: 2026-10-12
   note: "Tria (Threely Dimensions Inc.) says it is not a bank, money services business or card issuer and claims no licence. None of the partner licences was confirmed in a register: FDIC BankFind lists no active institution named Third National (2026-10-09); Nimbus, LLC is not a bank and no licence is stated for it; the Central Bank of Nigeria register was not checked."
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -422,13 +440,13 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_spend
       partner: Nimbus, LLC (international) or Third National (US) as issuer; Visa
       fee: FX up to 3% plus international up to 1% (terms)
       limits: Spending limit equals posted collateral value; virtual (Lite) or physical cards.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: Card issuer, Visa
       fee: Up to 2 USD + 3% (terms); 1 USD + 1% (help centre)
@@ -441,12 +459,14 @@ cashout:
       detail: International Card Terms, Important Disclosures.
       checked_at: "2026-10-09"
       quote: "Foreign Exchange (\"FX\"): Up to 3%"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.tria.so/en/articles/14780504-atm-withdrawals
       detail: Help article on ATM withdrawals.
       checked_at: "2026-10-09"
       quote: "Percentage Fee: 1% of the withdrawal amount"
+      confirmed_at: 2026-10-12
   note: "ALL means every country not on the provider file's blocklist. Card eligibility is narrower in practice: the card application checks the country of residence against an unpublished supported list (help article 14056678). No bank off-ramp to fiat accounts was found in the help centre or terms."
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -465,6 +485,7 @@ maturity:
         detail: International Card Terms, Important Disclosures effective date.
         checked_at: "2026-10-09"
         quote: effective as of 31 Oct, 2025
+        confirmed_at: 2026-10-12
     note: No dated launch announcement of the Tria card was found (www.tria.so is client-rendered with no newsroom; help articles carry 2026 update dates). The card may have launched earlier.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -482,12 +503,14 @@ maturity:
         detail: Terms of Service naming the contracting entity; governed by Delaware law.
         checked_at: "2026-10-09"
         quote: Tria does not hold, store, or take custody of your funds, digital assets, collateral, or private keys
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.tria.so/privacy-policy
         detail: Privacy Policy naming Threely Dimensions, Inc.
         checked_at: "2026-10-09"
         quote: This Privacy Policy describes how Threely Dimensions, Inc.
+        confirmed_at: 2026-10-12
     note: Jurisdiction inferred from the Delaware governing-law and venue clause; incorporation state not stated and not checked in the Delaware Division of Corporations search (interactive). SEC EDGAR full-text search returned no filings for the name.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -516,12 +539,14 @@ maturity:
         detail: International Card Terms header.
         checked_at: "2026-10-09"
         quote: "Last Updated: January 9, 2026"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.tria.so/card-terms-us
         detail: US Cardholder Agreement header.
         checked_at: "2026-10-09"
         quote: "Last Updated: January 9, 2026"
+        confirmed_at: 2026-10-12
     note: Not listed because undated - the Security and TSS, TX Flow and protocol docs pages, public when the CROPS seed was researched on 2026-10-07, were password-protected by 2026-10-09 (see B10.1).
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09

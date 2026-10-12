@@ -103,6 +103,7 @@ scores:
         path: programs/squads_multisig_program/src/lib.rs
         detail: The only program-level admin (ProgramConfig authority) can set itself, the multisig creation fee and the treasury; no pause, freeze or blacklist instruction exists in the program.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://solana.fm/address/2ozzxmEwAoKAw5ekUzeMej3E7ToCV1KjTbvhNHdkdZDK
@@ -116,6 +117,7 @@ scores:
         quote: "We reserve the right to block, suspend or cancel your Card at any time, with or without notice"
         detail: Lead Bank Prepaid Visa Cardholder Agreement (Bridge Ventures as Program Manager), fraud prevention clause.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Onchain, no one can pause or freeze the user's Squads accounts: the program has no such instruction and is immutable, and neither Squads nor Bridge holds a member key. The card itself can be blocked or cancelled by Lead Bank or Bridge "with or without notice", and every card settlement depends on Bridge using its spending limit. Judgment call: the documented per-card block without notice meets anchor 0, as in Gnosis Pay; the onchain layer alone would score 3.
     provider_response: null
@@ -140,6 +142,7 @@ scores:
         quote: "You can set a daily Spending Limit for Bridge"
         detail: The Fuse Pay post says Bridge uses the spending limit in real time as the user pays with the card.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Merchants are paid by Visa and Lead Bank off-chain. The only onchain step is Bridge pulling USDC with its own key. Neither payer nor payee can complete a card payment by calling the program.
     provider_response: null
@@ -156,6 +159,7 @@ scores:
         quote: "Complete the KYC process via Bridge"
         detail: Applying, KYC and card issuance run through Bridge inside the closed Fuse app.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       A card payment needs Bridge (KYC, authorisation, the spending-limit signer), Lead Bank, Visa and the closed Fuse app. All are closed and single-vendor.
     provider_response: null
@@ -179,6 +183,7 @@ scores:
         quote: "Smart account enforced spending limits to protect your card balance"
         detail: The support page lists eligible countries (U.S. excluding NY and AK, plus 17 Latin American and African countries); KYC is done by Bridge.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The settlement program is neutral. Geographic eligibility is disclosed as a country list in the docs, and screening runs in Bridge's closed KYC. With C2 at 0 there is no way around it. Disclosed in docs only, so 1.
     provider_response: null
@@ -228,6 +233,7 @@ scores:
         path: README.md
         detail: The README documents a solana-verify deterministic build and the commands to compare hashes; I did not run it.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The program has no recorded verified build. The registry entry is unverified and points at a January 2024 commit whose spending-limit code (members must be multisig members) does not match observed behaviour; the audited commit 64af733 does match it. The README gives reproducible build steps, but no one has recorded a match. Unverified, so 0.
     provider_response: null
@@ -262,6 +268,7 @@ scores:
         path: README.md
         detail: The public v4 client README gives build, hash-verification and Docker self-host steps for a generic Squads v4 interface.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Self-host docs exist for a generic v4 client, not for Fuse. Reproduction not attempted, and the card cannot be self-hosted. 1.
     provider_response: null
@@ -285,6 +292,7 @@ scores:
         path: LICENSE
         detail: Squads v4 is AGPL-3.0; the public client is MIT.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The public repos carry OSI licences. The Fuse app, backend and Bridge integration are required and closed, so 0.
     provider_response: null
@@ -319,6 +327,7 @@ scores:
         quote: "issued to you by Lead Bank"
         detail: The card exists only through Lead Bank, Bridge as Program Manager and Squads as Platform Provider.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The card cannot run without proprietary services: the Fuse app, Bridge, Lead Bank and Visa.
     provider_response: null
@@ -335,6 +344,7 @@ scores:
         quote: "Data analytics providers"
         detail: The Squads privacy policy (covers Fuse Wallet) lists ad networks and data analytics providers among recipients and analytics among uses.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Analytics are disclosed in the policy. The app is closed and no trace was run, so presence and defaults cannot be checked in code. Judgment call: disclosed, so 1.
     provider_response: null
@@ -351,6 +361,7 @@ scores:
         quote: "may be collected and processed by our financial services partners, such as Bridge Ventures, LLC"
         detail: The policy discloses KYC collection by Bridge and Lead Bank for Fuse Card, plus card account numbers, name, transaction history, email, phone, address and balances.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The regulated card requires full KYC. It is disclosed in the policy and is beyond settlement needs, so 1.
     provider_response: null
@@ -376,6 +387,7 @@ scores:
         quote: "the equivalent USDC is deducted from your Card Account"
         detail: The launch post says USDC stays on Solana until purchase and is then deducted from the Card Account.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       No merchant data goes onchain. Every purchase is still a public, exactly sized transfer from a long-lived card vault, signed by Bridge's well-known key, so anyone can list a cardholder's spending amounts and timing. There are no fresh addresses or privacy patterns. Minimal linkage, documented, so 2.
     provider_response: null
@@ -392,6 +404,7 @@ scores:
         quote: "may be collected and processed by our financial services partners, such as Bridge Ventures, LLC"
         detail: The policy names Bridge and Lead Bank; the Fuse posts name Turnkey for email recovery; Visa is the network.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Bridge, Lead Bank, Visa, and Turnkey if used, see card activity. They are disclosed in docs, not swappable, and the app is closed. 1.
     provider_response: null
@@ -471,6 +484,7 @@ scores:
         quote: "You can set a daily Spending Limit for Bridge"
         detail: The daily limit is disclosed and user-adjustable up to 2,000 USD.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The allowance is bounded and refilling, but it is not limited to one receiver, which anchor 2 requires. Judgment call: between 1 and 2, so I took the lower. It is disclosed, capped and user-adjustable, but the destination is open.
     provider_response: null
@@ -488,12 +502,14 @@ scores:
         path: programs/squads_multisig_program/src/instructions/vault_transaction_execute.rs
         detail: A member-approved vault transaction executes after the multisig's time_lock (300 s on the Card Account); no Squads or Bridge signature is involved.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://fusewallet.com/support/fuse-visa-card
         quote: "Withdrawals are subject to a 5-minute security time lock"
         detail: Withdrawal from the Card Account to the Main Account is documented.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Chain of reasoning. S1: funds at rest sit in the user's own accounts, outside the spending limit. S2: the program is immutable and holds no provider key. C2 = 0 and C3 = 0: card settlement stops without Bridge and Fuse. O3 = 1: a public MIT Squads v4 client could drive the withdrawal, but self-hosting is unproven. Judgment call: the onchain withdrawal path is verified, but I found no evidence that the Device and 2FA keys can be used outside the closed Fuse app. Funds are retrievable through a documented manual contract call, so 1, not 2.
     provider_response: null
@@ -517,6 +533,7 @@ scores:
         path: README.md
         detail: The README lists ten audit reports (OtterSec, Neodyme, Certora, Trail of Bits) in audits/ and names 64af7330413d5c85cbbccfd8c27a05d45b6e666f as "the final and fully audited commit"; SECURITY.md describes a bug bounty process.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The settlement program has audits pinned to a commit and a bounty process. The audited commit matches observed spending-limit behaviour, but no verified build ties it to the deployed bytecode (O1 = 0), and finding fixes are not linked. Fuse's own app and Bridge integration have no published audit. Judgment call: 1 rather than 2 because deployed-equals-audited is unproven.
     provider_response: null
@@ -532,7 +549,7 @@ notes: >-
 
 availability:
   model: allowlist
-  countries: [US, AR]
+  countries: [ US, AR ]
   note: >-
     The Fuse Visa Card support page lists 18 countries twice (in the card overview and in the FAQ "Am I eligible for Fuse Card?"): the U.S. (excluding residents of New York and Alaska), Argentina, Bolivia, Brazil, Colombia, Costa Rica, Dominican Republic, Ecuador, El Salvador, Ghana, Guatemala, Honduras, Mexico, Panama, Nigeria, Paraguay, Peru and Uruguay. The same FAQ answer then says the card is for users in the U.S. and Argentina only, followed by "We are working to make Fuse Card available in more countries soon". The page contradicts itself, so the more restrictive reading (US and AR) is used; the 18-country list is probably the newer text. In the US, residents of New York and Alaska are excluded. Applicants must be 18 or older and pass KYC via Bridge.
   evidence:
@@ -542,10 +559,12 @@ availability:
       detail: The FAQ answer limits the card to the U.S. and Argentina, excluding New York and Alaska.
       quote: users in the U.S. and Argentina aged 18 or older, excluding residents of New York and Alaska
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://fusewallet.com/support/fuse-visa-card
       detail: The same page lists 18 countries, starting with the U.S. (excluding New York and Alaska) and ending with Paraguay, Peru and Uruguay.
       quote: Fuse Card is currently available for users in
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
   checked_at: "2026-10-09"

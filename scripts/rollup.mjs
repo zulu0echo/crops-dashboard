@@ -47,7 +47,8 @@ export function rollup(provider, criteria) {
 // Freshness of one criterion cell, relative to `today` (YYYY-MM-DD).
 export function cellStatus(cell, today) {
   const ev = cell?.evidence ?? [];
-  const newest = ev.map((e) => e.checked_at).sort().at(-1) ?? null;
+  // A weekly re-read that found the source unchanged (confirmed_at) counts as fresh.
+  const newest = ev.map((e) => [e.checked_at, e.confirmed_at].filter(Boolean).sort().at(-1)).sort().at(-1) ?? null;
   const age = newest ? (Date.parse(today) - Date.parse(newest)) / 864e5 : null;
   const tiers = ['verified', 'documented', 'claimed'];
   return {
@@ -97,6 +98,7 @@ function selfCheck() {
   const s = cellStatus({ evidence: [{ checked_at: '2026-01-01', tier: 'documented' }, { checked_at: '2025-01-01', tier: 'verified', drift: true }] }, '2026-10-07');
   assert(s.newest === '2026-01-01' && s.stale && s.drift && s.tier === 'verified', 'cellStatus');
   assert(!cellStatus({ evidence: [{ checked_at: '2026-06-01' }] }, '2026-10-07').stale, 'fresh cell marked stale');
+  assert(!cellStatus({ evidence: [{ checked_at: '2025-01-01', confirmed_at: '2026-10-01' }] }, '2026-10-07').stale, 'confirmed cell marked stale');
   assert(diff({ x: { C: { score: 1, limiting: ['C2'] } } }, { x: { C: { score: 2, limiting: ['C2'] } } }).includes('| x | C | 1 (C2) | 2 (C2) |'), 'diff');
   const regions = { EU: ['DE', 'FR'] };
   assert(availableIn({}, 'KE') === 'unknown', 'no availability is unknown');

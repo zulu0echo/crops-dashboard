@@ -94,6 +94,7 @@ scores:
         quote: "Houdini does not control partner compliance processes and cannot override AML or recovery requirements"
         detail: "FAQ, Exchange Partner Questions: an exchange partner can require KYC before releasing a swap, and Houdini cannot reverse or override it."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Two parties can stop an individual payment. Houdini can disable any wallet or identifier at its sole discretion, for any or no reason. The exchange partner holding the deposit can hold the swap pending KYC, and Houdini cannot override that. Neither power is constrained by a multisig, a timelock or notice.
     provider_response: null
@@ -109,6 +110,7 @@ scores:
         quote: "All API requests should be made to"
         detail: "API docs: all API access is provisioned through the Houdini Partner Portal (API key and secret), and every request goes to https://api-partner.houdiniswap.com/."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/HoudiniSwap/houdiniswap-agent/blob/b29c75d9c3b2afeaa04e534a4a374f08292cb88f/packages/mcp-server/src/tools/swap-flow.ts#L88-L124
@@ -116,6 +118,7 @@ scores:
         path: packages/mcp-server/src/tools/swap-flow.ts
         detail: "The official client creates an order with POST /exchanges on Houdini's API and receives a one-time depositAddress from it; the payer then sends funds to that address. The deposit address exists only because Houdini's backend opened the order with a partner."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Every private or standard swap starts with an order that Houdini's hosted API creates. The API returns the partner deposit address, and Houdini's engine runs both legs. A payer cannot complete a Houdini swap without Houdini's servers. Going to an exchange partner directly is a different product.
     provider_response: null
@@ -133,12 +136,14 @@ scores:
         detail: "DEFAULT_BASE_URL is https://api-partner.houdiniswap.com/v2. config.baseUrl can override it, but no other server implements the API: the org's two public repos are clients."
         checked_at: "2026-10-09"
         recheck: "gh api 'repos/HoudiniSwap/houdiniswap-agent/contents/packages/shared/src/client.ts?ref=b29c75d9c3b2afeaa04e534a4a374f08292cb88f' --jq .content | base64 -d | sed -n 5,19p"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/developer-hub/overview/architecture
         quote: "When using CEX routes, funds briefly touch partner exchanges"
         detail: "Architecture overview: the user's app calls the Houdini API, Houdini's routing engine selects CEX partners or DeFi protocols, and the partners execute."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       The Houdini API and routing engine are required, closed and run only by Houdini. The exchange partners are also closed third-party services. There is no self-host path and no fallback operator.
     provider_response: null
@@ -154,6 +159,7 @@ scores:
         quote: "Access to the website is restricted for users located in countries that are subject to sanctions imposed by the United States or the European Union"
         detail: "Privacy and Compliance page: the website geo-blocks US- and EU-sanctioned countries (not named) and blocks Tor. Partners must screen all incoming deposits with tools like Chainalysis."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://cdn.prod.website-files.com/69143df941a2491956546ef7/6a579a7d3db98c279dc6020b_Houdini%20Swap%20-%20Terms%20of%20Service-14673161-v6.pdf
@@ -176,6 +182,7 @@ scores:
         quote: "Houdini offers bridging or swaps between most EVM chains, native Bitcoin, Solana and SUI"
         detail: "Chain Coverage and Partners page: supported chains are listed in a table, and the page names the API as the up-to-date token list. No issuer freeze powers or sequencer assumptions are stated."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Supported chains are enumerated in docs, and tokens through the hosted API. Issuer freeze or blacklist powers (USDT, USDC) and L2 sequencer assumptions are not stated to payees. Docs only, so 1.
     provider_response: null
@@ -197,6 +204,7 @@ scores:
         path: README.md
         detail: "github.com/HoudiniSwap has two public repos: houdiniswap-agent (MCP server, AI SDK tools and a shared HTTP client for the hosted API) and houdini-api-examples (reference integrations). Neither contains the routing engine, API server, web app, widget or deploy scripts."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Only client code for the hosted API is public. The backend, routing engine, web app and widget are closed. Judgment call: 1 (SDK only), consistent with other incumbents with public client libraries.
     provider_response: null
@@ -217,6 +225,7 @@ scores:
         quote: "Houdini Swap Partner API"
         detail: "OpenAPI 3.0.0 spec (version 2.1.2, 32 paths) served by the hosted API; it is not committed to either public repo."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/HoudiniSwap/houdiniswap-agent/blob/b29c75d9c3b2afeaa04e534a4a374f08292cb88f/packages/mcp-server/src/resources/openapi.ts#L5-L16
@@ -224,6 +233,7 @@ scores:
         path: packages/mcp-server/src/resources/openapi.ts
         detail: "The MCP server fetches the spec at runtime from `${baseUrl}/openapi.json` instead of shipping a versioned copy."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       An OpenAPI schema is published, but only on the hosted API, not versioned in a repo. No payee data export exists, and the privacy notice says transaction data is deleted after 72 hours. Documented only, so 1.
     provider_response: null
@@ -239,6 +249,7 @@ scores:
         quote: "When using CEX routes, funds briefly touch partner exchanges"
         detail: "Architecture overview: every swap runs through the Houdini API and routing engine, then through partner exchanges or DeFi protocols. None of them is published under any licence."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/HoudiniSwap/houdini-api-examples/blob/a536b91111f7a4d13145e03791a8b5ffe28b8028/README.md
@@ -246,6 +257,7 @@ scores:
         path: README.md
         detail: "houdini-api-examples has no LICENSE file at this commit (root: .gitignore, README.md, nextjs-example, node-examples). houdiniswap-agent carries MIT."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       The components needed to run a Houdini swap (API, routing engine, exchange partners) are closed, so nothing that runs the rail can be forked. Of the two public client repos, one is MIT and one is unlicensed.
     provider_response: null
@@ -267,12 +279,14 @@ scores:
         path: packages/shared/src/client.ts
         detail: "The open-source client is a wrapper around the hosted API at api-partner.houdiniswap.com/v2; it has no local routing or execution logic."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/developer-hub/getting-started/authentication
         quote: "All API access is managed through the"
         detail: "Production use needs Partner Portal credentials (API key and secret) or x402 pay-per-call payment to the hosted API."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       The MIT client is the only open code, and it cannot do anything without Houdini's proprietary hosted API. The core cannot run without proprietary components.
     provider_response: null
@@ -288,12 +302,14 @@ scores:
         quote: "All analytics are self-hosted and never shared with third parties"
         detail: "Privacy and Compliance page: aggregated analytics, self-hosted."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/products/swap-transfer/privacy-notice
         quote: "analytics data and general geographic location data"
         detail: "Privacy Notice (last updated 2024-01-25): automatically collected browsing data includes OS, browser type and ID, URLs, visit times, analytics data and general location; it also states 'We do not use cookies.'"
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Analytics run in the web app by default, and this is disclosed in docs and the privacy notice. Houdini states they are self-hosted. The web app could not be inspected: houdiniswap.com answers curl with a Cloudflare challenge, which we did not bypass, and no trace was run. Which SDKs ship, and whether they can be switched off, is not known. Documented only, so 1.
     provider_response: null
@@ -309,6 +325,7 @@ scores:
         quote: "the receiving wallet address, types and quantity of token sent and types and quantity of token received and internet protocol (IP) address"
         detail: "Privacy Notice: Transaction Data includes the sending and receiving addresses, tokens and amounts, and the IP address. It is kept for 72 hours by default (longer for open support cases), and users can opt for immediate deletion."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/HoudiniSwap/houdini-api-examples/blob/a536b91111f7a4d13145e03791a8b5ffe28b8028/nextjs-example/lib/helpers.ts#L55-L60
@@ -316,12 +333,14 @@ scores:
         path: nextjs-example/lib/helpers.ts
         detail: "The reference integration sends x-user-ip, x-user-agent and x-user-timezone headers to the Houdini API on each request (placeholder values in the example)."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/support-and-faqs/faqs
         quote: "Houdini does not control partner compliance processes and cannot override AML or recovery requirements"
         detail: "Exchange partners can require KYC on a swap, under their own policies."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Collection goes beyond settlement needs. Houdini takes the IP address, plus browsing and general location data in the web app. The reference API integration forwards the end user's IP, user agent and timezone. Partners can additionally require KYC under their own rules. All of this is disclosed in the privacy notice and docs, and the 72-hour retention is a mitigation. Disclosed in policy only, so 1.
     provider_response: null
@@ -337,12 +356,14 @@ scores:
         quote: "routing the transaction through two separate non-custodial exchanges"
         detail: "Private Swap: the payer deposits to exchange 1, which converts into an unnamed privacy-centric L1 token, and exchange 2 pays the recipient. Onchain, the payer sends to a deposit address and the payee receives from an exchange wallet."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/overview/getting-started/privacy-and-compliance
         quote: "these partners can reconcile their leg of a swap and provide the trace forward"
         detail: "Privacy and Compliance page: exchange partners keep internal logs linking each leg and disclose them on valid legal request."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       By design, the chain shows a plain transfer from the payer to a one-time partner deposit address and a separate payout from a partner wallet to the payee. There is no contract call or memo linking the two. The link exists off-chain, in partner logs and in Houdini's 72-hour transaction data. Amount and timing correlation remain possible, and the docs say so for the single-hop flow. We examined no sample transactions, so this rests on docs only and is capped at 1. Judgment call: the substance looks like anchor 2 (minimal onchain linkage, documented), held at the documented cap.
     provider_response: null
@@ -358,12 +379,14 @@ scores:
         quote: "Houdini does not execute swaps itself"
         detail: "Chain Coverage and Partners page names the 12 CEX partners (ChangeNow, SimpleSwap, StealthEx, Swapuz, LetsExchange, ChangeHero, Changelly, Swapter, EasyBit, Nexchange, Coincraddle, QuickEx) and the DEX and bridge partners."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/overview/getting-started/privacy-and-compliance
         quote: "Partners must use tools like Chainalysis to screen all incoming deposits"
         detail: "Partners run third-party AML screening on every deposit; the screening vendors are not fully named."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Each private swap exposes the deposit, amounts and payout address to two exchange partners and their screening vendors, plus Houdini itself. The partners are named in docs, while the screening vendors are named only by example. Houdini's engine picks the partners; the docs describe no user-side configuration that removes them. Disclosed in docs only, so 1.
     provider_response: null
@@ -384,12 +407,14 @@ scores:
         quote: "When using CEX routes, funds briefly touch partner exchanges"
         detail: "Architecture overview: on private and standard routes, the payer's funds sit at partner exchanges between deposit and payout."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/overview/swaps-and-transfers/no-wallet-connect
         quote: "observers can see the incoming and outgoing transfers"
         detail: "No Wallet Connect page: the payer sends tokens to a one-time deposit address, an exchange partner converts them, and the output is sent to the receiver."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Houdini says it does not hold funds. In flight they are held by the exchange partners that Houdini's engine selects, at deposit addresses those partners control, for 3-50 minutes per the docs. This intermediary custody is disclosed. Whether Houdini or a partner could redirect the payout is not inspectable, because the engine and partners are closed. Judgment call: scored as disclosed third-party custody chosen by the provider (anchor 1).
     provider_response: null
@@ -412,6 +437,7 @@ scores:
         detail: "For CEX (private and standard) orders the client tells the payer to send exactly the quoted amount to the deposit address; no approve or permit call exists on this path (approvals appear only in the separate DEX tools)."
         checked_at: "2026-10-09"
         recheck: "gh api 'repos/HoudiniSwap/houdiniswap-agent/contents/packages/mcp-server/src/tools/swap-flow.ts?ref=b29c75d9c3b2afeaa04e534a4a374f08292cb88f' --jq .content | base64 -d | sed -n 88,124p"
+        confirmed_at: 2026-10-12
     finding: >-
       The private flow uses a plain transfer of the exact amount to a deposit address, so no token allowance is granted. That is at least as tight as an exact-amount approval. Judgment call: held at 2 rather than 3, because the main payer client (the web app) is closed and not inspected, and no package or trace was recorded.
     provider_response: null
@@ -427,6 +453,7 @@ scores:
         quote: "Houdini does not control partner compliance processes and cannot override AML or recovery requirements"
         detail: "Once deposited, completion or recovery of a swap depends on the exchange partner's processes. Houdini's API and engine create and drive every order (see C2, C3)."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Derived. S1 = 1 (partner custody in flight), C2 = 0 (no path without Houdini's API), C3 = 0 (closed single-vendor API), O3 unknown (nothing to self-host). If Houdini disappears, new payments stop. A deposit in flight can be recovered only through the exchange partner's support and recovery process. No verified path exists, so funds and access depend on provider and partner liveness.
     provider_response: null
@@ -444,12 +471,14 @@ scores:
         detail: "The reference Next.js integration calls the Houdini API only from server-side API routes, with the comment 'API_KEY and API_SECRET must never be exposed to the browser'; .env.example L4-L6 marks the credentials server-side only."
         checked_at: "2026-10-09"
         recheck: "gh api 'repos/HoudiniSwap/houdini-api-examples/contents/nextjs-example/lib/helpers.ts?ref=a536b91111f7a4d13145e03791a8b5ffe28b8028' --jq .content | base64 -d | sed -n 39,60p"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/developer-hub/getting-started/authentication
         quote: "contact support to rotate credentials"
         detail: "API docs: key and secret go in the Authorization header; rotation is by contacting support, not self-service."
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       The reference code keeps the API secret server-side. The API has no webhooks (status comes by polling or WebSocket), so webhook signing does not arise. Minor issues are documented: credential rotation needs a support request. The agent client takes a raw wallet private key (x402) from env and, per its README, may store it in plaintext. The closed web app and widget were not inspected, so 3 is not available. Judgment call: 2.
     provider_response: null
@@ -482,6 +511,7 @@ availability:
       quote: "We proactively block access from the Tor network and restricted jurisdictions"
       detail: "Privacy and Compliance page: Tor and restricted jurisdictions are blocked, and the website geo-blocks countries under US or EU sanctions."
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
 
 notes: >-

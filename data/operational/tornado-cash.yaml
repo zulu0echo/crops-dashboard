@@ -164,12 +164,14 @@ maturity:
         detail: Treasury press release announcing the designation.
         checked_at: 2026-10-09
         quote: Treasury Sanctions Notorious Virtual Currency Mixer Tornado Cash
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://home.treasury.gov/news/press-releases/sb0057
         detail: Treasury press release dated March 21, 2025 announcing the delisting.
         checked_at: 2026-10-09
         quote: we have exercised our discretion to remove the economic sanctions against Tornado Cash
+        confirmed_at: 2026-10-12
     refs:
       - criterion: O2
         index: 0

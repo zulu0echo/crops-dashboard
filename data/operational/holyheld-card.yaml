@@ -233,6 +233,7 @@ facts:
         detail: Privacy Policy (last updated 01.07.2026), data security section.
         checked_at: 2026-10-09
         quote: will notify the Federal Data Protection and Information Commissioner (FDPIC)
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -254,6 +255,7 @@ facts:
         detail: Holyheld homepage, Security section.
         checked_at: 2026-10-09
         quote: All accounts and sensitive actions protected by authenticator app MFA
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -278,6 +280,7 @@ facts:
         detail: Privacy Policy, "For how long do we keep your data?".
         checked_at: 2026-10-09
         quote: We retain your Personal Data as long as you maintain an Account on the Platform
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -295,6 +298,7 @@ facts:
         detail: Privacy Policy, opening paragraph and third-party sources.
         checked_at: 2026-10-09
         quote: is the data controller responsible for the collection of your personal data
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -309,12 +313,14 @@ facts:
         detail: Terms and Conditions (last updated 01.07.2026), opening paragraph and clause 2.2.
         checked_at: 2026-10-09
         quote: Holyheld Labs AG is a member of a Self-Regulatory Organisation (SRO)
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE207939735
         detail: Swiss UID register, Holyheld Labs AG, Aktiengesellschaft, Bahnhofstrasse 20, 6300 Zug; commercial register status active.
         checked_at: 2026-10-09
         quote: CHE-207.939.735
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -329,12 +335,14 @@ facts:
         detail: Individual pricing page.
         checked_at: 2026-10-09
         quote: Membership CHF 0 /YR
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://holyheld.com/pricing
         detail: Business pricing page.
         checked_at: 2026-10-09
         quote: CHF 500 /YR
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -349,12 +357,14 @@ facts:
         detail: Terms and Conditions clause 17 (Termination).
         checked_at: 2026-10-09
         quote: You agree that Holyheld reserves the right to suspend, terminate and deactivate your Holyheld Account
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://holyheld.com/legal/terms-and-conditions
         detail: Terms and Conditions clause 19 (changes and closing the account).
         checked_at: 2026-10-09
         quote: You acknowledge that you may close your Account without making any trades
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -369,6 +379,7 @@ facts:
         detail: Individual pricing page, Security and Support features.
         checked_at: 2026-10-09
         quote: Automated fraud monitoring
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -557,12 +568,14 @@ fees:
       detail: Holyheld individual pricing page (accounts, transfers and ramp fees).
       checked_at: 2026-10-09
       quote: 1% off-ramp transfers
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://holyheld.com/legal/terms-and-conditions
       detail: Terms and Conditions clause 8.10.
       checked_at: 2026-10-09
       quote: You are the sole responsible for executing the transaction correctly, which may include paying fees to complete the transaction
+      confirmed_at: 2026-10-12
   note: "Card fees (issuance, FX on non-base-currency spend, ATM) are not published on holyheld.com or in the Terms. Business pricing differs: CHF 500 a year, 0.5% ramp fees, wire 10 USD, SEPA 0 EUR. Whether the top-up into the card balance (CROPS S1) carries the 1% off-ramp fee is not stated."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -608,6 +621,7 @@ licences:
       detail: Terms and Conditions opening paragraph on SRO membership and AML/CTF supervision.
       checked_at: 2026-10-09
       quote: Holyheld Labs AG is a member of a Self-Regulatory Organisation (SRO)
+      confirmed_at: 2026-10-12
   note: SRO membership is AML supervision, not a banking, payment or e-money licence. The card and e-money account come from a "licensed payment-instrument issuer" that the Terms, privacy policy, pricing and FAQ pages do not name, so its licence and regulator could not be checked. The pricing page also states PCI DSS Level 1, which is not a licence.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -616,13 +630,13 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_withdrawal
       partner: Unnamed licensed card issuer
       fee: not published
       limits: Card spend at merchants from the fiat balance created by a top-up (the schema has no card-spend value); limits not published.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: Holyheld's e-money partners (personal IBAN)
       fee: 1% off-ramp; SEPA 1 EUR, ACH 1 USD, wire 20 USD
@@ -635,12 +649,14 @@ cashout:
       detail: Terms definition of Card (debit card issued by the partnered payment-instrument issuer).
       checked_at: 2026-10-09
       quote: issued by the licensed payment-instrument issuer partnered with us
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://holyheld.com/legal/terms-and-conditions
       detail: Terms clause 3.5, bank transfer from the personal IBAN.
       checked_at: 2026-10-09
       quote: initiate a bank transfer to send Funds from your personal IBAN directly to other bank accounts
+      confirmed_at: 2026-10-12
   note: ALL means every country in the availability list (CH only, the scope of the published Terms). ATM withdrawal is not documented. Fees are from the individual pricing page (see fees).
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -681,12 +697,14 @@ maturity:
         detail: Swiss UID register (Federal Statistical Office), Holyheld Labs AG, Aktiengesellschaft, Bahnhofstrasse 20, 6300 Zug; UID and commercial register status active, register reference CH-170.3.047.396-4.
         checked_at: 2026-10-09
         quote: Holyheld Labs AG
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://holyheld.com/legal/terms-and-conditions
         detail: Terms and Conditions name the operator and its UID.
         checked_at: 2026-10-09
         quote: Holyheld Labs AG is a member of a Self-Regulatory Organisation (SRO)
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -737,6 +755,7 @@ maturity:
         detail: Terms and Conditions header.
         checked_at: 2026-10-09
         quote: Last Update 01.07.2026
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

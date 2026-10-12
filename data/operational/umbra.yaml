@@ -32,6 +32,7 @@ fees:
       check:
         call: "0x285aaa20"
         expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       commit: 07a64aeef305399a86afe72e502156d72babcc17
@@ -39,6 +40,7 @@ fees:
       url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/utils/umbra-api.ts#L34-L93
       path: frontend/src/utils/umbra-api.ts
       detail: The app's relayer client uses https://mainnet.api.umbra.cash and fetches a fee estimate per token (getFeeEstimate, L89-L93); withdrawal-fees.ts L27-L30 returns a zero fee for the native token.
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       commit: 07a64aeef305399a86afe72e502156d72babcc17
@@ -46,6 +48,7 @@ fees:
       url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/i18n/locales/en-US.json#L167-L173
       path: frontend/src/i18n/locales/en-US.json
       detail: The FAQ explains that ETH goes straight to the stealth address, tokens are withdrawn directly or through a relayer ("By default, the Umbra app uses a relayer from the Umbra team"), and that a toll is charged only on cheap networks to deter spam.
+      confirmed_at: 2026-10-12
   note: The toll is per chain; only Ethereum was read. The relayer's fee amounts are not published.
   checked_at: 2026-10-09
 custody_model:
@@ -74,6 +77,7 @@ licences:
       url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/TermsOfService.vue#L1-L60
       path: frontend/src/pages/TermsOfService.vue
       detail: The Terms of Service name ScopeLift, a Pennsylvania LLC, as owner of the app and cite no licence, registration or regulator (searched for licen, regulat, money transmit); the privacy policy and FAQ say nothing either.
+      confirmed_at: 2026-10-12
   note: ScopeLift runs the optional relayer and the app, not a custodial service. No regulator register was searched by name.
   checked_at: 2026-10-09
 cashout:
@@ -120,6 +124,7 @@ maturity:
         url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/TermsOfService.vue#L8-L33
         path: frontend/src/pages/TermsOfService.vue
         detail: The terms define ScopeLift as "the Commonwealth of Pennsylvania Limited Liability Corporation that owns the Umbra App and Site".
+        confirmed_at: 2026-10-12
     note: The exact registered name and entity number were not read from the Pennsylvania Department of State register (its search is an interactive web app), so no register_url. The GitHub org lists Philadelphia, PA.
     checked_at: 2026-10-09
   incidents:
@@ -272,6 +277,7 @@ facts:
         url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/PrivacyPolicy.vue#L5-L30
         path: frontend/src/pages/PrivacyPolicy.vue
         detail: Privacy policy, data retention section (L23-L30).
+        confirmed_at: 2026-10-12
     note: Cross-reference CROPS P2. Applies to the optional hosted app, relayer and indexer, which ScopeLift runs.
     checked_at: 2026-10-09
   B8.2:
@@ -540,6 +546,7 @@ facts:
         url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/i18n/locales/en-US.json#L153-L239
         path: frontend/src/i18n/locales/en-US.json
         detail: FAQ answers how-does-it-work (L153), build-on-umbra (L234) and hooks (L239).
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B11.1:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -555,6 +562,7 @@ facts:
         url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/TermsOfService.vue#L8-L33
         path: frontend/src/pages/TermsOfService.vue
         detail: Terms preamble and definitions.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B11.2:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -577,6 +585,7 @@ facts:
         url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/frontend/src/pages/TermsOfService.vue#L140-L150
         path: frontend/src/pages/TermsOfService.vue
         detail: Section 5, Termination.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -594,4 +603,5 @@ facts:
         url: https://github.com/ScopeLift/umbra-protocol/blob/07a64aeef305399a86afe72e502156d72babcc17/umbra-js/src/utils/utils.ts#L1171-L1190
         path: umbra-js/src/utils/utils.ts
         detail: The SDK's recipient screening is a hardcoded address list plus a call to the Chainalysis sanctions oracle (isSanctioned); no model or AI component. The contracts have no screening; the hosted API code is closed and its behaviour unknown.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09

@@ -640,6 +640,7 @@ facts:
         path: src/lib/core/miner-api/proof-post.ts
         detail: POST /proof with headers Content-Type only; the payload includes burn_key and receiver_address.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -658,6 +659,7 @@ facts:
         path: README.md
         detail: Circuit design, public inputs, burn-key, nullifier and coin definitions.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     refs:
       - criterion: O3
         index: 0
@@ -679,6 +681,7 @@ facts:
         check:
           call: "0x66666aa9"
           expect: "0x00000000000000000000000003d4702b51a98661b89df5fcbe8c4baef84c60b7"
+        confirmed_at: 2026-10-12
     refs:
       - criterion: C1
         index: 2
@@ -745,6 +748,7 @@ fees:
       path: README.md
       detail: CLI burn takes --broadcaster-fee and --prover-fee; the prover fee defaults to 0 for self-proving.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: onchain
       url: https://eth.blockscout.com/tx/0x2d9afb3d106a4a4e6025b2910d42aacd1edd1ecc5dbb711aabc334629b99c433

@@ -622,6 +622,7 @@ facts:
         detail: Trust model page, Vast.ai datacenters entry.
         checked_at: 2026-10-09
         quote: Vast.ai datacenters provide ISO certifications
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -664,6 +665,7 @@ facts:
         path: README.md
         detail: Security section of the pa-evm README.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -678,6 +680,7 @@ facts:
         detail: Terms, privacy section, data security.
         checked_at: 2026-10-09
         quote: will notify you and any applicable regulator of a breach where the Foundation is legally required to do so
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -724,6 +727,7 @@ facts:
         detail: Terms, data security paragraph.
         checked_at: 2026-10-09
         quote: The Foundation takes appropriate organizational and technical security measures
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: trace
         url: https://anomapay.app
@@ -747,6 +751,7 @@ facts:
         detail: Terms, data retention paragraph.
         checked_at: 2026-10-09
         quote: Upon expiry of the applicable retention period the Foundation will securely destroy your data
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 1
@@ -764,6 +769,7 @@ facts:
         detail: Terms section 6, data protection.
         checked_at: 2026-10-09
         quote: The processing is aligned with the EU General Data Protection Regulation (GDPR) and the Federal Act on Data Protection (FADP)
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -784,6 +790,7 @@ facts:
         detail: Architecture overview and transaction lifecycle.
         checked_at: 2026-10-09
         quote: The Transaction Service submits this object to the Protocol Adapter
+        confirmed_at: 2026-10-12
     refs:
       - criterion: O4
         index: 0
@@ -801,12 +808,14 @@ facts:
         detail: Terms sections 1 and 10.
         checked_at: 2026-10-09
         quote: submitted to the exclusive jurisdiction of the ordinary courts of the city of Zug, Switzerland
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://www.zefix.ch/ZefixREST/api/v1/firm/1463475.json
         detail: Zefix record.
         checked_at: 2026-10-09
         quote: CHE-264.379.335
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -821,6 +830,7 @@ facts:
         detail: Registered purpose of Anoma Stiftung (German), on project tokens and funding of development.
         checked_at: 2026-10-09
         quote: Die Stiftung ist ermächtigt, Projekttoken für die Anoma Protokolle gegen Zahlung von FIAT-Währungen
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -835,6 +845,7 @@ facts:
         detail: Terms version 1.0, sections 1 to 11 read in full; no termination section.
         checked_at: 2026-10-09
         quote: If you do not agree with these Terms, please immediately cease all use of the Software.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -873,18 +884,21 @@ fees:
       detail: Terms and Conditions for AnomaPay, version 1.0, section 3.
       checked_at: 2026-10-09
       quote: Transactions executed through AnomaPay are offered without fees.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://anoma.net/blog/the-anomapay-public-beta-is-live-on-bnb-chain
       detail: Anoma blog, 2 April 2026, BNB Chain public beta.
       checked_at: 2026-10-09
       quote: Deposits are free, with small fees for transfers and withdrawals.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.anoma.net/transfers
       detail: SDK transfers page, fee estimation; estimateFee returns base_fee, base_fee_per_resource and percentage_fee in the chosen fee token.
       checked_at: 2026-10-09
       quote: percentage of the transfer amount
+      confirmed_at: 2026-10-12
   note: No fee amounts or gas sample recorded. Fee quotes need a built transaction posted to the backend (not done), and public BSC RPCs refuse historical log queries, so no settled transaction was sampled. Neither contract charges a fee.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -912,12 +926,14 @@ licences:
       detail: The terms describe a non-custodial wallet service by Anoma Foundation and cite no licence, SRO membership or regulator; they state the Foundation does no transaction monitoring.
       checked_at: 2026-10-09
       quote: AnomaPay is a non-custodial wallet service.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://www.zefix.ch/ZefixREST/api/v1/firm/1463475.json
       detail: Zefix (Swiss central business name index) entry for Anoma Stiftung, a foundation supervised by the Federal Department of Home Affairs; no financial-market authorisation is recorded there (Zefix does not record them).
       checked_at: 2026-10-09
       quote: CHE-264.379.335
+      confirmed_at: 2026-10-12
   note: "Searched: the terms, docs.anoma.net (trust model, compliance paragraph) and the Zefix entry. Not searched: FINMA's register of authorised institutions and the Swiss SRO member lists (interactive searches). The docs say the proving service operator runs KYC/AML checks; no licence is cited for it."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -969,12 +985,14 @@ maturity:
         detail: Zefix record for Anoma Stiftung, seat Zug, status existing, foundation under federal supervision; seat address Dammstrasse 16, Zug since the publication of 2026-05-11.
         checked_at: 2026-10-09
         quote: CHE-264.379.335
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://anomapay.app/terms-and-conditions
         detail: The terms name Anoma Foundation in Zug as the counterparty.
         checked_at: 2026-10-09
         quote: Anoma Foundation, Gotthardstrasse 26, 6300 Zug, Switzerland
+        confirmed_at: 2026-10-12
     note: The terms still give the earlier address (Gotthardstrasse 26); the register moved the seat address to Dammstrasse 16 in May 2026. The 2025 announcement says AnomaPay is developed by Heliax; the operating counterparty in the terms is the Foundation.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1001,6 +1019,7 @@ maturity:
         check:
           call: "0xfddd4837"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
     note: Also searched the Anoma blog index and docs; no incident or post-mortem found.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1037,6 +1056,7 @@ maturity:
         detail: Anoma blog, 2 June 2026.
         checked_at: 2026-10-09
         quote: AnomaPay is now officially out of beta and open to the world on BNB Chain and Ethereum.
+        confirmed_at: 2026-10-12
     note: Neither contract is upgradeable, so no onchain upgrade events exist; the v2 contracts would be a new deployment.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

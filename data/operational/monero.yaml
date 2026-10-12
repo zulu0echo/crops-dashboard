@@ -95,6 +95,7 @@ maturity:
         url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_i18n/en.yml#L468-L468
         path: _i18n/en.yml
         detail: The getmonero.org FAQ text states that Monero is an open source community project with no company that runs it and no CEO; contributors are volunteers or community-funded.
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
@@ -102,6 +103,7 @@ maturity:
         url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2019-12-03-core-team-general-fund.md#L9-L25
         path: _posts/2019-12-03-core-team-general-fund.md
         detail: The Core Team describes itself as an informal group that escrows the Community Crowdfunding System and stewards the General Fund; no legal entity is named.
+        confirmed_at: 2026-10-12
     note: Judgment call. Recorded as absent (no maintaining legal entity exists) rather than unknown. The Core Team, the Monero Research Lab and the vulnerability response team are informal groups; the security contacts in meta/VULNERABILITY_RESPONSE_PROCESS.md are individuals. Search of the website and docs repositories for company, corporation, legal entity and foundation found no entity.
     checked_at: 2026-10-09
   incidents:
@@ -146,6 +148,7 @@ maturity:
         url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2017-05-17-disclosure-of-a-major-bug-in-cryptonote-based-currencies.md#L9-L31
         path: _posts/2017-05-17-disclosure-of-a-major-bug-in-cryptonote-based-currencies.md
         detail: Overview and timeline of the key-image bug, including the statement that the Monero blockchain had never been exploited.
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
@@ -153,6 +156,7 @@ maturity:
         url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2023-11-04-ccs-wallet-incident.md#L1-L13
         path: _posts/2023-11-04-ccs-wallet-incident.md
         detail: Core Team notice of the CCS wallet drain of 2,675.73 XMR on 2023-09-01 and the General Fund covering it.
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         commit: 5a596d19334d647cdad65cdb9f1287729c9d140d
@@ -160,6 +164,7 @@ maturity:
         url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2025-08-26-post-mortem-of-find-and-save-rings-bug.md#L1-L20
         path: _posts/2025-08-26-post-mortem-of-find-and-save-rings-bug.md
         detail: Quick facts of the find_and_save_rings() privacy bug (severity, affected versions, fix). The other post-mortems listed are in the same _posts directory at this commit.
+        confirmed_at: 2026-10-12
     note: Primary sources are the project's own post-mortems in monero-project/monero-site. The 2021-12 multisig vulnerability notice (experimental feature) and the 2016 MWR Labs statement are not listed. Privacy-loss incidents in the reference wallet are included because the rail's property is privacy; none moved funds.
     checked_at: 2026-10-09
   changes:
@@ -198,6 +203,7 @@ maturity:
         url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/src/hardforks/hardforks.cpp#L34-L76
         path: src/hardforks/hardforks.cpp
         detail: Mainnet fork heights compiled into monerod. Dates above are the activation-block timestamps read from xmrchain.net/api/block/<height>, which match the README dates.
+        confirmed_at: 2026-10-12
     note: Forks v2, v3, v5 to v7, v10 and v11 are omitted for brevity; they are in the same README table.
     checked_at: 2026-10-09
 volume:
@@ -628,6 +634,7 @@ facts:
         url: https://github.com/monero-project/meta/blob/97fb74b0bfffafa553b8ca6b4978218b4ca13362/VULNERABILITY_RESPONSE_PROCESS.md#L55-L131
         path: VULNERABILITY_RESPONSE_PROCESS.md
         detail: Section III steps 3 and 7 (response time, release type by severity), section IV step 1 (90 days) and step 3d (researcher disclosure after 90 days).
+        confirmed_at: 2026-10-12
     note: The process covers code in the project's repositories, not the websites. It is run by volunteers.
     checked_at: 2026-10-09
   B10.1:
@@ -644,6 +651,7 @@ facts:
         url: https://github.com/monero-project/monero-docs/blob/fff7b8ecc25bb8fc37f919b7c4795bb89aa8d9eb/docs/en/interacting/overview.md#L51-L96
         path: docs/en/interacting/overview.md
         detail: Executables table and the interaction matrix (P2P, keyboard commands, HTTP API, GUI) published as docs.getmonero.org.
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         commit: 22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0
@@ -651,6 +659,7 @@ facts:
         url: https://github.com/monero-project/monero/blob/22578c3f7d7b4b6dd85ff7daa42a827d97cc53d0/docs/LEVIN_PROTOCOL.md
         path: docs/LEVIN_PROTOCOL.md
         detail: Wire format of the P2P protocol; docs/ANONYMITY_NETWORKS.md and docs/ZMQ.md cover Tor/I2P transport and the ZMQ interface.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B11.2:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -666,6 +675,7 @@ facts:
         url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/_posts/2019-12-03-core-team-general-fund.md#L9-L25
         path: _posts/2019-12-03-core-team-general-fund.md
         detail: The Core Team escrows the CCS and stewards the General Fund, which pays contributors, infrastructure and server costs, with some hosting donated by sponsors.
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         commit: 97fb74b0bfffafa553b8ca6b4978218b4ca13362
@@ -673,6 +683,7 @@ facts:
         url: https://github.com/monero-project/meta/blob/97fb74b0bfffafa553b8ca6b4978218b4ca13362/VULNERABILITY_RESPONSE_PROCESS.md#L133-L140
         path: VULNERABILITY_RESPONSE_PROCESS.md
         detail: Bounty XMR is solely contributed by community donors and escrowed by unpaid volunteers.
+        confirmed_at: 2026-10-12
     note: The 2023 CCS wallet drain (2,675.73 XMR) was covered from the General Fund (see incidents). No current treasury figure was read.
     checked_at: 2026-10-09
   B12.1:

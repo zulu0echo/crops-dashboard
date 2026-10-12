@@ -16,6 +16,7 @@ facts:
         detail: Launch post, 3 September 2026.
         checked_at: 2026-10-09
         quote: with sign-in secured by passkeys and Face ID or fingerprint and data encrypted end to end
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -30,6 +31,7 @@ facts:
         detail: Privacy Policy (last updated 18 May 2026), security section.
         checked_at: 2026-10-09
         quote: These safeguards include, where appropriate, access controls, encryption, network security measures, monitoring, logging, and employee training
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -44,6 +46,7 @@ facts:
         detail: Privacy Policy retention table.
         checked_at: 2026-10-09
         quote: 5 years after the end of the business relationship
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -61,6 +64,7 @@ facts:
         detail: Privacy Policy opening paragraph.
         checked_at: 2026-10-09
         quote: acting as data controller for the purposes of the EU General Data Protection Regulation
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -75,12 +79,14 @@ facts:
         detail: Legal hub footer naming the company and registration number.
         checked_at: 2026-10-09
         quote: private limited company incorporated in Malta (company number C 114576)
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://pay.ethena.fi/card-terms
         detail: Spend Card Terms (effective 1 June 2026), Issuer section.
         checked_at: 2026-10-09
         quote: The card program is managed by Signify Holdings, Inc. d/b/a Rain
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -95,6 +101,7 @@ facts:
         detail: Launch post, section on why Ethena builds a neobank.
         checked_at: 2026-10-09
         quote: Ethena Pay gives Ethena a direct route into that pool
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -109,12 +116,14 @@ facts:
         detail: Terms of Use (22 September 2026) s8.3 and s8.5.
         checked_at: 2026-10-09
         quote: could remain in your control, could be returned to you, or could be frozen or locked
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://pay.ethena.fi/card-terms
         detail: Spend Card Terms, termination.
         checked_at: 2026-10-09
         quote: we may suspend, revoke or cancel your Account privileges
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -129,6 +138,7 @@ facts:
         detail: Privacy Policy s1.13-1.14 Automated decision-making (EEA/UK).
         checked_at: 2026-10-09
         quote: We may use automated decision-making, including profiling, in connection with identity verification, sanctions screening, fraud detection, transaction monitoring, and access eligibility assessments
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -143,6 +153,7 @@ facts:
         detail: Privacy Policy s1.14.
         checked_at: 2026-10-09
         quote: You have the right to request human review of any such decision
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -182,18 +193,21 @@ fees:
       detail: Pricing page, account fees and card transaction fees.
       checked_at: 2026-10-09
       quote: Typically around 1.0%, passed through directly from the applicable card network with no markup
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/pricing
       detail: Pricing page, ATM fee.
       checked_at: 2026-10-09
       quote: "If ATM access is available: $1.00 plus 0.65% of the withdrawal amount"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/pricing
       detail: Pricing page s4, funding partners.
       checked_at: 2026-10-09
       quote: Fees for onramp and offramp services, currency conversion, and bank transfers, as disclosed by the applicable provider at the time of the transaction
+      confirmed_at: 2026-10-12
   note: Network gas for the card spend is paid by Ethena Pay's relayer (CROPS C2/S3 findings), not shown as a user fee. Rewards (cashback in AVAX, Daily Boost in USDe) are not fees and are not recorded.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -224,6 +238,7 @@ licences:
       detail: Terms of Use Appendix 1, General Provisions, regulatory status.
       checked_at: 2026-10-09
       quote: Ethena Pay Ltd. is not licensed, registered, authorized, or otherwise approved by any financial services, banking, payments, securities, or crypto asset regulator
+      confirmed_at: 2026-10-12
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
   review:
@@ -231,19 +246,19 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_spend
       partner: Third National (issuer), Rain (programme manager), Visa
       fee: Visa FX at cost (about 1%); no cross-border fee
       limits: Virtual card; non-US persons only; secured by wallet collateral (daily allowance 10,000 USDe / 10,000 USDC by default).
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: Third National (issuer), Visa
       fee: 1.00 USD + 0.65%, plus operator surcharge
       limits: Only where the card, device and country allow; "availability is limited and outside our control". Not eligible for cashback.
       evidence_index: 1
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: Iron Network UAB / MoonPay USA LLC
       fee: set by the provider at the time of the transaction
@@ -256,18 +271,21 @@ cashout:
       detail: Spend Card Terms (effective 1 June 2026), issuer and programme manager.
       checked_at: 2026-10-09
       quote: References in these Card Terms to the " Issuer " refer to Third National
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/pricing
       detail: Pricing page s7, services not currently available.
       checked_at: 2026-10-09
       quote: Wire transfers (outbound)
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://pay.ethena.fi/terms
       detail: Terms of Use, conventional payment infrastructure provided by MoonPay or other Third-Party Providers (Iron Customer Terms, Exhibit G).
       checked_at: 2026-10-09
       quote: These features are provided by Moonpay or other applicable Third-Party Providers
+      confirmed_at: 2026-10-12
   note: Per-country off-ramp currencies are not listed in any public page; the availability list in the provider file applies.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -307,6 +325,7 @@ maturity:
         detail: Legal hub footer; the Terms of Use Appendix 1 names the same entity as contracting party.
         checked_at: 2026-10-09
         quote: private limited company incorporated in Malta (company number C 114576)
+        confirmed_at: 2026-10-12
     note: Not checked in the Malta Business Registry (its search is an interactive web app), so no register_url.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -341,12 +360,14 @@ maturity:
         detail: Spend Card Terms header.
         checked_at: 2026-10-09
         quote: Effective as of June 1, 2026
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://pay.ethena.fi/pricing
         detail: Pricing page header.
         checked_at: 2026-10-09
         quote: "Effective Date: September 1, 2026"
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

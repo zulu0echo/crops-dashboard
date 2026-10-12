@@ -65,18 +65,21 @@ licences:
       detail: Aztec Labs' terms name Spilsbury Holdings Limited as a software developer, disclaim investment advice and brokerage, and cite no licence or regulator.
       quote: a private limited company incorporated and registered in England and Wales under company number 11093783
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://find-and-update.company-information.service.gov.uk/company/11093783
       detail: Companies House entry, active, nature of business SIC 62012 (business and domestic software development).
       quote: Company Overview for SPILSBURY HOLDINGS LIMITED (11093783)
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://aztec.network/terms-of-service
       detail: Aztec Foundation (Swiss Stiftung, Zug) terms describe stewardship of open-source software and cite no licence or regulator.
       quote: a Stiftung incorporated and registered in Zug, Switzerland
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
   note: "Searched: Aztec Labs and Aztec Foundation terms and privacy policies, the Companies House entry. Not searched: the FCA cryptoasset register and Financial Services Register (client-rendered) and FINMA's lists. Neither entity transmits or holds users' funds on the rail, so a licence would be expected only for services outside it."
   checked_at: 2026-10-09
 cashout:
@@ -135,12 +138,14 @@ maturity:
         detail: Aztec Labs terms identify the company behind the Aztec Labs name; Aztec Labs runs the hosted mainnet RPC and the snapshot hosts.
         quote: a private limited company incorporated and registered in England and Wales under company number 11093783
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://find-and-update.company-information.service.gov.uk/company/11093783
         detail: Companies House entry, status active, incorporated 2017-12-04.
         quote: Company Overview for SPILSBURY HOLDINGS LIMITED (11093783)
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     note: Judgment call. Aztec Labs is recorded as the maintaining organisation, as directed. Aztec Foundation (Swiss Stiftung, Zug) runs aztec.network, stewards development and since 2026-10-06 is the copyright holder in aztec-packages' LICENSE; its Swiss commercial-register entry was not looked up.
     checked_at: 2026-10-09
   incidents:
@@ -532,6 +537,7 @@ facts:
         detail: Section 8, Retention of Your Personal Data.
         quote: your technical usage information for 12 months
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
@@ -585,12 +591,14 @@ facts:
         detail: Terms last updated 2024-09-13; Services are defined as website information and the sandbox/testnet Testing Tools.
         quote: a private limited company incorporated and registered in England and Wales under company number 11093783
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://aztec.network/terms-of-service
         detail: Aztec Foundation terms, last updated 2025-07-15.
         quote: a Stiftung incorporated and registered in Zug, Switzerland
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B11.2:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -612,6 +620,7 @@ facts:
         detail: Aztec Foundation describes its role as stewarding development.
         quote: stewards the development of open-source, blockchain-based software
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B12.1:
     assessed_by: AI research agent (operational), 2026-10-09

@@ -37,6 +37,7 @@ fees:
       check:
         call: "0xd6dbaf58000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
         expect: "0x000000000000000000000000f241d57c6debae225c0f2e6ea1529373c9a9c9fb"
+      drift: true
     - tier: verified
       kind: repo
       commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
@@ -44,6 +45,7 @@ fees:
       url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/Entrypoint.sol#L150-L175
       path: packages/contracts/src/contracts/Entrypoint.sol
       detail: relay() reverts if relayFeeBPS exceeds maxRelayFeeBPS, deducts the relay fee from the withdrawn amount and pays it to the feeRecipient chosen in the relay data; deposit (L320-L340) deducts vettingFeeBPS before the pool deposit; withdrawFees (L264-L272) is onlyRole(OWNER_ROLE).
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       commit: d494b63e79f33bb2b0c8ece6cdacdca465c3b884
@@ -51,6 +53,7 @@ fees:
       url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L176-L192
       path: docs/docs/toc.md
       detail: Terms of Use section 5 sets a Vetting Fee of 0.5% of each deposit, changeable at 0xbow's discretion and non-refundable.
+      confirmed_at: 2026-10-12
   note: The USDT pool's vetting fee reads 0 onchain although the terms state 0.5%; the contract value is what is charged. ETH vettingFeeBPS was briefly set to 500 (5%) on 2025-11-23 and back to 50 on 2025-11-27 (see changes).
   checked_at: 2026-10-09
 custody_model:
@@ -79,6 +82,7 @@ licences:
       url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L1-L40
       path: docs/docs/toc.md
       detail: The Terms of Use (556 lines) name 0xbow Limited as the counterparty and Delaware law, and describe the ASP due diligence and vetting fee; they cite no licence, registration or regulator (searched for licen, regulat, registered, money transmit). The privacy policy and 0xbow.io were searched the same way with no result.
+      confirmed_at: 2026-10-12
   note: Absent means no licence is claimed or cited anywhere 0xbow publishes. No regulator register (e.g. FinCEN MSB) was searched by entity name because the place of incorporation of 0xbow Limited is not stated.
   checked_at: 2026-10-09
 cashout:
@@ -138,6 +142,7 @@ maturity:
         check:
           call: "0x36cf7c87"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
     note: No post-mortem found in the core repo, docs or 0xbow.io. Audit findings fixed before launch (Oxorio, see S6) are not incidents.
     checked_at: 2026-10-09
   changes:
@@ -239,6 +244,7 @@ facts:
         url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/SECURITY.md#L1-L29
         path: SECURITY.md
         detail: The security policy lists acknowledge, investigate, prepare a fix and disclose after deployment, with no time commitments for acknowledgement or patching. The terms and privacy policy state none either.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B2.3:
     status: absent
@@ -272,6 +278,7 @@ facts:
         url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/privacy-policy.md#L125-L139
         path: docs/docs/privacy-policy.md
         detail: Neither the privacy policy nor the terms (docs/docs/toc.md) commit to notify users of security or data incidents; the only notification promise concerns policy changes (L139). SECURITY.md covers inbound reports only.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B6.3:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -287,6 +294,7 @@ facts:
         url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/privacy-policy.md#L105-L127
         path: docs/docs/privacy-policy.md
         detail: Privacy policy sections on deletion requests (L109) and retention (L125-L127).
+        confirmed_at: 2026-10-12
     note: Cross-reference CROPS P2.
     checked_at: 2026-10-09
   B6.4:
@@ -303,6 +311,7 @@ facts:
         url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/privacy-policy.md#L17-L59
         path: docs/docs/privacy-policy.md
         detail: L17 states 0xbow is the data processor unless stated otherwise; L57 states it is the Data Controller for EU residents.
+        confirmed_at: 2026-10-12
     note: The two roles are stated inconsistently in the same document.
     checked_at: 2026-10-09
   B8.2:
@@ -490,6 +499,7 @@ facts:
         url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/layers/asp.md#L1-L56
         path: docs/docs/layers/asp.md
         detail: docs/docs/layers (asp, contracts, zk), docs/docs/protocol (deposit, withdrawal, ragequit) and docs/docs/reference (circuits, contracts, sdk), also served at docs.privacypools.com.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B11.1:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -505,12 +515,14 @@ facts:
         url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L5-L31
         path: docs/docs/toc.md
         detail: Terms of Use preamble naming the counterparty; section 14 (L474-L479) sets Delaware law.
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.privacypools.com/toc
         detail: Terms of Use as served on the docs site.
         quote: 0xbow Limited (hereinafter "0xbow", "we", or "us") maintains the website
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B11.2:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -526,6 +538,7 @@ facts:
         url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/packages/contracts/src/contracts/Entrypoint.sol#L264-L272
         path: packages/contracts/src/contracts/Entrypoint.sol
         detail: withdrawFees(asset, recipient) sends the Entrypoint's whole balance of an asset to a recipient chosen by OWNER_ROLE.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: C1
         index: 3
@@ -544,6 +557,7 @@ facts:
         url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/docs/docs/toc.md#L260-L270
         path: docs/docs/toc.md
         detail: Rules-of-conduct section reserving an unlimited right to terminate access; section 5 (L186-L192) makes vetting fees non-refundable.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0

@@ -33,8 +33,9 @@ const version = (() => { try { const v = execSync('git rev-parse --short HEAD', 
 const cells = providers.flatMap((p) => Object.values(p.scores));
 const pending = cells.filter((c) => c.review?.status !== 'reviewed').length;
 const allEvidence = cells.flatMap((c) => c.evidence ?? []);
-const autoChecked = allEvidence.filter((e) => e.check || (e.kind === 'repo' && /(^|\/)(LICEN[CS]E[^/]*|COPYING|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|Cargo\.lock|foundry\.lock|go\.sum)$/i.test(e.path ?? ''))).length;
-const allDates = providers.flatMap((p) => Object.values(p.scores).flatMap((c) => (c.evidence ?? []).map((e) => e.checked_at))).sort();
+// Items the weekly refresh can re-read: onchain reads with a check, pinned GitHub files, documents with a quote.
+const autoChecked = allEvidence.filter((e) => !e.historical && ((e.kind === 'onchain' && e.check && typeof e.chain_id !== 'string') || (e.kind === 'repo' && /\/blob\/[0-9a-f]{40}\//.test(e.url)) || (e.kind === 'document' && e.quote))).length;
+const allDates = providers.flatMap((p) => Object.values(p.scores).flatMap((c) => (c.evidence ?? []).map((e) => [e.checked_at, e.confirmed_at].filter(Boolean).sort().at(-1)))).sort();
 const byId = Object.fromEntries(criteria.criteria.map((c) => [c.id, c]));
 const short = (a) => `${a.slice(0, 6)}…${a.slice(-4)}`;
 const STATE = { evidenced: 'Evidenced', attested: 'Attested', unknown: 'Unknown', absent: 'Absent', not_applicable: 'Not applicable', not_observable: 'Not observable', not_verifiable: 'Not verifiable' };
@@ -96,6 +97,7 @@ function evidenceList(ev, p) {
     if (e.block_number !== undefined) meta.push(`block ${esc(e.block_number)}`);
     if (e.commit) meta.push(`commit <code>${esc(e.commit.slice(0, 10))}</code>`);
     meta.push(`checked ${esc(e.checked_at)}`);
+    if (e.confirmed_at && e.confirmed_at > e.checked_at) meta.push(`source unchanged at weekly re-read ${esc(e.confirmed_at)}`);
     return `<li>${tierChip(e.tier)}${e.drift ? '<span class="chip flag">Drift</span>' : ''}<p>${esc(e.detail)}</p><p class="src"><a href="${href(e.url)}">${esc(evidenceLabel(e, p))}</a></p><p class="meta">${meta.join(' · ')}</p></li>`;
   }).join('')}</ol>`;
 }
@@ -328,7 +330,7 @@ for (const p of providers) {
 <header class="crit-head"><div><h3><a href="../../criteria/${esc(c.id)}/index.html">${esc(c.short)}</a> ${derivedChip(c)}</h3><p class="crit-q">${esc(c.question)} <span class="cid">${esc(c.id)}</span></p></div>${cellRating(cell)}</header>
 <p class="crit-tags">${sets ? '<span class="chip lim-chip">Sets the pillar rating</span>' : ''}${st.tier ? `<span>Best evidence: ${tierChip(st.tier)}</span>` : ''}${st.newest ? `<span>Checked ${esc(st.newest)}</span>` : ''}${flags(st)}</p>
 <p class="crit-tags review">${reviewLine(cell)}</p>
-${(cell?.evidence ?? []).some((e) => e.drift) ? '<p class="finding drift-note">The nightly re-check found that a recorded fact changed. This rating counts as unknown until a reviewer re-checks it.</p>' : ''}
+${(cell?.evidence ?? []).some((e) => e.drift) ? '<p class="finding drift-note">The weekly re-check found that a recorded fact changed. This rating counts as unknown until a reviewer re-checks it.</p>' : ''}
 ${isUnknown(cell) && !(cell?.evidence ?? []).some((e) => e.drift) ? '<p class="finding muted">No checkable evidence settles this yet, so it counts as 0.</p>' : ''}
 ${cell?.finding ? `<p class="finding">${esc(cell.finding)}</p>` : ''}
 ${cell?.provider_response ? `<aside class="reply"><h4>Provider response</h4><p>${esc(cell.provider_response)}</p><p class="meta">Shown for context. It does not change the rating.</p></aside>` : ''}

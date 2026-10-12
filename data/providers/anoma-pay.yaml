@@ -142,6 +142,7 @@ scores:
         path: contracts/src/ProtocolAdapter.sol
         detail: At tag contracts/v1.1.0 (identical to the Sourcify source of 0xFC44…2B68), emergencyStop() is onlyOwner and pauses the adapter permanently (there is no unpause); isEmergencyStopped() also returns true if the RISC Zero verifier is paused. execute() is whenNotPaused, so a stop halts deposits, transfers and withdrawals.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/56/0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68
@@ -153,6 +154,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000e9082ac8aa2fb27defdbac604921c196b884da10"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/56/0xE9082Ac8Aa2Fb27DEfDBAC604921C196b884Da10
@@ -164,6 +166,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
+        confirmed_at: 2026-10-12
     finding: >-
       A 3-of-5 Safe with no modules or guard can stop the protocol adapter for good, and it also owns the RISC Zero verifier whose pause stops the adapter. There is no timelock, and we found no public list of signers. The stop is global, not per-address. Scored 1.
     provider_response: null
@@ -182,6 +185,7 @@ scores:
         detail: execute(transaction) is external with no caller check; validity rests on RISC Zero proofs, which arm-risc0 (Apache-2.0) and anomapay-erc20-resource can produce.
         checked_at: "2026-10-09"
         recheck: gh api "repos/anoma/pa-evm/contents/contracts/src/ProtocolAdapter.sol?ref=e368e2738df6a28f1b7577215da6789283952cba" --jq .content | base64 -d | sed -n 108,112p
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.anoma.net/transfers
@@ -189,6 +193,7 @@ scores:
         detail: The SDK docs route mint, transfer and burn through the hosted proving backend.
         checked_at: "2026-10-09"
         quote: submitted to the proving backend via TransferBackendClient.transfer()
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/56/0xFC44b66a39fe6923Ad8d3c93bFeC369728862B68
@@ -199,6 +204,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
     finding: >-
       Anyone can submit a valid transaction to the adapter, so settlement without Anoma is possible in principle, and the docs say users may run the off-chain infrastructure themselves. But the documented client flow submits every mint, transfer and burn to the hosted proving backend, and no public client builds and proves a transaction end to end. Judgment call: 2, possible but undocumented, reconstructable from verified source.
     provider_response: null
@@ -216,6 +222,7 @@ scores:
         detail: The SDK's API clients talk to the proving backend, the Indexer and an Envio GraphQL endpoint.
         checked_at: "2026-10-09"
         quote: Fetches encrypted resource blobs from the Indexer
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.anoma.net/anoma-pay-protocol-adapter
@@ -223,6 +230,7 @@ scores:
         detail: The docs state users may run the off-chain services themselves.
         checked_at: "2026-10-09"
         quote: Any user can decide to run the off-chain infrastructure themselves
+        confirmed_at: 2026-10-12
     finding: >-
       The transaction service, prover and indexer are required in the documented flow and are run by Anoma; none of their code is among the anoma GitHub org's public repos. The docs say users can run this infrastructure themselves, but no code or fallback is published. Scored 1: required, documented, no public code.
     provider_response: null
@@ -240,6 +248,7 @@ scores:
         path: contracts/src/ERC20Forwarder.sol
         detail: Wrap and unwrap check only the Permit2 signature, amounts and balances; neither the forwarder nor the adapter checks addresses or countries.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.anoma.net/anoma-pay-trust-model
@@ -247,12 +256,14 @@ scores:
         detail: The trust-model page says the proving service operator runs compliance checks.
         checked_at: "2026-10-09"
         quote: The proving service operator implements consistent checks in order to ensure full compliance
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://anomapay.app/terms-and-conditions
         detail: The terms say the Foundation does not monitor transactions, and reserve geo-restriction.
         checked_at: "2026-10-09"
         quote: The Foundation does not perform transaction monitoring
+        confirmed_at: 2026-10-12
     finding: >-
       The settlement contracts are neutral. Filtering, if any, sits in the closed proving service: the docs say its operator "implements consistent checks" for KYC and AML, while the terms say the Foundation does not monitor transactions. No list source is named and no code is public, and the direct path is not practically available (C2). Scored 1: disclosed in documents only, and the two documents disagree.
     provider_response: null
@@ -270,6 +281,7 @@ scores:
         detail: The SDK docs enumerate fee tokens USDC, USDT, WETH and XAN; the forwarder accepts any ERC20 (no token list in code).
         checked_at: "2026-10-09"
         quote: '"USDC" | "USDT" | "WETH" | "XAN"'
+        confirmed_at: 2026-10-12
     finding: >-
       Supported tokens appear only in documentation and the launch post (ETH, USDC, USDT, XAN, with a $500 beta deposit cap claimed there); the forwarder holds whatever ERC20 is wrapped. No statement to payees about issuer freeze powers or BNB Chain's validator set. Scored 1: enumerated in docs only.
     provider_response: null
@@ -306,6 +318,7 @@ scores:
         detail: The SDK README cites the audited frontend repo anoma/pay-interface-app, which returns 404 to the GitHub API; the org's public repos include contracts, SDK and proving libraries but no transaction service, prover service or indexer.
         checked_at: "2026-10-09"
         recheck: gh api repos/anoma/pay-interface-app --jq .full_name; gh repo list anoma --limit 300 --json name --jq '.[].name' | grep -iE 'index|backend|prov|relay'
+        confirmed_at: 2026-10-12
     finding: >-
       Contracts, SDK and proving libraries are public; the web app, transaction and proving service, and indexer are not. Scored 1.
     provider_response: null
@@ -323,6 +336,7 @@ scores:
         path: README.md
         detail: The SDK describes itself as API clients for AnomaPay backend services; the backend those clients need is not public, so no README leads to a working deployment.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       A stranger can deploy the contracts (pa-evm has deploy scripts) but cannot stand up the transaction, proving and indexing services the client flow needs, because their code is not published. Judgment call: 0, no path, rather than 1, since the missing pieces are code, not documentation.
     provider_response: null
@@ -340,6 +354,7 @@ scores:
         detail: The backend, indexer and Envio APIs are described on the hosted docs site only; contract events are in source, with no committed ABI JSON or API schema in the repos.
         checked_at: "2026-10-09"
         quote: Communicates with the proving backend
+        confirmed_at: 2026-10-12
     finding: >-
       Interfaces are documented on a hosted site, not versioned with code; no payee export. Scored 1.
     provider_response: null
@@ -358,6 +373,7 @@ scores:
         detail: pa-evm and the forwarder carry MIT under contracts/LICENSE (no root licence, so GitHub reports none); anoma-app-sdk and arm-risc0 are Apache-2.0; anomapay-erc20-resource has no licence.
         checked_at: "2026-10-09"
         recheck: for r in pa-evm anomapay-erc20-forwarder anoma-app-sdk arm-risc0 anomapay-erc20-resource; do echo $r $(gh api repos/anoma/$r --jq '.license.spdx_id // "none"'); done
+        confirmed_at: 2026-10-12
     finding: >-
       The transaction and proving service and the indexer are required and closed, so F1 is 0. The resource-logic repo needed to prove AnomaPay transfers also has no licence.
     provider_response: null
@@ -376,6 +392,7 @@ scores:
         detail: No CONTRIBUTING or CLA file at the root of pa-evm or the forwarder; no relicensing event found.
         checked_at: "2026-10-09"
         recheck: gh api "repos/anoma/pa-evm/contents/?ref=e368e2738df6a28f1b7577215da6789283952cba" --jq '.[].name'
+        confirmed_at: 2026-10-12
     finding: >-
       No CLA, no relicensing event, no written licence-stability commitment.
     provider_response: null
@@ -393,6 +410,7 @@ scores:
         detail: Every SDK operation ends in a call to the hosted proving backend.
         checked_at: "2026-10-09"
         quote: submitted to the proving backend via TransferBackendClient.transfer()
+        confirmed_at: 2026-10-12
     finding: >-
       The documented production flow needs Anoma's hosted proving, transaction and indexing services, with no open alternative published. Client-side proving is announced as future work. Scored 1.
     provider_response: null
@@ -416,12 +434,14 @@ scores:
         detail: The proving service operator and Vast.ai datacenters see witness data (sender, receiver, asset, amount).
         checked_at: "2026-10-09"
         quote: Sees (temporarily) the unencrypted witness data
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://anomapay.app/terms-and-conditions
         detail: The terms list collected data including user info, invitation code, Ethereum address, device identity and IP address.
         checked_at: "2026-10-09"
         quote: network information (IP Address
+        confirmed_at: 2026-10-12
     finding: >-
       Beyond settlement data, the service collects account, device and network data and sees every transfer's sender, receiver, asset and amount in clear while proving; the docs also mention KYC/AML checks. Disclosed in documents. Scored 1.
     provider_response: null
@@ -440,6 +460,7 @@ scores:
         detail: Wrapped(token, from, amount) and Unwrapped(token, to, amount) are emitted in plaintext; the adapter emits tags, logic refs and resource payload blobs (ProtocolAdapter.sol L344-L385).
         checked_at: "2026-10-09"
         recheck: gh api "repos/anoma/anomapay-erc20-forwarder/contents/contracts/src/ERC20Forwarder.sol?ref=916cc7ed960f443f7cce82bd517ab8505519cd1e" --jq .content | base64 -d | sed -n 70,78p
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://docs.anoma.net/anoma-pay-privacy-guarantees
@@ -447,6 +468,7 @@ scores:
         detail: The docs state deposit and withdrawal addresses are public, shielded transfers are not.
         checked_at: "2026-10-09"
         quote: the initial deposit or final withdrawal address is visible on-chain
+        confirmed_at: 2026-10-12
     finding: >-
       Deposits and withdrawals reveal address, token and arbitrary amount; shielded transfers between AnomaPay users carry only tags and payload blobs and are submitted by the service, not the user. We did not verify from code that payload blobs are encrypted end to end (the SDK has AES-GCM helpers). Judgment call: 2, minimal linkage documented; not 3 because entry and exit amounts are plaintext and the payload encryption was not traced. The proving service sees everything (P2, P4).
     provider_response: null
@@ -464,6 +486,7 @@ scores:
         detail: Vast.ai datacenters see witness data during proving.
         checked_at: "2026-10-09"
         quote: Vast.ai datacenters provide ISO certifications
+        confirmed_at: 2026-10-12
     finding: >-
       The proving service, Vast.ai, the indexer and an Envio GraphQL endpoint sit in the payment path; they are named in docs but not shown in public code. Scored 1.
     provider_response: null
@@ -481,6 +504,7 @@ scores:
         detail: The docs show the backend client constructed with a URL argument; the indexer code is not public.
         checked_at: "2026-10-09"
         quote: Communicates with the proving backend
+        confirmed_at: 2026-10-12
     finding: >-
       The SDK docs show endpoint URLs passed as constructor arguments, but the clients are not in the public SDK source at our commit, the web app is closed, and the indexer cannot be self-hosted. Scored 1.
     provider_response: null
@@ -499,6 +523,7 @@ scores:
         detail: Once the adapter is stopped, the emergency committee sets an emergency caller once, and that caller's forwardEmergencyCall runs _forwardCall directly (ERC20Forwarder.sol L174-L180), so it can unwrap any amount to any receiver without a proof.
         checked_at: "2026-10-09"
         recheck: gh api "repos/anoma/anomapay-erc20-forwarder/contents/contracts/src/bases/EmergencyMigratableForwarderBase.sol?ref=916cc7ed960f443f7cce82bd517ab8505519cd1e" --jq .content | base64 -d | sed -n 40,70p
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/56/0xc703402252Ce1251aa07e0815D50060d27fdd6C4
@@ -509,6 +534,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
+        confirmed_at: 2026-10-12
     finding: >-
       Deposited tokens sit in the non-upgradeable forwarder and move out only through proven adapter transactions, unless the adapter is stopped. The same five signers can stop the adapter (3-of-5) and, as emergency committee (3-of-5), appoint a caller who can send the forwarder's tokens anywhere, with no timelock. The docs say funds "can only be moved with a valid proof", which the code does not bear out. Scored 0: the provider can redirect funds.
     provider_response: null
@@ -530,6 +556,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
+        confirmed_at: 2026-10-12
     finding: >-
       The contract code cannot be changed, but the stop-and-migrate path lets a 3-of-5 multisig move all funds to a new adapter version of its choosing, which works as an upgrade. Judgment call: we treat that as upgrade authority and score 1 (multisig, no timelock) rather than 3.
     provider_response: null
@@ -548,6 +575,7 @@ scores:
         detail: _wrap pulls exactly the wrapped amount through Permit2 permitWitnessTransferFrom, with a deadline and the action-tree root as witness.
         checked_at: "2026-10-09"
         recheck: gh api "repos/anoma/anomapay-erc20-forwarder/contents/contracts/src/ERC20Forwarder.sol?ref=916cc7ed960f443f7cce82bd517ab8505519cd1e" --jq .content | base64 -d | sed -n 133,159p
+        confirmed_at: 2026-10-12
     finding: >-
       Deposits use Permit2 signature transfers of the exact amount with expiry (the docs example uses 30 minutes), which fits anchor 3. A 3 needs a package or trace, and we did not see how large a base approval to Permit2 the closed app requests. Judgment call: 2.
     provider_response: null
@@ -565,6 +593,7 @@ scores:
         detail: The docs say users may run the off-chain services themselves; no public tooling does so.
         checked_at: "2026-10-09"
         quote: Any user can decide to run the off-chain infrastructure themselves
+        confirmed_at: 2026-10-12
     finding: >-
       Derived from S1=0, C2=2, C3=1, O3=0. If Anoma disappeared, funds would stay in the forwarder (no one stops the adapter by disappearing), and execute() stays open. But retrieving them needs a self-built prover pipeline from arm-risc0 and the unlicensed resource logic, plus resource discovery without the hosted indexer; this is claimed in docs, not shown by public code. Judgment call: 1.
     provider_response: null
@@ -588,6 +617,7 @@ scores:
         path: README.md
         detail: The README lists audits by Informal Systems (commit fc69013e, Oct 2025) and Nethermind (commit fee4f470, tag v1.0.0-rc.4) with PDFs in audits/, and a security contact email; the forwarder README lists an Informal Systems audit of commit 03e60b64 (Dec 2025). The deployed adapter is tag contracts/v1.1.0 (e368e273, 2026-01-27), after the audited commit.
         checked_at: "2026-10-09"
+        confirmed_at: 2026-10-12
     finding: >-
       Audit reports exist and are pinned to commits, but the deployed adapter was built from a later tag, findings were not traced to fix commits here, and we found no bug bounty. Scored 1.
     provider_response: null
@@ -597,7 +627,7 @@ scores:
 
 availability:
   model: blocklist
-  countries: [BY, BI, CF, CG, CD, KP, GN, GW, IR, IQ, LB, LY, ML, MM, SS, RU, SO, SD, SY, UA, VE, YE, ZW]
+  countries: [ BY, BI, CF, CG, CD, KP, GN, GW, IR, IQ, LB, LY, ML, MM, SS, RU, SO, SD, SY, UA, VE, YE, ZW ]
   note: >-
     From the AnomaPay terms (Version 1.0), which name SECO-embargoed "Prohibited Jurisdictions" as "including, but not limited to" this list, so it is not exhaustive. "Congo" is not specified; we list both CG and CD (more restrictive reading). The clause as published reads "are using the Software from one of the countries embargoed", apparently a drafting error for "are not". The terms also bar persons under UN, US, EU or Swiss sanctions and commercial use, and reserve geo-restriction. The contracts have no address or country check; we did not inspect the closed app for a geoblock.
   evidence:
@@ -607,6 +637,7 @@ availability:
       detail: Section 2 lists the Prohibited Jurisdictions and reserves geo-restriction.
       checked_at: "2026-10-09"
       quote: "including, but not limited to: Belarus, Burundi, Central African Republic, Congo"
+      confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
 
 notes: >-

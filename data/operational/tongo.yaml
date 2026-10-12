@@ -30,18 +30,21 @@ fees:
       url: https://github.com/fatlabsxyz/tongo/blob/7dac05e823f83620fe231605ba81642a178657ad/packages/contracts/src/tongo/Tongo.cairo#L236-L255
       path: packages/contracts/src/tongo/Tongo.cairo
       detail: With relayData set, withdraw moves fee_to_sender from the Vault to get_caller_address() and subtracts it from the sender's encrypted balance; transfer and ragequit do the same (L309-L314, L372-L377). There is no other fee in Tongo.cairo or Vault.cairo.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.starknet.io/learn/protocol/fees
       detail: Starknet fee units (L2 gas, L1 gas, L1 data gas), v3 STRK-denominated limits and tip, and the recipient of fees.
       quote: Starknet does not currently implement burning of fees, and all fees charged are received by the sequencer
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.tongo.cash/protocol/relayer.html
       detail: Relayer architecture page; the Relayer uses the AVNU paymaster, pays gas and is reimbursed from the operation's fee.
       quote: carry a fee_to_sender amount that is paid to the Relayer
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
   note: No protocol fee and no fee to Fat Solutions on the direct path. Funding a Tongo account is an ordinary ERC-20 approve and call, paying the same Starknet fee. Fees are high relative to the amounts moved so far (the v2 USDC Vault held 7.78 USDC at the seed read).
   checked_at: 2026-10-09
 custody_model:
@@ -67,12 +70,14 @@ licences:
       detail: The developer presents itself as a research and development team; the site names no legal entity, licence or regulator.
       quote: Zero-Knowledge Privacy Research and Development Team
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://www.tongo.cash/
       detail: The product site links to the demo, docs, GitHub and npm and has no terms, privacy or legal page.
       quote: live on starknet mainnet
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
   note: "Judgment call: absent rather than not_applicable, because Fat Solutions holds the ledger owner key (external-transfer approvals) and the Relayer owner role and runs the demo frontend, although it never holds users' funds. Searched: tongo.cash, fatsolutions.xyz, docs.tongo.cash (introduction, vault, relayer, auditor, contracts) and the repository README. No legal name or jurisdiction is disclosed, so no regulator register could be searched."
   checked_at: 2026-10-09
 cashout:
@@ -115,12 +120,14 @@ maturity:
         detail: The developer's site carries only a trade name and a contact address; no legal form, jurisdiction or register number.
         quote: © 2026 FAT SOLUTIONS
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://reports.zksecurity.xyz/reports/tongo/
         detail: The audit report names the client by trade name only.
         quote: On October 13th, 2025, FatSolutions engaged zkSecurity to perform a security audit of its Tongo
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     note: Maintainer is Fat Solutions (GitHub organisation fatlabsxyz, npm scope @fatsolutions); no legal entity is disclosed on tongo.cash, fatsolutions.xyz, the docs, the GitHub organisation profile (empty) or the npm package. Recorded as absent (undisclosed), not as proof that no company exists.
     checked_at: 2026-10-09
   incidents:
@@ -157,6 +164,7 @@ maturity:
         detail: Vault Architecture (v2) page describing the split into Vaults and ledgers.
         quote: In v2 the protocol is split into two kinds of contracts. Vaults and Tongo Ledgers.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/releases
@@ -492,6 +500,7 @@ facts:
         detail: Section 4 of the protocol documentation; sections 1-8 cover the protocol, 9-13 the SDK and 14-15 the SHE cryptography.
         quote: In v2 the protocol is split into two kinds of contracts. Vaults and Tongo Ledgers.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
   B12.1:
     assessed_by: AI research agent (operational), 2026-10-09

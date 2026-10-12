@@ -518,6 +518,10 @@
         "drift": {
           "type": "boolean"
         },
+        "confirmed_at": {
+          "$ref": "#/$defs/date",
+          "description": "Set by the weekly refresh when a re-read found the source unchanged. Counts as fresh for staleness; does not re-judge the rating."
+        },
         "by": {
           "enum": [
             "provider",

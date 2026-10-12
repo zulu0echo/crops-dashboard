@@ -360,6 +360,7 @@ facts:
         detail: Indexer API reference, scope and rate limits.
         checked_at: 2026-10-09
         quote: The indexer is the public read API for zERC20 transfer history and Merkle proof data.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -374,6 +375,7 @@ facts:
         detail: Privacy policy section 5, data retention.
         checked_at: 2026-10-09
         quote: When personal data is no longer required, we delete or anonymize it.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -391,6 +393,7 @@ facts:
         detail: Privacy policy introduction.
         checked_at: 2026-10-09
         quote: The Operator is the controller for the data processing described below.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -405,6 +408,7 @@ facts:
         detail: Architecture overview page.
         checked_at: 2026-10-09
         quote: This document explains how zERC20 is architected across on-chain contracts, off-chain services, and the Internet Computer (ICP) stealth messaging layer.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: F3
         index: 1
@@ -422,12 +426,14 @@ facts:
         detail: Terms, governing law and dispute resolution.
         checked_at: 2026-10-09
         quote: These Terms are governed by Swiss law.
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://zerc20.io/privacy-policy
         detail: Privacy policy, operator.
         checked_at: 2026-10-09
         quote: Ryodan Systems AG, Gartenstrasse 6, 6300 Zug, Switzerland
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -446,6 +452,7 @@ facts:
         check:
           call: "0x09f6442c"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000023"
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -460,6 +467,7 @@ facts:
         detail: Terms, termination and suspension.
         checked_at: 2026-10-09
         quote: Access to the decentralized Protocol (i.e., on-chain smart contracts) cannot be terminated by the Operator
+        confirmed_at: 2026-10-12
     refs:
       - criterion: C1
         index: 1
@@ -522,12 +530,14 @@ fees:
       check:
         call: "0x09f6442c"
         expect: "0x0000000000000000000000000000000000000000000000000000000000000023"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://zerc20.gitbook.io/zerc20/for-users/fees-and-rewards
       detail: Fees and Rewards page, current fee settings and private transfer redeem fee.
       checked_at: 2026-10-09
       quote: so the owner cannot set a redeem fee above 1%
+      confirmed_at: 2026-10-12
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
   review:
@@ -554,12 +564,14 @@ licences:
       detail: Terms (last updated 5 February 2026) say the Operator is not a financial institution, money services business or VASP and cite no licence.
       checked_at: 2026-10-09
       quote: The Operator does not act as a financial institution, money services business, virtual asset service provider, or intermediary of any kind.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://www.zefix.ch/ZefixREST/api/v1/firm/1494951.json
       detail: Zefix entry for Ryodan Systems AG (Zug), a software development company; Zefix does not record financial-market authorisations.
       checked_at: 2026-10-09
       quote: CHE-291.471.162
+      confirmed_at: 2026-10-12
   note: "Searched: terms, privacy policy, docs (llms-full.txt) and Zefix. Not searched: FINMA's register of authorised institutions and SRO member lists (interactive searches)."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -610,12 +622,14 @@ maturity:
         detail: The privacy policy (18 February 2026) names the operator of the website and app.
         checked_at: 2026-10-09
         quote: Ryodan Systems AG, Gartenstrasse 6, 6300 Zug, Switzerland
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://www.zefix.ch/ZefixREST/api/v1/firm/1494951.json
         detail: Zefix record, Aktiengesellschaft in Zug, status existing, same address; purpose software development including decentralised finance applications.
         checked_at: 2026-10-09
         quote: CHE-291.471.162
+        confirmed_at: 2026-10-12
     note: The terms define an unnamed "Operator" of the app, website and docs; only the privacy policy names Ryodan Systems AG. Who holds the owner Safes is not stated.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -658,6 +672,7 @@ maturity:
         detail: Terms version date.
         checked_at: 2026-10-09
         quote: "Last Updated: February 05, 2026"
+        confirmed_at: 2026-10-12
     note: Upgrade, owner-transfer, blocklist and fee-change logs could not be listed because public BSC RPCs serve no archive logs; the docs mention a migration of older Verifiers to the redeem-fee version without a date.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

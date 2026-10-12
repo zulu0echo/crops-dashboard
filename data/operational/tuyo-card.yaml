@@ -279,6 +279,7 @@ facts:
         detail: Guide "Your recovery phrase and smart-account address", verified by Tuyo on 15 September 2026.
         checked_at: 2026-10-09
         quote: "Normal release: requires the depositor and a valid counterparty signature."
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -367,6 +368,7 @@ fees:
       detail: Tuyo Card guide, card details table and FAQ.
       checked_at: 2026-10-09
       quote: 1% on any purchase made outside the US (charged by our card provider)
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
@@ -380,12 +382,14 @@ fees:
       detail: Tuyo FAQ, fees.
       checked_at: 2026-10-09
       quote: Tuyo charges a volume fee of 25 basis points (0.25%)
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/atm-withdrawals.html
       detail: ATM withdrawals guide, fees and FX.
       checked_at: 2026-10-09
       quote: ATM withdrawal fees and FX markups depend entirely on the ATM operator
+      confirmed_at: 2026-10-12
   note: Bank-transfer (off-ramp) fees and Bridge's conversion charges are not stated in the guides; the app shows them before confirming. The US agreement lists a 2% late-payment fee; the international agreement lists none.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -424,19 +428,19 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_spend
       partner: Third National (issuer), Visa
       fee: 1% FX and 1% abroad fee, up to 2%
       limits: Virtual card with Apple Pay and Google Pay; daily limit up to 50,000 USD for new cards. Spending blocked in CU, IR, KP, RU, SY, UA, VE.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: Third National (issuer), Visa ATMs
       fee: ATM operator fee and FX only
       limits: 250 USD per withdrawal including surcharge; 3 attempts per rolling 24 h; select Credit and enter the PIN.
       evidence_index: 1
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: bank_transfer
       partner: Bridge
       fee: not stated (shown in app)
@@ -449,18 +453,21 @@ cashout:
       detail: Tuyo Card guide.
       checked_at: 2026-10-09
       quote: Keep custody. Your funds stay in your control until the moment you spend them.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/atm-withdrawals.html
       detail: ATM withdrawals guide.
       checked_at: 2026-10-09
       quote: "Maximum per withdrawal: $250 USD"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/wire-transfer-availability.html
       detail: Bank accounts availability guide with Bridge's country table.
       checked_at: 2026-10-09
       quote: Not available means Bridge will not facilitate bank-account services
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
@@ -496,6 +503,7 @@ maturity:
         detail: The guide links basescan.org/address/0x221677d8...#code as the collateral implementation it reviewed.
         checked_at: 2026-10-09
         quote: Verified collateral implementation and release rules
+        confirmed_at: 2026-10-12
     note: The collateral implementation is not in the provider file's contracts list (it was not known at seed time); per-user collateral proxies were not enumerated. The card agreements' disclosures are effective from 7 March 2025, consistent with this date.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

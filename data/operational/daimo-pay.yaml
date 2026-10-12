@@ -33,6 +33,7 @@ fees:
       path: packages/sdk/src/web/hooks/useWalletFlow.ts
       detail: The EVM payment is a single transfer(depositAddress, amount) or native send.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
   refs:
     - criterion: S1
       index: 1
@@ -67,12 +68,14 @@ licences:
       detail: The privacy notice says Daimo does not act as a financial institution or custodian; neither it nor the terms name a licence or regulator.
       checked_at: 2026-10-09
       quote: do not act as a financial institution or custodian
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://daimo.com/terms-of-use
       detail: Terms of use (last updated 2025-04-01) name Daimo, Inc. and cite no licence.
       checked_at: 2026-10-09
       quote: We are Daimo, Inc.
+      confirmed_at: 2026-10-12
   note: "Searched: terms of use, privacy notice, docs (fiat guide names Coinbase and Stripe onramps and Sumsub KYC as partners). Not searched: the FinCEN MSB registrant search and state money-transmitter registers (form-based), and the fiat partners' own licences, which are not recorded because no Daimo document names the licensed entity."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -89,6 +92,7 @@ cashout:
       detail: Fiat guide covers deposits from local bank and wallet rails only.
       checked_at: 2026-10-09
       quote: Users in a country with no enabled fiat rail see crypto, exchange, and wallet
+      confirmed_at: 2026-10-12
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
   review:
@@ -117,6 +121,7 @@ maturity:
         path: packages/contract/broadcast/DeployDepositAddressManager.s.sol/8453/run-latest.json
         detail: Foundry broadcast for Base records the deploy transaction hash and block 47696940.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     note: This is the current deposit-address system, the unit of assessment. Daimo ran earlier payment contracts (DaimoPay/PayIntent, then Universal Address) before it; those are not dated here.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -134,6 +139,7 @@ maturity:
         detail: Terms name Daimo, Inc., give a Santa Monica, California address and choose California law.
         checked_at: 2026-10-09
         quote: 3101 Ocean Park Blvd Ste 100
+        confirmed_at: 2026-10-12
     note: From the terms only. The state of incorporation is not stated and no company-register entry was looked up, so there is no register URL.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -232,6 +238,7 @@ facts:
         detail: The terms of use contain no patch or vulnerability-remediation commitment.
         checked_at: 2026-10-09
         quote: We are Daimo, Inc.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S6
         index: 1
@@ -268,6 +275,7 @@ facts:
         detail: The privacy notice's security section makes no incident-notification commitment, and the terms have none.
         checked_at: 2026-10-09
         quote: We have organizational and technical processes and procedures in place to protect your personal information
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -282,6 +290,7 @@ facts:
         detail: Public status page with uptime history and email subscription; its incident history is client-rendered and was not read.
         checked_at: 2026-10-09
         quote: Daimo Status
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -296,6 +305,7 @@ facts:
         detail: API overview, authentication section.
         checked_at: 2026-10-09
         quote: Each session has its own client secret
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S5
         index: 0
@@ -313,6 +323,7 @@ facts:
         detail: Sessions guide, credential model.
         checked_at: 2026-10-09
         quote: Your account-wide API key
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S5
         index: 1
@@ -330,6 +341,7 @@ facts:
         detail: Sessions guide lists terminal statuses including expired; the session object carries expiresAt.
         checked_at: 2026-10-09
         quote: Terminal statuses
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -344,6 +356,7 @@ facts:
         detail: Section 3 of the privacy notice (last updated 2026-02-28).
         checked_at: 2026-10-09
         quote: We will only keep your personal information for as long as it is necessary
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 2
@@ -361,6 +374,7 @@ facts:
         detail: Opening of the privacy notice.
         checked_at: 2026-10-09
         quote: This privacy notice for Daimo, Inc
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -374,6 +388,7 @@ facts:
         detail: Neither the privacy notice nor the terms reference a data processing agreement.
         checked_at: 2026-10-09
         quote: This privacy notice for Daimo, Inc
+        confirmed_at: 2026-10-12
     note: Searched the privacy notice, terms and docs for processing agreement, DPA and addendum.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -560,6 +575,7 @@ facts:
         detail: Sessions guide with a status diagram and credential model.
         checked_at: 2026-10-09
         quote: Terminal statuses
+        confirmed_at: 2026-10-12
     refs:
       - criterion: O3
         index: 0
@@ -577,6 +593,7 @@ facts:
         detail: Governing-law clause of the terms of use.
         checked_at: 2026-10-09
         quote: governed by and construed in accordance with the laws of the State of California
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -598,6 +615,7 @@ facts:
         detail: Term and termination section.
         checked_at: 2026-10-09
         quote: WITHOUT NOTICE OR LIABILITY, DENY ACCESS
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 1

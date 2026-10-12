@@ -238,6 +238,7 @@ facts:
         detail: Payy Wallet FAQ, "Is Payy safe to use?".
         checked_at: 2026-10-09
         quote: code have been audited
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -270,6 +271,7 @@ facts:
         detail: Payy Wallet FAQ, "Why is there no login, email or passwords in Payy?".
         checked_at: 2026-10-09
         quote: we do not have any login/username/email/password requirements in Payy
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -284,6 +286,7 @@ facts:
         detail: Privacy Policy (last updated 6 May 2024), "How you can access or change your information".
         checked_at: 2026-10-09
         quote: You may delete your Payy account at any time.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 0
@@ -302,6 +305,7 @@ facts:
         detail: Privacy Policy opening paragraph.
         checked_at: 2026-10-09
         quote: Payy by Zeplo, Inc. is a software service
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -316,6 +320,7 @@ facts:
         detail: Privacy Architecture page with component diagram.
         checked_at: 2026-10-09
         quote: The Payy Privacy architecture is composed of the following components
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -331,12 +336,14 @@ facts:
         detail: Terms of Service opening paragraph and section 14.1.
         checked_at: 2026-10-09
         quote: ZEPLO, INC. d/b/a PAYY
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://payy.link/privacy
         detail: payy.link footer with company number and address.
         checked_at: 2026-10-09
         quote: Zeplo Inc. (6772334), 169 Madison Avenue
+        confirmed_at: 2026-10-12
     note: The Delaware register search is behind a CAPTCHA and was not used.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -353,6 +360,7 @@ facts:
         detail: Terms of Service section 16 and section 2.6.22.
         checked_at: 2026-10-09
         quote: will terminate immediately and automatically without notice from Payy
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -385,6 +393,7 @@ fees:
       detail: Payy Card docs, Features table and usage notes.
       checked_at: 2026-10-09
       quote: No transaction or top-up fees
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
@@ -392,6 +401,7 @@ fees:
       detail: Terms of Service section 2.6.18 Fees and Charges.
       checked_at: 2026-10-09
       quote: Payy will not charge transaction  fees but may include a spread
+      confirmed_at: 2026-10-12
   note: The ATM fee (private beta) and any physical-card fee are not stated; the Light Up physical card is sold out.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -422,13 +432,13 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_withdrawal
       partner: Rain and a U.S.-based issuer, Visa
       fee: none from Payy; Visa rate plus 1% on non-USD
       limits: Card spend at merchants (the schema has no card-spend value); spending limited to the wallet balance; some foreign online merchants reject U.S.-issued cards.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: Rain and a U.S.-based issuer, Visa
       fee: not stated
@@ -441,6 +451,7 @@ cashout:
       detail: Payy Card docs, Features table (ATM access) and usage notes.
       checked_at: 2026-10-09
       quote: Contactless ATM withdrawals are supported
+      confirmed_at: 2026-10-12
   note: No bank withdrawal is documented; bank deposits are offered from the U.S. and Argentina only. Payy publishes no country list (no availability block), so ALL here means wherever the card is issued.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -481,12 +492,14 @@ maturity:
         detail: Terms of Service name Zeplo, Inc. d/b/a Payy as the contracting party.
         checked_at: 2026-10-09
         quote: ZEPLO, INC. d/b/a PAYY
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://payy.link/privacy
         detail: payy.link footer gives "Zeplo Inc. (6772334)" and a New York office address.
         checked_at: 2026-10-09
         quote: Zeplo Inc. (6772334), 169 Madison Avenue
+        confirmed_at: 2026-10-12
     note: The number's register is not stated; it has the form of a Delaware file number and the Terms are performed in Delaware, but the Delaware search is CAPTCHA-protected, so the state is not recorded.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

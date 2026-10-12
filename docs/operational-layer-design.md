@@ -40,7 +40,7 @@ A control marked `applies: operator` or `custodial` cannot be `absent` on a rail
 - `scripts/repo-facts.mjs` fills B2.1, B2.3, B8.2 and B9.1 to B9.8 from each provider's public GitHub repositories: security policy, scanning config, deployment config, branch rules, CI on pull requests, tests and coverage in workflows, semantic tags, signed commits, changelog, contribution guide. It never overwrites a fact a human assessed. Ceiling: classic branch protection is invisible without push access, so B9.1 reads the public rules API only and says so.
 - `scripts/volumes.mjs` as above. Both have self-checks in `npm test`.
 - The validator checks state rules, control ids, dangling refs, operator-class misuse, and volume specs; online it checks the layer's document quotes and URLs like any other evidence.
-- Nightly: not yet wired. `repo-facts` and `volumes` are meant to run in `recheck.yml` after the drift check (plan step 6).
+- Weekly: `repo-facts` and `volumes` run in `recheck.yml` after the source refresh.
 
 ## 7. Site
 

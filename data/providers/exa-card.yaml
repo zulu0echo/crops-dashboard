@@ -196,6 +196,7 @@ scores:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000ea2127b14d05229cb3d4b75b42052e556ab7391f"
         recheck: cast call 0x8cC05394eD714073758E9bEf8073a83d79F6F2A3 "owner()(address)" --rpc-url https://mainnet.optimism.io --block 157885618
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://repo.sourcify.dev/10/0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e
@@ -206,6 +207,7 @@ scores:
         check:
           call: "0x91d14854fc8737ab85eb45125971625a9ebdb75cc78e01d5c1fa80c4c6e5203f47bc4fab000000000000000000000000cddb23654595c224a563f62943d9ff189138c04e"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://explorer.optimism.io/address/0xC0d6Bc5d052d1e74523AD79dD5A954276c9286D3
@@ -216,12 +218,14 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
         detail: The Exa Card terms let Exa Labs and the issuer block transactions and suspend account access.
         quote: "Exa Labs and Issuer reserve the right to block and terminate transactions and suspend access to your Account"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Three things can stop card settlement. A single EOA owns the Pauser, which can pause the exaUSDC market and so freeze every card debit and every user withdrawal, with no notice or timelock. Card collections run only through Exa's keeper EOA. The card terms let Exa and the issuer block transactions and suspend accounts. The longer-standing PAUSER_ROLE sits with a 3-of-6 Safe (undisclosed signers, no timelock). An EOA-held pause meets anchor 0.
     provider_response: null
@@ -263,6 +267,7 @@ scores:
         path: server/index.ts
         detail: The public server requires PANDA_API_KEY/URL (Rain issuing API), PERSONA_API_KEY/URL and SARDINE_API_KEY/URL to start.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/the-exa-tech-stack.md#L18-L18
@@ -270,6 +275,7 @@ scores:
         path: exa-app/the-exa-tech-stack.md
         detail: Exa's docs say KYC (Persona), card issuing (Rain) and support (Intercom) are integrated in the Exa App's backend.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Exa publishes its own backend, which is unusual for a card. A card payment still requires Rain's closed issuing platform, Third National and Visa, plus Exa's own keeper and issuer keys. The deployed IssuerChecker accepts only Exa's issuer key, so a self-hosted server could not settle against the deployed contracts. The required issuer path is closed and single-vendor, so 0.
     provider_response: null
@@ -287,12 +293,14 @@ scores:
         path: server/hooks/panda.ts
         detail: Card authorisation calls Sardine risk scoring before approving. KYC goes through Persona. No sanctions list, list source or country blocklist is defined in the public code; screening happens inside those vendors and Rain.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
         detail: The card terms require that the cardholder is not blocked or sanctioned by the US Government, including OFAC listings.
         quote: "You are not a person who is blocked or sanctioned by the United States Government"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The Optimism settlement contracts (ExaPlugin and the standard exaUSDC market) have no address or country filter; the Firewall allowlist exists only on Base. Edge screening is disclosed in the terms, but it runs inside closed vendors with no named list source in code, and it cannot be bypassed because C2 = 0. Disclosed in docs only, so 1.
     provider_response: null
@@ -311,6 +319,7 @@ scores:
         detail: The ProposalManager allowlist enumerates the OP Mainnet tokens the account can interact with. The card itself settles from the exaUSDC market (EXA_USDC immutable in ExaPlugin).
         checked_at: "2026-10-07"
         recheck: curl -s https://raw.githubusercontent.com/exactly/exa/4fba32be1803f15c0db9f39a055bda4740c1fdf1/contracts/deploy.json | sed -n 84,121p
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://explorer.optimism.io/address/0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85
@@ -321,6 +330,7 @@ scores:
         check:
           call: "0xbd102430"
           expect: "0x000000000000000000000000551e855b7355c98534175879a300972856c04d7c"
+        confirmed_at: 2026-10-12
       - tier: claimed
         by: provider
         kind: document
@@ -328,6 +338,7 @@ scores:
         detail: The help article names Optimism and explains rollups, but says nothing about the sequencer, forced inclusion, or issuer freeze powers.
         quote: "works on Optimism"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Chain and tokens are enumerated in code. USDC carries a Circle blacklister, the exaUSDC market can be paused (C1), and OP Mainnet has a single sequencer. None of this is stated to cardholders in the help center or the terms I read. Enumerated in code, assumptions not stated, so 2.
     provider_response: null
@@ -353,6 +364,7 @@ scores:
         path: contracts/broadcast/ExaPlugin.s.sol/10/run-latest.json
         detail: The Foundry broadcast for the OP Mainnet deployment is committed, and ExaPlugin.sol at this commit matches the Sourcify source apart from a trailing newline.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Exa's own contracts and Rain's collateral beacon and implementation are exact matches, and Exa has a committed Foundry deploy. The exaUSDC market implementation that holds all card collateral is not on Sourcify, and the Optimism Blockscout API returned no verification record for it. Some settlement contracts are verified, so 1. Judgment call: the unverified market implementation sits in the settlement path, so I did not go higher.
     provider_response: null
@@ -388,6 +400,7 @@ scores:
         path: README.md
         detail: The README lists toolchain requirements and install, run and e2e commands for the app, and links to the server and contracts.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Build docs exist. Reproduction not attempted. Visible blockers: the server needs Rain, Persona and Sardine API keys, and a working card needs an issuer key that the deployed IssuerChecker accepts.
     provider_response: null
@@ -406,6 +419,7 @@ scores:
         detail: An OpenAPI spec is generated from the server routes (hono-openapi generateSpecs).
         checked_at: "2026-10-07"
         recheck: curl -s https://raw.githubusercontent.com/exactly/exa/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/script/openapi.ts | sed -n 1,40p
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/src/IssuerChecker.sol#L114-L122
@@ -430,6 +444,7 @@ scores:
         path: README.md
         detail: The exa monorepo has no LICENSE file at the root or in any package, and the package.json files have no license field. Contract files carry SPDX GPL-3.0 headers only. GitHub reports no license.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/protocol/blob/0d1ca2a6b753f40c4a0c5a442ee25246122594f7/LICENSE#L1-L22
@@ -437,6 +452,7 @@ scores:
         path: LICENSE
         detail: Exactly Protocol (the exaUSDC market) is under BUSL-1.1, changing to GPL-3.0-or-later two years after each release.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The backend and app repo has no license. The market contracts are source-available (BUSL-1.1). The issuer, network and Rain are closed. Closed required components alone set F1 to 0.
     provider_response: null
@@ -471,6 +487,7 @@ scores:
         path: server/index.ts
         detail: The server will not start without Rain (panda), Persona and Sardine credentials.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The card cannot run without Rain's issuing platform, the issuer and Visa, and Persona and Sardine. These are hosted-only proprietary services.
     provider_response: null
@@ -488,12 +505,14 @@ scores:
         path: src/utils/segment.ts
         detail: The web app loads Segment with hardcoded write keys per domain, with no consent check, and identify() sends the account address. package.json also ships @sentry/react-native, @sentry/browser, Intercom, OneSignal and expo-insights.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.exactly.app/en/articles/9945134-privacy-policy
         detail: The privacy policy discloses usage analytics, including third-party analysis.
         quote: "we analyze (and may engage third parties to analyze) this information"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Analytics (Segment, keyed to the wallet address) and error reporting (Sentry) are on by default, with no opt-in in code. The privacy policy discloses analytics in general terms. Present, on by default, disclosed, so 1.
     provider_response: null
@@ -510,6 +529,7 @@ scores:
         detail: The privacy policy lists the KYC data collected through Persona, including ID document, photo and biometric face scans, plus IP and wallet address.
         quote: "identification document information, personal photo, biometric face scans"
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/credit-and-debit-modes.md#L11-L11
@@ -517,6 +537,7 @@ scores:
         path: exa-app/credit-and-debit-modes.md
         detail: Exa's docs repo says KYC is required to comply with Visa regulations.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Full KYC, including biometrics, is collected for the card. The basis is given only loosely ("Visa regulations") in a versioned doc, and the field list is disclosed in the privacy policy. Collection goes well beyond settlement needs. Judgment call: a stated basis without a field-level limit to the legal requirement does not reach 2, so 1.
     provider_response: null
@@ -542,6 +563,7 @@ scores:
         path: exa-app/exa-plugin.md
         detail: The docs describe the keeper-run collectDebit and collectCredit and the IssuerChecker that signs them.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Every card spend is publicly tied to the user's long-lived Exa account (amount and time), and the Collected event marks the account as an Exa cardholder. No merchant data goes onchain, and there are no fresh addresses. Minimal linkage that is documented, so 2.
     provider_response: null
@@ -559,6 +581,7 @@ scores:
         path: server/hooks/panda.ts
         detail: Each card authorisation is sent to Sardine for risk scoring and tracked to Segment (L816). Rain sends the authorisation webhook. The endpoints are env-set, but each integration is vendor-specific code.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/the-exa-tech-stack.md#L18-L18
@@ -566,6 +589,7 @@ scores:
         path: exa-app/the-exa-tech-stack.md
         detail: Persona, Rain and Intercom are named in the docs.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       A payment is seen by Rain, Third National, Visa, Sardine and Segment, plus Alchemy on the app side. All of them are named in public code or docs, but none can be swapped without code changes. No trace was run. Judgment call: named in code (2) but not swappable by config (1); I took the lower anchor.
     provider_response: null
@@ -583,6 +607,7 @@ scores:
         path: common/alchemyAPIKey.ts
         detail: The app reads through Alchemy (src/utils/publicClient.ts#L7-L10), with per-chain keys hardcoded and an env override for the key only. The RPC vendor is fixed in code.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The RPC endpoint is fixed to Alchemy; only the key can be overridden at build time. The indexer (substreams) is public, but users cannot point the app at their own endpoints. Judgment call: changing the key is not changing the endpoint, so this is "hardcoded" (0).
     provider_response: null
@@ -611,6 +636,7 @@ scores:
           call: "0x913e77ad"
           expect: "0x0000000000000000000000003a73880ff21abf9ca9f80b293570a3cbd846efc5"
         recheck: cast call 0x3d73D0fb9e63c49ba8e9cd738964D5E08C047f3e "collector()(address)" --rpc-url https://mainnet.optimism.io --block 157885618
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://repo.sourcify.dev/10/0x59A644E490E48235adF8ba9b814A4f666C4fEb3A
@@ -621,6 +647,7 @@ scores:
         check:
           call: "0x1d143848"
           expect: "0x0000000000000000000000003ed5b7c4f0406b0d5afbe8ccfd1bd845f8f9d415"
+        confirmed_at: 2026-10-12
     finding: >-
       At rest, funds sit in the user's own account as exaUSDC shares in an upgradeable lending market. Exa's issuer key plus its keeper can debit any amount from any account to the collector without a user signature, and the admin Safe can repoint the collector without a timelock. Card debits land in Rain's upgradeable collateral contract (beacon owned by a 2-of-5 Safe). The provider can redirect funds, which meets anchor 0.
     provider_response: null
@@ -642,6 +669,7 @@ scores:
           call: "0x8da5cb5b"
           expect: "0x00000000000000000000000092024c4bda9da602b711b9abb610d072018eb58b"
         recheck: cast call 0x92024C4bDa9DA602b711B9AbB610d072018eb58b "getMinDelay()(uint256)" --rpc-url https://mainnet.optimism.io --block 157885618
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://explorer.optimism.io/address/0x6561b09d5d6012D416dfDf9BeFe37228Ae89434C
@@ -652,6 +680,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/aceb1b5be29a84cb2a37742e2204647d249443ab/contracts/src/ExaPlugin.sol#L308-L330
@@ -683,6 +712,7 @@ scores:
         path: exa-app/exa-plugin.md
         detail: The docs disclose the keeper's collect functions and the issuer's role.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The card's spending authority is an unbounded keeper permission built into the account, not a capped allowance. It is disclosed in docs and code. Unbounded by default, disclosed, so 1.
     provider_response: null
@@ -704,6 +734,7 @@ scores:
           call: "0x6a42b8f8"
           expect: "0x000000000000000000000000000000000000000000000000000000000000003c"
         recheck: cast call 0x6817974CA2c354F2FA40d8349b725B5bF81c8338 "delay()(uint256)" --rpc-url https://mainnet.optimism.io --block 157885618
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: onchain
         url: https://explorer.optimism.io/address/0x973ccce386F99bd7a32Eec2DF192A030d8f214b8
@@ -729,6 +760,7 @@ scores:
         detail: Card webhooks are verified with HMAC-SHA256 and timingSafeEqual (server/utils/verifySignature.ts#L9-L15) against a comma-separated key list, so keys can rotate. Persona webhooks need PERSONA_WEBHOOK_SECRET.
         checked_at: "2026-10-07"
         recheck: curl -s https://raw.githubusercontent.com/exactly/exa/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/utils/verifySignature.ts
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/common/alchemyAPIKey.ts#L5-L15
@@ -736,6 +768,7 @@ scores:
         path: common/alchemyAPIKey.ts
         detail: The client bundle ships Alchemy keys and Segment write keys (src/utils/segment.ts#L11-L18). Both are publishable client identifiers; Rain, Persona and Sardine secrets stay server-side.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       No issuing or KYC secrets are in the client, and webhooks are signature-verified with rotation support. The client ships publishable Alchemy and Segment keys, which authorise metered RPC use and analytics writes. Judgment call: minor, so 2. A 3 is not possible while required components are closed.
     provider_response: null
@@ -760,6 +793,7 @@ scores:
         path: contracts/src/ExaPlugin.sol
         detail: The deployed source (aceb1b5) is 23 commits after 368df25, and ExaPlugin.sol changed in between (gh api repos/exactly/exa/compare/368df25...aceb1b5). The Oct-25 update audit covers later code that is not deployed on OP Mainnet.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Audits exist, with pinned commits and per-finding fix commits, but the deployed OP Mainnet plugin is not the audited commit. I found no bug bounty in any exactly repo. Judgment call: an audit of a neighbouring version does not cover the deployed contract, so this is held at "audit report only" (1).
     provider_response: null
@@ -772,7 +806,7 @@ context: >-
 
 availability:
   model: allowlist
-  countries: [AE, AG, AR, AU, BB, BO, BR, BS, BZ, CI, CO, CR, DO, GD, GH, GY, HN, JP, KE, KN, KY, LC, MA, MX, MY, NZ, PA, PE, PH, PK, PY, SG, SN, SR, TC, TT, UG, UY, VC, ZA, ZM]
+  countries: [ AE, AG, AR, AU, BB, BO, BR, BS, BZ, CI, CO, CR, DO, GD, GH, GY, HN, JP, KE, KN, KY, LC, MA, MX, MY, NZ, PA, PE, PH, PK, PY, SG, SN, SR, TC, TT, UG, UY, VC, ZA, ZM ]
   note: >-
     The help-centre article "Card availability and usage" lists 46 countries and 31 US states where the card can be issued. Exa's documents disagree on six of these, and we take the more restrictive reading. Nigeria is listed as eligible "with conditional approval" but is on the separate List of prohibited countries (2026-01-15). Ecuador, El Salvador, Guatemala and Hong Kong are listed as eligible but are named among sanctioned jurisdictions in the Exa App Terms (2025-10-02). The United States is excluded: the help article lists eligible US states and Exa publishes card terms for US citizens (2025-05-20), but the App Terms say US Persons are prohibited from using the App, and the card is created in the App. The App Terms' sanctions list also names countries that are not on the help list (for example England, Greece, Estonia, Slovenia, Cyprus); those are already outside the allowlist. The card can be spent anywhere Visa is accepted except Cuba, Iran, North Korea, Russia, Syria, Ukraine and Venezuela. Protocol level: the Exa account contracts on Optimism are usable without the card.
   evidence:
@@ -784,6 +818,7 @@ availability:
       detail: Help article "Card availability and usage" lists 46 eligible countries, 31 eligible US states, 18 ineligible countries and 7 countries where the card cannot be spent.
       checked_at: "2026-10-09"
       quote: The Exa Card can be issued to residents of the following countries
+      confirmed_at: 2026-10-12
     - tier: claimed
       by: provider
       kind: document
@@ -792,6 +827,7 @@ availability:
       detail: List of prohibited countries for the Exa Card (2026-01-15) names 32 countries where issuance is forbidden, including Nigeria.
       checked_at: "2026-10-09"
       quote: Exa card issuance is forbidden in the following countries
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/9942510-exa-app-terms-and-conditions
@@ -799,6 +835,7 @@ availability:
       detail: Exa App Terms (2025-10-02) prohibit US Persons from using the App and list sanctioned jurisdictions, including Ecuador, El Salvador, Guatemala and Hong Kong.
       checked_at: "2026-10-09"
       quote: the US Persons are prohibited from accessing and using the Services in any way
+      confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
 
 notes: >-

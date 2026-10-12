@@ -40,12 +40,14 @@ fees:
       detail: Terms of Use (effective 2026-10-01) sections 5.7, 5.9, 6.5, 7.1, 7.3, 7.4 and 7.6.
       checked_at: 2026-10-09
       quote: We charge a protocol fee on deposits and on withdrawals. Each fee is at most 1% of the amount.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://docs.nullmask.io/user-guide/fees.md
       detail: Docs fee page, how the relayer fee is estimated.
       checked_at: 2026-10-09
       quote: It applies a 1.25x buffer and multiplies the result by the current gas price
+      drift: true
     - tier: verified
       kind: onchain
       url: https://eth.blockscout.com/tx/0x789715bdb90a5a938029ba63267bda6bd3a7cc1fda416b1a8b5a5a1c3f7ffd02
@@ -85,12 +87,14 @@ licences:
       detail: Terms 3.4 say the operator is not a bank, exchange, broker or payment institution; no licence, registration or regulator is named anywhere in the terms.
       checked_at: 2026-10-09
       quote: We are not a bank, exchange, broker, payment institution, investment adviser or trustee.
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://find-and-update.company-information.service.gov.uk/search/companies?q=nullmask
       detail: Companies House name search for "nullmask" (the terms choose English law and London arbitration) returned no company.
       checked_at: 2026-10-09
       quote: No results found
+      confirmed_at: 2026-10-12
   note: "Searched: Terms of Use and Privacy Policy (both effective 2026-10-01), docs.nullmask.io (compliance, security, architecture pages) and Companies House by name. The operator is unnamed and the privacy policy says it is established outside the EEA and the UK, so no regulator register could be searched by entity."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -139,6 +143,7 @@ maturity:
         detail: Terms 1.1 define the operator only as the company that operates the Services and offer its legal details on written request.
         checked_at: 2026-10-09
         quote: We will give the Operator's full legal details to any person who needs them to bring or answer a legal claim
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://app.nullmask.io/privacy
@@ -146,6 +151,7 @@ maturity:
         detail: The privacy policy says the operator is established outside the EEA and the UK.
         checked_at: 2026-10-09
         quote: It is established outside the European Economic Area and the United Kingdom.
+        confirmed_at: 2026-10-12
     note: Judgment call. The operator says an identified legal entity exists and is disclosed only on request, which is the attested state; no name, jurisdiction or register entry is public. Companies House has no "nullmask" company.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -189,6 +195,7 @@ maturity:
         detail: Roadmap, phase 1 Ethereum mainnet launch.
         checked_at: 2026-10-09
         quote: "**ETA: 1st October 2026**"
+        drift: true
     note: Upgrades are made by the controller whose admin is an EOA, with no notice (terms 8.3). Guard or relayer address changes were not traced because the contract is unverified.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -285,6 +292,7 @@ facts:
         detail: Access token derivation from the wallet signature and its delivery as cookie or query parameter.
         checked_at: 2026-10-09
         quote: Since wallets use deterministic signatures (RFC 6979), the same wallet always produces the same access token.
+        drift: true
       - tier: documented
         kind: document
         url: https://app.nullmask.io/privacy
@@ -292,6 +300,7 @@ facts:
         detail: Privacy policy section 9 on the wallet network credential.
         checked_at: 2026-10-09
         quote: The credential gives read access to your balance and your own operations, and it does not expire.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -323,6 +332,7 @@ facts:
         detail: Privacy policy section 9, session cookie row.
         checked_at: 2026-10-09
         quote: The token is created from your wallet's signature and stays valid on our servers after the cookie is gone.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -337,6 +347,7 @@ facts:
         detail: RPC API overview and authentication.
         checked_at: 2026-10-09
         quote: The proxy uses an **access token** to identify users and isolate their private data
+        drift: true
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -358,6 +369,7 @@ facts:
         detail: Privacy policy section 9.
         checked_at: 2026-10-09
         quote: The credential gives read access to your balance and your own operations, and it does not expire.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -379,6 +391,7 @@ facts:
         detail: Privacy policy section 11.
         checked_at: 2026-10-09
         quote: Connections to the Services are encrypted in transit.
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: trace
         url: https://app.nullmask.io
@@ -423,6 +436,7 @@ facts:
         detail: Privacy policy section 1.
         checked_at: 2026-10-09
         quote: is the controller of the personal data described here
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -444,6 +458,7 @@ facts:
         detail: Privacy policy section 11.
         checked_at: 2026-10-09
         quote: Administrative actions on the screening system require cryptographic authorisation and are recorded.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -469,6 +484,7 @@ facts:
         detail: Components page (wallet, RPC proxy, relayer, guard, contract) and linked architecture and backend-services pages.
         checked_at: 2026-10-09
         quote: Nullmask consists of four main components that work together to provide privacy-preserving transactions.
+        drift: true
     refs:
       - criterion: O4
         index: 0
@@ -487,6 +503,7 @@ facts:
         detail: Terms 1.1 and 19.3.
         checked_at: 2026-10-09
         quote: We will give the Operator's full legal details to any person who needs them to bring or answer a legal claim
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -502,6 +519,7 @@ facts:
         detail: Terms 7.1 and 7.3.
         checked_at: 2026-10-09
         quote: It covers the network gas our relayer pays and our cost of running the Services.
+        confirmed_at: 2026-10-12
     note: The roadmap mentions a MASK token on Solana; the terms say it gives no claim on fees. Not treated as funding.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -518,6 +536,7 @@ facts:
         detail: Terms 18.2, 18.3 and 8.5.
         checked_at: 2026-10-09
         quote: We may restrict or end your access to the Services at any time and without notice.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S4
         index: 0
@@ -536,6 +555,7 @@ facts:
         detail: Privacy policy section 13, automated decisions.
         checked_at: 2026-10-09
         quote: Screening decisions are made automatically from address risk data and the public history of the address.
+        confirmed_at: 2026-10-12
     refs:
       - criterion: C4
         index: 1
@@ -554,6 +574,7 @@ facts:
         detail: Privacy policy section 13.
         checked_at: 2026-10-09
         quote: A person will consider the request.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

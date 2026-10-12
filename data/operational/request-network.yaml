@@ -34,12 +34,14 @@ fees:
       detail: Pricing page states a flat 0.9% fee per transaction capped at $500, no monthly, setup or minimum fees.
       checked_at: 2026-10-09
       quote: Flat fee on transaction volume, capped at $500 per transaction
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://request.network/pricing/
       detail: Pricing page says gas is included on EVM chains and Tron payers pay a flat $3.99.
       checked_at: 2026-10-09
       quote: On EVM chains gas is included
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/smart-contracts/src/contracts/ERC20FeeProxy.sol#L34-L58
@@ -47,6 +49,7 @@ fees:
       path: packages/smart-contracts/src/contracts/ERC20FeeProxy.sol
       detail: transferFromWithReferenceAndFee moves _amount to the payee and _feeAmount to _feeAddress, both supplied by the caller; the contract has no fee of its own.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: onchain
       url: https://basescan.org/tx/0x2580e807b575a321c20e3134eea8e18a0edba56ae97ca25b315215e0a7113d4e
@@ -71,6 +74,7 @@ fees:
       path: api-features/protocol-fees.mdx
       detail: Docs say a protocol fee applies to all API payments, the rate can change and is not published in the docs, and the payer bears it by default.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
   note: Two fee regimes. The open protocol path (the CROPS unit) charges no protocol fee in contract; the hosted API path charges 0.9% and includes gas. FX applies only to conversion payments, through Chainlink rates in ChainlinkConversionPath, and no FX margin is stated. No limits are published beyond the $500 fee cap and API rate limits.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -100,12 +104,14 @@ licences:
       detail: Legal notice names the Swiss foundation and its register number and cites no licence or regulator.
       checked_at: 2026-10-09
       quote: Request Network is a Swiss Stiftung
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://request.network/api-terms-and-conditions/
       detail: API terms (last update 2025-12-22) state the foundation does not custody funds or process financial transactions; no licence is cited anywhere in the terms.
       checked_at: 2026-10-09
       quote: REQUEST NETWORK DOES NOT CUSTODY FUNDS OR PROCESS FINANCIAL TRANSACTIONS
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE422666391
@@ -113,6 +119,7 @@ licences:
       detail: Swiss UID register entry for the foundation (commercial register and VAT data only; the UID register carries no financial licences).
       checked_at: 2026-10-09
       quote: Request Network Stiftung
+      confirmed_at: 2026-10-12
   note: "Searched: the legal notice, API terms, privacy policy and pricing page (no licence or regulator named); the Swiss UID register entry; a finma.ch site search for \"Request Network\" (2 unrelated pages, no authorisation). Not searched: FINMA's authorised-institutions application and the Swiss AML self-regulatory organisations' member lists. Off-ramp flows on the hosted API run through Request Tech, whose licences were not looked up."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -130,6 +137,7 @@ cashout:
       path: api-features/crypto-to-fiat-payments.mdx
       detail: The hosted API offers an optional crypto-to-fiat flow through Request Tech off-ramp infrastructure, with payer KYC and a registered bank account; the docs give no fee, limit or country terms for it.
       checked_at: 2026-10-09
+      confirmed_at: 2026-10-12
   note: The optional Request Tech off-ramp is not recorded as a cash-out row because no first-party fee, limit or country terms were found for it.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -172,12 +180,14 @@ maturity:
         detail: UID register entry, status active, legal form foundation (Stiftung), commercial-register reference CH-170.7.000.846-1, domicile c/o Coin Finance AG, Gartenstrasse 5, 6300 Zug.
         checked_at: 2026-10-09
         quote: CH-170.7.000.846-1
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://request.network/legal-notice/
         detail: Legal notice names the foundation, its register number CHE-422.666.391 and a Baarerstrasse 82 (c/o Abafin Treuhand AG) address in Zug.
         checked_at: 2026-10-09
         quote: Request Network is a Swiss Stiftung
+        confirmed_at: 2026-10-12
     note: The legal notice and API terms give a Baarerstrasse 82 c/o address; the UID register (last checked 2026-09-28) gives Gartenstrasse 5 c/o Coin Finance AG. The register is the primary source.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -214,6 +224,7 @@ maturity:
         detail: API terms page carries its update date.
         checked_at: 2026-10-09
         quote: "Last Update: December 22, 2025"
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/release-notes/request-api.mdx#L25-L30
@@ -221,6 +232,7 @@ maturity:
         path: release-notes/request-api.mdx
         detail: 2026-Q2 release note introducing orchestrators and the configurable orchestrator fee model; git log dates the docs change to 2026-07-01 (9152cc23).
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     note: The Base payment contracts are immutable and unchanged since deployment. Release notes are labelled by quarter, so dates come from the docs commit.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -348,6 +360,7 @@ facts:
         path: release-notes/index.mdx
         detail: Version support says the previous API version gets security updates and critical bug fixes for 6 months; no time-to-patch commitment by severity.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -453,6 +466,7 @@ facts:
         detail: Hosted status page (UptimeRobot) with uptime history and email subscription; incident history is client-rendered and was not read.
         checked_at: 2026-10-09
         quote: Request Network Status
+        confirmed_at: 2026-10-12
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/release-notes/index.mdx#L25-L40
@@ -460,6 +474,7 @@ facts:
         path: release-notes/index.mdx
         detail: Docs point integrators to the status page for critical updates.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -475,6 +490,7 @@ facts:
         path: api-reference/authentication.mdx
         detail: Two modes, x-api-key for servers and x-client-id with Origin for browsers.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S5
         index: 2
@@ -494,6 +510,7 @@ facts:
         path: api-reference/authentication.mdx
         detail: API key authentication for backend calls via the x-api-key header.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S5
         index: 1
@@ -513,6 +530,7 @@ facts:
         detail: Protection measures section of the privacy policy (last update 2025-03-19).
         checked_at: 2026-10-09
         quote: Encryption during exchanges and storage
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -527,12 +545,14 @@ facts:
         detail: Retention table in the privacy policy.
         checked_at: 2026-10-09
         quote: 2 years after the last use of Your account if not closed
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://request.network/api-terms-and-conditions/
         detail: API terms termination clause.
         checked_at: 2026-10-09
         quote: To request account closure, contact us at support.api@request.network
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 2
@@ -550,6 +570,7 @@ facts:
         detail: Definitions section names the controller and excludes processing as processor.
         checked_at: 2026-10-09
         quote: Here, the Data controller is Request Network.
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -1384,6 +1405,7 @@ facts:
         path: resources/lifecycle-of-a-request.mdx
         detail: Lifecycle page with a diagram covering create, update, pay and detect, naming IPFS, the Gnosis storage contract, payment contracts and the payments subgraph.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     refs:
       - criterion: C3
         index: 1
@@ -1404,12 +1426,14 @@ facts:
         detail: UID register entry for the foundation.
         checked_at: 2026-10-09
         quote: Request Network Stiftung
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://request.network/api-terms-and-conditions/
         detail: API terms name the foundation as operator of the API.
         checked_at: 2026-10-09
         quote: Request Network Foundation, a Swiss foundation (Stiftung)
+        confirmed_at: 2026-10-12
     note: Only relevant to the optional hosted API; the open path needs no contract with anyone.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1425,6 +1449,7 @@ facts:
         detail: Pricing page states the fee and that there are no monthly or setup fees.
         checked_at: 2026-10-09
         quote: Flat fee on transaction volume, capped at $500 per transaction
+        confirmed_at: 2026-10-12
     note: No annual report or treasury statement was found; the foundation's other funding (for example REQ token holdings) is not evidenced here.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1440,6 +1465,7 @@ facts:
         detail: Account suspension and deletion section of the API terms.
         checked_at: 2026-10-09
         quote: Such actions may be taken without prior notice and shall not entitle you to any compensation
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S1
         index: 0
@@ -1458,6 +1484,7 @@ facts:
         path: use-cases/hypernative-standard-screening-policy.mdx
         detail: Payer and recipient wallets are screened against Hypernative's risk database before authorisation when enabled; users may opt out; the policy uses rules and thresholds maintained by Hypernative.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     refs:
       - criterion: C4
         index: 0
@@ -1478,6 +1505,7 @@ facts:
         path: use-cases/hypernative-standard-screening-policy.mdx
         detail: Opt-out statement, high-risk categories and exposure thresholds table.
         checked_at: 2026-10-09
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

@@ -823,6 +823,7 @@ facts:
         detail: Upptime status page for Gnosis Pay services, source in github.com/gnosispay/gnosispay-uptime.
         checked_at: 2026-10-09
         quote: Check the availability for GnosisPay services
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
@@ -830,6 +831,7 @@ facts:
         detail: Closure notice naming the licensed issuers and their regulator references.
         checked_at: 2026-10-09
         quote: Please read this notice carefully and keep a copy
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/8765952539-recovering-funds-after-the-2026-security-incident
@@ -837,6 +839,7 @@ facts:
         detail: Help centre article on the June 2026 incident; it explains how to withdraw from pre-incident Safes and gives no cause, timeline or loss figure.
         checked_at: 2026-10-09
         quote: In June 2026 we migrated everyone to a new card Safe following a security incident
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -927,6 +930,7 @@ facts:
         detail: Privacy and Cookie Policy (last updated 13 February 2026), purposes table, "Conducting system testing".
         checked_at: 2026-10-09
         quote: Conducting system testing We collect, analyse, use and store your personal data for the purposes of system administration, operation, testing and support
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -942,6 +946,7 @@ facts:
         detail: Privacy and Cookie Policy section 11, How long we retain your personal data.
         checked_at: 2026-10-09
         quote: for a period of up to a maximum of 7 years
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
@@ -949,6 +954,7 @@ facts:
         detail: Closure notice naming the licensed issuers and their regulator references.
         checked_at: 2026-10-09
         quote: disputes and chargebacks ends 23:59 UTC, 12 June 2028
+        confirmed_at: 2026-10-12
     refs:
       - criterion: P2
         index: 2
@@ -967,6 +973,7 @@ facts:
         detail: Privacy and Cookie Policy section 2 defines "Gnosis Pay" per residence.
         checked_at: 2026-10-09
         quote: where you are resident in a non-EEA country, Gnosis Pay Co Ltd
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -997,12 +1004,14 @@ facts:
         detail: Terms of Service section 1 name the two Gnosis Pay contracting entities with company numbers and registered offices.
         checked_at: 2026-10-09
         quote: Gnosis Pay Co Ltd is a company registered in England and Wales under company number 14919639
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://find-and-update.company-information.service.gov.uk/company/14919639
         detail: Companies House record for GNOSIS PAY CO LTD., active private limited company, incorporated 7 June 2023.
         checked_at: 2026-10-09
         quote: Incorporated on 7 June 2023
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
@@ -1010,6 +1019,7 @@ facts:
         detail: Closure notice naming the licensed issuers and their regulator references.
         checked_at: 2026-10-09
         quote: Gnosis Pay acts as a technical services provider
+        confirmed_at: 2026-10-12
     note: The Portuguese entity was not checked in a Portuguese company register.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1026,6 +1036,7 @@ facts:
         detail: Closure notice sections 5 and 6.
         checked_at: 2026-10-09
         quote: neither Gnosis Pay nor Monavate can take them or prevent you from moving them
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -1041,6 +1052,7 @@ facts:
         detail: Privacy and Cookie Policy section 10 (Your rights as a data subject).
         checked_at: 2026-10-09
         quote: We do not make use of any automated decision making
+        confirmed_at: 2026-10-12
     note: Gnosis Pay's own statement. Screening by Sumsub and by the issuer Monavate is outside this statement and was not found described.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1227,6 +1239,7 @@ fees:
       detail: Fee and limits article (Understanding Your Card's Fees and Limits), linked from the Terms (section 7) as the Fee Schedule and kept published for reference after the closure notice.
       checked_at: 2026-10-09
       quote: Card Replacement 4.99 EURe/GBPe/USDCe
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.gnosispay.com/articles/2178874711
@@ -1234,6 +1247,7 @@ fees:
       detail: Terms of Service section 7, Charges; Monavate fees under the cardholder terms are third-party charges.
       checked_at: 2026-10-09
       quote: you will be liable for certain fees associated with your use of the Card which are charged to you by Monavate
+      confirmed_at: 2026-10-12
   note: Consumer card fees as published for the programme that closes at 23:59 UTC on 20 December 2026; partner card programmes set their own fees. Monerium charges for IBAN redemption were not checked.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -1282,6 +1296,7 @@ licences:
       detail: Bank of Lithuania register entry for UAB Monavate (company code 305628001), authorisation code LB002139, e-money institution licence valid from 2022-03-31; also lists a sanction of 2025-11-25 (fine EUR 270,000) under the AML/CTF law and e-money and safeguarding rules.
       checked_at: 2026-10-09
       quote: Electronic money institution licence
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://register.fca.org.uk/s/firm?id=0014G00002UyCbDQAV
@@ -1296,6 +1311,7 @@ licences:
       detail: Closure notice names which Monavate entity issues the card for EEA and for UK and other non-EEA cardholders.
       checked_at: 2026-10-09
       quote: regulated by the Bank of Lithuania (authorisation code LB002139)
+      confirmed_at: 2026-10-12
   note: "Both licences are held by the issuer partner; Gnosis Pay itself holds none and describes itself as a technical services provider. The Bank of Lithuania register records an enforcement measure against UAB Monavate dated 2025-11-25: a EUR 270,000 fine for breaches of the AML/CTF law and of e-money institution governance and safeguarding rules. EURe and the IBAN service come from Monerium, an e-money institution regulated in Iceland (CROPS context); not checked in a register here."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -1304,19 +1320,19 @@ licences:
 cashout:
   status: evidenced
   value:
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: card_withdrawal
       partner: Monavate (issuer), Visa
       fee: none from Gnosis Pay; Visa FX rate
       limits: Card spend at merchants (the schema has no card-spend value); 8,000 a day, 5,000 per transaction. Card stops at 23:59 UTC on 20 December 2026.
       evidence_index: 0
-    - countries: [ALL]
+    - countries: [ ALL ]
       method: atm
       partner: Monavate (issuer), Visa
       fee: 5 withdrawals or 200 a month free, then 2%
       limits: 500 a day, 250 per withdrawal; ends with the card on 20 December 2026.
       evidence_index: 0
-    - countries: [EU, CH]
+    - countries: [ EU, CH ]
       method: bank_transfer
       partner: Monerium (EURe issuer, SEPA)
       fee: not stated by Gnosis Pay
@@ -1330,6 +1346,7 @@ cashout:
       detail: Fee and limits article covering purchases, ATM withdrawals and limits.
       checked_at: 2026-10-09
       quote: "After allowance is exceeded: 2% fee per additional withdrawal"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://help.gnosispay.com/articles/5556167633-getting-money-to-a-bank-account
@@ -1337,6 +1354,7 @@ cashout:
       detail: Help centre article on the Monerium IBAN off-ramp.
       checked_at: 2026-10-09
       quote: IBANs are only available on EUR cards
+      confirmed_at: 2026-10-12
     - tier: verified
       kind: repo
       url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/on-off-ramps/iban-integration.mdx#L6-L14
@@ -1384,6 +1402,7 @@ maturity:
         detail: Companies House, GNOSIS PAY CO LTD., active, registered office 12 New Fetter Lane, London EC4A 1JP.
         checked_at: 2026-10-09
         quote: Incorporated on 7 June 2023
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/2178874711
@@ -1391,6 +1410,7 @@ maturity:
         detail: Terms of Service section 1 name Gnosis Pay Co Ltd (non-EEA residents) and Gnosis P. Tech, Unipessoal Lda (EEA residents, Portugal 517 666 898).
         checked_at: 2026-10-09
         quote: Gnosis P. Tech, Unipessoal Lda is a company registered in Portugal under company number 517 666 898
+        confirmed_at: 2026-10-12
     note: Recorded entity is the non-EEA contracting party, checked in Companies House. EEA residents contract with Gnosis P. Tech, Unipessoal Lda (Portugal, 517 666 898, per the Terms; not checked in a Portuguese register). The card itself is a contract with Monavate.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1411,6 +1431,7 @@ maturity:
         detail: Help centre article on the June 2026 incident (recovery instructions only).
         checked_at: 2026-10-09
         quote: If your old Safe was affected by the incident, anything sent there is lost
+        confirmed_at: 2026-10-12
     refs:
       - criterion: S6
         index: 1
@@ -1436,6 +1457,7 @@ maturity:
         detail: Closure notice dated 21 September 2026.
         checked_at: 2026-10-09
         quote: Your card and the web app will stop working at 23:59 UTC on 20 December 2026
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/2178874711
@@ -1443,6 +1465,7 @@ maturity:
         detail: Terms of Service header with publication and effective dates.
         checked_at: 2026-10-09
         quote: 1st December 2025 for existing customers onboarded prior to the date stated above
+        confirmed_at: 2026-10-12
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

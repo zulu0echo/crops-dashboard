@@ -68,6 +68,7 @@ scores:
         quote: The Company may suspend or block your access to the Platform and/or any Services, whether for a period of time or indefinitely
         detail: Terms of Use (updated 1 Mar 2026) let the Company suspend or block access, for a period or indefinitely, on a breach finding; no notice period is stated.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Hyperbeat can block an individual user's access to the card and Platform with no stated notice. The settlement and operator contracts are not verified, so who holds any onchain pause or role cannot be read. Judgment call: documented per-account blocking with no notice meets anchor 0.
     provider_response: null
@@ -84,6 +85,7 @@ scores:
         quote: the Operator calls
         detail: The architecture doc says card swipes are settled when the Hyperbeat Operator calls settle() on the user's ManagementAccount.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Card settlement requires Hyperbeat's Operator; there is no documented direct path for payer or payee.
     provider_response: null
@@ -100,6 +102,7 @@ scores:
         quote: Withdrawing the settlement token requires a cooldown and operator approval
         detail: The Operator role is required for settlement, settlement-token withdrawals and collateral withdrawals.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The card path depends on Hyperbeat's closed Operator and backend, an unnamed card issuer and Visa. None is public and there is no fallback.
     provider_response: null
@@ -116,6 +119,7 @@ scores:
         quote: subject to sanctions or otherwise designated on any list of prohibited or restricted parties
         detail: Terms exclude Restricted Jurisdictions and sanctioned persons (UN, Panama, UK, US lists).
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Sanctions and jurisdiction screening is disclosed in the Terms only; the contracts are unverified, so settlement-layer neutrality cannot be shown. 1.
     provider_response: null
@@ -148,6 +152,7 @@ scores:
         quote: OPERATOR:"0xd9CcDB269f41046Df5783cf17B24084B752aDf76"
         detail: The Pay dapp's contract config names the Operator and service addresses.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Hyperbeat Pay's contracts are deployed but not verified on HyperEVMScan or Sourcify, and the audited Liquid-Bank repository is private. Unverified, so 0. Judgment call: the provider has contracts, so O1 is scored rather than left unknown.
     provider_response: null
@@ -239,6 +244,7 @@ scores:
         quote: Withdrawals of collateral in Credit Mode require Operator approval
         detail: Settlement and withdrawals depend on the Hyperbeat Operator.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The card cannot run without Hyperbeat's proprietary Operator and backend. 0.
     provider_response: null
@@ -256,12 +262,14 @@ scores:
         quote: googletagmanager.com/gtag/js?id=AW-17122504444
         detail: The Pay dapp page loads a Google Ads tag (AW-17122504444) after interaction, and its bundles include the Datadog browser SDK and Intercom.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
       - tier: documented
         kind: document
         url: https://hyperbeat.org/privacy
         quote: know-your-customer and screening service providers
         detail: The Privacy Policy lists categories of processors (including "data analytics service providers") but names no analytics or advertising vendor and does not mention Google tags.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       The Pay web app ships Google Ads tagging, Datadog browser monitoring and Intercom. The privacy policy mentions analytics providers only as a category and does not disclose advertising tags. Judgment call: present and not specifically disclosed, so 0. No network trace was run; this rests on the served page and bundles.
     provider_response: null
@@ -278,6 +286,7 @@ scores:
         quote: know-your-customer and screening service providers
         detail: The Privacy Policy covers identity verification data shared with KYC and screening providers.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Collection beyond settlement needs (identity verification) is disclosed in the privacy policy only. 1.
     provider_response: null
@@ -300,6 +309,7 @@ scores:
         quote: Liquid Banking uses Turnkey to provide secure, non-custodial key management
         detail: Docs name Turnkey; the privacy policy names processor categories (KYC, analytics, hosting); the card issuer is not named.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Third parties (Turnkey, KYC provider, card issuer, Visa, analytics) are in the flow and disclosed only partly, in documents. Judgment call: 1, because the main ones are disclosed by name or category; the unnamed issuer keeps it from anything higher.
     provider_response: null
@@ -322,6 +332,7 @@ scores:
         quote: Withdrawing the settlement token requires a cooldown and operator approval
         detail: Docs say assets sit in a user-owned UUPS-upgradeable ManagementAccount; the Operator settles up to a user-set limit, and withdrawing the settlement token needs Operator approval.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Per the docs, funds sit in an upgradeable smart account the user owns, with the Operator able to settle up to a spending limit and to gate settlement-token and collateral withdrawals. Upgradeable escrow-like account, disclosed: 1 (documented cap). The contracts are unverified, so none of this can be checked.
     provider_response: null
@@ -338,6 +349,7 @@ scores:
         quote: upgrades are strictly gated by the
         detail: Docs say accounts are UUPS proxies upgradeable by an UPGRADER_ROLE limited to factory-whitelisted implementations; the role holder and any timelock are not disclosed.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Every account is upgradeable and the upgrade authority is undisclosed (and unverifiable, since the contracts are unverified). Undisclosed proxy admin, so 0.
     provider_response: null
@@ -354,6 +366,7 @@ scores:
         quote: the Operator calls
         detail: Docs say the Operator settles from the account up to a spending limit the user sets.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       A user-set spending limit bounds what the Operator can settle, per the docs. Judgment call: bounded allowance would be 2, but documented-only evidence caps at 1.
     provider_response: null
@@ -370,6 +383,7 @@ scores:
         quote: Withdrawals of collateral in Credit Mode require Operator approval
         detail: Settlement-token and collateral withdrawals need Operator approval per the docs.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       S1 documented only, C2 = 0, C3 = 0, O3 = 0. Per the docs, withdrawing the settlement token or collateral needs the Operator, so funds depend on Hyperbeat's liveness. 0.
     provider_response: null
@@ -393,6 +407,7 @@ scores:
         path: liquid-bank/Zellic.pdf
         detail: Zellic "Hyperbeat Pay Smart Contract Security Assessment" (6 Nov 2025) scopes Liquid-Bank at 431de44b (1 critical, 3 medium, 7 low); Nethermind NM-0697 (Management Account) lists fix commits such as d527b144 and 8489657e.
         checked_at: "2026-10-07"
+        confirmed_at: 2026-10-12
     finding: >-
       Two audit reports are public and pin commits, but the audited repo is private and the deployed contracts are unverified, so neither the audited commit nor the fixes can be matched to what runs. No bug bounty found. Judgment call: audit report only, so 1.
     provider_response: null
@@ -405,7 +420,7 @@ notes: >-
 
 availability:
   model: blocklist
-  countries: [CU, IR, KP, SD, SY]
+  countries: [ CU, IR, KP, SD, SY ]
   note: >-
     The hyperbeat.org Terms (which cover the Pay Service, i.e. the card) bar nationals and residents of Cuba, Iran, North Korea, Sudan and Syria "or any other country subject to United States embargo", UN Security Council resolutions or HM Treasury sanctions; only the five named countries are listed here. The Terms also exclude residents of Ontario, Canada, and say geo-blocking may be used. US residents and citizens may use the Pay Service subject to a separate "Hyperbeat Pay Cardholder Agreement (U.S.)", which is not published, so any US state limits are unknown. The longer country list in the Terms applies only to Beatpot, a different service, and is not used here. The Pay web app bundle contains no country gate that I could find.
   evidence:
@@ -415,10 +430,12 @@ availability:
       detail: The Terms bar nationals and residents of five named embargoed countries from the Platform and every Service.
       quote: "national or resident of Cuba, Iran, North Korea, Sudan, or Syria"
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
     - tier: documented
       kind: document
       url: https://hyperbeat.org/terms
       detail: The Terms exclude residents of Ontario, Canada, and allow US residents to use the Pay Service subject to a US cardholder agreement.
       quote: "subject to specific eligibility requirements detailed in the applicable Hyperbeat Pay Cardholder Agreement (U.S.), may also use the Pay Service"
       checked_at: "2026-10-09"
+      confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
