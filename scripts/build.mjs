@@ -41,7 +41,14 @@ const STATE = { evidenced: 'Evidenced', attested: 'Attested', unknown: 'Unknown'
 
 const NAV = [['index.html', 'Ratings'], ['compare/index.html', 'Compare'], ['countries/index.html', 'Countries'], ['operational/index.html', 'Operational'], ['methodology/index.html', 'Methodology'], ['criteria/index.html', 'Criteria'], ['contribute/index.html', 'Contribute']];
 
+// Provider pages: a sticky "On this page" bar built from the page's own h2 headings.
+const JUMP_LABEL = { 'At a glance': 'Glance', 'Where it is offered': 'Availability', 'Outside this assessment': 'Context', 'Operational and procurement': 'Operational', 'Scope of assessment': 'Scope', 'Censorship Resistance': 'Censorship' };
+const withJumps = (body) => {
+  const links = [...body.matchAll(/<h2 id="([^"]+)">([^<]+)/g)].map(([, id, text]) => `<a href="#${id}">${esc(JUMP_LABEL[text.trim()] ?? text.trim())}</a>`);
+  return links.length < 3 ? body : body.replace('</header>', `</header>\n<nav class="jump" aria-label="On this page"><span class="jump-label">On this page</span>${links.join('')}</nav>`);
+};
 function page(path, title, body, { section = path } = {}) {
+  if (path.startsWith('provider/')) body = withJumps(body);
   const up = '../'.repeat(path.split('/').length - 1);
   const nav = NAV.map(([p, label]) => `<a href="${up}${p}"${section.startsWith(p.split('/')[0]) ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   const html = `<!doctype html>

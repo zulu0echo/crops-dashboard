@@ -288,3 +288,9 @@ body:has(#t-incumbent:checked) .overview tbody:not([data-type="incumbent"]) { di
 .tallybar { display: block; height: 8px; border-radius: 3px; margin-top: 6px; border: 1px solid var(--line); background: linear-gradient(90deg, var(--s3-edge) 0 var(--h), var(--s0-edge) var(--h) calc(var(--h) + var(--s)), var(--unk) calc(var(--h) + var(--s)) 100%); }
 .tally .cell-link { display: block; color: inherit; padding: 0; }
 .tally .cell-link:hover .tally-num { text-decoration: underline; }
+/* Provider pages: sticky "On this page" links */
+.jump { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: thin; margin: 20px 0 0; padding: 8px 0; background: var(--bg); border-bottom: 1px solid var(--line); white-space: nowrap; }
+.jump-label { font: 600 11px/1 var(--sans); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-right: 8px; flex: none; }
+.jump a { flex: none; font-size: 14px; padding: 4px 10px; border-radius: 999px; text-decoration: none; color: var(--ink-2); border: 1px solid var(--line); }
+.jump a:hover { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
+h2[id], section[id], .crit[id] { scroll-margin-top: 64px; }
