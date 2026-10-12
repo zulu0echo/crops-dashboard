@@ -196,7 +196,7 @@ volume:
     window_days: 30
     exclusions: Event count only. The token is an indexed topic (topic 2), which scripts/volumes.mjs cannot read, so amounts (data word 0) of ETH and different tokens would be summed together; amount_word is deliberately omitted. L2 deployments excluded.
   note: Judgment call. Every send emits one Announcement with the amount in clear, so settlement is observable, but a per-token sum needs the script to read the token from topic 2. Until then the spec yields a payment count, not a value. Not computed; the maintainer runs scripts/volumes.mjs.
-  reason: "not computed on 2026-10-12: no RPC configured for chain 1 (set RPC_1)"
+  reason: "not computed on 2026-10-12: eth_getLogs: Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
 facts:
   B1.4:
     assessed_by: AI research agent (operational), 2026-10-09

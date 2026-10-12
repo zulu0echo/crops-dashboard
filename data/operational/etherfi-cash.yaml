@@ -741,4 +741,4 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
-  reason: "not computed on 2026-10-12: no RPC configured for chain 10 (set RPC_10)"
+  reason: "not computed on 2026-10-12: eth_getLogs: backend response too large"

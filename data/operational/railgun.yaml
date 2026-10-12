@@ -197,7 +197,7 @@ volume:
     window_days: 30
     exclusions: Counts unshields only (value leaving the shielded pool to public addresses, net of the 0.25% fee). Private 0zk-to-0zk transfers, shields and RelayAdapt swaps are not included; ERC721 unshields count as amount 1. BSC, Polygon and Arbitrum deployments are excluded.
   note: Judgment call. Shielded 0zk transfers hide amount, token and parties, so the payments themselves are not observable; the spec measures pool exits (Unshield) on the listed proxy, a lower bound on payee settlement to public addresses. Data words verified on a live log at block 26148878 (word 2 = USDT, word 4 = amount). Not computed; the maintainer runs scripts/volumes.mjs.
-  reason: "not computed on 2026-10-12: no RPC configured for chain 1 (set RPC_1)"
+  reason: "not computed on 2026-10-12: eth_getLogs: Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
 facts:
   B1.4:
     assessed_by: AI research agent (operational), 2026-10-09

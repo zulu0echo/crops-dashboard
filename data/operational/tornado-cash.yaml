@@ -205,7 +205,7 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
-  reason: "not computed on 2026-10-12: no RPC configured for chain 1 (set RPC_1)"
+  reason: "not computed on 2026-10-12: eth_getLogs: Request blocked"
 facts:
   B2.1:
     status: absent

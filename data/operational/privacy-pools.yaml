@@ -201,7 +201,7 @@ volume:
     window_days: 30
     exclusions: ETH pool only (most deposits); the USDC, USDT and 11 other pools are separate contracts with different tokens, which one fixed-token spec cannot sum. Amounts are gross of the relay fee. Ragequits (refunds to depositors) are a different event and excluded.
   note: Withdrawals reveal amount and recipient onchain (only the link to the deposit is hidden), so private payouts are observable at pool level. Not computed; the maintainer runs scripts/volumes.mjs.
-  reason: "not computed on 2026-10-12: no RPC configured for chain 1 (set RPC_1)"
+  reason: "not computed on 2026-10-12: eth_getLogs: Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
 facts:
   B1.4:
     assessed_by: AI research agent (operational), 2026-10-09

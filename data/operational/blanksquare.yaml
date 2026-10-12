@@ -790,5 +790,5 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
-  reason: "not computed on 2026-10-12: no RPC configured for chain 8453 (set RPC_8453)"
+  reason: "not computed on 2026-10-12: eth_getLogs: request limit reached"
 notes: Transfer protocol; no required closed component, so operator controls are recorded only for the services Common Labs ran (relayer, TEE prover, apps), all offline or dormant on 2026-10-09. Custodial-only controls are left unset (self-custody). Bot facts (B2.1, B2.3, B8.2, B9.x) untouched.

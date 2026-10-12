@@ -196,7 +196,7 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
-  reason: "not computed on 2026-10-12: no RPC configured for chain 8453 (set RPC_8453)"
+  reason: "not computed on 2026-10-12: eth_getLogs: request limit reached"
 facts:
   B1.4:
     status: evidenced
