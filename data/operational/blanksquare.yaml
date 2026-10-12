@@ -19,21 +19,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
         detail: "Cardinal-Cryptography/shielding-dapp: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
         detail: "Cardinal-Cryptography/shielder-quickstart: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -56,21 +56,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
         detail: "Cardinal-Cryptography/shielding-dapp: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
         detail: "Cardinal-Cryptography/shielder-quickstart: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -93,21 +93,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
         detail: "Cardinal-Cryptography/shielding-dapp: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
         detail: "Cardinal-Cryptography/shielder-quickstart: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -130,21 +130,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/rules/branches/main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: rules: required_signatures"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/rules/branches/main
         detail: "Cardinal-Cryptography/shielding-dapp: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/rules/branches/main
         detail: "Cardinal-Cryptography/shielder-quickstart: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -167,21 +167,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: 25 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
         detail: "Cardinal-Cryptography/shielding-dapp: 4 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
         detail: "Cardinal-Cryptography/shielder-quickstart: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -204,21 +204,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
         detail: "Cardinal-Cryptography/shielding-dapp: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
         detail: "Cardinal-Cryptography/shielder-quickstart: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -241,21 +241,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
         detail: "Cardinal-Cryptography/shielding-dapp: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
         detail: "Cardinal-Cryptography/shielder-quickstart: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -278,21 +278,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/tags
         detail: "Cardinal-Cryptography/blanksquare-monorepo: latest tags: v0.1.0, shielder-scheduler-tee-20251030-140127, shielder-scheduler-tee-20251017-120503"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/tags
         detail: "Cardinal-Cryptography/shielding-dapp: latest tags: 1.0.5, 1.0.4, 1.0.3"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/tags
         detail: "Cardinal-Cryptography/shielder-quickstart: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -315,21 +315,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/commits?per_page=10
         detail: "Cardinal-Cryptography/blanksquare-monorepo: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/commits?per_page=10
         detail: "Cardinal-Cryptography/shielding-dapp: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/commits?per_page=10
         detail: "Cardinal-Cryptography/shielder-quickstart: 5 of 5 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -352,21 +352,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: CHANGELOG file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
         detail: "Cardinal-Cryptography/shielding-dapp: 4 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
         detail: "Cardinal-Cryptography/shielder-quickstart: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -389,21 +389,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/blanksquare-monorepo/contents/?ref=main
         detail: "Cardinal-Cryptography/blanksquare-monorepo: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielding-dapp/contents/?ref=main
         detail: "Cardinal-Cryptography/shielding-dapp: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Cardinal-Cryptography/shielder-quickstart/contents/?ref=main
         detail: "Cardinal-Cryptography/shielder-quickstart: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -790,4 +790,5 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
+  reason: "not computed on 2026-10-12: no RPC configured for chain 8453 (set RPC_8453)"
 notes: Transfer protocol; no required closed component, so operator controls are recorded only for the services Common Labs ran (relayer, TEE prover, apps), all offline or dormant on 2026-10-09. Custodial-only controls are left unset (self-custody). Bot facts (B2.1, B2.3, B8.2, B9.x) untouched.

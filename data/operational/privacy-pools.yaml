@@ -201,6 +201,7 @@ volume:
     window_days: 30
     exclusions: ETH pool only (most deposits); the USDC, USDT and 11 other pools are separate contracts with different tokens, which one fixed-token spec cannot sum. Amounts are gross of the relay fee. Ragequits (refunds to depositors) are a different event and excluded.
   note: Withdrawals reveal amount and recipient onchain (only the link to the deposit is hidden), so private payouts are observable at pool level. Not computed; the maintainer runs scripts/volumes.mjs.
+  reason: "not computed on 2026-10-12: no RPC configured for chain 1 (set RPC_1)"
 facts:
   B1.4:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -213,21 +214,30 @@ facts:
         index: 0
     checked_at: 2026-10-09
   B2.1:
-    status: absent
+    status: evidenced
     value:
-      summary: none
+      summary: some
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: true
+          detail: "security policy file: SECURITY.md"
         - repo: 0xbow-io/privacy-pools-website
           ok: false
           detail: no security policy file
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-core: security policy file: SECURITY.md"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
         detail: "0xbow-io/privacy-pools-website: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -251,17 +261,26 @@ facts:
     value:
       summary: none
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: false
+          detail: no scanning config or workflow step found
         - repo: 0xbow-io/privacy-pools-website
           ok: false
           detail: no scanning config or workflow step found
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-core: no scanning config or workflow step found"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
         detail: "0xbow-io/privacy-pools-website: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -319,36 +338,54 @@ facts:
     value:
       summary: none
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: false
+          detail: no deployment configuration
         - repo: 0xbow-io/privacy-pools-website
           ok: false
           detail: no deployment configuration
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-core: no deployment configuration"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
         detail: "0xbow-io/privacy-pools-website: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
   B9.1:
     status: evidenced
     value:
-      summary: all
+      summary: some
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: false
+          detail: no branch rules visible (classic branch protection is not readable without push access)
         - repo: 0xbow-io/privacy-pools-website
           ok: true
           detail: "rules: required_signatures, pull_request, required_status_checks, deletion, non_fast_forward"
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/rules/branches/main
+        detail: "0xbow-io/privacy-pools-core: no branch rules visible (classic branch protection is not readable without push access)"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/rules/branches/main
         detail: "0xbow-io/privacy-pools-website: rules: required_signatures, pull_request, required_status_checks, deletion, non_fast_forward"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -357,17 +394,26 @@ facts:
     value:
       summary: all
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: true
+          detail: 8 workflow file(s)
         - repo: 0xbow-io/privacy-pools-website
           ok: true
           detail: 3 workflow file(s)
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-core: 8 workflow file(s)"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
         detail: "0xbow-io/privacy-pools-website: 3 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -376,36 +422,54 @@ facts:
     value:
       summary: all
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: true
+          detail: test command in a workflow
         - repo: 0xbow-io/privacy-pools-website
           ok: true
           detail: test command in a workflow
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-core: test command in a workflow"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
         detail: "0xbow-io/privacy-pools-website: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
   B9.4:
-    status: absent
+    status: evidenced
     value:
-      summary: none
+      summary: some
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: true
+          detail: coverage tooling referenced
         - repo: 0xbow-io/privacy-pools-website
           ok: false
           detail: coverage tooling referenced
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-core: coverage tooling referenced"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
         detail: "0xbow-io/privacy-pools-website: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -414,17 +478,26 @@ facts:
     value:
       summary: all
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: true
+          detail: "latest tags: v1.3.0, v1.2.1, v1.2.0"
         - repo: 0xbow-io/privacy-pools-website
           ok: true
           detail: "latest tags: v2.15.0, v2.14.10, v2.14.1"
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/tags
+        detail: "0xbow-io/privacy-pools-core: latest tags: v1.3.0, v1.2.1, v1.2.0"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/tags
         detail: "0xbow-io/privacy-pools-website: latest tags: v2.15.0, v2.14.10, v2.14.1"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -433,17 +506,26 @@ facts:
     value:
       summary: all
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: true
+          detail: 10 of 10 recent commits signed
         - repo: 0xbow-io/privacy-pools-website
           ok: true
           detail: 10 of 10 recent commits signed
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/commits?per_page=10
+        detail: "0xbow-io/privacy-pools-core: 10 of 10 recent commits signed"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/commits?per_page=10
         detail: "0xbow-io/privacy-pools-website: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -452,36 +534,54 @@ facts:
     value:
       summary: all
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: true
+          detail: 6 release(s) with notes
         - repo: 0xbow-io/privacy-pools-website
           ok: true
           detail: CHANGELOG file
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-core: 6 release(s) with notes"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
         detail: "0xbow-io/privacy-pools-website: CHANGELOG file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
   B9.8:
     status: evidenced
     value:
-      summary: all
+      summary: some
       repos:
+        - repo: 0xbow-io/privacy-pools-core
+          ok: false
+          detail: none found
         - repo: 0xbow-io/privacy-pools-website
           ok: true
           detail: contribution section in README
     evidence:
       - tier: verified
         kind: api
+        url: https://api.github.com/repos/0xbow-io/privacy-pools-core/contents/?ref=main
+        detail: "0xbow-io/privacy-pools-core: none found"
+        checked_at: 2026-10-12
+        recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
+      - tier: verified
+        kind: api
         url: https://api.github.com/repos/0xbow-io/privacy-pools-website/contents/?ref=main
         detail: "0xbow-io/privacy-pools-website: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

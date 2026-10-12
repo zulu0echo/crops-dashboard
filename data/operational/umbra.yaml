@@ -196,6 +196,7 @@ volume:
     window_days: 30
     exclusions: Event count only. The token is an indexed topic (topic 2), which scripts/volumes.mjs cannot read, so amounts (data word 0) of ETH and different tokens would be summed together; amount_word is deliberately omitted. L2 deployments excluded.
   note: Judgment call. Every send emits one Announcement with the amount in clear, so settlement is observable, but a per-token sum needs the script to read the token from topic 2. Until then the spec yields a payment count, not a value. Not computed; the maintainer runs scripts/volumes.mjs.
+  reason: "not computed on 2026-10-12: no RPC configured for chain 1 (set RPC_1)"
 facts:
   B1.4:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -223,15 +224,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
         detail: "ScopeLift/umbra-protocol: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
         detail: "ScopeLift/umbra-subgraph: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -251,15 +252,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
         detail: "ScopeLift/umbra-protocol: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
         detail: "ScopeLift/umbra-subgraph: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -296,15 +297,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
         detail: "ScopeLift/umbra-protocol: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
         detail: "ScopeLift/umbra-subgraph: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -324,15 +325,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/rules/branches/master
         detail: "ScopeLift/umbra-protocol: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/rules/branches/main
         detail: "ScopeLift/umbra-subgraph: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -352,15 +353,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
         detail: "ScopeLift/umbra-protocol: 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
         detail: "ScopeLift/umbra-subgraph: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -380,15 +381,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
         detail: "ScopeLift/umbra-protocol: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
         detail: "ScopeLift/umbra-subgraph: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -408,15 +409,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
         detail: "ScopeLift/umbra-protocol: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
         detail: "ScopeLift/umbra-subgraph: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -436,15 +437,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/tags
         detail: "ScopeLift/umbra-protocol: latest tags: @umbra/umbra-js@0.0.1-alpha.0, @umbra/frontend@0.0.2, @umbra/contracts@0.0.2"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/tags
         detail: "ScopeLift/umbra-subgraph: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -464,15 +465,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/commits?per_page=10
         detail: "ScopeLift/umbra-protocol: 0 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/commits?per_page=10
         detail: "ScopeLift/umbra-subgraph: 2 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -492,15 +493,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
         detail: "ScopeLift/umbra-protocol: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
         detail: "ScopeLift/umbra-subgraph: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -520,15 +521,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-protocol/contents/?ref=master
         detail: "ScopeLift/umbra-protocol: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ScopeLift/umbra-subgraph/contents/?ref=main
         detail: "ScopeLift/umbra-subgraph: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

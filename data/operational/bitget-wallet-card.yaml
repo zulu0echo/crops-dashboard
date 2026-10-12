@@ -304,6 +304,7 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
+  reason: "not computed on 2026-10-12: no RPC configured for chain 42161 (set RPC_42161)"
 facts:
   B1.1:
     status: unknown

@@ -25,33 +25,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/contents/?ref=main
         detail: "0xCurvy/contracts: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/contents/?ref=main
         detail: "0xCurvy/sdk: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/contents/?ref=main
         detail: "0xCurvy/rs-core: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/contents/?ref=main
         detail: "0xCurvy/payments-sdk: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/contents/?ref=main
         detail: "0xCurvy/docs: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -80,33 +80,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/contents/?ref=main
         detail: "0xCurvy/contracts: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/contents/?ref=main
         detail: "0xCurvy/sdk: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/contents/?ref=main
         detail: "0xCurvy/rs-core: dependabot config present"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/contents/?ref=main
         detail: "0xCurvy/payments-sdk: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/contents/?ref=main
         detail: "0xCurvy/docs: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -135,33 +135,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/contents/?ref=main
         detail: "0xCurvy/contracts: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/contents/?ref=main
         detail: "0xCurvy/sdk: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/contents/?ref=main
         detail: "0xCurvy/rs-core: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/contents/?ref=main
         detail: "0xCurvy/payments-sdk: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/contents/?ref=main
         detail: "0xCurvy/docs: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -190,33 +190,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/rules/branches/main
         detail: "0xCurvy/contracts: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/rules/branches/main
         detail: "0xCurvy/sdk: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/rules/branches/main
         detail: "0xCurvy/rs-core: rules: deletion, non_fast_forward"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/rules/branches/main
         detail: "0xCurvy/payments-sdk: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/rules/branches/main
         detail: "0xCurvy/docs: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -245,33 +245,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/contents/?ref=main
         detail: "0xCurvy/contracts: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/contents/?ref=main
         detail: "0xCurvy/sdk: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/contents/?ref=main
         detail: "0xCurvy/rs-core: 2 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/contents/?ref=main
         detail: "0xCurvy/payments-sdk: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/contents/?ref=main
         detail: "0xCurvy/docs: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -300,33 +300,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/contents/?ref=main
         detail: "0xCurvy/contracts: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/contents/?ref=main
         detail: "0xCurvy/sdk: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/contents/?ref=main
         detail: "0xCurvy/rs-core: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/contents/?ref=main
         detail: "0xCurvy/payments-sdk: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/contents/?ref=main
         detail: "0xCurvy/docs: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -355,33 +355,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/contents/?ref=main
         detail: "0xCurvy/contracts: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/contents/?ref=main
         detail: "0xCurvy/sdk: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/contents/?ref=main
         detail: "0xCurvy/rs-core: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/contents/?ref=main
         detail: "0xCurvy/payments-sdk: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/contents/?ref=main
         detail: "0xCurvy/docs: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -410,33 +410,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/tags
         detail: "0xCurvy/contracts: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/tags
         detail: "0xCurvy/sdk: latest tags: v0.0.8-rc.2"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/tags
         detail: "0xCurvy/rs-core: latest tags: v0.1.1, v0.1.0-rc.7, v0.1.0-rc.6"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/tags
         detail: "0xCurvy/payments-sdk: latest tags: v0.2.0-rc.4, v0.2.0-rc.3, v0.2.0-rc.2"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/tags
         detail: "0xCurvy/docs: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -465,33 +465,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/commits?per_page=10
         detail: "0xCurvy/contracts: 3 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/commits?per_page=10
         detail: "0xCurvy/sdk: 3 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/commits?per_page=10
         detail: "0xCurvy/rs-core: 7 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/commits?per_page=10
         detail: "0xCurvy/payments-sdk: 0 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/commits?per_page=10
         detail: "0xCurvy/docs: 0 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -520,33 +520,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/contents/?ref=main
         detail: "0xCurvy/contracts: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/contents/?ref=main
         detail: "0xCurvy/sdk: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/contents/?ref=main
         detail: "0xCurvy/rs-core: CHANGELOG file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/contents/?ref=main
         detail: "0xCurvy/payments-sdk: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/contents/?ref=main
         detail: "0xCurvy/docs: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -575,33 +575,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/0xCurvy/contracts/contents/?ref=main
         detail: "0xCurvy/contracts: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/sdk/contents/?ref=main
         detail: "0xCurvy/sdk: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/rs-core/contents/?ref=main
         detail: "0xCurvy/rs-core: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/payments-sdk/contents/?ref=main
         detail: "0xCurvy/payments-sdk: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/0xCurvy/docs/contents/?ref=main
         detail: "0xCurvy/docs: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

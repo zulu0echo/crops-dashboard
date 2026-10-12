@@ -227,7 +227,7 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
-  reason: "not computed on 2026-10-09: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  reason: "not computed on 2026-10-12: no RPC configured for chain 8453 (set RPC_8453)"
 facts:
   B2.1:
     status: absent
@@ -248,21 +248,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
         detail: "coinbase/commerce-onchain-payment-protocol: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
         detail: "coinbase/onchainkit (archived): no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
         detail: "coinbase/coinbase-commerce-php: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -304,21 +304,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
         detail: "coinbase/commerce-onchain-payment-protocol: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
         detail: "coinbase/onchainkit (archived): scanning step in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
         detail: "coinbase/coinbase-commerce-php: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -458,21 +458,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
         detail: "coinbase/commerce-onchain-payment-protocol: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
         detail: "coinbase/onchainkit (archived): no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
         detail: "coinbase/coinbase-commerce-php: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -495,21 +495,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/rules/branches/master
         detail: "coinbase/commerce-onchain-payment-protocol: rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/rules/branches/main
         detail: "coinbase/onchainkit (archived): rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/rules/branches/master
         detail: "coinbase/coinbase-commerce-php: rules: deletion, non_fast_forward, pull_request, required_status_checks, required_signatures, required_linear_history"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -532,21 +532,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
         detail: "coinbase/commerce-onchain-payment-protocol: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
         detail: "coinbase/onchainkit (archived): 14 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
         detail: "coinbase/coinbase-commerce-php: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -569,21 +569,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
         detail: "coinbase/commerce-onchain-payment-protocol: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
         detail: "coinbase/onchainkit (archived): test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
         detail: "coinbase/coinbase-commerce-php: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -606,21 +606,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
         detail: "coinbase/commerce-onchain-payment-protocol: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
         detail: "coinbase/onchainkit (archived): coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
         detail: "coinbase/coinbase-commerce-php: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -643,21 +643,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/tags
         detail: "coinbase/commerce-onchain-payment-protocol: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/tags
         detail: "coinbase/onchainkit (archived): latest tags: v0.38.2, v0.38.1, v0.38.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/tags
         detail: "coinbase/coinbase-commerce-php: latest tags: v1.0.1, v1.0.0, 1.0.11"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -680,21 +680,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/commits?per_page=10
         detail: "coinbase/commerce-onchain-payment-protocol: 4 of 8 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/commits?per_page=10
         detail: "coinbase/onchainkit (archived): 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/commits?per_page=10
         detail: "coinbase/coinbase-commerce-php: 7 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -717,21 +717,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
         detail: "coinbase/commerce-onchain-payment-protocol: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
         detail: "coinbase/onchainkit (archived): 6 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
         detail: "coinbase/coinbase-commerce-php: 1 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -754,21 +754,21 @@ facts:
         kind: api
         url: https://api.github.com/repos/coinbase/commerce-onchain-payment-protocol/contents/?ref=master
         detail: "coinbase/commerce-onchain-payment-protocol: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/onchainkit/contents/?ref=main
         detail: "coinbase/onchainkit (archived): contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/coinbase/coinbase-commerce-php/contents/?ref=master
         detail: "coinbase/coinbase-commerce-php: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

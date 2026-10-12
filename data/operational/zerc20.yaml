@@ -16,15 +16,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/contents/?ref=main
         detail: "kbizikav/zERC20: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/contents/?ref=main
         detail: "zerc20io/.github: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -44,15 +44,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/contents/?ref=main
         detail: "kbizikav/zERC20: dependabot config present"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/contents/?ref=main
         detail: "zerc20io/.github: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -72,15 +72,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/contents/?ref=main
         detail: "kbizikav/zERC20: deployment configuration: docker-compose.yml"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/contents/?ref=main
         detail: "zerc20io/.github: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -100,15 +100,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/rules/branches/main
         detail: "kbizikav/zERC20: rules: deletion, non_fast_forward, pull_request"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/rules/branches/main
         detail: "zerc20io/.github: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -128,15 +128,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/contents/?ref=main
         detail: "kbizikav/zERC20: 3 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/contents/?ref=main
         detail: "zerc20io/.github: no .github/workflows"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -156,15 +156,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/contents/?ref=main
         detail: "kbizikav/zERC20: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/contents/?ref=main
         detail: "zerc20io/.github: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,15 +184,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/contents/?ref=main
         detail: "kbizikav/zERC20: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/contents/?ref=main
         detail: "zerc20io/.github: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -212,15 +212,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/tags
         detail: "kbizikav/zERC20: latest tags: zk-audit-target, contract-audit, audit-target"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/tags
         detail: "zerc20io/.github: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -240,15 +240,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/commits?per_page=10
         detail: "kbizikav/zERC20: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/commits?per_page=10
         detail: "zerc20io/.github: 1 of 2 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -268,15 +268,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/contents/?ref=main
         detail: "kbizikav/zERC20: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/contents/?ref=main
         detail: "zerc20io/.github: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -296,15 +296,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/kbizikav/zERC20/contents/?ref=main
         detail: "kbizikav/zERC20: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/zerc20io/.github/contents/?ref=main
         detail: "zerc20io/.github: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -696,4 +696,5 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
+  reason: "not computed on 2026-10-12: no blocks-per-day estimate for chain 56"
 notes: The allowlisted root prover and the hosted indexer are required and closed, so operator controls apply; custody is self-custody, so custodial controls are left unset. Terms name an unnamed Operator; the privacy policy names Ryodan Systems AG. Bot facts (B2.1, B2.3, B8.2, B9.x) untouched.

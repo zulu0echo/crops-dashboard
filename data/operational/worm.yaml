@@ -25,33 +25,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
         detail: "worm-privacy/worm: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
         detail: "worm-privacy/proof-of-burn: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
         detail: "worm-privacy/worm-miner: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
         detail: "worm-privacy/worm-privacy.github.io: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
         detail: "worm-privacy/trusted-setup: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -80,33 +80,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
         detail: "worm-privacy/worm: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
         detail: "worm-privacy/proof-of-burn: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
         detail: "worm-privacy/worm-miner: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
         detail: "worm-privacy/worm-privacy.github.io: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
         detail: "worm-privacy/trusted-setup: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -135,33 +135,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
         detail: "worm-privacy/worm: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
         detail: "worm-privacy/proof-of-burn: deployment configuration: Dockerfile"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
         detail: "worm-privacy/worm-miner: deployment configuration: Dockerfile"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
         detail: "worm-privacy/worm-privacy.github.io: deployment configuration: Dockerfile"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
         detail: "worm-privacy/trusted-setup: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -190,33 +190,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/rules/branches/main
         detail: "worm-privacy/worm: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/rules/branches/main
         detail: "worm-privacy/proof-of-burn: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/rules/branches/stable
         detail: "worm-privacy/worm-miner: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/rules/branches/main
         detail: "worm-privacy/worm-privacy.github.io: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/rules/branches/main
         detail: "worm-privacy/trusted-setup: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -245,33 +245,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
         detail: "worm-privacy/worm: 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
         detail: "worm-privacy/proof-of-burn: 2 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
         detail: "worm-privacy/worm-miner: 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
         detail: "worm-privacy/worm-privacy.github.io: 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
         detail: "worm-privacy/trusted-setup: 5 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -300,33 +300,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
         detail: "worm-privacy/worm: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
         detail: "worm-privacy/proof-of-burn: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
         detail: "worm-privacy/worm-miner: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
         detail: "worm-privacy/worm-privacy.github.io: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
         detail: "worm-privacy/trusted-setup: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -355,33 +355,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
         detail: "worm-privacy/worm: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
         detail: "worm-privacy/proof-of-burn: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
         detail: "worm-privacy/worm-miner: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
         detail: "worm-privacy/worm-privacy.github.io: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
         detail: "worm-privacy/trusted-setup: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -410,33 +410,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/tags
         detail: "worm-privacy/worm: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/tags
         detail: "worm-privacy/proof-of-burn: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/tags
         detail: "worm-privacy/worm-miner: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/tags
         detail: "worm-privacy/worm-privacy.github.io: no tags"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/tags
         detail: "worm-privacy/trusted-setup: latest tags: final, circuit_data, 0082_worm-privacy"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -465,33 +465,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/commits?per_page=10
         detail: "worm-privacy/worm: 2 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/commits?per_page=10
         detail: "worm-privacy/proof-of-burn: 2 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/commits?per_page=10
         detail: "worm-privacy/worm-miner: 1 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/commits?per_page=10
         detail: "worm-privacy/worm-privacy.github.io: 5 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/commits?per_page=10
         detail: "worm-privacy/trusted-setup: 5 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -520,33 +520,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
         detail: "worm-privacy/worm: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
         detail: "worm-privacy/proof-of-burn: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
         detail: "worm-privacy/worm-miner: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
         detail: "worm-privacy/worm-privacy.github.io: no changelog or release notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
         detail: "worm-privacy/trusted-setup: 4 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -575,33 +575,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm/contents/?ref=main
         detail: "worm-privacy/worm: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/proof-of-burn/contents/?ref=main
         detail: "worm-privacy/proof-of-burn: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-miner/contents/?ref=stable
         detail: "worm-privacy/worm-miner: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/worm-privacy.github.io/contents/?ref=main
         detail: "worm-privacy/worm-privacy.github.io: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/worm-privacy/trusted-setup/contents/?ref=main
         detail: "worm-privacy/trusted-setup: contribution section in README"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

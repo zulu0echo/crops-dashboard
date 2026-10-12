@@ -368,3 +368,4 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
+  reason: "not computed on 2026-10-12: no blocks-per-day estimate for chain 9745"

@@ -195,15 +195,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
         detail: "fatlabsxyz/tongo: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
         detail: "fatlabsxyz/she: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -223,15 +223,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
         detail: "fatlabsxyz/tongo: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
         detail: "fatlabsxyz/she: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -251,15 +251,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
         detail: "fatlabsxyz/tongo: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
         detail: "fatlabsxyz/she: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -279,15 +279,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/rules/branches/master
         detail: "fatlabsxyz/tongo: rules: deletion, non_fast_forward, creation, required_linear_history, required_signatures, pull_request"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/rules/branches/master
         detail: "fatlabsxyz/she: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -307,15 +307,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
         detail: "fatlabsxyz/tongo: 3 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
         detail: "fatlabsxyz/she: 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -335,15 +335,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
         detail: "fatlabsxyz/tongo: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
         detail: "fatlabsxyz/she: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -363,15 +363,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
         detail: "fatlabsxyz/tongo: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
         detail: "fatlabsxyz/she: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -391,15 +391,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/tags
         detail: "fatlabsxyz/tongo: latest tags: v2.0.0, v0.0.2, v0.0.1"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/tags
         detail: "fatlabsxyz/she: latest tags: ts-v0.4.0, ts-v0.1.1, ts-v0.1.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -419,15 +419,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/commits?per_page=10
         detail: "fatlabsxyz/tongo: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/commits?per_page=10
         detail: "fatlabsxyz/she: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -447,15 +447,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
         detail: "fatlabsxyz/tongo: 5 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
         detail: "fatlabsxyz/she: 1 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -475,15 +475,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/tongo/contents/?ref=master
         detail: "fatlabsxyz/tongo: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/fatlabsxyz/she/contents/?ref=master
         detail: "fatlabsxyz/she: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

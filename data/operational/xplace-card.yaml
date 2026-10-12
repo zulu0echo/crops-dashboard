@@ -13,9 +13,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: no security policy file"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -32,9 +32,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: no scanning config or workflow step found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -51,9 +51,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: no deployment configuration"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -70,9 +70,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/rules/branches/master
         detail: "Kamino-Finance/klend: rules: repository_visibility, repository_delete, repository_transfer, required_signatures, deletion, non_fast_forward, pull_request"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -89,9 +89,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: 1 workflow file(s)"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -108,9 +108,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: test command in a workflow"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -127,9 +127,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: coverage tooling referenced"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -146,9 +146,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/tags
         detail: "Kamino-Finance/klend: latest tags: release/v1.25.0, release/v1.24.0, release/v1.23.0"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -165,9 +165,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/commits?per_page=10
         detail: "Kamino-Finance/klend: 10 of 10 recent commits signed"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,9 +184,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: 10 release(s) with notes"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -203,9 +203,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: none found"
-        checked_at: 2026-10-09
+        checked_at: 2026-10-12
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-09
+    checked_at: 2026-10-12
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
