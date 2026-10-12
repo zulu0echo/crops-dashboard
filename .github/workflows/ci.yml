@@ -27,9 +27,10 @@ jobs:
         run: npm run validate:offline
       - run: npm run build
       - run: npm run check-links
-      - name: No third-party scripts or fonts in the build
+      - name: No third-party or inline scripts, fonts or requests in the build
         run: |
-          ! grep -rEn '<script|<link[^>]+href="https?://|@import|fonts\.(googleapis|gstatic)' dist --include='*.html' --include='*.css'
+          ! grep -rEn '<script(>|[^>]*src="(https?:)?//)|<link[^>]+href="https?://|@import|fonts\.(googleapis|gstatic)' dist --include='*.html' --include='*.css'
+          ! grep -En 'https?://|fetch\(|XMLHttpRequest|WebSocket|sendBeacon|import\(|localStorage|sessionStorage|document\.cookie' dist/app.js
       - name: Rollup diff
         if: github.event_name == 'pull_request'
         run: |

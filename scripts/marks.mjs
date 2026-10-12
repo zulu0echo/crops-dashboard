@@ -2,7 +2,7 @@
 // and provider badges (a logo from site/logos/<slug>.<ext> when one is committed, otherwise initials).
 import { existsSync } from 'node:fs';
 
-const svg = (body, label) => `<svg class="mark" viewBox="0 0 16 16" width="14" height="14" role="img" aria-label="${label}"><title>${label}</title>${body}</svg>`;
+const svg = (body, label) => `<svg class="cmark" viewBox="0 0 16 16" width="14" height="14" role="img" aria-label="${label}"><title>${label}</title>${body}</svg>`;
 const disc = (fill, text, ink = '#fff', size = 8) => `<circle cx="8" cy="8" r="8" fill="${fill}"/><text x="8" y="8" dy="0.36em" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="${size}" fill="${ink}">${text}</text>`;
 const MARKS = {
   eth: ['Ethereum', '<path d="M8 1 3.5 8.2 8 10.8l4.5-2.6z" fill="#627EEA"/><path d="M8 11.7 3.5 9.1 8 15l4.5-5.9z" fill="#8FA4F0"/>'],

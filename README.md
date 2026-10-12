@@ -57,6 +57,9 @@ data/operational-criteria.yaml  the due-diligence controls for that layer
 scripts/repo-facts.mjs      fills repository-practice facts from GitHub (weekly)
 scripts/volumes.mjs         verified volumes from chain logs (weekly)
 site/                       static page fragments, CSS, config.json
+site/app.js                 optional first-party script: search, sorting, compare picker (pages work without it)
+site/logos/                 provider icons (sources and trademark note in SOURCES.md)
+scripts/marks.mjs           chain symbols (inline SVG) and provider badges
 ```
 
 ## Deploy

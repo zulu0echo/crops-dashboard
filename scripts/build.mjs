@@ -61,20 +61,45 @@ function page(path, title, body, { section = path } = {}) {
 <header class="masthead"><div class="wrap">
 <a class="brand" href="${up}index.html"><span class="mark" aria-hidden="true">CROPS</span><span>${esc(config.title)}</span></a>
 <nav aria-label="Main">${nav}</nav></div></header>
-<div class="disclaimer" role="note"><div class="wrap"><strong>Unaudited, unvetted, experimental. Do not use as a reference.</strong> Ratings were produced with AI research agents, none has been reviewed by a human, and they may be incomplete or wrong. Nothing here is a statement of fact about any provider, an endorsement, a warning, or financial, legal, compliance or security advice. It does not represent the views of any organisation. <a href="${repo}#readme">Full disclaimer</a></div></div>
-${config.seed_pending_review && pending ? `<div class="notice" role="note"><div class="wrap"><strong>Pending review.</strong> ${pending} of ${cells.length} ratings have not yet been re-checked by a human reviewer. Each rating shows its own review status. Do not rely on unreviewed ratings.</div></div>` : ''}
+<div class="disclaimer" role="note"><div class="wrap"><strong>Unaudited, unvetted, experimental. Do not use as a reference.</strong> AI-researched ratings that may be wrong; not advice or a statement of fact about any provider. <a href="${repo}#readme">Full disclaimer</a></div></div>
+${config.seed_pending_review && pending ? `<div class="notice" role="note"><div class="wrap"><strong>Pending review.</strong> ${pending} of ${cells.length} ratings not yet checked by a human. Do not rely on unreviewed ratings.</div></div>` : ''}
 <main id="main" class="wrap">${body}</main>
 <footer class="foot"><div class="wrap">
 <div><h2>About</h2><p>An open, evidence-only assessment of payment rails against Censorship Resistance, Open Source and Free, Privacy, and Security. Every rating links to an artifact anyone can re-check.</p></div>
 <div><h2>Data</h2><ul><li><a href="${up}data.json">Full dataset (JSON)</a></li><li><a href="${up}grid.csv">Ratings grid (CSV)</a></li><li><a href="${up}operational.csv">Operational facts (CSV)</a></li><li><a href="${repo}">Source repository</a></li></ul></div>
 <div><h2>This site</h2><ul><li>Dataset version ${esc(version)}</li><li>Built ${esc(today)}</li><li>MIT licensed</li><li>No analytics, cookies, or third-party requests</li></ul></div>
 </div></footer>
+<script src="${up}app.js" defer></script>
 </body></html>
 `;
   const file = join(OUT, path);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, html);
 }
+
+// Last edit per provider file by a person (the weekly bot only re-confirms sources), for the history line.
+const BOTS = /^(crops-refresh-bot|crops-recheck-bot|github-actions)/;
+const lastEdit = (() => {
+  const out = {};
+  try {
+    const log = execSync("git log '--format=@%cs|%an' --name-only -- data/providers", { stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 64 << 20 }).toString();
+    let date = null, bot = false;
+    for (const line of log.split('\n')) {
+      if (line.startsWith('@')) { const [d, a] = line.slice(1).split('|'); date = d; bot = BOTS.test(a); continue; }
+      const m = line.match(/^data\/providers\/([a-z0-9-]+)\.yaml$/);
+      if (m && !bot && !out[m[1]]) out[m[1]] = date;
+    }
+  } catch { /* not a git checkout: no history line */ }
+  return out;
+})();
+
+// Long free text: the first sentences, then the rest behind "Show more".
+const longText = (t, limit = 420) => {
+  if (t.length <= limit) return `<p>${esc(t)}</p>`;
+  const cut = t.slice(0, limit).lastIndexOf('. ');
+  const at = cut > 120 ? cut + 1 : limit;
+  return `<p>${esc(t.slice(0, at))}</p><details class="more"><summary>Show more</summary><p>${esc(t.slice(at).trim())}</p></details>`;
+};
 
 // ---- shared fragments ---------------------------------------------------------
 const tierChip = (t) => (t ? `<span class="chip tier-${t}">${TIER[t]}</span>` : '');
@@ -88,8 +113,17 @@ function evidenceLabel(e, p) {
   try { return new URL(e.url).hostname + new URL(e.url).pathname.replace(/\/$/, ''); } catch { return 'source'; }
 }
 
+// Strongest evidence first; a collapsible block with counts by tier (open when short).
+const TIER_ORDER = { verified: 0, documented: 1, claimed: 2 };
+const evidenceBlock = (ev, p) => {
+  const n = (t) => ev.filter((e) => e.tier === t).length;
+  const parts = ['verified', 'documented', 'claimed'].filter(n).map((t) => `${n(t)} ${TIER[t].toLowerCase()}`);
+  return `<details class="evd"${ev.length <= 2 ? ' open' : ''}><summary><span class="ev-head">Evidence (${ev.length})</span><span class="ev-counts">${parts.join(' · ')}</span></summary>${evidenceList(ev, p)}</details>`;
+};
+// Age of a YYYY-MM-DD date relative to the build date, in words.
+const ago = (d) => { const n = Math.round((Date.parse(today) - Date.parse(d)) / 864e5); return n <= 0 ? 'today' : n === 1 ? '1 day ago' : n < 60 ? `${n} days ago` : `${Math.round(n / 30)} months ago`; };
 function evidenceList(ev, p) {
-  return `<ol class="ev">${ev.map((e) => {
+  return `<ol class="ev">${[...ev].sort((a, b) => (TIER_ORDER[a.tier] ?? 3) - (TIER_ORDER[b.tier] ?? 3)).map((e) => {
     const meta = [];
     if (e.address) {
       const cid = e.chain_id ?? e.caip2 ?? p.primary_chain?.chain_id ?? p.primary_chain?.caip2;
@@ -149,7 +183,7 @@ ${s.conversion ? `<p><strong>Conversion.</strong> ${esc(CONVERSION[s.conversion]
 <ul class="risk-list">${risks.map((r) => `<li><strong>${esc(r.startsWith('stablecoin:') ? `${BACKING[r.split(':')[1]][0].toUpperCase()}${BACKING[r.split(':')[1]].slice(1)} stablecoin` : TOKEN_CLASS[r])}.</strong> ${esc(TOKEN_RISK[r])}${r === 'stablecoin:fiat' ? ' <a href="#h-C">Censorship Resistance</a> records whether that freeze power is disclosed.' : ''}</li>`).join('')}</ul>
 ${s.note ? `<p class="finding">${esc(s.note)}</p>` : ''}
 <p class="meta small">Checked ${esc(s.checked_at)}</p>
-<h4 class="ev-head">Evidence (${s.evidence.length})</h4>${evidenceList(s.evidence, p)}</section>`;
+${evidenceBlock(s.evidence, p)}</section>`;
 };
 const BASELINE_NOTE = 'Incumbent rails have no public chain settlement and no public code. They are scored with the same rubric as every other row. Their low ratings show the verifiability gap between rails whose behaviour can be inspected and rails whose behaviour must be trusted; that gap is the point of the comparison, not a claim that the incumbent is unsafe.';
 const GROUPS = [['checkout', 'Checkout and invoicing'], ['card', 'Cards'], ['remittance', 'Remittance and wallets'], ['transfer', 'Protocols for privacy-preserving transfers', 'Privacy transfers'], ['incumbent', 'Incumbent baseline']];
@@ -159,42 +193,52 @@ const order = (a, b) => chainName(a).localeCompare(chainName(b)) || a.name.local
 const grouped = GROUPS.map(([t, label]) => [t, label, providers.filter((p) => p.type === t).sort(order)]).filter(([, , list]) => list.length);
 const evidenced = (p) => criteria.criteria.filter((c) => !isUnknown(p.scores[c.id])).length;
 const reviewed = (p) => Object.values(p.scores).filter((c) => c.review?.status === 'reviewed').length;
+const searchText = (p) => [p.name, p.slug, p.type, p.primary_chain?.name ?? 'off-chain', ...(p.settlement?.tokens ?? []).map((t) => t.symbol), (() => { try { return new URL(p.website).hostname; } catch { return ''; } })()].join(' ').toLowerCase();
 const provHead = (p, up = '') => `<th scope="row" class="rowhead"><a class="pname" href="${up}provider/${esc(p.slug)}/index.html">${providerMark(p, up, esc)}<span>${esc(p.name)}</span></a><span class="psub">${chainMark(p.primary_chain)}${p.primary_chain ? esc(p.primary_chain.name) : 'Off-chain'}</span>${settleLine(p)}</th>`;
 const filter = `<fieldset class="seg"><legend>Show</legend>
 <input class="sr" type="radio" name="t" id="t-all" checked><label for="t-all">All</label>
-${GROUPS.map(([t, label, short]) => `<input class="sr" type="radio" name="t" id="t-${t}"><label for="t-${t}">${esc(short ?? label.split(' ')[0])}</label>`).join('')}
+${grouped.map(([t, label]) => { const short = GROUPS.find(([g]) => g === t)[2]; return `<input class="sr" type="radio" name="t" id="t-${t}"><label for="t-${t}">${esc(short ?? label.split(' ')[0])}</label>`; }).join('')}
 </fieldset>`;
 
 // One table, rows grouped by type. `cellsFor(p)` returns the <td>s; `head` the column headers.
 const groupedTable = (label, head, cellsFor, up = '') => `<div class="table-scroll" tabindex="0" role="region" aria-label="${esc(label)}"><table class="overview">
 <thead><tr><th scope="col" class="rowhead">Provider</th>${head}</tr></thead>
 ${grouped.map(([t, name, list]) => `<tbody data-type="${t}"><tr class="group-row"><th scope="rowgroup" colspan="99">${esc(name)} <span class="count">${list.length}</span>${t === 'incumbent' ? ` <a class="small" href="${up}index.html#baseline-note">About the baseline</a>` : ''}</th></tr>
-${list.map((p) => `<tr>${provHead(p, up)}${cellsFor(p)}</tr>`).join('\n')}</tbody>`).join('\n')}
+${list.map((p) => `<tr data-slug="${esc(p.slug)}" data-search="${esc(searchText(p))}">${provHead(p, up)}${cellsFor(p)}</tr>`).join('\n')}</tbody>`).join('\n')}
 </table></div>`;
 
 // CROPS tally: a count of criteria by outcome, the same split as the provider page's "At a glance". A count, not a weighted score.
 const tally = (p) => { const cs = criteria.criteria.map((c) => p.scores[c.id]); const unk = cs.filter(isUnknown).length; const holds = cs.filter((c) => !isUnknown(c) && c.score >= 2).length; return { holds, short: cs.length - unk - holds, unk, total: cs.length }; };
-const tallyCell = (p) => { const t = tally(p); const pct = (n) => `${((100 * n) / t.total).toFixed(2)}%`; return `<td class="tally"><a class="cell-link" href="provider/${esc(p.slug)}/index.html#h-glance"><span class="tally-num"><b>${t.holds}</b> of ${t.total} hold up</span><span class="tallybar" role="img" aria-label="${t.holds} hold up, ${t.short} fall short, ${t.unk} no evidence" style="--h:${pct(t.holds)};--s:${pct(t.short)}"></span><span class="spread">${t.short} fall short${t.unk ? ` · ${t.unk} no evidence` : ''}</span></a></td>`; };
+const tallyCell = (p) => { const t = tally(p); const pct = (n) => `${((100 * n) / t.total).toFixed(2)}%`; return `<td class="tally" data-v="${t.holds}" data-label="CROPS tally"><a class="cell-link" href="provider/${esc(p.slug)}/index.html#h-glance"><span class="tally-num"><b>${t.holds}</b> of ${t.total} hold up</span><span class="tallybar" role="img" aria-label="${t.holds} hold up, ${t.short} fall short, ${t.unk} no evidence" style="--h:${pct(t.holds)};--s:${pct(t.short)}"></span><span class="spread">${t.short} fall short${t.unk ? ` · ${t.unk} no evidence` : ''}</span></a></td>`; };
+
+// Freshness across rating cells, not across evidence items: one well-maintained quote should not make the whole site look fresh.
+const cellDates = providers.flatMap((p) => criteria.criteria.map((c) => cellStatus(p.scores[c.id], today).newest)).filter(Boolean).sort();
 
 const overview = groupedTable('Ratings by pillar',
   criteria.pillars.map((pl) => `<th scope="col"><a href="compare/index.html#pillar-${pl.id}">${esc(pl.name)}</a></th>`).join('') + '<th scope="col">CROPS tally<span class="cid">criteria held</span></th><th scope="col">Evidence</th>',
-  (p) => criteria.pillars.map((pl) => { const r = pillarOf(p, pl); return `<td><a class="cell-link" href="provider/${esc(p.slug)}/index.html#pillar-${pl.id}">${rating(r.score, r.unknown)}</a><span class="spread">Weakest: ${r.limiting.slice(0, 2).map((id) => esc(byId[id].short)).join('; ')}${r.limiting.length > 2 ? ` +${r.limiting.length - 2}` : ''}</span></td>`; }).join('')
+  (p) => criteria.pillars.map((pl) => { const r = pillarOf(p, pl); const weak = `Weakest: ${r.limiting.map((id) => byId[id].short).join('; ')}`; return `<td data-v="${r.unknown ? -1 : r.score}" data-label="${esc(pl.name)}"><a class="cell-link" href="provider/${esc(p.slug)}/index.html#pillar-${pl.id}" title="${esc(weak)}">${rating(r.score, r.unknown)}<span class="sr"> ${esc(weak)}</span></a></td>`; }).join('')
     + tallyCell(p)
-    + `<td class="cov"><span class="covbar" style="--v:${Math.round((100 * evidenced(p)) / criteria.criteria.length)}%"></span><span class="spread">${evidenced(p)} of ${criteria.criteria.length} evidenced<br>${reviewed(p)} reviewed</span></td>`);
+    + `<td class="cov" data-v="${evidenced(p)}" data-label="Evidence"><span class="covbar" style="--v:${Math.round((100 * evidenced(p)) / criteria.criteria.length)}%"></span><span class="spread">${evidenced(p)} of ${criteria.criteria.length} evidenced<br>${reviewed(p)} reviewed</span></td>`);
 
+const sortableOverview = overview
+  .replace('<div class="table-scroll"', '<div class="table-scroll tall"')
+  .replace('<table class="overview">', '<table class="overview sortable ratings">')
+  .replace('<th scope="col" class="rowhead">Provider</th>', '<th scope="col" class="rowhead" data-sort="text">Provider</th>')
+  .replace(/<th scope="col">(<a href="compare\/index.html#pillar-|CROPS tally|Evidence<)/g, '<th scope="col" data-sort="num">$1');
+const searchBox = (placeholder) => `<div class="tools" data-js hidden><label class="sr" for="q">Search providers</label><input id="q" type="search" placeholder="${placeholder}" autocomplete="off" spellcheck="false"><span class="q-count small muted" aria-live="polite"></span></div>`;
 const legend = `<dl class="legend">${[3, 2, 1, 0].map((n) => `<div><dt>${rating(n)}</dt><dd>${MEANS[n]}</dd></div>`).join('')}<div><dt>${rating(0, true)}</dt><dd>Nobody has submitted checkable evidence yet. Counts as 0.</dd></div></dl>`;
 
 page('index.html', 'Ratings', `
 <section class="hero">
 <p class="eyebrow">Evidence-only assessment</p>
 <h1>Payment rails, rated on what can be verified</h1>
-<p class="lede">${providers.length} payment rails rated on ${criteria.criteria.length} questions about who can block payments, whether the code is open and free to reuse, what leaks about users, and who can lose or lock up funds. Every rating rests on an onchain read or a file at a pinned commit, never on a vendor's word. Evidence as of ${esc(allDates.at(-1) ?? '—')}.</p>
+<p class="lede">${providers.length} payment rails rated on ${criteria.criteria.length} questions about who can block payments, whether the code is open and free to reuse, what leaks about users, and who can lose or lock up funds. Every rating rests on an onchain read or a file at a pinned commit, never on a vendor's word. Each rating's newest evidence was checked or re-confirmed between ${esc(cellDates[0] ?? '—')} and ${esc(cellDates.at(-1) ?? '—')} (median ${esc(cellDates[Math.floor(cellDates.length / 2)] ?? '—')}).</p>
 </section>
 
 <section class="howto" aria-labelledby="h-howto">
 <h2 id="h-howto">How to read this</h2>
 <ul class="rules">
-<li><strong>A pillar is only as strong as its weakest criterion.</strong> One unchecked admin key is not averaged away. Each cell names the weakest criteria.</li>
+<li><strong>A pillar is only as strong as its weakest criterion.</strong> One unchecked admin key is not averaged away. Hover or focus a rating to see the weakest criteria; the provider page lists them.</li>
 <li><strong>"No evidence" counts as zero.</strong> The burden of proof is on the evidence, not on you. The Evidence column shows how much of each provider has been assessed.</li>
 <li><strong>The CROPS tally counts, it does not score.</strong> It shows how many of the ${criteria.criteria.length} criteria hold up (Partial or Strong), fall short (Weak or Fails) or have no evidence. Every criterion counts once, so a high tally can still hide a pillar that fails. Read it next to the pillar ratings. Rows are grouped by type and sorted by chain, then name. The order is not a ranking; how to weigh the pillars is your call.</li>
 <li><strong>This is not a full risk assessment.</strong> It does not rate regulation, safeguarding of funds, legal recourse, operational track record, liquidity or cost. <a href="methodology/index.html#scope">What is out of scope</a></li>
@@ -204,17 +248,22 @@ ${legend}
 
 <section aria-labelledby="h-ratings">
 <div class="section-head"><h2 id="h-ratings">Ratings by pillar</h2>${filter}</div>
-<p class="small muted">Select a rating for the provider's findings and evidence, or <a href="compare/index.html">compare every criterion side by side</a>.</p>
-${overview}
+${searchBox('Search by name, chain or token')}
+<p class="small muted">Select a rating for the provider's findings and evidence, or <a href="compare/index.html">compare every criterion side by side</a>. Select a column heading to sort within each group.</p>
+${sortableOverview}
 ${providers.some((p) => p.type === 'incumbent') ? `<p class="callout" id="baseline-note"><strong>About the incumbent baseline.</strong> ${BASELINE_NOTE}</p>` : ''}
 </section>`);
 
 // ---- compare page: one table per pillar, providers x that pillar's criteria ----------------
 page('compare/index.html', 'Compare', `
 <header class="phead"><p class="eyebrow">Criterion by criterion</p><h1>Compare</h1>
-<p class="lede">Every criterion for every provider, one table per pillar. The first column repeats the pillar rating; select any rating for the finding and evidence behind it.</p></header>
+<p class="lede">Every criterion for every provider, one table per pillar, or only the providers you choose. The first column repeats the pillar rating; select any rating for the finding and evidence behind it.</p></header>
 <nav class="pillar-nav" aria-label="Pillars">${criteria.pillars.map((pl) => `<a href="#pillar-${pl.id}">${esc(pl.name)}</a>`).join('')}</nav>
 <div class="section-head">${legend.replace('class="legend"', 'class="legend compact"')}${filter}</div>
+<details class="picker" data-js hidden><summary>Choose providers to compare <span class="pick-n small muted"></span></summary>
+<p class="small muted">Tick two or more. The tables below then show only those rows, and the address keeps the selection so you can share it.</p>
+<div class="pick-list">${[...providers].sort((a, b) => a.name.localeCompare(b.name)).map((p) => `<label><input type="checkbox" name="pick" value="${esc(p.slug)}"> ${providerMark(p, '../', esc)}<span>${esc(p.name)}</span></label>`).join('')}</div>
+<p><button type="button" class="pick-clear">Show all providers</button></p></details>
 ${criteria.pillars.map((pl) => `<section class="pillar" id="pillar-${pl.id}" aria-labelledby="hc-${pl.id}">
 <header class="pillar-head"><div><h2 id="hc-${pl.id}">${esc(pl.name)}</h2><p>${esc(pl.question)}</p></div></header>
 ${groupedTable(`${pl.name} by criterion`,
@@ -344,6 +393,16 @@ for (const p of providers) {
     return `<li><a href="#pillar-${pl.id}"><span class="sum-name">${esc(pl.name)}</span>${rating(r.score, r.unknown, 'lg')}<span class="sum-lim">Weakest: ${r.limiting.map((id) => esc(byId[id].short)).join('; ')}</span></a></li>`;
   }).join('')}</ol>`;
 
+  const tl = tally(p);
+  const groupName = (GROUPS.find(([g]) => g === p.type) ?? [, p.type])[1];
+  const facts = `<dl class="facts">
+<div><dt>Category</dt><dd>${esc(groupName)}</dd></div>
+<div><dt>Chain</dt><dd>${chainMark(p.primary_chain)}${p.primary_chain ? esc(p.primary_chain.name) : 'Off-chain'}</dd></div>
+<div><dt>CROPS tally</dt><dd><a href="#h-glance-cols">${tl.holds} of ${tl.total} hold up</a>${tl.unk ? ` <span class="muted">· ${tl.unk} no evidence</span>` : ''}</dd></div>
+${p.settlement ? `<div><dt>Settles in</dt><dd><a href="#h-settle">${p.settlement.tokens.slice(0, 3).map((t) => esc(t.symbol)).join(', ')}${p.settlement.tokens.length > 3 ? ` +${p.settlement.tokens.length - 3}` : ''}</a></dd></div>` : ''}
+<div><dt>Offered</dt><dd>${p.availability ? `<a href="#h-avail">${esc({ global: 'Everywhere', allowlist: `${COUNTRIES.filter((cc) => status(p, cc) === 'yes').length} countries`, blocklist: `All but ${COUNTRIES.filter((cc) => status(p, cc) === 'no').length} countries` }[p.availability.model])}</a>` : '<span class="muted">Not on file</span>'}</dd></div>
+<div><dt>Last edited</dt><dd>${lastEdit[p.slug] ? `${esc(lastEdit[p.slug])} · ` : ''}<a href="${repo}/commits/main/data/providers/${esc(p.slug)}.yaml">History</a></dd></div>
+</dl>`;
   const sections = criteria.pillars.map((pl) => {
     const r = pillarOf(p, pl);
     const rows = critsOf(pl).map((c) => {
@@ -353,13 +412,13 @@ for (const p of providers) {
       const sets = r.limiting.includes(c.id);
       return `<article class="crit${sets ? ' limiting' : ''}" id="${esc(c.id)}">
 <header class="crit-head"><div><h3><a href="../../criteria/${esc(c.id)}/index.html">${esc(c.short)}</a> ${derivedChip(c)}</h3><p class="crit-q">${esc(c.question)} <span class="cid">${esc(c.id)}</span></p></div>${cellRating(cell)}</header>
-<p class="crit-tags">${sets ? '<span class="chip lim-chip">Sets the pillar rating</span>' : ''}${st.tier ? `<span>Best evidence: ${tierChip(st.tier)}</span>` : ''}${st.newest ? `<span>Checked ${esc(st.newest)}</span>` : ''}${flags(st)}</p>
+<p class="crit-tags">${sets ? '<span class="chip lim-chip">Sets the pillar rating</span>' : ''}${st.tier ? `<span>Best evidence: ${tierChip(st.tier)}</span>` : ''}${st.newest ? `<span>Checked ${esc(st.newest)} <span class="age${st.stale ? ' old' : ''}">${ago(st.newest)}</span></span>` : ''}${flags(st)}</p>
 <p class="crit-tags review">${reviewLine(cell)}</p>
 ${(cell?.evidence ?? []).some((e) => e.drift) ? '<p class="finding drift-note">The weekly re-check found that a recorded fact changed. This rating counts as unknown until a reviewer re-checks it.</p>' : ''}
 ${isUnknown(cell) && !(cell?.evidence ?? []).some((e) => e.drift) ? '<p class="finding muted">No checkable evidence settles this yet, so it counts as 0.</p>' : ''}
 ${cell?.finding ? `<p class="finding">${esc(cell.finding)}</p>` : ''}
 ${cell?.provider_response ? `<aside class="reply"><h4>Provider response</h4><p>${esc(cell.provider_response)}</p><p class="meta">Shown for context. It does not change the rating.</p></aside>` : ''}
-${ev.length ? `<h4 class="ev-head">Evidence (${ev.length})</h4>${evidenceList(ev, p)}` : ''}
+${ev.length ? `${evidenceBlock(ev, p)}` : ''}
 </article>`;
     }).join('\n');
     return `<section class="pillar" id="pillar-${pl.id}" aria-labelledby="h-${pl.id}">
@@ -378,16 +437,17 @@ ${rows}</section>`;
 <p class="psub">${typeChip(p.type)}<span>${chainMark(p.primary_chain)} ${p.primary_chain ? `Assessed on ${esc(p.primary_chain.name)} (${p.primary_chain.chain_id ? `chain ${esc(p.primary_chain.chain_id)}` : esc(p.primary_chain.caip2)})` : 'No public chain settlement'}</span><a href="${href(p.website)}">${esc(new URL(p.website).hostname)}</a></p>
 ${p.primary_chain ? `<p class="muted small">Ratings apply to this deployment only. Treat them as unverified for other chains.${p.primary_chain.basis ? ` Why this deployment: ${esc(p.primary_chain.basis)}` : ''}</p>` : `<p class="callout">${BASELINE_NOTE}</p>`}
 </header>
-${p.context ? `<aside class="context" aria-labelledby="h-ctx-${esc(p.slug)}"><h2 id="h-ctx-${esc(p.slug)}">Outside this assessment</h2><p>${esc(p.context)}</p><p class="meta">Protections such as regulation, safeguarding and legal recourse are not CROPS properties and are not scored. They are shown because a risk assessment should weigh them.</p></aside>` : ''}
+${p.context ? `<aside class="context" aria-labelledby="h-ctx-${esc(p.slug)}"><h2 id="h-ctx-${esc(p.slug)}">Outside this assessment</h2>${longText(p.context)}<p class="meta">Protections such as regulation, safeguarding and legal recourse are not CROPS properties and are not scored. They are shown because a risk assessment should weigh them.</p></aside>` : ''}
 <section aria-labelledby="h-glance"><h2 id="h-glance">At a glance</h2>
+${facts}
 ${pillars}
-<div class="glance-grid">${col('Holds up', holds, 'Nothing rated Partial or Strong.')}${col('Falls short', fails, 'Nothing rated Weak or Fails.')}${col('Not yet evidenced', unknown, 'Every criterion has evidence.')}</div>
+<div class="glance-grid" id="h-glance-cols">${col('Holds up', holds, 'Nothing rated Partial or Strong.')}${col('Falls short', fails, 'Nothing rated Weak or Fails.')}${col('Not yet evidenced', unknown, 'Every criterion has evidence.')}</div>
 </section>
 ${p.availability ? `<section id="availability" aria-labelledby="h-avail"><h2 id="h-avail">Where it is offered</h2>
 <p>${esc(MODEL[p.availability.model])}.${regionsUsed(p.availability.countries ?? []).length ? ` Regions: ${regionsUsed(p.availability.countries).map(esc).join(', ')}.` : ''} <span class="meta">Checked ${esc(p.availability.checked_at)}. Not scored.</span></p>
 ${p.availability.note ? `<p class="finding">${esc(p.availability.note)}</p>` : ''}
 ${expand(p.availability.countries ?? []).length ? `<p class="small">${p.availability.model === 'blocklist' ? 'Excluded' : 'Listed'} countries (${expand(p.availability.countries).length}): ${expand(p.availability.countries).map((c) => `<a href="../../countries/${esc(c)}/index.html">${esc(countryName(c))}</a>`).join(', ')}</p>` : ''}
-<h4 class="ev-head">Evidence (${p.availability.evidence.length})</h4>${evidenceList(p.availability.evidence, p)}</section>` : `<section id="availability"><h2>Where it is offered</h2><p class="muted">No first-party country statement is on file for this provider. See the <a href="../../countries/index.html">Countries</a> index.</p></section>`}
+${evidenceBlock(p.availability.evidence, p)}</section>` : `<section id="availability"><h2>Where it is offered</h2><p class="muted">No first-party country statement is on file for this provider. See the <a href="../../countries/index.html">Countries</a> index.</p></section>`}
 ${settlementSection(p)}
 ${sections}
 ${operationalSection(p, operational[p.slug])}
@@ -430,6 +490,7 @@ page('methodology/index.html', 'Methodology', `<div class="prose">${readFileSync
   .replaceAll('%PER_PILLAR%', esc(perPillar)).replaceAll('%PENDING%', String(pending)).replaceAll('%CELLS%', String(cells.length))}</div>`, { section: 'methodology' });
 page('contribute/index.html', 'Contribute', `<div class="prose">${readFileSync('site/contribute.html', 'utf8').replaceAll('%REPO%', repo)}</div>`, { section: 'contribute' });
 copyFileSync('site/style.css', join(OUT, 'style.css'));
+copyFileSync('site/app.js', join(OUT, 'app.js'));
 if (existsSync('site/logos')) { mkdirSync(join(OUT, 'logos'), { recursive: true }); for (const f of readdirSync('site/logos')) if (/\.(svg|png|webp)$/.test(f)) copyFileSync(join('site/logos', f), join(OUT, 'logos', f)); }
 
 writeFileSync(join(OUT, 'data.json'), JSON.stringify({ generated: today, criteria, providers: providers.map((p) => ({ ...p, rollup: rollups[p.slug], tally: tally(p) })), operational_criteria: opsCriteria, operational }, null, 2));
