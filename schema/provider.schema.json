@@ -296,6 +296,116 @@
           "countries"
         ]
       }
+    },
+    "settlement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokens",
+        "evidence",
+        "checked_at"
+      ],
+      "description": "What the user's balance is held in and debited from when the card is used. Displayed as context next to the ratings; never scored.",
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "symbol",
+              "class"
+            ],
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 20
+              },
+              "class": {
+                "enum": [
+                  "stablecoin",
+                  "native",
+                  "platform",
+                  "other"
+                ],
+                "description": "stablecoin: tracks a fiat currency. native: the gas token of a chain (ETH, SOL, AVAX). platform: issued by the card provider or its own ecosystem. other: liquid-staking, wrapped or yield tokens; say which in note."
+              },
+              "backing": {
+                "enum": [
+                  "fiat",
+                  "crypto",
+                  "synthetic"
+                ],
+                "description": "Stablecoins only. fiat: redeemable reserves held by an issuer (USDC, USDT, EURe). crypto: over-collateralised onchain (DAI). synthetic: hedged or algorithmic (USDe)."
+              },
+              "issuer": {
+                "type": "string",
+                "maxLength": 120
+              },
+              "default": {
+                "type": "boolean",
+                "description": "The token the card spends from by default, when several are accepted."
+              },
+              "chain_id": {
+                "type": "integer"
+              },
+              "caip2": {
+                "type": "string",
+                "pattern": "^[-a-z0-9]{3,8}:[-_a-zA-Z0-9]{1,32}$"
+              },
+              "address": {
+                "type": "string",
+                "minLength": 20,
+                "maxLength": 64
+              }
+            },
+            "if": {
+              "properties": {
+                "class": {
+                  "const": "stablecoin"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "backing"
+              ]
+            },
+            "else": {
+              "not": {
+                "required": [
+                  "backing"
+                ]
+              }
+            }
+          }
+        },
+        "conversion": {
+          "enum": [
+            "none",
+            "at_spend",
+            "at_top_up",
+            "unknown"
+          ],
+          "description": "none: the card network is settled from the token directly. at_spend: the token is sold for fiat when a payment is authorised. at_top_up: the token is converted into a fiat balance when the user tops up, so spend is from fiat."
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 1200
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "checked_at": {
+          "$ref": "#/$defs/date"
+        }
+      }
     }
   },
   "$defs": {

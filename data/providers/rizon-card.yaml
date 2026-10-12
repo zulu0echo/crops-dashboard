@@ -313,3 +313,38 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+    - symbol: USDT
+      class: stablecoin
+      backing: fiat
+      issuer: Tether
+  conversion: at_spend
+  note: >-
+    Rizon accepts only USDC and USDT deposits (on Arbitrum, Solana, Base, Polygon, Optimism, Avalanche and BSC) into the user's self-custodial wallet. The card is a Rain card: Rizon's Terms say spending converts stablecoins into fiat through Rain and its licensed partners, and the help centre says the dollar balance with the lowest conversion fee is used at the moment of payment, so no single default token is stated. The chain and contract of the Rain collateral holding the spendable balance are not published, and the card terms' Supported Blockchains (Polygon, Optimism, Arbitrum) differ from the deposit list (see C5), so no chain or address is recorded.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://intercom.help/rizon/en/articles/13534577-how-to-top-up-with-stablecoins
+      detail: Rizon's help centre says the wallet accepts only USDC and USDT, and lists the supported networks.
+      quote: "Rizon currently supports USDC and USDT only"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://intercom.help/rizon/en/articles/13441290-can-i-use-the-rizon-card-with-different-currencies
+      detail: The help centre says the card uses the user's dollar balance at the moment of payment.
+      quote: "We automatically use your dollar balance with the lowest available conversion fee to a local currency at the moment of payment"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://www.getrizon.com/terms-of-service
+      archive: data/archive/rizon-card-ops-terms-of-service.txt
+      detail: The Terms describe the Rain card as converting stablecoins into fiat for spending.
+      quote: "enabling Users to spend stablecoins by converting them into Fiat through Rain's and their licensed partners infrastructure"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

@@ -390,3 +390,40 @@ availability:
       checked_at: "2026-10-09"
       drift: true
   checked_at: "2026-10-09"
+settlement:
+  tokens:
+    - symbol: CASH
+      class: platform
+      issuer: Bridge Building Inc. (Stripe), co-branded with Phantom
+      default: true
+      caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+      address: "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH"
+  conversion: at_spend
+  note: >-
+    CASH is a USD-pegged, fiat-reserve-backed stablecoin from Bridge and Phantom, classed here as platform because it is the provider's own-branded dollar. USDC, USDT or PYUSD sent to the Cash address on Solana are automatically swapped into CASH, so CASH is the only token the card debits. At payment Stripe/Bridge draws CASH from the Cash account and converts it to USD.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/use-your-virtual-phantom-debit-card-us-only-44800221533459
+      detail: The debit card article says Stripe draws CASH from the Cash account at payment and converts it to USD.
+      quote: "Stripe (our partner) draws CASH from your Cash account, converts it to USD"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://help.phantom.com/articles/understanding-your-cash-account-44799497237395
+      detail: USDC, USDT or PYUSD sent to the Cash address are automatically swapped into CASH.
+      quote: "Phantom automatically swaps these tokens for CASH in your Cash account"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://usecash.xyz
+      detail: The CASH site names Bridge Building Inc. as issuer and describes 1:1 USD reserves.
+      quote: "CASH is issued by Bridge Building Inc. (BBI) and distributed by BBI and its affiliates."
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.phantom.com/cash
+      detail: Phantom's developer docs give the CASH mint on Solana.
+      quote: "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

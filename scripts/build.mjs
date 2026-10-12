@@ -3,7 +3,8 @@
 // Every value from data/ is untrusted contributor input and goes through esc().
 //
 //   node scripts/build.mjs        (BUILD_DATE=YYYY-MM-DD to pin the staleness clock)
-import { mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync, existsSync, readdirSync } from 'node:fs';
+import { chainMark, providerMark } from './marks.mjs';
 import { dirname, join } from 'node:path';
 import { execSync } from 'node:child_process';
 import { loadData, rollup, cellStatus, isUnknown, availableIn } from './rollup.mjs';
@@ -43,7 +44,7 @@ const STATE = { evidenced: 'Evidenced', attested: 'Attested', unknown: 'Unknown'
 const NAV = [['index.html', 'Ratings'], ['compare/index.html', 'Compare'], ['countries/index.html', 'Countries'], ['operational/index.html', 'Operational'], ['methodology/index.html', 'Methodology'], ['criteria/index.html', 'Criteria'], ['contribute/index.html', 'Contribute']];
 
 // Provider pages: a sticky "On this page" bar built from the page's own h2 headings.
-const JUMP_LABEL = { 'At a glance': 'Glance', 'Where it is offered': 'Availability', 'Outside this assessment': 'Context', 'Operational and procurement': 'Operational', 'Scope of assessment': 'Scope', 'Censorship Resistance': 'Censorship' };
+const JUMP_LABEL = { 'At a glance': 'Glance', 'Where it is offered': 'Availability', 'Outside this assessment': 'Context', 'Operational and procurement': 'Operational', 'Scope of assessment': 'Scope', 'Settlement token': 'Settlement', 'Censorship Resistance': 'Censorship' };
 const withJumps = (body) => {
   const links = [...body.matchAll(/<h2 id="([^"]+)">([^<]+)/g)].map(([, id, text]) => `<a href="#${id}">${esc(JUMP_LABEL[text.trim()] ?? text.trim())}</a>`);
   return links.length < 3 ? body : body.replace('</header>', `</header>\n<nav class="jump" aria-label="On this page"><span class="jump-label">On this page</span>${links.join('')}</nav>`);
@@ -123,6 +124,33 @@ const nextStep = (p, pl) => { const r = rollups[p.slug][pl.id]; if (r.score >= 3
 const pillarOf = (p, pl) => { const r = rollups[p.slug][pl.id]; return { ...r, unknown: r.limiting.every((id) => isUnknown(p.scores[id])) }; };
 const critsOf = (pl) => criteria.criteria.filter((c) => c.pillar === pl.id);
 
+// Settlement token (context, never scored): what the balance is held in and debited from.
+const TOKEN_CLASS = { stablecoin: 'Stablecoin', native: 'Native token', platform: 'Platform token', other: 'Other token' };
+const BACKING = { fiat: 'fiat-backed', crypto: 'crypto-backed', synthetic: 'synthetic' };
+const TOKEN_RISK = {
+  'stablecoin:fiat': 'An issuer holds the reserves and can freeze balances at the token contract. Value depends on the issuer redeeming at par.',
+  'stablecoin:crypto': 'Backed by onchain collateral. Value depends on collateral prices, liquidations and the governance that sets their parameters.',
+  'stablecoin:synthetic': 'Held at par by a hedging strategy or market mechanism rather than reserves. It can trade below par under stress, for example when funding rates turn or a venue holding the hedge fails.',
+  native: 'No issuer can freeze it, but its price moves between top-up, authorisation and settlement, so the amount debited is not known in advance.',
+  platform: 'Issued by the provider or its own ecosystem. Its value and liquidity depend on that provider, which may also control supply.',
+  other: 'A wrapped, liquid-staking or yield token. It carries the risks of the underlying asset plus those of the wrapper or protocol; see the note.',
+};
+const CONVERSION = { none: 'The card network is settled from the token directly.', at_spend: 'The token is sold for fiat when a payment is authorised.', at_top_up: 'The token is converted into a fiat balance at top-up; card spend comes from that fiat balance.', unknown: 'When the token is converted to fiat is not documented.' };
+const tokenClass = (t) => (t.class === 'stablecoin' ? `${BACKING[t.backing]} stablecoin` : TOKEN_CLASS[t.class].toLowerCase());
+const settleLine = (p) => (p.settlement ? `<span class="psub settle">Settles in ${(([d, rest]) => [...d, ...rest].slice(0, 3).map((t) => esc(t.symbol)).join(', ') + (d.length + rest.length > 3 ? ` +${d.length + rest.length - 3}` : ''))([p.settlement.tokens.filter((t) => t.default), p.settlement.tokens.filter((t) => !t.default)])} · ${[...new Set(p.settlement.tokens.map((t) => (t.class === 'stablecoin' ? 'stablecoin' : TOKEN_CLASS[t.class].toLowerCase())))].map(esc).join(', ')}</span>` : '');
+const settlementSection = (p) => {
+  const s = p.settlement;
+  if (!s) return p.type === 'card' || /card/i.test(p.name) ? '<section id="settlement" aria-labelledby="h-settle"><h2 id="h-settle">Settlement token</h2><p class="muted">Not yet researched for this card.</p></section>' : '';
+  const risks = [...new Set(s.tokens.map((t) => (t.class === 'stablecoin' ? `stablecoin:${t.backing}` : t.class)))];
+  return `<section id="settlement" aria-labelledby="h-settle"><h2 id="h-settle">Settlement token</h2>
+<p class="muted small">What the balance is held in and debited from. Shown as context; it does not change any rating.</p>
+<div class="table-scroll"><table class="plain"><thead><tr><th scope="col">Token</th><th scope="col">Class</th><th scope="col">Issuer</th><th scope="col">Contract</th></tr></thead><tbody>${s.tokens.map((t) => `<tr><td><strong>${esc(t.symbol)}</strong>${t.default ? ' <span class="chip">Default</span>' : ''}</td><td>${esc(tokenClass(t))}</td><td>${esc(t.issuer ?? '')}</td><td>${t.address ? `<code>${esc(short(t.address))}</code>${links(t.chain_id ?? t.caip2 ?? p.primary_chain?.chain_id ?? p.primary_chain?.caip2, t.address)}` : ''}</td></tr>`).join('')}</tbody></table></div>
+${s.conversion ? `<p><strong>Conversion.</strong> ${esc(CONVERSION[s.conversion])}</p>` : ''}
+<ul class="risk-list">${risks.map((r) => `<li><strong>${esc(r.startsWith('stablecoin:') ? `${BACKING[r.split(':')[1]][0].toUpperCase()}${BACKING[r.split(':')[1]].slice(1)} stablecoin` : TOKEN_CLASS[r])}.</strong> ${esc(TOKEN_RISK[r])}${r === 'stablecoin:fiat' ? ' <a href="#h-C">Censorship Resistance</a> records whether that freeze power is disclosed.' : ''}</li>`).join('')}</ul>
+${s.note ? `<p class="finding">${esc(s.note)}</p>` : ''}
+<p class="meta small">Checked ${esc(s.checked_at)}</p>
+<h4 class="ev-head">Evidence (${s.evidence.length})</h4>${evidenceList(s.evidence, p)}</section>`;
+};
 const BASELINE_NOTE = 'Incumbent rails have no public chain settlement and no public code. They are scored with the same rubric as every other row. Their low ratings show the verifiability gap between rails whose behaviour can be inspected and rails whose behaviour must be trusted; that gap is the point of the comparison, not a claim that the incumbent is unsafe.';
 const GROUPS = [['checkout', 'Checkout and invoicing'], ['card', 'Cards'], ['remittance', 'Remittance and wallets'], ['transfer', 'Protocols for privacy-preserving transfers', 'Privacy transfers'], ['incumbent', 'Incumbent baseline']];
 // Within a group: alphabetical by chain, then by name. Off-chain rails (no primary chain) sort by name. Ordering only; there is no ranking.
@@ -131,7 +159,7 @@ const order = (a, b) => chainName(a).localeCompare(chainName(b)) || a.name.local
 const grouped = GROUPS.map(([t, label]) => [t, label, providers.filter((p) => p.type === t).sort(order)]).filter(([, , list]) => list.length);
 const evidenced = (p) => criteria.criteria.filter((c) => !isUnknown(p.scores[c.id])).length;
 const reviewed = (p) => Object.values(p.scores).filter((c) => c.review?.status === 'reviewed').length;
-const provHead = (p, up = '') => `<th scope="row" class="rowhead"><a class="pname" href="${up}provider/${esc(p.slug)}/index.html">${esc(p.name)}</a><span class="psub">${p.primary_chain ? esc(p.primary_chain.name) : 'Off-chain'}</span></th>`;
+const provHead = (p, up = '') => `<th scope="row" class="rowhead"><a class="pname" href="${up}provider/${esc(p.slug)}/index.html">${providerMark(p, up, esc)}<span>${esc(p.name)}</span></a><span class="psub">${chainMark(p.primary_chain)}${p.primary_chain ? esc(p.primary_chain.name) : 'Off-chain'}</span>${settleLine(p)}</th>`;
 const filter = `<fieldset class="seg"><legend>Show</legend>
 <input class="sr" type="radio" name="t" id="t-all" checked><label for="t-all">All</label>
 ${GROUPS.map(([t, label, short]) => `<input class="sr" type="radio" name="t" id="t-${t}"><label for="t-${t}">${esc(short ?? label.split(' ')[0])}</label>`).join('')}
@@ -346,8 +374,8 @@ ${rows}</section>`;
   page(`provider/${p.slug}/index.html`, p.name, `
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Ratings</a> <span aria-hidden="true">/</span> ${esc(p.name)}</nav>
 <header class="phead">
-<h1>${esc(p.name)}</h1>
-<p class="psub">${typeChip(p.type)}<span>${p.primary_chain ? `Assessed on ${esc(p.primary_chain.name)} (${p.primary_chain.chain_id ? `chain ${esc(p.primary_chain.chain_id)}` : esc(p.primary_chain.caip2)})` : 'No public chain settlement'}</span><a href="${href(p.website)}">${esc(new URL(p.website).hostname)}</a></p>
+<h1 class="ptitle">${providerMark(p, '../../', esc)}<span>${esc(p.name)}</span></h1>
+<p class="psub">${typeChip(p.type)}<span>${chainMark(p.primary_chain)} ${p.primary_chain ? `Assessed on ${esc(p.primary_chain.name)} (${p.primary_chain.chain_id ? `chain ${esc(p.primary_chain.chain_id)}` : esc(p.primary_chain.caip2)})` : 'No public chain settlement'}</span><a href="${href(p.website)}">${esc(new URL(p.website).hostname)}</a></p>
 ${p.primary_chain ? `<p class="muted small">Ratings apply to this deployment only. Treat them as unverified for other chains.${p.primary_chain.basis ? ` Why this deployment: ${esc(p.primary_chain.basis)}` : ''}</p>` : `<p class="callout">${BASELINE_NOTE}</p>`}
 </header>
 ${p.context ? `<aside class="context" aria-labelledby="h-ctx-${esc(p.slug)}"><h2 id="h-ctx-${esc(p.slug)}">Outside this assessment</h2><p>${esc(p.context)}</p><p class="meta">Protections such as regulation, safeguarding and legal recourse are not CROPS properties and are not scored. They are shown because a risk assessment should weigh them.</p></aside>` : ''}
@@ -360,6 +388,7 @@ ${p.availability ? `<section id="availability" aria-labelledby="h-avail"><h2 id=
 ${p.availability.note ? `<p class="finding">${esc(p.availability.note)}</p>` : ''}
 ${expand(p.availability.countries ?? []).length ? `<p class="small">${p.availability.model === 'blocklist' ? 'Excluded' : 'Listed'} countries (${expand(p.availability.countries).length}): ${expand(p.availability.countries).map((c) => `<a href="../../countries/${esc(c)}/index.html">${esc(countryName(c))}</a>`).join(', ')}</p>` : ''}
 <h4 class="ev-head">Evidence (${p.availability.evidence.length})</h4>${evidenceList(p.availability.evidence, p)}</section>` : `<section id="availability"><h2>Where it is offered</h2><p class="muted">No first-party country statement is on file for this provider. See the <a href="../../countries/index.html">Countries</a> index.</p></section>`}
+${settlementSection(p)}
 ${sections}
 ${operationalSection(p, operational[p.slug])}
 <section class="scope" aria-labelledby="h-scope"><h2 id="h-scope">Scope of assessment</h2>
@@ -401,13 +430,14 @@ page('methodology/index.html', 'Methodology', `<div class="prose">${readFileSync
   .replaceAll('%PER_PILLAR%', esc(perPillar)).replaceAll('%PENDING%', String(pending)).replaceAll('%CELLS%', String(cells.length))}</div>`, { section: 'methodology' });
 page('contribute/index.html', 'Contribute', `<div class="prose">${readFileSync('site/contribute.html', 'utf8').replaceAll('%REPO%', repo)}</div>`, { section: 'contribute' });
 copyFileSync('site/style.css', join(OUT, 'style.css'));
+if (existsSync('site/logos')) { mkdirSync(join(OUT, 'logos'), { recursive: true }); for (const f of readdirSync('site/logos')) if (/\.(svg|png|webp)$/.test(f)) copyFileSync(join('site/logos', f), join(OUT, 'logos', f)); }
 
 writeFileSync(join(OUT, 'data.json'), JSON.stringify({ generated: today, criteria, providers: providers.map((p) => ({ ...p, rollup: rollups[p.slug], tally: tally(p) })), operational_criteria: opsCriteria, operational }, null, 2));
 // CSV cells are quoted, and a leading = + - @ is neutralised so spreadsheets don't execute contributor text.
 const csv = (v) => { const s = String(v ?? ''); return '"' + (/^[=+\-@]/.test(s) ? "'" + s : s).replace(/"/g, '""') + '"'; };
 writeFileSync(join(OUT, 'grid.csv'), [
-  ['slug', 'name', 'type', 'chain', ...criteria.pillars.flatMap((pl) => [pl.id, `${pl.id}_limiting`]), 'holds_up', 'falls_short', 'no_evidence'].map(csv).join(','),
-  ...providers.map((p) => [p.slug, p.name, p.type, p.primary_chain?.name ?? '', ...criteria.pillars.flatMap((pl) => [rollups[p.slug][pl.id].score, rollups[p.slug][pl.id].limiting.join(' ')]), ...(({ holds, short, unk }) => [holds, short, unk])(tally(p))].map(csv).join(',')),
+  ['slug', 'name', 'type', 'chain', ...criteria.pillars.flatMap((pl) => [pl.id, `${pl.id}_limiting`]), 'holds_up', 'falls_short', 'no_evidence', 'settlement_tokens', 'settlement_classes'].map(csv).join(','),
+  ...providers.map((p) => [p.slug, p.name, p.type, p.primary_chain?.name ?? '', ...criteria.pillars.flatMap((pl) => [rollups[p.slug][pl.id].score, rollups[p.slug][pl.id].limiting.join(' ')]), ...(({ holds, short, unk }) => [holds, short, unk])(tally(p)), (p.settlement?.tokens ?? []).map((t) => t.symbol).join(' '), (p.settlement?.tokens ?? []).map((t) => (t.class === 'stablecoin' ? `stablecoin-${t.backing}` : t.class)).join(' ')].map(csv).join(',')),
 ].join('\n') + '\n');
 
 writeFileSync(join(OUT, 'operational.csv'), [['slug', 'custody_model', 'licences', 'cashout_methods', 'first_deployment', 'entity', 'volume_status', 'volume_events', ...opsCriteria.controls.map((c) => c.id)].map(csv).join(','), ...providers.map((p) => { const op = operational[p.slug]; return [p.slug, op?.custody_model?.status === 'evidenced' ? op.custody_model.value : (op?.custody_model?.status ?? 'unknown'), op?.licences?.value?.length ?? '', (op?.cashout?.value ?? []).map((x) => x.method).join(' '), op?.maturity?.first_deployment?.value?.date ?? '', op?.maturity?.entity?.value?.legal_name ?? '', op?.volume?.status ?? 'unknown', op?.volume?.value?.events ?? '', ...opsCriteria.controls.map((c) => effectiveFact(p, op, c).status)].map(csv).join(','); })].join('\n') + '\n');

@@ -543,3 +543,43 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDT0
+      class: stablecoin
+      backing: fiat
+      issuer: USDT0 (LayerZero OFT of Tether's USDT)
+      default: true
+      chain_id: 9745
+      address: "0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb"
+  conversion: at_spend
+  note: >-
+    Plasma One's Terms say the card makes fiat payments funded by stablecoin balances in the user's wallet, without naming the token. Onchain, the Rain Coordinator on Plasma accepts USDT0 as a collateral asset, and the observed card funding pulled USDT0 from the user's account into its Rain collateral; Rain then pays the merchant in dollars over Visa. Other collateral assets, if any, were not enumerated (the Coordinator exposes a per-token check, not a list). The in-app Swap Function (via 0x) converts other assets, including XPL cashback, into stablecoins, but it is a manual step, not an auto-swap at spend. Cashback is paid in XPL. USDT0 is an omnichain representation of Tether's USDT; Tether is the underlying reserve issuer.
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://plasmascan.to/address/0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077
+      address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+      chain_id: 9745
+      block_number: 34429835
+      detail: Rain Coordinator isSupportedAsset(USDT0 0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb) = true.
+      checked_at: "2026-10-12"
+      check:
+        call: "0x9be918e6000000000000000000000000b8ce59fc3717ada4c02eadf9682a9e934f625ebb"
+        expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+    - tier: verified
+      kind: onchain
+      url: https://plasmascan.to/tx/0x32bbf2f43c3ea2f7a77d3ec9e1e86d1142e7419a66af113f785659187a0134b8
+      address: "0xd5dd79397FdfBe5E1fceEdC2463fE4A464873077"
+      chain_id: 9745
+      block_number: 34424414
+      detail: Sample card funding tx 0x32bbf2f4...34b8 called Coordinator.pullAssetFromUserWallet to move 1.34 USDT0 from account 0xDc4930f1... into its Rain collateral 0xe0C209Db.... The sample is not confirmed as a Plasma One account.
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://www.plasma.org/terms-of-service
+      detail: Terms define the Plasma One Card as making fiat payments funded by stablecoin balances in the user's wallet.
+      quote: allow you to make fiat payments funded by stablecoin balances in your Digital Wallets accessed through Plasma One
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

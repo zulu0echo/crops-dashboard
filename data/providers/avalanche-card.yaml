@@ -367,3 +367,42 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+    - symbol: USDT
+      class: stablecoin
+      backing: fiat
+      issuer: Tether
+    - symbol: AVAX
+      class: native
+    - symbol: WAVAX
+      class: other
+  conversion: unknown
+  note: >-
+    The card is a Rain collateralised card: the user posts digital assets as collateral from a linked wallet, card charges create a USD balance owed to Rain Liquidity and the issuer, and the collateral secures that balance. The card agreement says the user repays Rain and that collateral is liquidated to cover charges on a Liquidation Event (unpaid obligations or collateral value falling below charges); it does not say whether collateral is sold at each authorisation or swept later, so conversion is recorded as unknown. The homepage lists USDC, USDT, AVAX and WAVAX (WAVAX is wrapped AVAX); the FAQ names only USDC and AVAX as collateral. No default is stated. Chains and contract addresses are not given: marketing implies Avalanche C-Chain, while the card agreement's Supported Blockchains (Ethereum, Polygon, Optimism, Arbitrum) omit Avalanche (see C5), so no chain is recorded.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.avalanchecard.com/
+      detail: The homepage lists the four supported assets.
+      quote: "Currently supporting USDC, USDT, AVAX and WAVAX."
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://www.avalanchecard.com/
+      detail: The FAQ describes the card as crypto-backed and names USDC and AVAX as collateral.
+      quote: "Supports USDC and AVAX for collateral"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://legal.avalanchecard.com/legal/avalanche-card-international-card-agreement-94211945
+      archive: data/archive/avalanche-card-ops-international-card-agreement.txt
+      detail: The card agreement (s3) makes the posted digital assets collateral securing USD charges, which Rain satisfies and the user repays; collateral is liquidated only to cover outstanding obligations.
+      quote: "will be required to post Collateral that has Market Value in United States Dollars"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

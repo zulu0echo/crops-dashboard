@@ -294,3 +294,15 @@ body:has(#t-incumbent:checked) .overview tbody:not([data-type="incumbent"]) { di
 .jump a { flex: none; font-size: 14px; padding: 4px 10px; border-radius: 999px; text-decoration: none; color: var(--ink-2); border: 1px solid var(--line); }
 .jump a:hover { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
 h2[id], section[id], .crit[id] { scroll-margin-top: 64px; }
+/* Settlement token (context, not scored) */
+.psub.settle { display: block; margin-top: 2px; color: var(--ink-2); }
+.risk-list { padding-left: 20px; }
+.risk-list li { margin: 6px 0; }
+/* Chain symbols and provider badges */
+.mark { flex: none; vertical-align: -2px; margin-right: 4px; }
+.pname { display: flex; align-items: center; gap: 8px; }
+.plogo { flex: none; width: 20px; height: 20px; border-radius: 5px; object-fit: contain; }
+.plogo.mono { display: inline-grid; place-items: center; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); font: 700 9px/1 var(--sans); letter-spacing: 0.02em; }
+.ptitle { display: flex; align-items: center; gap: 12px; }
+.ptitle .plogo { width: 36px; height: 36px; border-radius: 8px; }
+.ptitle .plogo.mono { font-size: 14px; }

@@ -406,3 +406,36 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+      chain_id: 8453
+      address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+  conversion: at_spend
+  note: >-
+    The card spends only USDC on Base. Other tokens deposited on Base, Ethereum, Arbitrum, BSC or Polygon must be converted to Base USDC in the app first; this is a manual step, not an auto-swap at spend. EURC held in Cash cannot pay by card. The card can also spend USDC sitting in a Tuyo Earn strategy (a yield vault), so the debited position may be a vault share redeemed for USDC at spend; users can turn this off. Fiat received on virtual accounts is converted to USDC (USD, MXN) or EURC (EUR) by Bridge. The card collateral contract was not identified, so the onchain debit path is not confirmed.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/card.html
+      detail: Card guide names USDC on Base as the only compatible token, with other deposits converted inside Tuyo.
+      quote: The card is powered by USDC on Base. You can deposit USDC (or any token) on Base, Ethereum, Arbitrum, BNB Smart Chain (BSC), or Polygon, and convert to Base USDC inside Tuyo
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/card.html
+      detail: Card FAQ says the card can spend USDC while it is in an Earn strategy, and this can be disabled.
+      quote: The Tuyo Card can spend your USDC even while it is in an Earn strategy, so it keeps earning until you spend
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://help.tuyo.com/guides/card-spendable-balance.html
+      detail: The card spends dollars only; euros in Cash must be converted first.
+      quote: The app explains that your card spends dollars. Euros cannot pay by card yet.
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

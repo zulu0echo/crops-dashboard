@@ -684,3 +684,52 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDe
+      class: stablecoin
+      backing: synthetic
+      issuer: Ethena (affiliate of Ethena Pay)
+      default: true
+      chain_id: 43114
+      address: "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34"
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      chain_id: 43114
+      address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E"
+  conversion: at_spend
+  note: >-
+    The card is a secured account: tokens in the user's Avalanche wallet contract are the Collateral, and each card spend moves USDe (or USDC) from that wallet to a Rain collateral pool, while Rain and the issuer pay the merchant in dollars over Visa. The wallet factory sets daily spend allowances for exactly two tokens, USDe and USDC. USDe is marked default because the sampled card spend and the Rain pool's balance are in USDe, and the Daily Boost is paid in USDe; no Ethena Pay document names a default. USDe is Ethena's synthetic dollar, so the card's main balance is issued within the provider's own ecosystem (the Terms list "Ethena USDe" among Ethena Pay's or its affiliates' marks). Cashback is paid separately in AVAX. Ethena Pay names no chain or token contract in its documents; the chain and addresses come from onchain reads.
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://snowscan.xyz/address/0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f
+      address: "0xAc66ca9A79fb0D3C64cBa44cd29610CD58602D6f"
+      chain_id: 43114
+      block_number: 96949020
+      detail: Wallet factory getDefaultDailyLimits() returns tokens [USDe 0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34, USDC 0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E] with 10000e18 and 10000e6 per day, the only tokens the executor can spend for card payments.
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: onchain
+      url: https://snowscan.xyz/tx/0xec33bce0ee908346478eff573fac1f9263c591333fa9b2996d561137e823de9e
+      address: "0x6455888e603177016cb1B266CFe86A0f7898C623"
+      chain_id: 43114
+      block_number: 96938483
+      detail: Sample card spend moved 2.25 USDe from wallet 0x6455888e... to Rain collateral 0x6070848b... via spendDailyAllowance, relayed by Ethena Pay's BatchExecutor.
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/terms
+      detail: Terms of Use s2 say balances are denominated in or backed by supported digital assets, including USDe or third-party stablecoins.
+      quote: might be denominated in, referenced to, or backed by one or more supported Digital Assets, including USDe or stablecoin tokens issued by third parties
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://pay.ethena.fi/card-terms
+      detail: Card Terms s3 make the wallet's tokens the Collateral securing card charges, liquidated by Ethena Pay or the issuer if unpaid.
+      quote: Either your primary Linked Wallet or any Additional Wallets may provide the collateral that will secure the Charges made by you on any Card
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

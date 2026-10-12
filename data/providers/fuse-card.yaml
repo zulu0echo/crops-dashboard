@@ -568,3 +568,31 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+      caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+      address: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+  conversion: at_spend
+  note: >-
+    USDC on Solana is the only card asset. It stays in the user's Squads Card Account until a purchase, when Bridge pulls it through its daily spending limit and the merchant is paid in local currency over Visa.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://fusewallet.com/blog/fuse-card
+      detail: The launch post says USDC stays on Solana in the Fuse wallet until a purchase, when the merchant gets local currency and the equivalent USDC is deducted from the Card Account.
+      quote: "Your USDC stays on Solana in your Fuse wallet until the moment you make a purchase"
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: onchain
+      url: https://solana.fm/address/12BqReNBFWSfQ3hSwjDuyUGyVmZMDj1VLh5ctG6LAK4B
+      address: "12BqReNBFWSfQ3hSwjDuyUGyVmZMDj1VLh5ctG6LAK4B"
+      block_number: 454201823
+      detail: The sample Bridge spending limit's mint is USDC EPjFWdd5... (period Day, 2,000 USDC); all 1,727 limits with Bridge's member key use the USDC mint.
+      checked_at: "2026-10-07"
+      recheck: curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type:application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["12BqReNBFWSfQ3hSwjDuyUGyVmZMDj1VLh5ctG6LAK4B",{"encoding":"base64"}]}' (bytes 73-104 = mint)
+  checked_at: "2026-10-12"

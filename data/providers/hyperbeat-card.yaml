@@ -439,3 +439,50 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: beatUSD
+      class: platform
+      issuer: Hyperbeat
+      chain_id: 999
+      address: "0x669abe85F96a9e3B34723F7Be9bC6F250aBC0Cc1"
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      chain_id: 999
+      address: "0xb88339CB7199b77E23DB6E890353E22632Ba630f"
+  conversion: at_spend
+  note: >-
+    Cards spend from the user's ManagementAccount on HyperEVM. In Cash mode the account holds the settlement token and the Hyperbeat Operator calls settle() to deduct each card amount; in Credit mode the Operator borrows the settlement token from Morpho or Aave against the user's deposited collateral, which is not itself spent. The architecture doc names the settlement token only by example ("beatUSD or USDC"), enforced by a TokenWhitelistRegistry whose contents were not read, so no default is marked. Hyperbeat's Pay app bundle displays beatUSD ("Hyperbeat USD", onchain name) to the user as their "USD" balance, which suggests beatUSD is the usual spending balance. beatUSD is Hyperbeat's own dollar token; its reserves or backing are not documented in the sources read (the bundle mentions a BeatUSD Teller for USDC withdrawals via Paxos). The docs' Hyperbeat Pay page also says users can spend USDC/USDT; how USDT is handled is not stated.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+      detail: The TokenWhitelistRegistry enforces the specific stablecoin used for card settlements, given as "e.g., beatUSD or USDC"; in Cash mode the user holds that settlement token in the ManagementAccount.
+      quote: "In this mode, you hold the settlement token directly in your ManagementAccount"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.hyperbeat.org/liquid-banking/liquid-banking-architecture
+      detail: In Credit mode the Operator borrows the settlement token on the user's behalf for each swipe.
+      quote: "the Operator is authorized to borrow the settlement token from the DeFi protocol on your behalf"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://hyperbeat.org/_next/static/chunks/97b00ce1712acb99.js
+      archive: data/archive/hyperbeat-card-settlement.txt
+      detail: Hyperbeat Pay's own app bundle configures beatUSD (0x669abe85...) and USDC (0xb88339CB...) on HyperEVM and maps beatUSD to the "USD" balance shown to the user.
+      quote: 'usdcAddress:"0xb88339CB7199b77E23DB6E890353E22632Ba630f",beatUsdAddress:"0x669abe85F96a9e3B34723F7Be9bC6F250aBC0Cc1"'
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: onchain
+      url: https://hyperevmscan.io/address/0x669abe85F96a9e3B34723F7Be9bC6F250aBC0Cc1
+      address: "0x669abe85F96a9e3B34723F7Be9bC6F250aBC0Cc1"
+      chain_id: 999
+      block_number: 48338520
+      detail: name() returns "Hyperbeat USD", symbol() "beatUSD", decimals() 6 on HyperEVM (eth_call via https://rpc.hyperliquid.xyz/evm).
+      recheck: cast call 0x669abe85F96a9e3B34723F7Be9bC6F250aBC0Cc1 'name()(string)' --rpc-url https://rpc.hyperliquid.xyz/evm
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

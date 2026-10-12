@@ -639,3 +639,37 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+      chain_id: 1
+      address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+  conversion: at_top_up
+  note: >-
+    The card spends a fiat e-money balance, not a token. A top-up is a sale of USDC to Holyheld: the Terms say USDC is the only crypto-asset Holyheld supports for its exchange service, and the card is defined as the instrument that enables that sale and the use of the resulting fiat Funds balance (e-money such as EUR or USD, held by the licensed partner). Other tokens can reach a top-up only through third-party smart-contract integrations, which swap them before the USDC sale. The address is Ethereum USDC from the sample top-up; Holyheld's site also names Arbitrum, Base and Solana, where the native USDC of each chain would apply, but the hosted token list was not read.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/legal/terms-and-conditions
+      detail: Terms s8.6 name USDC as the only crypto-asset Holyheld supports for its exchange service; other crypto-assets may be used only through third-party smart-contract integrations.
+      quote: "USDC is the only Crypto-asset supported by Holyheld for the Crypto-asset exchange service"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://holyheld.com/legal/terms-and-conditions
+      detail: The Terms define the Card as the instrument that enables the sale of crypto-assets and the use of the resulting fiat Funds balance through the debit-card infrastructure.
+      quote: "the use of the resulting Funds balance through the debit-card infrastructure"
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: onchain
+      url: https://etherscan.io/tx/0x34972db6c6224bf12c0e26aec6a32f59bcdcba584ec865c328d02f022492472a
+      address: "0x6fC79dDD0379Fd11d67dD73056465e822b843d13"
+      block_number: 26074697
+      detail: A sample card top-up moves 3,474.158634 USDC from the payer straight to Holyheld wallet 0x6D2d1659..., through the top-up proxy.
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

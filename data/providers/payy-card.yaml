@@ -648,3 +648,39 @@ context: >-
 
 notes: >-
   Scored the live Payy rollup v1 on Ethereum from polybase/payy at 2f95947; onchain reads are pinned to Ethereum block 26139204. The public repo is a Copybara export without the wallet app, guild backend, or Rain and Sumsub providers. The last verifyRollup before the pinned block was on 2026-09-24 (block 26046439), and the escrow held 710.75 USDC. The ToS is a Google Doc that renders client-side, so its text is archived. P5 and S5 are unknown (app and backend closed). S6 is unknown: the FAQ says "the important parts of Payy's code have been audited" (provider claim), but I found no report.
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+      chain_id: 1
+      address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+  conversion: at_spend
+  note: >-
+    The balance is held as private USDC notes on the Payy Network zk-rollup, backed by Circle USDC escrowed in the rollup contract 0x367C1eAF... on Ethereum (the address above is that escrowed token). The Terms name USDC as the only Supported Digital Asset today. When the card is used, Payy pushes USDC from the Payy Network to Rain, which converts it to fiat for the merchant. The Terms also let the user pick a USD Wallet balance as the Preferred Spending Currency instead, in which case spend comes from fiat; that option is not a token and is not listed.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
+      archive: data/archive/payy-card-terms.txt
+      detail: Terms s2.6 say a Supported Digital Asset (currently USDC) chosen as Preferred Spending Currency is transferred to Rain and converted to fiat when the card is used.
+      quote: "you authorize direct transfer to Rain to convert said Preferred Spending Currency to fiat"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
+      archive: data/archive/payy-card-terms.txt
+      detail: Terms s2.6 name USDC as the only Supported Digital Asset that qualifies a user for the card.
+      quote: "When you hold Supported Digital Assets [currently USDC] on Payy"
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: repo
+      url: https://github.com/polybase/payy/blob/2f95947f12981a838f6f0c9dddace825bf835502/eth/scripts/deploy.ts#L20-L29
+      commit: "2f95947f12981a838f6f0c9dddace825bf835502"
+      path: eth/scripts/deploy.ts
+      detail: The deploy script pins the rollup token to Circle USDC 0xA0b86991... on Ethereum.
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

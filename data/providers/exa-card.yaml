@@ -840,3 +840,43 @@ availability:
 
 notes: >-
   Scored the OP Mainnet card on contracts pinned at exactly/exa aceb1b5 (which matches Sourcify), the backend and app at HEAD 4fba32b, and onchain reads at OP block 157885618. The card is issued by Third National through Rain, on Visa. Collateral sits in the user's own Alchemy modular account as exaUSDC in the Exactly Protocol market; Exa's keeper debits it with an Exa issuer signature. Explorer verification could not be checked because Optimistic Etherscan and Blockscout block automated requests.
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+      chain_id: 10
+      address: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85"
+    - symbol: exaUSDC
+      class: other
+      chain_id: 10
+      address: "0x6926B434CCe9b5b7966aE1BfEef6D0A7DCF3A8bb"
+  conversion: at_spend
+  note: >-
+    Deposits sit in Exactly Protocol markets, so a USDC balance is held as exaUSDC, the yield-bearing share of the exaUSDC market (a deposit receipt, not a separate dollar). Every card payment is collected in USDC from that market: Pay Now withdraws USDC from the user's exaUSDC deposit, and installment purchases borrow USDC from the market against the user's deposits. Other deposited assets (ETH, wstETH, WBTC, OP) are collateral for installment credit and are not spent directly. Exa converts the USDC to USD for the merchant; non-USD purchases carry a 1.5% FX fee. Scope is the OP Mainnet card; the Base deployment was not checked.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/exactly/docs/blob/fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b/exa-app/credit-and-debit-modes.md#L21-L33
+      commit: "fd734e9c1bb2c6c91a6d1e4e5c51ced447b4404b"
+      path: exa-app/credit-and-debit-modes.md
+      detail: Exa's docs say deposits (USDC, ETH, wstETH, WBTC, OP) are allocated to Exactly Protocol markets; Pay Now deducts the amount from the user's funds in those markets, and installment purchases borrow from the fixed-rate markets, converting the borrowed funds to USD for the merchant.
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: repo
+      url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/contracts/deploy.json#L84-L121
+      commit: "4fba32be1803f15c0db9f39a055bda4740c1fdf1"
+      path: contracts/deploy.json
+      detail: The OP Mainnet deploy config enumerates the tokens accounts can use; the card itself settles from the exaUSDC market (EXA_USDC immutable in ExaPlugin).
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: onchain
+      url: https://explorer.optimism.io/tx/0x906cb58684b9445dcbad6ab80c636d1d65799110782a8a1f4fda96821976e79b
+      address: "0x973ccce386F99bd7a32Eec2DF192A030d8f214b8"
+      block_number: 157882808
+      detail: A sample card debit - the keeper called collectDebit on the user's account and the exaUSDC market emitted Withdraw of USDC to the card collector 0x3a73880f....
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

@@ -347,3 +347,36 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+  conversion: at_spend
+  note: >-
+    The COCA Banking Account is a smart-contract wallet the user controls (Privy keys); at each card authorisation the wallet approves the exact amount, which is moved for settlement through COCA and its unnamed card partner. The account holds USD and EUR balances. The September 2026 update shows exchange rates as local currency per USDC, which indicates the USD balance is held in USDC; the token behind the EUR balance (funded by SEPA to the COCA IBAN) is not named in any COCA source found, so it is not listed. USDC and USDT can be deposited on many chains (NEAR, Ethereum, Arbitrum, Base, Solana, Gnosis, Polygon, Optimism, Avalanche and others); whether deposited USDT is kept as USDT or swapped into the USD balance is not stated. The chain and contract of the spending balance are not disclosed.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.coca.xyz/coca/the-bank-we-all-deserve/where-is-my-money-stored-and-who-controls-it
+      detail: The docs say the Banking Account is a user-controlled smart wallet and that only the authorised amount of a card payment is moved for settlement.
+      quote: "Only the authorized amount is moved for settlement"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://www.coca.xyz/post/coca-monthly-update-september-2026
+      archive: data/archive/coca-card-ops-update-sep-2026.txt
+      detail: COCA's September 2026 update says the app now shows how much local currency one USDC is worth and which account currency a payment came from.
+      quote: "you see how much of your local currency one USDC is worth"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://www.coca.xyz/post/coca-monthly-update-august-2026
+      archive: data/archive/coca-card-ops-update-aug-2026.txt
+      detail: COCA's August 2026 update lists the chains on which USDC and USDT can be deposited to fund the banking account.
+      quote: "making it simpler to fund your COCA banking account"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

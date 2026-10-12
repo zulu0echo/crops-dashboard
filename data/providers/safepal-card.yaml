@@ -623,3 +623,62 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USD24
+      class: platform
+      chain_id: 42161
+      address: "0xbE00f3db78688d9704BCb4e0a827aea3a9Cc0D62"
+    - symbol: EUR24
+      class: platform
+      chain_id: 42161
+      address: "0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA"
+    - symbol: CHF24
+      class: platform
+      chain_id: 42161
+      address: "0xd41F1f0cf89fD239ca4c1F8E8ADA46345c86b0a4"
+    - symbol: CNH24
+      class: platform
+      chain_id: 42161
+      address: "0x7288Ac74d211735374A23707D1518DCbbc0144fd"
+  conversion: at_top_up
+  note: >-
+    SafePal Card is Fiat24's Mastercard, which spends Fiat24 cash tokens on Arbitrum: USD24, EUR24, CHF24 and CNH24 (RMB). They are tokenised deposits issued by SR Saphirstein AG (Fiat24), the card issuer, backed one-to-one by cash deposits; transfers are gated by Fiat24's KYC status and sanctions checks, so they are classed as platform tokens rather than freely circulating stablecoins. Crypto becomes fiat at top-up: the wallet swaps the user's asset into Arbitrum USDC and Fiat24's top-up contract converts it into a cash token. At spend, Fiat24's card-authorisation contract debits the balance in the transaction currency if Direct Pay is on for it; otherwise it converts from the user-selected default card currency. No default is fixed by Fiat24.
+  evidence:
+    - tier: verified
+      kind: onchain
+      url: https://arbitrum.blockscout.com/address/0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14
+      address: "0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14"
+      chain_id: 42161
+      block_number: 512546136
+      detail: Fiat24CardAuthorization validXXX24Tokens() returns true for USD24, CHF24, EUR24 and CNH24 (EUR24 check shown).
+      checked_at: "2026-10-12"
+      check:
+        call: "0x1b7238770000000000000000000000002c5d06f591d0d8cd43ac232c2b654475a142c7da"
+        expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
+      detail: Fiat24's developer guide names the four cash tokens, their issuer and their deposit backing, and lists all four as supported for the debit card on Arbitrum.
+      quote: which are ERC-20 tokens backed one-to-one by cash deposits. These tokens are issued by SR Saphirstein AG, a Swiss licensed deposit-taking institution.
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
+      detail: Crypto top-up converts the wallet's crypto into Fiat24 cash tokens.
+      quote: it converts the cryptocurrency from the wallet into our fiat holdings, which are in the form of ERC20 tokens
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.fiat24.com/user/payments/mastercard-debit
+      detail: Spending rules; the matching currency balance is charged first (Direct Pay), otherwise the user's chosen default card currency is converted and debited.
+      quote: If your card transactions are in these currencies, the corresponding balance will be charged first, avoiding unnecessary foreign exchange fees
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://safepalsupport.zendesk.com/hc/en-us/articles/22646856800027-FAQs-about-the-SafePal-Fiat-Gateway-and-Mastercard
+      detail: SafePal's FAQ explains that the 24-tokens in the wallet represent fiat held in the Fiat24 IBAN account that the Mastercard spends.
+      quote: Having EUR24, USD24, and CHF24 in your wallet signifies that you possess the equivalent amount of legal currency in your Fiat24 IBAN account
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

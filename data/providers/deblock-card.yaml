@@ -235,3 +235,43 @@ context: >-
 
 notes: >-
   Incumbent: no verified contract or public repository needed to run the product was found. The card is a Visa debit card on Deblock's own e-money account. The self-custodial crypto wallet uses seed-phrase keys generated on the device (self-custody page), with no smart contract in the card path. Searched: GitHub (org DeblockApp exists with 0 public repos and nothing linking it to Deblock; other org names do not exist; repo search "deblock" returns only image-deblocking projects); deblock.com sitemap, legal notice, legal agreements, cards, self-custody and FAQ pages; the app.deblock.com bundle (Sentry enabled outside localhost, Intercom, Google Tag Manager, Fireblocks key-format helpers; no contract addresses). The Terms, privacy policy and complaints policy render client-side from a Deblock API that needs a bearer token embedded in the page script. I did not use that token, so those documents were not read and the cells that depend on them (C1, C4, P1, P2, P4) are unknown.
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+    - symbol: EURC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+    - symbol: BTC
+      class: native
+    - symbol: ETH
+      class: native
+    - symbol: SOL
+      class: native
+  conversion: at_top_up
+  note: >-
+    The card spends only from the user's euro e-money current account at Deblock; it cannot spend crypto directly (Deblock's help centre says this feature is not yet available). Crypto held in the self-custodial Deblock wallet reaches the card only by selling it into euros in the app, and the help centre lists SOL, BTC, ETH, USDC and EUROC (Circle's EURC) as sellable for euros. All card payments are settled in euros, with Visa converting to the merchant's currency.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/8911372-can-i-make-card-payments-directly-with-my-cryptocurrencies
+      detail: Deblock's help centre says card payments cannot yet be made directly with crypto and are always settled in euros.
+      quote: "your card payments will always be settled in Euros and the card issuer will instantly perform the necessary currency exchanges"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://intercom.help/deblock/en/articles/10365208-what-crypto-pairs-can-i-sell
+      detail: The help centre says crypto can be sold only for euros and lists SOL, BTC, ETH, USDC and EUROC.
+      quote: "Currently, the only fiat currency you can sell crypto in is € Euro"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://deblock.com/en/cards
+      detail: The cards page says every card draws on the user's current account.
+      quote: "Every Deblock card is tied to your current account"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

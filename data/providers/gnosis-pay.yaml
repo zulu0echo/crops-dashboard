@@ -1115,3 +1115,51 @@ availability:
 
 notes: >-
   Migrated 2026-10-07 to the post-red-team rules (components, quotes, rechecks, R7 module read on the spender Safe). Scored the post-incident (June 2026) account architecture from account-kit 5.1.1 at 9366073 and a live account found from a Spend event at block 48629267; all onchain reads are pinned to Gnosis block 48629765. The card side (issuer Monavate, Visa, KYC, card freeze) is documented tier only, from the Terms, the privacy policy and the closure notice. Gnosis Pay is ending its consumer card and web app at 23:59 UTC on 20 Dec 2026 (the withdraw path stays) and moving to partner card programs, which may use different terms and setups. The homepage privacy and legal links return 404; the live legal pages are at help.gnosispay.com/articles.
+
+settlement:
+  tokens:
+    - symbol: EURe
+      class: stablecoin
+      backing: fiat
+      issuer: Monerium
+      default: true
+      chain_id: 100
+      address: "0xcB444e90D8198415266c6a2724b7900fb12FC56E"
+    - symbol: GBPe
+      class: stablecoin
+      backing: fiat
+      issuer: Monerium
+      chain_id: 100
+      address: "0x5Cb9073902F2035222B9749F8fB0c9BFe5527108"
+    - symbol: USDC.e
+      class: stablecoin
+      backing: fiat
+      issuer: Circle (bridged from Ethereum to Gnosis Chain)
+      chain_id: 100
+      address: "0x2a22f9c3b484c3629090FeED35F17Ff8F88f76F0"
+  conversion: at_spend
+  note: >-
+    One token per region, not a user choice: the Terms define Supported Funds as GBPe for UK users, EURe for users in Switzerland or the EEA, and USDC.e (Circle USDC bridged to Gnosis Chain) for other supported countries, all on Gnosis Chain. EURe is marked default as the EEA variant. Each card spend moves the token from the user's Safe to Gnosis Pay's settlement Safe at authorisation (sample spend in S1), and Gnosis Pay settles the card network in fiat; the fees page describes this as 1:1 stablecoin usage. The UI's EURe entry also lists the Monerium v2 contract 0x420CA0f9... as a jumper address; the address above is the one the card's Roles scope transfers. The consumer card closes on 20 December 2026.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/2178874711
+      archive: data/archive/gnosis-pay-terms.txt
+      detail: Terms of Service definitions set the Supported Funds per region (GBPe in the UK, EURe in Switzerland and the EEA, USDCe elsewhere), each only on Gnosis Chain, and define USDCe as Circle USDC bridged to Gnosis Chain at 0x2a22f9c3....
+      quote: "if you are a user based in Switzerland or in the EEA, EURe"
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: repo
+      url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/src/constants/currencies.ts#L7-L30
+      commit: "7fc844b4bb779ed1384468008b9a3eb2e7cf59f2"
+      path: src/constants/currencies.ts
+      detail: The card UI enumerates the three card currencies by address on Gnosis Chain - EURe 0xcB444e90... (jumper 0x420CA0f9...), GBPe 0x5Cb90739..., USDCe 0x2a22f9c3....
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://help.gnosispay.com/articles/6104401027
+      archive: data/archive/gnosis-pay-ops-fees.txt
+      detail: The fees page says card purchases debit the stablecoin 1:1 with the purchase amount.
+      quote: "a €10 purchase = 10 EURe (or equivalent)"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

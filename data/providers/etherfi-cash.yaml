@@ -839,3 +839,49 @@ availability:
 
 notes: >-
   Scored the Optimism core-chain deployment from cash-v3 at a5024d0 (2026-10-05); onchain reads are pinned to OP block 157880645, with a sample spend at 157880145. www.ether.fi sits behind a Vercel bot checkpoint (HTTP 429 to curl), so website and legal citations use ether.fi's GitBook (etherfi.gitbook.io), which serves the same Terms, Privacy Policy and cardholder agreements. The ether.fi app, card backend and Turnkey integration are closed, so P5 and S5 are unknown.
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      chain_id: 10
+      address: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85"
+    - symbol: USDT
+      class: stablecoin
+      backing: fiat
+      issuer: Tether
+      chain_id: 10
+      address: "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58"
+    - symbol: EURC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      chain_id: 10
+  conversion: at_spend
+  note: >-
+    The card spends from the user's own Safe on Optimism. In debit mode it transfers a spendable stablecoin; in credit mode it borrows one stablecoin against collateral (weETH, WETH, ETHFI, liquid vault tokens and others) and the collateral itself is not spent. Each spend sends the token to a settlement dispatcher for the card issuer (Rain or Reap), which settles the network in fiat. The OP config's spend and borrow list also includes frxUSD and three ether.fi Liquid vault tokens (liquidUSD, liquidReserve, liquidEUR); whether each is enabled under the current Aave v4 lending gateway was not read onchain, so only USDC, USDT and EURC are listed. The Terms name USDC as the borrowed asset, but the sample spend in C1 borrowed USDT, so no single default is marked. USDT is the bridged Tether token seen in that sample; the EURC contract address was not read.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/deployments/mainnet/10/config.json#L17-L46
+      commit: "a5024d0b6e81ac0e6f40335a08f697fc7aafde52"
+      path: deployments/mainnet/10/config.json
+      detail: The OP config lists borrowTokens usdc, fraxusd, liquidUsd, usdt, liquidReserve, eurc, liquidEUR; the legacy debit path reverts UnsupportedToken for any token that is not a borrow token (src/modules/cash/CashLendLib.sol).
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://etherfi.gitbook.io/etherfi/legal/ether.fi-legal/terms-of-use
+      archive: data/archive/etherfi-cash-terms-of-use.txt
+      detail: The Terms say card purchases are funded from supported stablecoins in the user's non-custodial wallet, or by borrowing USDC against eligible crypto collateral.
+      quote: "supported stablecoins, such as USDC, already held in your connected non-custodial wallet, or (2) using eligible crypto assets in their connected wallet as collateral to borrow USDC"
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: onchain
+      url: https://explorer.optimism.io/tx/0xdb50399e77874358090b384be2d0057478ad32a2c777a2a2eda922ef05b4f565
+      address: "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58"
+      block_number: 157880145
+      detail: A sample card spend through CashModule.spend moved USDT (0x94b008aa...) through the lending spoke to SettlementDispatcherRain 0x50A233c4....
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

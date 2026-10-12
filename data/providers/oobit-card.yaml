@@ -357,3 +357,79 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDT
+      class: stablecoin
+      backing: fiat
+      issuer: Tether
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+    - symbol: USDR
+      class: stablecoin
+      backing: fiat
+      issuer: StablR
+    - symbol: EURR
+      class: stablecoin
+      backing: fiat
+      issuer: StablR
+    - symbol: BTC
+      class: native
+    - symbol: ETH
+      class: native
+    - symbol: SOL
+      class: native
+    - symbol: BNB
+      class: native
+    - symbol: TRX
+      class: native
+    - symbol: XRP
+      class: native
+    - symbol: TON
+      class: native
+    - symbol: DOGE
+      class: native
+    - symbol: LTC
+      class: native
+    - symbol: BCH
+      class: native
+    - symbol: XLM
+      class: native
+    - symbol: ADA
+      class: native
+    - symbol: XTZ
+      class: native
+    - symbol: VET
+      class: native
+    - symbol: XAUT
+      class: other
+    - symbol: TRUMP
+      class: other
+    - symbol: SHIB
+      class: other
+  conversion: at_spend
+  note: >-
+    Oobit lists 21 assets for payments; the token is sold for USD (Oobit's base currency) at the time of each card payment. Payments come either from the user's in-app balance, which the Terms of Use say Oobit holds on a custodial basis, or via DePay from an external self-custody wallet on Ethereum, BNB Smart Chain, Solana or Polygon, where the token moves to Oobit's settlement layer at payment time. No default token is stated, although Oobit markets USDT spending prominently. USDR and EURR are StablR's dollar and euro stablecoins; XAUT is Tether's gold-backed token and TRUMP and SHIB are meme tokens (class other). Chains and contract addresses per token are not published, and the Card Terms' Supported Blockchains (Ethereum, Polygon, Optimism, Arbitrum) differ from the DePay list (see C5).
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/faq
+      detail: The FAQ lists the assets Oobit supports for payments and transfers.
+      quote: "Oobit supports USDC, USDT, BNB, USDR, EURR, BTC, DOGE, ETH, SOL, TRX, XRP, XTZ, TON, VET, XAUT, LTC, XLM, TRUMP, ADA, BCH, and SHIB for payments and transfers"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/faq
+      detail: The FAQ says crypto is converted at the time of payment, with USD as the base currency.
+      quote: "Simply use your Oobit virtual card and the crypto is converted at the time of payment"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://www.oobit.com/depay
+      detail: With DePay the token moves from the user's own wallet to Oobit's settlement layer only when a payment is authorised.
+      quote: "directly from your wallet to Oobit's settlement layer"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

@@ -1,0 +1,18 @@
+Source: https://hyperbeat.org/_next/static/chunks/97b00ce1712acb99.js (Hyperbeat Pay web app bundle, loaded by https://hyperbeat.org/dapp/pay)
+Fetched: 2026-10-12 (curl). Excerpts copied verbatim from the minified script; chunk file names change when Hyperbeat redeploys.
+
+1. beatUSD token config:
+n={symbol:"bUSD",address:"0x669abe85f96a9e3b34723f7be9bc6f250abc0cc1",decimals:6,image:"/assets/icons/tokens/beatusd.png"}
+
+2. Display mapping (the app shows beatUSD to the user as "USD"):
+D={beatusd:{symbol:"USD",image:n.image,address:n.address,decimals:n.decimals}
+
+3. Services listed in the same bundle:
+{address:b.serviceAddress,name:"USD Solver",description:"Fee-free instant USD ↔ USDC withdrawals"},{address:"0xF9c4384B52F541f7FdcE5DCF3D18960414d8990B",name:"BeatUSD Teller",description:"USDC withdrawals to Ethereum via Paxos"}
+
+4. USDC on HyperEVM in the same bundle:
+usdcAddress:"0xb88339CB7199b77E23DB6E890353E22632Ba630f",beatUsdAddress:"0x669abe85F96a9e3B34723F7Be9bC6F250aBC0Cc1"
+
+Onchain read (HyperEVM, chain 999, https://rpc.hyperliquid.xyz/evm, block ~48338520, 2026-10-12):
+0x669abe85F96a9e3B34723F7Be9bC6F250aBC0Cc1 name() = "Hyperbeat USD", symbol() = "beatUSD", decimals() = 6
+0xb88339CB7199b77E23DB6E890353E22632Ba630f symbol() = "USDC"

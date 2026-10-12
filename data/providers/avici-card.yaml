@@ -362,3 +362,28 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+  conversion: at_spend
+  note: >-
+    The user deposits USDC into a Loan Escrow contract, which creates a USD credit balance on the card; each purchase reduces that balance, and Avici liquidates the spent USDC from the contract every one to two days (sometimes weekly) to settle with Visa. Conversion is therefore of the spent amount after authorisation, in batches, rather than one sale per swipe. The docs say the contract is on an EVM chain and accepts deposits from Solana but name neither the chain nor the contract address, so no chain or address is recorded.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/secured-credit-cards
+      detail: The docs say users deposit USDC into a Loan Escrow contract that backs a USD credit balance on the card.
+      quote: "User deposits USDC in a Loan Escrow smart contract"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.avici.money/getting-started/secured-credit-cards
+      detail: Avici liquidates the spent USDC from the card contract every one to two days or weekly and settles with Visa.
+      quote: "we liquidate the spent USDC amount from the card contract"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

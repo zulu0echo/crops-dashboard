@@ -134,7 +134,13 @@ export function checkProvider(p, file) {
       if (e.tier === 'verified' && !['onchain', 'repo'].includes(e.kind)) err(at, `kind ${e.kind} cannot be tier verified`);
     });
   }
-  // Country availability (displayed, not scored) follows the same evidence rules as a cell.
+  // Country availability and settlement tokens (displayed, not scored) follows the same evidence rules as a cell.
+  if (p.settlement) {
+    if (!p.settlement.evidence.some((e) => e.tier !== 'claimed' || e.by === 'provider'))
+      err('settlement', 'third-party claims alone cannot establish the settlement token; cite the provider\'s docs, terms, code or an onchain read');
+    for (const t of p.settlement.tokens) if (t.address && !t.chain_id && !t.caip2 && !p.primary_chain) err('settlement', `${t.symbol}: an address needs chain_id or caip2`);
+    if (p.settlement.tokens.filter((t) => t.default).length > 1) err('settlement', 'at most one default token');
+  }
   if (p.availability) {
     for (const c of p.availability.countries ?? []) if (!COUNTRY.has(c)) err('availability', `${c} is not an ISO 3166-1 code or a region in data/regions.yaml`);
     if (!p.availability.evidence.some((e) => e.tier !== 'claimed' || e.by === 'provider'))
@@ -192,7 +198,7 @@ export const operationalOnline = (op, file, provider) => checkOnline({
 // upgrade path is retry-with-backoff and a per-host allowlist of known-flaky docs sites.
 export async function checkOnline(p, file) {
   const errs = [];
-  const ev = [...Object.entries(p.scores).flatMap(([id, c]) => (c.evidence ?? []).map((e) => [id, e])), ...(p.availability?.evidence ?? []).map((e) => ['availability', e])];
+  const ev = [...Object.entries(p.scores).flatMap(([id, c]) => (c.evidence ?? []).map((e) => [id, e])), ...(p.availability?.evidence ?? []).map((e) => ['availability', e]), ...(p.settlement?.evidence ?? []).map((e) => ['settlement', e])];
   const headers = { 'user-agent': 'crops-dashboard-validator' };
   const ghHeaders = { ...headers, accept: 'application/vnd.github+json', ...(process.env.GITHUB_TOKEN && { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }) };
   const seen = new Set();
@@ -338,6 +344,14 @@ function selfCheck() {
   ok(has(p, /third-party claims alone cannot establish availability/), 'availability: third-party-only accepted');
   p = base(); p.availability = { model: 'allowlist', countries: ['EEA', 'GB'], evidence: [docEv], checked_at: '2026-10-09' };
   ok(errs(p).length === 0, 'availability: valid allowlist rejected: ' + errs(p));
+  p = base(); p.settlement = { tokens: [{ symbol: 'USDC', class: 'stablecoin', backing: 'fiat' }], conversion: 'at_spend', evidence: [docEv], checked_at: '2026-10-12' };
+  ok(errs(p).length === 0, 'settlement: valid block rejected: ' + errs(p));
+  p = base(); p.settlement = { tokens: [{ symbol: 'USDC', class: 'stablecoin' }], evidence: [docEv], checked_at: '2026-10-12' };
+  ok(has(p, /schema/), 'settlement: stablecoin without backing accepted');
+  p = base(); p.settlement = { tokens: [{ symbol: 'ETH', class: 'native', backing: 'fiat' }], evidence: [docEv], checked_at: '2026-10-12' };
+  ok(has(p, /schema/), 'settlement: backing on a non-stablecoin accepted');
+  p = base(); p.settlement = { tokens: [{ symbol: 'X', class: 'platform' }], evidence: [{ tier: 'claimed', by: 'third_party', kind: 'document', url: 'https://cardmap.org', detail: 'd', checked_at: '2026-10-12' }], checked_at: '2026-10-12' };
+  ok(has(p, /third-party claims alone cannot establish the settlement/), 'settlement: third-party-only accepted');
   // operational layer
   const opBase = () => ({ slug: 'x', facts: {} });
   const fact = (status, extra = {}) => ({ status, assessed_by: 'tester', review: { status: 'pending' }, checked_at: '2026-10-09', ...extra });

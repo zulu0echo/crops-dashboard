@@ -597,3 +597,46 @@ context: >-
 
 notes: >-
   Wirex One (launched May 2026; replaced crypto in the classic Wirex app for EEA and AU users) runs on Wirex's BaaS stack on Base: Kernel v3.1 smart accounts with a Wirex FundsManagement executor and an ExecutionDelayPolicy. The link comes from the one.wirexapp.com production bundle (archived and redacted in data/archive/wirex-one-web-app-config.txt) together with Wirex's own BaaS repo, which publishes the Base registry. The legacy Wirex Pay chain (chain 31415, a Polygon CDK validium with "Card" contracts verified on its Blockscout) is not assessed: it is not in the dashboard RPC list and showed only bridge transactions in Sep-Oct 2026. The web bundle also contains an SSO client secret; it was not used.
+
+settlement:
+  tokens:
+    - symbol: WUSD
+      class: platform
+      chain_id: 8453
+      address: "0xb4bB2032A73A53C0Aa7Dc9ee2d9658a978fA7bC2"
+    - symbol: WEUR
+      class: platform
+      chain_id: 8453
+      address: "0x379e120C1921bFD8f5E0A1a3C699e7e800b66606"
+  conversion: at_spend
+  note: >-
+    Wirex's BaaS stack keeps every balance in two Wirex-issued wrapped tokens on Base: WUSD (USD) and WEUR (EUR). Deposits of USDC, USDT or EURC are bridged to Base and wrapped 1:1 into WUSD or WEUR; withdrawals unwrap WUSD to USDC and WEUR to EURC. Wirex also mints WUSD/WEUR directly for card refunds, incoming SEPA/ACH transfers, P2P and rewards, so the tokens are claims on Wirex rather than plain USDC/EURC wrappers. At card authorisation the FundsManagement executor debits WUSD or WEUR from the user's wallet to a FundsBuffer (CryptoOut), then Wirex settles to the card network in fiat (CardOut). Which of the two is debited follows the card and balance currency; no default is documented. Both tokens are upgradeable contracts controlled by Wirex.
+  evidence:
+    - tier: verified
+      kind: repo
+      url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-crypto/SKILL.md#L17-L29
+      commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+      path: skills/wirex-baas-crypto/SKILL.md
+      detail: Wirex's BaaS repo describes the unified balance model, with all balances held as WUSD and WEUR on Base and USDC, USDT or EURC deposits wrapped into them 1:1.
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: repo
+      url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-cards/SKILL.md#L132-L139
+      commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+      path: skills/wirex-baas-cards/SKILL.md
+      detail: Card purchases debit funds onchain from the user wallet to a FundsBuffer through the FundsManagement executor, then settle to the card network.
+      checked_at: "2026-10-12"
+    - tier: verified
+      kind: repo
+      url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-overview/references/ENVIRONMENTS.md#L163-L171
+      commit: "7dff6eaaba9e06a30056f787ec54324d64a3e671"
+      path: skills/wirex-baas-overview/references/ENVIRONMENTS.md
+      detail: Production Base token table gives the WUSD and WEUR addresses (with USDC, USDT and EURC).
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://www.wirexapp.com/legal/one/terms
+      detail: The Wirex One Terms say assets may be converted or wrapped on transfer into Wirex's onchain infrastructure and unwrapped on the way back.
+      quote: any digital assets converted or wrapped on transfer to the On-Chain Infrastructure may be re-converted or unwrapped on such a transfer back
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

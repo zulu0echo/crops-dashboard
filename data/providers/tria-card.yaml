@@ -367,3 +367,33 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+  conversion: at_spend
+  note: >-
+    Inferred from the Card Terms fee schedule, which charges a "USDC Settlement/Deposit" fee; no Tria page names the card-balance token outright. Top-ups from 1,000+ tokens on Bitcoin, Ethereum, Polygon, Base, Arbitrum, Optimism, BSC, Aptos and Solana are swapped by BestPath into "the required currency" and credited to the card balance, which the Card Terms treat as digital-asset collateral liquidated to repay charges; the help centre says crypto is converted at payment time. The collateral chain and contract are not published.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.tria.so/card-terms-international
+      detail: The International Card Terms fee schedule lists a USDC settlement and deposit fee of up to 1%.
+      quote: "USDC Settlement/Deposit: Up to 1%"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://help.tria.so/en/articles/14854432-what-are-provider-fees
+      detail: The help centre says a top-up may swap the deposited asset into the currency the card balance requires, and recommends USDC or USDT on L2s as needing the fewest conversion steps.
+      quote: "Converting your specific asset into the required currency"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://help.tria.so/en/articles/13513481-what-are-tria-cards
+      detail: The help centre says crypto is converted at payment time.
+      quote: "Your crypto is converted at payment time"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

@@ -443,3 +443,34 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+      caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+  conversion: at_spend
+  note: >-
+    The card spends USDC in both modes. In Cash mode a payment is settled from the user's USDC balance; in Credit mode it draws USDC credit borrowed through Kamino against deposited SOL, wETH, cbBTC, USDT or jitoSOL, which stay as collateral and are not sold. Rain (Card Partner) does authorisation, clearing and fiat settlement. How USDC reaches Rain could not be observed onchain, so the USDC mint address is not given.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.x.place/card/about-xplace-sard.md
+      detail: The card page says Cash-mode payments settle from the USDC balance and Credit-mode payments draw on the credit line backed by Collateral.
+      quote: "the transaction is settled from your available USDC balance"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.x.place/xplace/credit.md
+      detail: The Credit page says credit is issued only in USDC.
+      quote: "Credit is issued in USDC only"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
+      detail: Terms s5.1 say the Card Partner performs authorisation, clearing and fiat settlement.
+      quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

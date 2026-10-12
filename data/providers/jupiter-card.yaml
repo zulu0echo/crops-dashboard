@@ -337,3 +337,39 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+      caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+    - symbol: USDT
+      class: stablecoin
+      backing: fiat
+      issuer: Tether
+      caip2: "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+  conversion: at_spend
+  note: >-
+    USDC is the base asset. The Solana deposit address takes USDC or USDT directly; tokens from Ethereum, Base, Arbitrum, Sui, BSC and Robinhood Chain arrive through Universal Deposit and are converted to USDC, and Send to Spend in Jupiter Mobile swaps any other token into USDC. Deposits are not converted to USD on arrival (the app only displays a USD balance); with a Rain-issued card they stay onchain as collateral and purchases settle over Visa in fiat. The DCS (Asia-Pacific) card's settlement mechanics are not documented separately.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/jupiter-card
+      detail: The Jupiter Card page says USDC and USDT deposits are not converted to USD on arrival and stay onchain as collateral with a Rain card.
+      quote: "The USDC and USDT you deposit are not converted to USD when they arrive"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend
+      detail: The Spend page names USDC as the base deposit asset and says other tokens are converted to USDC.
+      quote: "USDC is the base deposit asset."
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.jup.ag/user-docs/global/spend/jupiter-card
+      detail: Purchases settle over Visa in fiat.
+      quote: "Purchases go through the Visa network and are settled in fiat."
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"

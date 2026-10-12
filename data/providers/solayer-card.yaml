@@ -342,3 +342,27 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+settlement:
+  tokens:
+    - symbol: USDC
+      class: stablecoin
+      backing: fiat
+      issuer: Circle
+      default: true
+  conversion: at_spend
+  note: >-
+    The card spends USDC with no conversion at top-up. The Card Terms make the deposited digital asset collateral that is liquidated by smart contract to repay each purchase. Users can opt into sUSD, Solayer's yield-bearing stablecoin, for savings, but the docs describe spending from USDC. The chain is unsettled: the Card Terms name Solana as the Supported Blockchain, while the product pages say Solayer Pay runs on Solayer Chain, so no chain or mint address is given.
+  evidence:
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/solayer-pay/overview
+      detail: The Overview says the card spends directly from USDC with no pre-conversion and runs on Solayer Chain.
+      quote: "Spend directly from USDC"
+      checked_at: "2026-10-12"
+    - tier: documented
+      kind: document
+      url: https://docs.solayer.org/resources/legal/us-card-terms
+      detail: The US Card Terms say collateral stays in smart contracts on the Supported Blockchains and is liquidated to repay card charges.
+      quote: "the Collateral will be foreclosed and liquidated by the smart contract in order to repay the outstanding balance on your Card"
+      checked_at: "2026-10-12"
+  checked_at: "2026-10-12"
