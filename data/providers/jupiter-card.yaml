@@ -373,3 +373,25 @@ settlement:
       quote: "Purchases go through the Visa network and are settled in fiat."
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    Jupiter's Spend docs (overview, Jupiter Card, Risks & Security, Fees & Limits, FAQ; none mentions an audit), the
+    jup-ag GitHub org (no Spend or card repo), Rain's security page (audits under NDA, Sherlock named), Rain's GitHub org
+    SignifyHQ, and the Sherlock report repo (one Rain report). No audit of Jupiter Spend, DCS's card programme or Rain's
+    Solana collateral program is published. Noah (off-ramp) is not in the card payment path.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Sherlock
+      date: "2025-02-11"
+      type: contest
+      scope: "Shared component: Rain EVM collateral contracts v2 (Beacon, Collateral, Coordinator, Factory), private best-efforts contest"
+      url: https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2025.02.11%20-%20Final%20-%20Rain%20Private%20Best%20Efforts%20Audit%20Contest%20Report.pdf
+      commit: 6f578d5b9c9fa35bbe857959a50fa5aab4fa611a
+      repo: https://github.com/SignifyHQ/collateral-contract-evm-v2
+      covers_deployed: unknown
+      findings: "0 high, 2 medium (statement payoff rounding; missing Chainlink min/max answer check)"
+      note: >-
+        Logged because Rain issues the card outside APAC and the docs say Rain-card deposits stay onchain as
+        collateral. Rain publishes no collateral address for this card and deposits are Solana-first, so these EVM
+        contracts may not hold Jupiter Card collateral. The Rain repo is private; contest ran 2-8 December 2024.

@@ -387,3 +387,58 @@ settlement:
       quote: "we liquidate the spent USDC amount from the card contract"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    avici.money (terms, card terms, privacy) and docs.avici.money (all pages; no audit mentioned), the Avici-Labs GitHub
+    org (no card or escrow code), ZeroDev's audits page and the audits/ folder of github.com/zerodevapp/kernel, Rain's
+    security page and the Sherlock report repo. No audit of Avici's Loan Escrow contract, app or relayer is published.
+    Logged are the Kernel v3 reports; the older Kernel v1/v2, recovery and WebAuthn plugin reports by KALOS in the same
+    folder are not, since Avici does not publish which Kernel version its wallets run. Sumsub, Third National and Visa
+    publish no code audits.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Felix Kim (independent auditor)
+      date: "2024-06"
+      type: audit
+      scope: "Shared component: ZeroDev Kernel v3.0-to-3.x changes (incremental, the v3.1 release) plus WebAuthn, MultiChain WebAuthn and Weighted validators and the SpendingLimit hook"
+      url: https://github.com/zerodevapp/kernel/blob/release/v3.3/audits/v_3_1_incremental_audit.pdf
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: unknown
+      findings: "3 minor (validator and hook issues)"
+      note: >-
+        Audit period 27 May-9 June 2024; reviews only the diff from v3.0. Avici's docs say its EVM wallet is built on
+        ZeroDev but give no wallet address or Kernel version.
+    - auditor: KALOS
+      date: "2024-04-12"
+      type: audit
+      scope: "Shared component: ZeroDev Kernel v3 KernelFactory and FactoryStaker"
+      url: https://github.com/zerodevapp/kernel/blob/main/audits/kalos_v3_plugins.pdf
+      commit: 85617952ec4cdf8d6478a9139540968fb92a6f10
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: unknown
+      findings: No security issues found
+      note: The file is named kalos_v3_plugins but its scope is the factory contracts.
+    - auditor: ChainLight (Theori)
+      date: "2024-04-05"
+      type: audit
+      scope: "Shared component: ZeroDev Kernel v3.0 (ERC-7579 smart account) core and validation modules"
+      url: https://github.com/zerodevapp/kernel/blob/main/audits/chainlight_v3_0.pdf
+      commit: 8646f2c25f2727019d91cbfb43f9c5688acc6fc2
+      repo: https://github.com/zerodevapp/kernel_v3
+      covers_deployed: unknown
+      findings: "2 high, 2 medium, 3 low, 5 informational"
+      note: Audit started 11 March 2024 on kernel_v3 commits 5f086737 and 8646f2c2.
+    - auditor: Sherlock
+      date: "2025-02-11"
+      type: contest
+      scope: "Shared component: Rain EVM collateral contracts v2 (Beacon, Collateral, Coordinator, Factory), private best-efforts contest"
+      url: https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2025.02.11%20-%20Final%20-%20Rain%20Private%20Best%20Efforts%20Audit%20Contest%20Report.pdf
+      commit: 6f578d5b9c9fa35bbe857959a50fa5aab4fa611a
+      repo: https://github.com/SignifyHQ/collateral-contract-evm-v2
+      covers_deployed: unknown
+      findings: "0 high, 2 medium (statement payoff rounding; missing Chainlink min/max answer check)"
+      note: >-
+        Logged because the card is issued by Third National (a Rain affiliate) under Rain-template card terms with an
+        EVM collateral contract. Avici does not name Rain or say whether its Loan Escrow is Rain's collateral contract,
+        so this may not apply. The Rain repo is private; contest ran 2-8 December 2024.

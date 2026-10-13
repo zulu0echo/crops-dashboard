@@ -718,3 +718,49 @@ availability:
 
 notes: >-
   Unit: Ethereum Entrypoint 0x6818…6b46 with the ETH, USDC and USDT pools; 11 further mainnet pools (USDS, sUSDS, DAI, wstETH, WBTC, USDe, USD1, frxUSD, wOETH, fxUSD, BOLD) use the same contracts and are not scored separately. Reads at block 26153374 via publicnode (blacklist reads at 26153426); event history via rpc.mevblocker.io, which served full-range eth_getLogs. The deployments doc lists implementation 0xdd8a…d4c1, superseded by 0x15e3…1a2c in May 2025. The latest ASP tree (CID bafybeibshlh…fb3a) was retrievable from public IPFS gateways. No transactions, UI runs, traces or self-host attempts.
+
+audits:
+  searched: >-
+    The audit/ folder of github.com/0xbow-io/privacy-pools-core (four reports) and its SECURITY.md, the 0xbow-io GitHub organisation, the privacy-pools-website repo, and web searches for further reports. Launch coverage names Audit Wizard, Auditware's product, which matches the Auditware report below. Oxorio's entrypoint-upgrade report is the audit of the May 2025 fix that followed the deposit-pause incident.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Oxorio
+      date: "2025-05-20"
+      type: audit
+      scope: Entrypoint upgrade adding used-precommitment tracking (the Entrypoint implementation deployed in May 2025).
+      url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/audit/entrypoint_upgrade_audit_oxorio.md
+      commit: 238e3594053becde68aa40e1e4cef6c0c46e68da
+      repo: https://github.com/0xbow-io/privacy-pools-core
+      covers_deployed: "yes"
+      findings: "No critical or major; 1 warning and 1 info, both acknowledged"
+      note: S6 shows the deployed Entrypoint implementation 0x15e3…1a2c equals Entrypoint.sol at this commit.
+    - auditor: Oxorio
+      date: "2025-03-18"
+      type: audit
+      scope: Entrypoint, PrivacyPool, State and the simple and complex pool implementations.
+      url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/audit/contracts_audit_oxorio.md
+      commit: 532eaa8ed151f06697249d400926d17adf442d8e
+      repo: https://github.com/0xbow-io/privacy-pools-core
+      covers_deployed: partly
+      findings: "No critical; 2 major (1 fixed, 1 acknowledged); warnings and info fixed, acknowledged or marked no issue"
+      note: Initial commit 2d4627ba, final 532eaa8e. The deployed pools match the final commit (S6); the Entrypoint it reviewed was replaced in May 2025 by the version in the upgrade audit.
+    - auditor: Auditware
+      date: "2025-03"
+      type: review
+      scope: Entrypoint, PrivacyPool, State, pool implementations, Constants and ProofLib.
+      url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/audit/contracts_audit_auditware.md
+      commit: f0b8fe5e7b91b942523e8af671c59c3a4c75f612
+      repo: https://github.com/0xbow-io/privacy-pools-core
+      covers_deployed: partly
+      findings: "3 medium (mitigated, partially mitigated, acknowledged), 3 low; no critical"
+      note: The report is undated; it was added to the repo on 2025-03-19 and the audited commit is from 2025-02-14. It links that commit in a defi-wonderland fork that no longer resolves; the commit exists in 0xbow-io/privacy-pools-core. The contracts changed afterwards with Oxorio's fixes.
+    - auditor: Oxorio
+      date: "2025-02-21"
+      type: audit
+      scope: Withdrawal, commitment and Merkle tree circuits (circom).
+      url: https://github.com/0xbow-io/privacy-pools-core/blob/d494b63e79f33bb2b0c8ece6cdacdca465c3b884/audit/circuits_audit_oxorio.md
+      commit: 8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb
+      repo: https://github.com/0xbow-io/privacy-pools-core
+      covers_deployed: unknown
+      findings: "No critical or major; warnings and info fixed, acknowledged or marked no issue"
+      note: The circuit sources are unchanged between the audited final commit and the assessed commit d494b63e, and the verifiers were generated in March 2025 after the trusted setup; we did not check that the deployed verifier keys derive from these circuits.

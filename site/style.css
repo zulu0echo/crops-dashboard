@@ -372,3 +372,13 @@ details.picker > summary { font-weight: 600; }
 }
 /* Long addresses and URLs in prose must wrap rather than widen the page. */
 main p, main li, main dd { overflow-wrap: break-word; }
+/* Audit log under Security */
+.audits { margin: 28px 0 8px; padding-top: 20px; border-top: 1px solid var(--line-strong); }
+.audits h3 { margin-top: 0; }
+.audits-table td { vertical-align: top; }
+.audits-table td.nowrap { white-space: nowrap; }
+.cover { font: 600 12px/1 var(--sans); padding: 3px 6px; border-radius: 3px; border: 1px solid var(--line-strong); white-space: nowrap; }
+.cv-yes { background: var(--s3); color: var(--s3-ink); border-color: var(--s3-edge); }
+.cv-partly { background: var(--s2); color: var(--s2-ink); border-color: var(--s2-edge); }
+.cv-no { background: var(--s0); color: var(--s0-ink); border-color: var(--s0-edge); }
+.cv-unknown { background: var(--unk); color: var(--unk-ink); border-style: dashed; }

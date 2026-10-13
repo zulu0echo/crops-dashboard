@@ -439,3 +439,80 @@ settlement:
       quote: The app explains that your card spends dollars. Euros cannot pay by card yet.
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    Tuyo's site and help guides (no audit or security page; no Tuyo-owned contract is published), the audits/ folder of github.com/zerodevapp/kernel at tag v3.2 (cfedcb9, the source of the Kernel 3.2 implementation and ECDSA validator Tuyo names) and v3.3, ZeroDev's docs audits page (points to that folder; the current dev branch for v4 has no audits folder), and the ChainLight and KALOS reports themselves. Left out: KALOS reports on the Recovery/Weighted ECDSA plugin and the WebAuthn plugin, which are not in Tuyo's account path. No published audit was found for the Kernel v3.2 changes (December 2024) or for the card collateral contracts, whose operator Tuyo does not name.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Felix Kim (independent)
+      date: "2024-06"
+      type: review
+      scope: "Shared ZeroDev Kernel component: incremental review of Kernel changes from v3.0 to v3.x (changes only), plus the WebAuthn, MultiChainWebAuthn and Weighted validators and the SpendingLimit hook."
+      url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/audits/v_3_1_incremental_audit.pdf
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: partly
+      findings: "3 minor, all in the Weighted validator and SpendingLimit hook; none in the Kernel diff"
+      note: >-
+        Review period 27 May to 9 June 2024; uploaded to the repository in August 2024 as the v3.1 incremental audit. The Kernel 3.2 release (December 2024) changed Kernel.sol, ExecLib and the core managers again after this review.
+    - auditor: KALOS (HAECHI LABS)
+      date: "2024-04-12"
+      type: audit
+      scope: "Shared ZeroDev Kernel component: Kernel v3 KernelFactory and FactoryStaker (filed as kalos_v3_plugins.pdf)."
+      url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/audits/kalos_v3_plugins.pdf
+      commit: 85617952ec4cdf8d6478a9139540968fb92a6f10
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: unknown
+      findings: No security issues found
+      note: The factory deploys Kernel accounts; which factory Tuyo uses to deploy its accounts was not established.
+    - auditor: ChainLight (Theori)
+      date: "2024-04-05"
+      type: audit
+      scope: "Shared ZeroDev Kernel component: Kernel v3.0 (ERC-7579) core contracts, including the validation, executor, hook and selector managers, ExecLib and the ECDSA validators."
+      url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/audits/chainlight_v3_0.pdf
+      commit: 8646f2c25f2727019d91cbfb43f9c5688acc6fc2
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: partly
+      findings: "2 high, 2 medium, 3 low, 5 informational; 9 patched, 1 acknowledged, 2 informational in progress"
+      note: >-
+        Audited commits 5f08673 and 8646f2c (March 2024, named in the report as zerodevapp/kernel_v3). Tuyo accounts run the Kernel 3.2 implementation 0xD830D15D..., which adds the v3.1 and v3.2 changes on top of the audited v3.0 code; the ECDSA validator is the audited design.
+    - auditor: KALOS (HAECHI LABS)
+      date: "2023-09-20"
+      type: audit
+      scope: "Shared ZeroDev Kernel component: Kernel v2.2 and Kernel v2.2-Lite (KernelLiteECDSA), factories and executors."
+      url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/audits/kalos_v2_2_lite.pdf
+      commit: f00ee0fb519a3d85a5814c0b2fecfe476db36ed0
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: "no"
+      findings: "1 critical, resolved"
+      note: Superseded Kernel v2 line; Tuyo runs Kernel 3.2.
+    - auditor: KALOS (HAECHI LABS)
+      date: "2023-08-09"
+      type: audit
+      scope: "Shared ZeroDev Kernel component: Kernel v2.2 core, factories, executors and validators (ECDSA, session key, kill switch)."
+      url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/audits/kalos_v2_2.pdf
+      commit: 199ae7d838f21b37f069267c86e8eeb6f0175a69
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: "no"
+      findings: "1 critical, 2 high, 4 medium, 1 tip; 7 resolved, 1 acknowledged"
+      note: Superseded Kernel v2 line; same audited commit and findings as the v2.1 report.
+    - auditor: KALOS (HAECHI LABS)
+      date: "2023-08-09"
+      type: audit
+      scope: "Shared ZeroDev Kernel component: Kernel v2.1 core, factories, executors and validators (ECDSA, session key, kill switch)."
+      url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/audits/kalos_v2_1.pdf
+      commit: 199ae7d838f21b37f069267c86e8eeb6f0175a69
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: "no"
+      findings: "1 critical, 2 high, 4 medium, 1 tip; 7 resolved, 1 acknowledged"
+      note: Superseded Kernel v2 line; Tuyo runs Kernel 3.2.
+    - auditor: KALOS (HAECHI LABS)
+      date: "2023-07-13"
+      type: audit
+      scope: "Shared ZeroDev Kernel component: original ZeroDev wallet Kernel (v1), account factory, MinimalAccount and session key plugin."
+      url: https://github.com/zerodevapp/kernel/blob/cfedcb9b047838f72491baaadef8fe7a95b2c837/audits/kalos_v1.pdf
+      commit: ae356c5478fc7c500bf270d864ef5eee70f292e6
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: "no"
+      findings: "5 tips, 3 resolved"
+      note: Superseded Kernel v1 line, audited in the former ZeroDev-wallet-kernel repository (now zerodevapp/kernel).

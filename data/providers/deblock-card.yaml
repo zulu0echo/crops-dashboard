@@ -275,3 +275,13 @@ settlement:
       quote: "Every Deblock card is tied to your current account"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    deblock.com (cards, self-custody, legal notice, legal agreements and FAQ pages; no security or audits page), the
+    Deblock help centre, GitHub (org DeblockApp has no public repos), web searches for Deblock security audits and
+    penetration tests, and the public portfolios of Hacken, CertiK, Cure53, Trail of Bits and Zellic. No published code
+    audit or penetration test of the Deblock app, card ledger or wallet was found. The card runs on Deblock's own closed
+    e-money ledger with no smart contract in the path.
+  checked_at: "2026-10-13"
+  reports: []

@@ -686,3 +686,35 @@ availability:
 
 notes: >-
   Unit: BETH on Ethereum mainnet and the contracts it calls. Reads at block 26153606 via ethereum-rpc.publicnode.com. Deployed BETH source = worm@eab0f53b (2026-02-11); main (b34b507d) has later, undeployed changes. The payee receives BETH, an ERC-20 claim on burned ETH whose ETH value depends on market liquidity; the official send flow converts it to ETH through the BETHToETH hook. WORM (the mining token), distributors, ICO and Staking epochs are out of scope except where mintCoin pays the pool fee. No transactions, traces or self-host attempts.
+
+audits:
+  searched: >-
+    The READMEs and file trees of github.com/worm-privacy/worm, proof-of-burn and worm-miner (no audits/ folder),
+    the Hashlock and yAudit pages linked from the contracts README, and yAudit's report index. Audited commits were
+    compared with the deployed commit eab0f53b cited in this file.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Hashlock
+      date: "2025-11"
+      type: audit
+      scope: BETH.sol (proof-of-burn mint and spend), WORM.sol and Staking.sol
+      url: https://hashlock.com/wp-content/uploads/2025/12/WORM-Smart-Contract-Audit-Report-Final-Report-v2.pdf
+      commit: 0134fb6ca0680fbff32e32b152b669c6ab5af066
+      repo: https://github.com/worm-privacy/worm
+      covers_deployed: partly
+      findings: "2 high, 4 low, 1 QA; both highs and two lows resolved, the rest acknowledged"
+      note: >-
+        Fix review at ca123363. The deployed commit eab0f53b is 36 commits later and changes BETH.sol, Staking.sol,
+        WORM.sol and both verifier contracts.
+    - auditor: yAudit
+      date: "2025-11-24"
+      type: audit
+      scope: Proof-of-burn and spend Circom circuits (ZK circuit security assessment)
+      url: https://reports.yaudit.dev/pdf/2025-11-Worm-proofofburn.pdf
+      commit: a39690248ed5ba70b9c1e14b543bd693ce416ccf
+      repo: https://github.com/worm-privacy/proof-of-burn
+      covers_deployed: unknown
+      findings: "2 high, 3 medium, 3 low, 8 informational; one high (coin-lineage privacy leak) deferred"
+      note: >-
+        Reviewed commits 0e523748 and a3969024. The deployed verifier contracts changed after the November 2025 audits,
+        and we did not tie them to a circuit commit.

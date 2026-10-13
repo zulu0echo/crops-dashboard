@@ -407,3 +407,13 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+audits:
+  searched: >-
+    wise.com/security (says Wise holds SOC 1 Type 2, SOC 2 Type 2, PCI-DSS and ISO/IEC 27001; SOC reports are given to
+    business customers under NDA; these are not code audits), Wise's 2019 TUV online-security certification blog post
+    (a certification, not a code audit), the Wise Bugcrowd programme (no public disclosure allowed; a bug bounty, not an
+    audit), github.com/transferwise (no audits folders in the listed repos), and web searches for Wise or TransferWise
+    penetration test and code audit reports. No published code audit or penetration test report was found.
+  checked_at: "2026-10-13"
+  reports: []

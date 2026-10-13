@@ -366,3 +366,15 @@ settlement:
       quote: "the Collateral will be foreclosed and liquidated by the smart contract in order to repay the outstanding balance on your Card"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    Solayer's Audits page (docs.solayer.org/resources/security/audits) and the Solayer Pay Security page, the
+    solayer-labs GitHub org (solayer-improvement-proposal audits/ folder, token-metadata), Rain's security page (audits
+    under NDA, Sherlock named) and the Sherlock report repo. The listed OtterSec and Halborn reports (2024) cover the
+    restaking, endoAVS, pool, sUSD and token-metadata programs, none of which is in the card's USDC spending path, so
+    they are not logged. No audit of Solayer Pay, its hot and cold wallets or a card collateral program is published.
+    Rain's Sherlock contest of its EVM collateral contracts is not logged: the docs put card funds in Solayer-run wallets
+    on Solana or Solayer Chain, not in Rain's EVM contracts.
+  checked_at: "2026-10-13"
+  reports: []

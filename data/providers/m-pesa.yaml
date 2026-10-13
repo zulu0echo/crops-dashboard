@@ -394,3 +394,13 @@ availability:
       detail: Daraja "Getting Started" terminology section defines M-PESA. Page is client-rendered; text read from the portal's own GraphQL populateApi response and archived.
       checked_at: "2026-10-09"
   checked_at: "2026-10-09"
+
+audits:
+  searched: >-
+    Safaricom's Daraja developer portal (developer.safaricom.co.ke), the 15 public repos of github.com/safaricom (no
+    audits folders or security reports), web searches for M-Pesa and Daraja security audits and penetration tests, and
+    news coverage. Safaricom has said an internal M-Pesa fraud investigation report is not for public consumption. No
+    published code audit or penetration test of the M-Pesa platform or the Daraja API was found; the public repos are
+    sample clients only.
+  checked_at: "2026-10-13"
+  reports: []

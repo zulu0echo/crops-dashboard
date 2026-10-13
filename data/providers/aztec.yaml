@@ -622,3 +622,140 @@ availability:
 
 notes: >-
   Unit: Aztec Alpha mainnet private token transfers. Pins: aztec-packages@49a59210 (v5.2.0; v5.2.1 changes only barretenberg), networks@7182c14b, audit-reports@b3b60cef. Ethereum reads at block 26,153,545 via publicnode: Registry 0x35b22e09Ee0390539439E24f06Da43D83f90e298, canonical Rollup 0x91fF8bbD8Ebb07893010D50A48A1609e5EBd8E34 (proven checkpoint 99,016, pending 99,048), Governance 0x1102471Eb3378FEE427121c9EfcEa452E4B6B75e, GovernanceProposer 0x06Ef1DcF87E419C48B94a331B252819FADbD63ef, EscapeHatch 0xF459348962F5eA3A9A101826B03A2CE1F459E51A. These are Ethereum (chain 1) contracts, but this row's primary chain is aztec:mainnet, and the validator requires onchain evidence to match the primary chain, so the reads are recorded in repo evidence details with cast rechecks and contracts is empty; C1, C2, S1 and S2 are capped at 2 for that reason. No transactions, node runs, builds, traces or self-host attempts were made.
+
+audits:
+  searched: >-
+    github.com/AztecProtocol/audit-reports at b3b60cef (l1-contracts, Barretenberg and TGE folders), SECURITY.md and barretenberg/cpp/scripts/audit (scope files, not reports) in aztec-packages, the noir-lang/noir repo (no audits folder), and the Trail of Bits publications list. Not listed: the TGE reports (Spearbit, zkSecurity), Cantina's Soulbound, Uniswap TWAP, Protocol Treasury, Coinissuer and Ignition staking-registry reviews, which cover token-sale, treasury, reward and staking contracts outside the transfer path; Trail of Bits' 2019 review of the earlier AZTEC Protocol; and Aztec Connect audits (a retired product). No published audit of the protocol circuits, PXE or Noir compiler was found; the docs say the stack is not fully audited.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Cyfrin
+      date: "2026-04-06"
+      type: audit
+      scope: Barretenberg stdlib logic module (in-circuit AND/XOR constraints), part of the proving system.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/Barretenberg/stdlib_primitives/Logic/cyfrin-stdlib-logic.pdf
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "4 low, 4 informational"
+      note: Shared proving-system code; the report gives no commit, so we could not match it to v5.2.0.
+    - auditor: Cantina
+      date: "2026-03-05"
+      type: review
+      scope: Alpha upgrade payload and deployment (DeployAlpha.s.sol, run_alpha_upgrade.sh, AlphaPayload.sol, AlphaVerifier.sol) plus PR 21066 updating the verification-key tree root.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/l1-contracts/Cantina%20-%20Payload%202025.03.05.pdf
+      commit: ed3f61d6
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: unknown
+      findings: "1 high (fixed), 4 informational (acknowledged)"
+      note: The file name says 2025.03.05; the report is dated March 5, 2026 (Aztec PR 20865).
+    - auditor: Cantina
+      date: "2026-02-24"
+      type: audit
+      scope: L1 EscapeHatch contract (forced exit path when the sequencer set censors).
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/l1-contracts/Cantina%20-%20Escape%20Hatch.pdf
+      commit: 0092f9f0
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "1 high, 6 medium, 5 low, 3 gas, 16 informational; 16 fixed, 15 acknowledged"
+      note: Audited before the v5.2.0 release (49a59210) used for this assessment; we did not diff EscapeHatch.sol.
+    - auditor: Sherlock
+      date: "2026-01"
+      type: audit
+      scope: Barretenberg cycle_group (Grumpkin in-circuit curve operations) and RAM/ROM memory modules.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/Barretenberg/stdlib_primitives/RAM%20ROM/Sherlock_CycleGroup_RAMROM_Final_Report.pdf
+      commit: c58cd76497e68c2236d875e7eac424f4b2d7bbd5
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "1 high, 4 medium, 3 low/info; all resolved or acknowledged"
+      note: Audited January 14 to 28, 2026; fix review at 6b858739.
+    - auditor: Cantina
+      date: "2025-12-16"
+      type: audit
+      scope: Barretenberg stdlib field primitive.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/Barretenberg/stdlib_primitives/Field/Cantina-Field-Audit.pdf
+      commit: 458fb330
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "3 low, 14 informational; all fixed"
+    - auditor: Cantina
+      date: "2025-11-12"
+      type: audit
+      scope: L1 rollup contracts at the stated commit (findings span the Rollup, Outbox and related libraries) and the EmpireSlashingProposer change (PR 16357).
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/l1-contracts/Cantina%20-%20Rollup%20Contracts.pdf
+      commit: 270e2a58ae2a378472f9be791900bbd4342c7881
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "1 critical, 2 high, 6 medium, 6 low, 1 gas, 7 informational; 15 fixed, 8 acknowledged"
+      note: The deployed Rollup v5 was built from a later commit (v5.2.0, 49a59210); we did not diff the contracts.
+    - auditor: Cantina
+      date: "2025-11-12"
+      type: audit
+      scope: L1 governance contracts (findings span Governance, the EmpireBase signalling used by GovernanceProposer, and GSE).
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/l1-contracts/Cantina%20-%20Governance.pdf
+      commit: 6496e59d
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "4 medium, 6 low, 1 gas, 9 informational; 15 fixed, 4 acknowledged"
+    - auditor: Cantina
+      date: "2025-11-10"
+      type: audit
+      scope: Barretenberg stdlib bool and byte_array primitives.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/Barretenberg/stdlib_primitives/Bool%20and%20Bytearray/Cantina-Bool-Bytearray-Audit.pdf
+      commit: 72f52e7b
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "2 critical, 3 medium, 5 low, 5 informational; all fixed"
+    - auditor: Veridise
+      date: "2025-10-13"
+      type: audit
+      scope: L1 governance contracts, including GSE and the BN254 library.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/l1-contracts/Veridise%20-%20Governance.pdf
+      commit: a6eebac
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "10 issues, 1 medium"
+    - auditor: Veridise
+      date: "2025-09-18"
+      type: audit
+      scope: Barretenberg bigfield (non-native field arithmetic) in the proving system.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/Barretenberg/stdlib_primitives/Bigfield/Veridise_Bigfield_Final_Report.pdf
+      commit: 480f49d
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "9 issues, none high or critical; 3 low"
+    - auditor: Igor Konnov and Thomas Pani
+      date: "2025-09-15"
+      type: formal_verification
+      scope: Formal verification (Quint/TLA+) of the L1 governance contracts EmpireBase, GovernanceProposer, Governance, GSE and SlashingProposer.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/l1-contracts/Igor%20Konnov%2C%20Thomas%20Pani%20-%20Governance%20Formal%20Verification.pdf
+      commit: 8b10b2b2
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "0 critical, 0 high, 5 medium, 3 low, 6 informational"
+      note: Commit range ffc8af0c to 8b10b2b2.
+    - auditor: Cantina
+      date: "2024-10-04"
+      type: audit
+      scope: Barretenberg bigfield, one of three parallel reviews of the same commit.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/Barretenberg/stdlib_primitives/Bigfield/Test%20Bigfield%20Audit/Cantina%20Audit%20Report%20-%20Barretenberg%20Bigfield.pdf
+      commit: 4ba553ba
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "2 critical, 1 high, 2 medium, 2 low, 10 informational"
+      note: Superseded in part by Veridise's 2025 bigfield audit.
+    - auditor: Zellic
+      date: "2024-07-25"
+      type: audit
+      scope: Barretenberg bigfield proof circuit.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/Barretenberg/stdlib_primitives/Bigfield/Test%20Bigfield%20Audit/Zellic%20Audit%20Report%20-%20Barretenberg%20Bigfield.pdf
+      commit: d9ca76a2
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly
+      findings: "5 critical, 2 high, 8 low, 2 informational"
+    - auditor: zkSecurity
+      date: "2024-07-01"
+      type: audit
+      scope: Barretenberg bigfield and field modules.
+      url: https://github.com/AztecProtocol/audit-reports/blob/b3b60cefe2d136763d841957daa5e9bfcff0421f/Barretenberg/stdlib_primitives/Bigfield/Test%20Bigfield%20Audit/ZKSecurity%20Audit%20Report%20-%20Barretenberg%20Bigfield.pdf
+      commit: 4ba553ba31
+      repo: https://github.com/AztecProtocol/aztec-packages
+      covers_deployed: partly

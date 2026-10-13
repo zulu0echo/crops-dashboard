@@ -516,3 +516,12 @@ availability:
 
 notes: >-
   Incumbent under the eligibility rule. Houdini Swap is a hosted aggregator. Private swaps route the payer's deposit through two third-party instant exchanges and an unnamed privacy-centric L1 token, and standard swaps through one. Houdini runs no contracts in that path, and nothing needed to run it is public. github.com/HoudiniSwap (org created 2022-12) has two public repos, both API clients: houdiniswap-agent (MIT) and houdini-api-examples (no licence). Unit of assessment: the Private Swap (and private-send) flow via the web app or the Partner API. The DEX/bridge route, which calls third-party aggregator and bridge contracts, and the staking service are excluded. houdiniswap.com and app.houdiniswap.com answer curl with a Cloudflare challenge (403), which we did not bypass, so the website field points at the official docs. The ToS is a PDF linked from the docs and is archived as text. Contracting entity: Houdini Swap LLC; governing law and arbitration in the Cayman Islands (ToS). PSE's Private Transfers Analysis was used only to locate the product. Search log: docs/research/houdini-swap.md.
+
+audits:
+  searched: >-
+    The Houdini docs (docs.houdiniswap.com, full text including the Partner FAQs "Security & Audit" entry), the Terms
+    of Service and the public HoudiniSwap GitHub repos. The FAQ says Houdini has not been audited and is pursuing SOC 2
+    certification with Deloitte, which would not be a code audit. No published report covers the API, routing engine
+    or order backend.
+  checked_at: "2026-10-13"
+  reports: []

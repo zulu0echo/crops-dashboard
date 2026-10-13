@@ -673,3 +673,14 @@ settlement:
       detail: A sample card top-up moves 3,474.158634 USDC from the payer straight to Holyheld wallet 0x6D2d1659..., through the top-up proxy.
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    holyheld.com (the homepage says Holyheld is PCI DSS Level 1 compliant and undergoes "independent security audits
+    yearly"; no report is linked, and PCI DSS is not a code audit), the holyheld GitHub organisation including
+    hh-v1-sdk (no audits/ folder), web searches for Holyheld audits by Hacken, Quantstamp, PeckShield, CertiK and
+    MixBytes, and the Sherlock and Guardian report repositories. Sherlock's repo holds a deprecated 2023 Holyheld
+    coverage agreement but no Holyheld audit report. No audit of the card top-up contract (whose implementation is
+    unverified) is published.
+  checked_at: "2026-10-13"
+  reports: []

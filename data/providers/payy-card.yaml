@@ -684,3 +684,54 @@ settlement:
       detail: The deploy script pins the rollup token to Circle USDC 0xA0b86991... on Ethereum.
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    The Payy wallet FAQ (docs.payy.network), which says "the important parts of Payy's code have been audited" but
+    links no report; the polybase/payy repo tree (no audits/ folder; one GitHub security advisory, GHSA-fhxc-63vg-9gwr,
+    for the aggregation circuit); web searches for Payy and Polybase audits across Zellic, Veridise, Least Authority,
+    Spearbit, Hacken and Halborn; and the docs/ audit folder of github.com/safe-fndn/safe-smart-account for the owner
+    Safe. No audit of RollupV1, the Noir/Halo2 circuits or the node is published. The September 2026 exploit postmortem
+    cites a Spearbit incident report; that is incident analysis, not an audit, and is not listed. Audits of the
+    Barretenberg toolchain that generates the HonkVerifier are not logged here.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Nethermind Security
+      date: "2026-08-17"
+      type: audit
+      scope: "Shared component: Safe smart account v1.3.0 (GnosisSafe, GnosisSafeL2 and handlers), the version of the rollup's 2-of-4 owner Safe"
+      url: https://github.com/safe-fndn/safe-smart-account/blob/main/docs/Safe_Audit_Report_1_3_0_Nethermind.pdf
+      commit: 767ef36bba88bdbc0c9fe3708a4290cabef4c376
+      repo: https://github.com/safe-fndn/safe-smart-account
+      covers_deployed: "yes"
+      findings: "1 low (getModulesPaginated skips a module between pages), 1 informational"
+      note: Owner Safe 0x230Dfb03... proxies the canonical GnosisSafeL2 v1.3.0 singleton 0x3E5c6364... (slot 0 read 2026-10-13). Retrospective review of the shipped 1.3.0 code.
+    - auditor: Certora
+      date: "2026-07"
+      type: audit
+      scope: "Shared component: Safe smart account v1.3.0 (GnosisSafe, GnosisSafeL2, base managers, handlers), the version of the rollup's owner Safe"
+      url: https://github.com/safe-fndn/safe-smart-account/blob/main/docs/Safe_Audit_Report_1_3_0_Certora.pdf
+      commit: 767ef36bba88bdbc0c9fe3708a4290cabef4c376
+      repo: https://github.com/safe-fndn/safe-smart-account
+      covers_deployed: "yes"
+      findings: "1 low, 2 informational"
+      note: Review window 20-29 July 2026, tag v1.3.0-libs.0.
+    - auditor: G0 Group
+      date: "2021-05"
+      type: audit
+      scope: "Shared component: Gnosis Safe v1.3.0 contracts (final audit), the version of the rollup's owner Safe"
+      url: https://github.com/safe-fndn/safe-smart-account/blob/main/docs/Gnosis_Safe_Audit_Report_1_3_0_Final.pdf
+      commit: ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9
+      repo: https://github.com/safe-fndn/safe-smart-account
+      covers_deployed: "yes"
+      findings: No issues found
+    - auditor: G0 Group
+      date: "2021-04"
+      type: audit
+      scope: "Shared component: Gnosis Safe v1.3.0 contracts (initial audit), the version of the rollup's owner Safe"
+      url: https://github.com/safe-fndn/safe-smart-account/blob/main/docs/Gnosis_Safe_Audit_Report_1_3_0_Initial.pdf
+      commit: 4bfc0c8519f1893015d7edfd2c2780fca163c364
+      repo: https://github.com/safe-fndn/safe-smart-account
+      covers_deployed: partly
+      findings: No issues found
+      note: Superseded by the May 2021 final audit; changes up to 9b305a0f were checked.

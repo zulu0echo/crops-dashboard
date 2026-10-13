@@ -433,3 +433,67 @@ availability:
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
   checked_at: "2026-10-09"
+
+audits:
+  searched: >-
+    minipay.to and Opera's press and security blog pages (no MiniPay audit linked), github.com/celo-org/minipay, the
+    security-reviews folders of celo-org/celo-monorepo and celo-org/optimism (the latter holds upstream OP Stack reviews,
+    not listed here), the Celo forum (L2 audit and Core Contracts Release 8 posts), mento.org/audits and ChainSecurity's
+    Mento reports, and web searches for MiniPay, ODIS and SocialConnect audits. No audit of the MiniPay app, backend or
+    issuer service was found. Not listed: Immunefi's Nov-Dec 2024 Celo competition (L1-to-L2 migration tooling and
+    stCelo); Mento's Hats, Sherlock and Macro entries (no report linked); the ChainSecurity Mento Liquity v2 audit.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: ChainSecurity
+      date: "2026-02-17"
+      type: audit
+      scope: >-
+        Shared component: Mento Core v3, including StableTokenV3 and StableTokenSpoke (the USDm token contracts), FPMM
+        swaps, liquidity strategies, oracle adapter and ReserveV2
+      url: https://reports.chainsecurity.com/Mento/ChainSecurity_Mento_MentoCoreV3_Audit.pdf
+      commit: 0e07807c222fabf93556bd48b263483f994b9332
+      repo: https://github.com/mento-protocol/mento-core
+      covers_deployed: unknown
+      findings: "0 critical, 0 high, 7 medium, 9 low; 9 code corrected, 1 specification changed, 1 partly corrected, 5 risk accepted"
+      note: >-
+        Five review rounds from 22 October 2025 (683af1f) to the final version 0e07807. USDm is one of the tokens MiniPay
+        users hold and send; whether the USDm proxy on Celo points to the audited StableTokenV3 was not checked.
+    - auditor: Trail of Bits
+      date: "2024-12-19"
+      type: audit
+      scope: >-
+        Celo L2 blockchain (OP Stack fork): token duality, fee currencies, alt-DA, L1-to-L2 data migration; celo-monorepo
+        contracts, celo-org/op-geth and celo-org/optimism
+      url: https://github.com/celo-org/celo-monorepo/blob/551bc1b6d76f7a08047573d70fb35b804dd84a00/packages/protocol/security-reviews/2024_12-Cel2-TrailOfBits.pdf
+      repo: https://github.com/celo-org/op-geth
+      commit: c6d7b55
+      covers_deployed: partly
+      findings: "0 high, 2 medium, 4 low, 4 informational"
+      note: >-
+        Targets: celo-monorepo 89591e1 and PR #11261, op-geth c6d7b55, optimism 50977c3; review October-November 2024.
+        Celo mainnet has since moved to later rebases of op-geth and optimism (celo-rebase-17/18), so the audit covers an
+        earlier version of the chain MiniPay settles on.
+    - auditor: Verilog Solutions
+      date: "2022-09-20"
+      type: audit
+      scope: "Shared component: Celo OdisPayments contract and proxy (ODIS quota payments made by SocialConnect issuers such as MiniPay's), celo-monorepo PR #9740"
+      url: https://www.verilog.solutions/audits/celo_pr_9740/
+      commit: 4bf959b
+      repo: https://github.com/celo-org/celo-monorepo
+      covers_deployed: unknown
+      findings: "1 medium (cUSD paid in cannot be withdrawn; acknowledged), 1 informational (resolved)"
+      note: Listed as a Core Contracts Release 8 audit in the Celo forum release post. Used only in the optional phone-number lookup flow.
+    - auditor: Hacken
+      date: "2022-07"
+      type: audit
+      scope: >-
+        Shared component: Celo Core Contracts Release 8 (per the Celo forum post, the release that added
+        FederatedAttestations and updated Escrow); exact contract list not read
+      url: https://hacken.io/wp-content/uploads/2022/08/CLABS_04072022_SCAudit_Report2-5.pdf
+      blocked_to_bots: true
+      covers_deployed: unknown
+      note: >-
+        Linked as the Core Contracts Release 8 audit report in the Celo forum post "Core Contracts Release 8"
+        (forum.celo.org/t/core-contracts-release-8/4050) and in the cLabs Identity Team milestone post. The URL returns
+        HTTP 403 to scripted requests, so the report was not read; the date is taken from the file name. FederatedAttestations
+        holds the MiniPay issuer's phone attestations.

@@ -586,3 +586,132 @@ availability:
 
 notes: >-
   Unit: Aleo mainnet credits.aleo transfers, private path. Pins: snarkVM@29343ebb (v4.11.0), snarkOS@493fca39 (v4.11.0), sdk@9bbe5e63 (v0.12.0). Aleo addresses (aleo1..., bech32, 63 characters) and program IDs do not fit the schema's address formats, so chain reads (height, committee, deployed credits.aleo) were made through the Provable API and are recorded in repo evidence details with curl rechecks; C1, C2, S1 and S2 are capped accordingly. No transactions, node runs, builds, traces or self-host attempts were made.
+
+audits:
+  searched: >-
+    Aleo's Security Audits docs page (source in github.com/AleoNet/aleo-docs-source, learn/reference/security-audits.mdx; developer.aleo.org returned a Cloudflare challenge and was not bypassed), the Aleo Foundation post "Aleo completes security audits of snarkOS & snarkVM", the repos of ProvableHQ/snarkVM, snarkOS, sdk and leo (no audits folder), github.com/trailofbits/publications, reports.zksecurity.xyz, and Veridise's audit archive. NCC Group published two Aleo reports (snarkVM implementation review, 2023-12-13; snarkOS implementation and consensus review, 2024-02-08) at research.nccgroup.com, linked from the Aleo post; they are listed from that post's links and public summaries because every NCC URL returned 403 to scripted requests, so their findings counts were not read. Provable's formal-verification and fuzzing blog posts are not reports. Third-party Leo programs (Demox, Hyperlane, Sealance, Venture23) are out of scope. No published audit of the Provable SDK or Leo was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: zkSecurity
+      date: "2025-11-19"
+      type: audit
+      scope: snarkVM dynamic dispatch (call.dynamic instruction) added to the VM
+      url: https://reports.zksecurity.xyz/reports/aleo-dynamic-dispatch/
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: "1 medium, 1 low"
+      note: Feature audit; call.dynamic is present in snarkVM's main branch, which has changed since. No audited commit stated.
+    - auditor: zkSecurity
+      date: "2025-10-06"
+      type: audit
+      scope: snarkVM serialization, hash and ECDSA instructions (feat/bytes branch), usable in finalize
+      url: https://reports.zksecurity.xyz/reports/aleo-ecdsa-bytes/
+      commit: 41d32c5f
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: "3 medium, 2 low, 1 informational"
+      note: Feature audit of a branch later merged; not specific to the credits.aleo transfer functions.
+    - auditor: zkSecurity
+      date: "2025-06-14"
+      type: audit
+      scope: snarkVM program upgradability update
+      url: https://reports.zksecurity.xyz/reports/aleo-upgradability/
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: "2 high, 3 medium, 1 low; fixes verified by the auditor"
+      note: Commissioned by Provable. Feature audit; snarkVM has had many releases since.
+    - auditor: zkSecurity
+      date: "2024-06-10"
+      type: review
+      scope: ARC-0041 validator activation changes, including a full review of credits.aleo (transfer, fee and staking functions) and related finalize, rewards and committee helpers in snarkVM
+      url: https://reports.zksecurity.xyz/reports/aleo-arc41/
+      commit: 0f382b6a2b553385eb53f3cb6869f2bc1039feb6
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: No security issues found
+      note: The closest review of the credits.aleo program the rating covers; credits.aleo has changed in later consensus upgrades.
+    - auditor: Veridise
+      date: "2024-06-07"
+      type: audit
+      scope: Demox Labs' arc0038 staking program plus changes to credits.aleo and finalize.rs in snarkVM PRs 2402 and 2406
+      url: https://veridise.com/wp-content/uploads/2024/08/VAR_Demox_Labs_V101.pdf
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: No findings
+      note: Commissioned by Demox Labs; only the two credits.aleo change sets are Aleo protocol code.
+    - auditor: zkSecurity
+      date: "2024-04-08"
+      type: audit
+      scope: Aleo synthesis puzzle (snarkVM) and its snarkOS integration
+      url: https://reports.zksecurity.xyz/reports/aleo-puzzle/
+      commit: 14b03f5ec129991a0277c7d12d3fdd7ef86f8076
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: "6 informational"
+    - auditor: zkSecurity
+      date: "2024-03-18"
+      type: review
+      scope: ARC-0037 withdrawal-address mapping added to credits.aleo (snarkVM PR 2385)
+      url: https://reports.zksecurity.xyz/reports/aleo-arc37/
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: No issues found
+      note: Two-day review of one change set.
+    - auditor: NCC Group
+      date: "2024-02-08"
+      type: audit
+      scope: snarkOS implementation and consensus mechanism (partially synchronous Bullshark BFT over a DAG), reviewed November 2023 with a retest in January 2024
+      url: https://research.nccgroup.com/2024/02/08/public-report-aleo-snarkos-implementation-and-consensus-mechanism-review/
+      repo: https://github.com/ProvableHQ/snarkOS
+      blocked_to_bots: true
+      covers_deployed: partly
+      note: Linked from the Aleo Foundation post https://aleo.org/post/aleo-completes-security-audits-of-snarkos-and-snarkvm/; returns 403 to scripted requests, so findings were not read. Pre-mainnet snarkOS; mainnet runs v4.11.0.
+    - auditor: NCC Group
+      date: "2023-12-13"
+      type: audit
+      scope: snarkVM implementation review (testnet3-audit-ncc branch), including the synthesizer and the algorithms (proof system) module, with a retest a few months later
+      url: https://research.nccgroup.com/2023/12/13/public-report-aleo-snarkvm-implementation-review/
+      repo: https://github.com/ProvableHQ/snarkVM
+      blocked_to_bots: true
+      covers_deployed: partly
+      note: Linked from the Aleo Foundation post https://aleo.org/post/aleo-completes-security-audits-of-snarkos-and-snarkvm/; returns 403 to scripted requests, so findings and the audited commit were not read. Pre-mainnet snarkVM; mainnet runs v4.11.0.
+    - auditor: Trail of Bits
+      date: "2023-11-28"
+      type: audit
+      scope: snarkVM (testnet3-audit-tob branch), snarkOS and its Narwhal/Bullshark BFT consensus
+      url: https://github.com/trailofbits/publications/blob/master/reviews/2023-10-aleo-securityreview.pdf
+      commit: 9fcb15fc501ae9734b1a8fe513b90a2e8f9cda5f
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: "1 medium, 4 low, 23 informational, 3 undetermined"
+      note: Pre-mainnet (testnet3) code; the commit is the snarkVM target, snarkOS was reviewed at dc0c10b0 and narwhal branches. Mainnet runs snarkVM/snarkOS v4.11.0.
+    - auditor: zkSecurity
+      date: "2023-10-30"
+      type: audit
+      scope: snarkOS consensus (AleoBFT, Bullshark/Narwhal) on the testnet3-audit-zks branch
+      url: https://reports.zksecurity.xyz/reports/aleo-consensus/
+      commit: 9234cbee73666c7e6d00dfbdbcb947a244a43818
+      repo: https://github.com/ProvableHQ/snarkOS
+      covers_deployed: partly
+      findings: "4 high, 1 medium, 1 low, 2 informational; fixes reviewed in February 2024"
+      note: Pre-mainnet code; snarkOS has changed substantially since.
+    - auditor: zkSecurity
+      date: "2023-10-02"
+      type: audit
+      scope: snarkVM synthesizer (testnet3-audit-zks branch)
+      url: https://reports.zksecurity.xyz/reports/aleo-synthesizer/
+      commit: 9f5246d8c28afc0aef769b723eeaa4ec4a402b9c
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: partly
+      findings: "6 high, 2 informational"
+      note: Pre-mainnet code.
+    - auditor: Trail of Bits
+      date: "2022-10-03"
+      type: audit
+      scope: snarkVM (console, algorithms and related crates) for Aleo Systems
+      url: https://github.com/trailofbits/publications/blob/master/reviews/2022-09-aleosystems-snarkvm-securityreview.pdf
+      commit: 62de4cfe5a7fabb68b14d0175e922c5414ec19a8
+      repo: https://github.com/ProvableHQ/snarkVM
+      covers_deployed: "no"
+      findings: "2 medium, 6 low, 21 informational"
+      note: 2022 snarkVM, superseded by the testnet3 rewrite and later mainnet releases.

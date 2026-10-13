@@ -596,3 +596,106 @@ settlement:
       checked_at: "2026-10-07"
       recheck: curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type:application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["12BqReNBFWSfQ3hSwjDuyUGyVmZMDj1VLh5ctG6LAK4B",{"encoding":"base64"}]}' (bytes 73-104 = mint)
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    The Security section of the Squads-Protocol/v4 README and its audits/ folder (ten reports, read at af94153), Squads' public-v4-client repository (no reports), Fuse's site and support pages, and Bridge's card agreement. Fuse's iOS app, backend and Bridge's spending-limit key handling have no published audit. Coverage check: the SHA-256 of the deployed SQDS4ep65... program data (read 2026-10-13 from api.mainnet-beta.solana.com) is d48660833989ecea...f2fac, the program hash that the final 2024 OtterSec, Neodyme and Certora reports name as the audited build of 64af733.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Neodyme
+      date: "2024-12-10"
+      type: audit
+      scope: "Squads v4 multisig program updates: transaction buffers and the custom allocator, reviewed October to November 2024."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/neodyme_squads_v4_report_2024_final.pdf
+      commit: dcac867070a3073929e2240a053780c324f4c29f
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: "yes"
+      findings: "1 low; remediated"
+      note: The report states that the last reviewed revision corresponds to the deployed program hash d4866083...f2fac, which matches the program data read onchain on 2026-10-13.
+    - auditor: Certora
+      date: "2024-11"
+      type: formal_verification
+      scope: "Squads v4 multisig program: security assessment and Certora Prover verification of the 2024 additions (transaction buffers and related changes), 3 September to 1 October 2024."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/certora_squads_v4_security_report_and_formal_verification_2024_final.pdf
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: "yes"
+      findings: "1 high, 2 low, 2 informational; all fixed"
+      note: The report names program hash d4866083...f2fac as the latest audited build; the deployed program matches it.
+    - auditor: OtterSec
+      date: "2024-12"
+      type: audit
+      scope: "Squads v4 multisig program: full audit at 7d79e69 with formal verification and follow-up reviews up to 64af733 (final report)."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/ottersec_squads_v4_report_2024_final.pdf
+      commit: 64af7330413d5c85cbbccfd8c27a05d45b6e666f
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: "yes"
+      findings: "3 low, 3 informational suggestions"
+      note: Undated; added to the repository on 2024-12-09. The report names d4866083...f2fac as the onchain hash of the audited program, matching the deployed program.
+    - auditor: Neodyme
+      date: "2024-02-06"
+      type: audit
+      scope: "Squads v4 multisig program updates: rent reclamation and global program config, January 2024."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/neodyme_squads_v4_report_2024.pdf
+      commit: 3742e5521a3e833f24a4c6bc024dd1aa5385d010
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: partly
+      findings: "2 low, 2 informational; all accepted"
+      note: Earlier revision of the deployed program; later changes were covered by the December 2024 reports.
+    - auditor: OtterSec
+      date: "2024-02"
+      type: audit
+      scope: "Squads v4 multisig program: audit at 7d79e69 with formal verification and follow-up reviews up to 3742e55."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/ottersec_squads_v4_audit_2024.pdf
+      commit: 3742e5521a3e833f24a4c6bc024dd1aa5385d010
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: partly
+      findings: "8 findings: 3 low, 3 suggestions, 2 formal verification findings"
+      note: Undated; added to the repository on 2024-02-08. Superseded by the final 2024 report.
+    - auditor: Certora
+      date: "2023-12"
+      type: formal_verification
+      scope: "Squads v4 multisig program: the October 2023 audit and formal verification plus an appendix on the rent reclamation and global program config PRs (#60 to #66)."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/certora_squads_v4_security_report_and_formal_verification_2024.pdf
+      commit: 81842a7e37143537789e6d17fbe198700f8fe573
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: partly
+      findings: "October 2023 findings plus 1 low/medium and 2 recommendations in the appendix"
+    - auditor: Trail of Bits
+      date: "2023-10-19"
+      type: audit
+      scope: "Squads v4 multisig program (Rust/Anchor), with a fix review."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/trail_of_bits_squads_v4_security_audit.pdf
+      commit: 7d79e69c03892be468cce8acb51b6748b6262fbb
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: partly
+      findings: "1 high, 1 medium, 6 informational, 1 undetermined; fix review marks most resolved, logging unresolved"
+      note: Earlier revision of the deployed program.
+    - auditor: Certora
+      date: "2023-10"
+      type: formal_verification
+      scope: "Squads v4 multisig program: manual security analysis (29 August to 5 October 2023) and formal verification."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/certora_squads_v4_security_report_and_formal_verification.pdf
+      commit: 81842a7e37143537789e6d17fbe198700f8fe573
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: partly
+      findings: "1 medium/high, 3 low, 1 informational"
+      note: Earlier revision of the deployed program; SQ-005 (spending-limit members not checked against multisig members) concerns the spending limits Fuse uses.
+    - auditor: Neodyme
+      date: "2023-09-22"
+      type: audit
+      scope: "Squads v4 multisig program, full source including the September 2023 spending-limit instructions, plus design and social-engineering resilience."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/neodyme_squads_v4_report.pdf
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: partly
+      findings: "No critical or high; 2 medium, 2 low and informational issues; all addressed"
+      note: Earlier revision of the deployed program.
+    - auditor: OtterSec
+      date: "2023-09"
+      type: audit
+      scope: "Squads v4 multisig program, assessed 6 July to 22 September 2023."
+      url: https://github.com/Squads-Protocol/v4/blob/af94153ff77a28b6effe46b9c94baaa93742b48c/audits/ottersec_squads_v4_audit.pdf
+      commit: 7d79e69
+      repo: https://github.com/Squads-Protocol/v4
+      covers_deployed: partly
+      findings: "3 low, 3 informational suggestions"
+      note: Earlier revision of the deployed program; superseded by the 2024 OtterSec reports.

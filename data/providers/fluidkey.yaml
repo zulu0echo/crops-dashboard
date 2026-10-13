@@ -558,3 +558,69 @@ scores:
 
 notes: >-
   Unit: Fluidkey stealth accounts on Base. Fluidkey runs no settlement contract of its own: payments are transfers into counterfactual Safe 1.3.0 proxies owned by stealth EOAs, and the optional FluidkeyEarnModule moves balances into vaults. Reads at block 52372315 via base-rpc.publicnode.com (the sample Safe 0xaAa5…8e70 came from an AutoEarnExecuted log at block 52372274). Authorized-relayer events could not be enumerated (public Base RPCs cap log ranges). No availability block: the terms refer to sanctions regimes without naming countries. No transactions, app runs, traces or self-host attempts.
+
+audits:
+  searched: >-
+    The audits/ folders of github.com/fluidkey/fluidkey-stealth-account-kit and fluidkey-earn-module (fluidkey-hydrator and sara have none), the kit's README, fluidkey.com, and for the shared Safe 1.3.0 contracts the docs/ folder of github.com/safe-global/safe-smart-account (audit_1_3_0.md and the PDFs it lists). No published audit of the Fluidkey app, backend, relayer or ENS resolver was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Nethermind Security
+      date: "2026-08-17"
+      type: review
+      scope: Shared component, Safe Smart Account v1.3.0 (Safe, SafeL2, handlers, libraries, proxy factory)
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Safe_Audit_Report_1_3_0_Nethermind.pdf
+      commit: 767ef36bba88bdbc0c9fe3708a4290cabef4c376
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "yes"
+      findings: "1 low, 1 informational; addressed in Safe v1.4.0, not in 1.3.0"
+      note: Retrospective review of the v1.3.0-libs.0 tag; the core contracts are unchanged from the 2021 audited code that the canonical Base deployments (singleton 0xd9Db…9552, factory 0xa6B7…6AB2) were built from. The fixes are not in the deployed 1.3.0 contracts.
+    - auditor: Certora
+      date: "2026-07"
+      type: audit
+      scope: Shared component, Safe Smart Account v1.3.0 (GnosisSafe, GnosisSafeL2, accessors, base managers, handlers, libraries, proxies)
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Safe_Audit_Report_1_3_0_Certora.pdf
+      commit: 767ef36bba88bdbc0c9fe3708a4290cabef4c376
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "yes"
+      findings: "1 low, 2 informational; all acknowledged"
+      note: Review dated 20-29 July 2026 of the v1.3.0-libs.0 tag.
+    - auditor: Ackee Blockchain Security
+      date: "2025-03-04"
+      type: audit
+      scope: FluidkeyEarnModule (src/FluidkeyEarnModule.sol), the optional auto-earn Safe module
+      url: https://github.com/fluidkey/fluidkey-earn-module/blob/122cde19940d06b94c0027f4cd2e22e7fa19129a/audits/ackee-blockchain-fluidkey-earn-module-report.pdf
+      commit: 6aca8f7e203cadad6287f643cb3ef050ffe1ef01
+      repo: https://github.com/fluidkey/fluidkey-earn-module
+      covers_deployed: partly
+      findings: "1 high, 1 medium, 3 warning, 4 info; all fixed (re-review at 66510813)"
+      note: The deployed module matches src at 122cde19, which adds about 260 changed lines to the module after the reviewed fix commit (ownership/CREATE3 and calldata changes, March-April 2025) that the report does not cover.
+    - auditor: Dedaub
+      date: "2024-05-24"
+      type: audit
+      scope: Fluidkey Stealth Account Kit (TypeScript key derivation, stealth address generation and Safe address prediction)
+      url: https://github.com/fluidkey/fluidkey-stealth-account-kit/blob/2a4ccfafef127165c11ba16fc16235c919698ec2/audits/Fluidkey%20Stealth%20Account%20Kit%20-%20May%2024,%202024.pdf
+      commit: 518a4dec1ccdb3a1d61dba62b6cf8e124a89367d
+      repo: https://github.com/fluidkey/fluidkey-stealth-account-kit
+      covers_deployed: partly
+      findings: "1 medium, 1 low, 1 advisory; all resolved (fixes reviewed at 192a2260)"
+      note: Covers the open library only, not the Fluidkey app or backend. src/ has changed since (predictStealthSafeAddress and new files), so current releases are partly covered.
+    - auditor: G0 Group
+      date: "2021-05"
+      type: audit
+      scope: Shared component, Gnosis Safe 1.3.0 contracts (all Solidity files), final audit
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Gnosis_Safe_Audit_Report_1_3_0_Final.pdf
+      commit: ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "yes"
+      findings: No issues; 1 note
+      note: Core contracts are unchanged between this commit and the v1.3.0-libs.0 tag used for the canonical deployments.
+    - auditor: G0 Group
+      date: "2021-04"
+      type: audit
+      scope: Shared component, Gnosis Safe 1.3.0 contracts (all Solidity files), initial audit
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Gnosis_Safe_Audit_Report_1_3_0_Initial.pdf
+      commit: 4bfc0c8519f1893015d7edfd2c2780fca163c364
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: partly
+      findings: No issues; 5 optimisation notes
+      note: Superseded by the May 2021 final audit.

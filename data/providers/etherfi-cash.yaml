@@ -885,3 +885,292 @@ settlement:
       detail: A sample card spend through CashModule.spend moved USDT (0x94b008aa...) through the lending spoke to SettlementDispatcherRain 0x50A233c4....
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: 'The audit/ folder of github.com/etherfi-protocol/cash-v3 at a5024d0 (26 PDFs: Certora and Paladin; the etherfi-protocol/cash-v2 repo holds the same set), the audits/ folder of the earlier etherfi-protocol/cash-contracts repo (Nethermind and Zellic), and ether.fi''s audits page (etherfi.gitbook.io/etherfi/security/security-and-risks/audits), which points to the cash-v3 registry. The Zellic "Cash contracts Pre-order Update" draft (Sep 2024) covers the card pre-order NFT contract, not the payment path, so it is not listed. Staking-protocol audits (etherfi-protocol/smart-contracts) are out of scope. The Immunefi bug bounty is not an audit. Many Certora item reports are marked draft or internal in the committed PDF.'
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Certora
+      date: "2026-09"
+      type: review
+      scope: 'Item 21: MidasLiquifierModule (src/modules/etherfi/MidasLiquifierModule.sol).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20Midas%20Liquifier.pdf
+      commit: "8405b6ce"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 7 informational
+      note: Initial commit 29350aaf. Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 17: role re-gating across modules (AcrossSwapModule, CashbackDispatcher, EtherFiDataProvider, DebtManagerAdmin, DebtManagerStorageContract, EnsoSwapModule and other modules).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20Role%20Re-gating%20%28Item%2017%29.pdf
+      commit: "2aed606ac4"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 low, 8 informational
+      note: Initial commit 18f224a108. Report header dated August 2026; committed to cash-v3 on 2026-09-29.
+    - auditor: Certora
+      date: "2026-09"
+      type: review
+      scope: 'Item 22: TradingSafeLiquidDepositModule (mainnet Liquid deposit from the trading Safe).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/ether.fi%20-%20certora%20-%20mainnet%20liquid%20deposit.pdf
+      commit: "65bc80ec1"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 informational
+      note: Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 18: CashbackDistributor (src/cashback-distributor/CashbackDistributor.sol).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20Cashback%20Distributor.pdf
+      commit: "0dda38da"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 medium (awardStaked approves ETHFI to the wrong address), fixed
+      note: Initial commit 0058252b. Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 15: Safe WETH wrap and ERC-1271 support (SafeErc1271Lib, EtherFiSafe, EtherFiSafeErrors, MultiSig), the user Safe implementation.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20Safe%20WETH%20Wrap%20%2B%20ERC1271.pdf
+      commit: "27385346"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 6 informational
+      note: Initial commit 56719bb523. Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 16: Stargate taxi mode (StargateModule, SettlementDispatcherV2, StargateAdapter).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20Stargate%20Taxi.pdf
+      commit: "02993649"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 informational
+      note: Initial commit 3603a691. Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 14: wrapStocks in TopUp and TopUpFactory.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20Wrap%20Stocks.pdf
+      commit: "db2a2113"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 informational
+      note: Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 11: CCTPModule (src/modules/cctp/CCTPModule.sol).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20CCTP%20Module.pdf
+      commit: "dd7b4cac74"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 7 informational
+      note: Initial commit ccb8fe30f3. Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 13: stock wrap on top-up redirect (TopUp, TopUpFactory).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora_StockWrapOnTopUpRedirect.pdf
+      commit: "aa27177e"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 informational
+      note: Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 10: StockWithdrawModule, StockUnwrapper and StockOFTBridgeAdapter.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20StockWithdrawModule%2BStockTopupAdapter.pdf
+      commit: "17ccfc063"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 6 informational
+      note: Initial commit 0b4c8da3f. Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 8: TradingSafeWithdrawModule.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi_Q2%20-%20Item%208%20-%20Final.pdf
+      commit: "72d0ae3e14"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 2 informational
+      note: Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08"
+      type: review
+      scope: 'Item 9: EnsoSwapModule.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi_Q2%20-%20Item%209%20-%20Final.pdf
+      commit: "90e68688"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 informational
+      note: Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-08-04"
+      type: audit
+      scope: 'EtherFi Lend: lend-gateway module and related contracts (cash-v3 PR 153 and the PR 261 follow-up); reviewed 2026-07-20 to 2026-08-04.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora-Lend.pdf
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 medium, 8 low, 9 informational
+      note: Draft report as committed. Lend is the borrowing path card spends can draw on.
+    - auditor: Paladin
+      date: "2026-07-28"
+      type: audit
+      scope: 'Aave v4 price feeds: BaseAaveV4PriceFeed, StablePriceLib, ChainlinkPriceFeed, PythPriceFeed, VedaAccountantPriceFeed and OracleSinkPriceFeed on Optimism.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Paladin%20-%20Aave%20v4%20Price%20Feeds.pdf
+      commit: "3c932071c6d9930e71d46caad023e2700487e15f"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: "yes"
+      findings: '5 informational: 2 resolved, 1 partly resolved, 2 acknowledged'
+      note: Resolution commit ac70926. The report marks the Chainlink, Pyth and Veda feeds as matching live code on Optimism; OracleSinkPriceFeed was not deployed. We did not re-check the live bytecode.
+    - auditor: Certora
+      date: "2026-07"
+      type: review
+      scope: 'Item 6: Trade and Hold (EtherFiDataProvider, AcrossSwapModule, EnsoSwapModule, OwnershipBridge sender, receiver and library, EtherFiSafe and related contracts).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/TherFi_Q2_-_Trade_and_Hold_Report.pdf
+      commit: "ac86bd70eb"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 7 medium, 7 low and informational findings
+      note: Initial commit edba2b91. Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-06"
+      type: review
+      scope: 'Items 3 and 4: SafeAssetRecoveryModule and its deploy script (cash-v3 PRs 132 and 136).'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/Etherfi-Certora%20-%20Safe%20Asset%20Recovery%20Module.pdf
+      commit: "f907a44c76"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 medium (fixed), 1 low, 4 informational
+      note: Initial commit 93ff2389. Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-06"
+      type: review
+      scope: 'Item 2: SCR swap and SCRRecoveryModule.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/scr-swap-audit.pdf
+      commit: "db245879"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 3 informational
+      note: Certora internal item report; dated from the report header (month) and the commit adding it to cash-v3.
+    - auditor: Certora
+      date: "2026-02"
+      type: review
+      scope: 'Item 9: SettlementDispatcherV2 (Frax redemption to USDC), the card settlement dispatcher.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-settlement-disptacherV2.pdf
+      commit: "54150cc"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 7 informational
+      note: Initial commit e24c1c2. We did not check whether the SettlementDispatcherRain and Reap implementations on OP Mainnet were built from 54150cc.
+    - auditor: Certora
+      date: "2025-11-28"
+      type: review
+      scope: 'Cash Module combined report (bundle 11): Pix wallet auto top-up and SettlementDispatcherV2.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Bundle_11.pdf
+      commit: "a643d24f2"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 3 informational (2 fixed)
+      note: Reviewed 2025-11-16 to 2025-11-28; SettlementDispatcherV2 at 6efc2b47d. Draft report as committed.
+    - auditor: Certora
+      date: "2025-11-07"
+      type: review
+      scope: 'beHYPE bridging contracts combined report (bundle 9): BeHYPE Scroll Staker and the BeHYPE staking module in cash-v3.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi_-_Bundle_9.pdf
+      commit: "bdfb44f"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 3 high, 1 medium, 3 low, 2 informational; 8 of 9 fixed
+      note: Reviewed 2025-10-31 to 2025-11-07 across the cash-v3 and beHYPE repos. Staking module, not the card spend path.
+    - auditor: Certora
+      date: "2025-10-08"
+      type: review
+      scope: 'Bridging contracts combined report: weETH OFT role changes, beHYPE OFT contracts and the CCTP adapter in cash-v3.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20CCTP%20Adapter.pdf
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 1 informational, fixed
+      note: Reviewed 2025-10-06 to 2025-10-08; only the CCTP adapter is cash-v3 code (commits 76f0ad to 3545ec, as abbreviated in the report).
+    - auditor: Certora
+      date: "2025-08"
+      type: audit
+      scope: Canonical bridge support in cash-v3 (module-requested bridging through CashModule withdrawals).
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/Etherfi-Certora%20-%20Canonical%20Bridge%20Support.pdf
+      commit: "a9abc1838458339eff8689eea4b57cab41c0060b"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: 2 high, 1 medium, 1 low, 4 informational
+      note: The report is undated in the extracted text; the date is when it was committed (2025-08-08).
+    - auditor: Certora
+      date: "2025-06"
+      type: audit
+      scope: 'Cash Module combined report, April-June 2025: Liquid minting and staking module, default module changes, top-up indexing, multi spend and referrals, WETH top-ups, multiple settlement dispatchers, Stargate bridge module, Aave module, NTT bridge adapter and later items.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/EtherFi-Certora%20-%20Combined.pdf
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: unknown
+      findings: Per-section findings up to high severity (one H-01 among the sections)
+      note: The report's scope table gives no commit hashes. Draft report as committed (2025-06-24).
+    - auditor: Certora
+      date: "2025-03-26"
+      type: audit
+      scope: 'Safe Recovery Manager (cash-v3 PR 5): recovery feature added to the Safe, EtherFiDataProvider, EtherFiHook, IEtherFiSafe, IModule, OpenOceanSwapModule and related contracts.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/Etherfi-Certora%20-%20Recovery%20Manager.pdf
+      commit: "df6d6c59"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: partly
+      findings: 1 critical (single Safe admin can drain the Safe), 4 medium; all fixed
+      note: Audit start 2b37e643, last reviewed 6bc9436. The recovery code is in the deployed Safe lineage, but the deployed implementations are far past this commit (S6).
+    - auditor: Certora
+      date: "2025-03-20"
+      type: audit
+      scope: 'Cash Module + Safe (cash-v3 PR 3): BeaconFactory, CashbackDispatcher, EtherFiDataProvider, DebtManager, CashModule, EtherFiSafe, EtherFiHook, settlement dispatcher and related core contracts.'
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/Etherfi-Certora%20-%20Cash%20Module%20%2B%20Safe.pdf
+      commit: "d6aa4845"
+      repo: https://github.com/etherfi-protocol/cash-v3
+      covers_deployed: partly
+      findings: 2 critical, 2 high, 6 medium, 6 low; 14 of 16 fixed, each with a fix commit
+      note: Audit start 45dc3ee, final 12cbd745. This is the core of the deployed system, but the OP Mainnet implementations (Oct 2026) are far past the audited commit (S6).
+    - auditor: Certora
+      date: "2025-03-03"
+      type: audit
+      scope: EtherFi TopUp contracts in cash-v2 (src/*, excluding mocks and the bridge adapters).
+      url: https://github.com/etherfi-protocol/cash-v3/blob/a5024d0b6e81ac0e6f40335a08f697fc7aafde52/audit/top_up_certora.pdf
+      commit: "c0ae4e5d286df90bdd612a532eeab313532eb6c2"
+      repo: https://github.com/etherfi-protocol/cash-v2
+      covers_deployed: unknown
+      findings: 1 medium (CREATE3 on zkSync, unconfirmed), 3 low, 7 informational
+      note: Reviewed 2025-02-24 to 2025-03-03 on the cash-v2 dev branch; the top-up contracts later moved into cash-v3.
+    - auditor: Nethermind
+      date: "2024-12-13"
+      type: review
+      scope: 'NM-0394 EtherFi Cashback: UserSafe, L2DebtManager and CashbackDispatcher in the earlier Cash contracts (Scroll).'
+      url: https://github.com/etherfi-protocol/cash-contracts/blob/c270e3b0f1606ecfaf6ba958068cb920b367f7f6/audits/NM_0289_EtherFi_Cash_Contracts_Report.pdf
+      repo: https://github.com/etherfi-protocol/cash-contracts
+      covers_deployed: "no"
+      findings: 1 high, 1 medium, 7 low, 7 informational, 5 best practices; 12 fixed, 9 acknowledged, 1 unresolved
+      note: The file is named NM_0289 but the report is NM-0394. Covers the pre-cash-v3 contracts, replaced by the cash-v3 Safes on OP Mainnet.
+    - auditor: Nethermind
+      date: "2024-11-21"
+      type: review
+      scope: NM-0381 EtherFi CashSafe top-up mechanism and UserSafe spending-limit changes in the earlier Cash contracts.
+      url: https://github.com/etherfi-protocol/cash-contracts/blob/c270e3b0f1606ecfaf6ba958068cb920b367f7f6/audits/NM_0381_EtherFi_Cash_TopUps_FINAL.pdf
+      repo: https://github.com/etherfi-protocol/cash-contracts
+      covers_deployed: "no"
+      findings: 6 low, 4 informational, 1 best practices; 6 fixed, 5 acknowledged
+      note: Covers the pre-cash-v3 contracts.
+    - auditor: Nethermind
+      date: "2024-09-23"
+      type: review
+      scope: 'NM-0289 EtherFi Cash: UserSafe funds management and L2DebtManager loans in the earlier Cash contracts.'
+      url: https://github.com/etherfi-protocol/cash-contracts/blob/c270e3b0f1606ecfaf6ba958068cb920b367f7f6/audits/Cash%20Audit%20Report.pdf
+      repo: https://github.com/etherfi-protocol/cash-contracts
+      covers_deployed: "no"
+      findings: 5 critical, 2 high, 11 medium, 7 low, 11 informational, 2 best practices; 25 fixed, 6 acknowledged, 4 mitigated, 3 unresolved
+      note: Initial report 2024-09-18. Covers the pre-cash-v3 contracts.

@@ -624,3 +624,145 @@ availability:
 
 notes: >-
   Unit: Zcash mainnet shielded transfers. Pins: zebra@e3eef2f3 (v6.4.2), zips@3af03aa3, lightwalletd@d16d4812, orchard@616a669d, librustzcash@9181ef85, zallet@522b486d (v0.1.0-beta.3 line), zodl-android@4248d469, zodl-ios@6a7dc6b3, zodl-android-wallet-sdk@afe08faf, zcashd@558f6865 (archived). The chain has no contracts, so cells whose top anchor needs onchain contract evidence (C1, C2, S1, S2) are capped at 2 with the reason in each finding, and O1 is unknown. Events of 2026 recorded from primary sources: Orchard disabled by emergency soft fork (ZIP 257), NU6.2 fix, NU6.3 Ironwood pool (ZIP 258), zcashd archived, Zashi renamed Zodl under Znewco, Inc. No transactions, node runs, builds, traces or self-host attempts were made.
+
+audits:
+  searched: >-
+    Audit folders and security docs of the zebra, librustzcash, orchard, halo2, zcash, lightwalletd, zaino, zallet and zodl repos (none hold reports; Zebra's book describes its audit process), Least Authority's published Zcash reports, NCC Group's public Zcash reports (nccgroup.com refuses scripted requests, so those entries are marked blocked_to_bots and were not read), the Trail of Bits publications list, QEDIT's and zkSecurity's report sites, ECC blog posts on audits, and the ZecSec list (third-party wallets, not listed). Not logged: Kudelski's 2019 Sapling report (its blog link now redirects away), Least Authority's 2026 AI-assisted audit (reports sent privately, only a summary published), Zaino's internal design review, and audits of ZSA, FROST, payment URI and hardware-wallet code outside this payment path. No published audit of the Zodl wallet or its SDKs was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: zkSecurity
+      date: "2026-07-14"
+      type: audit
+      scope: Orchard crate 0.14.0 (Action circuit and verifier-facing code) and halo2 gadgets, proofs and Poseidon at halo2_gadgets-0.5.0, with a Lean formal verification of the Action circuit; commissioned by the Tachyon Foundation after the 2026 Orchard bug.
+      url: https://reports.zksecurity.xyz/reports/zcash-orchard/
+      repo: https://github.com/zcash/orchard
+      covers_deployed: partly
+      findings: "1 medium, 2 low, 1 informational; none affecting the deployed Orchard protocol, per the report"
+      note: Zebra v6.4.2 (the assessed node) uses halo2_gadgets 0.5.0, the audited tag, but orchard 0.15.3, newer than the audited 0.14.0.
+    - auditor: Least Authority
+      date: "2025-11-03"
+      type: audit
+      scope: Zebra changes for the NU6.1 network upgrade (milestone 43).
+      url: https://leastauthority.com/zcg-zebra-nu6-1-network-upgrade-final-audit-report/
+      commit: e422d2f4e5134ce2233282405a8578d3077c160f
+      repo: https://github.com/ZcashFoundation/zebra
+      covers_deployed: partly
+      findings: "No issues; 4 suggestions"
+      note: The commit is the verification revision; six revisions were reviewed initially. Covers the NU6.1 diff only.
+    - auditor: Least Authority
+      date: "2024-11-08"
+      type: audit
+      scope: Zebra changes for the NU6 network upgrade (PRs 8694, 8727, 8729, 8732, 8733, 8742, 8747).
+      url: https://leastauthority.com/zcg-zebra-nu6-updates-final-audit-report/
+      commit: c32c4f6fec158ad412b981e36fa148e4447ee70d
+      repo: https://github.com/ZcashFoundation/zebra
+      covers_deployed: partly
+      findings: "No issues; 2 suggestions"
+      note: Verification at 46c6b6eb. Covers the NU6 diff only.
+    - auditor: Least Authority
+      date: "2024-10-21"
+      type: audit
+      scope: zcashd 5.10.0 changes for the NU6 network upgrade.
+      url: https://leastauthority.com/zcg-zcashd-nu6-updates-final-audit-report/
+      commit: 3b9272462a264cf9d0400fba3e4fa84584cde3b1
+      repo: https://github.com/zcash/zcash
+      covers_deployed: "no"
+      findings: "No issues; 2 suggestions"
+      note: zcashd is now archived; Zebra is the assessed node.
+    - auditor: NCC Group
+      date: "2023-06-27"
+      type: audit
+      scope: Zebra node at the audit-v1.0.0-rc.0 branch, focusing on zebra-chain, zebra-consensus, zebra-network, zebra-state, zebra-rpc, zebra-script and related crates.
+      url: https://nccgroup.com/media/bw3nq0vm/_ncc_group_zcashfoundation_e005955_report_2023-06-27_v10.pdf
+      repo: https://github.com/ZcashFoundation/zebra
+      covers_deployed: partly
+      blocked_to_bots: true
+      note: Published by NCC Group at this address (linked from its public report page); nccgroup.com returns HTTP 403 to scripted requests, so we did not read the report and give no findings. Zebra 1.0 rc0 is many releases behind the assessed v6.4.2.
+    - auditor: NCC Group
+      date: "2021-11"
+      type: review
+      scope: NU5 cryptography review - protocol spec and ZIPs 216, 224, 225, 244, 252, plus Pallas/Vesta curves, RedPallas, the Orchard crate (excluding the circuit) and note encryption.
+      url: https://fox-it.com/media/hzlftzlu/_ncc_group_zcash_nu5_publicreportfinal.pdf
+      repo: https://github.com/zcash/orchard
+      covers_deployed: partly
+      blocked_to_bots: true
+      note: Hosted on fox-it.com, NCC Group's own site; it returns HTTP 403 to scripted requests, so we did not read it and scope comes from NCC's summary page. Orchard code has changed since, including the 2026 soundness fix.
+    - auditor: QEDIT
+      date: "2021-09"
+      type: audit
+      scope: NU5 - Halo 2 proving system, Orchard protocol, primitives and Action circuit, key derivation, Pasta field and curve arithmetic, and NU5 librustzcash changes.
+      url: https://hackmd.io/@qedit/zcash-nu5-audit
+      commit: f82d00e40d982a0e49860afdeacc156b872268aa
+      repo: https://github.com/zcash/orchard
+      covers_deployed: partly
+      note: The commit is the Orchard one; halo2 was reviewed at 7774dd82 and pasta_curves at b016b972. Orchard and halo2 have changed since, including the 2026 circuit fix.
+    - auditor: NCC Group
+      date: "2020-09"
+      type: review
+      scope: NU4 (Canopy) - the six core ZIPs and their implementation in zcashd.
+      url: https://www.nccgroup.com/research/public-report-electric-coin-company-nu4-cryptographic-specification-and-implementation-review/
+      repo: https://github.com/zcash/zcash
+      covers_deployed: "no"
+      blocked_to_bots: true
+      note: Public report page on nccgroup.com, which links the PDF and returns HTTP 403 to scripted requests; not read. The implementation reviewed was zcashd, now archived.
+    - auditor: Trail of Bits
+      date: "2020-04-29"
+      type: audit
+      scope: zcashd implementation of ZIP 221 (FlyClient Merkle mountain range) and ZIP 213 (shielded coinbase), at commits 084303d, 659ac40 and 35bff6a.
+      url: https://github.com/trailofbits/publications/blob/3556a402600312ccea4d5b64a30fa9dc86546b31/reviews/Zcash2.pdf
+      repo: https://github.com/zcash/zcash
+      covers_deployed: "no"
+      findings: "3 informational (build system, sanitizer and cppcheck errors, lack of fuzzing)"
+      note: zcashd code, now archived.
+    - auditor: NCC Group
+      date: "2020-01"
+      type: review
+      scope: NU3 specification and the zcashd Blossom implementation.
+      url: https://nccgroup.com/au/research-blog/public-report-electric-coin-company-nu3-specification-and-blossom-implementation-audit
+      repo: https://github.com/zcash/zcash
+      covers_deployed: "no"
+      blocked_to_bots: true
+      note: Public report page on nccgroup.com (linked from ECC's blog), which returns HTTP 403 to scripted requests; not read.
+    - auditor: Trail of Bits
+      date: "2019-12-04"
+      type: review
+      scope: Specification review of ZIP 213 (shielded coinbase) and ZIP 221 (FlyClient), with the Sapling spec as background.
+      url: https://github.com/trailofbits/publications/blob/3556a402600312ccea4d5b64a30fa9dc86546b31/reviews/Zcash.pdf
+      covers_deployed: partly
+      findings: "No significant security findings; privacy observations on the two ZIPs"
+      note: A specification review; both ZIPs remain consensus rules that Zebra implements.
+    - auditor: NCC Group
+      date: "2019-01-30"
+      type: review
+      scope: Overwinter consensus code and the Sapling cryptographic primitives.
+      url: https://nccgroup.com/media/v1kkxeae/_ncc_group_zcash2018_public_report_2019-01-30_v13.pdf
+      covers_deployed: partly
+      blocked_to_bots: true
+      note: Published by NCC Group at this address; nccgroup.com returns HTTP 403 to scripted requests, so we did not read it. Sapling primitives remain in use through sapling-crypto; the Overwinter code reviewed was zcashd.
+    - auditor: Least Authority
+      date: "2019-01-30"
+      type: audit
+      scope: Second Sapling implementation and RPC interface changes in zcashd.
+      url: https://leastauthority.com/static/publications/LeastAuthority-Zcash-Sapling-Implementation-RPC-Interface-Updated-Audit-Report.pdf
+      commit: 78c228fc4dc6dfd289909b9c0d3e8e214b312d14
+      repo: https://github.com/zcash/zcash
+      covers_deployed: "no"
+      findings: "5 issues (including DNS rebinding on the RPC server), 1 suggestion"
+      note: Updated (not final) report; zcashd is now archived.
+    - auditor: Least Authority
+      date: "2018-08-17"
+      type: review
+      scope: Zcash protocol specification 2018.0-beta-20 (Overwinter+Sapling).
+      url: https://leastauthority.com/static/publications/LeastAuthority-Zcash-Overwinter+Sapling-Specification-Final-Audit-Report.pdf
+      covers_deployed: partly
+      findings: "2 issues, 2 suggestions, 6 comments"
+      note: A specification review; the spec has been revised many times since, but Sapling rules remain in force.
+    - auditor: Least Authority
+      date: "2018-05-29"
+      type: audit
+      scope: zcashd 1.0.15 (Magic Bean) with libsnark, librustzcash, zcash-seeder and zcash-gitian, plus the Overwinter ZIPs 143 and 200-203.
+      url: https://leastauthority.com/wp-content/uploads/2019/08/LeastAuthority-Zcash-Implementation-Analysis-and-Overwinter-Specification.pdf
+      repo: https://github.com/zcash/zcash
+      covers_deployed: "no"
+      findings: "6 issues (A to F)"
+      note: Pre-Sapling zcashd code, long superseded.

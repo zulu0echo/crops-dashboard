@@ -692,3 +692,37 @@ settlement:
       quote: If your card transactions are in these currencies, the corresponding balance will be charged first, avoiding unnecessary foreign exchange fees
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    Bitget's card page and help centre (no audit mentioned), Fiat24's developer and legal docs (no audit or security page), GitHub (no public Fiat24 contracts repository; the Arbitrum sources are on Sourcify only), and auditor portfolios. The only published reports found are BlockSec's three audits of Mantle's fork of the Fiat24 contracts (private repository mantle-xyz/fiat24contracts, client Mantle), listed below as the closest shared code. None is stated to cover the Arbitrum deployment: the Arbitrum Fiat24CardAuthorizationMarqeta implementation 0x96AA3D05... was deployed at block 276754432 (November 2024) and lacks the double-booking functions the 2026 reports review. No report was found for Fiat24Account, the cash tokens' Arbitrum code or the ProxyAdmin set-up.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: BlockSec
+      date: "2026-07-16"
+      type: audit
+      scope: "Shared Fiat24 contracts, Mantle's fork: fee manager, Arbitrum and Tempo deposit paths via LayerZero, DelegationVault, batch double-booking in Fiat24CardAuthorizationMarqeta, BufferPool, CryptoRelay and Fiat24Token changes since ad90880."
+      url: https://github.com/blocksecteam/audit-reports/blob/7e41a27c8dd358d027d880144d541efd75aa7da5/solidity/blocksec_mantle_fiat24_contracts_signed_20260716.pdf
+      commit: 66f0ff159016f7df0b1979e7d9209457f2d793f5
+      covers_deployed: "no"
+      findings: "7 low (6 fixed, 1 confirmed), 4 recommendations, 1 note"
+      note: Reviews changes made in Mantle's private fork; the Arbitrum contracts this file scores do not contain them.
+    - auditor: BlockSec
+      date: "2026-06-08"
+      type: audit
+      scope: "Shared Fiat24 contracts, Mantle's fork: new DelegationVault, double-booking in Fiat24CardAuthorizationMarqeta and Fiat24CryptoDeposit_Avax (changes since b670bb8)."
+      url: https://github.com/blocksecteam/audit-reports/blob/7e41a27c8dd358d027d880144d541efd75aa7da5/solidity/blocksec_mantle_fiat24_contracts_signed_20260608.pdf
+      commit: ad908801e2dc30fb805551dc117268312f6fdbc7
+      covers_deployed: "no"
+      findings: "1 medium and 1 low, both fixed; 5 recommendations, 3 notes"
+      note: Reviews changes made in Mantle's private fork; the Arbitrum card authorizer has no double-booking functions.
+    - auditor: BlockSec
+      date: "2025-08-06"
+      type: audit
+      scope: "Shared Fiat24 contracts, Mantle's fork: Fiat24CryptoDeposit (and variants), Fiat24CardAuthorizationMarqeta (card authorize/increment/reverse), Fiat24CryptoRelay, FiatTokenBeacon and FiatTokenFactory."
+      url: https://github.com/blocksecteam/audit-reports/blob/7e41a27c8dd358d027d880144d541efd75aa7da5/solidity/blocksec_mantle_fiat24_v1.0-signed.pdf
+      commit: 8fa9f76352a27f901c293552ed1c03b06c9bb3f4
+      covers_deployed: unknown
+      findings: "1 high (fixed), 2 medium, 6 low, 6 recommendations, 7 notes; most medium and low confirmed rather than fixed"
+      note: >-
+        Same contract names and card functions (authorize, increment) as the Arbitrum implementation 0x96AA3D05..., but the audited private repository cannot be compared with the Arbitrum source, so whether the deployed card authorizer matches is unknown.

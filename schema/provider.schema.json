@@ -406,6 +406,118 @@
           "$ref": "#/$defs/date"
         }
       }
+    },
+    "audits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "searched",
+        "checked_at",
+        "reports"
+      ],
+      "description": "Log of published security audits and similar reviews of the provider's code. Shown under Security as context; the S6 rating scores them.",
+      "properties": {
+        "searched": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 1200,
+          "description": "Where the log was compiled from: the provider's audit page, repositories' audit folders, auditors' public report portfolios. Completeness is only as good as these sources."
+        },
+        "checked_at": {
+          "$ref": "#/$defs/date"
+        },
+        "reports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "auditor",
+              "date",
+              "type",
+              "scope",
+              "url",
+              "covers_deployed"
+            ],
+            "properties": {
+              "auditor": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 120
+              },
+              "date": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}(-\\d{2})?$",
+                "description": "Report date, YYYY-MM or YYYY-MM-DD."
+              },
+              "type": {
+                "enum": [
+                  "audit",
+                  "formal_verification",
+                  "contest",
+                  "review",
+                  "pentest"
+                ]
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 400
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^https://",
+                "maxLength": 600,
+                "description": "The report itself, on the provider's or auditor's own site or repository."
+              },
+              "commit": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{7,40}$"
+              },
+              "repo": {
+                "type": "string",
+                "pattern": "^https://"
+              },
+              "covers_deployed": {
+                "enum": [
+                  "yes",
+                  "partly",
+                  "no",
+                  "unknown"
+                ],
+                "description": "Whether the audited code is what is deployed on the assessed chain today."
+              },
+              "findings": {
+                "type": "string",
+                "maxLength": 300
+              },
+              "note": {
+                "type": "string",
+                "maxLength": 600
+              },
+              "blocked_to_bots": {
+                "type": "boolean",
+                "description": "The report URL is genuine but refuses scripted requests (for example HTTP 403 from a bot filter), so the automatic link check skips it. Requires a note saying where the link is published."
+              }
+            },
+            "if": {
+              "properties": {
+                "blocked_to_bots": {
+                  "const": true
+                }
+              },
+              "required": [
+                "blocked_to_bots"
+              ]
+            },
+            "then": {
+              "required": [
+                "note"
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "$defs": {

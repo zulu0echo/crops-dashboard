@@ -1163,3 +1163,192 @@ settlement:
       quote: "a €10 purchase = 10 EURe (or equivalent)"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    All gnosispay repos (account-kit, ui, docs, safe-contracts, pse-react-native; no audit report, and GitHub code search for "audit" finds none), so Gnosis Pay's own Spender modifier and Bouncer have no published audit. Shared components listed in this file: the docs/ folder of safe-global/safe-smart-account (reports for v1.0.0 to v1.3.0 are listed; v1.4.x and v1.5.0 reports are left out because the account Safes run the v1.3.0 singleton), the audits folders of gnosisguild/zodiac-modifier-delay, gnosisguild/zodiac and gnosisguild/zodiac-modifier-roles (packages/evm/docs), and monerium/smart-contracts audits/ for the EURe token. No public post-mortem of the June 2026 incident was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Côme du Crest
+      date: "2026-06-12"
+      type: review
+      scope: "Zodiac signature patch review (shared Zodiac component): patched Delay modifier v1.1.1 (0x824175b9...6df01) and Roles modifier v2.1.1 (0xf2964ce6...b283d5) on Gnosis Chain, checking the fix to SignatureChecker._isValidContractSignature (unchecked staticcall success)."
+      url: https://github.com/gnosisguild/zodiac/blob/89352c4f05d4b223b9c555ca963a787fd930da2d/audits/ZodiacJune2026.pdf
+      repo: https://github.com/gnosisguild/zodiac
+      covers_deployed: partly
+      findings: Confirms the patch fixes the EIP-1271 signature-check vulnerability; relies on earlier audits for the rest of the code.
+      note: >-
+        Prepared for Gnosis Ltd after the June 2026 incident. The Gnosis Pay mastercopies are different deployments: Delay 0x22d903fd... has runtime bytecode identical to the audited 0x824175b9... except the metadata hash (read 2026-10-13), but Roles 0x732B9E9f... differs in length from the audited 0xf2964ce6..., so its match is unconfirmed.
+    - auditor: Nethermind
+      date: "2026-08-17"
+      type: review
+      scope: "NM-0993 review of Safe Smart Account v1.3.0 (shared Safe component): GnosisSafe, GnosisSafeL2, proxies and factory, base managers, handlers and libraries (1,068 LoC)."
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Safe_Audit_Report_1_3_0_Nethermind.pdf
+      commit: 767ef36bba88bdbc0c9fe3708a4290cabef4c376
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "yes"
+      findings: "1 low (getModulesPaginated skips one module between pages), 1 informational; fixed in v1.4.0, not in v1.3.0"
+      note: >-
+        Commit 767ef36 (v1.3.0-libs.0) is 12 commits after the v1.3.0 tag and changes only libraries, tests and tooling, so GnosisSafe.sol matches the v1.3.0 singleton 0xd9Db270c... used by the account Safes. The fixes went into v1.4.0, so the deployed v1.3.0 code keeps the reported behaviour. Initial report 2026-08-07.
+    - auditor: Certora
+      date: "2026-07"
+      type: audit
+      scope: "Security assessment of Safe Smart Account v1.3.0 (shared Safe component), all core contracts, proxies, handlers and libraries; reviewed 2026-07-20 to 2026-07-29."
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Safe_Audit_Report_1_3_0_Certora.pdf
+      commit: 767ef36bba88bdbc0c9fe3708a4290cabef4c376
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "yes"
+      findings: "1 low, 2 informational; all acknowledged, none fixed"
+      note: Same commit as the Nethermind NM-0993 review; the core contracts match the v1.3.0 release.
+    - auditor: Omniscia
+      date: "2023-11-06"
+      type: audit
+      scope: "Zodiac Roles modifier v2.1 (shared Zodiac component): changes in zodiac-modifier-roles PR #206 since the May 2023 audit, for contracts in the original scope."
+      url: https://github.com/gnosisguild/zodiac-modifier-roles/blob/820e5bc975d1817bdd4bc4a95226f553f7b67b68/packages/evm/docs/Audit03_RolesV2_1_Nov2023_Ominiscia.pdf
+      commit: 6a7fb909a1
+      repo: https://github.com/gnosisguild/zodiac-modifier-roles
+      covers_deployed: partly
+      note: >-
+        Revisions run from 2023-09-25 to 2023-11-06 (final revision 4d851d2a84). The Gnosis Pay mastercopy is Roles v2.1.x, rebuilt after the June 2026 signature-checker patch, so the audited v2.1 code is only part of what is deployed.
+    - auditor: G0 Group
+      date: "2023-11"
+      type: audit
+      scope: "Zodiac Roles modifier v2.1 (shared Zodiac component): all Solidity files in packages/evm/contracts."
+      url: https://github.com/gnosisguild/zodiac-modifier-roles/blob/820e5bc975d1817bdd4bc4a95226f553f7b67b68/packages/evm/docs/Audit04_Roles-V2_1_Nov2023_G0Group.pdf
+      commit: d4b6539bdb742cf20d29425bbfdfd06acebda7d1
+      repo: https://github.com/gnosisguild/zodiac-modifier-roles
+      covers_deployed: partly
+      findings: "1 minor (usability), fixed at a19c0ebd"
+      note: Covers v2.1.0; the deployed mastercopy includes the June 2026 SignatureChecker patch, which this report predates.
+    - auditor: Omniscia
+      date: "2023-05-09"
+      type: audit
+      scope: "Zodiac Roles modifier v2 (shared Zodiac component): BufferPacker, Core, Consumptions, Decoder, Integrity, MultiSendUnwrapper, Packer, Periphery, PermissionLoader and the rest of packages/evm/contracts."
+      url: https://github.com/gnosisguild/zodiac-modifier-roles/blob/820e5bc975d1817bdd4bc4a95226f553f7b67b68/packages/evm/docs/Audit02_RolesV2_May2023_Omniscia.pdf
+      commit: 23b782f781
+      repo: https://github.com/gnosisguild/zodiac-modifier-roles
+      covers_deployed: "no"
+      findings: All findings reported as dealt with after the revision at 916e3ac17f.
+      note: Covers Roles v2.0; superseded by v2.1, which was audited separately.
+    - auditor: G0 Group
+      date: "2023-04"
+      type: audit
+      scope: "Zodiac Roles modifier v2 (shared Zodiac component): all Solidity files in packages/evm/contracts."
+      url: https://github.com/gnosisguild/zodiac-modifier-roles/blob/820e5bc975d1817bdd4bc4a95226f553f7b67b68/packages/evm/docs/Audit01_RolesV2_Apr2023_G0Group.pdf
+      commit: 5d218a4b6b6d01412abac07a2a7582d07dd35a65
+      repo: https://github.com/gnosisguild/zodiac-modifier-roles
+      covers_deployed: "no"
+      findings: Medium and lower issues; all fixed or addressed by c824d7b2.
+      note: Covers Roles v2.0; superseded by v2.1.
+    - auditor: G0 Group
+      date: "2023-02"
+      type: audit
+      scope: "Zodiac Modifier update (shared Zodiac component): contracts/core/Modifier.sol, the base contract of the Delay and Roles modifiers."
+      url: https://github.com/gnosisguild/zodiac/blob/89352c4f05d4b223b9c555ca963a787fd930da2d/audits/ZodiacModifierUpdateFeb2023.pdf
+      commit: 2ddb81b9dab11821aaef3011d83ed7acce63cff9
+      repo: https://github.com/gnosisguild/zodiac
+      covers_deployed: unknown
+      findings: No issues found.
+    - auditor: G0 Group
+      date: "2021-09"
+      type: audit
+      scope: "Zodiac Delay modifier (shared Zodiac component): contracts/Delay.sol."
+      url: https://github.com/gnosisguild/zodiac-modifier-delay/blob/221382ead4022eba81b7d311c54b76889f8b4e15/audits/ZodiacDelayModuleSep2021.pdf
+      commit: bde282125ebbe119df4bfd6374e097007a13fb8a
+      repo: https://github.com/gnosisguild/zodiac-modifier-delay
+      covers_deployed: partly
+      findings: "1 critical (reentrancy in executeNextTx), 2 major and smaller issues; all fixed by 808dfda6"
+      note: Covers the 2021 Delay.sol. The deployed Delay mastercopy (v1.1.x) adds later changes, including the 2023 Modifier update and the 2026 SignatureChecker patch.
+    - auditor: G0 Group
+      date: "2021-09"
+      type: audit
+      scope: "Zodiac core library (shared Zodiac component): all contracts in gnosis/zodiac, including ModuleProxyFactory, Module, Modifier and FactoryFriendly."
+      url: https://github.com/gnosisguild/zodiac/blob/89352c4f05d4b223b9c555ca963a787fd930da2d/audits/GnosisZodiac2021Sep.pdf
+      commit: 67a0956e2bce11b5945cc79f1aff4ee3a0a4ea2a
+      repo: https://github.com/gnosisguild/zodiac
+      covers_deployed: unknown
+      findings: Minor optimisation issues; all fixed by c7aea1be.
+      note: Not checked whether the ModuleProxyFactory at 0x000000000000aDdB...a236 was built from the audited code.
+    - auditor: G0 Group
+      date: "2021-05"
+      type: audit
+      scope: "Gnosis Safe v1.3.0 final review (shared Safe component): all Solidity files in safe-contracts."
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Gnosis_Safe_Audit_Report_1_3_0_Final.pdf
+      commit: ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "yes"
+      findings: No issues; one note on the example ReentrancyTransactionGuard.
+      note: The v1.3.0 tag is 6 commits after ad6c735 and changes only an example guard, so this covers the v1.3.0 singleton used by the account Safes.
+    - auditor: G0 Group
+      date: "2021-04"
+      type: audit
+      scope: "Gnosis Safe v1.3.0 initial review (shared Safe component): all Solidity files in safe-contracts."
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Gnosis_Safe_Audit_Report_1_3_0_Initial.pdf
+      commit: 4bfc0c8519f1893015d7edfd2c2780fca163c364
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: partly
+      findings: No issues; gas and style notes only.
+      note: Initial pass on a pre-release commit; changes up to 9b305a0 were checked and the final May 2021 report covers the release.
+    - auditor: G0 Group
+      date: "2020-05-04"
+      type: audit
+      scope: "Gnosis Safe v1.2.0 gas validation adjustment (shared Safe component): GnosisSafe.sol and ModuleManager.sol."
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Gnosis_Safe_Audit_Report_1_2_0.pdf
+      commit: 271921f4b37613b3d49bf33452dbcd81be219247
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "no"
+      findings: "1 medium (EIP-150 gas overhead lets relayers force failures); fixed"
+      note: Covers v1.2.0, superseded by the v1.3.0 singleton the accounts use.
+    - auditor: G0 Group
+      date: "2019-11-11"
+      type: audit
+      scope: "Gnosis Safe v1.1.0 security review, amended with the v1.1.1 changes (shared Safe component): base, common, handler, interfaces, libraries and proxies."
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Gnosis_Safe_Audit_Report_1_1_1.pdf
+      commit: 1a9e5ce768e134c556770ea50e114fd83666b8a8
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "no"
+      note: Amended report covering changes up to 2df0b2e0 (v1.1.1); the unamended v1.1.0 version is docs/Gnosis_Safe_Audit_Report_1_1_0.pdf. Superseded by v1.3.0.
+    - auditor: Runtime Verification
+      date: "2019-02-27"
+      type: formal_verification
+      scope: "Formal verification of the GnosisSafe contract v1.0.0 (shared Safe component)."
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Gnosis_Safe_Formal_Verification_Report_1_0_0.pdf
+      covers_deployed: "no"
+      findings: Findings include an execTransaction reentrancy, ISignatureValidator gas and refund abuse, and missing contract-existence checks.
+      note: Covers v1.0.0, superseded by v1.3.0. Runtime Verification verified the EVM bytecode rather than the Solidity source.
+    - auditor: Alexey Akhunov
+      date: "2018-07"
+      type: audit
+      scope: "Gnosis Safe contracts audit (interim report and iteration 2) with a symbolic-execution appendix (shared Safe component), pre-v1.0.0."
+      url: https://github.com/safe-global/safe-smart-account/blob/f8fc2f2e75b650d63276aaa12cd3a455a5f5a990/docs/Gnosis_Safe_Audit_Report.pdf
+      commit: 942968d66a4fa200fe9757d02b377dbfc3c88636
+      repo: https://github.com/safe-global/safe-smart-account
+      covers_deployed: "no"
+      note: The report is undated; the date is when it was committed to the Safe repo (2018-07-04). Changes up to 898cc896 were checked with symbolic execution (docs/Gnosis_Safe_Symbolic_Execution.pdf). Superseded by later versions.
+    - auditor: Ackee Blockchain
+      date: "2024-06-13"
+      type: audit
+      scope: "Monerium smart contracts v2.0.0 (shared EURe/GBPe token component): the V2 token, validator and frontend contracts."
+      url: https://github.com/monerium/smart-contracts/blob/514bee7548e754012ee97bb9b9043cb5f3408292/audits/v2.0.0-ackee-blockchain-monerium-smart-contracts-report-1.2.pdf
+      repo: https://github.com/monerium/smart-contracts
+      covers_deployed: unknown
+      findings: "2 high (validator rules bypass, token frontend impersonation), 1 medium, plus low and warning findings; fix reviews 2024-05-23 and 2024-06-13"
+      note: Final report 2024-05-16. Gnosis Pay spends EURe through the v2 contracts; we did not check whether the live implementation matches the audited v2.0.0 code.
+    - auditor: Ackee Blockchain
+      date: "2024-03-01"
+      type: audit
+      scope: "Monerium smart contracts v1.2.1 (shared EURe/GBPe token component); report revision 2.1 extends the 2023 v1.1.0 review."
+      url: https://github.com/monerium/smart-contracts/blob/514bee7548e754012ee97bb9b9043cb5f3408292/audits/v1.2.1-ackee-blockchain-monerium-smart-contracts-report-2.1.pdf
+      repo: https://github.com/monerium/smart-contracts
+      covers_deployed: "no"
+      findings: "Revision 1.0 lists 5 medium plus low and warning findings; revisions 2.0 and 2.1 (Feb-Mar 2024) review the v1.2.x changes"
+      note: Covers the v1 token contracts, which the v2 contracts replaced.
+    - auditor: Ackee Blockchain
+      date: "2023-08-22"
+      type: audit
+      scope: "Monerium smart contracts v1.1.0 (shared EURe/GBPe token component)."
+      url: https://github.com/monerium/smart-contracts/blob/514bee7548e754012ee97bb9b9043cb5f3408292/audits/v1.1.0-ackee-blockchain-monerium-smart-contracts-report-1.2.pdf
+      repo: https://github.com/monerium/smart-contracts
+      covers_deployed: "no"
+      findings: "5 medium (access control, renounce ownership, weak ownership, unchecked return values, decimals validation) plus low and warning findings"
+      note: Final report 2023-07-04 with fix reviews to 2023-08-22. Covers the v1 contracts, which v2 replaced.

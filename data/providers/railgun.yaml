@@ -718,3 +718,86 @@ availability:
 
 notes: >-
   Unit: Ethereum RailgunSmartWallet proxy 0xFA70…a4b9 (implementation 0xD662…6A0C) and its governance chain. Reads at block 26153471 via publicnode; Delegator permission logs via rpc.mevblocker.io (RevokePermission logs could not be fetched; current permissions were read with checkPermission). Railgun has no first-party frontend; Railway Wallet (Right to Privacy Foundation) is assessed as the reference client. npm @railgun-community/wallet latest is 11.2.0, published from outside the default branch; we pinned 10.9.0, whose gitHead is the default-branch commit we read. No transactions, UI runs, traces or self-host attempts.
+
+audits:
+  searched: >-
+    The Railgun-Privacy and Railgun-Community repos (no audits folder or SECURITY file), docs.railgun.org (no audits page in its sitemap), railgun.org, the ABDK portfolio at github.com/abdk-consulting/audits (railgun folder), Zokyo's github.com/zokyo-sec/audit-reports (RAILGUN folder; a RAIL token audit there is not in the payment path), the Trail of Bits publications list (it lists a RAILGUN review from Feb 2022 with no report published), and Hacken's audit listing. No audit of the implementation deployed at block 25641630 was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Zokyo
+      date: "2023-02-03"
+      type: audit
+      scope: Cross-chain governance relay contracts Sender.sol and Executor.sol, which carry Ethereum governance actions to Railgun's L2 deployments.
+      url: https://github.com/zokyo-sec/audit-reports/blob/39b9e51ac1b68a42ac03b222167760f7035bf16e/RAILGUN/Railgun_Zokyo_audit_report_Feb3_2023.pdf
+      commit: a49a82d1589426ece9f6b463c51635002f542e65
+      repo: https://github.com/Railgun-Privacy/contract
+      covers_deployed: unknown
+      findings: "No critical; medium issues marked resolved, plus low and informational"
+      note: Governance plumbing for other chains rather than the Ethereum settlement contracts; the arbitrum and opStack Sender and Executor files changed after this commit.
+    - auditor: Zokyo
+      date: "2022-12-21"
+      type: audit
+      scope: Commitments, RailgunLogic and RailgunSmartWallet (the v3 settlement contracts).
+      url: https://github.com/zokyo-sec/audit-reports/blob/39b9e51ac1b68a42ac03b222167760f7035bf16e/RAILGUN/Railgun_Zokyo_audit_report_Dec21_2022.pdf
+      commit: 4385ec73bf7d0da283123e8a3ac3900216cfc3f0
+      repo: https://github.com/Railgun-Privacy/contract
+      covers_deployed: partly
+      findings: "No critical; medium issues marked resolved; some informational items marked invalid or unresolved"
+      note: The deployed implementation descends from these contracts, but contracts/logic changed in the 131 commits between this commit and the assessed commit 36bcf5ed (Action events, TokenBlocklist).
+    - auditor: Zokyo
+      date: "2022-09-14"
+      type: audit
+      scope: Governance Voting.sol.
+      url: https://github.com/zokyo-sec/audit-reports/blob/39b9e51ac1b68a42ac03b222167760f7035bf16e/RAILGUN/RAILGUN_Zokyo_audit_report_Sep14_2022.pdf
+      repo: https://github.com/Railgun-Privacy/contract
+      covers_deployed: unknown
+      findings: "No critical; low and informational issues, resolved or acknowledged"
+      note: The report names last commit d73c1da6, which does not exist in Railgun-Privacy/contract; Voting.sol changed after the audit and we did not compare it with the deployed Voting contract.
+    - auditor: Zokyo
+      date: "2022-04-20"
+      type: audit
+      scope: Globals, Snark, Commitments, Verifier, Poseidon, TokenBlacklist and RailgunLogic (v2 settlement contracts).
+      url: https://github.com/zokyo-sec/audit-reports/blob/39b9e51ac1b68a42ac03b222167760f7035bf16e/RAILGUN/RAILGUN_Zokyo_audit_report_April20_2022.pdf
+      commit: 62401e1a64b9af968d85b8f5347f1a72cc56862c
+      repo: https://github.com/Railgun-Privacy/contract
+      covers_deployed: "no"
+      note: Covers a version replaced by the v3 RailgunSmartWallet.
+    - auditor: Zokyo
+      date: "2021-11-23"
+      type: audit
+      scope: Commitments, Globals and RailgunLogic (v1 settlement logic).
+      url: https://github.com/zokyo-sec/audit-reports/blob/39b9e51ac1b68a42ac03b222167760f7035bf16e/RAILGUN/RAILGUN_Zokyo_audit_report_Nov23_2021.pdf
+      commit: 97af307fa1d737d4526323acc3d0ef372c703417
+      repo: https://github.com/Railgun-Privacy/contract
+      covers_deployed: "no"
+      findings: "2 issues, both resolved; no critical"
+      note: Starting commit 0418a0f1, last commit 97af307f. Superseded by later versions.
+    - auditor: Zokyo
+      date: "2021-11-03"
+      type: audit
+      scope: Full v1 contract suite (Delegator, Voting, ProxyAdmin, Proxy, Commitments, RailgunLogic, Verifier, Snark, TokenWhitelist, Staking, Treasury, Distributor, VestLock and others).
+      url: https://github.com/zokyo-sec/audit-reports/blob/39b9e51ac1b68a42ac03b222167760f7035bf16e/RAILGUN/RAILGUN_Zokyo_audit_report_Nov3_2021.pdf
+      commit: d2c63577ddd8310c87dced0d549cf9505b372111
+      repo: https://github.com/Railgun-Privacy/contract
+      covers_deployed: "no"
+      findings: "No critical; 1 low and 3 informational, left unresolved because the contracts were already deployed"
+      note: Reviewed after the v1 deployment; the settlement logic has since been replaced, though some governance contracts (Delegator, ProxyAdmin) may descend from this suite.
+    - auditor: Hacken
+      date: "2021-11"
+      type: audit
+      scope: Railgun smart contracts for Right to Privacy (contract list not read; see note).
+      url: https://hacken.io/audits/right-to-privacy/sca-right-to-privacy-railgun-nov2021/
+      covers_deployed: "no"
+      findings: "2 medium and 2 low, all resolved, per Hacken's listing"
+      blocked_to_bots: true
+      note: Published on Hacken's audits site, which returns HTTP 403 to scripted requests, so we could not read the scope or commit. Dated November 2021, it predates the deployed implementation.
+    - auditor: ABDK Consulting
+      date: "2021-06-18"
+      type: audit
+      scope: Early contracts (Commitments, RailgunLogic, Snark, TokenWhitelist, Types, Verifier) and circuits.
+      url: https://github.com/abdk-consulting/audits/blob/57af593b14bb3701cf659937b1b7b6483009a0cc/railgun/ABDK_Railgun_CircomSolidity_v_2_0.pdf
+      commit: 6281cb0dac6a6e0da743e3ba56c437803657872d
+      repo: https://github.com/Railgun-Privacy/contract
+      covers_deployed: "no"
+      findings: "2 critical, 5 major, 3 moderate, 54 minor; all listed as Opened in this report"
+      note: Circuits were reviewed at Railgun-Privacy/circuits commit 2c3c3144, predating circuits-v2.

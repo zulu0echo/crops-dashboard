@@ -844,3 +844,9 @@ notes: >-
 
 context: >-
   Coinbase Commerce is offered to merchants by Coinbase Bermuda Technologies Limited under the Commerce Terms of Service (last updated 2025-10-29), which apply UK, Bermuda, Singapore and US sanctions rules and allow Coinbase to suspend accounts without notice. The Commerce Privacy Policy is dated 2024-12-03. Successor product: Coinbase Business Checkouts API (USDC on Base).
+
+audits:
+  searched: >-
+    The coinbase/commerce-onchain-payment-protocol repo (no audits folder, SECURITY file or tests; GitHub code and commit searches for "audit" return nothing), the coinbase/.github security policy (HackerOne bug bounty, not an audit), Coinbase's Commerce protocol announcement and docs, web searches for a Transfers contract audit, and auditor portfolios (Trail of Bits publications, Spearbit portfolio, OpenZeppelin, Nethermind). No published audit of any Transfers deployment was found. The separate Commerce Payments Protocol (AuthCaptureEscrow) is a different contract set and is not the assessed path.
+  checked_at: "2026-10-13"
+  reports: []

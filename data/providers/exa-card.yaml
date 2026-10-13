@@ -880,3 +880,219 @@ settlement:
       detail: A sample card debit - the keeper called collectDebit on the user's account and the exaUSDC market emitted Withdraw of USDC to the card collector 0x3a73880f....
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: 'github.com/exactly/audits (32 reports for Exa and the Exactly Protocol), the audits/ folders of exactly/webauthn-owner-plugin and alchemyplatform/modular-account (v1 reports; the Dec 2024 ChainLight and Quantstamp reports cover Modular Account v2, which Exa accounts do not use), exactly/exa and exactly/protocol (no audit folders), and circlefin/stablecoin-evm (no published USDC audit). Left out as outside the card path: EXA token cross-chain, EscrowedEXA (ABDK, OpenZeppelin), staking (ChainSafe, Sherlock), peripheral contracts (ABDK Sep-23) and the Cryptecon economics paper. No audit of Rain''s collateral contracts is published. Exactly Protocol reports are marked unknown because the deployed exaUSDC implementation is not source-verified. No bug bounty was found.'
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: ABDK Consulting
+      date: "2026-09-17"
+      type: review
+      scope: 'Exactly Protocol pull request review: non-collateral markets (Auditor and Market changes). Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/ABDK%20Non-Collateral%20Markets%20%28Sep-26%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      note: Initial draft 2026-09-08; public report 2026-09-17 with client responses; two findings withdrawn.
+    - auditor: ABDK Consulting
+      date: "2025-10-31"
+      type: audit
+      scope: 'Exactly Protocol update (Market and related contracts). Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/ABDK%20Protocol%20Update%20%28Oct-25%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: Moderate issues and recommendations; most marked info, several fixed
+    - auditor: Quantstamp
+      date: "2025-10-30"
+      type: audit
+      scope: 'Exa App diff review: ExaPlugin changes between 1a27efdf and 16efc1be (batched proposal execution, cross-repay with non-USDC markets, minor fixes).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Quantstamp%20Exa%20App%20Plugin%20Update%20%28Oct-25%29.pdf
+      commit: "16efc1be67e03dcd407ad3430150456dac965434"
+      repo: https://github.com/exactly/exa
+      covers_deployed: "no"
+      findings: 1 informational, fixed (fix review 2025-10-30)
+      note: Reviewed 2025-09-17 to 2025-09-29. Per S6, this later code is not what is deployed on OP Mainnet (deployed source aceb1b5).
+    - auditor: ABDK Consulting
+      date: "2025-03-27"
+      type: audit
+      scope: 'Exactly RewardsController update (called by the market on deposits, borrows and repays). Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/ABDK%20Rewards%20Controller%20Update%20%28Mar-25%29pdf.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: Moderate and minor issues; some fixed, the rest informational
+    - auditor: Quantstamp
+      date: "2025-03"
+      type: audit
+      scope: 'Exa App Plugin: ExaPlugin (ERC-6900 plugin for card debit and credit, collateral and withdrawal proposals), IssuerChecker and ProposalManager.'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Quantstamp%20Exa%20App%20Plugin%20%28Mar-25%29.pdf
+      commit: "b262356"
+      repo: https://github.com/exactly/exa
+      covers_deployed: "no"
+      findings: 3 high, 3 medium, 5 low; all fixed
+      note: Reviewed 2025-01-14 to 2025-01-27 on exactly/mobile (now exactly/exa); fix review ended at 368df25. The deployed source aceb1b5 is 23 commits later and ExaPlugin.sol changed in between (S6).
+    - auditor: Quantstamp
+      date: "2024-06-10"
+      type: audit
+      scope: Exactly WebAuthn Owner Plugin (ERC-6900 owner plugin with ECDSA, ERC-1271 and WebAuthn P-256 signatures), the passkey owner of each Exa account.
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Quantstamp%20Exa%20App%20WebAuthn%20Plugin%20%28Jul-24%29.pdf
+      commit: "7fcf594"
+      repo: https://github.com/exactly/webauthn-owner-plugin
+      covers_deployed: unknown
+      findings: 1 medium (fixed), 2 low (acknowledged), 5 informational
+      note: Reviewed 2024-06-05 to 2024-06-10. The same PDF is in exactly/webauthn-owner-plugin audits/2024-06-10-quantstamp.pdf. Not checked against the deployed plugin 0x8f498c82...
+    - auditor: Hashlock
+      date: "2024-04"
+      type: audit
+      scope: 'Exactly Protocol Market.sol and InstallmentsRouter.sol on Optimism (new market roles and installments router). Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Hashlock%20Installments%20Router%20and%20New%20Market%20Roles%20%28Apr-24%29.pdf
+      commit: "9bd8d2e29f5d9893d88e3a972e210b6ed06827bc"
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+    - auditor: ABDK Consulting
+      date: "2024-04-15"
+      type: audit
+      scope: 'Exactly Protocol update part II: InstallmentsRouter and new Market roles. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/ABDK%20Installments%20Router%20and%20New%20Market%20Roles%20%28Apr-24%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: Recommendations only; several fixed
+    - auditor: Hashlock
+      date: "2024-03"
+      type: audit
+      scope: 'Exactly Protocol InterestRateModel.sol and Market.sol on Optimism (interest rate model v2). Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Hashlock%20Interest%20Rate%20Model%20v2%20%28Mar-24%29.pdf
+      commit: "d424a0758a877e95a9f21a3685c680e086dc2321"
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+    - auditor: ChainSafe
+      date: "2024-03"
+      type: audit
+      scope: 'Exactly Protocol interest rate model v2 review. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Chainsafe%20Interest%20Rate%20Model%20v2%20%28Mar-24%29.pdf
+      commit: "d424a0758a877e95a9f21a3685c680e086dc2321"
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      note: A follow-up diff review is in 'Chainsafe Interest Rate Model v2 Diff (Mar-24).pdf' in the same repo.
+    - auditor: ABDK Consulting
+      date: "2024-03-12"
+      type: audit
+      scope: 'Exactly Protocol update: interest rate model v2. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/ABDK%20Interest%20Rate%20Model%20v2%20%28Mar-24%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: 1 major, 3 moderate (all fixed), minor issues
+      note: Report v3.0; v2.0 of the same report (2024-02-14) is 'ABDK Interest Rate Model v2 (Feb-24).pdf' in the same repo.
+    - auditor: ABDK Consulting
+      date: "2023-05-17"
+      type: audit
+      scope: 'Exactly Protocol phase II. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/ABDK%202nd%20audit%20%28May-23%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: Major, moderate and minor issues; majors marked fixed
+    - auditor: Coinspect
+      date: "2023-03"
+      type: audit
+      scope: 'Exactly Protocol fifth audit (fixed rate curve and interest rate model changes). Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Coinspect%205th%20audit%20%28Mar-23%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: EXA-40 fixed rate curve discontinuity, EXA-41 retroactive fee collection on model change
+    - auditor: Coinspect
+      date: "2023-03"
+      type: audit
+      scope: 'Exactly RewardsController, third review. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Coinspect%20RewardsController%203rd%20audit%20%28Mar-23%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+    - auditor: Coinspect
+      date: "2023-02"
+      type: audit
+      scope: 'Exactly RewardsController, second review. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Coinspect%20RewardsController%202nd%20audit%20%28Feb-23%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: EXR-8 to EXR-12
+    - auditor: Coinspect
+      date: "2023-01"
+      type: audit
+      scope: 'Exactly RewardsController, first review. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Coinspect%20RewardsController%201st%20audit%20%28Jan-23%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: EXR-1 to EXR-7
+    - auditor: ABDK Consulting
+      date: "2022-11-05"
+      type: audit
+      scope: 'Exactly Protocol first ABDK audit. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/ABDK%201st%20audit%20%28Oct-22%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+    - auditor: Coinspect
+      date: "2022-10"
+      type: audit
+      scope: 'Exactly Protocol fourth audit (price feeds and market enabling). Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Coinspect%204th%20audit%20%28Oct-22%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: EXA-36 to EXA-39
+    - auditor: ChainSafe
+      date: "2022-10"
+      type: audit
+      scope: 'Exactly Protocol update review. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Chainsafe%202nd%20audit%20%28Oct-22%29.pdf
+      commit: "af5b4907ec63fe034fb8dde62bae99222d8407bc"
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+    - auditor: Coinspect
+      date: "2022-09"
+      type: audit
+      scope: 'Exactly Protocol third audit. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Coinspect%203rd%20audit%20%28Oct-22%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: EXA-23 to EXA-35, including a liquidity-check bypass
+    - auditor: ChainSafe
+      date: "2022-05"
+      type: audit
+      scope: 'Exactly Finance fixed lending protocol review. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Chainsafe%201st%20audit%20%28May-22%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+    - auditor: Coinspect
+      date: "2022-05"
+      type: audit
+      scope: 'Exactly Protocol second audit. Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Coinspect%202nd%20audit%20%28May-22%29.pdf
+      repo: https://github.com/exactly/protocol
+      covers_deployed: unknown
+      findings: EXA-06 to EXA-22, including a liquidity-check bypass that could drain funds
+    - auditor: Coinspect
+      date: "2021-11"
+      type: audit
+      scope: 'Exactly Protocol first audit (FixedLender and early protocol contracts). Exactly Protocol (shared component: the exaUSDC market that holds card collateral).'
+      url: https://github.com/exactly/audits/blob/a430a1526b4609b7dc61fde5f8c2cc2545e0c632/Coinspect%201st%20audit%20%28Nov-21%29.pdf
+      commit: "351d868e858f588d3e06c3a1cb9568ea13535601"
+      repo: https://github.com/exactly/protocol
+      covers_deployed: "no"
+      findings: EXA-1 to EXA-5, including reward-token theft and an admin able to seize user funds
+      note: Covers the pre-launch FixedLender design, later replaced by Market.
+    - auditor: Quantstamp
+      date: "2024-02-19"
+      type: audit
+      scope: 'Alchemy Modular Account v1 (shared component: the user''s UpgradeableModularAccount), ERC-6900 account and plugins.'
+      url: https://github.com/alchemyplatform/modular-account/blob/ab9c0c24752d83f79ba7b8c112797502d2c2c5a5/audits/2024-02-19_quantstamp_0e3fd1e.pdf
+      commit: "0e3fd1e"
+      repo: https://github.com/alchemyplatform/modular-account
+      covers_deployed: unknown
+      findings: 33 findings (2 high, 6 medium, 15 low, 3 undetermined, 7 informational); 21 fixed, 11 acknowledged, 1 mitigated
+      note: Reviewed 2023-11-20 to 2023-12-19. Also in the v1.0.1 tag as audits/2024-02-20-quantstamp-8ae319e.pdf. Not checked against the deployed implementation 0x00460000...a61e.
+    - auditor: Spearbit
+      date: "2024-01-31"
+      type: audit
+      scope: 'Alchemy Modular Account v1 (shared component: the user''s UpgradeableModularAccount), account, factory and plugins.'
+      url: https://github.com/alchemyplatform/modular-account/blob/ab9c0c24752d83f79ba7b8c112797502d2c2c5a5/audits/2024-01-31_spearbit_0e3fd1e.pdf
+      commit: "0e3fd1e"
+      repo: https://github.com/alchemyplatform/modular-account
+      covers_deployed: unknown
+      findings: 'High finding: SESSION_KEY_DATA_PREFIX storage collision; plus medium and lower findings'
+      note: Also in the v1.0.1 tag. Not checked against the deployed implementation 0x00460000...a61e.

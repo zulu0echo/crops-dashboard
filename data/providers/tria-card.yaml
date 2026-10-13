@@ -397,3 +397,25 @@ settlement:
       quote: "Your crypto is converted at payment time"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    docs.tria.so (all pages, including Security and TSS, TX Flow and the card terms; no audit is mentioned), the TriaHQ
+    GitHub org (no card, wallet or SDK code), Rain's security page (audits under NDA, Sherlock named) and the Sherlock
+    report repo (one Rain report). The international card terms carry Rain's name ("Your Rain Payment Card Terms"). No
+    audit of Tria's app, TSS key infrastructure or BestPath routing is published.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Sherlock
+      date: "2025-02-11"
+      type: contest
+      scope: "Shared component: Rain EVM collateral contracts v2 (Beacon, Collateral, Coordinator, Factory), private best-efforts contest"
+      url: https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2025.02.11%20-%20Final%20-%20Rain%20Private%20Best%20Efforts%20Audit%20Contest%20Report.pdf
+      commit: 6f578d5b9c9fa35bbe857959a50fa5aab4fa611a
+      repo: https://github.com/SignifyHQ/collateral-contract-evm-v2
+      covers_deployed: unknown
+      findings: "0 high, 2 medium (statement payoff rounding; missing Chainlink min/max answer check)"
+      note: >-
+        Logged because the card is a Rain programme (Third National issuer, collateral on Ethereum, Polygon,
+        Optimism or Arbitrum per the card terms). Tria publishes no collateral contract, so the audited code was not
+        tied to this card. The Rain repo is private; contest ran 2-8 December 2024 on b432939a, 6f578d5 is the fix commit.

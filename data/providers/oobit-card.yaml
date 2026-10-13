@@ -433,3 +433,27 @@ settlement:
       quote: "directly from your wallet to Oobit's settlement layer"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    oobit.com (DePay page, FAQ, Card Terms, Terms of Use; DePay is described as a "smart contract engine" but no audit
+    is linked), docs.oobit.com, github.com/oobit-tech, the Sherlock report repo and Rain's security page (Rain says its
+    reports are shared under NDA and names Sherlock), Hacken's portfolio, and web searches for Oobit and DePay audits.
+    Hacken's April 2023 review of the OBT ERC-20 token is not listed: the token is not in the card payment path. No
+    audit of the DePay spender, the Oobit settlement layer or the app was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Sherlock
+      date: "2025-02-11"
+      type: contest
+      scope: "Shared component: Rain EVM collateral contracts v2 (Beacon, Collateral, Coordinator, Factory), private best-efforts contest"
+      url: https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2025.02.11%20-%20Final%20-%20Rain%20Private%20Best%20Efforts%20Audit%20Contest%20Report.pdf
+      commit: 6f578d5b9c9fa35bbe857959a50fa5aab4fa611a
+      repo: https://github.com/SignifyHQ/collateral-contract-evm-v2
+      covers_deployed: unknown
+      findings: "0 high, 2 medium (statement payoff rounding; missing Chainlink min/max answer check)"
+      note: >-
+        Contest ran 2-8 December 2024 on b432939a; 6f578d5 is the fix commit. Oobit's card runs on Rain's programme
+        (the Card Terms are Rain Card Terms), but Oobit holds in-app crypto custodially and no Rain collateral contract
+        could be tied to Oobit, so it is not known whether these contracts are used in Oobit's card path. The Rain repo is
+        private.

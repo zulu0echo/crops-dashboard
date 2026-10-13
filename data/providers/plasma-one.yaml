@@ -583,3 +583,26 @@ settlement:
       quote: allow you to make fiat payments funded by stablecoin balances in your Digital Wallets accessed through Plasma One
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    Plasma's Plasma One pages and Rain's Plasma case study (both say contracts are audited before launch; no report is
+    linked), Rain's security page (reports shared under NDA; Sherlock named), the Sherlock report repo
+    (github.com/sherlock-protocol/sherlock-reports), the Guardian report repo, and web searches for Plasma One and Rain
+    card-contract audits. Rain's public GitHub (SignifyHQ) holds SDKs only. No audit of Plasma One's own app or backend
+    or of the Privy wallet stack is logged.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Sherlock
+      date: "2025-02-11"
+      type: contest
+      scope: "Shared component: Rain EVM collateral contracts v2 (Beacon, Collateral, Coordinator, Factory), private best-efforts contest"
+      url: https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2025.02.11%20-%20Final%20-%20Rain%20Private%20Best%20Efforts%20Audit%20Contest%20Report.pdf
+      commit: 6f578d5b9c9fa35bbe857959a50fa5aab4fa611a
+      repo: https://github.com/SignifyHQ/collateral-contract-evm-v2
+      covers_deployed: unknown
+      findings: "0 high, 2 medium (statement payoff rounding; missing Chainlink min/max answer check)"
+      note: >-
+        Contest ran 2-8 December 2024 on b432939a; 6f578d5 is the fix commit. The Rain repo is private, the Plasma
+        collateral beacon is unverified, and the Plasma Coordinator's pullAssetFromUserWallet and timelocked withdrawal
+        functions are not named in the report, so the deployment may be a later version.

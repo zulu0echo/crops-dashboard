@@ -185,6 +185,22 @@ ${s.note ? `<p class="finding">${esc(s.note)}</p>` : ''}
 <p class="meta small">Checked ${esc(s.checked_at)}</p>
 ${evidenceBlock(s.evidence, p)}</section>`;
 };
+// Audit log (context under Security; the S6 rating scores audits).
+const AUDIT_TYPE = { audit: 'Audit', formal_verification: 'Formal verification', contest: 'Audit contest', review: 'Security review', pentest: 'Penetration test' };
+const COVERS = { yes: 'Yes', partly: 'Partly', no: 'No', unknown: 'Unknown' };
+const auditLog = (p) => {
+  const a = p.audits;
+  if (!a) return '<section class="audits" id="audits" aria-labelledby="h-audits"><h3 id="h-audits">Security audits</h3><p class="muted">Not yet researched for this provider.</p></section>';
+  const rs = [...a.reports].sort((x, y) => y.date.localeCompare(x.date));
+  const commit = (r) => (r.commit ? ` <span class="small">at ${r.repo ? `<a href="${href(`${r.repo.replace(/\/$/, '')}/tree/${r.commit}`)}"><code>${esc(r.commit.slice(0, 10))}</code></a>` : `<code>${esc(r.commit.slice(0, 10))}</code>`}</span>` : '');
+  const table = rs.length
+    ? `<div class="table-scroll"><table class="plain audits-table"><thead><tr><th scope="col">Date</th><th scope="col">Auditor</th><th scope="col">Type</th><th scope="col">Scope</th><th scope="col">Covers deployed code</th><th scope="col">Findings</th></tr></thead><tbody>${rs.map((r) => `<tr><td class="nowrap">${esc(r.date)}</td><td><a href="${href(r.url)}">${esc(r.auditor)}</a></td><td>${esc(AUDIT_TYPE[r.type])}</td><td>${esc(r.scope)}${commit(r)}${r.note ? `<br><span class="small muted">${esc(r.note)}</span>` : ''}</td><td><span class="cover cv-${esc(r.covers_deployed)}">${esc(COVERS[r.covers_deployed])}</span></td><td class="small">${esc(r.findings ?? '')}</td></tr>`).join('')}</tbody></table></div>`
+    : '<p><strong>No published audit report was found.</strong></p>';
+  return `<section class="audits" id="audits" aria-labelledby="h-audits"><h3 id="h-audits">Security audits <span class="count">${rs.length}</span></h3>
+<p class="muted small">Published audits and similar reviews of this provider's code, newest first. Context for the <a href="#S6">Audits and bug bounty</a> rating, which scores them; this list does not change any rating, and an audit of older code says little about what is deployed now.</p>
+${table}
+<p class="meta small">Compiled from: ${esc(a.searched)} Checked ${esc(a.checked_at)}. Only published reports are listed; private audits a provider mentions without a report are not.</p></section>`;
+};
 const BASELINE_NOTE = 'Incumbent rails have no public chain settlement and no public code. They are scored with the same rubric as every other row. Their low ratings show the verifiability gap between rails whose behaviour can be inspected and rails whose behaviour must be trusted; that gap is the point of the comparison, not a claim that the incumbent is unsafe.';
 const GROUPS = [['checkout', 'Checkout and invoicing'], ['card', 'Cards'], ['remittance', 'Remittance and wallets'], ['transfer', 'Protocols for privacy-preserving transfers', 'Privacy transfers'], ['incumbent', 'Incumbent baseline']];
 // Within a group: alphabetical by chain, then by name. Off-chain rails (no primary chain) sort by name. Ordering only; there is no ranking.
@@ -400,6 +416,7 @@ for (const p of providers) {
 <div><dt>Chain</dt><dd>${chainMark(p.primary_chain)}${p.primary_chain ? esc(p.primary_chain.name) : 'Off-chain'}</dd></div>
 <div><dt>CROPS tally</dt><dd><a href="#h-glance-cols">${tl.holds} of ${tl.total} hold up</a>${tl.unk ? ` <span class="muted">· ${tl.unk} no evidence</span>` : ''}</dd></div>
 ${p.settlement ? `<div><dt>Settles in</dt><dd><a href="#h-settle">${p.settlement.tokens.slice(0, 3).map((t) => esc(t.symbol)).join(', ')}${p.settlement.tokens.length > 3 ? ` +${p.settlement.tokens.length - 3}` : ''}</a></dd></div>` : ''}
+<div><dt>Security audits</dt><dd>${p.audits ? `<a href="#audits">${p.audits.reports.length ? `${p.audits.reports.length} published` : 'None published'}</a>` : '<span class="muted">Not researched</span>'}</dd></div>
 <div><dt>Offered</dt><dd>${p.availability ? `<a href="#h-avail">${esc({ global: 'Everywhere', allowlist: `${COUNTRIES.filter((cc) => status(p, cc) === 'yes').length} countries`, blocklist: `All but ${COUNTRIES.filter((cc) => status(p, cc) === 'no').length} countries` }[p.availability.model])}</a>` : '<span class="muted">Not on file</span>'}</dd></div>
 <div><dt>Last edited</dt><dd>${lastEdit[p.slug] ? `${esc(lastEdit[p.slug])} · ` : ''}<a href="${repo}/commits/main/data/providers/${esc(p.slug)}.yaml">History</a></dd></div>
 </dl>`;
@@ -424,7 +441,8 @@ ${ev.length ? `${evidenceBlock(ev, p)}` : ''}
     return `<section class="pillar" id="pillar-${pl.id}" aria-labelledby="h-${pl.id}">
 <header class="pillar-head"><div><h2 id="h-${pl.id}">${esc(pl.name)}</h2><p>${esc(pl.question)}</p></div><p class="pillar-score">${rating(r.score, r.unknown, 'lg')}<span>Pillar rating: weakest of ${critsOf(pl).length}<br>${spread(p, pl)}</span></p></header>
 ${nextStep(p, pl)}
-${rows}</section>`;
+${rows}
+${pl.id === 'S' ? auditLog(p) : ''}</section>`;
   }).join('\n');
 
   const contracts = p.contracts.length ? `<table class="plain"><thead><tr><th scope="col">Role</th><th scope="col">Address</th><th scope="col">Source verified</th></tr></thead><tbody>${p.contracts.map((c) => `<tr><td>${esc(c.role)}</td><td><code>${esc(short(c.address))}</code>${links(c.chain_id ?? c.caip2, c.address)}</td><td>${esc(c.verified)}</td></tr>`).join('')}</tbody></table>` : '<p class="muted">None listed.</p>';
@@ -497,8 +515,8 @@ writeFileSync(join(OUT, 'data.json'), JSON.stringify({ generated: today, criteri
 // CSV cells are quoted, and a leading = + - @ is neutralised so spreadsheets don't execute contributor text.
 const csv = (v) => { const s = String(v ?? ''); return '"' + (/^[=+\-@]/.test(s) ? "'" + s : s).replace(/"/g, '""') + '"'; };
 writeFileSync(join(OUT, 'grid.csv'), [
-  ['slug', 'name', 'type', 'chain', ...criteria.pillars.flatMap((pl) => [pl.id, `${pl.id}_limiting`]), 'holds_up', 'falls_short', 'no_evidence', 'settlement_tokens', 'settlement_classes'].map(csv).join(','),
-  ...providers.map((p) => [p.slug, p.name, p.type, p.primary_chain?.name ?? '', ...criteria.pillars.flatMap((pl) => [rollups[p.slug][pl.id].score, rollups[p.slug][pl.id].limiting.join(' ')]), ...(({ holds, short, unk }) => [holds, short, unk])(tally(p)), (p.settlement?.tokens ?? []).map((t) => t.symbol).join(' '), (p.settlement?.tokens ?? []).map((t) => (t.class === 'stablecoin' ? `stablecoin-${t.backing}` : t.class)).join(' ')].map(csv).join(',')),
+  ['slug', 'name', 'type', 'chain', ...criteria.pillars.flatMap((pl) => [pl.id, `${pl.id}_limiting`]), 'holds_up', 'falls_short', 'no_evidence', 'settlement_tokens', 'settlement_classes', 'audits_published'].map(csv).join(','),
+  ...providers.map((p) => [p.slug, p.name, p.type, p.primary_chain?.name ?? '', ...criteria.pillars.flatMap((pl) => [rollups[p.slug][pl.id].score, rollups[p.slug][pl.id].limiting.join(' ')]), ...(({ holds, short, unk }) => [holds, short, unk])(tally(p)), (p.settlement?.tokens ?? []).map((t) => t.symbol).join(' '), (p.settlement?.tokens ?? []).map((t) => (t.class === 'stablecoin' ? `stablecoin-${t.backing}` : t.class)).join(' '), p.audits ? p.audits.reports.length : ''].map(csv).join(',')),
 ].join('\n') + '\n');
 
 writeFileSync(join(OUT, 'operational.csv'), [['slug', 'custody_model', 'licences', 'cashout_methods', 'first_deployment', 'entity', 'volume_status', 'volume_events', ...opsCriteria.controls.map((c) => c.id)].map(csv).join(','), ...providers.map((p) => { const op = operational[p.slug]; return [p.slug, op?.custody_model?.status === 'evidenced' ? op.custody_model.value : (op?.custody_model?.status ?? 'unknown'), op?.licences?.value?.length ?? '', (op?.cashout?.value ?? []).map((x) => x.method).join(' '), op?.maturity?.first_deployment?.value?.date ?? '', op?.maturity?.entity?.value?.legal_name ?? '', op?.volume?.status ?? 'unknown', op?.volume?.value?.events ?? '', ...opsCriteria.controls.map((c) => effectiveFact(p, op, c).status)].map(csv).join(','); })].join('\n') + '\n');

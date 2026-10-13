@@ -640,3 +640,46 @@ settlement:
       quote: any digital assets converted or wrapped on transfer to the On-Chain Infrastructure may be re-converted or unwrapped on such a transfer back
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    The wirexapp GitHub organisation including wirex-baas-agent-skills (no audits/ folder or audit mention for the
+    contracts), wirexapp.com, web searches for Wirex and Wirex Pay contract audits (Hacken, Halborn, CertiK, Zellic),
+    and the audits/ folder of github.com/zerodevapp/kernel (main and release/v3.3) for the Kernel v3.1 smart account.
+    No audit of the Wirex BaaS contracts on Base (ContractRegistry, FundsManagement, ExecutionDelayPolicy, FundsBuffer)
+    is published. Audits of the ERC-4337 EntryPoint are not logged here.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Felix Kim (independent auditor)
+      date: "2024-06"
+      type: audit
+      scope: "Shared component: ZeroDev Kernel v3.0-to-3.x changes (incremental, the v3.1 release) plus WebAuthn, MultiChain WebAuthn and Weighted validators and the SpendingLimit hook"
+      url: https://github.com/zerodevapp/kernel/blob/release/v3.3/audits/v_3_1_incremental_audit.pdf
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: partly
+      findings: "3 minor (validator and hook issues)"
+      note: >-
+        Audit period 27 May-9 June 2024. Reviews only the diff from v3.0, so it relies on the ChainLight v3.0 audit for the
+        rest of the account. Whether the sample wallet's implementation matches this code was not checked byte for byte.
+    - auditor: KALOS
+      date: "2024-04-12"
+      type: audit
+      scope: "Shared component: ZeroDev Kernel v3 KernelFactory and FactoryStaker"
+      url: https://github.com/zerodevapp/kernel/blob/main/audits/kalos_v3_plugins.pdf
+      commit: 85617952ec4cdf8d6478a9139540968fb92a6f10
+      repo: https://github.com/zerodevapp/kernel
+      covers_deployed: unknown
+      findings: No security issues found
+      note: The file is named kalos_v3_plugins but its scope is the factory contracts.
+    - auditor: ChainLight (Theori)
+      date: "2024-04-05"
+      type: audit
+      scope: "Shared component: ZeroDev Kernel v3.0 (ERC-7579 smart account) core and validation modules"
+      url: https://github.com/zerodevapp/kernel/blob/main/audits/chainlight_v3_0.pdf
+      commit: 8646f2c25f2727019d91cbfb43f9c5688acc6fc2
+      repo: https://github.com/zerodevapp/kernel_v3
+      covers_deployed: partly
+      findings: "2 high, 2 medium, 3 low, 5 informational"
+      note: >-
+        Audit started 11 March 2024 on kernel_v3 commits 5f086737 and 8646f2c2. Wirex wallets run Kernel v3.1, whose
+        changes from v3.0 were reviewed separately in June 2024. Does not cover the Wirex executor module or BaaS contracts.

@@ -380,3 +380,35 @@ settlement:
       quote: "making it simpler to fund your COCA banking account"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    coca.xyz (terms, privacy) and docs.coca.xyz (all 19 pages; the Is COCA Safe page cites audits of Privy and Morpho
+    but none of COCA's own code), the GitHub orgs and users listed in the notes (no card or wallet code), and Privy's
+    security docs, which point to its open-source Shamir secret-sharing library and its two published reports. No audit
+    of COCA's smart wallet, spending module or backend is published. Morpho vaults are a yield feature, not the card
+    path. Privy's SOC 2 and its other audits (Doyensec, infrastructure) are not published as reports.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Zellic
+      date: "2023-08-15"
+      type: audit
+      scope: "Shared component: Privy shamir-secret-sharing TypeScript library (key splitting used by Privy embedded wallets)"
+      url: https://github.com/Zellic/publications/blob/master/Privy_Shamir_Secret_Sharing_-_Zellic_Audit_Report.pdf
+      commit: cd8422d
+      repo: https://github.com/privy-io/shamir-secret-sharing
+      covers_deployed: unknown
+      findings: "1 low; acknowledged"
+      note: >-
+        Assessment 27-29 June 2023. COCA says wallet keys are managed via Privy but not which Privy key scheme or library
+        version its wallets use.
+    - auditor: Cure53
+      date: "2023-04-24"
+      type: audit
+      scope: "Shared component: Privy shamir-secret-sharing TypeScript library, cryptography review and code audit"
+      url: https://cure53.de/audit-report_privy-sss-library.pdf
+      commit: 3383ad927211615f3d70b5ceb5489f8a149be191
+      repo: https://github.com/privy-io/shamir-secret-sharing
+      covers_deployed: unknown
+      findings: "1 high (polynomial degree could be below t-1), 2 info; fixes verified by Cure53"
+      note: Testing in February 2023 (two days). Covers only the library, not Privy's key-management service.

@@ -733,3 +733,63 @@ settlement:
       quote: Either your primary Linked Wallet or any Additional Wallets may provide the collateral that will secure the Charges made by you on any Card
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    Guardian's public report repo (github.com/GuardianAudits/Audits, Ethena folder), the crypticdefense/audits list
+    (which still marks the EthenaPay Wallet and EthenaSafeGuard audits private), web searches for Ethena Pay audits, the
+    Sherlock report repo for Rain, Rain's security page (audits under NDA, Sherlock named), and the docs/ audit folder of
+    github.com/safe-fndn/safe-smart-account for the owner Safe. Guardian's April 2026 Execution Guard (EthenaSafeGuard)
+    review is not listed: the owner Safe's guard slot is zero. Ethena's SOC 2 Type II report is not a code audit.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Guardian
+      date: "2026-07-06"
+      type: audit
+      scope: >-
+        Ethena Pay wallet updates: UserProxyFactoryBeacon, BatchExecutor, WalletDiamond facets (Auth, Recovery,
+        Allowance, Withdrawal, DirectMode, ExecutorExternalCall, ExternalApprove, ERC1271) and libraries
+      url: https://github.com/GuardianAudits/Audits/blob/main/Ethena/2026-07-06_Ethena_Pay_Updates.pdf
+      covers_deployed: unknown
+      findings: "3 high, 14 medium, 39 low, 25 informational over two rounds; 25 resolved, 11 partly, 45 acknowledged"
+      note: >-
+        Review window 10-29 June 2026, before the September launch. The report names no commit, and the factory
+        implementation on Avalanche is unverified, so the audited code was not tied to the deployment. Guardian rated
+        confidence 3 of 5.
+    - auditor: Guardian
+      date: "2026-04-15"
+      type: audit
+      scope: >-
+        Ethena Pay wallet contracts: UserProxyFactoryBeacon, WalletDiamond, AllowanceFacet, AuthFacet, DirectModeFacet,
+        RecoveryFacet, WithdrawalFacet and libraries (14 files)
+      url: https://github.com/GuardianAudits/Audits/blob/main/Ethena/2026-04-15_Ethena_Pay_Review.pdf
+      commit: 9122473f5310
+      covers_deployed: unknown
+      findings: "3 medium, 7 low, 24 informational; 18 resolved, 16 acknowledged"
+      note: >-
+        Repository chainnodesorg/ethenapay-wallet-contracts (not public); remediation commit 498c18fb29c0. Superseded
+        in part by the July 2026 updates review.
+    - auditor: Sherlock
+      date: "2025-02-11"
+      type: contest
+      scope: "Shared component: Rain EVM collateral contracts v2 (Beacon, Collateral, Coordinator, Factory), private best-efforts contest"
+      url: https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2025.02.11%20-%20Final%20-%20Rain%20Private%20Best%20Efforts%20Audit%20Contest%20Report.pdf
+      commit: 6f578d5b9c9fa35bbe857959a50fa5aab4fa611a
+      repo: https://github.com/SignifyHQ/collateral-contract-evm-v2
+      covers_deployed: unknown
+      findings: "0 high, 2 medium (statement payoff rounding; missing Chainlink min/max answer check)"
+      note: >-
+        Contest ran 2-8 December 2024 on b432939a; 6f578d5 is the fix commit. The Rain repo is private and the
+        RainCollateral implementation on Avalanche was not compared with it.
+    - auditor: Ackee Blockchain
+      date: "2023-03-28"
+      type: audit
+      scope: "Shared component: Safe smart account v1.4.0 core contracts, used by the 5-of-10 owner Safe of the factory and executor"
+      url: https://github.com/safe-fndn/safe-smart-account/blob/main/docs/Safe_Audit_Report_1_4_0.pdf
+      commit: eb93dbb0f62e2dc1b308ac4c110038062df0a8c9
+      repo: https://github.com/safe-fndn/safe-smart-account
+      covers_deployed: partly
+      findings: "2 medium, 1 low, 6 warnings, 2 info; one warning fixed, the rest acknowledged"
+      note: >-
+        Owner Safe 0xdD2332Ca... proxies the canonical SafeL2 v1.4.1 singleton 0x29fcB43b... (slot 0 read 2026-10-13).
+        Safe says 1.4.1 added one ERC-4337 opcode bugfix after this audit and was not re-audited.

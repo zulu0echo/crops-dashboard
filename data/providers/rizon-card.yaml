@@ -348,3 +348,50 @@ settlement:
       quote: "enabling Users to spend stablecoins by converting them into Fiat through Rain's and their licensed partners infrastructure"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    getrizon.com (Terms, privacy policy) and the Rizon help centre (no audit linked), GitHub (no Rizon org), the Sherlock
+    report repo and Rain's security page (Rain says its reports are shared under NDA and names Sherlock; its public
+    GitHub, SignifyHQ, holds SDKs only), Privy's security docs and the privy-io/shamir-secret-sharing README, and web
+    searches for Rizon, Rain and Privy audits. Privy's docs also name Doyensec; no Doyensec report is published. No audit
+    of the Rizon app or backend was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Sherlock
+      date: "2025-02-11"
+      type: contest
+      scope: "Shared component: Rain EVM collateral contracts v2 (Beacon, Collateral, Coordinator, Factory), private best-efforts contest"
+      url: https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2025.02.11%20-%20Final%20-%20Rain%20Private%20Best%20Efforts%20Audit%20Contest%20Report.pdf
+      commit: 6f578d5b9c9fa35bbe857959a50fa5aab4fa611a
+      repo: https://github.com/SignifyHQ/collateral-contract-evm-v2
+      covers_deployed: unknown
+      findings: "0 high, 2 medium (statement payoff rounding; missing Chainlink min/max answer check)"
+      note: >-
+        Contest ran 2-8 December 2024 on b432939a; 6f578d5 is the fix commit. Rizon's Terms say each user gets a
+        Rain-managed collateral contract, but no address is published and the Rain repo is private, so the deployed
+        version could not be compared with the audited one.
+    - auditor: Zellic
+      date: "2023-08-15"
+      type: audit
+      scope: "Shared component: Privy shamir-secret-sharing TypeScript library (index.ts, csprng.ts), used in Privy's embedded-wallet key sharding"
+      url: https://github.com/Zellic/publications/blob/master/Privy_Shamir_Secret_Sharing_-_Zellic_Audit_Report.pdf
+      commit: cd8422d
+      repo: https://github.com/privy-io/shamir-secret-sharing
+      covers_deployed: unknown
+      findings: "1 low (missing input bounds in arithmetic functions); fixed in c9f0ab86"
+      note: >-
+        Covers only the open-source secret-sharing library, not Privy's closed key-management service, TEE or SDKs. Which
+        library version Privy runs for Rizon wallets is not known.
+    - auditor: Cure53
+      date: "2023-04-24"
+      type: audit
+      scope: "Shared component: Privy shamir-secret-sharing TypeScript library (src/index.ts), cryptography review and source code audit"
+      url: https://cure53.de/audit-report_privy-sss-library.pdf
+      commit: 3383ad927211615f3d70b5ceb5489f8a149be191
+      repo: https://github.com/privy-io/shamir-secret-sharing
+      covers_deployed: unknown
+      findings: "1 high (polynomial degree might be less than t-1), 2 informational; all three marked fixed and verified by Cure53"
+      note: >-
+        Two-day review in February 2023 (CW06); report dated 24 April 2023. Covers only the open-source library, not
+        Privy's closed key-management service. Superseded in part by the Zellic review.

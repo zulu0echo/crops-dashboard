@@ -780,3 +780,71 @@ availability:
 
 notes: >-
   Unit: Ethereum mainnet Hinkal 0x7cb6…Cfa4 (deployed at block 25543753, Sourcify exact match to Hinkal-Contracts-Circuits@61b6839a), helper 0x5f91…7C1b and the registered verifiers. Onchain reads at block 26153565 via publicnode. Role history comes from the Blockscout logs API, because publicnode refuses archive log queries: RoleGranted/RoleRevoked on Hinkal, and RoleGranted/MinDelayChange on the timelock. The same Hinkal address is deployed on other EVM chains with different helpers (Base 0xf6aF…3746, Arbitrum 0x6Fac…8d12, Polygon 0x3CD1…1bAC); those were not assessed. Solana and TRON programs are out of scope. The main TypeScript SDK was read from its npm tarball (0.3.16) without running it. No transactions, UI runs, traces or self-host attempts were made.
+
+audits:
+  searched: >-
+    Hinkal's Security audits docs page (hinkal-team.gitbook.io/hinkal/security-and-compliance/security-audits), which links eight reports, mostly on Google Drive; the Hinkal-Protocol GitHub repos (no audits folder); reports.zksecurity.xyz; github.com/zokyo-sec/audit-reports; Quantstamp's certificate site. The Secure3 link (github.com/Secure3Audit/Secure3Academy/tree/main/audit_reports/Hinkal) returns 404 and no Secure3 report was found elsewhere, so it is not listed. The Immunefi boost and HackenProof programme are bug bounties, not audits. The audited commits named in the reports (117e8ad, 492ca00, 2587160, 6174378, 37ba2894) are in private repos (Hinkal-Protocol/Hinkal-Protocol, Novelty-Today/Hinkal-Neo-Protocol), not in the public Hinkal-Contracts-Circuits.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Quantstamp
+      date: "2026-08-28"
+      type: audit
+      scope: Hinkal contracts and Circom circuits (MainEVMCircuit, MainEVMCircuitMin), including the Emporium controller and HinkalWallet
+      url: https://drive.google.com/file/d/1vq7FLvjocy2tD1PJB4pVBx3xB3Z-79Rg/view?usp=sharing
+      commit: "6174378"
+      repo: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits
+      covers_deployed: partly
+      findings: "14 total: 1 medium, 8 low, 5 informational; 9 fixed, 3 acknowledged, 2 mitigated (fix review at ef86e0b3, 2026-08-24)"
+      note: Review ran 5-14 August 2026, after the Ethereum Hinkal contract was deployed (block 25543753, about 2026-07-16); the contract is not a proxy, so fixes that touch it would need a redeploy. Whether the deployed bytecode includes the fixes is not established.
+    - auditor: zkSecurity
+      date: "2026-07-17"
+      type: review
+      scope: Post-incident review of the circuit fix for the July 2026 double-spend (MainEVMCircuit and StealthAddressCalculator under libs/circom) plus automated scans; contracts out of scope
+      url: https://drive.google.com/file/d/10vv73BkXw7Zm_NlwWSJhb45vgZbI0Wn6/view?usp=sharing
+      commit: 37ba2894
+      covers_deployed: partly
+      findings: "Confirmed the fix closes the double-spend; 2 lower-severity defence-in-depth issues"
+      note: The report states it is not a full audit and that no full audit has been performed on the current code. It records a security incident in early July 2026 caused by an under-constrained nullifying key; Hinkal redeployed after the fix.
+    - auditor: Neodyme
+      date: "2026-02-13"
+      type: audit
+      scope: Hinkal Solana on-chain program (confidential settlement); zero-knowledge constructions out of scope
+      url: https://drive.google.com/file/d/1SclKWU99HSVgVxfIh7zz4BWuJO46Jd9W/view?usp=sharing
+      covers_deployed: "no"
+      findings: "1 critical, 1 high, 2 low, 1 informational; fixes verified by the auditor"
+      note: Solana program, outside the assessed Ethereum deployment.
+    - auditor: Hexens
+      date: "2025-04-01"
+      type: audit
+      scope: Hinkal contracts (HinkalInLogic external calls), Circom circuits (SwapperM, access tokens) and relayer/server endpoints
+      url: https://drive.google.com/file/d/1A0kGmlg04X88-_c4uU0F5WvaMGTDUT3s/view?usp=sharing
+      covers_deployed: unknown
+      findings: "1 critical, 1 high, 3 medium, 5 low, 1 informational; no fix status given"
+      note: The PDF is a findings list ("Hinkal Results 01/04/2025") that does not name the firm or a commit; the attribution to Hexens comes from Hinkal's audits page.
+    - auditor: zkSecurity
+      date: "2024-09-06"
+      type: audit
+      scope: Hinkal Solidity contracts (hardhat/contracts, staking external action, Connext bridging) and Circom circuits (libs/circom)
+      url: https://reports.zksecurity.xyz/reports/hinkal-audit/
+      commit: 117e8ad
+      covers_deployed: "no"
+      findings: "2 medium, 2 low, 2 informational"
+      note: zkSecurity's 2026 post-incident report says the codebase has changed meaningfully since this engagement.
+    - auditor: Zokyo
+      date: "2024-02-20"
+      type: pentest
+      scope: Hinkal TypeScript codebase, server, relayer and dApp endpoints (December 2023)
+      url: https://github.com/zokyo-sec/audit-reports/blob/main/Hinkal/Hinkal_Zokyo_Feb20th_2024.pdf
+      commit: 258716071b5a2f939c46af9e95c2e8904378c24a
+      covers_deployed: unknown
+      findings: "1 medium (acknowledged), 8 low and 1 informational (resolved)"
+      note: Off-chain code that is not public, so it cannot be compared with what runs today.
+    - auditor: Quantstamp
+      date: "2023-09-29"
+      type: audit
+      scope: Hinkal Protocol contracts and Circom circuits (Hinkal-Neo-Protocol)
+      url: https://certificate.quantstamp.com/full/hinkal-protocol/66b9b783-8b42-4a4e-89ed-3ef2a2df5958/index.html
+      commit: 492ca00
+      covers_deployed: "no"
+      findings: "37 total: 4 high, 7 medium, 11 low, 8 undetermined, 7 informational; 32 fixed, 4 acknowledged, 1 mitigated"
+      note: Review of 14-24 August 2023 code; superseded by later versions and the 2026 redeployment.

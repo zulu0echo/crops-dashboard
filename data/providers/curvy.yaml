@@ -672,3 +672,19 @@ availability:
 
 notes: >-
   Unit: the Arbitrum aggregator, vault, portal factory and verifiers. Reads at Arbitrum block 513140605 (role history from eth_getLogs in 10M-block windows from block 488600000). The deployed implementations match the develop branch (e996fe71) and not main (0afe6c80); deployed_addresses.json in both branches lists earlier implementations, 0xE884…C193 and 0x8c0D…3cAF. Live use: getCurrentNoteIndex 3159 and 1369 nullifier batches. Portal-only chains, Solana and V1 are out of scope. The SDK is in closed beta. The audit PDF was read by stream extraction. No transactions, UI runs, traces or self-host attempts were made.
+
+audits:
+  searched: >-
+    The audit/ folder of github.com/0xCurvy/contracts (main and develop), the contracts README security section, the Audit link on docs.curvy.box and the "Independently audited" badge on curvy.box (both point to the same PDF), and the 0xCurvy sdk, rs-core, payments-sdk and docs repos (no audits). solana/REPORT.md is a developer guide, not an audit. No audit of the V2 contracts, the circuits, rs-core, the SDK or the Curvy API was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Ethernal
+      date: "2026-05"
+      type: audit
+      scope: Curvy V1 contracts (CurvyAggregatorAlphaV6, CurvyVaultV6, PortalFactory, Portal, SolanaPortal)
+      url: https://github.com/0xCurvy/contracts/blob/e996fe719580f4d82ff34f06ee8a0916df65a613/audit/Curvy%202026%20Audit%20Report%20Final.pdf
+      commit: 5f6e43cf153c0402bab7d1c041978ac8cf7a384b
+      repo: https://github.com/0xCurvy/contracts
+      covers_deployed: "no"
+      findings: "0 critical, 0 high, 6 medium, 10 low, 6 informational; all addressed and fixes verified"
+      note: Engagement 23 March to 15 April 2026; the cover date reads 05/08/2026 (taken as May; fix commits are dated 28 April). The README says the audited code is the V1 stack; the Arbitrum deployment assessed is the V2 rewrite on develop (e996fe71), which the report does not cover.

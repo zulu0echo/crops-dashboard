@@ -933,3 +933,20 @@ availability:
 
 notes: >-
   Primary chain Base (8453): the docs' examples use Base USDC, and the repo has Base broadcasts for every deposit-address contract. The repo also has broadcasts for 15 other chains, which we did not assess. Scope is the deposit-address system (DepositAddressManager and related contracts), which @daimo/sdk 1.8.x uses. The older DaimoPay/PayIntent order contracts are still in the repo; we did not score them. Contract addresses were resolved with CREATE3Factory.getDeployed(deployer 0x723a63fb50da50a26997fb99a2eb151e4f8c5227, salt) at 0x37922885311bc9d18e136e4fe6654409d3f45ffd. The pricer and bridger addresses come from the DAParams of a live session (tx 0x8d3d409f…bd00). We did not enumerate the full relayer set, because public Base RPCs limit eth_getLogs ranges. The two relayers listed were confirmed with direct relayerAuthorized() reads. All onchain reads are pinned to block 52280426. All repo reads are pinned to daimo-eth/sdk@ac0a71453ac249aa991d71059c621e2424322d61. No browser or network traces were run. Migrated to the post-red-team evidence rules on 2026-10-07 (components, quotes, rechecks, package evidence); score changes are listed in docs/research/daimo-pay.md.
+
+audits:
+  searched: >-
+    The audit/ folder of github.com/daimo-eth/sdk (packages/contract/audit, one report), GitHub code and commit searches of the daimo-eth org for "audit", the audits/ folders of daimo-eth/daimo and daimo-eth/p256-verifier, docs.daimo.com (no security or audits page; /security and /audits return 404), and Nethermind's public report repo (NethermindEth/PublicAuditReports, no Daimo entry). Commit 76bc7df8 (2025-04-03, "NM-0500 audit fixes") shows an earlier Nethermind review of the DaimoPay/PayIntent contracts, but no NM-0500 report is published. The 2023 Veridise reports in daimo-eth/daimo and p256-verifier cover the Daimo wallet account and P256 verifier, which are not in the Daimo Pay payment path, so they are not listed.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Nethermind
+      date: "2025-07-31"
+      type: review
+      scope: "NM-0585 \"Daimo Universal Address\" security review: UniversalAddressBridger, UniversalAddressFactory, UniversalAddressManager, SharedConfig, UniversalAddress and TokenUtils (730 LoC) in packages/contract/src."
+      url: https://github.com/daimo-eth/sdk/blob/ac0a71453ac249aa991d71059c621e2424322d61/packages/contract/audit/NM-0585-Daimo-final-report.pdf
+      commit: 80312d47e98a21b7daa4078d89ffe0e43bf8b1eb
+      repo: https://github.com/daimo-eth/sdk
+      covers_deployed: "no"
+      findings: "2 low, 1 best practices; all marked fixed (initial report 2025-07-21, final 2025-07-31)"
+      note: >-
+        Initial commit ef97c77f, final commit 80312d47; neither commit is in the public repo (GitHub API returns 422). The Universal Address files were deleted in 99c3f248 (2026-01-08). The deployed DepositAddressManager, DepositAddress, DaimoPayExecutor, pricer and bridger on Base were added later (c990a190, 2025-12-17) and are not in this report's scope.

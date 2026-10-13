@@ -714,3 +714,24 @@ availability:
 
 notes: >-
   Unit: zBNB on BNB Chain (most indexed transfers of any zERC20 deployment on 2026-10-09). All BNB Chain reads are at block 126599703 via bsc-rpc.publicnode.com, which serves only very recent state. The docs' source link (github.com/zerc20io/zERC20) returned 404. We cite a BUSL-1.1 snapshot at github.com/kbizikav/zERC20 (commit b890773c, 2026-04-20; author Akira Taniguchi). The org does not link it, so we use it only where its files match deployed Sourcify source (zERC20.sol, Blocklist.sol) or show the same gate (Verifier prover allowlist). The SDK and the served app bundle were read as build artefacts (archived) and never installed or run. The Verifier implementation is unverified on BNB Chain but byte-identical to a Sourcify exact match on Base. No transactions or traces.
+
+audits:
+  searched: >-
+    zerc20.io and its docs (no audit named), the audit/ folder of the snapshot repository github.com/kbizikav/zERC20,
+    and zkSecurity's public report index, which publishes the same audit for INTMAX. Audited contract sources were
+    compared with the snapshot commit b890773c that this file matches to the deployed contracts.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: zkSecurity
+      date: "2025-12-08"
+      type: audit
+      scope: zERC20 proof-of-burn R1CS circuits (withdraw, root transition, burn address, Merkle and Poseidon gadgets) and the Solidity contracts (zERC20, Verifier, Hub)
+      url: https://reports.zksecurity.xyz/reports/intmax-zerc20-1/
+      commit: 69537e9569600a8725f69465a6758e6f45649337
+      repo: https://github.com/kbizikav/zERC20
+      covers_deployed: partly
+      findings: "3 low, 3 informational"
+      note: >-
+        Audited the zk-audit-target release. zERC20.sol, Verifier.sol, Hub.sol, Blocklist.sol and LiquidityManager.sol
+        all differ between the audited commit and b890773c, so the deployed contracts include unaudited changes. The
+        same report is at audit/zksecurity-audit.pdf in the snapshot repository.

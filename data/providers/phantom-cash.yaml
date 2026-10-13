@@ -427,3 +427,19 @@ settlement:
       quote: "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    phantom.com (Cash, security and legal pages), help.phantom.com, docs.phantom.com/cash, github.com/phantom (no Cash, card or Cash-account program code), usecash.xyz and bridge.xyz, Least Authority's published reports, and Halborn's audit listing. The only published report is Least Authority's 2024 audit of the Phantom wallet code; it predates Cash. Phantom said in 2022 that Halborn and OtterSec had audited the wallet, but no such report is published. No audit was found for the CASH token program set-up, the Bridge debit-card contract or Phantom's Cash backend.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Least Authority
+      date: "2024-06-07"
+      type: audit
+      scope: "Phantom wallet (private repository phantom/wallet): key derivation and storage, cryptography, deep links and WebViews, dependencies; the wallet that now hosts the Cash account."
+      url: https://leastauthority.com/phantom-wallet-final-audit-report
+      commit: 18c5d927b8063911a3f09f82d31c57e49f171d85
+      covers_deployed: unknown
+      findings: "No issues; 2 suggestions (BIP32 validation, stronger password key derivation), both resolved"
+      note: >-
+        Initial review at aea4d38 (February to April 2024), verification at 18c5d92. The report predates the Cash account and debit card, and the closed-source app cannot be compared with the audited revision.

@@ -486,3 +486,69 @@ settlement:
       recheck: cast call 0x669abe85F96a9e3B34723F7Be9bC6F250aBC0Cc1 'name()(string)' --rpc-url https://rpc.hyperliquid.xyz/evm
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    github.com/0xhyperbeat/Audits (folders liquid-bank, BeatPot, USD+, Vault-Infra, Vaults-Solver, Withdrawal-Queue,
+    beHYPE), docs.hyperbeat.org audits page, and the audits/ folder of github.com/morpho-org/morpho-blue for the
+    credit-mode Morpho dependency. Only the liquid-bank reports cover the Hyperbeat Pay card path; the other folders
+    cover Hyperbeat vaults, staking and BeatPot and are not listed (any of them may relate to the beatUSD settlement
+    token, which is context only). No audit of the Hyperbeat Operator backend or the Pay app was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Nethermind Security
+      date: "2025-12-17"
+      type: review
+      scope: >-
+        Hyperbeat Pay Management Account (NM-0697): ManagementAccount, ManagementAccountFactory, MorphoService,
+        ServiceRegistry, TokenWhitelistRegistry and libraries (1785 lines of Solidity)
+      url: https://github.com/0xhyperbeat/Audits/blob/990f60173c016971a4c910e1378f20bb472e37d8/liquid-bank/Nethermind.pdf
+      commit: 33f200c
+      covers_deployed: unknown
+      findings: "2 medium, 10 low, 14 informational, 3 best practices; 5 fixed, 24 acknowledged"
+      note: >-
+        Initial report 25 November 2025 on commit 09e970; 33f200c is the final commit. The audited Liquid-Bank repo is
+        private and the deployed contracts are unverified on HyperEVMScan and Sourcify, so the audited code could not be
+        matched to the deployment.
+    - auditor: Zellic
+      date: "2025-11-06"
+      type: audit
+      scope: >-
+        Hyperbeat Pay smart contracts in Liquid-Bank: ManagementAccount, ManagementAccountFactory, ManagementAccountStorage,
+        ManagementAccountLib, MorphoService, ServiceRegistry, TokenWhitelistRegistry
+      url: https://github.com/0xhyperbeat/Audits/blob/990f60173c016971a4c910e1378f20bb472e37d8/liquid-bank/Zellic.pdf
+      commit: 431de44bc37ea1b647da376bee1a3031affff435
+      repo: https://github.com/0xhyperbeat/Liquid-Bank
+      covers_deployed: unknown
+      findings: "1 critical, 3 medium, 7 low, 1 informational; 11 marked fixed, 3 acknowledged only"
+      note: >-
+        Review window 24-31 October 2025. The Liquid-Bank repo returns 404 (private) and the deployed contracts are
+        unverified, so neither the audited commit nor the fixes can be matched to what runs.
+    - auditor: Cantina
+      date: "2024-01-05"
+      type: contest
+      scope: "Shared component (credit mode only): Morpho Blue core lending contract, public competition"
+      url: https://github.com/morpho-org/morpho-blue/blob/main/audits/2024-01-05-morpho-blue-cantina-competition.pdf
+      repo: https://github.com/morpho-org/morpho-blue
+      covers_deployed: unknown
+      findings: "0 critical, 1 high, 8 medium, 151 low, 36 gas, 163 informational submissions"
+      note: >-
+        Competition ran 16 November to 7 December 2023. Morpho Blue is used only when a user borrows in Credit mode; the
+        Morpho deployment on HyperEVM was not compared with the audited code.
+    - auditor: Cantina
+      date: "2023-11-13"
+      type: audit
+      scope: "Shared component (credit mode only): Morpho Blue core lending contract, managed review"
+      url: https://github.com/morpho-org/morpho-blue/blob/main/audits/2023-11-13-morpho-blue-cantina-managed-review.pdf
+      repo: https://github.com/morpho-org/morpho-blue
+      covers_deployed: unknown
+      findings: "0 critical, 4 high, 1 medium, 4 low, 1 gas, 17 informational"
+      note: Review ran 28 September to 16 October 2023 on commit 11e69b...810c53 (abbreviated in the report).
+    - auditor: OpenZeppelin
+      date: "2023-10-13"
+      type: audit
+      scope: "Shared component (credit mode only): Morpho Blue core lending contract and the Speed Jump IRM"
+      url: https://github.com/morpho-org/morpho-blue/blob/main/audits/2023-10-13-morpho-blue-and-speed-jump-irm-open-zeppelin.pdf
+      repo: https://github.com/morpho-org/morpho-blue
+      covers_deployed: unknown
+      note: The PDF's text is encrypted and could not be extracted, so findings are not summarised here.

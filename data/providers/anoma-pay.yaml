@@ -642,3 +642,96 @@ availability:
 
 notes: >-
   Unit: the BNB Smart Chain protocol adapter (v1.1.0) and ERC20 forwarder used by the AnomaPay public beta, with the RISC Zero verifier they call. BSC reads at blocks 126599704 (adapter owner, stop state) and 126599882 (Safes, forwarder state, balances); publicnode serves only recent BSC state, so rechecks use the latest block. Operator: Anoma Foundation (Zug) per the terms. The anomapay.app landing page also advertises an "AnomaPay Card"; card products were not assessed. No transactions, app runs, traces or self-host attempts.
+
+audits:
+  searched: >-
+    The Audits sections and audits/ folders of github.com/anoma/pa-evm, anomapay-erc20-forwarder, arm-risc0,
+    anomapay-erc20-resource and anoma-app-sdk; for the shared components, the audit log at
+    github.com/risc0/rz-security (RISC Zero zkVM, recursion circuits and EVM verifier contracts) and the audits/
+    folder of github.com/Uniswap/permit2. Deployed code was compared with audited commits through GitHub's compare
+    API. The RISC Zero log also lists a Veridise audit of the next-generation M3 zkVM (Feb 2026) and audits of
+    Steel, Kailua, Boundless and Solana verifiers, which are not in this payment path and are left out.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Informal Systems
+      date: "2025-12-19"
+      type: audit
+      scope: AnomaPay Phase I - ERC20 forwarder contracts (V1/V2 with migration), ERC20 resource logic and witness libraries, and the frontend key-management vault
+      url: https://github.com/anoma/anomapay-erc20-forwarder/blob/main/audits/2025-12-19_Informal_Systems_AnomaPay_Phase_I.pdf
+      commit: 03e60b64d9dc3845c55e34d1d0bef25392cb5b60
+      repo: https://github.com/anoma/anomapay-erc20-forwarder
+      covers_deployed: partly
+      findings: "1 critical, 2 medium, 5 informational; critical and mediums marked resolved"
+      note: >-
+        The same PDF sits in anomapay-erc20-resource and anoma-app-sdk; the SDK README ties it to commit 957e8bf1 of
+        anoma/pay-interface-app, which is not public. The deployed forwarder tag contracts/v1.0.1 is 216 commits after
+        the audited commit and changes ERC20Forwarder.sol and its bases.
+    - auditor: Informal Systems
+      date: "2025-11-24"
+      type: audit
+      scope: EVM Protocol Adapter contracts and the Anoma Resource Machine RISC Zero implementation (arm-risc0 circuits, encryption and authorization modules)
+      url: https://github.com/anoma/pa-evm/blob/main/audits/2025-11-24_Informal_Systems_RISC_Zero_RM_%26_EVM_Protocol_Adapter.pdf
+      commit: fc69013e7bc2db1bddf6ef6936e8bf03d14f2963
+      repo: https://github.com/anoma/pa-evm
+      covers_deployed: partly
+      findings: "2 medium, 4 low, 9 informational; both mediums resolved in tag v0.8.2"
+      note: >-
+        Audit ran 2025-10-13 to 2025-10-31; arm-risc0 was reviewed at commit 61e68468. The deployed adapter (tag
+        contracts/v1.1.0, e368e273) is 306 commits later and changes ProtocolAdapter.sol and the proving libraries.
+    - auditor: Nethermind
+      date: "2025-11-13"
+      type: audit
+      scope: EVM Protocol Adapter contracts and Anoma Resource Machine circuits (security review NM-0677)
+      url: https://github.com/anoma/pa-evm/blob/main/audits/2025-11-13_Nethermind_RISC_Zero_RM_%26_EVM_Protocol_Adapter.pdf
+      commit: fee4f47050689b82473e9a3198e7a2065becb3fb
+      repo: https://github.com/anoma/pa-evm
+      covers_deployed: partly
+      findings: "3 low, 3 informational, 2 best practices; 6 fixed, 2 acknowledged"
+      note: >-
+        Audited at pa-evm tag v1.0.0-rc.4 and arm-risc0 commit a0cca9cd. The deployed adapter v1.1.0 is 224 commits
+        later with changes to ProtocolAdapter.sol and the proving libraries.
+    - auditor: Veridise
+      date: "2025-02-24"
+      type: audit
+      scope: "Shared component: RISC Zero zkVM V2 RISC-V circuit, STARK-to-STARK and STARK-to-SNARK recursion circuits, STARK verifiers and prover"
+      url: https://github.com/risc0/rz-security/blob/main/audits/zkVM/veridise_zkVM_20250224.pdf
+      repo: https://github.com/risc0/risc0
+      covers_deployed: unknown
+      findings: "4 critical, 1 high, 4 medium, 2 low, 19 warnings, 11 informational; all critical, high and medium fixed"
+      note: Reviewed risc0/risc0 at commits a6159d9 and 35c65de (Jul-Dec 2024). We did not tie the verifier selector used on BSC to a zkVM release.
+    - auditor: Hexens
+      date: "2024-05-20"
+      type: audit
+      scope: "Shared component: RISC Zero EVM verifier contracts (RiscZeroGroth16Verifier, Groth16Verifier, RiscZeroVerifierRouter, RiscZeroVerifierEmergencyStop)"
+      url: https://github.com/risc0/rz-security/blob/main/audits/contracts/hexens_verifiercontract_20240605.pdf
+      repo: https://github.com/risc0/risc0-ethereum
+      covers_deployed: unknown
+      findings: "1 high, 1 low, 1 informational"
+      note: Reviewed 2024-05-13 to 2024-05-20 on the main branch; the report gives no pinned commit.
+    - auditor: Hexens
+      date: "2023-10-31"
+      type: audit
+      scope: "Shared component: RISC Zero zkVM (executor, ELF loader, syscalls, circuits)"
+      url: https://github.com/risc0/rz-security/blob/main/audits/zkVM/hexens_zkVM_20231031.pdf
+      commit: 323b5f58e45a7b0de02df6227e1e9de475f70176
+      repo: https://github.com/risc0/risc0
+      covers_deployed: unknown
+      findings: "1 high, 2 medium, 4 low, 3 informational; fixes in commit 83cf6867"
+      note: An older zkVM version, superseded by the V2 circuit reviewed by Veridise.
+    - auditor: ChainSecurity
+      date: "2022-11-18"
+      type: audit
+      scope: "Shared component: Uniswap Permit2 (AllowanceTransfer, SignatureTransfer, Permit2Lib)"
+      url: https://github.com/Uniswap/permit2/blob/main/audits/Chainsecurity%20Audit.pdf
+      repo: https://github.com/Uniswap/permit2
+      covers_deployed: unknown
+      findings: "1 high (corrected), 1 medium (risk accepted), 1 low (corrected)"
+      note: Initial version e3e496f5 (2022-10-25) with fix versions to 2022-11-18. We did not compare the BSC Permit2 bytecode with the final reviewed version.
+    - auditor: ABDK Consulting
+      date: "2022-11-16"
+      type: audit
+      scope: "Shared component: Uniswap Permit2 contracts"
+      url: https://github.com/Uniswap/permit2/blob/main/audits/ABDKAudit.pdf
+      repo: https://github.com/Uniswap/permit2
+      covers_deployed: unknown
+      findings: "1 critical, 12 major and lesser issues; the critical fixed, unfixed majors judged not a threat per client comments"

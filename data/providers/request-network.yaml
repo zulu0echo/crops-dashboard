@@ -949,3 +949,20 @@ availability:
 
 notes: >-
   Unit of assessment: the open Request Network protocol on Base. That means the SDK (request-client.js and payment-processor 0.63.0), a Request Node, and four settlement contracts: ERC20FeeProxy, EthereumFeeProxy, Erc20ConversionProxy, and ChainlinkConversionPath. Request's current docs describe only the hosted Request Network API. That API is closed; it is listed in components as not required, because a payment completes without it. Out of scope: batch, swap, recurring (pausable, AccessControl), escrow and commerce-escrow, SingleRequestProxy, EthConversionProxy (WhitelistAdminRole, the same pattern as Erc20ConversionProxy), cross-chain Li.Fi routes, Tron, and NEAR. Storage runs on Gnosis Chain. Requests are anchored through RequestOpenHashSubmitter 0x268C146Afb4790902Ee26A6D2d3aff968623Ec80, which writes to RequestHashStorage 0x2256938E8225a998C498bf86B43c1768EE14b90B. At Gnosis block 48631765, RequestHashStorage still whitelists the open submitter, and the storage fee is 0.0999 xDAI for 1000 bytes. The Gnosis admin Safe 0x8a4D2659f6d24312804BFA2f1F174A5498948037 is 3-of-7 with the same owners as the Base Safe, no modules, and no guard. Those reads are not recorded as evidence, because evidence must be on the primary chain. Base reads are pinned to block 52285354, and repo reads to requestNetwork@749b13070bcb88be4a10b8d59fcf3705339d43e0. No traces were run, and no self-host was attempted.
+
+audits:
+  searched: >-
+    The requestNetwork monorepo and the RequestNetwork org (GitHub code, commit, issue and PR searches for "audit"), the org .github repo, request.network/.well-known/security.txt (404), the mintlify docs repo, the requestNetwork-v1-archive repo, and auditor portfolios (Verichains public-audit-reports, Hacken, Nethermind, Trail of Bits, Spearbit). The Secure Payment page says the contract "is audited and valid" with no report linked. PR #1739 (2026-06) fixes a Medium finding from a Creed DAO audit of BatchConversionPayments and EthereumFeeProxy, and PRs #874/#878 (2022) fix escrow audit findings; neither report is published. Hacken's "Request Network | ERC20 | Apr2022" review covers the REQ token (Ethereum 0x8f8221af...a938a), not payment code, so it is not listed. 2018 commits name further v1 reviews (Kleros, an individual reviewer) with no published report.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: VeriChains Lab
+      date: "2018-03-22"
+      type: audit
+      scope: "Request Network v1 smart contracts: Administrable, RequestCore, RequestEthereumCollect, RequestEthereum and three SafeMath libraries (packages/requestNetworkSmartContracts, branch audit-mainnet-0.0.3-verichains)."
+      url: https://github.com/verichains/public-audit-reports/blob/3ff2d281a466ba67b65be54725d01e029efb5687/Verichains%20Public%20Audit%20Report%20-%20Request%20Network%20-%20v1.0.pdf
+      commit: 4f10411553cafda2a8910872adb180066c849e0a
+      repo: https://github.com/RequestNetwork/requestNetwork
+      covers_deployed: "no"
+      findings: No major vulnerabilities reported; recommendations only.
+      note: >-
+        Covers the 2018 v1 RequestCore contracts, which the current fee-proxy design replaced. The ERC20FeeProxy, EthereumFeeProxy, Erc20ConversionProxy and ChainlinkConversionPath deployed on Base are not in scope.

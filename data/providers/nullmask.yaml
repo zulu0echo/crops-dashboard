@@ -497,3 +497,11 @@ availability:
 
 notes: >-
   Eligibility: no verified contract and no public repository needed to run the product, so type is incumbent although Nullmask presents itself as a privacy transfer protocol. It is deployed: the Ethereum mainnet pool proxy 0x88888888Eb71E1D68aD0C471C6893EdEEa00B026 (also listed for Arbitrum, Base, BSC and MegaETH at 0x8888…b4A2) has code and holds ETH, and app.nullmask.io is live. Searched 2026-10-09: docs.nullmask.io (supported networks, contract reference, compliance, threat model, developer guide), app.nullmask.io terms (client-rendered; read in a browser and archived), github.com/nullmask-io (one repo, nullmask-website, a SvelteKit landing page with no licence), GitHub search for "nullmask", Sourcify, Etherscan and Blockscout. Mainnet reads at block 26153596 (guard, upgrade controller, admin) and 26153477 (implementation slot, balance). Re-assess as type transfer if the contracts are verified or the monorepo is published.
+
+audits:
+  searched: >-
+    nullmask.io, docs.nullmask.io (client-rendered; plain fetches return only the app shell) and the terms at
+    app.nullmask.io/terms, which state the Pool contracts have not been independently audited. No public repository
+    exists to hold an audits folder, and no report naming Nullmask was found.
+  checked_at: "2026-10-13"
+  reports: []

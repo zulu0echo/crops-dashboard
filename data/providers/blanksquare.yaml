@@ -677,3 +677,19 @@ availability:
 
 notes: >-
   Unit: the Base Shielder proxy 0x064A…dCFf and its implementation and libraries; all Base reads at block 52371351 (mainnet.base.org serves historical state). Status on 2026-10-09: blanksquare.io and app.blanksquare.io return Vercel DEPLOYMENT_NOT_FOUND, the Base relayer host does not resolve, and the Merkle tree's next free leaf has not moved since a block between 44,000,000 and 46,000,000 (about May 2026; 448 leaves in total). The contracts are live and unpaused, so we treat the rail as deployed but dormant. Operator: Common Labs Inc. (Panama) per the terms; code by Cardinal Cryptography. No transactions, app runs, traces or self-host attempts.
+
+audits:
+  searched: >-
+    The README and crates/shielder-circuits/README of github.com/Cardinal-Cryptography/blanksquare-monorepo (both link one zkSecurity report), the Blanksquare docs (llms.txt and sitemap, no audits page), the zkOS-monorepo repo, a GitHub code search of the Cardinal-Cryptography org for audit, and reports.zksecurity.xyz. No other audit of the Shielder contracts, circuits, SDK, relayer or TEE prover was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: zkSecurity
+      date: "2025-03-25"
+      type: audit
+      scope: Shielder circuits (private zkOS-circuits at 491a0dd), Shielder.sol and Poseidon2 Solidity generator, and the Rust/TypeScript client SDK; the Halo2 verifier and the Poseidon2 circuit component were out of scope
+      url: https://reports.zksecurity.xyz/reports/aleph-zero-shielder/
+      commit: 22e2f52f93b45a9aaac09caeb9d1ca0544279ad5
+      repo: https://github.com/Cardinal-Cryptography/zkOS-monorepo
+      covers_deployed: partly
+      findings: "1 medium, 3 informational; fixes linked to zkOS-monorepo pull requests"
+      note: Commissioned as the Aleph Zero Shielder. Shielder.sol changed after the audited commit (caller commitment, AR key setter, protocol fees in April-July 2025), and the Base deployment comes from blanksquare-monorepo@5dad5a07.

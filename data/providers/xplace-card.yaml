@@ -474,3 +474,185 @@ settlement:
       quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    XPlace's site and docs (the homepage says its smart contracts were audited by FYEO; no report or program address is published, and FYEO's public listings show none), the Kamino-Finance/audits repository (read at eedea0b; only the 21 Kamino Lend reports are listed, not those for vaults, farms, Scope or limit orders), Kamino's docs security pages (audits, formal verification, fuzzing), and the klend repository. Rain's Solana collateral program is unidentified, so its audits are not listed. The deployed klend program is the verified build of release v1.25.0 (a08760976f, August 2026); the newest published klend reports cover v1.17.0 (March 2026), so v1.18 to v1.25 changes have no published report and every entry is at most partly current.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: OtterSec
+      date: "2026-03-30"
+      type: audit
+      scope: "Kamino Lend klend v1.16.0 and v1.17.0 PRs: fixed-term loan rollover, throttled liquidations of expired debt, reserve config cloning and related changes."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_ottersec_1.16.0_and_1.17.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 high, 1 medium, 4 low, 4 informational"
+    - auditor: Certora
+      date: "2026-03"
+      type: audit
+      scope: "Kamino Lend klend v1.17.0 release changes (manual review)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_certora_1.17.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 high, 7 medium, 4 low, 3 informational; 12 fixed"
+    - auditor: Certora
+      date: "2026-03"
+      type: audit
+      scope: "Kamino Lend klend v1.16.0: throttled term-based liquidations and auto-rollover (manual review)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_certora_1.16.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 high, 5 medium, 5 low, 1 informational; 10 fixed"
+    - auditor: OtterSec
+      date: "2026-03-16"
+      type: audit
+      scope: "Kamino Lend klend v1.15.0 conditional-liquidity feature (queued, ticket-based withdrawals), klend-private PRs 627, 628, 632, 662 and 704."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_ottersec_1.15.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "2 low"
+    - auditor: Certora
+      date: "2026-02"
+      type: review
+      scope: "Kamino Lend klend v1.15.0 withdraw-ticket progress callback (manual review of a diff and PR 704)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_certora_1.15.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: No issues found
+    - auditor: Certora
+      date: "2026-02"
+      type: review
+      scope: "Kamino Lend klend v1.14.1 PR 736 (minimum value checks; manual review)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_min_value_1.14.1.pdf
+      commit: 41232ce
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "No issues; 1 informational, fixed"
+    - auditor: Certora
+      date: "2026-02"
+      type: audit
+      scope: "Kamino Lend klend v1.14.0 withdraw queue (manual review, 25 August to 17 November 2025)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_certora_1.14.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 critical, 1 medium, 2 low, 5 informational; critical and medium fixed"
+    - auditor: Offside Labs
+      date: "2026-02"
+      type: audit
+      scope: "Kamino Lend klend v1.14.0 withdraw queue, 2 to 5 December 2025."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_offside_1.14.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 high (fixed), 1 low (acknowledged), 2 informational (fixed)"
+    - auditor: Offside Labs
+      date: "2026-02"
+      type: review
+      scope: "Kamino Lend klend v1.13.1 emergency council changes, 10 to 11 January 2026."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_offside_1.13.1.pdf
+      commit: 43fe383317de6d2930b7e2659b124b17bc2eec46
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 informational, fixed"
+    - auditor: OtterSec
+      date: "2026-02-11"
+      type: review
+      scope: "Kamino Lend klend v1.13.1 PR 654 (flash-loan fee disable marker), 15 to 16 December 2025."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_ottersec_1.13.1.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 suggestion"
+    - auditor: Certora
+      date: "2026-02"
+      type: review
+      scope: "Kamino Lend klend v1.13.1 PRs 630 and 656 (manual review, 13 to 14 November 2025)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_certora_1.13.1.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: No issues found
+    - auditor: OtterSec
+      date: "2026-02-11"
+      type: audit
+      scope: "Kamino Lend klend v1.13.0 borrow-order feature (18 PRs), 1 September to 18 October 2025."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_ottersec_1.13.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "2 medium, 1 low, 2 informational"
+    - auditor: Offside Labs
+      date: "2026-02"
+      type: audit
+      scope: "Kamino Lend klend v1.13.0 borrow orders, November to December 2025."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_offside_1.13.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 low (fixed), 1 informational (acknowledged)"
+    - auditor: Certora
+      date: "2026-02"
+      type: audit
+      scope: "Kamino Lend klend v1.13.0 borrow orders (manual review, August to September 2025)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_certora_1.13.0.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "2 medium, 3 low, 2 informational; 4 fixed"
+    - auditor: Ackee Blockchain Security
+      date: "2026-05-18"
+      type: audit
+      scope: "Kamino Lend full program review, 13 August to 12 September 2025, with a fix review (revision 1.1)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_ackee_blockchain.pdf
+      commit: "1729408"
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "1 high, 3 medium, 7 low, 5 warnings, 2 informational; high fixed, some medium acknowledged"
+    - auditor: OtterSec
+      date: "2025-10-06"
+      type: formal_verification
+      scope: "Kamino Lend: Kani-based formal verification of the healthy-to-healthy obligation invariant for several instructions (deposit, withdraw, borrow and others)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_osec_formal_verification.pdf
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: Invariant verified for the listed instructions under the stated modelling assumptions
+    - auditor: Ackee Blockchain Security
+      date: "2025-09-22"
+      type: review
+      scope: "Kamino Lend fuzz testing with Trident (no manual code review), January 2025 with a later revision."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_ackee_blockchain_fuzz_tests.pdf
+      commit: 829c1f3
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "7 warnings, 1 informational"
+    - auditor: Certora
+      date: "2025-05-13"
+      type: formal_verification
+      scope: "Kamino Lend: security assessment and Certora Prover verification (reserve solvency, share value monotonicity), November to December 2024 and February 2025."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_certora.pdf
+      commit: 5af6cfc
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "2 medium, 1 low, 7 informational; 6 fixed"
+    - auditor: Sec3
+      date: "2025-02-06"
+      type: audit
+      scope: "Kamino Lending program (kamino_lending), full source excluding tests."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_klend_sec3.pdf
+      commit: c02bcf7dfe932af27d429df4111b3a3ca05a0dd3
+      repo: https://github.com/Kamino-Finance/klend
+      covers_deployed: partly
+      findings: "2 low, 3 informational; 4 resolved, 1 acknowledged"
+    - auditor: OtterSec
+      date: "2023-09-06"
+      type: audit
+      scope: "Kamino Lending program, August to September 2023 (then hubbleprotocol/kamino-lending)."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_ottersec.pdf
+      commit: 88dfca4
+      covers_deployed: partly
+      findings: "3 high, 5 low, 5 informational"
+      note: Early version of the program; substantially changed since.
+    - auditor: RX Security
+      date: "2023-07-03"
+      type: audit
+      scope: "Kamino Lending program, initial launch version."
+      url: https://github.com/Kamino-Finance/audits/blob/eedea0bb339bad9fe11cb849e4b7b43697b59f70/kamino_lend_rx.pdf
+      commit: 419de5ceb00e8b39ca0b0b6df756f754f7b4f9bb
+      covers_deployed: partly
+      findings: "1 critical, 3 high, 3 medium, 3 low, 2 informational"
+      note: Early version of the program; substantially changed since.

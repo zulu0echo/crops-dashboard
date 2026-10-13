@@ -791,3 +791,26 @@ settlement:
       quote: "Your MetaMask Card balance reflects the balance of the highest priority token you have set in"
       checked_at: "2026-10-12"
   checked_at: "2026-10-12"
+
+audits:
+  searched: >-
+    The MetaMask Card support pages and metamask-mobile repo (no card or FoxConnect audit), web searches for FoxConnect
+    and Baanx / Crypto Life audits, the Consensys Diligence audit list (MetaMask Delegation Framework audits only; the
+    card uses a plain ERC-20 approve, not that framework), and the docs/ audit folder of
+    github.com/safe-fndn/safe-smart-account for the Baanx owner, beneficiary and treasury Safes. No audit of the
+    FoxConnect spender contracts is published. A 2021 Blockchain Foundry report on a Baanx ERC-20 token exists but is
+    not in the card path. Spendable-token audits (USDC, mUSD) are not logged here.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Ackee Blockchain
+      date: "2023-03-28"
+      type: audit
+      scope: "Shared component: Safe smart account v1.4.0 core contracts (singleton, proxy, factory, handlers), used by the Baanx FoxConnect owner, beneficiary and treasury Safes"
+      url: https://github.com/safe-fndn/safe-smart-account/blob/main/docs/Safe_Audit_Report_1_4_0.pdf
+      commit: eb93dbb0f62e2dc1b308ac4c110038062df0a8c9
+      repo: https://github.com/safe-fndn/safe-smart-account
+      covers_deployed: partly
+      findings: "2 medium, 1 low, 6 warnings, 2 info; one warning fixed, the rest acknowledged"
+      note: >-
+        The Linea Safes use the canonical SafeL2 v1.4.1 singleton 0x29fcB43b... (slot 0 read 2026-10-13). Safe says 1.4.1
+        added one ERC-4337 opcode bugfix after this audit and was not re-audited. Does not cover FoxConnect itself.

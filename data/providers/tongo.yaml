@@ -533,3 +533,22 @@ availability:
 
 notes: >-
   Unit: the v2 canonical Tongo ledgers and Vaults on Starknet mainnet. Starknet state was read via starknet-rpc.publicnode.com at block 16117583, using starknet_call and starknet_getClassHashAt. Those reads cannot be cited as onchain evidence because the schema accepts only 20-byte EVM or base58 addresses. This caps C1, C2, S1 and S2 at 2, as the findings explain. Usage is small: the v2 USDC Vault held 7.78 USDC and the other v2 Vaults held 0, while the larger v1 STRK instance held about 295.6 STRK. Contracts are identical at tag v2.0.0 (47ea644b) and master (7dac05e8). We ran no transactions, built nothing and inspected no frontend.
+
+audits:
+  searched: >-
+    The audits/ folders and READMEs of github.com/fatlabsxyz/tongo and fatlabsxyz/she, the docs at docs.tongo.cash,
+    and zkSecurity's public report index (reports.zksecurity.xyz). Both READMEs name only the zkSecurity audit.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: zkSecurity
+      date: "2025-10"
+      type: audit
+      scope: SHE homomorphic encryption library (Cairo verifiers and TypeScript sigma-protocol provers) and the Tongo Cairo contracts and SDK provers
+      url: https://reports.zksecurity.xyz/reports/tongo/
+      repo: https://github.com/fatlabsxyz/tongo
+      covers_deployed: partly
+      findings: "2 high, 2 medium, 5 low, 2 informational"
+      note: >-
+        Engagement began 2025-10-13 for two weeks on private repositories; the report gives no audited commit. The
+        same report is committed at audits/Audit_of_Tongo.pdf in both repos. It predates the v2 Vault and ledger
+        architecture deployed on Starknet.

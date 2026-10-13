@@ -356,3 +356,12 @@ scores:
     assessed_by: AI research agent (seed), 2026-10-07
     review:
       status: pending
+
+audits:
+  searched: >-
+    hesab.com (home, privacy policy, terms, help and docs pages; the privacy policy mentions "blockchain-secured"
+    fraud detection but names no audit), developers.hesab.com, web searches for HesabPay security audits, penetration
+    tests and certifications, and GitHub. No published code audit, penetration test or SOC/ISO report was found. HesabPay
+    is a closed custodial ledger with no public contract or repository in the payment path.
+  checked_at: "2026-10-13"
+  reports: []

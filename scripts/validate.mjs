@@ -135,6 +135,15 @@ export function checkProvider(p, file) {
     });
   }
   // Country availability and settlement tokens (displayed, not scored) follows the same evidence rules as a cell.
+  if (p.audits) {
+    const seen = new Set();
+    for (const r of p.audits.reports) {
+      const k = `${r.auditor}|${r.date}|${r.url}`;
+      if (seen.has(k)) err('audits', `duplicate report: ${r.auditor} ${r.date}`);
+      seen.add(k);
+      if (r.date > new Date().toISOString().slice(0, 10)) err('audits', `${r.auditor}: report dated in the future (${r.date})`);
+    }
+  }
   if (p.settlement) {
     if (!p.settlement.evidence.some((e) => e.tier !== 'claimed' || e.by === 'provider'))
       err('settlement', 'third-party claims alone cannot establish the settlement token; cite the provider\'s docs, terms, code or an onchain read');
@@ -199,12 +208,14 @@ export const operationalOnline = (op, file, provider) => checkOnline({
 export async function checkOnline(p, file) {
   const errs = [];
   const ev = [...Object.entries(p.scores).flatMap(([id, c]) => (c.evidence ?? []).map((e) => [id, e])), ...(p.availability?.evidence ?? []).map((e) => ['availability', e]), ...(p.settlement?.evidence ?? []).map((e) => ['settlement', e])];
+  const auditUrls = (p.audits?.reports ?? []).filter((r) => !r.blocked_to_bots).map((r) => [`audits ${r.auditor} ${r.date}`, r.url]);
   const headers = { 'user-agent': 'crops-dashboard-validator' };
   const ghHeaders = { ...headers, accept: 'application/vnd.github+json', ...(process.env.GITHUB_TOKEN && { authorization: `Bearer ${process.env.GITHUB_TOKEN}` }) };
   const seen = new Set();
   const tasks = [
     ...[p.website, ...p.repos.map((r) => r.url)].map((url) => ['provider', url, null]),
     ...ev.map(([id, e]) => [id, e.url.split('#')[0], null]), // the cited file/page resolves
+    ...auditUrls.map(([where, url]) => [where, url.split('#')[0], null]), // each logged audit report resolves
     ...ev.filter(([, e]) => e.kind === 'repo').map(([id, e]) => [id, e.url.match(GH)?.slice(1, 4).join('/') ?? e.url, e]), // and the commit exists
   ].filter(([, key]) => !seen.has(key) && seen.add(key));
   const run = async ([where, key, repoEv]) => {
@@ -346,6 +357,12 @@ function selfCheck() {
   ok(errs(p).length === 0, 'availability: valid allowlist rejected: ' + errs(p));
   p = base(); p.settlement = { tokens: [{ symbol: 'USDC', class: 'stablecoin', backing: 'fiat' }], conversion: 'at_spend', evidence: [docEv], checked_at: '2026-10-12' };
   ok(errs(p).length === 0, 'settlement: valid block rejected: ' + errs(p));
+  p = base(); p.audits = { searched: 'Provider audit page and repository audits folder', checked_at: '2026-10-13', reports: [{ auditor: 'Example Labs', date: '2025-03', type: 'audit', scope: 'Core contracts v1', url: 'https://x.org/a.pdf', covers_deployed: 'unknown' }] };
+  ok(errs(p).length === 0, 'audits: valid log rejected: ' + errs(p));
+  p.audits.reports.push({ ...p.audits.reports[0] });
+  ok(has(p, /duplicate report/), 'audits: duplicate accepted');
+  p = base(); p.audits = { searched: 'Provider audit page and repository audits folder', checked_at: '2026-10-13', reports: [{ auditor: 'X', date: '2025-3', type: 'audit', scope: 'core', url: 'https://x.org/a.pdf', covers_deployed: 'yes' }] };
+  ok(has(p, /schema/), 'audits: malformed date accepted');
   p = base(); p.settlement = { tokens: [{ symbol: 'USDC', class: 'stablecoin' }], evidence: [docEv], checked_at: '2026-10-12' };
   ok(has(p, /schema/), 'settlement: stablecoin without backing accepted');
   p = base(); p.settlement = { tokens: [{ symbol: 'ETH', class: 'native', backing: 'fiat' }], evidence: [docEv], checked_at: '2026-10-12' };

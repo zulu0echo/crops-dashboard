@@ -614,3 +614,37 @@ availability:
 
 notes: >-
   Unit: Ethereum Umbra 0xFb2d…5401 and StealthKeyRegistry 0x31fe…38f3; the same addresses exist on Optimism, Polygon, Base and Arbitrum and were not read. Reads at block 26153546 via publicnode. tollCollector is an EOA (0x12aE…2615) and tollReceiver an account with EIP-7702 delegation code whose VERSION() returns 1.3.0 (0xb443…17F9). The ConsenSys Diligence audit page returned 403 and was not bypassed. No transactions, UI runs, traces or self-host attempts.
+
+audits:
+  searched: >-
+    The app FAQ ("Has Umbra been audited?" in frontend/src/pages/FAQ.vue at umbra-protocol@07a64aee), the ScopeLift/umbra-protocol and umbra-subgraph repos (no audits folder), ConsenSys Diligence's audit page (HTML returned 403 to scripted requests; the PDF resolves), Least Authority's publications, Cure53's report list and the paulmillr/noble-secp256k1 audit folder. No audit of StealthKeyRegistry (added August 2021), the Umbra API, relayer or Ponder indexer was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: Least Authority
+      date: "2021-05-25"
+      type: audit
+      scope: umbra-js SDK (stealth key derivation, encryption, scanning, ENS/CNS key lookup)
+      url: https://leastauthority.com/static/publications/LeastAuthority_ScopeLift_Umbra-js_Final_Audit_Report.pdf
+      commit: 48991f0fabbcf19bb9882903c6ccf8e21a4f9c6d
+      repo: https://github.com/ScopeLift/umbra-protocol
+      covers_deployed: partly
+      findings: "3 issues (64-bit default stealth security, missing curve check, noble-secp256k1 key bias) and 3 suggestions; issues resolved, verification at 3796fa74"
+      note: umbra-js has had about 90 commits since June 2021, so the shipped SDK has moved on from the audited code.
+    - auditor: Cure53
+      date: "2021-04-22"
+      type: audit
+      scope: noble-secp256k1 library (shared dependency used by umbra-js for elliptic-curve operations), around v1.2
+      url: https://cure53.de/pentest-report_noble-lib.pdf
+      covers_deployed: partly
+      findings: "1 high, 2 medium, 1 informational; the three security issues confirmed fixed"
+      note: Funded by Umbra and a Gitcoin grant and linked from the Umbra FAQ. umbra-js now depends on @noble/secp256k1 ^1.7.1, later than the audited version.
+    - auditor: ConsenSys Diligence
+      date: "2021-03"
+      type: audit
+      scope: Umbra.sol and IUmbraHookReceiver.sol; cursory review of the ENS StealthKeyResolver
+      url: https://consensys.io/diligence/audits/2021/03/umbra-smart-contracts/umbra-audit-2021-03.pdf
+      commit: fa2e17367d66a85f20c77299ded5942d9ab64fe0
+      repo: https://github.com/ScopeLift/umbra-protocol
+      covers_deployed: partly
+      findings: "1 minor finding (fixed) and 4 recommendations (1 fixed)"
+      note: Umbra.sol changed after the audit only for the two fixes (7cfdc81b, d6e4235f) and visibility/formatting edits, so the deployed Umbra contract is close to the audited code; the deployed StealthKeyRegistry was written in August 2021 and is not in scope. Off-chain code was excluded.

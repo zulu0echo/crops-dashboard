@@ -531,3 +531,79 @@ availability:
 
 notes: >-
   Unit: Monero mainnet transfers. Pins: monero@22578c3f (v0.18.5.3), monero-gui@d7c2f13d (v0.18.5.3), meta@97fb74b0, monero-site@5a596d19. The chain has no contracts, so cells whose top anchor needs onchain contract evidence (C1, C2, S1, S2) are capped at 2 with the reason in each finding, and O1 is unknown. No transactions, node runs, builds, traces or self-host attempts were made. No primary legal source was cited: EUR-Lex refused automated requests (HTTP 202 challenge), so the EU AML Regulation's treatment of anonymity-enhancing coins is not recorded here.
+
+audits:
+  searched: >-
+    The monero-site repo (resources/research-lab/audits and blog posts on CLSAG, Bulletproofs and Bulletproofs+), the monero and meta repos, the CCS proposal pages for the Bulletproofs+ audits, the RandomX repo's audits folder (RandomX is the proof-of-work in the node, vendored as external/randomx), OSTIF's and Quarkslab's posts, and the Trail of Bits publications list. Not logged: JP Aumasson's second Bulletproofs+ audit (CCS milestone completed March 2021; no report link found), Cypher Stack's 2024 review of Zano's CLSAG variant, and the FCMP++ reviews and contest (including Trail of Bits' July 2026 FCMP++ crypto review), which cover an upgrade not yet activated. No audit of the current wallet or node release as a whole was found.
+  checked_at: "2026-10-13"
+  reports:
+    - auditor: ZenGo X
+      date: "2021-02-15"
+      type: audit
+      scope: Bulletproofs+ range proofs - review of the paper and of the C++ implementation for Monero.
+      url: https://suyash67.github.io/homepage/assets/pdfs/bulletproofs_plus_audit_report_v1.1.pdf
+      commit: 2d287f69b79929908f884224c22c58d3bec50b09
+      repo: https://github.com/SarangNoether/monero
+      covers_deployed: partly
+      findings: "2 vulnerabilities (missing point-at-infinity check, missing zero-challenge check) and several weaknesses"
+      note: Hosted on the co-author's site and linked from Monero's CCS proposal. Bulletproofs+ became mandatory at the August 2022 hard fork; the audited branch was merged with later changes.
+    - auditor: JP Aumasson and Antony Vennard
+      date: "2020-07-29"
+      type: audit
+      scope: CLSAG ring signatures - review of the paper and of the C++ implementation (clsag-device branch), coordinated by OSTIF.
+      url: https://github.com/monero-project/monero-site/blob/5a596d19334d647cdad65cdb9f1287729c9d140d/resources/research-lab/audits/clsag.pdf
+      commit: 66bcde2
+      repo: https://github.com/SarangNoether/monero
+      covers_deployed: partly
+      note: CLSAG has been the consensus ring signature since the October 2020 hard fork; the audited code has been edited since in monero-project/monero.
+    - auditor: Quarkslab
+      date: "2019-07-30"
+      type: audit
+      scope: RandomX proof-of-work (tag 1.0.4 and later commits), funded by the Monero community via OSTIF.
+      url: https://github.com/tevador/RandomX/blob/f865ff607c96aa5aff6eb3e980848c1eb580c8c0/audits/Report-Quarkslab.pdf
+      commit: 5d815c57c0860f39dbe0eb8bdf1e9dd3d2dabe3d
+      repo: https://github.com/tevador/RandomX
+      covers_deployed: partly
+      note: The node vendors a later RandomX release. The RandomX README says none of the four 2019 audits found critical vulnerabilities.
+    - auditor: X41 D-Sec
+      date: "2019-07-10"
+      type: audit
+      scope: RandomX proof-of-work algorithm and implementation.
+      url: https://github.com/tevador/RandomX/blob/f865ff607c96aa5aff6eb3e980848c1eb580c8c0/audits/Report-X41.pdf
+      repo: https://github.com/tevador/RandomX
+      covers_deployed: partly
+    - auditor: Kudelski Security
+      date: "2019-07-02"
+      type: audit
+      scope: RandomX proof-of-work algorithm and implementation.
+      url: https://github.com/tevador/RandomX/blob/f865ff607c96aa5aff6eb3e980848c1eb580c8c0/audits/Report-Kudelski.pdf
+      repo: https://github.com/tevador/RandomX
+      covers_deployed: partly
+    - auditor: Trail of Bits
+      date: "2019-05-28"
+      type: audit
+      scope: RandomX proof-of-work at release 1.0.2, funded by Arweave.
+      url: https://github.com/tevador/RandomX/blob/f865ff607c96aa5aff6eb3e980848c1eb580c8c0/audits/Report-TrailOfBits.pdf
+      commit: 378d5de
+      repo: https://github.com/tevador/RandomX
+      covers_deployed: partly
+      findings: "3 findings (single AES rounds in AesGenerator, insufficient VM testing, brittle parameters)"
+    - auditor: Quarkslab
+      date: "2018-10-20"
+      type: audit
+      scope: Bulletproofs implementation (bp-multi-aggregation branches) for Monero, via OSTIF.
+      url: https://blog.quarkslab.com/resources/2018-10-22-audit-monero-bulletproof/18-06-439-REP-monero-bulletproof-sec-assessment.pdf
+      commit: b7e61db030da8c97b3e82354bfee8caae57d3137
+      repo: https://github.com/moneromooo-monero/bitmonero
+      covers_deployed: partly
+      findings: "Major issues in proof verification (overflow, multi-exponentiation errors, missing input checks) and medium deserialization issues, fixed before deployment"
+      note: Also reviewed 7f964dfc on bp-multi-aggregation. Original Bulletproofs were replaced by Bulletproofs+ in August 2022 and remain only to validate older transactions.
+    - auditor: Kudelski Security
+      date: "2018-07"
+      type: audit
+      scope: Bulletproofs integration in Monero (bp-multi-aggregation branch), via OSTIF.
+      url: https://ostif.org/wp-content/uploads/2018/07/KudelskiBulletproofsFinal.pdf
+      repo: https://github.com/moneromooo-monero/bitmonero
+      covers_deployed: partly
+      findings: "3 low-severity issues and 7 observations; no major or critical issues"
+      note: Hosted by OSTIF, which coordinated the audit. Same supersession as the Quarkslab Bulletproofs report.
