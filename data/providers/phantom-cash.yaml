@@ -65,7 +65,7 @@ scores:
         quote: "We reserve the right to block, suspend or cancel your Card at any time, with or without notice"
         detail: Lead Bank Prepaid Visa Cardholder Agreement (Bridge Ventures as Program Manager, Phantom as Platform Provider), fraud prevention clause.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The bank and the program manager can block or cancel an individual card with or without notice. That meets anchor 0. No settlement contract was identified to assess further.
     provider_response: null
@@ -83,6 +83,7 @@ scores:
         detail: The debit card article says Stripe/Bridge pulls CASH from the Cash account at payment time and the merchant is paid like a standard Visa transaction.
         checked_at: "2026-10-07"
         confirmed_at: 2026-10-12
+        drift: true
     finding: >-
       Card payments are pulled by Bridge and settled over Visa by Lead Bank. No direct payer or payee contract path is documented or published.
     provider_response: null
@@ -100,6 +101,7 @@ scores:
         detail: The Partners section lists Link (KYC), Stripe (funding), Bridge (card, bank transfers), Lead Bank (issuer) and Galileo (processing, disputes).
         checked_at: "2026-10-07"
         confirmed_at: 2026-10-12
+        drift: true
     finding: >-
       The card depends on Phantom's closed app and on Stripe, Bridge, Lead Bank and Galileo. None is public and none has a fallback. 0.
     provider_response: null
@@ -116,7 +118,7 @@ scores:
         quote: "comply with legal obligations related to financial crimes and sanctions"
         detail: The Privacy Policy says Phantom uses IP address and other data for sanctions compliance; the card is offered only in the US except New York after Link KYC, and some merchant categories are declined.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Sanctions and geographic gating is disclosed in policy and help pages. It runs in closed services and cannot be bypassed (C2 = 0). 1.
     provider_response: null
@@ -143,14 +145,14 @@ scores:
         quote: "Only you can move funds using your wallet credentials."
         detail: The Cash FAQ answers "Can anyone pull CASH out of my Cash account?" with No, saying Phantom, Stripe, Link or any partner cannot access or withdraw funds.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.phantom.com/cash
         quote: "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH"
         detail: Phantom's developer docs enumerate the CASH mint on Solana as the Cash token.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The token and chain are enumerated in docs (CASH on Solana). The issuer's powers are misstated: the FAQ says no partner can pull CASH out of a Cash account, but the mint carries a permanent delegate that can move or burn any holder's CASH, and a freeze authority. Solana has no sequencer, which is not stated either. Misstated, so 0.
     provider_response: null
@@ -174,6 +176,7 @@ scores:
         detail: Cash runs in the closed Phantom mobile app (not the extension) and on partner services; no Cash, card or Cash-account program repository exists in github.com/phantom.
         checked_at: "2026-10-07"
         confirmed_at: 2026-10-12
+        drift: true
     finding: >-
       Nothing needed to run Phantom Cash is public. 0.
     provider_response: null
@@ -203,6 +206,7 @@ scores:
         detail: Every required component (app, backend, CASH issuer, card programme, KYC) is closed.
         checked_at: "2026-10-07"
         confirmed_at: 2026-10-12
+        drift: true
     finding: >-
       Required components are closed, so 0.
     provider_response: null
@@ -226,6 +230,7 @@ scores:
         detail: The card cannot work without Stripe/Bridge pulling CASH and Lead Bank settling over Visa.
         checked_at: "2026-10-07"
         confirmed_at: 2026-10-12
+        drift: true
     finding: >-
       The product cannot run without proprietary hosted services. 0.
     provider_response: null
@@ -242,7 +247,7 @@ scores:
         quote: "We use third-party analytics to evaluate usage of our Functionality."
         detail: The Privacy Policy discloses third-party analytics and says users may opt out, so it is on by default; the vendor is not named.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Analytics is present, on by default and disclosed in the policy. The app is closed and no trace was run. 1.
     provider_response: null
@@ -259,7 +264,7 @@ scores:
         quote: "Social Security number, government-issued identification"
         detail: The Privacy Policy says KYC for opt-in features covers legal name, date of birth, SSN, government ID and contact data, processed by third parties under the Bank Secrecy Act; for Phantom Cash it also collects merchant location data and the last four digits of bank and card numbers.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       KYC is legally required and its basis is disclosed, but only in a hosted policy, and Phantom also keeps merchant location data for card transactions. Documented cap, so 1.
     provider_response: null
@@ -294,6 +299,7 @@ scores:
         detail: Help pages name Link, Stripe, Bridge, Lead Bank and Galileo as partners in Cash and card flows.
         checked_at: "2026-10-07"
         confirmed_at: 2026-10-12
+        drift: true
     finding: >-
       Third parties in the card flow are named in docs and not swappable. No trace was run. 1.
     provider_response: null
@@ -382,6 +388,7 @@ availability:
       quote: "The card is available in the US only (except New York)"
       checked_at: "2026-10-09"
       confirmed_at: 2026-10-12
+      drift: true
     - tier: documented
       kind: document
       url: https://help.phantom.com/articles/cash-faq-44800866087443
@@ -408,24 +415,28 @@ settlement:
       detail: The debit card article says Stripe draws CASH from the Cash account at payment and converts it to USD.
       quote: "Stripe (our partner) draws CASH from your Cash account, converts it to USD"
       checked_at: "2026-10-12"
+      drift: true
     - tier: documented
       kind: document
       url: https://help.phantom.com/articles/understanding-your-cash-account-44799497237395
       detail: USDC, USDT or PYUSD sent to the Cash address are automatically swapped into CASH.
       quote: "Phantom automatically swaps these tokens for CASH in your Cash account"
       checked_at: "2026-10-12"
+      drift: true
     - tier: documented
       kind: document
       url: https://usecash.xyz
       detail: The CASH site names Bridge Building Inc. as issuer and describes 1:1 USD reserves.
       quote: "CASH is issued by Bridge Building Inc. (BBI) and distributed by BBI and its affiliates."
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.phantom.com/cash
       detail: Phantom's developer docs give the CASH mint on Solana.
       quote: "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:

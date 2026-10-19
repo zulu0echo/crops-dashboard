@@ -209,7 +209,7 @@ scores:
         path: src/entrypoints/accounts-actions/accountSetup.ts
         detail: Account setup swaps the Safe owner to 0x...02, enables only the Roles and Delay modifiers, and hands Roles ownership to a Bouncer; no pause, freeze or blacklist function is configured anywhere in the account.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x5f07734E2B9C4dE6f9C32253d485741800da3F8a
@@ -220,7 +220,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000896a695d5ccdd21f9e3bb18307a558befccb8428"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x896a695d5cCDd21F9e3Bb18307a558befCCb8428
@@ -231,7 +231,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000002"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x896a695d5cCDd21F9e3Bb18307a558befCCb8428
@@ -244,7 +244,7 @@ scores:
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
         recheck: >-
           cast call 0x896a695d5cCDd21F9e3Bb18307a558befCCb8428 "getModulesPaginated(address,uint256)(address[],address)" 0x0000000000000000000000000000000000000001 10 --rpc-url https://rpc.gnosischain.com --block 48629765; for f in "avatar()(address)" "target()(address)" "owner()(address)"; do cast call 0x5f07734E2B9C4dE6f9C32253d485741800da3F8a "$f" --rpc-url https://rpc.gnosischain.com --block 48629765; done
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x896a695d5cCDd21F9e3Bb18307a558befCCb8428
@@ -256,7 +256,7 @@ scores:
           slot: "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
         recheck: cast storage 0x896a695d5cCDd21F9e3Bb18307a558befCCb8428 0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8 --rpc-url https://rpc.gnosischain.com --block 48629765
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x5f07734E2B9C4dE6f9C32253d485741800da3F8a
@@ -268,7 +268,7 @@ scores:
           call: "0x2d9ad53d0000000000000000000000009c48bc73841fd98456cb52f8a28580266d74d4df"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
         recheck: cast call 0x5f07734E2B9C4dE6f9C32253d485741800da3F8a "getModulesPaginated(address,uint256)(address[],address)" 0x0000000000000000000000000000000000000001 10 --rpc-url https://rpc.gnosischain.com --block 48629765
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x9c48bc73841FD98456cB52f8A28580266d74d4df
@@ -285,7 +285,7 @@ scores:
         path: contracts/Spender.sol
         detail: setUp sets avatar = target = owner; execTransactionFromModule and execTransactionFromModuleReturnData are overridden with empty bodies; spend() (moduleOnly) makes the target Safe call account.execTransactionWithRole(asset, 0, transfer(receiver, amount), Call, roleKey, true), with account, receiver, amount and roleKey chosen by the delegate.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/2178874711
@@ -293,7 +293,7 @@ scores:
         quote: "if we are told by Monavate not to permit (or to permit) a transaction on your Card to be funded by your Safe, or to block your Card, we will act on such instruction"
         archive: data/archive/gnosis-pay-terms.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/2178874711
@@ -301,7 +301,7 @@ scores:
         quote: "a 3 minute delay is imposed on execution of any non-Card transactions that you carry out from your Safe"
         archive: data/archive/gnosis-pay-terms.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Funds at rest cannot be frozen: the account Safe has no guard, its only modules are the user's Delay and Roles modifiers, and Gnosis Pay holds no key over them. Card settlement is different. Every card spend is Spender.spend(), which only an enabled delegate can call, and the one delegate is EOA 0x9c48bc73... A single EOA can stop or selectively withhold settlement, which meets anchor 0 on its own. The delegate list is controlled by spender Safe 0x896a695d... It is 2-of-3, its three EOA signers are not named in any document I found, it has no guard, and there is no timelock (the documented user exit is 3 minutes). It misses every anchor-2 condition. Module check (red team R7): the spender Safe's only module is the spender modifier itself (avatar = target = owner = the Safe). Through it, one delegate key can make the Safe call execTransactionWithRole on any account it names. The inner payload is fixed to token.transfer(receiver, amount), the modifier's generic exec functions are emptied, and changing delegates, owners or settings still needs 2 signatures. On user accounts the payload is limited by each account's Roles scope, read from the setup events (see S1): one token, receiver = settlement Safe 0x4822521E..., amount within the daily allowance. So the module does bypass the 2-of-3 threshold, but only to pull up to each account's remaining allowance into Gnosis Pay's settlement Safe. Separately, the Terms let Gnosis Pay block an individual card on Monavate's instruction. The EOA-held delegate (verified) and the card-block power (documented) each meet anchor 0.
     provider_response: null
@@ -319,7 +319,7 @@ scores:
         path: contracts/Spender.sol
         detail: spend(asset, account, receiver, amount, roleKey) is moduleOnly, so only a delegate enabled by the Gnosis Pay spender Safe can move funds to the settlement receiver; source is identical to the Sourcify exact match for mastercopy 0x7a592baE57b8cd45688F9Eb81ce4A622E7E37cB7.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/tx/0xf99c9e1cfaef7a2a4e5226099ad60463abf9a900d4d954e877a55bab83a300cb
@@ -344,7 +344,7 @@ scores:
         path: src/main.tsx
         detail: The frontend defaults its API client to api.gnosispay.com (overridable by VITE_GNOSIS_PAY_API_BASE_URL); no public implementation of that API exists in any gnosispay repo.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/account-kit/blob/9366073768f4ad8a321c03832066f6b97921b21a/README.md#L159-L180
@@ -352,7 +352,7 @@ scores:
         path: README.md
         detail: The Spend section requires a signature from the spend delegate configured in the Gnosis Pay Spender Safe and a relayer to submit it.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
@@ -360,7 +360,7 @@ scores:
         quote: "Your card and the web app will stop working at 23:59 UTC on 20 December 2026."
         archive: data/archive/gnosis-pay-closure-notice.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The card flow requires Gnosis Pay's closed backend (authorisation, spend delegate, relayer) plus the issuer Monavate and Visa. None of it is public or has a fallback. Single-vendor and closed for the payment path.
     provider_response: null
@@ -378,7 +378,7 @@ scores:
         path: src/pages/Kyc.tsx
         detail: The KYC route hands the user to a Sumsub integration URL fetched from the Gnosis Pay API; eligibility screening runs in the closed backend. A search of src/ for sanctions lists, IP geolocation or address blocklists found none.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/src/constants.ts#L82-L115
@@ -386,7 +386,7 @@ scores:
         path: src/constants.ts
         detail: SUPPORTED_COUNTRIES lists 32 EEA/UK/CH country codes; it is defined but not referenced elsewhere in src/ at this commit (shipping uses SUPPORTED_SHIPPING_COUNTRIES at L1615-L1634).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/2178874711
@@ -394,7 +394,7 @@ scores:
         quote: "United Nations, European Union and its Member States, United States and United Kingdom sanctions lists"
         archive: data/archive/gnosis-pay-terms.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/account-kit/blob/9366073768f4ad8a321c03832066f6b97921b21a/contracts/Spender.sol#L56-L82
@@ -402,7 +402,7 @@ scores:
         path: contracts/Spender.sol
         detail: spend() has no address list, country or screening check; the only onchain conditions on a card spend are the per-account Roles scope (token, receiver = settlement Safe, amount within allowance), read from the Roles setup events cited under S1.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/onboarding-flow.mdx#L86-L88
@@ -427,7 +427,7 @@ scores:
         path: src/constants/currencies.ts
         detail: Supported tokens enumerated in code - EURe 0xcB444e90D8198415266c6a2724b7900fb12FC56E (v2 0x420CA0f9...), GBPe 0x5Cb9073902F2035222B9749F8fB0c9BFe5527108, USDC.e 0x2a22f9c3b484c3629090FeED35F17Ff8F88f76F0, all on Gnosis Chain.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x420CA0f9B9b604cE0fd9C18EF134C705e5Fa3430
@@ -439,7 +439,7 @@ scores:
           call: "0x3a5381b5"
           expect: "0x000000000000000000000000fe74a522768547be33a3ad40b999381d57f238a0"
         recheck: cast call 0x420CA0f9B9b604cE0fd9C18EF134C705e5Fa3430 "validator()(address)" --rpc-url https://rpc.gnosischain.com --block 48629765; cast call 0x2a22f9c3b484c3629090FeED35F17Ff8F88f76F0 "blacklister()(address)" --rpc-url https://rpc.gnosischain.com --block 48629765
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x2a22f9c3b484c3629090FeED35F17Ff8F88f76F0
@@ -450,7 +450,7 @@ scores:
         check:
           call: "0xbd102430"
           expect: "0x000000000000000000000000458cd345b4c05e8df39d0a07220feb4ec19f5e6f"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/2178874711
@@ -458,7 +458,7 @@ scores:
         quote: "means euro electronic money tokens issued by Monerium"
         archive: data/archive/gnosis-pay-terms.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Tokens and chain are enumerated in code. Each one carries an issuer freeze: Monerium's blacklist validator can ban addresses for EURe and GBPe, and the bridged USDC contract has a blacklister and pauser. Neither the Terms nor the docs tell cardholders about these powers. Gnosis Chain is an L1 with no sequencer, which is also not stated. Enumerated in code, assumptions not stated, so 2.
     provider_response: null
@@ -491,7 +491,7 @@ scores:
         path: src/deployments.ts
         detail: SDK pins the Delay, Roles and Spender mastercopy addresses checked above.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every mastercopy that holds logic is verified on Sourcify, five of six as exact matches; Roles is a partial match. The minimal-proxy instances delegate to those verified mastercopies. Spender.sol and Bouncer.sol at the pinned commit are byte-identical to the Sourcify sources (apart from a trailing newline). There is no documented script that rebuilds the deployed bytecode from a pinned commit, and Roles is partial, so 2.
     provider_response: null
@@ -510,7 +510,7 @@ scores:
         detail: The frontend generates its API client from the published OpenAPI spec at https://api.gnosispay.com/api-docs/spec.json; the generated client is committed under src/client.
         checked_at: "2026-10-07"
         recheck: gh api "repos/gnosispay/ui/contents/package.json?ref=7fc844b4bb779ed1384468008b9a3eb2e7cf59f2" --jq .content | base64 -d | sed -n 12,13p; gh repo list gnosispay --limit 50
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/account-kit/tree/9366073768f4ad8a321c03832066f6b97921b21a/contracts
@@ -535,7 +535,7 @@ scores:
         path: README.md
         detail: README lists env vars (PSE relay route, PSE app id from Gnosis Pay partner registration, API base URL, RPC URL) and build commands; contract addresses live in account-kit src/deployments.ts.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Re-assessed against the revised anchor: a 3 needs a recorded attempt or a deploy script with a recorded successful test payment, and a 2 needs a recorded reproduction. Build docs exist for the frontend and SDK. Reproduction not attempted. Known blockers from the README alone: a working deployment needs a Gnosis Pay-issued PSE app id and the hosted Gnosis Pay API. No deploy script in any gnosispay repo completes a test card payment, and one could not, because the spend delegate, relayer, issuer and network are closed. Stays 1.
     provider_response: null
@@ -554,7 +554,7 @@ scores:
         detail: ABIs for spender, delay, roles and moduleProxyFactory are committed under scripts/abi, including the Spend event definition.
         checked_at: "2026-10-07"
         recheck: gh api "repos/gnosispay/account-kit/contents/scripts/abi?ref=9366073768f4ad8a321c03832066f6b97921b21a" --jq '.[].name'; gh api "repos/gnosispay/account-kit/contents/scripts/abi/spender.json?ref=9366073768f4ad8a321c03832066f6b97921b21a" --jq .content | base64 -d | sed -n 239,269p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/src/client/types.gen.ts#L1-L5
@@ -562,7 +562,7 @@ scores:
         path: src/client/types.gen.ts
         detail: Types generated from the Gnosis Pay OpenAPI spec by @hey-api/openapi-ts (header at L1, baseUrl api.gnosispay.com at L4) are versioned in the frontend repo (4626 lines).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/src/utils/csvDownloadUtils.ts#L172-L200
@@ -570,7 +570,7 @@ scores:
         path: src/utils/csvDownloadUtils.ts
         detail: The cardholder can export card transactions as CSV.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       ABIs, event definitions and an API schema (generated from OpenAPI) are in repos. The only export is a cardholder-side CSV of card transactions; there is no payee (merchant) export, because merchants are paid through Visa. Judgment call: the payee-export requirement is not met, so 2.
     provider_response: null
@@ -588,7 +588,7 @@ scores:
         path: LICENSE
         detail: account-kit is Apache License 2.0.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/LICENSE#L1-L3
@@ -596,7 +596,7 @@ scores:
         path: LICENSE
         detail: ui is MIT (Copyright 2025 Gnosis Pay).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosisguild/zodiac-modifier-delay/blob/221382ead4022eba81b7d311c54b76889f8b4e15/LICENSE#L1-L2
@@ -604,7 +604,7 @@ scores:
         path: LICENSE
         detail: zodiac-modifier-delay is LGPL-3.0; zodiac-modifier-roles (820e5bc9) and safe-smart-account (f8fc2f2e) are also LGPL-3.0.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/Readme.md
@@ -630,7 +630,7 @@ scores:
         path: .github/workflows/cla.yml
         detail: CLA Assistant enforces the Gnosis CLA (github.com/gnosis/CLA), which grants Gnosis a perpetual, sublicensable copyright license to contributions; zodiac-modifier-roles and zodiac carry the same workflow.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/account-kit/blob/9366073768f4ad8a321c03832066f6b97921b21a/README.md#L199-L205
@@ -638,7 +638,7 @@ scores:
         path: README.md
         detail: account-kit and ui have no CLA, CONTRIBUTING or license-stability statement; account-kit had no LICENSE until commit c3ca5372 (2025-10-16, Apache-2.0).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Gnosis Pay's own repos have no CLA and no commitment (that alone would be 2). The Delay and Roles modifiers that gate every account are maintained under a Gnosis CLA that permits relicensing, and there is no license-stability commitment. Judgment call: I could not establish whether Gnosis Pay counts as a Gnosis affiliate under that CLA, so I took the lower anchor (0). Deployed mastercopies are immutable, so the risk applies to future versions only.
     provider_response: null
@@ -656,7 +656,7 @@ scores:
         path: README.md
         detail: Running the frontend needs a PSE app id obtained by registering as a Gnosis Pay partner and the Gnosis Pay API (prod by default).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/account-kit/blob/9366073768f4ad8a321c03832066f6b97921b21a/README.md#L159-L180
@@ -664,7 +664,7 @@ scores:
         path: README.md
         detail: Card spends need the delegate configured in the Gnosis Pay Spender Safe.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The core product, card payments, cannot run without Gnosis Pay's proprietary backend and partner credentials, and without the issuer (Monavate) and Visa. The onchain account works on its own for holding and withdrawing, but not as a payment rail.
     provider_response: null
@@ -682,7 +682,7 @@ scores:
         path: index.html
         detail: The Pylon chat widget script from widget.usepylon.com is injected on every page load with no opt-in.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/src/hooks/usePylonIdentity.tsx#L8-L35
@@ -690,7 +690,7 @@ scores:
         path: src/hooks/usePylonIdentity.tsx
         detail: Once identified, the app passes the user's email, name and Safe address to Pylon. package.json has no Sentry, PostHog, Mixpanel, Amplitude or GA dependency.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/7638555831
@@ -698,7 +698,7 @@ scores:
         quote: "Google may use the collected data to contextualise and personalise the ads of its own advertising network"
         archive: data/archive/gnosis-pay-privacy.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A third-party support widget (Pylon) is on by default in the web app and receives identity plus the Safe address; the privacy policy discloses analytics (Google) and support partners. No analytics or error-reporting SDK appears in the frontend manifest. No trace was run, so what the Pylon script collects at runtime is unconfirmed. Judgment call: Pylon is a support SDK, not analytics, but it is a third-party script loaded on every page; treated as present, on by default and disclosed generically, so 1.
     provider_response: null
@@ -716,7 +716,7 @@ scores:
         path: src/pages/Kyc.tsx
         detail: Onboarding requires completing Sumsub KYC before the card flow; the reason (regulated card) is visible in the flow.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/7638555831
@@ -724,7 +724,7 @@ scores:
         quote: "In relation to Biometric Information, we obtain your explicit consent in accordance with Article 6(1)(a) and Article 9(2)(a) of GDPR and UK GDPR"
         archive: data/archive/gnosis-pay-privacy.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/7752555767-what-happens-to-your-data
@@ -732,7 +732,7 @@ scores:
         quote: "We're legally required to keep certain records after your account closes."
         archive: data/archive/gnosis-pay-data.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/docs/blob/b0b8c668d044b543f794e6a91065045ec03c6cbb/onboarding-flow.mdx#L86-L88
@@ -757,7 +757,7 @@ scores:
         path: contracts/Spender.sol
         detail: The Spend event emits asset, account (the user's Roles modifier), receiver and amount; there is no merchant, MCC or invoice field.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/tx/0xf99c9e1cfaef7a2a4e5226099ad60463abf9a900d4d954e877a55bab83a300cb
@@ -773,7 +773,7 @@ scores:
         quote: "That shows the movement of funds, but not merchant names or card-level detail."
         archive: data/archive/gnosis-pay-data.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No merchant or order data goes onchain. Every card purchase is still a public transfer from one long-lived Safe to one well-known settlement address, so anyone can read a cardholder's spending amounts and timing and identify the Safe as a Gnosis Pay card. There are no fresh addresses or privacy patterns. This is minimal linkage that is documented, so 2.
     provider_response: null
@@ -791,7 +791,7 @@ scores:
         path: src/wagmi.ts
         detail: WalletConnect projectId is hardcoded via RainbowKit; RPC transport is configurable.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/index.html#L43-L47
@@ -799,7 +799,7 @@ scores:
         path: index.html
         detail: The Pylon widget URL and app id are hardcoded, with no config switch.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/7638555831
@@ -807,7 +807,7 @@ scores:
         quote: "Our current KYC Provider is SUM AND SUBSTANCE LTD"
         archive: data/archive/gnosis-pay-privacy.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://help.gnosispay.com/articles/6763083779-legal-documents-and-fees
@@ -815,7 +815,7 @@ scores:
         quote: "Your Gnosis Pay card is issued by Monavate Limited pursuant to licence by VISA Europe Limited."
         archive: data/archive/gnosis-pay-legal-docs.txt
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A card payment is seen by Visa, Monavate and Gnosis Pay's backend, which are disclosed in docs and not swappable. In the web app, WalletConnect and Pylon are named in code but hardcoded; only the RPC and API base URL are configurable. No trace was run. Third parties are present and disclosed but not swappable by config, so 1.
     provider_response: null
@@ -834,7 +834,7 @@ scores:
         detail: RPC URL comes from VITE_GNOSIS_RPC_URL (env only); onchain transfer history is read by getLogs over that same RPC (src/utils/fetchErc20Transfers.ts).
         checked_at: "2026-10-07"
         recheck: gh api "repos/gnosispay/ui/contents/src/wagmi.ts?ref=7fc844b4bb779ed1384468008b9a3eb2e7cf59f2" --jq .content | base64 -d | sed -n 7,26p; gh api "repos/gnosispay/ui/contents/src/main.tsx?ref=7fc844b4bb779ed1384468008b9a3eb2e7cf59f2" --jq .content | base64 -d | sed -n 25,39p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/src/main.tsx#L25-L39
@@ -842,7 +842,7 @@ scores:
         path: src/main.tsx
         detail: The API (card-transaction data source) base URL is env-configurable via VITE_GNOSIS_PAY_API_BASE_URL, but its implementation is not public.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The RPC and API endpoints are configurable through build-time env only, not in the UI. Onchain history uses the configured RPC directly. The card-transaction indexer is closed, so 2.
     provider_response: null
@@ -863,7 +863,7 @@ scores:
         check:
           call: "0x2f54bf6e0000000000000000000000000000000000000000000000000000000000000002"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x4822521E6135CD2599199c83Ea35179229A172EE
@@ -874,7 +874,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000002"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/account-kit/blob/9366073768f4ad8a321c03832066f6b97921b21a/src/entrypoints/accounts-actions/accountSetup.ts#L240-L296
@@ -882,7 +882,7 @@ scores:
         path: src/entrypoints/accounts-actions/accountSetup.ts
         detail: The spending role is scoped to token.transfer with recipient EqualTo the configured receiver and amount WithinAllowance; Roles ownership then passes to a Bouncer that only forwards setAllowance from the Safe.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/src/constants.ts#L78
@@ -890,7 +890,7 @@ scores:
         path: src/constants.ts
         detail: GNOSIS_PAY_SETTLEMENT_ADDRESS = 0x4822521E6135CD2599199c83Ea35179229A172EE is disclosed in code.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/tx/0x2a9c14e83961db1f9c501ba04777fcd8f3141f188fc07017ef4b1c17a32de0a8
@@ -921,7 +921,7 @@ scores:
           slot: "0x0"
           expect: "0x000000000000000000000000d9db270c1b5e3bd161e8c8503c55ceabee709552"
         recheck: cast storage 0xE27aa566F989D832094222d9D71d0Ffd8fb78cD8 0x0 --rpc-url https://rpc.gnosischain.com --block 48629765; cast call 0xE27aa566F989D832094222d9D71d0Ffd8fb78cD8 "getOwners()(address[])" --rpc-url https://rpc.gnosischain.com --block 48629765
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://repo.sourcify.dev/100/0xE27aa566F989D832094222d9D71d0Ffd8fb78cD8
@@ -933,7 +933,7 @@ scores:
           slot: "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
         recheck: cast storage 0xE27aa566F989D832094222d9D71d0Ffd8fb78cD8 0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8 --rpc-url https://rpc.gnosischain.com --block 48629765; cast call 0xE27aa566F989D832094222d9D71d0Ffd8fb78cD8 "getModulesPaginated(address,uint256)(address[],address)" 0x0000000000000000000000000000000000000001 10 --rpc-url https://rpc.gnosischain.com --block 48629765
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0x91Def2b0C4894F4A574C5e3c6C7d0B8F51F53723
@@ -944,7 +944,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000e27aa566f989d832094222d9d71d0ffd8fb78cd8"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://gnosisscan.io/address/0xd69693CA293e189b546691485D1500EA5150bA29
@@ -955,7 +955,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x0000000000000000000000004d5803a09d44d615a202e4831ee0cc14a803f562"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Re-assessed against the revised anchor, which now asks for modules and guards to be read. Gnosis Pay has no upgrade key over any contract that holds or gates user funds. The account Safe has no guard. Its only modules are Delay and Roles, and the Roles scope read from the setup events allows no delegatecall and no call other than EURe.transfer to the settlement Safe. Only the user, through their own Delay queue, can change the Safe's masterCopy. The Delay, Roles and Spender instances are EIP-1167 minimal proxies with no upgrade path, and Roles ownership sits with a Bouncer that only forwards setAllowance from the Safe. This is the "non-upgradeable" branch of anchor 3, so the admin-Safe conditions do not apply. Judgment call: the spender Safe (2-of-3, one module, no guard) and the settlement Safe (2-of-10, no module, no guard) are ordinary Safe proxies whose owners could change their code. That would not widen access to user accounts, because the Roles scope binds whatever code the spender Safe runs, and funds already in the settlement Safe are provider custody, scored under S1 (1). Token contracts are upgradeable by their issuers (EURe and GBPe are UUPS under a Monerium 3-of-6 Safe); that is covered in C5. The June 2026 incident was handled by issuing new Safes and new mastercopies (account-kit commit f4b92878), not by upgrading in place.
     provider_response: null
@@ -981,7 +981,7 @@ scores:
         path: src/entrypoints/accounts-actions/accountSetup.ts
         detail: Setup grants a refilling allowance (refill per period), scoped to one token, transfer() only, and one receiver; no ERC-20 approve is used.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       There is no ERC-20 approval. Instead, a Roles allowance lets Gnosis Pay's spender pull up to a daily limit, which the user sets and the UI caps at 8000. It refills every period, applies to one token and transfer() only, and is locked to the settlement receiver; the setup events cited under S1 confirm that scope onchain. The revised anchor 2 names exactly this case ("a bounded allowance by default, capped or refilling, limited to one receiver"), so this is 2 without a judgment call. It is not 3 because it is neither exact-amount nor expiring. Note (red team R7): a single delegate key can draw on this allowance without the spender Safe's 2-of-3 threshold (see C1).
     provider_response: null
@@ -1003,7 +1003,7 @@ scores:
           call: "0xdcafac09"
           expect: "0x00000000000000000000000000000000000000000000000000000000000000b4"
         recheck: cast call 0x91Def2b0C4894F4A574C5e3c6C7d0B8F51F53723 "txCooldown()(uint256)" --rpc-url https://rpc.gnosischain.com --block 48629765; cast call 0x91Def2b0C4894F4A574C5e3c6C7d0B8F51F53723 "getModulesPaginated(address,uint256)(address[],address)" 0x0000000000000000000000000000000000000001 10 --rpc-url https://rpc.gnosischain.com --block 48629765; cast call 0x91Def2b0C4894F4A574C5e3c6C7d0B8F51F53723 "owner()(address)" --rpc-url https://rpc.gnosischain.com --block 48629765
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosisguild/zodiac-modifier-delay/blob/515737f67bb704d0ce14d45cd6f7cc8e6b4655d1/contracts/Delay.sol#L128-L201
@@ -1018,7 +1018,7 @@ scores:
         path: src/components/WithdrawFundsForm.tsx
         detail: The public MIT frontend's /withdraw route has the user's own wallet send the Delay enqueue transaction directly, with no Gnosis Pay API call, and AuthGuard lets the route through without login.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Re-assessed against the revised anchor 2, which needs a verified user withdrawal path that works without the provider. Chain of reasoning: (1) by S1, funds at rest stay in the user's Safe. (2) By S2, Gnosis Pay holds no key over the account, and the Roles scope (setup events) gives its spender Safe only a capped EURe transfer to the settlement Safe, not setTxNonce or any other Delay or Safe call, so it cannot block a queued withdrawal. (3) The user's own EOAs are the Delay modules. They can queue any Safe transaction directly, and anyone can execute it after the 180 s cooldown, using public, Sourcify-matched code (Delay.sol at 515737f). The public MIT frontend's /withdraw route does the same without any Gnosis Pay API call. (4) By C2 = 0 and C3 = 0, card settlement stops if Gnosis Pay disappears. (5) By O3 = 1, self-hosting the frontend is unproven, but the direct contract path does not need it. Funds already pulled into the settlement Safe for in-flight card payments stay with Gnosis Pay. While the delegate is live it can pull up to the remaining daily allowance during the cooldown. "Funds retained and retrievable through a verified direct path, settlement stops" = 2. The earlier judgment call about reading S4 as a strict minimum of S1, C2 and C3 is no longer needed under the revised anchor. The closure notice (cards end 20 Dec 2026, withdrawals kept) is this scenario in practice.
     provider_response: null
@@ -1044,7 +1044,7 @@ scores:
         path: pse-backend-demo/.env.template
         detail: The partner mTLS client cert and key live server-side in the PSE backend demo; the browser bundle carries only publishable ids (WalletConnect projectId, Pylon app id, PSE app id).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No secrets are shipped to the browser, and webhook signatures are asymmetric with verification code in the repo. Key scoping and rotation are not documented in any repo I read. Judgment call: missing scoping and rotation evidence keeps this at 2, not 3.
     provider_response: null
@@ -1062,7 +1062,7 @@ scores:
         path: packages/evm/docs/Audit03_RolesV2_1_Nov2023_Ominiscia.pdf
         detail: Roles v2.1 audits (G0 Group and Omniscia, 2023) are published in the Roles repo; the Delay module audit is dated Sep 2021 (zodiac-modifier-delay audits/), and Safe 1.3.0 audits are in safe-smart-account docs/. Cited as the committed report file (the PDF text cannot be quote-checked); it remains an audit report only.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/public/safe-recovery-data.csv
@@ -1070,7 +1070,7 @@ scores:
         path: public/safe-recovery-data.csv
         detail: Frontend ships a per-Safe list (status lost / not_lost, balance_if_not_hacked_usd) from the June 2026 security incident; account-kit commit f4b92878 (2026-06-03) replaced all three modifier mastercopies.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The Safe, Delay and Roles code that holds and gates funds has published audits, though none is pinned to the deployed commits. No audit was found for Gnosis Pay's own Spender or Bouncer contracts, no bug bounty is in any gnosispay repo, and I found no public post-mortem for the June 2026 incident. Documented tier caps this at 1. Judgment call: 1 applies to the fund-holding modules; Gnosis Pay's own code on its own would score 0.
     provider_response: null
@@ -1094,7 +1094,7 @@ availability:
       detail: Eligible Countries for Gnosis Pay (help centre, linked from Terms section 2) lists 37 supported countries of residency and 22 locations where card use is prohibited.
       checked_at: "2026-10-09"
       quote: Current Supported Countries of Residency
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.gnosispay.com/articles/2178874711
@@ -1102,7 +1102,7 @@ availability:
       detail: Terms of Service section 2 (Eligibility) require residence in the EEA or a Non-EEA Supported Country listed in the Eligible Countries FAQ, and exclude residents of countries sanctioned by the US, UN, UK or EU.
       checked_at: "2026-10-09"
       quote: You must be resident in a Non-EEA Supported Country to order a Card
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.gnosispay.com/articles/1452055581-formal-notice-closure-of-the-gnosis-pay-web-app-and-card-21-september-2026
@@ -1110,7 +1110,7 @@ availability:
       detail: Closure notice dated 21 September 2026; the card and web app stop at 23:59 UTC on 20 December 2026, and partner card programmes will have their own eligibility rules.
       checked_at: "2026-10-09"
       quote: "Your card and the web app will stop working at 23:59 UTC on 20 December 2026."
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-09"
 
 notes: >-
@@ -1148,6 +1148,7 @@ settlement:
       detail: Terms of Service definitions set the Supported Funds per region (GBPe in the UK, EURe in Switzerland and the EEA, USDCe elsewhere), each only on Gnosis Chain, and define USDCe as Circle USDC bridged to Gnosis Chain at 0x2a22f9c3....
       quote: "if you are a user based in Switzerland or in the EEA, EURe"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: verified
       kind: repo
       url: https://github.com/gnosispay/ui/blob/7fc844b4bb779ed1384468008b9a3eb2e7cf59f2/src/constants/currencies.ts#L7-L30
@@ -1155,6 +1156,7 @@ settlement:
       path: src/constants/currencies.ts
       detail: The card UI enumerates the three card currencies by address on Gnosis Chain - EURe 0xcB444e90... (jumper 0x420CA0f9...), GBPe 0x5Cb90739..., USDCe 0x2a22f9c3....
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.gnosispay.com/articles/6104401027
@@ -1162,6 +1164,7 @@ settlement:
       detail: The fees page says card purchases debit the stablecoin 1:1 with the purchase amount.
       quote: "a €10 purchase = 10 EURe (or equivalent)"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:

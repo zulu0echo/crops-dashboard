@@ -118,7 +118,7 @@ scores:
         quote: "The card provider has additional country, U.S. state, and territory restrictions"
         detail: Card issuance runs through an unnamed card provider and the Tuyo app; neither has public code.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The card requires Tuyo's closed app and backend, an unnamed card provider and issuer, and Visa. All are closed and single-vendor.
     provider_response: null
@@ -135,7 +135,7 @@ scores:
         quote: "The card provider has additional country, U.S. state, and territory restrictions"
         detail: The guide tabulates country and U.S. state exclusions; Terms s2.1 require OFAC and SDN eligibility.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Geographic and sanctions filtering is disclosed in docs. The card settlement contracts could not be inspected, so the neutrality of the settlement layer cannot be shown. 1.
     provider_response: null
@@ -152,7 +152,7 @@ scores:
         quote: "The card is powered by USDC on Base"
         detail: The card token and chain are stated in docs; Circle's freeze powers and Base's sequencer are not mentioned.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       USDC on Base is enumerated in docs only. Issuer freeze and sequencer assumptions are not stated. 1.
     provider_response: null
@@ -187,7 +187,7 @@ scores:
         path: src/Kernel.sol
         detail: The smart-account contracts (ZeroDev Kernel, tag v3.2) are public; no Tuyo-owned public repo exists (GitHub user "tuyo" has 0 repos; searches found none).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Only third-party account contracts are public. Tuyo's app, backend and card integration are closed. 1.
     provider_response: null
@@ -274,7 +274,7 @@ scores:
         quote: "The card provider has additional country, U.S. state, and territory restrictions"
         detail: The guide says identity verification and the card provider's review apply; the Privacy Policy lists name, email and bank details for ramps but predates the card and does not describe card KYC.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Card KYC is required and its existence is disclosed, but the policy does not list the card KYC fields or a legal basis. Judgment call: disclosed in docs, so 1. It could be 0 because the policy is stale.
     provider_response: null
@@ -345,7 +345,7 @@ scores:
         quote: "This direct transaction route does not require a bundler or paymaster"
         detail: Tuyo's guide walks the user through calling execute on their Kernel 3.2 account with the mnemonic-derived signer, and warns that funds in collateral contracts need separate release rules.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Chain of reasoning. S1 is unknown: the collateral contract was not identified. C2 = 0 and C3 = 0: the card stops without Tuyo and its provider. O3 is unknown: there is no public frontend. Funds in the user's Kernel account are retrievable through a documented manual contract call with the user's own signer, and the Terms say the same. Funds already moved to card collateral may follow the provider's release rules. Documented manual call, so 1.
     provider_response: null
@@ -383,28 +383,28 @@ availability:
       detail: Tuyo's platform-wide prohibited jurisdictions table, which applies to the card. It lists 27 countries, from Afghanistan to Yemen, including the United Kingdom.
       quote: Tuyo is generally available outside the platform-wide prohibited jurisdictions below
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/tuyo-availability.html
       detail: The United Kingdom row of the platform-wide table, quoted as an example.
       quote: United Kingdom (GB) Not available
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/tuyo-card-availability.html
       detail: The card provider's issuance exceptions add Israel and Nicaragua to the platform-wide list. The page also lists the US states and territories where the card cannot be issued.
       quote: Israel (IL) Not available Available
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/tuyo-card-availability.html
       detail: The Nicaragua row of the card provider's issuance exceptions.
       quote: Nicaragua (NI) Not available Available
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-09"
 
 settlement:
@@ -426,18 +426,21 @@ settlement:
       detail: Card guide names USDC on Base as the only compatible token, with other deposits converted inside Tuyo.
       quote: The card is powered by USDC on Base. You can deposit USDC (or any token) on Base, Ethereum, Arbitrum, BNB Smart Chain (BSC), or Polygon, and convert to Base USDC inside Tuyo
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/card.html
       detail: Card FAQ says the card can spend USDC while it is in an Earn strategy, and this can be disabled.
       quote: The Tuyo Card can spend your USDC even while it is in an Earn strategy, so it keeps earning until you spend
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/card-spendable-balance.html
       detail: The card spends dollars only; euros in Cash must be converted first.
       quote: The app explains that your card spends dollars. Euros cannot pay by card yet.
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:

@@ -13,9 +13,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
         detail: "zerodevapp/kernel: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -32,9 +32,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
         detail: "zerodevapp/kernel: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -51,9 +51,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
         detail: "zerodevapp/kernel: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -70,9 +70,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/rules/branches/dev
         detail: "zerodevapp/kernel: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -89,9 +89,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
         detail: "zerodevapp/kernel: 1 workflow file(s)"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -108,9 +108,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
         detail: "zerodevapp/kernel: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -127,9 +127,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
         detail: "zerodevapp/kernel: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -146,9 +146,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/tags
         detail: "zerodevapp/kernel: latest tags: v4.0.0-beta.15, v4.0.0-beta.13, v4.0.0-beta.12"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -165,9 +165,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/commits?per_page=10
         detail: "zerodevapp/kernel: 6 of 10 recent commits signed"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,9 +184,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
         detail: "zerodevapp/kernel: 9 release(s) with notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -203,9 +203,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/zerodevapp/kernel/contents/?ref=dev
         detail: "zerodevapp/kernel: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -279,7 +279,7 @@ facts:
         detail: Guide "Your recovery phrase and smart-account address", verified by Tuyo on 15 September 2026.
         checked_at: 2026-10-09
         quote: "Normal release: requires the depositor and a valid counterparty signature."
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -368,7 +368,7 @@ fees:
       detail: Tuyo Card guide, card details table and FAQ.
       checked_at: 2026-10-09
       quote: 1% on any purchase made outside the US (charged by our card provider)
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
@@ -382,14 +382,14 @@ fees:
       detail: Tuyo FAQ, fees.
       checked_at: 2026-10-09
       quote: Tuyo charges a volume fee of 25 basis points (0.25%)
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/atm-withdrawals.html
       detail: ATM withdrawals guide, fees and FX.
       checked_at: 2026-10-09
       quote: ATM withdrawal fees and FX markups depend entirely on the ATM operator
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: Bank-transfer (off-ramp) fees and Bridge's conversion charges are not stated in the guides; the app shows them before confirming. The US agreement lists a 2% late-payment fee; the international agreement lists none.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -453,21 +453,21 @@ cashout:
       detail: Tuyo Card guide.
       checked_at: 2026-10-09
       quote: Keep custody. Your funds stay in your control until the moment you spend them.
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/atm-withdrawals.html
       detail: ATM withdrawals guide.
       checked_at: 2026-10-09
       quote: "Maximum per withdrawal: $250 USD"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://help.tuyo.com/guides/wire-transfer-availability.html
       detail: Bank accounts availability guide with Bridge's country table.
       checked_at: 2026-10-09
       quote: Not available means Bridge will not facilitate bank-account services
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://about.tuyo.com/Tuyo-Cardholder-Agreement-International-1a2bde1470928005b618dc59f919cac2
@@ -503,7 +503,7 @@ maturity:
         detail: The guide links basescan.org/address/0x221677d8...#code as the collateral implementation it reviewed.
         checked_at: 2026-10-09
         quote: Verified collateral implementation and release rules
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: The collateral implementation is not in the provider file's contracts list (it was not known at seed time); per-user collateral proxies were not enumerated. The card agreements' disclosures are effective from 7 March 2025, consistent with this date.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

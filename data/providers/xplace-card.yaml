@@ -78,7 +78,7 @@ scores:
         quote: "XPlace may freeze, restrict, or block your account, wallet interactions, or card without prior notice"
         detail: Terms s12.3 let XPlace freeze or block an account, wallet interactions or the card without notice; s12.4 says it need not give a reason.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://solana.fm/address/KLend2g3cP87fffoy8q1mQqGKjrxjC8boSyAYavgmjD
@@ -103,7 +103,7 @@ scores:
         quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
         detail: Terms s5.1 say card settlement is done by the Card Partner (Rain, s1) through licensed financial infrastructure; XPlace does not issue cards.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A merchant is paid over Visa by Rain. Neither payer nor payee can complete a card payment by calling a contract. Kamino calls (deposit, borrow, repay) are direct, but they fund the card; they do not settle it.
     provider_response: null
@@ -120,7 +120,7 @@ scores:
         quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
         detail: The card path runs through the XPlace app and backend, Rain and Visa; no XPlace repository or self-host path exists (gh search for xplace / x.place found no XPlace-owned org).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every card payment depends on XPlace's closed app and backend and on Rain. None is public or has a fallback. Closed and single-vendor.
     provider_response: null
@@ -137,7 +137,7 @@ scores:
         quote: "XPlace may employ IP geolocation, KYC data, and screening tools to enforce these restrictions"
         detail: Terms s3 list prohibited countries and s3.4 bars persons on OFAC, UN or UAE sanctions lists, enforced by IP geolocation, KYC data and screening tools.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Sanctions and geographic screening is disclosed in the Terms and runs in XPlace's closed services, not in public code. The card path cannot bypass it (C2 = 0). Disclosed in docs only, so 1.
     provider_response: null
@@ -154,7 +154,7 @@ scores:
         quote: "SOL – 65% LTV, ETH (wETH) – 70% LTV, BTC (cbBTC) – 70% LTV"
         detail: The Collateral page enumerates SOL, wETH, cbBTC, USDT and jitoSOL with LTVs; Credit is issued in USDC; the homepage says XPlace runs on Solana. No page states the freeze or blacklist powers of the USDC, USDT, cbBTC or wETH issuers.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Tokens and the chain are listed in docs only, and issuer freeze powers are not stated to cardholders. 1.
     provider_response: null
@@ -214,7 +214,7 @@ scores:
         quote: "XPlace grants you a limited, non-exclusive, non-transferable, revocable license to access and use the Platform"
         detail: The Platform is licensed for personal use only; no XPlace code, build or deploy instructions are published.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       There is no path for a third party to run the XPlace product. Kamino's program can be built, but the card product around it cannot. 0.
     provider_response: null
@@ -238,7 +238,7 @@ scores:
         path: LICENSE
         detail: klend is under Business Source License 1.1 (Licensor StroudGlobal S.A.), a source-available licence.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The only public repo is source-available (BUSL-1.1), and the XPlace app, backend and Rain card programme are closed. Required components are closed, so 0.
     provider_response: null
@@ -261,7 +261,7 @@ scores:
         quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
         detail: The card cannot run without XPlace's closed platform and Rain.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The core card product cannot run without proprietary hosted services. 0.
     provider_response: null
@@ -278,7 +278,7 @@ scores:
         quote: "Portions of the Sites may use Google Analytics"
         detail: The Card Privacy Policy discloses analytics services including Google Analytics; the Platform Privacy Policy s6 mentions analytics and application performance monitoring providers without naming them.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Analytics is disclosed in the policies. The app is closed and no trace was run. Judgment call: disclosed and presumed on by default, so 1.
     provider_response: null
@@ -295,7 +295,7 @@ scores:
         quote: "XPlace collects Biometric Data as part of identity verification through Sumsub"
         detail: The Privacy Policy lists government ID, proof of address, selfie and liveness biometrics, wallet addresses, transaction history and device data, each with a stated lawful basis.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       KYC and biometric data are collected beyond settlement needs. Their legal basis is disclosed, but only in a hosted policy, not in code or a versioned repo document. Documented cap, so 1.
     provider_response: null
@@ -318,7 +318,7 @@ scores:
         quote: "We use third-party infrastructure providers including cloud hosting services, database providers, and application performance monitoring tools"
         detail: The policy names Sumsub, the Card Partner and Kamino, but cloud, database, monitoring and analytics processors are described by category only.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Rain, Sumsub and Kamino are named; the infrastructure, monitoring and analytics vendors that see app traffic are not. None is swappable. Judgment call: between 1 (disclosed in docs) and 0 (undisclosed third parties) I take the lower, because some processors are named only by category.
     provider_response: null
@@ -350,7 +350,7 @@ scores:
         quote: "Collateral and Credit Mode functionality is provided through Kamino Finance smart contracts operating on the Solana blockchain"
         detail: Terms s5.4; s10 discloses Protocol exploit, multisig compromise and liquidation risk.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Collateral sits in Kamino lending reserves, an upgradeable program, and the user holds the obligation; this is disclosed. Card spending is funded and settled by Rain offchain, and how USDC reaches Rain could not be observed. Upgradeable escrow, disclosed, so 1.
     provider_response: null
@@ -427,21 +427,21 @@ availability:
       detail: s3.2 Prohibited Countries, 17 countries from Belarus to Vietnam.
       quote: Use of the Platform is strictly prohibited for persons who are located in, ordinarily resident in, organized under the laws of, or nationals of any of the following countries
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
       detail: The s3.2 list ends with Venezuela and Vietnam, followed by XPlace's right to update it.
       quote: Venezuela Vietnam XPlace may update this list at any time
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
       detail: s3.3 Restricted U.S. States.
       quote: Arizona Delaware Georgia Idaho Louisiana Maryland Nevada New Mexico North Dakota Ohio Oregon Rhode Island South Dakota Vermont Washington Wisconsin
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-09"
 settlement:
   tokens:
@@ -461,18 +461,21 @@ settlement:
       detail: The card page says Cash-mode payments settle from the USDC balance and Credit-mode payments draw on the credit line backed by Collateral.
       quote: "the transaction is settled from your available USDC balance"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.x.place/xplace/credit.md
       detail: The Credit page says credit is issued only in USDC.
       quote: "Credit is issued in USDC only"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
       detail: Terms s5.1 say the Card Partner performs authorisation, clearing and fiat settlement.
       quote: "Card authorization, clearing, and fiat settlement are performed by the Card Partner"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:

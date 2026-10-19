@@ -143,7 +143,7 @@ scores:
         path: contracts/HinkalBase.sol
         detail: HINKAL_HELPER_MANAGER can replace hinkalHelper at any time (setHinkalHelper, L46-L50). transact() calls hinkalHelper.performHinkalChecks and uses its return value as the proof's public inputs (Hinkal.sol L38-L56), so the helper can block every transaction.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/contracts/VerifierFacade.sol#L13-L26
@@ -151,7 +151,7 @@ scores:
         path: contracts/VerifierFacade.sol
         detail: The owner can register or remove any verifier (registerVerifiers, removeVerifier). The helper's owner manages the relayer allowlist (RelayStore.sol L30-L57). The contracts contain no pause, freeze or address blacklist.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://eth.blockscout.com/address/0x7cb60446d7635C68EDf1c568cac74A1f98c1Cfa4
@@ -163,7 +163,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000f04310839973454155d9886a4023451f8d3db7d0"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://eth.blockscout.com/address/0xF04310839973454155d9886a4023451F8D3Db7D0
@@ -174,7 +174,7 @@ scores:
         check:
           call: "0xf27a0c92"
           expect: "0x0000000000000000000000000000000000000000000000000000000000005460"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://eth.blockscout.com/address/0x4d28b33517aB72e7e2f728FF6527F8256CceD7fB
@@ -185,7 +185,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000002"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The contracts have no explicit pause, freeze or blacklist. A timelocked role can still stop settlement: it can swap the helper that computes every proof's public inputs, swap or remove verifiers, and edit the relayer allowlist. HinkalTimelockController holds that power on Ethereum, with a 6-hour delay. Its proposer, executor, canceller and admin is a 2-of-3 Safe with no modules or guard. We found no disclosure of the signers, and no document sets the delay against a user exit. The factory 0x0c61…923c also still holds DEFAULT_ADMIN_ROLE, but its bytecode has no call path to Hinkal's admin functions. That contract is unverified, so we judge this from its function selectors only. Scored 1: a multisig behind a timelock, but the signers are undisclosed.
     provider_response: null
@@ -204,7 +204,7 @@ scores:
         detail: performHinkalChecks accepts either relay == 0 with originalSender == msg.sender (the user submits the call) or a relay on the allowlist. A user can therefore call transact directly, with no relayer and no provider signature.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/contracts/HinkalHelper.sol?ref=61b6839aa80fc0c33bfdcde0323753c83cb2ce67" --jq .content | base64 -d | sed -n 208,236p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/contracts/Hinkal.sol#L172-L230
@@ -212,7 +212,7 @@ scores:
         path: contracts/Hinkal.sol
         detail: _internalTransact pulls deposits from msg.sender and pays withdrawals to externalAddress. A relay fee is charged only when relay is non-zero.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0x7cb60446d7635C68EDf1c568cac74A1f98c1Cfa4
@@ -224,14 +224,14 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://hinkal-team.gitbook.io/hinkal/security-and-compliance/smart-contract-addresses.md
         detail: The contract addresses page lists Hinkal.sol at 0x7cb6…Cfa4 for Ethereum and the other EVM chains.
         checked_at: "2026-10-09"
         quote: "0x7cb60446d7635C68EDf1c568cac74A1f98c1Cfa4"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A payer can deposit, and a holder can transfer or withdraw, by calling the public Hinkal contract directly with relay = 0, without Hinkal's relayer or a provider signature. The address is documented, and the ABI comes from the verified source. Building the proof needs the circuit wasm and zkey files. The SDK downloads these from Hinkal's own server (wallet-prodv12.hinkal.io/verifiers-v4/); they are in no repository, and only the circuit source is published. Judgment call: the direct contract path meets anchor 3 in substance. We take 2 because a direct call needs proving artifacts that only Hinkal hosts. No transaction was run.
     provider_response: null
@@ -253,7 +253,7 @@ scores:
           version: 0.3.16
           integrity: sha512-CvPXI/bwB3VmDfzImP9afg/St0rpLRzqHkDVS9GBG4Ib6N3ssYW44KSGBqcPdUsRCPk8asRY5GQ511Atj0e/cw==
         recheck: curl -sL https://registry.npmjs.org/@hinkal/common/-/common-0.3.16.tgz | tar xzO package/common/src/functions/snarkjs/constant.mjs | sed -n 1,6p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/README.md#L5-L5
@@ -261,7 +261,7 @@ scores:
         path: README.md
         detail: The contracts repository states that it contains no tests, mocks, deployment scripts or off-chain infrastructure. The relayer, snapshot and data servers are not published.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Settlement does not need Hinkal's relayer: the contract allows self-submission, and the SDK has a relayer-off mode. The Merkle path can be rebuilt from RPC events instead of the snapshot server. Every proof, however, needs the circuit wasm and zkey files that the SDK fetches from a hardcoded Hinkal URL, and they are published nowhere else. Remote proving through Hinkal's enclave is the SDK default. The enclave source is published, without a licence. The relayer and the snapshot and data servers are closed. Scored 1: a required provider-hosted artifact, with no public copy and no configurable fallback.
     provider_response: null
@@ -279,21 +279,21 @@ scores:
         path: contracts/HinkalHelper.sol
         detail: The only caller check in the deployed helper is the relayer allowlist. A grep of contracts/ at this commit finds no sanctions list, blacklist or country check. The deployed helper source on Blockscout is identical to this file.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://hinkal-team.gitbook.io/hinkal/security-and-compliance/compliance.md
         detail: The compliance page says every deposit is screened against Chainalysis and that flagged depositors can only withdraw publicly to the original address.
         checked_at: "2026-10-09"
         quote: Every deposit is screened against Chainalysis before it enters the private balance
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://hinkal.io/tos
         detail: The Terms of Service say wallet addresses using the Interface are screened against sanctions and high-risk lists, and that Hinkal may block IP addresses.
         checked_at: "2026-10-09"
         quote: Wallet addresses interacting with the Interface are screened against sanctions and high-risk address lists before funds enter the Protocols
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The deployed contracts carry no address or country filter. Screening (Chainalysis) is disclosed in the docs, terms and privacy policy, and the direct contract path (C2) should bypass it. The docs describe enforcement that the contracts do not show: proofs checked against live Chainalysis state, and flagged funds limited to public withdrawal. That enforcement can only sit in Hinkal's closed backend or relayer. The SDK names a /check-risk route and a compliance-server path, but neither the screening logic nor its effect on self-submitted proofs is visible in code. Scored 1: the filtering is disclosed in docs only, and where it is enforced cannot be shown from code.
     provider_response: null
@@ -310,14 +310,14 @@ scores:
         detail: The Risks page tells users that USDC, USDT and other tokens can blacklist the Hinkal contract, which would lock that token inside the pool.
         checked_at: "2026-10-09"
         quote: there is a risk that a token contract blacklists Hinkal from using their token
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://hinkal-team.gitbook.io/hinkal/hinkal-api/api-reference/supported-tokens.md
         detail: Supported tokens are served by the hosted API endpoint /supported-tokens, with its OpenAPI schema on the docs site. The contract has no token allowlist.
         checked_at: "2026-10-09"
         quote: Returns a curated set of popular, non-rebasing
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
@@ -328,7 +328,7 @@ scores:
         check:
           call: "0xfe575a870000000000000000000000007cb60446d7635c68edf1c568cac74a1f98c1cfa4"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Users are told plainly that token issuers can blacklist the Hinkal contract. The token list itself, however, is a hosted API response, documented in the API reference but not enumerated in code or onchain. Ethereum L1 has no sequencer, so no sequencer assumption is needed for this unit. Judgment call: issuer freeze risk is disclosed, and the token list exists only in the documented API, so we score 1 (docs only).
     provider_response: null
@@ -354,7 +354,7 @@ scores:
         path: README.md
         detail: The repository has no build configuration or deployment script, so nobody can reproduce the deployed bytecode from it.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every settlement contract we checked is verified. The main contract is an exact match on Sourcify, and the helper and the registered verifiers are fully verified on Blockscout. The repo source matches the verified source. There is no build script, so anchor 3 is out of reach. Scored 2.
     provider_response: null
@@ -378,7 +378,7 @@ scores:
         detail: The main TypeScript SDK is published only as an npm build (MIT, no repository field). The backend servers it calls (server, snapshot-server, data-server, compliance-server, relayer) are not in any public repository.
         checked_at: "2026-10-09"
         quote: sha512-CvPXI/bwB3VmDfzImP9afg/St0rpLRzqHkDVS9GBG4Ib6N3ssYW44KSGBqcPdUsRCPk8asRY5GQ511Atj0e/cw==
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Public: contracts, circuits, the enclave-api source and several SDK wrappers. Not public: the main TypeScript SDK's source (only its npm build is published), the relayer, the snapshot, data and compliance servers, the Hinkal Pay and Wallet frontends, and the proving keys. Scored 1.
     provider_response: null
@@ -396,7 +396,7 @@ scores:
         path: README.md
         detail: The README says the repository contains no tests, mocks, deployment scripts or off-chain infrastructure.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No published path leads to a working self-hosted deployment. The contracts repo has no build or deploy scripts, the proving keys are not published, and the relayer and indexing servers are closed. Reproduction was not attempted. Scored 0: the README itself states the path is absent.
     provider_response: null
@@ -414,14 +414,14 @@ scores:
         path: contracts/types/IHinkalBase.sol
         detail: Interfaces and events (NewCommitment, Nullified, BlockedUtxosCreated) are in the repo, from which the ABI can be derived.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://hinkal-team.gitbook.io/hinkal/security-and-compliance/compliance.md
         detail: The docs offer viewing keys and a downloadable transaction history. The API's OpenAPI schema is on the hosted docs site only.
         checked_at: "2026-10-09"
         quote: Downloadable transaction history
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Contract interfaces and events are in the repo. The API schema (OpenAPI) and the export feature are documented on the hosted docs site only, and no export format is versioned with code. Judgment call: ABIs are in the repo, but the API schema is not, so we take the lower anchor, 1.
     provider_response: null
@@ -440,7 +440,7 @@ scores:
         detail: The contracts carry SPDX-License-Identifier BUSL-1.1, which is source-available. The repository has no LICENSE file, so the BUSL parameters (change date, additional use grant) are not stated.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents?ref=61b6839aa80fc0c33bfdcde0323753c83cb2ce67" --jq '.[].name'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The settlement contracts and circuits are BUSL-1.1, with no LICENSE file stating its terms. The proving keys are a required component that is closed. The Go and iOS SDKs and the enclave source have no licence. Scored 0: a required component is closed, and the critical contracts are source-available.
     provider_response: null
@@ -459,7 +459,7 @@ scores:
         detail: The root tree at this commit has only README.md, circuits/ and contracts/. The README makes no licence commitment, and there is no CLA or CONTRIBUTING file.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/git/trees/61b6839aa80fc0c33bfdcde0323753c83cb2ce67" --jq '.tree[].path'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No CLA and no licence-stability commitment. The contracts have been BUSL-1.1 in this repository from the start, so we found no relicensing event. Scored 2. The licence is already source-available, which F1 covers.
     provider_response: null
@@ -476,7 +476,7 @@ scores:
         detail: common/src/functions/snarkjs/constant.mjs L4 points every proving artifact at Hinkal's backend (/verifiers-v4/). No repository publishes the zkeys, so no third party can build proofs for the deployed verifiers without Hinkal's server.
         checked_at: "2026-10-09"
         quote: sha512-CvPXI/bwB3VmDfzImP9afg/St0rpLRzqHkDVS9GBG4Ib6N3ssYW44KSGBqcPdUsRCPk8asRY5GQ511Atj0e/cw==
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A third party running the open parts still needs Hinkal-hosted proving keys for the deployed verifiers. Running a fork with new keys would need a new trusted setup and new contracts, and the BUSL licence restricts that. Scored 0.
     provider_response: null
@@ -493,14 +493,14 @@ scores:
         detail: The privacy policy lists Google Analytics and Microsoft Clarity (session replay) on the site and apps, and RB2B visitor identification, loaded only after cookie consent.
         checked_at: "2026-10-09"
         quote: through Google Analytics and Microsoft Clarity
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://registry.npmjs.org/@hinkal/common/0.3.16
         detail: In the published SDK, data-structures/Hinkal/hinkalDeposit.mjs L56 posts admin data after each deposit to the data server (/emit-tx-public-data). Per functions/pre-transaction/constructAdminData.mjs, that data is the chain, token, amount, timestamp, hashed depositor address and tx hash. The privacy policy does not list it.
         checked_at: "2026-10-09"
         quote: sha512-CvPXI/bwB3VmDfzImP9afg/St0rpLRzqHkDVS9GBG4Ib6N3ssYW44KSGBqcPdUsRCPk8asRY5GQ511Atj0e/cw==
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The apps run Google Analytics, Microsoft Clarity session replay and RB2B, disclosed and gated by consent according to the policy. The frontends are closed, so the gate could not be checked in code. The SDK also reports each deposit to Hinkal's data server by default, and the policy does not describe that. Judgment call: analytics are present and disclosed in policy, so we score 1. The undisclosed SDK deposit report would support 0, but it is first-party and covers deposits that are already public onchain.
     provider_response: null
@@ -517,14 +517,14 @@ scores:
         detail: Deposits over $10,000 through Hinkal Wallet and Hinkal Send need an Integrity Check, either a CEX account attestation or zkKYC through a partner.
         checked_at: "2026-10-09"
         quote: For deposits over $10,000, Hinkal requires an Integrity Check
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://hinkal.io/privacy-policy
         detail: The policy lists usage data (IP, location, device), business identification, an optional email, and the public wallet address, which is screened through Chainalysis.
         checked_at: "2026-10-09"
         quote: Before funds enter the Hinkal smart contract, the depositing public wallet address is screened against sanctions and high-risk lists through Chainalysis
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The protocol itself needs only addresses, amounts and tokens. The apps add analytics and wallet-address screening. Deposits over $10,000 in Hinkal's own apps need a CEX-ownership or zkKYC attestation. All of this is disclosed in policy and docs, not in code. Scored 1.
     provider_response: null
@@ -543,7 +543,7 @@ scores:
         detail: Private outputs are emitted as commitments with encrypted outputs. Only onchain-created UTXOs (proofless deposits, external actions) are emitted with their amount, token and stealth address in plaintext.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Hinkal-Protocol/Hinkal-Contracts-Circuits/contents/contracts/HinkalBase.sol?ref=61b6839aa80fc0c33bfdcde0323753c83cb2ce67" --jq .content | base64 -d | sed -n 108,131p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/contracts/Hinkal.sol#L263-L270
@@ -551,7 +551,7 @@ scores:
         path: contracts/Hinkal.sol
         detail: prooflessDeposit takes a string orderId that is unused onchain. The code comment says off-chain listeners read it from calldata to match the transaction to an order.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Private transfers inside the pool reveal only nullifiers and new commitments, and recipients use stealth addresses. Deposits reveal depositor, token and amount. Withdrawals reveal recipient, token and amount. Proofless deposits carry a plaintext orderId in calldata, and their UTXOs are emitted in plaintext. Amounts are arbitrary, not fixed denominations, so amount and timing matching across entry and exit is a behavioural risk; we note it here and do not score it. Judgment call: the core shielded transfer fits anchor 3, but the documented orderId and plaintext-UTXO path adds linkage, so we score 2.
     provider_response: null
@@ -568,14 +568,14 @@ scores:
         detail: The policy names Chainalysis for screening, plus Google, Microsoft Clarity, RB2B, Cloudflare and AWS.
         checked_at: "2026-10-09"
         quote: Chainalysis - the sanctions check described above
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://registry.npmjs.org/@hinkal/common/0.3.16
         detail: The SDK's server.constants.mjs L105 hardcodes Hinkal's server, snapshot-server, data-server and compliance-server paths. It also names pro-api.coingecko.com, LI.FI and OKX routes (swaps and bridges).
         checked_at: "2026-10-09"
         quote: sha512-CvPXI/bwB3VmDfzImP9afg/St0rpLRzqHkDVS9GBG4Ib6N3ssYW44KSGBqcPdUsRCPk8asRY5GQ511Atj0e/cw==
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       In the default SDK flow, Hinkal's backend sees each request: Merkle siblings, risk checks and deposit reports. Chainalysis screens the depositing address. Swap and bridge flows add CoinGecko, LI.FI and OKX. These parties are named in the policy or visible in the npm build, but the endpoints are fixed by build mode and cannot be swapped by config. Scored 1.
     provider_response: null
@@ -592,14 +592,14 @@ scores:
         detail: API/getServerURL.mjs picks the server, snapshot-server and data-server URLs from a build-time deployment mode. HinkalConfig (documented in the TypeScript SDK page) has no option for a server or indexer URL. RPC access goes through the user's ethers/wagmi provider.
         checked_at: "2026-10-09"
         quote: sha512-CvPXI/bwB3VmDfzImP9afg/St0rpLRzqHkDVS9GBG4Ib6N3ssYW44KSGBqcPdUsRCPk8asRY5GQ511Atj0e/cw==
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://hinkal-team.gitbook.io/hinkal/hinkal-sdk/sdk-description.md
         detail: HinkalConfig options are caching, the cache path, generateProofRemotely, disableMerkleTreeUpdates and tronChainOverride. None of them sets an endpoint.
         checked_at: "2026-10-09"
         quote: Indicator controlling whether the proof should be constructed remotely in secure enclave
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The RPC comes from the user's wallet provider. Hinkal's snapshot, indexer and data endpoints are hardcoded per build, with no config option, and the indexer code is not public. Scored 0, matching the common failure where the RPC is configurable but the indexer is hardcoded.
     provider_response: null
@@ -621,7 +621,7 @@ scores:
         check:
           call: "0x9671084a"
           expect: "0x0000000000000000000000005f912cbbb7f14e4524faae8559666e7c79227c1b"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/contracts/Hinkal.sol#L38-L56
@@ -629,7 +629,7 @@ scores:
         path: contracts/Hinkal.sol
         detail: transact() verifies the proof against public inputs returned by the replaceable helper, using a verifier looked up in the owner-managed verifierMap. A malicious helper or verifier swap could accept a proof that pays out funds it should not.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The pool is a non-upgradeable contract with no sweep function. Still, the timelock (Safe 2-of-3, 6-hour delay) can replace the helper that computes public inputs and the verifiers that check proofs, and either could redirect pooled funds. The docs give no exit procedure tied to the delay. Judgment call: in effect this is an escrow whose logic the provider can change behind a short timelock, which matches anchor 1 better than 2.
     provider_response: null
@@ -651,7 +651,7 @@ scores:
         check:
           call: "0x91d14854b09aa5aeb3702cfd50b6b62bc4532604938f21248a27a1d5ca736082b6819cc10000000000000000000000004d28b33517ab72e7e2f728ff6527f8256cced7fb"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://eth.blockscout.com/address/0x4d28b33517aB72e7e2f728FF6527F8256CceD7fB
@@ -662,7 +662,7 @@ scores:
         check:
           slot: "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0x7cb60446d7635C68EDf1c568cac74A1f98c1Cfa4
@@ -673,7 +673,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Hinkal itself is not upgradeable, but swapping the helper and verifiers changes its behaviour as much as an upgrade would. That authority sits with a 6-hour timelock controlled by a 2-of-3 Safe with no modules or guard. We found no disclosure of the signers and no notice channel named in the repo. Scored 2: a multisig with a timelock, but undisclosed signers and no notice channel.
     provider_response: null
@@ -695,7 +695,7 @@ scores:
           version: 0.3.16
           integrity: sha512-CvPXI/bwB3VmDfzImP9afg/St0rpLRzqHkDVS9GBG4Ib6N3ssYW44KSGBqcPdUsRCPk8asRY5GQ511Atj0e/cw==
         recheck: curl -sL https://registry.npmjs.org/@hinkal/common/-/common-0.3.16.tgz | tar xzO package/common/src/functions/web3/functionCalls/approveToken.mjs | sed -n 15,28p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The SDK asks for an exact-amount approval to the Hinkal contract. That fits anchor 3 in substance, but the only source is the npm build output; there is no source repository at a commit, which makes this documented-tier evidence. Judgment call: capped at 1 by the evidence tier, not by the behaviour.
     provider_response: null
@@ -712,7 +712,7 @@ scores:
         detail: Every withdrawal proof needs the zkey and wasm files that constant.mjs fetches from https://wallet-prodv12.hinkal.io/verifiers-v4/. No public repository has them.
         checked_at: "2026-10-09"
         quote: sha512-CvPXI/bwB3VmDfzImP9afg/St0rpLRzqHkDVS9GBG4Ib6N3ssYW44KSGBqcPdUsRCPk8asRY5GQ511Atj0e/cw==
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/contracts/HinkalHelper.sol#L213-L219
@@ -720,7 +720,7 @@ scores:
         path: contracts/HinkalHelper.sol
         detail: The contract accepts a self-submitted withdrawal (relay == 0, originalSender == msg.sender).
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Derived from S1=1, C2=2, C3=1 and O3=0. The contract would accept a self-submitted withdrawal (C2), and funds cannot be pulled out except through a valid proof. But a proof needs proving keys that only Hinkal serves (C3). The timelock can still change the helper and verifiers (S1), and nothing to self-host has been published (O3). A user who has not cached the zkeys depends on Hinkal's server staying online to withdraw. Scored 0.
     provider_response: null
@@ -743,7 +743,7 @@ scores:
         detail: The page lists reviews by zkSecurity, Zokyo, Quantstamp, Secure3, Hexens and Neodyme, mostly as Google Drive links. It lists a HackenProof bounty as ongoing and an Immunefi boost as completed.
         checked_at: "2026-10-09"
         quote: have been reviewed by six independent firms
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Six audit reports are linked from the docs, and a HackenProof bounty is listed as ongoing. We did not tie any report to the deployed commit (the contracts were deployed at block 25543753 in 2026), and no fixes are linked to commits in the repo. Scored 1: audit reports only.
     provider_response: null
@@ -767,7 +767,7 @@ availability:
       detail: Terms of Service, section 3, define the Restricted Territory and bar persons in it from using the Interface.
       checked_at: "2026-10-09"
       quote: means the Crimea region of Ukraine, Cuba, Donetsk
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: verified
       kind: repo
       url: https://github.com/Hinkal-Protocol/Hinkal-Contracts-Circuits/blob/61b6839aa80fc0c33bfdcde0323753c83cb2ce67/contracts/HinkalHelper.sol#L208-L236
@@ -775,7 +775,7 @@ availability:
       path: contracts/HinkalHelper.sol
       detail: performHinkalChecks has no country or address-list check. The only caller rule is the relayer allowlist.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-09"
 
 notes: >-

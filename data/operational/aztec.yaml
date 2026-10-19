@@ -65,21 +65,21 @@ licences:
       detail: Aztec Labs' terms name Spilsbury Holdings Limited as a software developer, disclaim investment advice and brokerage, and cite no licence or regulator.
       quote: a private limited company incorporated and registered in England and Wales under company number 11093783
       checked_at: 2026-10-09
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://find-and-update.company-information.service.gov.uk/company/11093783
       detail: Companies House entry, active, nature of business SIC 62012 (business and domestic software development).
       quote: Company Overview for SPILSBURY HOLDINGS LIMITED (11093783)
       checked_at: 2026-10-09
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://aztec.network/terms-of-service
       detail: Aztec Foundation (Swiss Stiftung, Zug) terms describe stewardship of open-source software and cite no licence or regulator.
       quote: a Stiftung incorporated and registered in Zug, Switzerland
       checked_at: 2026-10-09
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: "Searched: Aztec Labs and Aztec Foundation terms and privacy policies, the Companies House entry. Not searched: the FCA cryptoasset register and Financial Services Register (client-rendered) and FINMA's lists. Neither entity transmits or holds users' funds on the rail, so a licence would be expected only for services outside it."
   checked_at: 2026-10-09
 cashout:
@@ -138,14 +138,14 @@ maturity:
         detail: Aztec Labs terms identify the company behind the Aztec Labs name; Aztec Labs runs the hosted mainnet RPC and the snapshot hosts.
         quote: a private limited company incorporated and registered in England and Wales under company number 11093783
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://find-and-update.company-information.service.gov.uk/company/11093783
         detail: Companies House entry, status active, incorporated 2017-12-04.
         quote: Company Overview for SPILSBURY HOLDINGS LIMITED (11093783)
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: Judgment call. Aztec Labs is recorded as the maintaining organisation, as directed. Aztec Foundation (Swiss Stiftung, Zug) runs aztec.network, stewards development and since 2026-10-06 is the copyright holder in aztec-packages' LICENSE; its Swiss commercial-register entry was not looked up.
     checked_at: 2026-10-09
   incidents:
@@ -232,15 +232,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
         detail: "AztecProtocol/aztec-packages: security policy file: SECURITY.md"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
         detail: "AztecProtocol/networks: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -260,15 +260,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
         detail: "AztecProtocol/aztec-packages: scanning step in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
         detail: "AztecProtocol/networks: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -288,15 +288,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
         detail: "AztecProtocol/aztec-packages: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
         detail: "AztecProtocol/networks: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -316,15 +316,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/rules/branches/next
         detail: "AztecProtocol/aztec-packages: rules: deletion, non_fast_forward, pull_request, required_status_checks"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/rules/branches/main
         detail: "AztecProtocol/networks: rules: deletion, non_fast_forward, pull_request"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -344,15 +344,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
         detail: "AztecProtocol/aztec-packages: 26 workflow file(s)"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
         detail: "AztecProtocol/networks: 2 workflow file(s)"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -372,15 +372,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
         detail: "AztecProtocol/aztec-packages: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
         detail: "AztecProtocol/networks: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -400,15 +400,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
         detail: "AztecProtocol/aztec-packages: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
         detail: "AztecProtocol/networks: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -419,7 +419,7 @@ facts:
       repos:
         - repo: AztecProtocol/aztec-packages
           ok: true
-          detail: "latest tags: v7.0.0-nightly.20261012, v7.0.0-nightly.20261011, v7.0.0-nightly.20261010"
+          detail: "latest tags: v7.0.0-nightly.20261019, v7.0.0-nightly.20261018, v7.0.0-nightly.20261017"
         - repo: AztecProtocol/networks
           ok: false
           detail: no tags
@@ -427,16 +427,16 @@ facts:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/tags
-        detail: "AztecProtocol/aztec-packages: latest tags: v7.0.0-nightly.20261012, v7.0.0-nightly.20261011, v7.0.0-nightly.20261010"
-        checked_at: 2026-10-12
+        detail: "AztecProtocol/aztec-packages: latest tags: v7.0.0-nightly.20261019, v7.0.0-nightly.20261018, v7.0.0-nightly.20261017"
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/tags
         detail: "AztecProtocol/networks: no tags"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -447,7 +447,7 @@ facts:
       repos:
         - repo: AztecProtocol/aztec-packages
           ok: true
-          detail: 10 of 10 recent commits signed
+          detail: 9 of 10 recent commits signed
         - repo: AztecProtocol/networks
           ok: true
           detail: 7 of 10 recent commits signed
@@ -455,16 +455,16 @@ facts:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/commits?per_page=10
-        detail: "AztecProtocol/aztec-packages: 10 of 10 recent commits signed"
-        checked_at: 2026-10-12
+        detail: "AztecProtocol/aztec-packages: 9 of 10 recent commits signed"
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/commits?per_page=10
         detail: "AztecProtocol/networks: 7 of 10 recent commits signed"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -484,15 +484,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
         detail: "AztecProtocol/aztec-packages: CHANGELOG file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
         detail: "AztecProtocol/networks: no changelog or release notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -512,15 +512,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/AztecProtocol/aztec-packages/contents/?ref=next
         detail: "AztecProtocol/aztec-packages: CONTRIBUTING file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/AztecProtocol/networks/contents/?ref=main
         detail: "AztecProtocol/networks: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -537,7 +537,7 @@ facts:
         detail: Section 8, Retention of Your Personal Data.
         quote: your technical usage information for 12 months
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         commit: 49a592109ec4f18d79212b43d621891aaf36f7b6
@@ -591,14 +591,14 @@ facts:
         detail: Terms last updated 2024-09-13; Services are defined as website information and the sandbox/testnet Testing Tools.
         quote: a private limited company incorporated and registered in England and Wales under company number 11093783
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://aztec.network/terms-of-service
         detail: Aztec Foundation terms, last updated 2025-07-15.
         quote: a Stiftung incorporated and registered in Zug, Switzerland
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
   B11.2:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -620,7 +620,7 @@ facts:
         detail: Aztec Foundation describes its role as stewarding development.
         quote: stewards the development of open-source, blockchain-based software
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
   B12.1:
     assessed_by: AI research agent (operational), 2026-10-09

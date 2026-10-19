@@ -227,7 +227,7 @@ scores:
         quote: We may engage others to provide analytics services and serve advertisements across the web and/or mobile applications
         detail: Privacy Policy s4 discloses third-party analytics and advertising using cookies and persistent identifiers.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Analytics and advertising trackers are disclosed in the privacy policy; the app is closed, so default state cannot be checked. Judgment call: disclosed in docs, so 1.
     provider_response: null
@@ -244,7 +244,7 @@ scores:
         quote: We utilize a third party, Sumsub
         detail: Privacy Policy describes identity verification with Sumsub, including biometric comparison of a selfie or video with a government ID.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Collection beyond settlement needs (identity documents, biometrics) is disclosed in the privacy policy only. 1.
     provider_response: null
@@ -267,7 +267,7 @@ scores:
         quote: We utilize a third party, Sumsub
         detail: Sumsub, analytics and advertising providers, Third National and Visa are disclosed in the privacy policy and terms.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Third parties in the flow are disclosed in documents only and cannot be swapped. 1.
     provider_response: null
@@ -351,14 +351,14 @@ availability:
       detail: Section 4 (Sanctions and Restricted Jurisdictions) names the sanctioned and high-risk jurisdictions where the Tria Card may not be applied for or used.
       quote: "jurisdictions that Tria prohibits due to high money-laundering, fraud, or compliance risk, including but not limited to: Afghanistan, Belarus, Central African Republic"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.tria.so/prohibited-use-policy
       detail: The same section names the sanctioned countries and Ukrainian regions.
       quote: "Cuba, Iran, North Korea, Syria, and the Crimea, Donetsk, or Luhansk regions of Ukraine"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.tria.so/card-terms-international
@@ -396,14 +396,12 @@ settlement:
       detail: The help centre says crypto is converted at payment time.
       quote: "Your crypto is converted at payment time"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:
   searched: >-
-    docs.tria.so (all pages, including Security and TSS, TX Flow and the card terms; no audit is mentioned), the TriaHQ
-    GitHub org (no card, wallet or SDK code), Rain's security page (audits under NDA, Sherlock named) and the Sherlock
-    report repo (one Rain report). The international card terms carry Rain's name ("Your Rain Payment Card Terms"). No
-    audit of Tria's app, TSS key infrastructure or BestPath routing is published.
+    docs.tria.so (all pages, including Security and TSS, TX Flow and the card terms; no audit is mentioned), the TriaHQ GitHub org (no card, wallet or SDK code), Rain's security page (audits under NDA, Sherlock named) and the Sherlock report repo (one Rain report). The international card terms carry Rain's name ("Your Rain Payment Card Terms"). No audit of Tria's app, TSS key infrastructure or BestPath routing is published.
   checked_at: "2026-10-13"
   reports:
     - auditor: Sherlock
@@ -416,6 +414,4 @@ audits:
       covers_deployed: unknown
       findings: "0 high, 2 medium (statement payoff rounding; missing Chainlink min/max answer check)"
       note: >-
-        Logged because the card is a Rain programme (Third National issuer, collateral on Ethereum, Polygon,
-        Optimism or Arbitrum per the card terms). Tria publishes no collateral contract, so the audited code was not
-        tied to this card. The Rain repo is private; contest ran 2-8 December 2024 on b432939a, 6f578d5 is the fix commit.
+        Logged because the card is a Rain programme (Third National issuer, collateral on Ethereum, Polygon, Optimism or Arbitrum per the card terms). Tria publishes no collateral contract, so the audited code was not tied to this card. The Rain repo is private; contest ran 2-8 December 2024 on b432939a, 6f578d5 is the fix commit.

@@ -78,14 +78,14 @@ facts:
         detail: Help article pointing customers to status.deblock.com, listing the services covered and the subscription option.
         checked_at: "2026-10-09"
         quote: this is your go-to page to check the real-time status of all Deblock services
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://status.deblock.com/incidents
         detail: Incident and maintenance history, 30 entries from 2024-10-07 to 2026-10-02.
         checked_at: "2026-10-09"
         quote: Incident & maintenance history
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -100,7 +100,7 @@ facts:
         detail: Help article "How can I keep my account safe?".
         checked_at: "2026-10-09"
         quote: Your account can only be accessed through the app on your phone, there is no other way
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
@@ -200,7 +200,7 @@ facts:
         detail: Legal notice s5, Personal data protection.
         checked_at: "2026-10-09"
         quote: Deblock SAS processes personal data as a data controller
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -254,7 +254,7 @@ facts:
         detail: French government company search API (annuaire-entreprises.data.gouv.fr data); active legal unit DEBLOCK, SIREN 948264163.
         checked_at: "2026-10-09"
         quote: '"siren":"948264163","siren_conserve":null,"nom_complet":"DEBLOCK (DEBLOCK)"'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -269,7 +269,7 @@ facts:
         detail: Pricing plans page.
         checked_at: "2026-10-09"
         quote: Premium 10€ /mo
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -354,42 +354,42 @@ fees:
       detail: Pricing plans page (Standard and Premium columns).
       checked_at: "2026-10-09"
       quote: Premium 10€ /mo
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://intercom.help/deblock/en/articles/8911216-are-there-any-fees-for-ordering-a-physical-card
       detail: Help article on physical card fees.
       checked_at: "2026-10-09"
       quote: Standard plan subscribers will be charged a delivery fee when ordering a physical card
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://intercom.help/deblock/en/articles/8911354-are-there-any-fees-for-making-card-payments
       detail: Help article on card payment and FX fees.
       checked_at: "2026-10-09"
       quote: "Standard: 0.5% on weekdays, 1% on weekends"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://intercom.help/deblock/en/articles/11093412-what-are-the-limits-and-fees-for-atm-withdrawals
       detail: Help article on ATM limits and fees.
       checked_at: "2026-10-09"
       quote: A 1% Deblock fee applies to the amount withdrawn, with a minimum of €1 per withdrawal
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://intercom.help/deblock/en/articles/8913029-are-there-any-fees-to-send-transfers
       detail: Help article on outgoing transfer fees.
       checked_at: "2026-10-09"
       quote: Sending transfers is completely free
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://intercom.help/deblock/en/articles/8911134-are-there-any-limits-to-how-much-money-i-can-spend-on-my-cards
       detail: Help article on card spending limits.
       checked_at: "2026-10-09"
       quote: each card payment you make is capped at €10,000
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: Card top-ups into the account are free up to 2,000 EUR a month, then a fee shown in the app (help article 11087296); a funding fee, not recorded above. Insurance and cashback are plan benefits, not fees.
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -435,14 +435,14 @@ licences:
       checked_at: "2026-10-09"
       quote: '"id_referentiel": "732211", "id_autorisation": "36579", "date_debut": "2023-11-22", "situation": "ACTIF"'
       recheck: curl -s 'https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=siren%3D%22948264163%22'
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv
       detail: ESMA interim MiCA register of authorised CASPs; row for DEBLOCK SAS (AMF, authorised 23/05/2025).
       checked_at: "2026-10-09"
       quote: DEBLOCK SAS,254900XTUI35BGIBXP21
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: The register lists DEBLOCK as an EMI with no card-issuing licence separate from the EMI authorisation; Deblock's cards page says it is a direct Visa member (provider statement, not checked against Visa).
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -476,21 +476,21 @@ cashout:
       detail: Help article on card acceptance abroad.
       checked_at: "2026-10-09"
       quote: work globally in the Visa network
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://intercom.help/deblock/en/articles/11093412-what-are-the-limits-and-fees-for-atm-withdrawals
       detail: Help article on ATM limits and fees.
       checked_at: "2026-10-09"
       quote: Includes 1 free withdrawal or up to €100/month without any Deblock fees
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://intercom.help/deblock/en/articles/8913029-are-there-any-fees-to-send-transfers
       detail: Help article on outgoing transfers.
       checked_at: "2026-10-09"
       quote: Sending transfers is completely free
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://cdn1.deblock.com/terms/personal-terms/FR/20260223-v12.3-personal-terms-EN.pdf
@@ -516,7 +516,7 @@ maturity:
         detail: REGAFI authorisation record, date_debut 2023-11-22.
         checked_at: "2026-10-09"
         quote: '"date_debut": "2023-11-22", "situation": "ACTIF"'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: The card cannot have been issued to customers before the e-money authorisation; the earliest status-page entry is 2024-10-07, and the about page says the company was founded in October 2022.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -536,14 +536,14 @@ maturity:
         detail: French government company search API; legal unit created 2023-01-16, active, NAF 63.11Z, head office 612 rue de la Chaude Rivière, Lille.
         checked_at: "2026-10-09"
         quote: '"siren":"948264163","siren_conserve":null,"nom_complet":"DEBLOCK (DEBLOCK)"'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://deblock.com/en/legal-notice
         detail: Legal notice naming the publisher and its registration.
         checked_at: "2026-10-09"
         quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -578,7 +578,7 @@ maturity:
         detail: Status page incident entry for the 2026-09-04 Visa settlement issue.
         checked_at: "2026-10-09"
         quote: Visa's settlement system (VPS) stopped registering the funds we hold with them to cover card spending
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: Selected from the 30 status-page entries (2024-10-07 to 2026-10-02) the major incidents touching card payments or all services; minor incidents and scheduled maintenance are omitted. No security incident or data breach notice was found on deblock.com or in the help centre.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -609,14 +609,14 @@ maturity:
         detail: REGAFI outbound passport records for Deblock (29 rows, all Libre prestation de services from 2024-09-04).
         checked_at: "2026-10-09"
         quote: '"type_passeport": "Libre prestation de services"'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv
         detail: ESMA interim MiCA CASP register row for Deblock, authorisation date 23/05/2025.
         checked_at: "2026-10-09"
         quote: DEBLOCK SAS,254900XTUI35BGIBXP21
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:

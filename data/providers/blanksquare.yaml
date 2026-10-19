@@ -124,7 +124,7 @@ scores:
         path: contracts/Shielder.sol
         detail: onlyOwner can upgrade (_authorizeUpgrade), pause and unpause, set deposit and withdraw fee bps and the fee receiver, and replace the anonymity-revoker public key; newAccount, deposit and withdraw are all whenNotPaused (L216, L274, L392, L441, L545, L598), so a pause also stops exits. There is no per-address blacklist.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0x064A67a5484DF6baf36be42F9554d45E7741dCFf
@@ -136,7 +136,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x0000000000000000000000009dc4e0e4f6d9693e5760227469c0b8cf9a432165"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0x9Dc4e0e4f6d9693e5760227469c0b8Cf9a432165
@@ -148,7 +148,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000002"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0x9Dc4e0e4f6d9693e5760227469c0b8Cf9a432165
@@ -159,7 +159,7 @@ scores:
         check:
           slot: "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A 2-of-5 Safe owns the Shielder and can pause it, which stops deposits and withdrawals alike. The Safe has no modules or guard, but there is no timelock, and we found no public list of the signers. Pause is global; there is no per-address blacklist in the contract. Scored 1: a multisig role that misses the timelock and signer-disclosure conditions.
     provider_response: null
@@ -177,7 +177,7 @@ scores:
         path: contracts/Shielder.sol
         detail: withdrawNative and withdrawERC20 (L584-L645) are external with no caller check; the relayer address and fee are only parameters bound into the proof commitment (L687-L698), and a fee of 0 skips the relayer transfer. depositNative and depositERC20 (L383-L476) are open to any caller.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Cardinal-Cryptography/blanksquare-monorepo/blob/5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e/ts/shielder-sdk/src/client/client.ts#L214-L250
@@ -186,14 +186,14 @@ scores:
         detail: The SDK's withdrawManual sends the withdraw transaction to the Shielder directly from the user's own account, documented as the path for when the relayer is not available.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/ts/shielder-sdk/src/client/client.ts?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | sed -n 214,250p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.blanksquare.io/integration-guides/deployments.md
         detail: The Deployments page publishes the Base Shielder address.
         checked_at: "2026-10-09"
         quote: "0x064A67a5484DF6baf36be42F9554d45E7741dCFf"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/8453/0xfFF44d366DeDF9B2A531109E1A08BF9873C58b53
@@ -205,7 +205,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x000000000000000000000000fff44d366dedf9b2a531109e1a08bf9873c58b53"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A payer deposits and later withdraws to any payee address by calling the Shielder directly; no relayer, signer or API is needed, and the SDK ships a direct-withdraw method. The address is published in the docs and the source is public and verified. Payment model: there is no shielded transfer to another account in this contract version, so a payment is a withdraw to the payee's address. We sent no transaction. The owner Safe can still pause the contract (C1).
     provider_response: null
@@ -224,7 +224,7 @@ scores:
         detail: The SDK takes an injected viem publicClient (any RPC), a cryptoClient (local WASM prover) and a relayerUrl string; chain state is read from contract events through that RPC (chain/contract.ts L550-L560), so no indexer or hosted API is involved.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/ts/shielder-sdk/src/client/factories.ts?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | sed -n 30,67p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Cardinal-Cryptography/blanksquare-monorepo/tree/5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e/crates/shielder-relayer
@@ -249,7 +249,7 @@ scores:
         path: contracts/Shielder.sol
         detail: The withdraw path checks version, amount, fee, Merkle root, nullifier and proof only; no address or country check exists in the contract. A grep of crates/shielder-relayer for sanction, blocklist, chainalysis and country finds nothing.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.blanksquare.io/other/terms-and-conditions-shielder-service
@@ -274,7 +274,7 @@ scores:
         path: contracts/Shielder.sol
         detail: depositERC20 accepts any token address; the contract has no token list.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Cardinal-Cryptography/shielding-dapp/blob/f167cd97b3ffc5e87520360cb6fd1fb712016674/src/domains/chains/utils/definitions/chains/base/base.ts#L11-L27
@@ -282,7 +282,7 @@ scores:
         path: src/domains/chains/utils/definitions/chains/base/base.ts
         detail: The public dapp's Base config covers only Base Sepolia (whitelisted test tokens); no public file enumerates the tokens offered on Base mainnet.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       We found no enumeration of supported Base mainnet tokens in public code or docs, and no statement to users about issuer freeze powers (USDC is held by the pool) or Base's sequencer and forced-inclusion assumptions. The pool held about 0.078 ETH and 48.2 USDC at our block. Scored 0: not enumerated.
     provider_response: null
@@ -336,7 +336,7 @@ scores:
         path: crates/shielder-relayer/README.md
         detail: The relayer README gives native and Docker run steps and a configuration table; the root README gives setup steps and shielder-quickstart is a minimal SDK app.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Build and run documentation exists for the relayer, SDK and a quickstart app. Reproduction not attempted, so the score is capped at 1.
     provider_response: null
@@ -354,7 +354,7 @@ scores:
         path: contracts/Shielder.sol
         detail: NewAccount, Deposit and Withdraw events are defined in source; the SDK imports its ABI from ../_generated/abi, which is generated at build time and not committed. The relayer has no OpenAPI or equivalent schema in the repo.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Interfaces can be derived from verified source, and the docs describe the SDK, but no ABI file, API schema or payee export is committed. Judgment call: 1, as the interface record is source and hosted docs only.
     provider_response: null
@@ -373,7 +373,7 @@ scores:
         detail: blanksquare-monorepo is Apache-2.0, and its NOTICE and README (L236-L242) state the circuits crate is GPL-3.0-only with Classpath exception; shielding-dapp and shielder-quickstart are MIT (GitHub license API).
         checked_at: "2026-10-09"
         recheck: for r in blanksquare-monorepo shielding-dapp shielder-quickstart; do echo $r $(gh api repos/Cardinal-Cryptography/$r --jq '.license.spdx_id // "none"'); done
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every listed repo, and every required component, carries an OSI licence (Apache-2.0, MIT, GPL-3.0 with an added Classpath permission). The closed web and mobile apps are not required to settle.
     provider_response: null
@@ -392,7 +392,7 @@ scores:
         detail: The repo root has no CONTRIBUTING or CLA file; LICENSE has one commit (64fc870c, 2024-12-12).
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/commits?path=LICENSE&sha=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq '.[].sha'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No CLA, no relicensing event and no written licence-stability commitment.
     provider_response: null
@@ -411,7 +411,7 @@ scores:
         detail: The SDK's dependencies are viem, zod, comlink, async-mutex and the project's own crypto packages; it needs a user-supplied RPC and the relayer URL is optional for withdrawManual.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/ts/shielder-sdk/package.json?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | jq .dependencies
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No proprietary plugin or hosted-only service is needed to deposit and withdraw. Judgment call: the code supports 3, but with no O3 reproduction we take 2.
     provider_response: null
@@ -429,7 +429,7 @@ scores:
         path: src/domains/misc/components/Providers/PostHogProvider.tsx
         detail: The public dapp initialises PostHog whenever the build sets PUBLIC_VAR_POSTHOG_KEY (envVarsSchema requires it), with in-memory persistence and an address-sanitising before_send hook; there is no opt-in toggle.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.blanksquare.io/other/privacy-policy-apps
@@ -454,7 +454,7 @@ scores:
         path: contracts/Shielder.sol
         detail: Account creation posts symKeyEncryption (the account key encrypted to the anonymity revoker's public key) and every action posts a MAC, beyond the amount, token and address that settlement needs.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.blanksquare.io/other/privacy-policy-apps
@@ -480,14 +480,14 @@ scores:
         detail: Deposit emits token, amount, note, MAC and memo (the depositor is the tx sender); Withdraw emits token, amount, withdrawalAddress, relayer, fee, MAC and memo. The proof hides which account a withdrawal spends from.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/contracts/Shielder.sol?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | sed -n 63,100p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.blanksquare.io/protocol-details/design-against-bad-actors/anonymity-revokers.md
         detail: The docs state that the anonymity revoker, on a governance decision, can reveal all of a user's Shielder transactions.
         checked_at: "2026-10-09"
         quote: this allows everyone to see the details of all other transactions performed by the illicit user
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Onchain data shows who deposited and who received, and the exact amounts, but not which deposit funded which withdrawal. Amounts are arbitrary and in plaintext, so amount and timing matching can link payer and payee. The anonymity-revoker key holder (set by the owner Safe) can link every action of an account. Judgment call: 2, minimal linkage by design and documented, but not 3 because amounts are public and a designated party can deanonymise.
     provider_response: null
@@ -506,7 +506,7 @@ scores:
         detail: The SDK contacts only the injected RPC client and the configured relayer URL (fee quote and relay).
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/blanksquare-monorepo/contents/ts/shielder-sdk/src/chain/relayer.ts?ref=5dad5a07fc4ace59c9ea390fd683bdf0c27ec36e" --jq .content | base64 -d | grep -n fetch
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       On the SDK path only the chosen RPC and, if used, the relayer see a request; the relayer sees the withdrawal address and the user's IP. The apps add PostHog and Reown/WalletConnect. Named in code and swappable in the SDK. Scored 2 (3 would need a package or trace).
     provider_response: null
@@ -525,7 +525,7 @@ scores:
         detail: The public dapp hardcodes relayer and fee-estimator URLs per chain; the SDK takes RPC client and relayer URL as config (factories.ts L30-L48), and no indexer exists.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/shielding-dapp/contents/src/domains/chains/utils/definitions/chains/base/base.ts?ref=f167cd97b3ffc5e87520360cb6fd1fb712016674" --jq .content | base64 -d | sed -n 11,27p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Endpoints are configurable in SDK code; the public UI fixes them at build time and offers no setting. No indexer is needed. Scored 2.
     provider_response: null
@@ -546,7 +546,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x000000000000000000000000fff44d366dedf9b2a531109e1a08bf9873c58b53"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       In the current code only a valid proof moves funds out, to the address bound in it. The escrow is upgradeable by a 2-of-5 Safe with no timelock, so the owner could deploy code that redirects funds. Upgradeability is visible in verified source. Scored 1: upgradeable escrow, disclosed.
     provider_response: null
@@ -568,7 +568,7 @@ scores:
         check:
           slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A 2-of-5 Safe can upgrade the Shielder at once; there is no timelock and we found no signer disclosure or notice channel. Scored 1: multisig admin, no timelock.
     provider_response: null
@@ -587,7 +587,7 @@ scores:
         detail: The public dapp checks the allowance and, if short, approves exactly the shield amount to the Shielder.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/shielding-dapp/contents/src/domains/shielder/utils/useShield.tsx?ref=f167cd97b3ffc5e87520360cb6fd1fb712016674" --jq .content | base64 -d | sed -n 104,121p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The SDK leaves approval to the integrator; the public reference dapp approves the exact amount. That fits anchor 3, but a 3 needs a package or trace and we did not inspect the closed live app. Judgment call: 2.
     provider_response: null
@@ -609,7 +609,7 @@ scores:
         check:
           call: "0x5c975abb"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Derived from S1=1, C2=3, C3=3, O3=1. The official web app and relayer are already offline, and the contract stays unpaused: an account holder can rebuild state from RPC events and withdraw with withdrawManual and the local prover (C2, C3). The owner Safe could still pause or upgrade (S1), so funds are safe from provider disappearance but not from provider action. There is no public frontend build for Base mainnet and no reproduction (O3=1). Judgment call: 2.
     provider_response: null
@@ -628,7 +628,7 @@ scores:
         detail: The dapp bundles only public variables (Reown project ID, PostHog key and host, OG image URL); the SDK has no API keys or webhooks and derives the shielder seed client-side.
         checked_at: "2026-10-09"
         recheck: gh api "repos/Cardinal-Cryptography/shielding-dapp/contents/envVarsSchema.ts?ref=f167cd97b3ffc5e87520360cb6fd1fb712016674" --jq .content | base64 -d
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No secrets in the client and no webhooks; the bundled keys are publishable identifiers. Private Send hands a key to a TEE, which is opt-in. Scored 2 (3 needs a package or trace).
     provider_response: null
@@ -645,7 +645,7 @@ scores:
         detail: zkSecurity audited zkOS-monorepo at commit 22e2f52 plus a private circuits repo, starting 2025-03-25.
         checked_at: "2026-10-09"
         quote: The audit lasted 2 weeks with 2 consultants
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/Cardinal-Cryptography/zkOS-monorepo/tree/22e2f52f93b45a9aaac09caeb9d1ca0544279ad5/contracts

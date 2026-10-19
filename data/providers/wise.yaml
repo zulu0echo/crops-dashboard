@@ -82,14 +82,14 @@ scores:
         quote: "We may suspend your Profile or Wise Account, or restrict its functionality if we have reasonable concerns about"
         detail: "UK personal terms clause 8.4: Wise may suspend or restrict an individual account on reasonable concerns about account security, suspected unauthorised or fraudulent use, or suspected breach of the agreement or Acceptable Use Policy."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://wise.com/gb/legal/terms-of-use-personal
         quote: "closing your Wise Account and terminating your access to our Services, which means your Wise Account is deactivated and/or your Profile will not be available, without notice"
         detail: "Clause 8.5-8.6: notice of suspension 'as soon as we can, either before ... or soon after', unless unlawful or a security risk; among the listed actions, closure without notice and limiting the ability to send money or withdraw."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Wise can suspend, restrict or close an individual customer's account, including their ability to send or withdraw money. Notice may come after the fact, or not at all where that would be unlawful or compromise security, and closure can be without notice. The power is held by Wise unilaterally and is not limited by any multisig or timelock.
     provider_response: null
@@ -105,7 +105,7 @@ scores:
         quote: "These credentials are required for obtaining the tokens you'll need to make requests to the Wise API"
         detail: "Wise API getting-started guide: all API calls need OAuth tokens from Wise-issued client credentials (or a personal API token for business accounts); production base URL is https://api.wise.com."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Transfers settle only on Wise's own ledger, reached through Wise's authenticated API or its app and website. No direct settlement path outside Wise exists.
     provider_response: null
@@ -121,7 +121,7 @@ scores:
         quote: "Your client credentials are scoped to your integration and access model"
         detail: "Credentials are issued by Wise during partner onboarding with Wise's sales and implementation teams; access model is set by Wise."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every integration depends on Wise's hosted API, with credentials and access provisioned by Wise. None of the intermediary code is public and there is no fallback operator, so the dependency is closed and single-vendor.
     provider_response: null
@@ -137,14 +137,14 @@ scores:
         quote: "To keep our anti-fraud measures effective, we can't always share all the details about how we prevent fraud"
         detail: "UK personal privacy notice section 3: fraud-prevention processing is not fully disclosed; section 6.2: automated processes may reject a proposed transaction or close an account."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://wise.com/gb/legal/acceptable-use-policy
         quote: "Individuals, entities, or countries subject to international sanctions"
         detail: "Acceptable Use Policy lists sanctioned individuals, entities and countries among unsupported customers, without naming the list source."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Wise screens at its own ledger, which is also the settlement layer. Sanctions restrictions are disclosed in the Acceptable Use Policy without a named list source. Wise states that it does not fully disclose how its automated fraud controls, which can reject transactions, work. Judgment call: that admission of partly undisclosed filtering is taken as anchor 0 rather than 1.
     provider_response: null
@@ -171,7 +171,7 @@ scores:
         path: README.md
         detail: "github.com/transferwise (verified org, 223 repos): the API-facing public code is samples (wise-platform-samples: oauth-connect, oauth-connect-popup, strong-customer-authentication), signing examples and a signing library, a Postman collection and a 2021 reference Android bank app. No backend, ledger, API server or deploy scripts."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Only client-side samples, a signing library and API collections are public. The platform that runs transfers is closed. Judgment call: 1 (SDK-level code only) rather than 0, consistent with M-Pesa's client libraries.
     provider_response: null
@@ -192,7 +192,7 @@ scores:
         quote: "Statements can be retrieved in multiple formats: JSON, CSV, PDF, XLSX, CAMT.053, MT940, or QIF"
         detail: "Wise API reference: balance statements export in open formats (CSV, CAMT.053, MT940 and others)."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/transferwise/public-api-postman-collection/blob/032ec3a052c0f42acfa061eb5f198aac1ee4cb46/README.md
@@ -200,7 +200,7 @@ scores:
         path: README.md
         detail: "MIT-licensed Postman collection of the public API in a repo; last commit 2024-07-24, while the live API reference is versioned 2026q3 on docs.wise.com."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The API reference and an open-format statement export are documented on the hosted docs site. The only API schema in a repo is a Postman collection last updated in July 2024, which does not track the current API versions. Judgment call: 1 (documented only), because the versioned schema is not in a repo; a reviewer could argue 2 if the Postman collection is accepted as current.
     provider_response: null
@@ -216,7 +216,7 @@ scores:
         quote: "are the exclusive property of Wise and its licensors"
         detail: "Terms clause 26.1: the App, Website, API, developer tools, sample source code and code libraries are Wise's exclusive property, all rights reserved."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/transferwise/wise-platform-samples/blob/a7d09f2695b13adbe21fe0b0cb8ae603b983f0a8/README.md
@@ -224,7 +224,7 @@ scores:
         path: README.md
         detail: "wise-platform-samples has no LICENSE file at this commit (root: .gitignore, CODEOWNERS, README.md, common, oauth-connect, oauth-connect-popup, strong-customer-authentication) and no licence statement in the README."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The components needed to run Wise are proprietary and closed, so nothing that runs the rail can be forked. Among the public repos, four carry MIT or Apache-2.0 licences and wise-platform-samples has none.
     provider_response: null
@@ -250,7 +250,7 @@ scores:
         quote: "Analytics and search engine providers that assist us in the improvement and optimisation of our site"
         detail: "Privacy notice section 4.3 lists analytics providers and advertisers (cookies, pixels) among recipients; section 2.2 lists page interaction data (scrolling, clicks) collected from the website and app."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Analytics and advertising tracking in the website and app are disclosed in the privacy notice. Which SDKs ship, and whether they are on by default, was not checked: the app is closed and no trace was run.
     provider_response: null
@@ -266,14 +266,14 @@ scores:
         quote: "a unique device identifier (for example, your device's IMEI number"
         detail: "Privacy notice section 2: identity documents and biometric face scans for KYC; device data incl. IMEI, MAC address, VPN use and installed remote-access apps; precise geolocation if location sharing is allowed; page interaction data; phone book if access is given."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://wise.com/gb/legal/privacy-notice-personal-en
         quote: "Advertisers and advertising networks to select and serve relevant advertisements to you and others"
         detail: "Section 4.3: mobile number and email shared in a secure format with social media networks for ad matching."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       KYC collection is legally required and disclosed with its legal basis. Wise also collects device, behavioural and location data, and shares contact data for advertising, all beyond the legal requirement. Everything is disclosed in the privacy notice. Judgment call: anchor 1 (disclosed in a policy) and anchor 0 (collection beyond the stated legal requirement) both fit; took 0.
     provider_response: null
@@ -294,7 +294,7 @@ scores:
         quote: "Banks and other financial institutions we work with to provide you our services"
         detail: "Privacy notice section 4: data shared with Wise group companies, partner banks and financial institutions, verification providers, fraud prevention agencies, analytics and advertising providers, regulators."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Third parties that see payment data are disclosed by category in the privacy notice, but none is named (a list is available on request to privacy@wise.com). They cannot be swapped by the user.
     provider_response: null
@@ -315,7 +315,7 @@ scores:
         quote: "Wise holds your funds in permissible investments in accordance with applicable laws"
         detail: "Terms clause 12.2: customer money is held by Wise; clause 12.4: safeguarded in Wise's name with financial institutions."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Wise holds customer funds, as the terms disclose. Safeguarding is recorded under context and does not change the custody score.
     provider_response: null
@@ -341,7 +341,7 @@ scores:
         quote: "These credentials are required for obtaining the tokens you'll need to make requests to the Wise API"
         detail: "All transfer and balance operations go through Wise-hosted endpoints (see C2, C3); no exit path outside Wise is documented."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Derived. S1 = 1 (provider custody), C2 = 0 (no direct settlement), C3 = 0 (closed single-vendor API), O3 unknown (nothing to self-host). Both funds and the ability to settle depend on Wise. Regulatory safeguarding in insolvency is noted under context and is not a technical exit.
     provider_response: null
@@ -359,21 +359,21 @@ scores:
         detail: "Reference Node handler verifies the X-Signature-SHA256 header as an RSA-SHA256 (PKCS#1 v1.5) signature over the raw body against Wise's sandbox public key; Java and Ruby versions are in the same directory."
         checked_at: "2026-10-07"
         recheck: "gh api 'repos/transferwise/digital-signatures-examples/contents/verify-webhook-signature/verify-signature.js?ref=c29c3625cbf2afe571b045cea2fd1a5d99764f6b' --jq .content | base64 -d | sed -n 17,32p"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.wise.com/guides/developer/webhooks/event-handling.md
         quote: "Each outgoing webhook request is signed"
         detail: "Webhook docs: RSA/SHA256 signatures in X-Signature-SHA256, production and sandbox public keys published, and a link to the reference repo; integrators are told not to process requests whose signature fails."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.wise.com/guides/developer.md
         quote: "You can rotate and revoke client credentials"
         detail: "Client credentials are scoped per integration and can be rotated and revoked in Developer Hub; mTLS and JOSE are offered as optional extra controls."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Webhooks are signed, and Wise's reference code at a pinned commit verifies the signature. Credentials are documented as scoped and rotatable. Whether secrets ever reach client bundles was not checked, because the apps and API are closed and no trace was run, so 3 is not available. Judgment call: 2. The verification is verified in code; the gaps are that secret handling is not inspectable, the reference code dates from 2021 and uses only the sandbox key, and the docs leave payload verification optional ("where applicable").
     provider_response: null
@@ -398,22 +398,18 @@ availability:
       quote: You can hold money in your account if you live in one of the following countries and territories
       detail: Wise Help Centre table of countries and territories (with per-country restrictions) where residents can hold money, i.e. open a Wise account.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://wise.com/help/articles/2978049/where-can-i-use-wise
       quote: You can hold money if you live in a country where you can open a Wise account
       detail: Wise Help Centre "Where can I use Wise?", which also lists the countries and regions Wise does not serve at all.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-09"
 
 audits:
   searched: >-
-    wise.com/security (says Wise holds SOC 1 Type 2, SOC 2 Type 2, PCI-DSS and ISO/IEC 27001; SOC reports are given to
-    business customers under NDA; these are not code audits), Wise's 2019 TUV online-security certification blog post
-    (a certification, not a code audit), the Wise Bugcrowd programme (no public disclosure allowed; a bug bounty, not an
-    audit), github.com/transferwise (no audits folders in the listed repos), and web searches for Wise or TransferWise
-    penetration test and code audit reports. No published code audit or penetration test report was found.
+    wise.com/security (says Wise holds SOC 1 Type 2, SOC 2 Type 2, PCI-DSS and ISO/IEC 27001; SOC reports are given to business customers under NDA; these are not code audits), Wise's 2019 TUV online-security certification blog post (a certification, not a code audit), the Wise Bugcrowd programme (no public disclosure allowed; a bug bounty, not an audit), github.com/transferwise (no audits folders in the listed repos), and web searches for Wise or TransferWise penetration test and code audit reports. No published code audit or penetration test report was found.
   checked_at: "2026-10-13"
   reports: []

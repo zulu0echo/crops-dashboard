@@ -59,7 +59,7 @@ scores:
         detail: Deblock SAS is the authorised electronic money institution behind the current account the card spends from.
         quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: claimed
         by: provider
         kind: document
@@ -82,7 +82,7 @@ scores:
         detail: Deblock operates the e-money account and, per its cards page, the card issuing; no other operator exists in the card path.
         quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every card payment depends on Deblock's closed ledger and issuing systems and on Visa. Closed, single-vendor.
     provider_response: null
@@ -130,7 +130,7 @@ scores:
         detail: The legal notice reserves all software and databases as Deblock's exclusive property.
         quote: remain the exclusive property of Deblock SAS or its licensors
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       All required components (app, ledger, issuing) are closed and proprietary. Nothing can be forked.
     provider_response: null
@@ -183,7 +183,7 @@ scores:
         detail: Card funds are e-money held by Deblock SAS as the authorised electronic money institution.
         quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The card spends a balance that Deblock holds as e-money. That is a disclosed provider-held balance, so 1. The self-custodial crypto wallet is a separate product and not in the card path.
     provider_response: null
@@ -211,7 +211,7 @@ scores:
         detail: The card balance exists only on Deblock's e-money ledger.
         quote: Deblock SAS is authorised as an electronic money institution by the French Prudential Supervision and Resolution Authority
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Derived from S1 = 1 (provider-held e-money), C2 = 0 and C3 = 0. Card funds and access depend on Deblock operating; any recovery would go through EMI safeguarding (see context), not through a path the user controls. Crypto in the self-custodial wallet is outside the card rail.
     provider_response: null
@@ -262,26 +262,25 @@ settlement:
       detail: Deblock's help centre says card payments cannot yet be made directly with crypto and are always settled in euros.
       quote: "your card payments will always be settled in Euros and the card issuer will instantly perform the necessary currency exchanges"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://intercom.help/deblock/en/articles/10365208-what-crypto-pairs-can-i-sell
       detail: The help centre says crypto can be sold only for euros and lists SOL, BTC, ETH, USDC and EUROC.
       quote: "Currently, the only fiat currency you can sell crypto in is € Euro"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://deblock.com/en/cards
       detail: The cards page says every card draws on the user's current account.
       quote: "Every Deblock card is tied to your current account"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:
   searched: >-
-    deblock.com (cards, self-custody, legal notice, legal agreements and FAQ pages; no security or audits page), the
-    Deblock help centre, GitHub (org DeblockApp has no public repos), web searches for Deblock security audits and
-    penetration tests, and the public portfolios of Hacken, CertiK, Cure53, Trail of Bits and Zellic. No published code
-    audit or penetration test of the Deblock app, card ledger or wallet was found. The card runs on Deblock's own closed
-    e-money ledger with no smart contract in the path.
+    deblock.com (cards, self-custody, legal notice, legal agreements and FAQ pages; no security or audits page), the Deblock help centre, GitHub (org DeblockApp has no public repos), web searches for Deblock security audits and penetration tests, and the public portfolios of Hacken, CertiK, Cure53, Trail of Bits and Zellic. No published code audit or penetration test of the Deblock app, card ledger or wallet was found. The card runs on Deblock's own closed e-money ledger with no smart contract in the path.
   checked_at: "2026-10-13"
   reports: []

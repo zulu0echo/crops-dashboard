@@ -86,14 +86,14 @@ scores:
         detail: The ledger owner's only powers are change_auditor_key (rejected if the instance has no auditor) and approveTongo/revokeTongo, which gate receive_external_transfer from other ledgers. There is no pause, freeze, blacklist or replace_class in Tongo.cairo or Vault.cairo, and the Vault has no owner.
         checked_at: "2026-10-09"
         recheck: curl -s -X POST -H 'content-type:application/json' https://starknet-rpc.publicnode.com -d '{"jsonrpc":"2.0","id":1,"method":"starknet_call","params":{"request":{"contract_address":"0x00b32618c475b2fb50b0facd2c49136be6e77281834dc86bdae652680faad4d3","entry_point_selector":"0x2f9dcd9248258202f28bd37f3175e5a6107267df83a34999b7ac96f0d53d62e","calldata":[]},"block_id":"latest"}}' | jq -c .result
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.tongo.cash/protocol/vault.html
         quote: Tongo contracts have a set owner (and an optional auditor) that have full control of the contract
         detail: The docs describe the owner's control in broad terms; the code limits it to auditor rotation and external-transfer approval.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The settlement contracts have no pause, freeze, blacklist or upgrade path. At Starknet block 16117583, get_tongo_config on the USDC, STRK and ETH v2 ledgers returned owner 0x3bb4…a4e7 and no auditor (Option::None). The owner can therefore only allow or refuse external transfers from other ledgers, which ordinary transfers within a ledger do not use. The docs' phrase "full control of the contract" overstates what the code allows. Judgment call: the substance fits 3, but 3 needs onchain evidence, and the schema cannot hold Starknet addresses, so 2.
     provider_response: null
@@ -112,14 +112,14 @@ scores:
         detail: fund, transfer, withdraw and ragequit are external and authorised only by the zero-knowledge proof for the Tongo key; withdraw sends ERC-20 to any Starknet address named in the proof, and any caller may submit.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 191,294p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.tongo.cash/protocol/contracts.html
         quote: Tongo 0x00b32618c475b2fb50b0facd2c49136be6e77281834dc86bdae652680faad4d3
         detail: Addresses and class hashes are listed in the docs; the ABIs ship in the SDK (packages/tongo-sdk/src/abi).
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A payer funds a Tongo account and transfers to the payee's public key, and the payee rolls over and withdraws. Every step is a direct contract call with a proof built client-side by the public SDK. A Starknet account pays the gas, and no provider signature or relayer is involved. The Relayer is an optional alternative for users without a Starknet account. Addresses and ABIs are documented. Judgment call: the substance fits 3, but 3 needs onchain evidence that the schema cannot express for Starknet, so 2.
     provider_response: null
@@ -138,14 +138,14 @@ scores:
         detail: The SDK reads account history from Starknet events through the RpcProvider the integrator supplies; the SDK source contains no hardcoded service URL.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/src/account/account.data.service.ts?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 200,215p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.tongo.cash/protocol/relayer.html
         quote: The Relayer has an owner that manages whitelists
         detail: The Relayer and the AVNU paymaster behind it serve only users without a funded Starknet account.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No relayer, paymaster, indexer or API is required. Proofs are made client-side, state comes from the RPC, and the user can pay gas from their own Starknet account. The optional Relayer path depends on AVNU's paymaster and on the Relayer owner's whitelists.
     provider_response: null
@@ -164,7 +164,7 @@ scores:
         detail: Settlement checks only proofs, nonces and balances; there is no address or country check. A grep of the SDK source for country, geolocation, sanction and chainalysis finds nothing.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | grep -niE "sanction|blacklist|blocklist|country"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The contracts and SDK contain no filtering. The demo frontend is closed and was not inspected. The Relayer's whitelists cover ledgers, assets and forwarders, not users. Judgment call: 3 needs a package or trace, and the Starknet sequencer is a further point of filtering outside this code, so 2.
     provider_response: null
@@ -181,7 +181,7 @@ scores:
         quote: Here we list the Tongo instances deployed on mainnet and sepolia
         detail: The docs enumerate the wrapped ERC-20s (native USDC, STRK, ETH, USDT, WBTC) with their Vault and ledger addresses; the SDK has no token list.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Tokens are enumerated in the docs, and onchain through each Vault's get_vault_config, which we read but cannot cite as onchain evidence here. No document tells users that Circle can freeze native USDC held by a Vault. Nor does any document state that Starknet's single StarkWare sequencer can censor transactions. Scored 1: enumerated in docs only.
     provider_response: null
@@ -225,7 +225,7 @@ scores:
         path: packages/tongo-sdk/README.md
         detail: The SDK README covers provider and account setup and operations; deployment parameters are in the docs (Vault deploy_tongo).
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Docs exist for using the SDK and deploying ledgers. Reproduction not attempted, so capped at 1.
     provider_response: null
@@ -244,7 +244,7 @@ scores:
         detail: Event structs (Fund, Withdraw, Transfer and others) are defined in the repo, and generated ABIs for Tongo, Vault and Aux ship in packages/tongo-sdk/src/abi.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/src/abi?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq '.[].name'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       ABIs and event schemas are in the repo. No protocol API exists or is needed. There is no export function; account history is rebuilt from events by the SDK. Judgment call: 2, as for other API-free protocols.
     provider_response: null
@@ -263,7 +263,7 @@ scores:
         detail: tongo (contracts and SDK) is Apache-2.0; she is Apache-2.0 (GitHub licence API); the SDK's npm dependencies @fatsolutions/she and @fatsolutions/cairo-abi-codec declare Apache-2.0 and ISC.
         checked_at: "2026-10-09"
         recheck: for r in tongo she; do echo $r $(gh api repos/fatlabsxyz/$r --jq '.license.spdx_id // "none"'); done
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Both repositories needed to run the protocol carry Apache-2.0. The cairo-abi-codec GitHub repo has no LICENSE file, but its npm package declares ISC; we did not list it as a repo. The docs repo is unlicensed but not needed to run.
     provider_response: null
@@ -282,7 +282,7 @@ scores:
         detail: LICENSE has two commits, 3e57e0c8 (2025-09-18, "Add LICENSE", Apache 2.0) and 439e07e2 (2026-01-27, a one-line edit, still Apache 2.0); the repo has no CONTRIBUTING or CLA file.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/commits?path=LICENSE&sha=7dac05e823f83620fe231605ba81642a178657ad" --jq '.[].sha'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No CLA and no relicensing event; no written licence-stability commitment.
     provider_response: null
@@ -301,7 +301,7 @@ scores:
         detail: The SDK depends on open packages (starknet.js, @scure, @noble, @fatsolutions/she, cairo-abi-codec); no API key or hosted service is configured.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/package.json?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | jq .dependencies
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Production use needs only the public contracts, SDK and a Starknet RPC. The AVNU paymaster matters only on the optional Relayer path. Judgment call: no O3 reproduction, so 2.
     provider_response: null
@@ -320,7 +320,7 @@ scores:
         detail: No analytics, telemetry, error-reporting or fingerprinting dependency in the SDK.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/package.json?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | grep -iE "sentry|analytics|posthog|mixpanel|amplitude|segment|gtag"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The SDK ships no telemetry. The demo frontend is closed and was not inspected, and no trace was run. Judgment call: absence shown only in code is capped at 2.
     provider_response: null
@@ -339,7 +339,7 @@ scores:
         detail: Operations take a public key, amounts (public for fund and withdraw, encrypted for transfer), a destination address, proofs and hints; audit ciphertexts are required only when the instance has an auditor key.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 191,216p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The protocol collects nothing beyond keys, amounts and addresses, and no required component holds user data. The canonical v2 ledgers were deployed without an auditor (get_tongo_config returned Option::None at block 16117583), so no third party receives decryptable copies of balances. Per the docs, an auditor cannot be added later. Instances deployed with an auditor would score lower.
     provider_response: null
@@ -358,7 +358,7 @@ scores:
         detail: TransferEvent emits the sender and receiver public keys as event keys with only encrypted amounts; FundEvent links the funding Starknet address to the Tongo key with a plaintext amount; WithdrawEvent links the key to the destination address with a plaintext amount.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/structs/events.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 13,92p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Tongo hides transfer amounts but not who paid whom. Every transfer publishes the payer's and payee's Tongo public keys. Funding ties a Starknet address to a key, and withdrawal ties a key to a Starknet address, both with plaintext amounts. Users can make fresh keys, but each must be funded. Judgment call: payer-payee linkage is public by design and implied rather than stated in the docs, which stress hidden amounts. Between 1 and 0 we take 1, because the event schema is public in the repo.
     provider_response: null
@@ -377,7 +377,7 @@ scores:
         detail: The integrator passes its own RpcProvider ("YOUR_RPC_PROVIDER"); the relayed path takes a paymaster URL as a parameter (RelayerAccount).
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/README.md?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 19,30p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       On the direct path only the chosen RPC sees requests. The optional relayed path adds the AVNU paymaster, which is named and set by the caller. Judgment call: 3 would need a package or trace, and the demo frontend was not inspected, so 2.
     provider_response: null
@@ -396,7 +396,7 @@ scores:
         detail: The RPC is a constructor argument in the SDK; no indexer is used.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/README.md?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 19,30p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The RPC is configurable in the SDK, and there is no indexer to host. The only official UI (the demo) is closed, so we could not check whether a UI setting exists. Scored 2: configurable via code.
     provider_response: null
@@ -415,7 +415,7 @@ scores:
         detail: The Vault releases ERC-20 only to Tongo ledgers it deployed, and ledgers release only on a valid withdraw or ragequit proof by the key holder; neither contract has an owner path to move funds or replace its class.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Vault.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 150,190p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Funds sit in a non-upgradeable Vault, released only against the key holder's proof. The provider cannot redirect them. Judgment call: the substance fits 3, but 3 needs onchain evidence that the schema cannot express for Starknet, so 2. The class hashes we read match the docs. Native USDC inherits Circle's freeze power over the Vault address (C5).
     provider_response: null
@@ -434,7 +434,7 @@ scores:
         detail: Neither Tongo.cairo nor Vault.cairo calls replace_class or has an upgrade entrypoint; on Starknet a contract can change code only through replace_class in its own code.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | grep -c replace_class
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The ledger and Vault classes are non-upgradeable. The docs' class hashes match getClassHashAt for the v2 instances at block 16117583, but we could not verify that this source compiles to them (O1). Judgment call: the substance fits 3, but without onchain evidence in the schema and without class verification, 2.
     provider_response: null
@@ -453,7 +453,7 @@ scores:
         detail: populateApprove() approves the ledger for exactly amount x rate of the ERC-20 being funded.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/src/operations/fund.ts?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 80,91p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The SDK asks for exact-amount approvals, and transfers need none. The ledger's own MAX approval to its Vault is contract-to-contract. Judgment call: the code fits 3, but 3 needs a distributed package or trace, so 2.
     provider_response: null
@@ -472,7 +472,7 @@ scores:
         detail: withdraw and ragequit are callable by anyone with the key holder's proof and send ERC-20 to the address named in the proof.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/contracts/src/tongo/Tongo.cairo?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | sed -n 235,294p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Derived from S1=2, C2=2, C3=3 and O3=1. If Fat Solutions disappears, the non-upgradeable Vault and ledgers keep working. The key holder can withdraw or ragequit, and can keep transferring, with the public SDK and any RPC. S1 and C2 are capped at 2 only by the onchain evidence format, and no public frontend build exists. Scored 2: funds are retrievable through a verified direct path.
     provider_response: null
@@ -491,7 +491,7 @@ scores:
         detail: A committed .env holds a local devnet RPC (127.0.0.1:5050), devnet test keys and a devnet account; the SDK otherwise keeps the Tongo private key client-side and has no API keys or webhooks.
         checked_at: "2026-10-09"
         recheck: gh api "repos/fatlabsxyz/tongo/contents/packages/tongo-sdk/.env?ref=7dac05e823f83620fe231605ba81642a178657ad" --jq .content | base64 -d | cut -d= -f1
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Users' secrets are their Tongo keys, generated and used client-side. Relayed operations are signed with the Tongo key. The repo commits devnet-only test keys in packages/tongo-sdk/.env, a hygiene issue rather than a production secret. Judgment call: 2 (minor issues).
     provider_response: null
@@ -508,7 +508,7 @@ scores:
         quote: On October 13th, 2025, FatSolutions engaged zkSecurity to perform a security audit of its Tongo
         detail: The zkSecurity report covers the SHE library and the Tongo contracts and provers, with findings such as a weak Fiat-Shamir transform in the bit proof; it is also committed at audits/Audit_of_Tongo.pdf.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       One audit, from October 2025, predates the v2 Vault, ledger and Relayer architecture now deployed. We found no audited commit hash in the report text and did not trace fixes. No bug bounty or SECURITY file. Scored 1: audit report only.
     provider_response: null
@@ -528,7 +528,7 @@ availability:
       path: packages/contracts/src/tongo/Tongo.cairo
       detail: fund, withdraw and ragequit check proofs, nonces and balances only; no caller, address or country restriction.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-09"
 
 notes: >-
@@ -536,8 +536,7 @@ notes: >-
 
 audits:
   searched: >-
-    The audits/ folders and READMEs of github.com/fatlabsxyz/tongo and fatlabsxyz/she, the docs at docs.tongo.cash,
-    and zkSecurity's public report index (reports.zksecurity.xyz). Both READMEs name only the zkSecurity audit.
+    The audits/ folders and READMEs of github.com/fatlabsxyz/tongo and fatlabsxyz/she, the docs at docs.tongo.cash, and zkSecurity's public report index (reports.zksecurity.xyz). Both READMEs name only the zkSecurity audit.
   checked_at: "2026-10-13"
   reports:
     - auditor: zkSecurity
@@ -549,6 +548,4 @@ audits:
       covers_deployed: partly
       findings: "2 high, 2 medium, 5 low, 2 informational"
       note: >-
-        Engagement began 2025-10-13 for two weeks on private repositories; the report gives no audited commit. The
-        same report is committed at audits/Audit_of_Tongo.pdf in both repos. It predates the v2 Vault and ledger
-        architecture deployed on Starknet.
+        Engagement began 2025-10-13 for two weeks on private repositories; the report gives no audited commit. The same report is committed at audits/Audit_of_Tongo.pdf in both repos. It predates the v2 Vault and ledger architecture deployed on Starknet.

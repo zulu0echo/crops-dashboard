@@ -25,33 +25,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -80,33 +80,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -135,33 +135,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -190,33 +190,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/rules/branches/main
         detail: "transferwise/digital-signatures-examples: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/rules/branches/master
         detail: "transferwise/digital-signatures: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/rules/branches/master
         detail: "transferwise/public-api-postman-collection: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/rules/branches/master
         detail: "transferwise/banks-reference-android: rules: pull_request, copilot_code_review, non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/rules/branches/main
         detail: "transferwise/wise-platform-samples: rules: non_fast_forward, pull_request, required_status_checks, pull_request, pull_request, required_signatures, deletion"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -245,33 +245,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no .github/workflows"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: 1 workflow file(s)"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no .github/workflows"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no .github/workflows"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no .github/workflows"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -300,33 +300,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -355,33 +355,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -410,33 +410,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/tags
         detail: "transferwise/digital-signatures-examples: latest tags: v1.0"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/tags
         detail: "transferwise/digital-signatures: latest tags: 1.1, 1.0"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/tags
         detail: "transferwise/public-api-postman-collection: no tags"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/tags
         detail: "transferwise/banks-reference-android: no tags"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/tags
         detail: "transferwise/wise-platform-samples: no tags"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -465,33 +465,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/commits?per_page=10
         detail: "transferwise/digital-signatures-examples: 9 of 9 recent commits signed"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/commits?per_page=10
         detail: "transferwise/digital-signatures: 2 of 5 recent commits signed"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/commits?per_page=10
         detail: "transferwise/public-api-postman-collection: 10 of 10 recent commits signed"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/commits?per_page=10
         detail: "transferwise/banks-reference-android: 6 of 10 recent commits signed"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/commits?per_page=10
         detail: "transferwise/wise-platform-samples: 10 of 10 recent commits signed"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -520,33 +520,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: no changelog or release notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: no changelog or release notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: no changelog or release notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: no changelog or release notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: no changelog or release notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -575,33 +575,33 @@ facts:
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures-examples/contents/?ref=main
         detail: "transferwise/digital-signatures-examples: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/digital-signatures/contents/?ref=master
         detail: "transferwise/digital-signatures: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/public-api-postman-collection/contents/?ref=master
         detail: "transferwise/public-api-postman-collection: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/banks-reference-android/contents/?ref=master
         detail: "transferwise/banks-reference-android: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/transferwise/wise-platform-samples/contents/?ref=main
         detail: "transferwise/wise-platform-samples: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -616,7 +616,7 @@ facts:
         detail: Coalfire Certification's public client directory (client-directory.html loads this data file) lists Wise Payments Ltd, ISO/IEC 27001:2022, certificate 2020-080301, latest 06/30/2026, expiration 8/3/2029.
         checked_at: "2026-10-09"
         recheck: "curl -s https://coalfirecertification.com/data/data.json | grep -A8 '\"Wise Payments Ltd\"'"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://coalfirecertification.com/Certificates/Wise%20ISO%2027001%20Certificate%20Award%20-%2006.30.2026.pdf
@@ -654,7 +654,7 @@ facts:
         quote: "Business customers requiring our SOC 1 and SOC 2 attestations can sign an NDA and download the reports here"
         detail: Wise security page FAQ lists SOC 1 Type 2, SOC 2 Type 2, PCI-DSS and ISO/IEC 27001; SOC reports are at wise.com/security/reports behind an NDA.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -690,7 +690,7 @@ facts:
         quote: "We have procedures to update and patch our servers in a timely manner"
         detail: UK personal privacy notice section 9.1.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -724,7 +724,7 @@ facts:
         quote: "Past Incidents"
         detail: Atlassian Statuspage for Wise with daily incident history.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: trace
         url: https://status.wise.com/api/v2/incidents.json
@@ -745,7 +745,7 @@ facts:
         quote: "Verifying it's you, from creating an account to making a payment"
         detail: Wise security page, "Two-step authentication".
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -779,7 +779,7 @@ facts:
         quote: "Hide your currencies, location permissions and auto log-out"
         detail: Wise security page, "Customisable controls".
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -794,7 +794,7 @@ facts:
         quote: "Wise also offers the following enhanced security frameworks for partners requiring additional protection: mTLS, JOSE"
         detail: Wise developer guide, Security section; the same paragraph says the Platform API implements OAuth 2.0 for all partner accounts.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -821,7 +821,7 @@ facts:
         quote: "Client credentials tokens expire after **12 hours**"
         detail: Wise client-credentials token guide; the example response shows expires_in 43199 and refresh_token_expires_in 628639555 seconds.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -846,7 +846,7 @@ facts:
         quote: "When information you’ve given us is not in active use, it is encrypted at rest"
         detail: UK personal privacy notice section 9.1.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: trace
         url: https://wise.com
@@ -873,7 +873,7 @@ facts:
         quote: "Typically we are required to retain that personal data for between five and ten years following account closure"
         detail: UK personal privacy notice section 8, Data Retention.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -888,7 +888,7 @@ facts:
         quote: "responsible for the handling of your personal data (known as the"
         detail: UK personal privacy notice section 1 (Data controller) and 4.2 (partners as independent, separate data controllers).
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -929,7 +929,7 @@ facts:
         quote: "Use the sandbox environment for development and testing your integration"
         detail: Wise developer guide; sandbox and production base URLs, mTLS endpoints, Developer Hub.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -944,7 +944,7 @@ facts:
         quote: "WISE PAYMENTS LIMITED"
         detail: Companies House record, active private limited company, incorporated 31 March 2010.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -959,7 +959,7 @@ facts:
         quote: "a small, upfront fee to cover our costs"
         detail: Wise send-money pricing page.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -974,14 +974,14 @@ facts:
         quote: "You have the right to do this for a period of 6 years from the date your Wise Account is closed"
         detail: UK personal terms clause 9.2.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://wise.com/gb/legal/terms-of-use-personal
         quote: "by giving you ninety (90) days' prior notice"
         detail: UK personal terms clause 9.7.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -996,7 +996,7 @@ facts:
         quote: "These processes may make an automated decision to reject your application or a proposed transaction"
         detail: UK personal privacy notice 6.2; section 3 says Wise may use AI, including machine-learning models and LLMs, in its financial crime and fraud prevention processes.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -1043,21 +1043,21 @@ fees:
       quote: "Fee varies by currency From 0.24%"
       detail: Wise UK personal pricing page, fees at a glance (sending, converting, card, receiving).
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://wise.com/gb/pricing/send-money
       quote: "We only use the live mid-market rate, and a small, upfront fee to cover our costs"
       detail: Wise UK send-money pricing page.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://wise.com/gb/pricing/card-fees
       quote: "a fee of 2.69% applies only to the amount in excess of that 250 GBP allowance"
       detail: Wise UK card fees page.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: UK personal prices; other regions and Wise Business differ. Transfer limits were not recorded.
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -1118,14 +1118,14 @@ cashout:
       quote: "Fee varies by currency From 0.24%"
       detail: Sending money to bank accounts is the main cash-out route.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://wise.com/gb/pricing/card-fees
       quote: "Withdrawing money from an ATM"
       detail: ATM withdrawals with the Wise card.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: "ALL means every country in the availability list. Card eligibility is narrower than account availability, and send corridors vary by currency. No cash agents."
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -1144,7 +1144,7 @@ maturity:
         quote: "Wise was launched in 2011"
         detail: Wise's own company story page.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: Secondary sources say January 2011; no primary source for the month was found.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1164,7 +1164,7 @@ maturity:
         quote: "Incorporated on 31 March 2010"
         detail: Companies House; formerly TRANSFERWISE LTD and EXCHANGE SOLUTIONS LTD.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -1191,7 +1191,7 @@ maturity:
         quote: "Evolve Bank & Trust is a regulated bank that we worked with from 2020 until 2023 to provide USD account details"
         detail: Wise Help Centre notice, last updated 20 December 2024.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: Selected from the status page's major or critical service incidents and Wise's own notices; the status API returns only the 50 most recent incidents (back to 2025-05-27), so older outages are not listed. No funds loss was stated in any source.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1213,7 +1213,7 @@ maturity:
         quote: "TRANSFERWISE LTD 03 Aug 2012 - 25 Jun 2021"
         detail: Companies House previous company names.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://register.fca.org.uk/s/firm?id=001b000001EjC6SAAV

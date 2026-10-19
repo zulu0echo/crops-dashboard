@@ -24,14 +24,14 @@ facts:
         detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
         checked_at: 2026-10-09
         quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7
         detail: Rain privacy policy (last updated 16 July 2026), Security section.
         checked_at: 2026-10-09
         quote: Rain maintains SOC 2 Type II certification
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -46,7 +46,7 @@ facts:
         detail: Rain security page, "Smart contract audits"; no report is linked from the page.
         checked_at: 2026-10-09
         quote: Our smart contracts are reviewed by independent auditors before launch and again for each new chain we support
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -61,7 +61,7 @@ facts:
         detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
         checked_at: 2026-10-09
         quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -76,7 +76,7 @@ facts:
         detail: Rain security page, "Secure development".
         checked_at: 2026-10-09
         quote: Code is peer-reviewed and automatically scanned for vulnerabilities before it reaches production
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -98,7 +98,7 @@ facts:
         detail: Rain security page, "Detection and response".
         checked_at: 2026-10-09
         quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -125,7 +125,7 @@ facts:
         detail: Rain Platform Status (cState), with components for onboarding, API, card issuing, authorizations, disputes and collateral, and a paged incident history back to 2025.
         checked_at: 2026-10-09
         quote: We continuously monitor the performance and availability of our services
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: trace
         url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
@@ -201,7 +201,7 @@ facts:
         detail: "Rain privacy policy, Security section: encryption in transit and at rest, access controls, multifactor authentication, tokenization, PCI DSS for card data."
         checked_at: 2026-10-09
         quote: encryption of sensitive data in transit and at rest
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: trace
         url: https://www.avalanchecard.com
@@ -227,7 +227,7 @@ facts:
         detail: Rain privacy policy, Retention section.
         checked_at: 2026-10-09
         quote: Customer identification records, transaction records, and related regulated financial services records may be retained for five years or longer following account closure
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     refs:
       - criterion: P2
         index: 0
@@ -245,14 +245,14 @@ facts:
         detail: Avalanche Card (Rain) privacy policy, Entity Roles and Data Flows.
         checked_at: 2026-10-09
         quote: For Avalanche Card services, Rain Liquidity LLC generally acts as the controller or business for the personal information described in this Privacy Policy
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://legal.avalanchecard.com/legal/avalanche-app-privacy-policy-945fafe7
         detail: "Rain privacy policy, Entity Roles and Data Flows: Nimbus LLC d/b/a Third National is controller for card issuance."
         checked_at: 2026-10-09
         quote: For card issuance and customer account services, Nimbus LLC generally acts as a controller
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -279,7 +279,7 @@ facts:
         detail: Rain security page, "Detection and response".
         checked_at: 2026-10-09
         quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -306,7 +306,7 @@ facts:
         detail: Avalanche App Terms & Conditions (last updated 26 February 2025), opening paragraph; section 17 Governing Law (Montana).
         checked_at: 2026-10-09
         quote: We are Rain Liquidity LLC
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://legal.avalanchecard.com/legal/avalanche-card-international-card-agreement-94211945
@@ -314,7 +314,7 @@ facts:
         checked_at: 2026-10-09
         quote: These Card Terms will be interpreted in accordance with the laws of Puerto Rico
         archive: data/archive/avalanche-card-ops-international-card-agreement.txt
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -329,7 +329,7 @@ facts:
         detail: Avalanche Card site FAQ "Are there any fees when using my card?".
         checked_at: 2026-10-09
         quote: "FX Fees: 1% Monthly Account Fee: $0"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -345,14 +345,14 @@ facts:
         checked_at: 2026-10-09
         quote: in our sole discretion at any time, with or without cause and with or without giving you notice
         archive: data/archive/avalanche-card-ops-international-card-agreement.txt
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://legal.avalanchecard.com/legal/avalanche-app-terms-conditions-4b62a44e
         detail: Avalanche App Terms & Conditions, wallet section.
         checked_at: 2026-10-09
         quote: you can utilize tokens by exporting your wallet or withdrawing funds via the block explorer on the applicable blockchain
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -367,7 +367,7 @@ facts:
         detail: Rain privacy policy, Automated Processing and Decision-Making.
         checked_at: 2026-10-09
         quote: We may use automated systems to support fraud detection, sanctions screening, transaction monitoring, identity verification, biometric matching, eligibility assessments, and risk management
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -382,7 +382,7 @@ facts:
         detail: "Rain privacy policy, Automated Processing and Decision-Making: available where applicable law grants the right."
         checked_at: 2026-10-09
         quote: request human review, express your point of view, and contest the decision
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -427,7 +427,7 @@ fees:
       detail: Avalanche Card site FAQ "Are there any fees when using my card?"; the "What is the Avalanche Card" answer says no gas or conversion fees are charged by Avalanche Card.
       checked_at: 2026-10-09
       quote: "FX Fees: 1% Monthly Account Fee: $0 Virtual Card Issuance: $0 Physical Card: $0 Card Shipping: $0"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://legal.avalanchecard.com/legal/avalanche-card-international-card-agreement-94211945
@@ -435,14 +435,14 @@ fees:
       checked_at: 2026-10-09
       quote: "Foreign Exchange Fee (non USD): up to 3% - Cross Border Fee: up to 3%"
       archive: data/archive/avalanche-card-ops-international-card-agreement.txt
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://legal.avalanchecard.com/legal/avalanche-card-us-card-agreement-bcc089aa
       detail: "US card agreement account opening disclosures: no annual fee, cash advance none, international transaction 2%, late payment up to 2% of the outstanding balance."
       checked_at: 2026-10-09
       quote: International Transaction N/A None 2% of each transaction in U.S. dollars
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: The site FAQ (1% FX) and the agreements (up to 3% + 3% international; 2% US) disagree; the agreements are maxima and binding, the FAQ states current charges. The FAQ's "no conversion fees" line contradicts its own 1% FX line. No ATM fee is listed because no ATM access is documented (see cashout).
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -472,7 +472,7 @@ licences:
       detail: Avalanche Card privacy policy (the consolidated Rain policy, last updated 16 July 2026), Entity Roles and Data Flows; the change log adds "licensed money transmission" to Third National's scope on 11 July 2026. No regulator, state or licence number is given.
       checked_at: 2026-10-09
       quote: is a licensed lender, money transmitter and Visa-authorized card issuer
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: trace
       url: https://api.fdic.gov/banks/institutions?search=NAME:%22Third%20National%22&fields=NAME,CERT,ACTIVE,CITY,STNAME&limit=20
@@ -502,7 +502,7 @@ cashout:
       checked_at: 2026-10-09
       quote: The issuer for this card program is Third National.
       archive: data/archive/avalanche-card-ops-international-card-agreement.txt
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://legal.avalanchecard.com/legal/avalanche-card-international-card-agreement-94211945
@@ -510,14 +510,14 @@ cashout:
       checked_at: 2026-10-09
       quote: Cash advances and balance transfers are not available under these Card Terms
       archive: data/archive/avalanche-card-ops-international-card-agreement.txt
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://legal.avalanchecard.com/legal/avalanche-card-us-card-agreement-bcc089aa
       detail: "US card agreement: ATM use is treated as a cash advance, only if enabled."
       checked_at: 2026-10-09
       quote: With a PIN, you may, if enabled by us, use your Card to obtain cash from certain automated teller machines
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: 'No ATM row: the international agreement excludes cash advances, and the US agreement allows ATM cash only "if enabled", with no ATM fee in its disclosures and no statement that it is enabled. No bank off-ramp is documented on avalanchecard.com or in the legal hub; the wallet holds crypto that can be withdrawn onchain, which is not a cash-out.'
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -538,14 +538,14 @@ maturity:
         checked_at: 2026-10-09
         quote: Effective as of 2/12/25
         archive: data/archive/avalanche-card-ops-international-card-agreement.txt
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://legal.avalanchecard.com/legal/avalanche-card-us-card-agreement-bcc089aa
         detail: US card agreement header.
         checked_at: 2026-10-09
         quote: "Last Updated: February 5, 2025"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -562,7 +562,7 @@ maturity:
         detail: Avalanche App Terms & Conditions; governing law Montana; card services mailing address in Billings, Montana (US card agreement).
         checked_at: 2026-10-09
         quote: We are Rain Liquidity LLC
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: State of formation is not stated in any document and no company register entry was found (Montana and Delaware business searches are interactive web apps), so only the country is recorded and there is no register_url. Rain Liquidity LLC is a subsidiary or affiliate of Signify Holdings, Inc. (Rain) per the privacy policy.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -598,35 +598,35 @@ maturity:
         detail: Rain status incident 2026-09-28.
         checked_at: 2026-10-09
         quote: We are investigating an issue that is causing unexpected declines for transactions
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-06-25-elevated-api-error-rate/
         detail: Rain status incident 2026-06-25.
         checked_at: 2026-10-09
         quote: The issue was caused by an expired encryption certificate
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-06-03-payments-partner-outage/
         detail: Rain status incident 2026-06-03.
         checked_at: 2026-10-09
         quote: Our partner has identified the cause as operating system patching activity on their side
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-05-05-elevated-authorization-declines/
         detail: Rain status incident 2026-05-05.
         checked_at: 2026-10-09
         quote: The incident was related to our payment processor and has been mitigated
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-01-02-payementology-rules-declines/
         detail: Rain status incident 2026-01-02.
         checked_at: 2026-10-09
         quote: Funds are safe and Rain infrastructure is working as intended
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: No Avalanche Card-specific incident report was found on avalanchecard.com or its legal hub. The entries are Rain platform incidents from Rain's status page (Rain Liquidity, the operator, is a Rain entity); the pages do not say which card programmes were affected. Planned maintenance and earlier incidents (Google Cloud outages 2025-06-12 and 2025-10-20, webhook latency) are not listed.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -660,14 +660,14 @@ maturity:
         detail: Privacy policy change log (entries 13 May and 11 July 2026; header last updated 16 July 2026).
         checked_at: 2026-10-09
         quote: change of biometric data retention period from 5 to 3 years
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://legal.avalanchecard.com/legal/avalanche-app-terms-conditions-4b62a44e
         detail: App terms header.
         checked_at: 2026-10-09
         quote: Last updated 2-26-25
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

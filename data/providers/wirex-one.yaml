@@ -150,7 +150,7 @@ scores:
           call: "0xf851a440"
           expect: "0x0000000000000000000000008b72904e3685448e6f890d65a15d2aa206c1e0ab"
         recheck: cast call 0xAFa697ebC7919998AF5CdE325Fbe990dC926aae4 "admin()(address)" --rpc-url https://mainnet.base.org; cast code 0x8b72904e3685448E6f890d65a15D2aA206C1e0ab --rpc-url https://mainnet.base.org
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://repo.sourcify.dev/8453/0x9D56758B772CA389802E97D832D0DAf6b8E47703
@@ -164,7 +164,7 @@ scores:
         detail: Terms 4.17 let Wirex restrict or block addresses through Wirex One for sanctions or risk policy.
         quote: Wirex may restrict or block access, through Wirex One, to certain On-Chain Infrastructure, digital assets, or blockchain addresses
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       There is no pause flag, but there is a stronger power. A single oracle EOA, set in a registry whose owner and admin is one EOA, both decides and executes every debit from user wallets, and the Terms let Wirex block addresses. No multisig, no timelock, and it can target individual wallets. The Terms' statement that Wirex cannot move a user's assets does not match FundsManagement's oracle path.
     provider_response: null
@@ -206,7 +206,7 @@ scores:
         path: skills/wirex-baas-onboarding/references/WALLET-DEPLOYMENT.md
         detail: The wallet example sends user operations through Wirex-run bundler and paymaster endpoints (bundler.wirexpay.com, paymaster.wirexpay.com).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Card debits need Wirex's API and oracle key, wallet signing goes through Privy, and user operations are sponsored by a Wirex paymaster. None of it is public or has a fallback. Closed, single-vendor.
     provider_response: null
@@ -223,7 +223,7 @@ scores:
         detail: The Terms disclose that Wirex may block blockchain addresses for sanctions, regulation or its own risk policy.
         quote: Wirex may restrict or block access, through Wirex One, to certain On-Chain Infrastructure, digital assets, or blockchain addresses
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://repo.sourcify.dev/8453/0x8CE61167f79aae19a528C30f5ebfcf7FC2242890
@@ -256,7 +256,7 @@ scores:
         path: skills/wirex-baas-overview/references/ENVIRONMENTS.md
         detail: The repo doc enumerates the Base production tokens (USDC, USDT, EURC, WUSD, WEUR) with addresses; no file in the repo mentions issuer freeze or blacklist powers or Base's sequencer.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Tokens are enumerated onchain and in a versioned repo document. Users are not told about the issuers' freeze powers (Circle and Tether blacklists), Wirex's own control of the upgradeable WUSD/WEUR synthetics, or Base's centralized sequencer. Enumerated, assumptions not stated, so 2.
     provider_response: null
@@ -291,7 +291,7 @@ scores:
         path: README.md
         detail: The only Wirex repo for this stack is a set of agent skills (Markdown docs and tests) describing the BaaS REST API and contracts; the wirexapp and wirexpay orgs hold no SDK, app, backend or indexer source (wirexpay has forks of rundler, ultra-relay and Argo CD only).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Contract source is visible only through Sourcify verification. The app, API, oracle, indexer and SDK are closed. Contracts only, so 1.
     provider_response: null
@@ -309,7 +309,7 @@ scores:
         path: README.md
         detail: The README installs agent skills for calling Wirex's hosted API; there are no build or deploy instructions for any component.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       There is no self-host path: no deployable code is public. Reproduction not attempted.
     provider_response: null
@@ -327,7 +327,7 @@ scores:
         path: skills/wirex-baas-crypto/references/ABI-REFERENCE.md
         detail: ABI fragments for ContractRegistry, Accounts, TokensRegistry, Kernel and ERC20 only; nothing for FundsManagement, ExecutionDelayPolicy or FundsBuffer. The REST API is described in Markdown, with no OpenAPI file and no export format.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Partial ABIs and prose API docs for BaaS integrators are in a repo. There is no machine-readable API schema, no ABI for the contracts that move funds, and no user data export. Judgment call: partial coverage fits "documented only" (1) better than 2.
     provider_response: null
@@ -391,7 +391,7 @@ scores:
         detail: The privacy policy says data is shared with providers for analytics, among other purposes, without naming them.
         quote: support account creation, identity verification, wallet infrastructure, blockchain connectivity, transaction monitoring, fraud prevention, customer support, analytics and communications
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Error reporting, product analytics and tag management are on by default in the web app. The privacy policy discloses analytics only by category. Judgment call: category-level disclosure counts as "disclosed in docs" (1) rather than undisclosed (0); no trace was run.
     provider_response: null
@@ -408,7 +408,7 @@ scores:
         detail: The privacy policy lists identity, KYC, wallet and account-abstraction addresses, transaction data and device data among the data processed.
         quote: account abstraction wallet addresses
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       KYC and profile data go well beyond settlement needs. This is disclosed in the privacy policy, not in code or a versioned repo document, so 1.
     provider_response: null
@@ -432,7 +432,7 @@ scores:
         detail: The privacy policy says public blockchain records hold wallet addresses, amounts and timestamps that can be linked to the user through off-chain records.
         quote: We do not intend to write direct personal identifiers
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every card purchase is published onchain against the user's wallet, with its type, currency and amount and a stable wallet address, so anyone can rebuild a cardholder's spending history. The linkage is disclosed in the privacy policy, so 1.
     provider_response: null
@@ -449,7 +449,7 @@ scores:
         detail: The privacy policy names categories of recipients (identity verification, wallet infrastructure, blockchain infrastructure, card and payment partners, analytics); the Terms name Privy, Crossmint and the card issuers.
         quote: support account creation, identity verification, wallet infrastructure, blockchain connectivity, transaction monitoring, fraud prevention, customer support, analytics and communications
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Privy, the issuer, the card network, Crossmint, KYC and analytics vendors all see user or payment data. They are disclosed in the Terms and privacy policy (some only by category) and cannot be swapped. Disclosed in docs only, so 1.
     provider_response: null
@@ -511,7 +511,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x0000000000000000000000008b72904e3685448e6f890d65a15d2aa206c1e0ab"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xFB384a73e9B89b01749C1127cDe4FeA20fb9F06a
@@ -522,7 +522,7 @@ scores:
         check:
           slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
           expect: "0x000000000000000000000000ed22ea8be14bea1dd70fd0a770d2498117cfe0ff"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       One EOA can upgrade every BaaS contract (implementations were redeployed around block 52.04M, days before this read) with no timelock. EOA admin, so 0.
     provider_response: null
@@ -543,7 +543,7 @@ scores:
         check:
           call: "0xdd62ed3e0000000000000000000000007a55a64c4527a2fd8e423f4c0f684c14fde774c1000000000000000000000000fb384a73e9b89b01749c1127cde4fea20fb9f06a"
           expect: "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Onboarding gives the Wirex FundsManagement contract unlimited allowances on every supported token, and I found no user-facing disclosure. Unbounded, undisclosed, so 0.
     provider_response: null
@@ -561,7 +561,7 @@ scores:
         path: skills/wirex-baas-crypto/SKILL.md
         detail: ERC-20 withdrawals use a request-then-execute pattern enforced by ExecutionDelayPolicy; the policy storage at block 52290735 gives a 3-second normal delay and a 1-day delay for account changes.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Derived: S1 = 0 (the oracle and admin can move funds), C2 = 0, C3 = 0, O3 = 0. The contracts let a wallet owner withdraw through request-and-execute without Wirex's oracle, but the signing key is a Privy embedded wallet reached through the Wirex One app, and I could not verify an export path. Admin EOAs can also reclassify operations or upgrade the policy. Judgment call: access depends on the provider, so 0, not 1.
     provider_response: null
@@ -619,6 +619,7 @@ settlement:
       path: skills/wirex-baas-crypto/SKILL.md
       detail: Wirex's BaaS repo describes the unified balance model, with all balances held as WUSD and WEUR on Base and USDC, USDT or EURC deposits wrapped into them 1:1.
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: verified
       kind: repo
       url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-cards/SKILL.md#L132-L139
@@ -626,6 +627,7 @@ settlement:
       path: skills/wirex-baas-cards/SKILL.md
       detail: Card purchases debit funds onchain from the user wallet to a FundsBuffer through the FundsManagement executor, then settle to the card network.
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: verified
       kind: repo
       url: https://github.com/wirexapp/wirex-baas-agent-skills/blob/7dff6eaaba9e06a30056f787ec54324d64a3e671/skills/wirex-baas-overview/references/ENVIRONMENTS.md#L163-L171
@@ -633,21 +635,19 @@ settlement:
       path: skills/wirex-baas-overview/references/ENVIRONMENTS.md
       detail: Production Base token table gives the WUSD and WEUR addresses (with USDC, USDT and EURC).
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://www.wirexapp.com/legal/one/terms
       detail: The Wirex One Terms say assets may be converted or wrapped on transfer into Wirex's onchain infrastructure and unwrapped on the way back.
       quote: any digital assets converted or wrapped on transfer to the On-Chain Infrastructure may be re-converted or unwrapped on such a transfer back
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:
   searched: >-
-    The wirexapp GitHub organisation including wirex-baas-agent-skills (no audits/ folder or audit mention for the
-    contracts), wirexapp.com, web searches for Wirex and Wirex Pay contract audits (Hacken, Halborn, CertiK, Zellic),
-    and the audits/ folder of github.com/zerodevapp/kernel (main and release/v3.3) for the Kernel v3.1 smart account.
-    No audit of the Wirex BaaS contracts on Base (ContractRegistry, FundsManagement, ExecutionDelayPolicy, FundsBuffer)
-    is published. Audits of the ERC-4337 EntryPoint are not logged here.
+    The wirexapp GitHub organisation including wirex-baas-agent-skills (no audits/ folder or audit mention for the contracts), wirexapp.com, web searches for Wirex and Wirex Pay contract audits (Hacken, Halborn, CertiK, Zellic), and the audits/ folder of github.com/zerodevapp/kernel (main and release/v3.3) for the Kernel v3.1 smart account. No audit of the Wirex BaaS contracts on Base (ContractRegistry, FundsManagement, ExecutionDelayPolicy, FundsBuffer) is published. Audits of the ERC-4337 EntryPoint are not logged here.
   checked_at: "2026-10-13"
   reports:
     - auditor: Felix Kim (independent auditor)
@@ -659,8 +659,7 @@ audits:
       covers_deployed: partly
       findings: "3 minor (validator and hook issues)"
       note: >-
-        Audit period 27 May-9 June 2024. Reviews only the diff from v3.0, so it relies on the ChainLight v3.0 audit for the
-        rest of the account. Whether the sample wallet's implementation matches this code was not checked byte for byte.
+        Audit period 27 May-9 June 2024. Reviews only the diff from v3.0, so it relies on the ChainLight v3.0 audit for the rest of the account. Whether the sample wallet's implementation matches this code was not checked byte for byte.
     - auditor: KALOS
       date: "2024-04-12"
       type: audit
@@ -681,5 +680,4 @@ audits:
       covers_deployed: partly
       findings: "2 high, 2 medium, 3 low, 5 informational"
       note: >-
-        Audit started 11 March 2024 on kernel_v3 commits 5f086737 and 8646f2c2. Wirex wallets run Kernel v3.1, whose
-        changes from v3.0 were reviewed separately in June 2024. Does not cover the Wirex executor module or BaaS contracts.
+        Audit started 11 March 2024 on kernel_v3 commits 5f086737 and 8646f2c2. Wirex wallets run Kernel v3.1, whose changes from v3.0 were reviewed separately in June 2024. Does not cover the Wirex executor module or BaaS contracts.

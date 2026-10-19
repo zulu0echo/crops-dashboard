@@ -129,7 +129,7 @@ scores:
           call: "0x91d1485497667070c54ef182b0f5858b034beac1b6f3089aa2d3188bb1e8929f4fa9b9290000000000000000000000001272c99befa7a70f935edca81bf9a6e85c6d9d59"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
         recheck: cast call 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA "hasRole(bytes32,address)(bool)" $(cast keccak OPERATOR_ROLE) 0x1272c99bEFa7a70f935Edca81BF9a6E85C6D9D59 --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://arbitrum.blockscout.com/address/0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14
@@ -140,7 +140,7 @@ scores:
         check:
           call: "0x91d1485400000000000000000000000000000000000000000000000000000000000000000000000000000000000000001272c99befa7a70f935edca81bf9a6e85c6d9d59"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://arbitrum.blockscout.com/address/0x1272c99bEFa7a70f935Edca81BF9a6E85C6D9D59
@@ -155,14 +155,14 @@ scores:
         detail: Fiat24's card terms let it block the card on suspicion, on breach, or on other grounds in the agreement or legislation.
         quote: "Fiat24 has the right to block the use of the Card until the circumstances have been verified"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
         detail: The account terms let Fiat24 suspend or close an account without notice on breach.
         quote: "We may at any time suspend or close your Fiat24 Account and/or end the agreement with you without notice"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A single EOA holds the admin and operator roles on the card authorizer and the cash tokens. It can pause card authorizations or all transfers of a currency, and Fiat24 operators can set an individual account to Soft- or Hard-Blocked, which the token contract enforces on every transfer. The terms allow card blocks and account suspension without notice. EOA-held role that can target individual accounts with no notice, so 0.
     provider_response: null
@@ -184,7 +184,7 @@ scores:
           call: "0x91d1485414dd327f3834be9d0f7cf44f6cf11c96ded83bd68d1a1b3926d35739e7bb88d0000000000000000000000000ec659e857089e301c87965ed4839b74ea835755a"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
         recheck: cast call 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 "hasRole(bytes32,address)(bool)" $(cast keccak AUTHORIZER_ROLE) 0xec659e857089E301C87965ED4839B74Ea835755a --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://arbitrum.blockscout.com/tx/0x6561f3d82eabf5384db2dc7c49fe2625e33e25dc783576066b04d7815e30bfbf
@@ -216,7 +216,7 @@ scores:
         detail: Fiat24's API reference (hosted, not in a repo) uses a custom wallet-signature header for its closed API at api.fiat24.com.
         quote: "Fiat24 does NOT use any standard protocol for authentication and authorisation"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://web3.bitget.com/helpCenter/482
@@ -224,7 +224,7 @@ scores:
         detail: Bitget's help centre names this program "Bitget Wallet Card (Fiat24)"; article 802 says Mainland China signups are closed and existing users are not affected. Both pages are client-rendered, so their text is archived.
         quote: "Invite friends to apply for a Bitget Wallet Card (Fiat24)"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every card payment needs Fiat24's closed authorization service and key, Marqeta processing and Mastercard. None is public, and there is no fallback operator. Closed and single-vendor, so 0.
     provider_response: null
@@ -246,14 +246,14 @@ scores:
           call: "0xb5c9ee0f"
           expect: "0x00000000000000000000000040c57923924b5c5c5455c48d93317139addac8fb"
         recheck: cast call 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA "sanctionContract()(address)" --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
         detail: The terms disclose sanctions compliance as a duty of Fiat24, but not that the token contracts screen addresses onchain against an oracle.
         quote: "the Swiss sanctions regulations, as well as other sanctions regulations deemed appropriate by us"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Address filtering sits inside the settlement layer itself: the cash tokens check an onchain sanctions oracle and the account's KYC status on every transfer, including the card pull. Judgment call: the check is visible in Sourcify-verified source, but no Fiat24 or Bitget document discloses contract-level screening or its list source, so this takes the lower anchor, 0, rather than 1.
     provider_response: null
@@ -275,14 +275,14 @@ scores:
           call: "0x1b7238770000000000000000000000002c5d06f591d0d8cd43ac232c2b654475a142c7da"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
         recheck: cast call 0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14 "validXXX24Tokens(address)(bool)" 0x2c5d06f591D0d8cd43Ac232c2B654475a142c7DA --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
         detail: Fiat24's developer guide lists the cash-token addresses on Arbitrum and Mantle; neither it nor Bitget's card pages state the issuer's freeze powers or Arbitrum sequencer assumptions to cardholders.
         quote: "The entire booking system of Fiat24 is managed transparently on the Arbitrum and Mantle blockchain"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The four cash tokens are enumerated in the contract and in Fiat24's developer docs. Bitget's card pages do not tell cardholders about the issuer's operator powers, the sanctions oracle or Arbitrum's sequencer. Enumerated in code, assumptions not stated, so 2.
     provider_response: null
@@ -304,7 +304,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x00000000000000000000000096aa3d05755c54d2745d0dc98ea55e163da5bb16"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The settlement contracts are verified on Sourcify, mostly as partial (metadata) matches; CHF24 is a partial match and the CNH24 proxy is not on Sourcify. No public repository or build script reproduces the bytecode. Partial match without a build script, so 2.
     provider_response: null
@@ -322,7 +322,7 @@ scores:
         path: README.md
         detail: The bitgetwallet org's 12 repos are swap, bridge, staking and trading-API SDKs (this one is the Go client for Bitget Wallet's trading APIs); none contains card code. GitHub users fiat24, Fiat24, fiat24-ag and fiat24ag return 404.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://repo.sourcify.dev/42161/0x96AA3D05755C54D2745d0Dc98Ea55E163DA5Bb16
@@ -352,7 +352,7 @@ scores:
         detail: Fiat24's developer guide documents contract addresses and functions (approve, authorize flow, payouts, top-up) on a hosted docs site, with the API reference on a separate hosted page.
         quote: "needs to approve a certain limit amount for future card spendings"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Interfaces are documented on a hosted docs site, not versioned in a repo. No payee export format is specified. Documented only, so 1.
     provider_response: null
@@ -369,7 +369,7 @@ scores:
         detail: Fiat24 grants users only a limited, non-transferable licence to its web app and API; the backend, authorizer and card processing have no published source.
         quote: "non-transferable, non-sub-licensable, worldwide, non-exclusive license to use the Fiat24 Web-App"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Required components (authorizer, backend, card processing, issuer) are closed, so F1 is 0. The verified contracts carry MIT SPDX headers, but they are not in any public repo.
     provider_response: null
@@ -409,14 +409,14 @@ scores:
         detail: Fiat24's privacy policy discloses Google Analytics and Google Tag Manager on its site and web app.
         quote: "We use Google Analytics, a web analysis service of Google Ireland Limited"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://web3.bitget.com/resource/policy.html
         detail: Bitget Wallet's privacy policy lists data analytics among its processing purposes, without naming vendors.
         quote: "Use of data analytics to improve our Platform, Services and App"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Analytics is disclosed by Fiat24 (Google Analytics, Tag Manager) and by Bitget Wallet (unnamed). Neither app was traced. Documented cap, so 1.
     provider_response: null
@@ -433,14 +433,14 @@ scores:
         detail: Fiat24 collects identity documents, contact data and transaction data for onboarding.
         quote: "Passport and/or photo ID for identity verification purposes"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://web3.bitget.com/resource/policy.html
         detail: Bitget Wallet's privacy policy lists government ID data and biometric data processed for AML/KYC.
         quote: "Government identification data: ID number"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Full KYC is required and disclosed in Fiat24's and Bitget Wallet's privacy policies; the legal basis (Swiss AML) is stated in the terms but not limited in code or a repo document. Disclosed in policy, so 1.
     provider_response: null
@@ -464,7 +464,7 @@ scores:
         detail: The terms tell users that balances and transactions are public on a blockchain and that they waive Swiss bank secrecy.
         quote: "you waive the Swiss bank secrecy to this extent"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every card spend is public and linked to the cardholder's account number, address, card id and amount, though not to the merchant. The linkage is disclosed in the terms. Account tags in events, disclosed, so 1.
     provider_response: null
@@ -481,7 +481,7 @@ scores:
         detail: The policy discloses sharing with service providers (payment processing, customer service and others) and for KYC and AML compliance, by category; Marqeta appears only in the contract name, and the sanctions oracle is not mentioned.
         quote: "We may share information to comply with laws, including KYC, AML, and tax law requirements."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Third parties in the card flow (Fiat24, Marqeta, Mastercard, the KYC vendor) are disclosed by category in Fiat24's policy, and none can be swapped. No trace was run. Docs only, so 1.
     provider_response: null
@@ -512,7 +512,7 @@ scores:
         detail: Fiat24 describes the tokens as bank-issued claims on cash deposits.
         quote: "These tokens are issued by SR Saphirstein AG, a Swiss licensed deposit-taking institution."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The card balance is a Fiat24 deposit represented by tokens in the user's address, not an asset the user controls: the issuer's operator EOA can move any balance, and card pulls land in Fiat24-held EOAs. "Self-custody" here means only that the wallet key signs; the provider can redirect funds, so 0.
     provider_response: null
@@ -534,7 +534,7 @@ scores:
           call: "0x8da5cb5b"
           expect: "0x0000000000000000000000001272c99befa7a70f935edca81bf9a6e85c6d9d59"
         recheck: cast call 0x50873C8501143e55349f9938795f69A2BB64b6ca "owner()(address)" --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://arbitrum.blockscout.com/address/0xe2e3B88B9893e18D0867c08f9cA93f8aB5935b14
@@ -545,7 +545,7 @@ scores:
         check:
           slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
           expect: "0x00000000000000000000000050873c8501143e55349f9938795f69a2bb64b6ca"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every settlement contract is upgradeable at once by a single EOA, with no timelock. EOA admin, so 0.
     provider_response: null
@@ -567,14 +567,14 @@ scores:
           call: "0xdd62ed3e00000000000000000000000003746aadcd9472f6778cff0bd07c37c69e5f4187000000000000000000000000e2e3b88b9893e18d0867c08f9ca93f8ab5935b14"
           expect: "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
         recheck: cast call 0x133CAEecA096cA54889db71956c7f75862Ead7A0 "walletProvider(uint256)(uint256)" 119154 --rpc-url https://arb1.arbitrum.io/rpc --block 512546136
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
         detail: Fiat24's guide shows a bounded approval and says it must be repeated once used; this does not match what Bitget users hold.
         quote: "Once the approved amount is used, the approval needs to be repeated."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Almost all Bitget cardholders on this program have an unlimited allowance to the authorizer, which only Fiat24's key can spend through. Neither Bitget nor Fiat24 discloses that. Judgment call: the app's default is inferred from onchain allowances, not from Bitget code (closed); 188 of 195 sampled accounts are unbounded, so "unbounded, undisclosed", 0.
     provider_response: null
@@ -630,14 +630,14 @@ availability:
       quote: Users in Mainland China can no longer apply for a new Bitget Wallet Card. Existing users are not affected.
       detail: Bitget Wallet help centre article 802 (Mainland China section, client-rendered; archived 2026-10-07).
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://web3.bitget.com/card
       quote: Vietnam, Malaysia, mainland China, Taiwan, Australia
       detail: Card page FAQ "Who can apply for a Bitget Wallet Card?" lists mainland China under Asia-Pacific, and says "Card issuing partners vary by region".
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-09"
 
 settlement:
@@ -673,24 +673,28 @@ settlement:
       check:
         call: "0x1b7238770000000000000000000000002c5d06f591d0d8cd43ac232c2b654475a142c7da"
         expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
       detail: Fiat24's developer guide names the four cash tokens, their issuer and their deposit backing, and lists all four as supported for the debit card on Arbitrum.
       quote: which are ERC-20 tokens backed one-to-one by cash deposits. These tokens are issued by SR Saphirstein AG, a Swiss licensed deposit-taking institution.
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.fiat24.com/developer/integration-guide/part-1-smart-contracts
       detail: Crypto top-up converts the wallet's crypto into Fiat24 cash tokens.
       quote: it converts the cryptocurrency from the wallet into our fiat holdings, which are in the form of ERC20 tokens
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.fiat24.com/user/payments/mastercard-debit
       detail: Spending rules; the matching currency balance is charged first (Direct Pay), otherwise the user's chosen default card currency is converted and debited.
       quote: If your card transactions are in these currencies, the corresponding balance will be charged first, avoiding unnecessary foreign exchange fees
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:

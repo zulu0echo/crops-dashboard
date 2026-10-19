@@ -105,7 +105,7 @@ scores:
         quote: "reserves the right at any time to modify or discontinue the Services in whole or in part, and to terminate your access to the Services at any time, with or without notice"
         detail: "Blueboard Terms of Service, general section: Blueboard may terminate an individual user's access to the Services at any time, with or without notice."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Blueboard can cut an individual user off from the MiniPay app at any time with no notice, which blocks the MiniPay payment path for that user. MiniPay has no settlement contracts of its own: transfers are plain stablecoin transfers on Celo, and issuer freeze powers over USDC and USDT belong under C5. Judgment call: scored 0 on the termination power over the app path. The user's keys stay with the user (see C2 and S4), so the funds themselves are not frozen by this power.
     provider_response: null
@@ -121,14 +121,14 @@ scores:
         quote: "Any Crypto Asset, however, is stored, sent and received by and within the CELO blockchain network"
         detail: "MiniPay service terms: the app stores a key pair with an encrypted private key; assets live on Celo; 'Neither your key pair nor the Secret Recovery Phrase is available to us.'"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.celo.org/build/mini-apps/overview.md
         quote: "MiniPay holds USDm, USDC and USDT"
         detail: "Celo docs list MiniPay's three stablecoins with their Celo mainnet addresses and show a payment as a plain ERC-20 transfer() call."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A MiniPay payment is an ERC-20 transfer on Celo signed with a key the user holds, so a user holding the recovery phrase can settle by calling the token contract directly from any Celo wallet. This is shown by terms and docs only. No trace of exporting a MiniPay key and settling elsewhere was run, so the documented cap of 1 applies.
     provider_response: null
@@ -144,14 +144,14 @@ scores:
         quote: "mobile phone number: to set up a MiniPay account and use MiniPay"
         detail: "Privacy statement section 2: a phone number is collected to set up a MiniPay account; Technical Data (IP, UID, device data) and Transactional Data are collected by Blueboard when the app is used."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://minipay.to/terms-of-service
         quote: "attempt to derive the source code of"
         detail: "Terms EULA section: the Software Services are licensed as executable code only; copying, decompiling and deriving source are prohibited."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Using MiniPay requires an account with Blueboard's closed backend, reached only through Blueboard's closed app. No intermediary code is public and no alternative operator exists. The RPC endpoint the app uses was not identified. Judgment call: anchor 1 (documented, no public code) and anchor 0 (closed, single-vendor) both fit; took 0.
     provider_response: null
@@ -167,7 +167,7 @@ scores:
         quote: "The MiniPay Service is available only to users in qualifying countries"
         detail: "Terms: MiniPay is limited to qualifying countries (the general section excludes the People's Republic of China); users warrant they are not on any trade embargo or economic sanction list."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Geographic and sanctions gating at the app edge is disclosed in the terms. The terms do not name the list source or the country list. Whether the closed app or backend filters addresses or transactions cannot be checked from code. The settlement layer (Celo plus the stablecoin contracts) is outside MiniPay and was not examined here.
     provider_response: null
@@ -183,7 +183,7 @@ scores:
         quote: "MiniPay runs only on Celo (mainnet) and Celo Sepolia (testnet)"
         detail: "Celo's MiniPay page enumerates the chain (Celo mainnet 42220) and the three tokens (USDm 0x765DE816845861e75A25fCA122bb6898B8B1282a, USDC 0xcebA9300f2b948710d2653dD7B07f33A8B32118C, USDT 0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e)."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The chain and supported tokens are listed in docs. No user-facing document read states the USDC and USDT issuers' freeze or blacklist powers or the Celo sequencer assumptions. No MiniPay code is public, so the token list cannot be shown in code.
     provider_response: null
@@ -205,14 +205,14 @@ scores:
         path: README.md
         detail: "The only repo named for MiniPay that carries MiniPay-specific values is celo-org/minipay ('MiniPay snippet code for external partners'): balance, gas and SocialConnect lookup snippets, no LICENSE file. github.com/opera (13 repos) and github.com/operasoftware (137 repos) contain no MiniPay code."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://minipay.to/terms-of-service
         quote: "The Software Services are licensed and not sold to you"
         detail: "Terms EULA: the app's source code is described as a trade secret and Blueboard's exclusive property."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No component of MiniPay itself (app, backend, issuer service) is public. The public MiniPay code is Celo's partner snippets and Mini App templates, which do not run the wallet.
     provider_response: null
@@ -233,7 +233,7 @@ scores:
         quote: "MiniPay injects an Ethereum provider when it loads your app"
         detail: "MiniPay developer docs document the injected EIP-1193 provider, custom methods (getExchangeRate, scanQrCode, requestContact) and token transfer examples for Mini Apps."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The Mini App interface is documented on a hosted docs site, not versioned in a public repo. No payee data export format is documented. Settlement uses standard ERC-20 ABIs that MiniPay does not define.
     provider_response: null
@@ -249,7 +249,7 @@ scores:
         quote: "you may not copy, decompile, reverse engineer, disassemble, attempt to derive the source code of"
         detail: "Terms EULA: a personal, non-transferable licence to the executable code only; copying, modification and derivative works are prohibited."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The app and backend needed to run MiniPay are proprietary and closed. A third party cannot fork them.
     provider_response: null
@@ -275,7 +275,7 @@ scores:
         quote: "MiniPay includes third-party technology or code, some of which may use your data in different ways"
         detail: "Privacy statement section 5 names AppsFlyer and Firebase Cloud Messaging as third-party code in MiniPay and lists 'analytic system technology providers' among processors."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       An attribution/analytics SDK (AppsFlyer) and Firebase messaging are in the app, disclosed in the privacy statement. Whether they are on by default, and what they send, could not be checked: the app is closed and no trace was run.
     provider_response: null
@@ -291,14 +291,14 @@ scores:
         quote: "your IP address, a unique user ID (UID)"
         detail: "Privacy statement: collects phone number, receiver phone number, IP, UID, device data and in-app actions, wallet address and holdings, and transaction type and amount linked to the UID; processed for contract, legitimate interests, legal compliance and marketing."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://minipay.to/privacy-statement
         quote: "to send you marketing information about our products and services"
         detail: "Privacy statement section 3 lists marketing and preference analysis among the purposes of processing."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       MiniPay collects identity, device and behavioural data and links transactions to a user ID, well beyond addresses and amounts. All of this is disclosed in the privacy statement, and part of it is used for marketing and product analytics rather than any legal requirement. Judgment call: anchor 1 (disclosed in a policy) and anchor 0 (collection beyond the stated legal requirement) both fit; took 0.
     provider_response: null
@@ -324,14 +324,14 @@ scores:
         path: README.md
         detail: "Celo's MiniPay partner snippets name 0x7888612486844Bb9BE598668081c59A9f7367FBc as 'the MiniPay issuer address on Mainnet' for phone-number lookups."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://minipay.to/privacy-statement
         quote: "Blockchain networks and related providers with whom you might complete a Crypto Assets transaction (no personal data)"
         detail: "The privacy statement says no personal data is shared with blockchain networks."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Each payment is a plain stablecoin transfer, which links payer and payee publicly. In addition, MiniPay's issuer publishes onchain an attestation that ties each registered wallet address to an ODIS-obfuscated phone identifier. That marks the address as a MiniPay account, and anyone with ODIS quota can resolve a phone number to it. The user-facing privacy statement says no personal data goes to blockchain networks. Judgment call: the attestation is described in developer docs but not to users, so the linkage is treated as undisclosed; 0 rather than 1.
     provider_response: null
@@ -347,7 +347,7 @@ scores:
         quote: "on-ramp providers, off-ramp providers, swaps providers"
         detail: "Privacy statement section 5 lists Opera Group companies, text-message, support and analytics providers, on/off-ramp and swap providers, AppsFlyer, Firebase Cloud Messaging, WhatsApp and Telegram (Indonesia)."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Third parties in and around the payment flow are disclosed by category in the privacy statement. The ramp providers and the RPC provider are not named, and none of this can be checked or swapped in code because the app is closed.
     provider_response: null
@@ -368,7 +368,7 @@ scores:
         quote: "Neither your key pair nor the Secret Recovery Phrase is available to us"
         detail: "MiniPay service terms: the app generates the key pair on the device, stores an encrypted private key, and backs up the recovery phrase to the user's Google account; Blueboard says it has no access to either."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       By the terms, MiniPay is self-custodial and payments go directly from payer to payee as token transfers. That matches anchor 3, but it rests on documents only: key generation and storage in the closed app cannot be checked. The documented cap of 1 applies.
     provider_response: null
@@ -394,7 +394,7 @@ scores:
         quote: "Neither your key pair nor the Secret Recovery Phrase is available to us"
         detail: "Terms: user-held keys and recovery phrase; assets held on Celo, not by Blueboard (see S1, C2)."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Derived. S1 = 1 (self-custody per terms, documented cap), C2 = 1 (direct ERC-20 transfer possible with the user's key, documented only), C3 = 0 (closed single-vendor app and backend), O3 unknown (nothing public to self-host). If Blueboard disappears, a user with the recovery phrase can move funds through another Celo wallet. This is documented, not verified, and the MiniPay app path itself stops.
     provider_response: null
@@ -424,55 +424,45 @@ availability:
       quote: we do not offer or make available any crypto-related services to users located in the People's Republic of China
       detail: MiniPay (Blueboard Limited) terms of service, general terms; same section says the Services are made available to users in qualifying countries and are void where prohibited.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://minipay.to/terms-of-service
       quote: The MiniPay Service is available only to users in qualifying countries
       detail: MiniPay Service section of the terms; the qualifying countries are not listed anywhere on minipay.to.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-09"
 
 audits:
   searched: >-
-    minipay.to and Opera's press and security blog pages (no MiniPay audit linked), github.com/celo-org/minipay, the
-    security-reviews folders of celo-org/celo-monorepo and celo-org/optimism (the latter holds upstream OP Stack reviews,
-    not listed here), the Celo forum (L2 audit and Core Contracts Release 8 posts), mento.org/audits and ChainSecurity's
-    Mento reports, and web searches for MiniPay, ODIS and SocialConnect audits. No audit of the MiniPay app, backend or
-    issuer service was found. Not listed: Immunefi's Nov-Dec 2024 Celo competition (L1-to-L2 migration tooling and
-    stCelo); Mento's Hats, Sherlock and Macro entries (no report linked); the ChainSecurity Mento Liquity v2 audit.
+    minipay.to and Opera's press and security blog pages (no MiniPay audit linked), github.com/celo-org/minipay, the security-reviews folders of celo-org/celo-monorepo and celo-org/optimism (the latter holds upstream OP Stack reviews, not listed here), the Celo forum (L2 audit and Core Contracts Release 8 posts), mento.org/audits and ChainSecurity's Mento reports, and web searches for MiniPay, ODIS and SocialConnect audits. No audit of the MiniPay app, backend or issuer service was found. Not listed: Immunefi's Nov-Dec 2024 Celo competition (L1-to-L2 migration tooling and stCelo); Mento's Hats, Sherlock and Macro entries (no report linked); the ChainSecurity Mento Liquity v2 audit.
   checked_at: "2026-10-13"
   reports:
     - auditor: ChainSecurity
       date: "2026-02-17"
       type: audit
       scope: >-
-        Shared component: Mento Core v3, including StableTokenV3 and StableTokenSpoke (the USDm token contracts), FPMM
-        swaps, liquidity strategies, oracle adapter and ReserveV2
+        Shared component: Mento Core v3, including StableTokenV3 and StableTokenSpoke (the USDm token contracts), FPMM swaps, liquidity strategies, oracle adapter and ReserveV2
       url: https://reports.chainsecurity.com/Mento/ChainSecurity_Mento_MentoCoreV3_Audit.pdf
       commit: 0e07807c222fabf93556bd48b263483f994b9332
       repo: https://github.com/mento-protocol/mento-core
       covers_deployed: unknown
       findings: "0 critical, 0 high, 7 medium, 9 low; 9 code corrected, 1 specification changed, 1 partly corrected, 5 risk accepted"
       note: >-
-        Five review rounds from 22 October 2025 (683af1f) to the final version 0e07807. USDm is one of the tokens MiniPay
-        users hold and send; whether the USDm proxy on Celo points to the audited StableTokenV3 was not checked.
+        Five review rounds from 22 October 2025 (683af1f) to the final version 0e07807. USDm is one of the tokens MiniPay users hold and send; whether the USDm proxy on Celo points to the audited StableTokenV3 was not checked.
     - auditor: Trail of Bits
       date: "2024-12-19"
       type: audit
       scope: >-
-        Celo L2 blockchain (OP Stack fork): token duality, fee currencies, alt-DA, L1-to-L2 data migration; celo-monorepo
-        contracts, celo-org/op-geth and celo-org/optimism
+        Celo L2 blockchain (OP Stack fork): token duality, fee currencies, alt-DA, L1-to-L2 data migration; celo-monorepo contracts, celo-org/op-geth and celo-org/optimism
       url: https://github.com/celo-org/celo-monorepo/blob/551bc1b6d76f7a08047573d70fb35b804dd84a00/packages/protocol/security-reviews/2024_12-Cel2-TrailOfBits.pdf
       repo: https://github.com/celo-org/op-geth
       commit: c6d7b55
       covers_deployed: partly
       findings: "0 high, 2 medium, 4 low, 4 informational"
       note: >-
-        Targets: celo-monorepo 89591e1 and PR #11261, op-geth c6d7b55, optimism 50977c3; review October-November 2024.
-        Celo mainnet has since moved to later rebases of op-geth and optimism (celo-rebase-17/18), so the audit covers an
-        earlier version of the chain MiniPay settles on.
+        Targets: celo-monorepo 89591e1 and PR #11261, op-geth c6d7b55, optimism 50977c3; review October-November 2024. Celo mainnet has since moved to later rebases of op-geth and optimism (celo-rebase-17/18), so the audit covers an earlier version of the chain MiniPay settles on.
     - auditor: Verilog Solutions
       date: "2022-09-20"
       type: audit
@@ -487,13 +477,9 @@ audits:
       date: "2022-07"
       type: audit
       scope: >-
-        Shared component: Celo Core Contracts Release 8 (per the Celo forum post, the release that added
-        FederatedAttestations and updated Escrow); exact contract list not read
+        Shared component: Celo Core Contracts Release 8 (per the Celo forum post, the release that added FederatedAttestations and updated Escrow); exact contract list not read
       url: https://hacken.io/wp-content/uploads/2022/08/CLABS_04072022_SCAudit_Report2-5.pdf
       blocked_to_bots: true
       covers_deployed: unknown
       note: >-
-        Linked as the Core Contracts Release 8 audit report in the Celo forum post "Core Contracts Release 8"
-        (forum.celo.org/t/core-contracts-release-8/4050) and in the cLabs Identity Team milestone post. The URL returns
-        HTTP 403 to scripted requests, so the report was not read; the date is taken from the file name. FederatedAttestations
-        holds the MiniPay issuer's phone attestations.
+        Linked as the Core Contracts Release 8 audit report in the Celo forum post "Core Contracts Release 8" (forum.celo.org/t/core-contracts-release-8/4050) and in the cLabs Identity Team milestone post. The URL returns HTTP 403 to scripted requests, so the report was not read; the date is taken from the file name. FederatedAttestations holds the MiniPay issuer's phone attestations.

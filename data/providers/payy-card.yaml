@@ -101,7 +101,7 @@ scores:
         path: eth/contracts/rollup3/RollupV1.sol
         detail: The owner can add or remove provers, add or remove ZK verifiers, add burn substitutors and overwrite the state root with setRoot (L264-L266); only a prover can call verifyRollup (L314-L322), so removing provers or verifiers halts all settlement. This file is identical to the Sourcify source of the deployed implementation.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://etherscan.io/address/0x367C1eAF14AA06b78ce76bd0243297de79d85270
@@ -113,7 +113,7 @@ scores:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000230dfb03f078b0d5e705f4624fcc915f3126b40f"
         recheck: cast call 0x367C1eAF14AA06b78ce76bd0243297de79d85270 "owner()(address)" --rpc-url https://ethereum-rpc.publicnode.com
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://etherscan.io/address/0x230Dfb03F078B0d5E705F4624fCC915f3126B40f
@@ -124,7 +124,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000002"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
@@ -132,7 +132,7 @@ scores:
         quote: "restrict all or part of your access to Service(s) at any time, in our own discretion, without notice or liability"
         detail: Terms of Service s2.2 let Payy restrict access without notice; s2.6.22 lets card use be restricted, suspended or terminated with immediate effect.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Onchain, a 2-of-4 Safe with undisclosed signers, no modules, no guard and no timelock owns the rollup. It can stop settlement (remove the prover or verifier) and can rewrite the state root outright. Payy's own EOA is the only prover, so it can also leave any transaction out of a block. Off-chain, the Terms let Payy restrict an individual's access without notice, and card use can be suspended with immediate effect. Judgment call: the onchain role alone would score 1 (multisig, no timelock, undisclosed signers), but the documented per-user restriction without notice meets anchor 0.
     provider_response: null
@@ -150,7 +150,7 @@ scores:
         path: eth/contracts/rollup3/RollupV1.sol
         detail: verifyRollup is onlyProver and also requires validator signatures over the new root; burns (withdrawals) execute only inside verifyRollup. mint() (L619-L648) is public, so deposits are direct, but nothing else is.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/polybase/payy/blob/2f95947f12981a838f6f0c9dddace825bf835502/pkg/guild-client-http/src/ramps.rs#L34-L50
@@ -158,7 +158,7 @@ scores:
         path: pkg/guild-client-http/src/ramps.rs
         detail: Card and ramp transactions are funded by POSTing a note to the Payy backend at /ramps/transactions/{id}/fund.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Merchants are paid by Visa and the issuer off-chain. On the rollup, a card debit is a note handed to Payy's closed backend, and only Payy's prover can put any transaction into a block on Ethereum. Neither payer nor payee can complete a card payment by calling the contracts directly.
     provider_response: null
@@ -176,7 +176,7 @@ scores:
         path: Cargo.toml
         detail: The workspace declares rain-http, rain-interface, rain-provider and sumsub-* crates, but none of those directories (nor the guild backend server) exist in the public tree; the public repo is a Copybara-filtered export (README.md#L128-L134).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
@@ -201,14 +201,14 @@ scores:
         path: pkg/kyc/src/kyc_update_required.rs
         detail: KYC rejection reasons include Sanctions, Sanctioned, Blacklist, Blocklist, Pep and WrongUserRegion; the checks themselves run in the closed backend and vendors. A search of RollupV1.sol, pkg/node and pkg/rpc for sanctions lists, blocklists or geo-IP found none.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://payy.link/privacy
         quote: "we ensure no OFAC jurisdictions are utilizing Payy"
         detail: Privacy Policy says automated compliance measures keep OFAC jurisdictions out.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The settlement contract has no address or country filter. Sanctions and region screening exists: it is disclosed in the privacy policy and Terms and visible as KYC rejection reasons in public code, but it runs in closed services, and with C2 at 0 there is no way around it. Judgment call: the screening logic and its list sources are not public, so I took 1 (the Gnosis Pay precedent) rather than 2.
     provider_response: null
@@ -227,7 +227,7 @@ scores:
         detail: The deploy script pins the rollup token to Circle USDC 0xA0b86991... on Ethereum (and native USDC on Polygon for the legacy deployment).
         checked_at: "2026-10-07"
         recheck: cast call 0x367C1eAF14AA06b78ce76bd0243297de79d85270 "usdc()(address)" --rpc-url https://ethereum-rpc.publicnode.com
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
@@ -238,7 +238,7 @@ scores:
         check:
           call: "0xbd102430"
           expect: "0x0000000000000000000000000a06be16275b95a7d2567fbdae118b36c7da78f9"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The token (USDC) and chain (Ethereum) are enumerated in code and onchain. The Terms, privacy policy and card docs do not mention Circle's freeze powers. They also do not say that the Payy rollup has a single Payy-run prover and no forced-inclusion path. Enumerated in code, assumptions not stated, so 2.
     provider_response: null
@@ -288,7 +288,7 @@ scores:
         path: README.md
         detail: Public modules are the frontends/TS packages (not the wallet app), Ethereum contracts, Noir circuits, aggregator, node, prover and RPC utilities.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The contracts, circuits, rollup node, aggregator and prover are public. The wallet app that holds keys and funds card debits is closed, and so is the card, ramps and KYC backend. Typed client bindings exist, but there is no published API schema. Judgment call: this is more than "SDK or contracts only", but both the frontend and the backend of the card path are closed, so 1.
     provider_response: null
@@ -306,7 +306,7 @@ scores:
         path: README.md
         detail: README gives prerequisites, a dev container and docker compose profiles for eth, node and prover.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Build docs exist for the rollup stack. Reproduction not attempted. A self-hosted node cannot settle against the deployed contract, which accepts only Payy's prover, and the card path needs closed services.
     provider_response: null
@@ -324,7 +324,7 @@ scores:
         path: eth/contracts/rollup3/RollupV1.sol
         detail: Event definitions (RollupVerified, Minted, Burned, MintAdded, verifier/prover events) are in source and compiled ABIs are committed under eth/artifacts.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/polybase/payy/blob/2f95947f12981a838f6f0c9dddace825bf835502/pkg/guild-client-http/src/ramps.rs#L18-L50
@@ -332,7 +332,7 @@ scores:
         path: pkg/guild-client-http/src/ramps.rs
         detail: Backend routes appear only as a typed Rust HTTP client; no OpenAPI or equivalent schema and no data export.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The ABIs and event schemas are in the repo. Backend routes appear only implicitly, through a Rust client, and there is no API schema and no export. Judgment call: between 1 and 2, so I took the lower; a typed client is not an API schema.
     provider_response: null
@@ -350,7 +350,7 @@ scores:
         path: eth/contracts/rollup3/RollupV1.sol
         detail: RollupV1.sol is SPDX UNLICENSED (as is the verified deployed source); the repo root at 2f95947 has no LICENSE file and GitHub reports no license.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The repo needed to run the rollup has no license, and the settlement contract is marked UNLICENSED. The wallet app and backend are closed. 0.
     provider_response: null
@@ -376,7 +376,7 @@ scores:
         path: eth/README.md
         detail: The Copybara sync commit lists LICENSE as removed (gh api repos/polybase/payy/commits/c4d2c902 shows status removed).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The repo was MIT until March 2026, when an internal sync removed the LICENSE and left the code unlicensed. That is a prior relicensing event, so 0. MIT grants on code published before c4d2c902 still stand.
     provider_response: null
@@ -394,7 +394,7 @@ scores:
         path: pkg/ramps-interface/src/account.rs
         detail: Card accounts are Rain services cards created through the closed backend (get_account_services_card, create_physical_card).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The card cannot run without Payy's proprietary backend and app, Rain, the issuer and Visa.
     provider_response: null
@@ -411,7 +411,7 @@ scores:
         quote: "We may collect service-related, diagnostic, and performance information"
         detail: Privacy Policy (last updated 6 May 2024) discloses automatic metrics and performance collection and push tokens.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The policy discloses diagnostics and performance collection. The app source is closed, so the SDKs in use and their defaults cannot be checked, and no trace was run. Judgment call: disclosed and presumed on by default, so 1. It could be 0 if the app ships undisclosed SDKs, which I cannot see.
     provider_response: null
@@ -428,7 +428,7 @@ scores:
         quote: "Identity verification is required to receive a card"
         detail: Card docs list name, birth date, address, government ID number and ID photo.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/polybase/payy/blob/2f95947f12981a838f6f0c9dddace825bf835502/pkg/kyc/README.md#L1-L40
@@ -436,7 +436,7 @@ scores:
         path: pkg/kyc/README.md
         detail: The KYC struct carries name, DOB, address, nationalities, ID documents, phone and email; no legal basis is stated.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The regulated card requires full KYC. The fields are disclosed in the docs and visible in code, but no legal basis is given in the repo. Disclosed beyond settlement needs, so 1.
     provider_response: null
@@ -455,7 +455,7 @@ scores:
         detail: The UTXO circuit's only public inputs are four note commitments and five message fields, and messages are all zeros except for mints and burns; owners, values and counterparties of a send are private witnesses.
         checked_at: "2026-10-07"
         recheck: gh api "repos/polybase/payy/contents/noir/utxo/src/main.nr?ref=2f95947f12981a838f6f0c9dddace825bf835502" --jq .content | base64 -d | sed -n 9,54p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/polybase/payy/blob/2f95947f12981a838f6f0c9dddace825bf835502/eth/contracts/rollup3/RollupV1.sol#L51-L75
@@ -463,7 +463,7 @@ scores:
         path: eth/contracts/rollup3/RollupV1.sol
         detail: L1 events carry only the block height and root (RollupVerified), and mint or burn amounts with the bridging EVM address (MintAdded, Burned); no payee, merchant or invoice field exists.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://eth.blockscout.com/tx/0xda88fb9273c703a4d2647c744362f58b6db4e104d7a203a75d4b67e3d54858c8
@@ -477,7 +477,7 @@ scores:
         quote: "Onchain wallet balances and activity cannot be linked to card transactions"
         detail: The card docs say each purchase is a Payy Network transaction that debits the user's UTXO notes.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A card purchase is a shielded send inside the rollup. Ethereum sees only state roots and a proof, so nothing public links a cardholder to a purchase, a merchant or an amount. Deposits and withdrawals do expose an EVM address and an amount, which bridging needs. The design is a privacy pattern (UTXO notes, nullifiers, link-based sends). Judgment call: I did not observe how Payy funds Rain onchain. If that leg exists it carries Payy's aggregate, not a user's notes, so I scored 3. The privacy is against the public, not against Payy: the backend receives the note for each card debit, which falls under P2 and P4. The card-specific Polygon deposit addresses mentioned in the FAQ are outside the rollup and were not assessed.
     provider_response: null
@@ -495,7 +495,7 @@ scores:
         path: pkg/ramps-interface/src/provider.rs
         detail: The provider enum names Alfred, Manteca, Payy, Rain, Sumsub, Cybrid and Stripe; choosing among them happens in the closed backend.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
@@ -503,7 +503,7 @@ scores:
         quote: "we may share personal information you previously provided to us under our Privacy Policy to verify your identity, with Rain"
         detail: Terms s2.6.9 disclose sharing with Rain and its service providers; Visa is named as the network.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Each card payment is seen by Visa, the issuer, Rain and Payy's backend. Vendors are named in code and the Terms, but nothing is swappable by user config, and no trace was run. 1.
     provider_response: null
@@ -530,7 +530,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000007d8837b547f4fea0053571cb149e845fc58e9b2d"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/polybase/payy/blob/2f95947f12981a838f6f0c9dddace825bf835502/eth/contracts/rollup3/RollupV1.sol#L258-L266
@@ -538,7 +538,7 @@ scores:
         path: eth/contracts/rollup3/RollupV1.sol
         detail: setRoot(bytes32) is onlyOwner and replaces the state root with no proof; together with addProver and addZkVerifier, the owner can mint itself notes and burn the escrow.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       User funds are notes inside a rollup whose escrow is an upgradeable proxy. The Payy owner Safe can overwrite the state root or swap the verifier, which means it can redirect funds. A card debit also hands a note to Payy's backend, which then funds Rain. The provider can redirect funds, so 0.
     provider_response: null
@@ -559,7 +559,7 @@ scores:
         check:
           slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
           expect: "0x000000000000000000000000fe455bacaf1968f1ae6a322b8ffbe56840e2f590"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://etherscan.io/address/0xfE455baCAF1968F1Ae6a322b8Ffbe56840e2f590
@@ -570,7 +570,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000230dfb03f078b0d5e705f4624fcc915f3126b40f"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A 2-of-4 Safe can upgrade the rollup instantly through the ProxyAdmin. The same Safe can also swap the ZK verifier through addZkVerifier, which is an upgrade in effect. Signers are undisclosed and nothing documents a notice channel. Multisig admin, no timelock, so 1.
     provider_response: null
@@ -589,7 +589,7 @@ scores:
         detail: mintWithAuthorization pulls the exact deposit value through USDC receiveWithAuthorization (EIP-3009) with validAfter/validBefore; mint() needs a prior ERC-20 approve.
         checked_at: "2026-10-07"
         recheck: gh api "repos/polybase/payy/contents/eth/contracts/rollup3/RollupV1.sol?ref=2f95947f12981a838f6f0c9dddace825bf835502" --jq .content | base64 -d | sed -n 650,719p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/polybase/payy/blob/2f95947f12981a838f6f0c9dddace825bf835502/pkg/ramps-interface/src/transaction/rpc.rs#L58-L62
@@ -597,7 +597,7 @@ scores:
         path: pkg/ramps-interface/src/transaction/rpc.rs
         detail: A ramps or card transaction is funded with one note payload per transaction, not a standing allowance.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No standing allowance exists in the card path. Deposits support exact-amount, expiring EIP-3009 authorisations, and card debits are funded one note at a time. Judgment call: this design meets anchor 3, but the app that chooses between mint and mintWithAuthorization is closed and no package or trace is available, so 2.
     provider_response: null
@@ -615,7 +615,7 @@ scores:
         path: eth/contracts/rollup3/RollupV1.sol
         detail: Burns are paid only from verifyBurn, which runs inside the onlyProver verifyRollup; the contract has no forced-exit or escape-hatch function.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: onchain
         url: https://etherscan.io/address/0x5343B904Bf837Befb2f5A256B0CD5fbF30503D38
@@ -669,6 +669,7 @@ settlement:
       detail: Terms s2.6 say a Supported Digital Asset (currently USDC) chosen as Preferred Spending Currency is transferred to Rain and converted to fiat when the card is used.
       quote: "you authorize direct transfer to Rain to convert said Preferred Spending Currency to fiat"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.google.com/document/d/14W43Qk_y64clQCVtpc2DNZl12vWPW0lejO9Kr2R1eys/edit?usp=sharing
@@ -676,6 +677,7 @@ settlement:
       detail: Terms s2.6 name USDC as the only Supported Digital Asset that qualifies a user for the card.
       quote: "When you hold Supported Digital Assets [currently USDC] on Payy"
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
     - tier: verified
       kind: repo
       url: https://github.com/polybase/payy/blob/2f95947f12981a838f6f0c9dddace825bf835502/eth/scripts/deploy.ts#L20-L29
@@ -683,17 +685,12 @@ settlement:
       path: eth/scripts/deploy.ts
       detail: The deploy script pins the rollup token to Circle USDC 0xA0b86991... on Ethereum.
       checked_at: "2026-10-12"
+      confirmed_at: 2026-10-19
   checked_at: "2026-10-12"
 
 audits:
   searched: >-
-    The Payy wallet FAQ (docs.payy.network), which says "the important parts of Payy's code have been audited" but
-    links no report; the polybase/payy repo tree (no audits/ folder; one GitHub security advisory, GHSA-fhxc-63vg-9gwr,
-    for the aggregation circuit); web searches for Payy and Polybase audits across Zellic, Veridise, Least Authority,
-    Spearbit, Hacken and Halborn; and the docs/ audit folder of github.com/safe-fndn/safe-smart-account for the owner
-    Safe. No audit of RollupV1, the Noir/Halo2 circuits or the node is published. The September 2026 exploit postmortem
-    cites a Spearbit incident report; that is incident analysis, not an audit, and is not listed. Audits of the
-    Barretenberg toolchain that generates the HonkVerifier are not logged here.
+    The Payy wallet FAQ (docs.payy.network), which says "the important parts of Payy's code have been audited" but links no report; the polybase/payy repo tree (no audits/ folder; one GitHub security advisory, GHSA-fhxc-63vg-9gwr, for the aggregation circuit); web searches for Payy and Polybase audits across Zellic, Veridise, Least Authority, Spearbit, Hacken and Halborn; and the docs/ audit folder of github.com/safe-fndn/safe-smart-account for the owner Safe. No audit of RollupV1, the Noir/Halo2 circuits or the node is published. The September 2026 exploit postmortem cites a Spearbit incident report; that is incident analysis, not an audit, and is not listed. Audits of the Barretenberg toolchain that generates the HonkVerifier are not logged here.
   checked_at: "2026-10-13"
   reports:
     - auditor: Nethermind Security

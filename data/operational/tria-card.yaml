@@ -152,7 +152,7 @@ facts:
         detail: Privacy Policy s11, How We Protect Your Information.
         checked_at: "2026-10-09"
         quote: including encryption at rest and during transit
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: trace
         url: https://www.tria.so
@@ -179,7 +179,7 @@ facts:
         detail: Privacy Policy s12, Information Storage.
         checked_at: "2026-10-09"
         quote: We retain your information for as long as necessary to provide the Services
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     refs:
       - criterion: P2
         index: 0
@@ -197,7 +197,7 @@ facts:
         detail: Privacy Policy opening paragraph and s5 Biometric Data.
         checked_at: "2026-10-09"
         quote: This Privacy Policy describes how Threely Dimensions, Inc.
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -510,7 +510,7 @@ maturity:
         detail: Privacy Policy naming Threely Dimensions, Inc.
         checked_at: "2026-10-09"
         quote: This Privacy Policy describes how Threely Dimensions, Inc.
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     note: Jurisdiction inferred from the Delaware governing-law and venue clause; incorporation state not stated and not checked in the Delaware Division of Corporations search (interactive). SEC EDGAR full-text search returned no filings for the name.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09

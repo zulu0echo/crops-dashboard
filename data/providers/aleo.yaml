@@ -98,7 +98,7 @@ scores:
         detail: snarkVM carries a consensus-level restrictions registry that can block whole programs, single functions, or specific public or constant argument values (for example an address passed to transfer_public) over block ranges; is_argument_restricted (L237-L290) matches only public and constant inputs and outputs.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/src/restrictions/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 32,60p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/parameters/src/mainnet/resources/restrictions.json#L1-L6
@@ -107,7 +107,7 @@ scores:
         detail: The mainnet list is empty (no programs, functions or arguments) at v4.11.0; it has been empty since it was introduced in June 2024 (commits e8e59b7f and e579d0a9).
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/resources/restrictions.json?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       credits.aleo itself has no admin, pause or blacklist. But the node software has a built-in restrictions list that, once a release containing entries is adopted by the validator committee, makes the chain reject named programs, functions or public argument values such as a specific address, from a chosen block height. The list is empty today. Private transfers cannot be targeted by address because their arguments are encrypted, but the whole transfer_private function could be restricted. Provable maintains the only node implementation we found, and 23 validators decide whether to run a release. Judgment call: there is no key, but an address-level filter is designed into consensus and can be activated by one release with no enforced delay, so we score 1, not 2.
     provider_response: null
@@ -133,7 +133,7 @@ scores:
         path: synthesizer/program/src/resources/credits.aleo
         detail: transfer_private takes the sender's record, a private recipient and a private amount, and outputs a record for the recipient and a change record; no third-party signature is required.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A payer can build and prove a transfer locally and submit it to any Aleo node, with no Provable service in the path, using the public CLI or SDK. Judgment call: anchor 3 needs onchain evidence about the deployed program, which the dashboard cannot record for Aleo addresses and programs (the schema's address formats do not fit), so we take 2; the deployed credits.aleo matches source (see O1).
     provider_response: null
@@ -152,7 +152,7 @@ scores:
         detail: Proving parameters above degree 15 are downloaded from https://parameters.provable.com/mainnet with https://s3.us-west-1.amazonaws.com/mainnet.parameters as fallback; both are Provable-controlled and checksums are in the repo.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 25,42p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/ProvableHQ/sdk/blob/9bbe5e63b29dcadc93fad29fe4631e8c186ce639/sdk/src/program-manager.ts#L597-L610
@@ -160,7 +160,7 @@ scores:
         path: sdk/src/program-manager.ts
         detail: The SDK defaults to the Provable API (https://edge.provable.com/api/v2) when no host is passed, and the snarkOS CLI defaults to https://api.explorer.provable.com/v2 (developer/mod.rs L80); both accept any node URL.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       No relayer or paymaster is needed, and any snarkOS node can take the transaction. Two things are hosted by Provable by default: the API endpoint, which the user can replace with their own node, and the proving parameters, which every client downloads from Provable's two URLs on first use. The parameter files are checksummed in public code, so a mirror is possible, but none is configured. Scored 2: required intermediaries with public code, no independent fallback by default.
     provider_response: null
@@ -179,7 +179,7 @@ scores:
         detail: The consensus restrictions list is empty, so no program, function or argument is filtered at settlement today.
         checked_at: "2026-10-09"
         recheck: gh search code --repo ProvableHQ/snarkOS country --json path --jq '.[].path'; gh search code --repo ProvableHQ/sdk sanction --json path --jq '.[].path'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/ProvableHQ/snarkOS/blob/493fca395c2c9a103f3f57f1f1aede0a9dae8949/cli/src/commands/developer/transfer_private.rs#L46-L90
@@ -205,7 +205,7 @@ scores:
         detail: The unit's asset is Aleo credits held as private records or public account balances in credits.aleo; there is no issuer freeze and no sequencer.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | grep -n '^function'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Native credits have no issuer freeze, and the chain has a validator committee rather than a sequencer. Other tokens on Aleo, including stablecoin programs that Provable publishes as compliant-stablecoin examples, are out of scope here and may carry freeze lists. Neither the CLI nor the SDK tells payees about the committee or restrictions-list assumptions. Scored 2: enumerated in code, assumptions not stated.
     provider_response: null
@@ -224,7 +224,7 @@ scores:
         detail: The credits.aleo program text served for mainnet by the Provable API on 2026-10-09 is token-for-token identical to this file once comments are removed (1,471 tokens each).
         checked_at: "2026-10-09"
         recheck: diff <(curl -s https://api.explorer.provable.com/v1/mainnet/program/credits.aleo | jq -r . | perl -0pe 's#/\*.*?\*/##sg;s#//[^\n]*##g' | tr -s ' \t\n' '\n' | grep .) <(gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | perl -0pe 's#/\*.*?\*/##sg;s#//[^\n]*##g' | tr -s ' \t\n' '\n' | grep .) && echo identical
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Aleo programs are stored onchain as Aleo instructions, so source and deployment can be compared directly; credits.aleo matches the snarkVM source. Sourcify does not cover Aleo, and we read the deployed program through Provable's hosted API rather than our own node. Judgment call: a full source match through an explorer-style API is anchor 2; anchor 3 is defined by Sourcify and a rebuild script, which do not apply.
     provider_response: null
@@ -260,7 +260,7 @@ scores:
         path: README.md
         detail: The snarkOS README covers requirements, installation, ports and running a client, validator or prover.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Build and run documentation exists for the node. Reproduction not attempted, so the score is capped at 1.
     provider_response: null
@@ -279,7 +279,7 @@ scores:
         detail: The settlement program's interface (functions, inputs, records, mappings, finalize logic) is in the repo; the node's REST routes are defined in snarkOS node/rest/src/lib.rs.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkOS/contents/node/rest/src/lib.rs?ref=493fca395c2c9a103f3f57f1f1aede0a9dae8949" --jq .content | base64 -d | grep -n 'route('
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The program interface and the node API are versioned in the repos. We found no payee export format in the CLI or SDK. Scored 2: interfaces present, export absent.
     provider_response: null
@@ -298,7 +298,7 @@ scores:
         detail: snarkVM and snarkOS are Apache-2.0; the SDK and Leo are GPL-3.0.
         checked_at: "2026-10-09"
         recheck: for r in snarkOS snarkVM sdk leo; do echo $r $(gh api repos/ProvableHQ/$r --jq '.license.spdx_id'); done
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Every listed repository, including all required ones (node, VM and settlement program), carries an OSI-approved licence. Closed components (hosted API, proving and scanning services, consumer wallets) are optional.
     provider_response: null
@@ -317,7 +317,7 @@ scores:
         detail: snarkVM's licence changed from GPL to Apache-2.0 in commit b8cd7cbc (2023-05-21) and snarkOS's in 2f449c59 the same day; no CLA appears in either repo's CONTRIBUTING or workflows.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/commits?path=LICENSE.md&per_page=10" --jq '.[]|[.sha[0:8],.commit.author.date,.commit.message[0:60]]|@tsv'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       There is no CLA and no written licence-stability commitment. The node and VM were relicensed from GPL to Apache-2.0 in May 2023, which widened rights but shows the maintainer can change the licence of future versions. Judgment call: anchor 0 names any prior relicense event; under the take-the-lower-anchor rule we score 0, though the change was permissive.
     provider_response: null
@@ -336,7 +336,7 @@ scores:
         detail: The only hosted dependency on the required path is the proving-parameter download, which is public, Apache-licensed data checked against hashes in the repo.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 25,42p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A production deployment (own node, CLI or SDK) needs no proprietary software. The proving parameters are fetched from Provable's hosts but are open data that can be mirrored. The hosted API, delegated proving and record scanning are optional. Judgment call: 2, since we made no O3 reproduction and the parameter hosting has no independent default.
     provider_response: null
@@ -378,7 +378,7 @@ scores:
         detail: transfer_private takes only a record, a recipient and an amount; the fee functions add only the fee amount and an execution id.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,869p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       The protocol collects only what settlement needs. No required component holds account or identity data. Optional Provable services see more: the hosted API sees the submitting IP, and the record-scanning service, if used, needs the user's view key.
     provider_response: null
@@ -397,7 +397,7 @@ scores:
         detail: transfer_private keeps sender, recipient and amount private (encrypted records); transfer_private_to_public and transfer_public_to_private reveal one side and the amount, as the program comments state.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,940p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: verified
         kind: repo
         url: https://github.com/ProvableHQ/sdk/blob/9bbe5e63b29dcadc93fad29fe4631e8c186ce639/sdk/src/program-manager.ts#L3266-L3315
@@ -405,7 +405,7 @@ scores:
         path: sdk/src/program-manager.ts
         detail: The SDK's transfer builder makes the caller choose the transfer type and whether to pay the fee from a private record or the public balance.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       A transfer_private with a private fee reveals no payer, payee or amount onchain; the program and function name, timing and transaction size are visible. Paying the fee publicly (fee_public) reveals the payer's address, and public transfers are fully transparent; both are explicit choices in the SDK and CLI. The anonymity set depends on how much activity uses records, which we do not score. Judgment call: we score what the protocol offers for a private transfer, which is anchor 3.
     provider_response: null
@@ -424,7 +424,7 @@ scores:
         detail: The default host (edge.provable.com) is named in code and replaced by passing a host; the network client also takes optional prover and record-scanner URIs (network-client.ts L120-L124).
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/sdk/contents/sdk/src/program-manager.ts?ref=9bbe5e63b29dcadc93fad29fe4631e8c186ce639" --jq .content | base64 -d | sed -n 597,610p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       By default the SDK and CLI query and broadcast through Provable's API, which sees the user's IP, the records they look up and the transactions they submit; the parameter host sees downloads. All are named in code and swappable for a self-run node. Optional delegated proving and record scanning send more (an authorization or a view key) to Provable. Scored 2: third parties present, named in code, swappable by config.
     provider_response: null
@@ -461,7 +461,7 @@ scores:
         detail: transfer_private consumes the sender's record and creates a record owned by the recipient in the same transition; no escrow or third party holds funds.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 842,869p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Value moves directly from the payer's record to a record the payee owns. No one holds funds in flight. Judgment call: anchor 3 in substance, but 3 needs onchain evidence the schema cannot carry for Aleo, so we take 2.
     provider_response: null
@@ -487,7 +487,7 @@ scores:
         path: synthesizer/program/src/resources/credits.aleo
         detail: Joining the committee needs at least 10M credits delegated (L242); the committee read through the Provable API on 2026-10-09 had 23 members, 21 open to delegation, about 1.05 billion credits bonded.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       credits.aleo and the consensus rules change only through snarkVM releases with fixed activation heights, which the 23 validators must run. Provable maintains the only implementation we found, and it has shipped 21 consensus versions in about two years, each activated at a block height fixed in the release; we did not check how far ahead each release shipped. There is no enforced delay or user-exit window. Judgment call: notice exists through heights fixed in releases (V21 carried a target date in code), so we take 2, as for other own-chain protocols; 3 would also need onchain evidence the schema cannot carry. The restrictions list is scored under C1.
     provider_response: null
@@ -506,7 +506,7 @@ scores:
         detail: credits.aleo has no approve or allowance function; every transfer is executed by the owner's key (self.caller, self.signer or record ownership).
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/synthesizer/program/src/resources/credits.aleo?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | grep -n '^function'
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       There are no allowances for native credits; each payment is executed by the owner, so nothing can pull funds later. Judgment call: better than exact-amount approvals in substance, but 3 needs a distributed-package or trace record, so we take 2.
     provider_response: null
@@ -525,7 +525,7 @@ scores:
         detail: Every execution, including a withdrawal of one's own credits, needs proving parameters that clients download only from Provable's two URLs unless already cached.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/mod.rs?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d | sed -n 25,42p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Derived from S1=2 (anchor 3 in substance), C2=2, C3=2 and O3=1. Funds are records or balances under the user's key (S1), and any node accepts a transaction (C2). But spending needs proving parameters that the code fetches only from Provable-run hosts (C3); if Provable disappeared, a user without a cached copy would need to obtain the files elsewhere and check them against the published hashes, a manual step no repo documents. We did not reproduce a self-hosted setup (O3=1). Judgment call: funds are retrievable without Provable only by that undocumented manual step, so we score 1.
     provider_response: null
@@ -544,7 +544,7 @@ scores:
         detail: The SDK accepts an optional API key or JWT for Provable's gateway, supplied by the integrator; none is bundled.
         checked_at: "2026-10-09"
         recheck: gh api "repos/ProvableHQ/sdk/contents/sdk/src/network-client.ts?ref=9bbe5e63b29dcadc93fad29fe4631e8c186ce639" --jq .content | base64 -d | sed -n 36,72p
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     finding: >-
       Private keys stay with the user; the protocol has no webhooks. The SDK supports an optional gateway API key or JWT, which an integrator could ship in a browser bundle; the SDK does not do so itself. Using the optional record-scanning service hands a view key to Provable. Judgment call: 2, since 3 needs a package or trace record and the optional services widen key exposure.
     provider_response: null
@@ -573,7 +573,7 @@ availability:
       detail: The mainnet restrictions list is empty.
       checked_at: "2026-10-09"
       recheck: gh api "repos/ProvableHQ/snarkVM/contents/parameters/src/mainnet/resources/restrictions.json?ref=29343ebbb7970e4240b4444346aeb26e31009bd7" --jq .content | base64 -d
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: verified
       kind: repo
       url: https://github.com/ProvableHQ/snarkOS/blob/493fca395c2c9a103f3f57f1f1aede0a9dae8949/cli/src/commands/developer/transfer_private.rs#L46-L90

@@ -16,15 +16,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no security policy file"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -44,15 +44,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no scanning config or workflow step found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -72,15 +72,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no deployment configuration"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -100,15 +100,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/rules/branches/main
         detail: "HoudiniSwap/houdiniswap-agent: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/rules/branches/main
         detail: "HoudiniSwap/houdini-api-examples: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -128,15 +128,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: 2 workflow file(s)"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no .github/workflows"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -156,15 +156,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: test command in a workflow"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,15 +184,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: coverage tooling referenced"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -212,26 +212,26 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/tags
         detail: "HoudiniSwap/houdiniswap-agent: no tags"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/tags
         detail: "HoudiniSwap/houdini-api-examples: no tags"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
   B9.6:
-    status: absent
+    status: evidenced
     value:
-      summary: none
+      summary: some
       repos:
         - repo: HoudiniSwap/houdiniswap-agent
-          ok: false
-          detail: 3 of 10 recent commits signed
+          ok: true
+          detail: 5 of 10 recent commits signed
         - repo: HoudiniSwap/houdini-api-examples
           ok: false
           detail: 0 of 10 recent commits signed
@@ -239,16 +239,16 @@ facts:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/commits?per_page=10
-        detail: "HoudiniSwap/houdiniswap-agent: 3 of 10 recent commits signed"
-        checked_at: 2026-10-12
+        detail: "HoudiniSwap/houdiniswap-agent: 5 of 10 recent commits signed"
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/commits?per_page=10
         detail: "HoudiniSwap/houdini-api-examples: 0 of 10 recent commits signed"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -268,15 +268,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: no changelog or release notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: no changelog or release notes"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -296,15 +296,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdiniswap-agent/contents/?ref=main
         detail: "HoudiniSwap/houdiniswap-agent: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/HoudiniSwap/houdini-api-examples/contents/?ref=main
         detail: "HoudiniSwap/houdini-api-examples: none found"
-        checked_at: 2026-10-12
+        checked_at: 2026-10-19
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-12
+    checked_at: 2026-10-19
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -331,7 +331,7 @@ facts:
         detail: Partner FAQs, Security & Audit.
         checked_at: 2026-10-09
         quote: Houdini is currently in the process of obtaining
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -346,7 +346,7 @@ facts:
         detail: Partner FAQs, Security & Audit, question on why Houdini has not been audited while competitors have.
         checked_at: 2026-10-09
         quote: For detailed security documentation or enterprise discussions, contact the Houdini team.
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -402,7 +402,7 @@ facts:
         detail: API reference, Get system health.
         checked_at: 2026-10-09
         quote: Returns a public, partner-safe summary of HoudiniSwap API and quote system availability
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -442,7 +442,7 @@ facts:
         detail: API Keys & Authentication page.
         checked_at: 2026-10-09
         quote: Houdini uses API key and secret authentication passed via the
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -469,7 +469,7 @@ facts:
         detail: API Keys & Authentication page, credential handling.
         checked_at: 2026-10-09
         quote: contact support to rotate credentials
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -484,7 +484,7 @@ facts:
         detail: Rate Limits & Tiers page.
         checked_at: 2026-10-09
         quote: Rate limits are enforced per endpoint.
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -512,7 +512,7 @@ facts:
         detail: Privacy Notice (last updated 25 January 2024), Transaction Data retention.
         checked_at: 2026-10-09
         quote: WE RETAIN TRANSACTION DATA FOR A STANDARD PERIOD OF 72 HOURS
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     refs:
       - criterion: P2
         index: 0
@@ -589,7 +589,7 @@ facts:
         detail: Fees & Pricing page.
         checked_at: 2026-10-09
         quote: Houdini Swap earns a commission back from each exchange post-swap
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -629,7 +629,7 @@ facts:
         detail: Partner FAQs, Risk & Compliance.
         checked_at: 2026-10-09
         quote: Primary screening is performed by execution partners at the deposit stage
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -676,21 +676,21 @@ fees:
       detail: Fees & Pricing page (all-in quote, fees by swap type).
       checked_at: 2026-10-09
       quote: Fees are approximately double the No Wallet Connect option
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://api-partner.houdiniswap.com/v2/openapi.json
       detail: Partner API v2 OpenAPI spec (version 2.1.2), route markup fields and the minMax endpoint.
       checked_at: 2026-10-09
       quote: True when the route can apply partner markup.
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
     - tier: documented
       kind: document
       url: https://docs.houdiniswap.com/developer-hub/core-concepts/x402-pay-per-request
       detail: x402 Payments page, pricing table.
       checked_at: 2026-10-09
       quote: Requests are priced by operation type in USDC
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: The swap fee is not published as a figure; it can be read only as the difference between quote and market rate. Exchange partners' own spreads are inside the quote. Houdini Pay links let the creator choose whether sender or receiver pays the fees (release notes, 15 September 2026).
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -718,7 +718,7 @@ licences:
       detail: About Houdini; Houdini describes itself as a non-custodial aggregator that runs no exchange and holds no funds, and names no licence.
       checked_at: 2026-10-09
       quote: Houdini does not operate its own exchange and does not hold user funds
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: No licence or registration found for Houdini Swap LLC in the Terms, Privacy Notice or docs; its jurisdiction of formation is not stated, so no register was searched. The 12 named exchange partners (ChangeNow, SimpleSwap, StealthEx and others) hold any licences in the swap path; none was checked.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -740,7 +740,7 @@ cashout:
       detail: Private Swap page; exchange 2 pays the recipient address.
       checked_at: 2026-10-09
       quote: routing the transaction through two separate non-custodial exchanges
-      confirmed_at: 2026-10-12
+      confirmed_at: 2026-10-19
   note: "Fiat cash-out: not_applicable. Houdini has no fiat leg, card, bank or cash partner; the only payout is the crypto leg to an address, and converting to fiat falls to the recipient or the deploying institution. ALL means every country outside the provider file's blocklist (US and unnamed sanctioned jurisdictions)."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -795,14 +795,14 @@ maturity:
         detail: Privacy Notice header.
         checked_at: 2026-10-09
         quote: "Last Updated: January 25, 2024"
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/changelog/release-notes
         detail: Release notes, entry of 18 August 2026 (Token Security Screening).
         checked_at: 2026-10-09
         quote: Every swap now runs an automatic Blockaid security scan
-        confirmed_at: 2026-10-12
+        confirmed_at: 2026-10-19
       - tier: documented
         kind: document
         url: https://cdn.prod.website-files.com/69143df941a2491956546ef7/6a579a7d3db98c279dc6020b_Houdini%20Swap%20-%20Terms%20of%20Service-14673161-v6.pdf
