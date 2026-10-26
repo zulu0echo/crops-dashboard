@@ -17,14 +17,14 @@ facts:
         detail: Fiat24 user manual, MasterCard Debit, one-time password section.
         checked_at: 2026-10-09
         quote: One-time Password (OTP) per Email
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
         detail: Fiat24 Terms of Use, account token held in the user's wallet.
         checked_at: 2026-10-09
         quote: Without it, your wallet cannot connect to any Services
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -39,7 +39,7 @@ facts:
         detail: Fiat24 Privacy Policy (effective 14 February 2023) section 5.
         checked_at: 2026-10-09
         quote: We employ industry standard security measures designed to protect the security of all information submitted through the Services
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -54,7 +54,7 @@ facts:
         detail: Fiat24 Privacy Policy section 5.
         checked_at: 2026-10-09
         quote: We retain information we collect as long as it is necessary and relevant to fulfill the purposes outlined in this privacy policy
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: P2
         index: 0
@@ -72,7 +72,7 @@ facts:
         detail: Fiat24 Privacy Policy opening paragraph.
         checked_at: 2026-10-09
         quote: entered in the Commercial Register of the Canton of Zurich under the number CHE-256.014.995
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -97,21 +97,21 @@ facts:
         detail: Fiat24 Terms of Use, section 1.
         checked_at: 2026-10-09
         quote: has a license as a fintech company according to Article 1b of the Swiss Banking Act
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://www.uid.admin.ch/Detail.aspx?uid_id=CHE256014995
         detail: Swiss UID register, SR Saphirstein AG, Aktiengesellschaft, Bellerivestrasse 245, 8008 Zurich; commercial register status active.
         checked_at: 2026-10-09
         quote: CHE-256.014.995
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://www.safepal.com/en/bank
         detail: SafePal card page, footnote 1.
         checked_at: 2026-10-09
         quote: which solely handles the compliance and licensing aspect
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -126,21 +126,21 @@ facts:
         detail: Fiat24 Terms of Use section 23 (When we can end these Terms of Use).
         checked_at: 2026-10-09
         quote: close your Fiat24 Account, or any Service associated with it by giving you two months prior notice
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.fiat24.com/user/account-types/individual-account
         detail: Fiat24 user manual, Individual Account, Forced Exit.
         checked_at: 2026-10-09
         quote: reserve the right to enforce a mandatory payout
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
         detail: Fiat24 Terms of Use section 7.
         checked_at: 2026-10-09
         quote: the Swiss Deposit Protection Scheme DOES NOT apply to client deposits with Fiat24
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -368,21 +368,21 @@ fees:
       detail: SafePal help centre, Fee Rates for the SafePal Fiat Gateway and Mastercard (linked from the card page as the Pricing and Fee disclosures).
       checked_at: 2026-10-09
       quote: Mastercard transactions settled in non-USD currencies will incur a 1% currency exchange fee
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.fiat24.com/user/payments/cash-payout
       detail: Fiat24 user manual, Cash Payout, Fee section.
       checked_at: 2026-10-09
       quote: Successful Payouts are free
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.safepal.com/en/bank
       detail: SafePal card page FAQ on limits and fees.
       checked_at: 2026-10-09
       quote: with fiat transfer and deposit fees being as low as 0.6%
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: "Contradiction: SafePal's card page advertises top-up fees from 0.4% and fiat fees from 0.6%, while the fee article it links (updated 25 July 2026) sets the standard deposit and top-up fee at 0%. Recorded as the fee article states; the more recent and more specific source. Fiat24's Terms (section 11) also say crypto top-ups carry a percentage fee per its Pricing page."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -420,14 +420,14 @@ licences:
       detail: FINMA authorised-institutions search for "Saphirstein" (client-rendered; result read in a browser and archived) lists SR Saphirstein AG, Zurich, under licensed persons pursuant to Article 1b BA (FinTech licence).
       checked_at: 2026-10-09
       quote: Licensed persons pursuant to Article 1b BA (FinTech licence)
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.fiat24.com/legal/terms-and-conditions-fiat24-users-and-clients
       detail: Fiat24 Terms of Use section 1.
       checked_at: 2026-10-09
       quote: has a license as a fintech company according to Article 1b of the Swiss Banking Act
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: SafePal holds no licence for this product; its page says Fiat24 solely handles compliance and licensing. The FINMA entry gives no licence number or date. Card processing by Marqeta and the Mastercard principal membership behind the BIN were not checked.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -455,14 +455,14 @@ cashout:
       detail: Fiat24 user manual, MasterCard Debit (virtual only, no PIN; Apple Pay and Google Pay).
       checked_at: 2026-10-09
       quote: The Fiat24 Debit Card is a virtual card only without PIN
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.fiat24.com/user/payments/cash-payout
       detail: Fiat24 user manual, Cash Payout.
       checked_at: 2026-10-09
       quote: Minimal payout amount is 100 EUR or 100 CHF
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: ALL means every country in the availability list (42 Mastercard regions per SafePal). No ATM route is documented; the card is virtual without a PIN. The wider IBAN-only region list has a 1,000 USD monthly limit and no card.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -503,7 +503,7 @@ maturity:
         detail: Swiss UID register, SR Saphirstein AG (SR Saphirstein Ltd), Aktiengesellschaft, Bellerivestrasse 245, 8008 Zurich; UID and commercial register status active, register reference CH-020.3.046.001-4.
         checked_at: 2026-10-09
         quote: SR Saphirstein AG
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: The contracting party for the account and card is Fiat24 (SR Saphirstein AG), not SafePal. SafePal's own legal entity was not identified in a primary source.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -529,7 +529,7 @@ maturity:
         detail: Fiat24 user manual, Individual Account, Monthly Limit.
         checked_at: 2026-10-09
         quote: Starting from June 5, 2026, due to an internal policy change, all new individual clients will be subject to a monthly transaction limit of USD 30,000
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Upgrades of the card authoriser proxy were not listed because Arbiscan and arbitrum.blockscout.com refuse scripted requests.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

@@ -29,14 +29,14 @@ fees:
       quote: "HesabPay reserves the right to adjust maintenance fees with reasonable notice."
       detail: Terms and Conditions (effective 2026-04-06) s4.1 Monthly Maintenance Charges; s2.2 says statements carry no fee.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://hesab.com/visa/FAQs
       quote: "An approximately 1% foreign-exchange fee may apply when converting funds from AFN to USD"
       detail: HesabPay Visa Card FAQ items 05 (fees) and 06 (limits).
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: No published tariff for transfers, E-Hawala cash-out or agent cash-in was found on hesab.com (sitemap read 2026-10-09; /fees and /pricing return 404). Those components are unknown, not zero.
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -73,7 +73,7 @@ licences:
       quote: "Zinzir Ltd"
       detail: "Da Afghanistan Bank list of licensed electronic money institutions: HesabPay, Name of EMI: Zinzir Ltd, license No: EMI101005, License Date: 5 June 2023, website https://hesab.com/."
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: The terms and privacy policy name HesabPay, Inc. (Delaware) as the contracting party. Neither document states how it relates to the licensee Zinzir Ltd. HesabPay's September 2026 security post says the official app is published under the Zinzir Ltd. brand. No US money-transmitter licence was looked for.
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -102,21 +102,21 @@ cashout:
       quote: "Recipients receive an SMS notification and can collect cash from any of HesabPay"
       detail: Terms s2.4 E-Hawala (cash-out transfers), also usable by recipients without a HesabPay account.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://hesab.com/terms
       quote: "Sending and receiving money from linked bank accounts."
       detail: Terms s1.2 services.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://hesab.com/terms
       quote: "ATM cash withdrawals from any Visa-enabled ATM globally"
       detail: Terms s1.4 HesabPay Visa Card. HesabPay's July 2026 announcement describes the card as virtual, so ATM use may depend on a physical card or a wallet-enabled ATM; this was not checked.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: No cash-out fees are published. ALL for ATM follows the terms' "globally"; the card itself is offered only to HesabPay account holders.
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -142,7 +142,7 @@ maturity:
         quote: "where HesabPay, Inc. is incorporated in Delaware"
         detail: Privacy Policy s8; terms s9 put the agreement under Delaware law; contact address 2093 Philadelphia Pike, Claymont, DE.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: The Delaware company register was not read (its entity search sits behind a challenge page, which was not bypassed), so no registration number is recorded. The licensed entity in Afghanistan is Zinzir Ltd (see licences).
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -171,14 +171,14 @@ maturity:
         quote: "EMI101005"
         detail: DAB licensed EMI list entry for HesabPay.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://hesab.com/resources/blog/hesabpay-launches-visa-cards-what-users-should-know
         quote: "today announced the launch of Hesab Visa Pay virtual cards in Afghanistan"
         detail: HesabPay press release dated Kabul, July 24, 2026.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -225,7 +225,7 @@ facts:
         quote: "Regular security audits and penetration testing."
         detail: Privacy Policy s4.2 Security Measures (also states PCI DSS compliance for card data).
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -278,7 +278,7 @@ facts:
         quote: "Multi-factor authentication for account access and high-value transactions."
         detail: Privacy Policy s4.2.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -342,7 +342,7 @@ facts:
         quote: "Your data is stored on secure servers with encryption at rest and in transit."
         detail: Privacy Policy s4.1.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: trace
         url: https://hesab.com
@@ -369,7 +369,7 @@ facts:
         quote: "Transaction records are retained for a minimum of 5 years as required by financial regulations."
         detail: Privacy Policy s4.3 Data Retention.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -423,7 +423,7 @@ facts:
         quote: "This Agreement shall be governed by the laws of the State of Delaware, United States."
         detail: Terms s9; s6 and the footer name HesabPay, Inc.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -438,7 +438,7 @@ facts:
         quote: "HesabPay reserves the right to adjust maintenance fees with reasonable notice."
         detail: Terms s4.1.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -453,7 +453,7 @@ facts:
         quote: "Court or government orders mandating termination."
         detail: Terms s7 Termination.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -468,7 +468,7 @@ facts:
         quote: "is an AI-powered payment assistant that allows users to initiate transactions"
         detail: Terms s2.1 Ask HesabPay; privacy policy s3 names AI processing partners.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:

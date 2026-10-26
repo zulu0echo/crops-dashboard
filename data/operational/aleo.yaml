@@ -31,7 +31,7 @@ fees:
       url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/synthesizer/program/src/resources/credits.aleo#L988-L1046
       path: synthesizer/program/src/resources/credits.aleo
       detail: fee_private consumes a private record and returns change to the same owner; fee_public debits the signer's public account mapping. Both take a base amount and a priority fee and add them.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: verified
       kind: repo
       commit: 29343ebbb7970e4240b4444346aeb26e31009bd7
@@ -39,7 +39,7 @@ fees:
       url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/ledger/block/src/helpers/target.rs#L54-L69
       path: ledger/block/src/helpers/target.rs
       detail: The staking block reward is 5% annual issuance per block plus one third of the coinbase reward plus transaction fees, so fees go to validators and their delegators; none goes to a foundation or developer.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: verified
       kind: onchain
       url: https://api.explorer.provable.com/v1/mainnet/transaction/at1k0dy4mpj3vercaeq2a0rmvhga5v0h0shw5e2d85g4sr80ufazvqs6vwxx9
@@ -117,14 +117,14 @@ maturity:
         detail: Provable's terms identify the company as a Delaware corporation. Provable maintains snarkVM, snarkOS, the SDK and Leo (ProvableHQ GitHub organisation) and runs the explorer API and parameter hosts.
         quote: provided by Provable Inc., a Delaware corporation
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://aleo.org/grants/
         detail: The Aleo Network Foundation runs aleo.org and the ecosystem grants programme.
         quote: The Aleo Network Foundation (ANF) Grants Program provides up to $100K in funding
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Judgment call. Provable Inc. is recorded because it maintains the node and VM that define the unit. The Aleo Network Foundation's legal form and jurisdiction were not found on the pages read (aleo.org footer, FAQ, grants, privacy); its contributor-terms PDF was not parsed. The Delaware company register search is behind a CAPTCHA and was not used, so no register_url.
     checked_at: 2026-10-09
   incidents:
@@ -210,27 +210,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/contents/?ref=staging
         detail: "ProvableHQ/snarkOS: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/contents/?ref=staging
         detail: "ProvableHQ/snarkVM: security policy file: SECURITY.md"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/contents/?ref=mainnet
         detail: "ProvableHQ/sdk: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/contents/?ref=master
         detail: "ProvableHQ/leo: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -256,27 +256,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/contents/?ref=staging
         detail: "ProvableHQ/snarkOS: dependabot config present"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/contents/?ref=staging
         detail: "ProvableHQ/snarkVM: dependabot config present"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/contents/?ref=mainnet
         detail: "ProvableHQ/sdk: dependabot config present"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/contents/?ref=master
         detail: "ProvableHQ/leo: dependabot config present"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -302,27 +302,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/contents/?ref=staging
         detail: "ProvableHQ/snarkOS: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/contents/?ref=staging
         detail: "ProvableHQ/snarkVM: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/contents/?ref=mainnet
         detail: "ProvableHQ/sdk: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/contents/?ref=master
         detail: "ProvableHQ/leo: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -348,27 +348,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/rules/branches/staging
         detail: "ProvableHQ/snarkOS: rules: deletion"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/rules/branches/staging
         detail: "ProvableHQ/snarkVM: rules: deletion"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/rules/branches/mainnet
         detail: "ProvableHQ/sdk: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/rules/branches/master
         detail: "ProvableHQ/leo: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -379,10 +379,10 @@ facts:
       repos:
         - repo: ProvableHQ/snarkOS
           ok: true
-          detail: 5 workflow file(s)
+          detail: 6 workflow file(s)
         - repo: ProvableHQ/snarkVM
           ok: true
-          detail: 5 workflow file(s)
+          detail: 7 workflow file(s)
         - repo: ProvableHQ/sdk
           ok: true
           detail: 4 workflow file(s)
@@ -393,28 +393,28 @@ facts:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/contents/?ref=staging
-        detail: "ProvableHQ/snarkOS: 5 workflow file(s)"
-        checked_at: 2026-10-19
+        detail: "ProvableHQ/snarkOS: 6 workflow file(s)"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/contents/?ref=staging
-        detail: "ProvableHQ/snarkVM: 5 workflow file(s)"
-        checked_at: 2026-10-19
+        detail: "ProvableHQ/snarkVM: 7 workflow file(s)"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/contents/?ref=mainnet
         detail: "ProvableHQ/sdk: 4 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/contents/?ref=master
         detail: "ProvableHQ/leo: 7 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -440,27 +440,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/contents/?ref=staging
         detail: "ProvableHQ/snarkOS: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/contents/?ref=staging
         detail: "ProvableHQ/snarkVM: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/contents/?ref=mainnet
         detail: "ProvableHQ/sdk: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/contents/?ref=master
         detail: "ProvableHQ/leo: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -486,27 +486,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/contents/?ref=staging
         detail: "ProvableHQ/snarkOS: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/contents/?ref=staging
         detail: "ProvableHQ/snarkVM: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/contents/?ref=mainnet
         detail: "ProvableHQ/sdk: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/contents/?ref=master
         detail: "ProvableHQ/leo: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -532,41 +532,41 @@ facts:
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/tags
         detail: "ProvableHQ/snarkOS: latest tags: v4.12.0, v4.11.0, v4.10.1"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/tags
         detail: "ProvableHQ/snarkVM: latest tags: v4.12.0, v4.11.0, v4.10.0"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/tags
         detail: "ProvableHQ/sdk: latest tags: v0.12.1, v0.12.0, v0.11.11"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/tags
         detail: "ProvableHQ/leo: latest tags: v4.0.2, v4.0.1, v4.0.0"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
   B9.6:
     status: evidenced
     value:
-      summary: some
+      summary: all
       repos:
         - repo: ProvableHQ/snarkOS
-          ok: false
-          detail: 4 of 10 recent commits signed
-        - repo: ProvableHQ/snarkVM
           ok: true
           detail: 5 of 10 recent commits signed
+        - repo: ProvableHQ/snarkVM
+          ok: true
+          detail: 7 of 10 recent commits signed
         - repo: ProvableHQ/sdk
           ok: true
           detail: 10 of 10 recent commits signed
@@ -577,28 +577,28 @@ facts:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/commits?per_page=10
-        detail: "ProvableHQ/snarkOS: 4 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        detail: "ProvableHQ/snarkOS: 5 of 10 recent commits signed"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/commits?per_page=10
-        detail: "ProvableHQ/snarkVM: 5 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        detail: "ProvableHQ/snarkVM: 7 of 10 recent commits signed"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/commits?per_page=10
         detail: "ProvableHQ/sdk: 10 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/commits?per_page=10
         detail: "ProvableHQ/leo: 10 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -609,10 +609,10 @@ facts:
       repos:
         - repo: ProvableHQ/snarkOS
           ok: true
-          detail: 8 release(s) with notes
+          detail: 9 release(s) with notes
         - repo: ProvableHQ/snarkVM
           ok: true
-          detail: 6 release(s) with notes
+          detail: 7 release(s) with notes
         - repo: ProvableHQ/sdk
           ok: true
           detail: 10 release(s) with notes
@@ -623,28 +623,28 @@ facts:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/contents/?ref=staging
-        detail: "ProvableHQ/snarkOS: 8 release(s) with notes"
-        checked_at: 2026-10-19
+        detail: "ProvableHQ/snarkOS: 9 release(s) with notes"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/contents/?ref=staging
-        detail: "ProvableHQ/snarkVM: 6 release(s) with notes"
-        checked_at: 2026-10-19
+        detail: "ProvableHQ/snarkVM: 7 release(s) with notes"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/contents/?ref=mainnet
         detail: "ProvableHQ/sdk: 10 release(s) with notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/contents/?ref=master
         detail: "ProvableHQ/leo: 10 release(s) with notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -670,27 +670,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkOS/contents/?ref=staging
         detail: "ProvableHQ/snarkOS: contribution section in README"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/snarkVM/contents/?ref=staging
         detail: "ProvableHQ/snarkVM: CONTRIBUTING file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/sdk/contents/?ref=mainnet
         detail: "ProvableHQ/sdk: contribution section in README"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/ProvableHQ/leo/contents/?ref=master
         detail: "ProvableHQ/leo: CONTRIBUTING file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -707,21 +707,21 @@ facts:
         detail: Auth Register endpoint of the Provable API.
         quote: Registers a new user and issues them an API key.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.explorer.provable.com/docs/api/services/issue-jwt
         detail: Issue JWT endpoint; the response Authorization header carries the JWT with the Bearer prefix.
         quote: Issues a signed JWT for a registered consumer
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.explorer.provable.com/docs/api/v2/intro
         detail: API overview with rate limits and the service groups (SnarkOS mirror, public analytics, delegated proving, record scanning, auth).
         quote: Rate limiting is enforced across all endpoints
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Position of a hosted service Provable runs; the rail does not require it (any snarkOS client serves the same chain data, see C3). Cross-reference CROPS S5.
     checked_at: 2026-10-09
   B6.3:
@@ -737,7 +737,7 @@ facts:
         detail: Privacy Notice, last updated 2025-08-14, section Retention of Personal Data.
         quote: We will usually retain the personal data we collect about you for no longer than reasonably necessary
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Applies only to Provable's optional hosted services. Cross-reference CROPS P2.
     checked_at: 2026-10-09
   B10.1:
@@ -754,7 +754,7 @@ facts:
         url: https://github.com/AleoNet/aleo-docs-source/blob/fe73f75044f1803c8d8dfc610b9e910b6b36a468/learn/network/architecture.mdx#L8-L34
         path: learn/network/architecture.mdx
         detail: Architecture page of developer.aleo.org (source repo AleoNet/aleo-docs-source); learn/core-concepts/transactions.mdx L87-L110 covers fees and fee visibility.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
   B11.1:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -769,7 +769,7 @@ facts:
         detail: Shield Wallet Terms of Use (last modified December 2025) name Provable Inc., a Delaware corporation, and refer API use to API Terms.
         quote: subject to our API Terms and Conditions, available at [LINK]
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: provable.com/api-terms and similar paths return 404 (2026-10-09).
     checked_at: 2026-10-09
   B11.2:
@@ -786,14 +786,14 @@ facts:
         url: https://github.com/ProvableHQ/snarkVM/blob/29343ebbb7970e4240b4444346aeb26e31009bd7/ledger/block/src/helpers/target.rs#L54-L69
         path: ledger/block/src/helpers/target.rs
         detail: Staking block reward = 5% of supply per year spread over blocks + one third of the coinbase reward + transaction fees; the other two thirds of the coinbase go to provers.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://aleo.org/grants/
         detail: Aleo Network Foundation grants programme page.
         quote: The Aleo Network Foundation (ANF) Grants Program provides up to $100K in funding
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
   B12.1:
     assessed_by: AI research agent (operational), 2026-10-09
@@ -812,6 +812,6 @@ facts:
         detail: Provable states it does not run automated decision-making on personal data for its hosted services.
         quote: We do not conduct automated processing of personal data, including profiling
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Settlement depends on consensus checks, fees and the restrictions list, which is a hand-maintained JSON file (empty) rather than an automated or AI screen. No AI component was found in snarkVM, snarkOS or the SDK in the seed research's code searches.
     checked_at: 2026-10-09

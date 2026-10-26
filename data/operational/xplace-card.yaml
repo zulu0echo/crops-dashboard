@@ -13,9 +13,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -32,9 +32,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -51,9 +51,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -70,9 +70,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/rules/branches/master
         detail: "Kamino-Finance/klend: rules: repository_visibility, repository_delete, repository_transfer, required_signatures, deletion, non_fast_forward, pull_request"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -89,9 +89,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: 1 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -108,9 +108,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -127,9 +127,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -140,15 +140,15 @@ facts:
       repos:
         - repo: Kamino-Finance/klend
           ok: false
-          detail: "latest tags: release/v1.26.0, release/v1.25.0, release/v1.24.0"
+          detail: "latest tags: release/v1.27.0, release/v1.26.0, release/v1.25.0"
     evidence:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/tags
-        detail: "Kamino-Finance/klend: latest tags: release/v1.26.0, release/v1.25.0, release/v1.24.0"
-        checked_at: 2026-10-19
+        detail: "Kamino-Finance/klend: latest tags: release/v1.27.0, release/v1.26.0, release/v1.25.0"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -165,9 +165,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/commits?per_page=10
         detail: "Kamino-Finance/klend: 10 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,9 +184,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: 10 release(s) with notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -203,9 +203,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/Kamino-Finance/klend/contents/?ref=master
         detail: "Kamino-Finance/klend: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -238,7 +238,7 @@ facts:
         detail: XPlace homepage security section.
         checked_at: 2026-10-09
         quote: audited by FYEO
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -259,7 +259,7 @@ facts:
         detail: XPlace privacy policy (effective 20 May 2026), section 13 data security.
         checked_at: 2026-10-09
         quote: Regular security assessments and vulnerability testing of Platform infrastructure
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -274,7 +274,7 @@ facts:
         detail: Privacy policy section 14, data breach notification.
         checked_at: 2026-10-09
         quote: Notify affected users promptly and without undue delay once a breach has been confirmed
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -289,7 +289,7 @@ facts:
         detail: Sign-up page, secure your account step.
         checked_at: 2026-10-09
         quote: 6 digit PIN to protect access to your account
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -304,14 +304,14 @@ facts:
         detail: Privacy policy section 13.
         checked_at: 2026-10-09
         quote: Encryption of Personal Data at rest on our servers
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
         detail: Terms s4.6.
         checked_at: 2026-10-09
         quote: Card data associated with your XPlace Card is encrypted in transit and at rest
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -326,7 +326,7 @@ facts:
         detail: Privacy policy section 11, retention table.
         checked_at: 2026-10-09
         quote: Duration of account + 5 years after closure
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: P2
         index: 0
@@ -344,7 +344,7 @@ facts:
         detail: Privacy policy section 2, data controller.
         checked_at: 2026-10-09
         quote: The data controller responsible for your Personal Data is
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -359,7 +359,7 @@ facts:
         detail: Privacy policy, international transfers.
         checked_at: 2026-10-09
         quote: You may request a copy of the applicable SCCs
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -373,7 +373,7 @@ facts:
         detail: Full docs index (product, card and legal pages); no architecture page. The card overview gives one paragraph on collateral going to Kamino on Solana.
         checked_at: 2026-10-09
         quote: XPlace - Crypto Credit Card
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: "Searched: the docs.x.place index and every product and card page, the homepage, GitHub (no XPlace organisation)."
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -389,14 +389,14 @@ facts:
         detail: Terms preamble and s20.7 notices.
         checked_at: 2026-10-09
         quote: THESE TERMS CONSTITUTE A LEGALLY BINDING AGREEMENT BETWEEN YOU AND PONTECH GROUP L.L.C-FZ
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.x.place/legal/legal/card-terms-international-user
         detail: International card terms, definitions.
         checked_at: 2026-10-09
         quote: The issuer for this card program is Third National.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: No company register entry was found; Meydan Free Zone has no public search that could be read without a browser.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -412,7 +412,7 @@ facts:
         detail: Terms s6, fees and payments.
         checked_at: 2026-10-09
         quote: Annual Membership fees are charged in USDC
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -427,7 +427,7 @@ facts:
         detail: Terms s18 suspension and termination.
         checked_at: 2026-10-09
         quote: You may terminate your account at any time by contacting
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: S1
         index: 1
@@ -445,7 +445,7 @@ facts:
         detail: Privacy policy s15.3, automated decision-making.
         checked_at: 2026-10-09
         quote: Certain KYC and sanctions screening processes may involve automated decision-making
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: C4
         index: 0
@@ -463,7 +463,7 @@ facts:
         detail: Privacy policy s15.3.
         checked_at: 2026-10-09
         quote: request human review of the automated decision
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -513,28 +513,28 @@ fees:
       detail: Terms s6.1 membership table and s6.3 transaction and platform fee table.
       checked_at: 2026-10-09
       quote: "Bank Transfer Fee: applied to transfers to or from a linked bank account."
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.x.place/card/about-xplace-sard
       detail: Card overview, foreign currency spending.
       checked_at: 2026-10-09
       quote: Visa applies a standard 1% FX conversion fee
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.x.place/xplace/credit
       detail: Credit page, borrow APR.
       checked_at: 2026-10-09
       quote: Borrow rates are variable and sourced directly from Kamino Finance
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.x.place/legal/legal/card-terms-international-user
       detail: International card terms (25 October 2025), fees table.
       checked_at: 2026-10-09
       quote: Foreign Exchange Fee (non-USD)
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: Solana network fees and the bridge deposit fee named in s6.3 have no stated amount, so they are unknown, not zero. The card terms (October 2025) and the platform terms (May 2026) disagree on FX; both are listed.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -579,7 +579,7 @@ licences:
       detail: International card terms s7.4, for Nigerian users.
       checked_at: 2026-10-09
       quote: a financial institution licensed by the Central Bank of
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: "Only the Nigerian partner is evidenced from a register. Pontech Group L.L.C-FZ (the provider) does not appear in the VARA public register (vara.ae, server-rendered, read 2026-10-09), and the terms say XPlace is not a money transmitter or financial intermediary; no other UAE register was searched. Rain (Signify Holdings, Inc.) is described as 'a licensed card program manager and issuing sponsor' without a licence named; the international issuer is named only as 'Third National' and was not identified in a register; the US issuer is not named. Rain MENA FZE holds a VARA licence (VL/26/10/001) but XPlace does not name it."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -606,14 +606,14 @@ cashout:
       detail: Terms s5.1 (card settlement by the Card Partner) and s6.
       checked_at: 2026-10-09
       quote: a licensed card program manager and issuing sponsor
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.x.place/xplace/portfolio
       detail: Portfolio page lists sending to an external wallet or bank account; the fee is in Terms s6.3.
       checked_at: 2026-10-09
       quote: Send crypto to an external wallet or bank account
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: ALL means every country not on the 17-country blocklist (and not in the 16 restricted US states). The US card terms mention PIN cash withdrawals at ATMs "if enabled" with no cash advance fee, but no XPlace page says ATM withdrawal is offered, so no ATM row is recorded.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -638,7 +638,7 @@ maturity:
         detail: Terms name Pontech Group L.L.C-FZ, Meydan Grandstand, 6th Floor, Meydan Road, Nad Al Sheba, Dubai, as the contracting party.
         checked_at: 2026-10-09
         quote: Meydan Grandstand, 6th Floor
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: The L.L.C-FZ suffix and Meydan address indicate a Meydan Free Zone company; no company register entry could be read (no public search without a browser), so no register URL or number is given.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -669,21 +669,21 @@ maturity:
         detail: EULA effective date.
         checked_at: 2026-10-09
         quote: "Effective Date: October 15, 2025"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.x.place/legal/legal/card-terms-international-user
         detail: International card terms effective date.
         checked_at: 2026-10-09
         quote: "Effective as of: 25 October 2025"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.x.place/legal/legal/xplace-terms-and-conditions
         detail: Terms effective date.
         checked_at: 2026-10-09
         quote: "Effective Date: May 20, 2026"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

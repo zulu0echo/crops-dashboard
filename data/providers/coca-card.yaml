@@ -55,7 +55,7 @@ scores:
         detail: The COCA Wallet Terms (dated 4 November 2023) let COCA terminate, suspend or limit any user's access or functionality without liability.
         quote: "we may at any time and without liability, terminate, suspend or limit your use or any functionality of the Coca Wallet"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       No settlement contract could be assessed. The terms let COCA suspend or limit an individual's use at its discretion with no notice period, and the card itself is run by an unnamed third party. Anchor 0 (can target individuals with no notice).
     provider_response: null
@@ -72,7 +72,7 @@ scores:
         detail: The terms describe card use as moving assets to a third party's linked smart contract wallet, provided by third-party service providers.
         quote: "transfer Digital Assets to a third party linked smart contract wallet for use in fiat payment system as an extension provided by third party services providers"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: claimed
         by: provider
         kind: document
@@ -80,7 +80,7 @@ scores:
         detail: COCA's docs say a card authorization triggers the smart wallet to approve the amount, with COCA providing the "card" and "compliance rails"; no contract, ABI or chain is given.
         quote: "COCA provides the bank-like interface (app, card, support, compliance rails)"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Card settlement runs through COCA's and a third-party provider's card system; no direct contract path is published. Docs and terms only, so 0.
     provider_response: null
@@ -98,14 +98,14 @@ scores:
         detail: COCA says its wallet runs on Privy's key infrastructure; card authorization and top-ups run through COCA's app and its card partner.
         quote: "we use Privy as part of the wallet infrastructure"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://www.coca.xyz/terms
         detail: Card use is an extension provided by third-party service providers.
         quote: "as an extension provided by third party services providers"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The card flow depends on COCA's closed backend, Privy, an unnamed card program provider and issuer, and Visa. None is public or has a fallback. Closed and single-vendor, so 0.
     provider_response: null
@@ -122,7 +122,7 @@ scores:
         detail: The terms define prohibited countries (a named list plus any country sanctioned by the UN Security Council or under the user's local law).
         quote: "is sanctioned by the United Nations Security Council"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: claimed
         by: provider
         kind: document
@@ -130,7 +130,7 @@ scores:
         detail: COCA's docs limit the card to residents of 54 listed countries.
         quote: "Card availability depends on your residence in one of the 54 supported countries"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Geographic and sanctions restrictions are disclosed in the terms and docs. The settlement layer is undisclosed, so its neutrality cannot be shown. Docs only, so 1.
     provider_response: null
@@ -148,7 +148,7 @@ scores:
         detail: The docs say only that stablecoins can be topped up on multiple blockchains, without naming tokens, chains or contracts.
         quote: "supported stablecoins on multiple blockchains"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Neither the card's settlement token nor its chain is enumerated, and no freeze or sequencer assumptions are stated. Provider's own description, so 0.
     provider_response: null
@@ -189,7 +189,7 @@ scores:
         detail: The terms reserve all rights in the COCA software (source and object forms) to the NCW Group and grant users only a revocable personal licence.
         quote: "we grant you a personal, non-exclusive, limited, revocable and non-transferable license to use the NCW Group Technology"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Required components are closed and proprietary, so F1 is 0.
     provider_response: null
@@ -212,7 +212,7 @@ scores:
         detail: Card use depends on third-party service providers' fiat payment system.
         quote: "transfer Digital Assets to a third party linked smart contract wallet for use in fiat payment system as an extension provided by third party services providers"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The card cannot run without COCA's hosted service and its third-party card provider. Core cannot run without proprietary components, so 0.
     provider_response: null
@@ -229,7 +229,7 @@ scores:
         detail: The privacy policy discloses first- and third-party cookies, without naming analytics vendors.
         quote: "first party and third party cookies when you access our services"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Tracking is disclosed in the policy without vendors. The app was not inspected and no trace was run. Documented cap, so 1.
     provider_response: null
@@ -246,7 +246,7 @@ scores:
         detail: The privacy policy discloses collection of location and device data, including for AML and sanctions purposes; COCA's docs say the card is ordered with a passport, while its home page says the wallet needs no KYC.
         quote: "location data for the purpose of preventing and detecting crime and to comply with laws relating to money laundering"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Identity and location data beyond settlement needs are collected for the card and disclosed in the policy only. Disclosed in policy, so 1.
     provider_response: null
@@ -269,7 +269,7 @@ scores:
         detail: The privacy policy discloses sharing with service providers by category, without naming the card partner or KYC vendor.
         quote: "with third parties providing services to us, such as market analysis and benchmarking"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Third parties are disclosed by category (Privy and Morpho are named in the docs; the card issuer and KYC vendor are not). None can be swapped. No trace was run, so 1.
     provider_response: null
@@ -338,14 +338,14 @@ availability:
       detail: COCA's docs list the card's supported residence countries by region (EEA, Other Europe, Asia-Pacific, Latin America).
       quote: "Andorra, Gibraltar, Monaco, Montenegro, Switzerland, United Kingdom."
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.coca.xyz/terms
       detail: The COCA Wallet Terms define Prohibited Countries by name and require users not to be resident in them.
       quote: "Afghanistan, the Democratic People's Republic of Korea, Democratic Republic of Congo, Eritrea, Libya"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-09"
 
 settlement:
@@ -365,7 +365,7 @@ settlement:
       detail: The docs say the Banking Account is a user-controlled smart wallet and that only the authorised amount of a card payment is moved for settlement.
       quote: "Only the authorized amount is moved for settlement"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.coca.xyz/post/coca-monthly-update-september-2026
@@ -373,7 +373,7 @@ settlement:
       detail: COCA's September 2026 update says the app now shows how much local currency one USDC is worth and which account currency a payment came from.
       quote: "you see how much of your local currency one USDC is worth"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.coca.xyz/post/coca-monthly-update-august-2026
@@ -381,7 +381,7 @@ settlement:
       detail: COCA's August 2026 update lists the chains on which USDC and USDT can be deposited to fund the banking account.
       quote: "making it simpler to fund your COCA banking account"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-12"
 
 audits:

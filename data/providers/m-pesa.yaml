@@ -130,7 +130,7 @@ scores:
         detail: "Daraja Postman collection (v2.1): every M-Pesa operation (stkpush, c2b registerurl/simulate, b2c, b2b, reversal, transactionstatus, accountbalance) is a POST to sandbox/api.safaricom.co.ke carrying 'Authorization: Bearer <Access-Token>' from Safaricom's /oauth/v1/generate."
         checked_at: "2026-10-07"
         quote: "sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Settlement happens only inside Safaricom's M-Pesa platform, reached through Safaricom's authenticated API or its own channels (SIM toolkit, USSD, app). No direct settlement path exists.
     provider_response: null
@@ -200,7 +200,7 @@ scores:
         detail: "Public Postman v2.1 collection 'Safaricom APIs' (_postman_id 21f972ff-40aa-439e-a906-e52cff4bcf63) with request schemas for M-Pesa Express, C2B, B2C, B2B, reversal, transaction status, account balance and Pull Transactions."
         checked_at: "2026-10-07"
         quote: "21f972ff-40aa-439e-a906-e52cff4bcf63"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://developer.safaricom.co.ke/apis/CustomerToBusiness
@@ -224,7 +224,7 @@ scores:
         path: pom.xml
         detail: "mpesa-java-sdk at this commit: pom.xml has no <licenses> element and the repo root (.idea, MpesaMaven.iml, README.md, out, pom.xml, src, target) has no LICENSE file. mpesa-api-C-Sharp (7f3d6e9e9c979c79e4c5bedd43de646623a4d6cd) likewise has no LICENSE file and no license statement in its README."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/safaricom/mpesa_listener/blob/ccc202b610f5cda15d3efae90501f84bc11e1208/package.json#L10
@@ -232,7 +232,7 @@ scores:
         path: package.json
         detail: "mpesa_listener has no LICENSE file; package.json L10 carries the npm-init default license: ISC. mpesa-php-sdk (5effb808e79ba6b3d8631ef83c2b9b31fa450152) has no LICENSE file; composer.json L10 declares license: mit with no license text."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/safaricom/mpesa-node-library/blob/678e3c33b20c1447c209eb88eded89f1bb751e11/LICENSE
@@ -240,7 +240,7 @@ scores:
         path: LICENSE
         detail: "mpesa-node-library LICENSE is Apache License 2.0; LNMOnlineAndroidSample (74eced63f0cd5fd2f9869f9fcaf9b14823dcadb8) is Apache-2.0; mpesa_c2b_php_confirmation_validation (96a55227d6191c0717edb0293bbd4c3bde1709c1) is GPL-3.0."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Two of the seven listed SDK repos (Java, C#) carry no license at all, so they cannot legally be forked. Two more (listener, PHP) declare ISC/MIT only in a package manifest, with no license text; they are recorded as "none" in repos. The platform needed to run the rail has no public code at all. Judgment call: scored on the listed SDK repos because no repo can run the product.
     provider_response: null
@@ -335,7 +335,7 @@ scores:
         detail: "All settlement, balance and reversal operations are Safaricom-hosted endpoints (see C2, C3); no exit path outside Safaricom's platform is documented."
         checked_at: "2026-10-07"
         quote: "sandbox.safaricom.co.ke/mpesa/reversal/v1/request"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Derived. S1 = 1 (provider custody), C2 = 0 (no direct settlement), C3 = 0 (closed single-vendor API), O3 unknown (nothing to self-host). Both funds and the ability to settle depend on Safaricom's liveness.
     provider_response: null
@@ -359,7 +359,7 @@ scores:
         path: listener.js
         detail: "Reference C2B ConfirmationURL handler logs req.body and returns ResultCode 0 with no authenticity check; the B2C/B2B result handlers in the same file (L18-L29, L88-L99) do the same."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/safaricom/mpesa_c2b_php_confirmation_validation/blob/96a55227d6191c0717edb0293bbd4c3bde1709c1/confirm.php#L1-L33
@@ -367,7 +367,7 @@ scores:
         path: confirm.php
         detail: "Reference PHP confirmation handler reads php://input, logs it and acknowledges, with no signature or source verification."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Payment callbacks are unsigned per the Daraja docs, and the reference handlers accept them without verification, so a party who learns a merchant's callback URL can forge payment confirmations unless the merchant re-queries Transaction Status. Handling of API credentials (consumer key/secret, SecurityCredential) in client bundles was not assessed.
     provider_response: null

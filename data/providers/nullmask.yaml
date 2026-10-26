@@ -78,7 +78,7 @@ scores:
         check:
           call: "0x7ceab3b1"
           expect: "0x0000000000000000000000003aafed649423ec28459d0aadb7edbaeff0fd9239"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         chain_id: 1
@@ -102,7 +102,7 @@ scores:
         detail: The terms reserve upgrades, pauses of deposits, transfers, swaps and withdrawals, and fee changes, without notice.
         checked_at: "2026-10-09"
         quote: We can upgrade them, pause them and change fees without notice.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       A single EOA decides, deposit by deposit, whether funds enter the pool, and the operator's keys can pause withdrawals with no notice and no maximum length. Scored 0: EOA-held role that can target individual addresses.
     provider_response: null
@@ -120,7 +120,7 @@ scores:
         detail: The operator states transfers, swaps and withdrawals need its servers and relayer.
         checked_at: "2026-10-09"
         quote: These operations need our servers. The application offers no way to carry them out without them.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       By the operator's own terms, every transfer and withdrawal is proved by its servers and submitted by its relayer, and no tooling to do otherwise is provided. The contract source is unpublished, so a direct path cannot be reconstructed. Scored 0 on the provider's admission; only a pending deposit can be taken back directly.
     provider_response: null
@@ -138,7 +138,7 @@ scores:
         detail: The Services include the network endpoint, the screening service and the relayer, all run by the operator.
         checked_at: "2026-10-09"
         quote: including the network endpoint your wallet connects to, the screening service and the relayer
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.nullmask.io/developer-guide/monorepo-structure.md
@@ -170,7 +170,7 @@ scores:
         detail: Screening uses public sanctions lists, public blockchain data and an unnamed analytics provider, and withdrawal recipients are screened too.
         checked_at: "2026-10-09"
         quote: We use public sanctions lists, public blockchain data and a third-party blockchain analytics provider.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Filtering sits in the settlement path itself (guard approval of each deposit, screening of withdrawal recipients) and is disclosed in docs and terms, but the contract source is unpublished and the analytics vendor is unnamed. It cannot be bypassed. Judgment call: 1 (disclosed in documents only) rather than 0, since the filtering is disclosed.
     provider_response: null
@@ -188,7 +188,7 @@ scores:
         detail: Supported assets are whatever the application shows; the docs describe a token whitelist without listing tokens.
         checked_at: "2026-10-09"
         quote: You can use only the assets shown as supported in the application.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Supported tokens are not enumerated in docs or public code. The terms do warn that a stablecoin issuer can freeze the pool. Scored 0: not enumerated.
     provider_response: null
@@ -242,7 +242,7 @@ scores:
         detail: The operator states it provides no tools to operate without its servers.
         checked_at: "2026-10-09"
         quote: Doing so would require technical tools that we do not provide.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       No public code, so no path to self-host. Scored 0.
     provider_response: null
@@ -300,7 +300,7 @@ scores:
         detail: Proofs, relaying and screening run only on the operator's servers.
         checked_at: "2026-10-09"
         quote: These operations need our servers. The application offers no way to carry them out without them.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The product cannot run without the operator's closed services. Scored 0.
     provider_response: null
@@ -324,7 +324,7 @@ scores:
         detail: The operator's servers keep the viewing keys and can see each user's balance and full history.
         checked_at: "2026-10-09"
         quote: We can therefore see your private balance and your history inside the Pool
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.nullmask.io/security/security.md
@@ -355,7 +355,7 @@ scores:
         detail: Screening uses an unnamed third-party blockchain analytics provider.
         checked_at: "2026-10-09"
         quote: We use public sanctions lists, public blockchain data and a third-party blockchain analytics provider.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The operator's proxy sees every request, and an unnamed analytics vendor receives depositor and connected addresses. Judgment call: 0 rather than 1, because the vendor's identity is not disclosed.
     provider_response: null
@@ -383,7 +383,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000004e502a53864c96f917a2062bbdf931c665a10e91"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://app.nullmask.io/terms
@@ -391,7 +391,7 @@ scores:
         detail: The terms state an upgrade can change who can move assets, with no notice.
         checked_at: "2026-10-09"
         quote: An upgrade can change any rule of the Pool, including the rules that decide who can move assets.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Funds sit in an upgradeable pool whose upgrade authority rests on an EOA (S2), and the operator says an upgrade can change who can move assets. Scored 0: the provider can redirect funds.
     provider_response: null
@@ -414,7 +414,7 @@ scores:
         check:
           call: "0xf851a440"
           expect: "0x000000000000000000000000ff298cd8f82cab44874d83507715d3dc245d9ccd"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         chain_id: 1
@@ -447,7 +447,7 @@ scores:
         detail: Shielded funds can be moved only through the operator's servers.
         checked_at: "2026-10-09"
         quote: These operations need our servers. The application offers no way to carry them out without them.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Derived from S1=0, C2=0, C3=0, O3=0: if the operator disappeared, shielded balances could not be moved with any public tooling; only pending (unscreened) deposits can be taken back directly. Scored 0.
     provider_response: null
@@ -471,7 +471,7 @@ scores:
         detail: The terms state the pool contracts are unaudited.
         checked_at: "2026-10-09"
         quote: At the Effective Date the Pool contracts have not been independently audited.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       No audit, by the operator's own statement; no bug bounty found. Scored 0.
     provider_response: null
@@ -492,7 +492,7 @@ availability:
       detail: Section 2.3 defines the Restricted Territories.
       checked_at: "2026-10-09"
       quote: the Crimea, Donetsk and Luhansk regions of Ukraine;
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-09"
 
 notes: >-

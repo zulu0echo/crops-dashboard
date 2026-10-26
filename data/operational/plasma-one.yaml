@@ -16,7 +16,7 @@ facts:
         detail: Terms of Service (last updated 15 June 2026) s2.2(a).
         checked_at: 2026-10-09
         quote: which may include Apple or Google sign-in, email verification, passkeys, biometric authentication, and any multi-factor authentication you enroll in
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -31,7 +31,7 @@ facts:
         detail: Privacy Policy, Retention.
         checked_at: 2026-10-09
         quote: for the duration of our relationship with you and for five (5) years after that relationship ends
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: P2
         index: 0
@@ -49,7 +49,7 @@ facts:
         detail: Privacy Policy, Notice to European users, Controllers.
         checked_at: 2026-10-09
         quote: Plasma and Plasma Labs UK Ltd. are joint controllers of your personal information
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -64,21 +64,21 @@ facts:
         detail: Terms of Service preamble.
         checked_at: 2026-10-09
         quote: an exempted company with limited liability incorporated under the laws of the Cayman Islands
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://find-and-update.company-information.service.gov.uk/company/16405367
         detail: Companies House entry for PLASMA LABS UK LTD (active; incorporated 24 April 2025; SIC 62011, 62012).
         checked_at: 2026-10-09
         quote: 24 April 2025
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://www.plasma.org/plasma-one-international-card-terms
         detail: International Card Terms, defined terms.
         checked_at: 2026-10-09
         quote: The issuer for this card program is Third National.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -93,14 +93,14 @@ facts:
         detail: Terms of Service s13.3.
         checked_at: 2026-10-09
         quote: Plasma reserves the right to terminate this Agreement and your access to the Services at any time, for any or for no reason, with or without notice to you
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://www.plasma.org/plasma-one-international-card-terms
         detail: International Card Terms s10 Termination.
         checked_at: 2026-10-09
         quote: we may suspend, revoke or cancel your Account privileges
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: S4
         index: 0
@@ -118,7 +118,7 @@ facts:
         detail: Privacy Policy, Automated processing.
         checked_at: 2026-10-09
         quote: internal compliance tooling, to assess KYC and AML obligations
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -133,7 +133,7 @@ facts:
         detail: Privacy Policy, Automated processing.
         checked_at: 2026-10-09
         quote: you have the right to request human review, express your point of view, and contest the outcome
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -173,28 +173,28 @@ fees:
       detail: International Card Terms, Important Disclosures.
       checked_at: 2026-10-09
       quote: "Foreign Exchange Fee (non USD): up to 1%"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.plasma.org/plasma-one-us-card-terms
       detail: U.S. Consumer Card Terms, account-opening disclosures.
       checked_at: 2026-10-09
       quote: "International Transaction: 1% of each transaction in U.S. dollars."
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.plasma.org/personal/core
       detail: Plasma One Core tier page.
       checked_at: 2026-10-09
       quote: Core for $199 per year or lock 20,000 XPL
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.plasma.org/personal
       detail: Plasma One personal page FAQ.
       checked_at: 2026-10-09
       quote: Plasma One does not charge any additional fees.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: The "Standard" versus "Reduced" fee levels per tier are not quantified on the public pages; the Rewards Addendum points to the Help Center for card fees and tier pricing. Platinum pricing is not shown. Bridge's off-ramp fees are not published.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -242,21 +242,21 @@ cashout:
       detail: International Card Terms, issuer.
       checked_at: 2026-10-09
       quote: The issuer for this card program is Third National.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.plasma.org/personal
       detail: /personal FAQ "Can I withdraw from Plasma One to my bank account?" and footnote 3 on Bridge entities.
       checked_at: 2026-10-09
       quote: Send funds to your bank using off-ramps directly inside the app.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.plasma.org/personal
       detail: Footnote 3, Bridge entities by residence.
       checked_at: 2026-10-09
       quote: Services to US residents are provided by Bridge Building Inc.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: "ATM access is not documented: the International Card Terms do not mention ATMs, and the US terms list no cash-advance fee and allow PIN ATM use only if enabled; no ATM row is recorded. Contradiction on the issuer: the card terms say Third National, the site footer says Rain."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -296,7 +296,7 @@ maturity:
         detail: Privacy Policy, Who we are.
         checked_at: 2026-10-09
         quote: registration number CO-412800
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: The Cayman Islands register is not publicly searchable, so no register_url. The UK affiliate and joint controller Plasma Labs UK Ltd. is on Companies House (16405367); see B11.1.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -339,14 +339,14 @@ maturity:
         detail: US cardholder agreement header.
         checked_at: 2026-10-09
         quote: "Last Updated: February 12, 2026"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://www.plasma.org/plasma-one-international-card-terms
         detail: International Card Terms Important Disclosures.
         checked_at: 2026-10-09
         quote: Effective as of February 26, 2026
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Whether a previous Coordinator served the card before 2026-09-29 was not traced.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -368,4 +368,4 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
-  reason: "not computed on 2026-10-19: no blocks-per-day estimate for chain 9745"
+  reason: "not computed on 2026-10-26: no blocks-per-day estimate for chain 9745"

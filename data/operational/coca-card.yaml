@@ -12,7 +12,7 @@ facts:
         detail: Banking account overview, Top-Tier Security section.
         checked_at: 2026-10-09
         quote: COCA cards are PCI DSS and ISO compliant
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -93,7 +93,7 @@ facts:
         detail: Is COCA safe? page, Privy key management.
         checked_at: 2026-10-09
         quote: email, social login, or device-based authentication
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -146,7 +146,7 @@ facts:
         detail: Privacy, Data Use and Retention Notice (dated 4 November 2023), retention section.
         checked_at: 2026-10-09
         quote: We normally keep customer account records for up to six years after your relationship with Coca ends
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: P2
         index: 0
@@ -165,7 +165,7 @@ facts:
         detail: Privacy Notice opening paragraph.
         checked_at: 2026-10-09
         quote: Coca is a data controller in respect of personal information
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -212,7 +212,7 @@ facts:
         detail: COCA Wallet Terms (dated 4 November 2023), opening paragraph.
         checked_at: 2026-10-09
         quote: registration number DSO-FZCO-31557
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -228,7 +228,7 @@ facts:
         detail: Why are rewards so high? page.
         checked_at: 2026-10-09
         quote: They allocate a marketing budget to offer rewards
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -244,7 +244,7 @@ facts:
         detail: COCA Wallet Terms, clauses 6 and 7.
         checked_at: 2026-10-09
         quote: we may at any time and without liability, terminate, suspend or limit your use or any functionality of the Coca Wallet
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://www.coca.xyz/post/coca-monthly-update-august-2026
@@ -252,7 +252,7 @@ facts:
         detail: COCA Monthly Update August 2026, private key export.
         checked_at: 2026-10-09
         quote: You can now export your private keys for both the Crypto Wallet and Banking sections
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -268,7 +268,7 @@ facts:
         detail: Privacy Notice, automated decision-making.
         checked_at: 2026-10-09
         quote: Application decisions may be taken based solely on automated checks
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -284,7 +284,7 @@ facts:
         detail: Privacy Notice, automated decision-making.
         checked_at: 2026-10-09
         quote: You have rights in relation to the automated decision-making used in the verification process
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -325,7 +325,7 @@ fees:
       detail: COCA Card page, card fee note and ATM table.
       checked_at: 2026-10-09
       quote: Plastic card is 5$ for Starter, Standard & Standard+
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.coca.xyz/coca/banking-account/overview
@@ -333,7 +333,7 @@ fees:
       detail: Banking account overview, Fees.
       checked_at: 2026-10-09
       quote: Zero ATM Withdrawals Fees Globally Up to $200
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.coca.xyz/coca/banking-account/coca-card
@@ -341,7 +341,7 @@ fees:
       detail: COCA Card page, purchase and ATM limits.
       checked_at: 2026-10-09
       quote: Max cash withdrawal amount per day 850 EUR
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.coca.xyz/coca/crypto-account/exchange-assets
@@ -349,7 +349,7 @@ fees:
       detail: Exchange assets page.
       checked_at: 2026-10-09
       quote: Swap assets with Zero COCA Fees
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: Card top-up and IBAN transfer fees, the FX rate source, network fees for stablecoin top-ups and any card-to-card transfer fee (shown in-app per the September 2026 update) are not published. Cashback and APY are rewards, not fees, and are not recorded.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -372,7 +372,7 @@ licences:
       detail: COCA 3.0 Q&A recap; on DAC8, COCA describes itself as a software provider.
       checked_at: 2026-10-09
       quote: current role as a Software Provider
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.coca.xyz/terms
@@ -380,7 +380,7 @@ licences:
       detail: The Wallet Terms describe card use as an extension provided by third-party service providers, unnamed.
       checked_at: 2026-10-09
       quote: as an extension provided by third party services providers
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: No licence found for any party. COCA names no issuer, programme manager, IBAN provider or regulator, and calls itself a software provider. CCA Labs FZCO holds no licence stated in any COCA document. The Android app id (com.wirex.wallet) and third-party reports point at Wirex as former card infrastructure provider, but no COCA document confirms the current issuer, so no partner licence is recorded.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -415,7 +415,7 @@ cashout:
       detail: COCA Card page, purchase and ATM limits and fees.
       checked_at: 2026-10-09
       quote: Max purchase amount per transaction 30,000 EUR
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.coca.xyz/post/q-a-recap-everything-you-asked-about-coca-3-0-and-more-answered
@@ -423,7 +423,7 @@ cashout:
       detail: COCA 3.0 Q&A recap listing the countries whose residents can get an IBAN.
       checked_at: 2026-10-09
       quote: Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and the UK
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: ALL means every country on the card availability list in the provider file. The IBAN list omits Croatia and Cyprus, which are on the card list. Sending from COCA to other bank accounts is described in the COCA 3.0 post.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -443,7 +443,7 @@ maturity:
         detail: COCA Wallet Terms header and clause 2(j) Card Usage.
         checked_at: 2026-10-09
         quote: "Dated: 4 November 2023"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: The card has run on rebuilt infrastructure since COCA 3.0 (20 April 2026), which COCA presents as its move to full self-custody.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -463,7 +463,7 @@ maturity:
         detail: COCA Wallet Terms opening paragraph (registered address Dubai Silicon Oasis, DDP, Building A1).
         checked_at: 2026-10-09
         quote: registration number DSO-FZCO-31557
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Not checked in the Dubai Integrated Economic Zones register (no public search found), so no register_url.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -496,7 +496,7 @@ maturity:
         detail: COCA 3.0 announcement, 20 April 2026 (updated 23 April).
         checked_at: 2026-10-09
         quote: EUR bank accounts are now live
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://www.coca.xyz/post/coca-monthly-update-september-2026
@@ -504,7 +504,7 @@ maturity:
         detail: COCA Monthly Update September 2026.
         checked_at: 2026-10-09
         quote: On September 1, we launched the updated COCA Loyalty Program
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Private key export for the Banking section arrived in August 2026 (monthly update, archived).
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

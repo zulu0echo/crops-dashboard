@@ -229,7 +229,7 @@ scores:
         check:
           call: "0x570ca735"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0x12D66f87A04A9E220743712cE6d9bB1B5616B8Fc
@@ -240,7 +240,7 @@ scores:
         check:
           call: "0x570ca735"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0xd90e2f925DA726b50C4Ed8D0Fb90Ad053324F31b
@@ -251,7 +251,7 @@ scores:
         check:
           call: "0x5aa6e675"
           expect: "0x0000000000000000000000005efda50f22d34f262c29268506c5fa42cb56a1ce"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The pool contracts that hold and release funds have no pause, freeze, blacklist or allowlist. Their one admin role, operator, could only swap the verifier, and it reads as the zero address onchain on every pool that has it; the two newer DAI pools have no operator at all. The verifier has no admin. TORN governance does control a gate one step out: the optional TornadoRouter checks an upgradeable InstanceRegistry and RelayerRegistry, so governance could disable an instance on the router path. Judgment call: we score the pools as the settlement contracts and give 3, because a payer and payee can call the pools directly (C2) and the router gate does not reach that path.
     provider_response: null
@@ -277,7 +277,7 @@ scores:
         detail: Mainnet pool addresses per denomination are committed in the UI config, and abis/Instance.abi.json holds the pool ABI.
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-classic-ui/contents/networkConfig.js?ref=a83fae0772c8da084c0e76b3a756b456f5b9f5bb" --jq .content | base64 -d | sed -n 44,60p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/tornadocash/tornado-core/blob/1ef6a263ac6a0e476d063fcb269a9df65a1bd56a/src/cli.js#L193-L240
@@ -285,7 +285,7 @@ scores:
         path: src/cli.js
         detail: The reference client sends withdraw directly to the pool from the user's own account when no relayer URL is given (L236).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0xA160cdAB225685dA1d56aa342Ad8841c3b53f291
@@ -297,7 +297,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       A payer can deposit and a payee holding the note can withdraw by calling the pool contracts directly, with no relayer, router, API or signature from anyone else. Addresses and ABI are committed in the public UI repo, and the reference client calls the pool directly. We did not run a transaction. The payment is completed by handing the note to the payee off-chain; the protocol has no on-chain payee field at deposit time.
     provider_response: null
@@ -323,7 +323,7 @@ scores:
         detail: The UI reads deposit events from The Graph and then from the RPC, so the indexer is optional; the proving key is a static GitHub release asset (tornado-core v2.1).
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-classic-ui/contents/services/events.js?ref=a83fae0772c8da084c0e76b3a756b456f5b9f5bb" --jq .content | base64 -d | sed -n 326,341p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0x58E8dCC13BE9780fC42E8723D8EaD4CF46943dF2
@@ -349,7 +349,7 @@ scores:
         detail: On wallet connect (L427) the UI calls isSanctioned(address) on the Chainalysis sanctions oracle 0x40C57923924B5c5c5455c48D93317139ADDaC8fb and, if true, redirects the page away; pages/451.vue shows "Unavailable For Legal Reasons".
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-classic-ui/contents/store/metamask.js?ref=a83fae0772c8da084c0e76b3a756b456f5b9f5bb" --jq .content | base64 -d | sed -n 333,346p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/tornadocash/tornado-core/blob/7033f34434208cde40503a8daf71c1c0f8dab578/contracts/Tornado.sol#L62-L92
@@ -396,7 +396,7 @@ scores:
         check:
           call: "0xfe575a870000000000000000000000004736dcf1b7a3d580672cce6e7c65cd5cc9cfba9d"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Tokens and pools are enumerated onchain and in the UI config. Neither the repos nor the UI tell users that USDC and USDT can blacklist a pool address, which would lock every note in that pool; the pools were not blacklisted at our block. ETH and DAI pools carry no issuer freeze. Ethereum L1 has no sequencer. Scored 2: enumerated in code, assumptions not stated.
     provider_response: null
@@ -457,7 +457,7 @@ scores:
         path: README.md
         detail: The README gives build steps (Node 14, yarn, .env, yarn generate) and an IPFS deploy script; tornado-core README L42-L78 covers build and the CLI.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Build and run documentation exists for the UI and the core client. Reproduction not attempted, so the score is capped at 1.
     provider_response: null
@@ -494,7 +494,7 @@ scores:
         detail: tornado-core (pools, circuits, verifier generation, cli.js) is GPL-3.0 at the deployed tag; the websnark and snarkjs forks are GPL-3.0 (GitHub license API).
         checked_at: "2026-10-07"
         recheck: for r in tornado-core websnark snarkjs circomlib tornado-classic-ui tornado-cli tornado-relayer tornado-subgraph; do echo $r $(gh api repos/tornadocash/$r --jq '.license.spdx_id // "none"'); done
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/tornadocash/circomlib/blob/c372f14d324d57339c88451834bf2824e73bbdbc/package.json#L25
@@ -502,7 +502,7 @@ scores:
         path: package.json
         detail: The circomlib fork pinned by tornado-core has no LICENSE file; its package.json declares GPL-3.0. tornado-cli has no LICENSE file (package.json says ISC); tornado-relayer and tornado-subgraph have none.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Every required component carries an OSI licence: GPL-3.0 for the pools, circuits and proof client, and MIT for the classic UI. The circomlib fork used in proof generation states GPL-3.0 only in package.json, with no LICENSE file; its upstream is GPL-3.0. The optional tornado-cli, relayer and subgraph repos have no LICENSE file. Judgment call: we count the package.json declaration on circomlib as a licence, and we take 2 rather than 3 because of the unlicensed optional repos.
     provider_response: null
@@ -521,7 +521,7 @@ scores:
         detail: The UI's contributing guide asks for focused PRs and has no CLA. tornado-core has no CONTRIBUTING file, and its LICENSE has a single commit, 21a9545b (2019-07-17).
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-core/commits?path=LICENSE&sha=1ef6a263ac6a0e476d063fcb269a9df65a1bd56a" --jq '.[].sha'
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       There is no CLA and no relicensing event, and the GitHub repos are archived. No written licence-stability commitment exists.
     provider_response: null
@@ -540,7 +540,7 @@ scores:
         detail: The circuit and proving key come from tornado-core GitHub release assets (v2.1); the client needs only a user-supplied RPC.
         checked_at: "2026-10-07"
         recheck: gh api repos/tornadocash/tornado-core/releases --jq '.[0].assets[].name'
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       No proprietary plugin or hosted-only service is needed. The pools, proving key and client are public, and any Ethereum RPC works. The UI's default Infura and Alchemy RPCs, The Graph, and the Chainalysis oracle are all optional. Judgment call: the code supports 3, but with no O3 reproduction we take 2.
     provider_response: null
@@ -559,7 +559,7 @@ scores:
         detail: None of the UI dependencies is an analytics, telemetry, error-reporting or fingerprinting package; nuxt.config.js L53 sets a CSP with script-src 'self'.
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-classic-ui/contents/package.json?ref=a83fae0772c8da084c0e76b3a756b456f5b9f5bb" --jq .content | base64 -d | grep -iE "sentry|analytics|gtag|amplitude|mixpanel|segment|posthog|hotjar|fingerprint"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The archived UI and the core client ship no analytics or telemetry. When a remote RPC is used, tornado-cli calls ip.tornado.cash to show the user's IP; that call is counted under P4. We ran no trace and did not inspect the live IPFS build. Judgment call: absence shown only in code is capped at 2.
     provider_response: null
@@ -578,7 +578,7 @@ scores:
         detail: The public inputs are root, nullifierHash, recipient, relayer, fee and refund. The private inputs (nullifier, secret, Merkle path) stay in the user's client. Deposit takes only a commitment.
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-core/contents/circuits/withdraw.circom?ref=7033f34434208cde40503a8daf71c1c0f8dab578" --jq .content | base64 -d | sed -n 29,39p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The protocol collects only what settlement needs: a commitment at deposit, and recipient, relayer and fee at withdrawal. No required component holds account, identity or contact data. An optional relayer sees the recipient and the proof it relays.
     provider_response: null
@@ -607,7 +607,7 @@ scores:
         check:
           call: "0x2b7ac3f3"
           expect: "0x000000000000000000000000ce172ce1f20ec0b3728c9965470eaf994a03557a"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Onchain data shows who deposited and who received, but not which deposit paid which withdrawal. Amounts are fixed denominations, and there is no memo or invoice field. Linkage can still come from timing, distinctive gas or funding patterns, low pool activity, reused addresses, or the optional router EncryptedNote event, which ties the depositor's address to an encrypted note backup. Judgment call: anonymity-set size depends on user behaviour and is not scored; we score what the code and chain reveal, which is anchor 3.
     provider_response: null
@@ -626,7 +626,7 @@ scores:
         detail: The UI queries The Graph hosted-service subgraphs at hardcoded URLs. Its RPC defaults are Infura and Alchemy with build-time keys (networkConfig.js L30-L39), replaceable in Settings. The Chainalysis oracle is read through the RPC.
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-classic-ui/contents/services/graph.js?ref=a83fae0772c8da084c0e76b3a756b456f5b9f5bb" --jq .content | base64 -d | sed -n 22,31p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/tornadocash/tornado-cli/blob/378ddf8b8b92a4924037d7b64a94dbfd5a7dd6e8/cli.js#L1226-L1235
@@ -634,7 +634,7 @@ scores:
         path: cli.js
         detail: tornado-cli calls https://ip.tornado.cash when the RPC is not local, unless the private-RPC flag is set.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       On the minimal required path (core client plus RPC), only the RPC the user chooses sees the request. The optional UI adds The Graph (hardcoded) and default Infura and Alchemy RPCs (swappable in Settings). An optional relayer, when used, sees the recipient and the user's IP unless Tor is used. tornado-cli adds an IP-echo call. All of these are named in code. Judgment call: we score 2 because the hardcoded Graph endpoint cannot be swapped by config, although a user avoids it by not using the UI.
     provider_response: null
@@ -653,7 +653,7 @@ scores:
         detail: The UI settings offer an RPC dropdown and a custom RPC URL field. The indexer URL is fixed in services/graph.js; the indexer code is public (tornado-subgraph).
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-classic-ui/contents/components/Settings.vue?ref=a83fae0772c8da084c0e76b3a756b456f5b9f5bb" --jq .content | base64 -d | sed -n 8,45p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The RPC can be set in the UI, and with --rpc in the CLI. The indexer URL can be changed only in code, though the UI falls back to RPC reads. Scored 2: the indexer is configurable via code only.
     provider_response: null
@@ -682,7 +682,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The pools are non-upgradeable escrows that release funds only to whoever holds the note's secret, who chooses the recipient in the proof. No operator, governance or relayer can redirect funds. A relayer cannot change the recipient or fee because both are bound into the proof. Whoever holds the note controls the funds, so a payer who keeps a copy of a note handed to a payee can still withdraw first.
     provider_response: null
@@ -704,7 +704,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0x58E8dCC13BE9780fC42E8723D8EaD4CF46943dF2
@@ -715,7 +715,7 @@ scores:
         check:
           slot: "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
           expect: "0x0000000000000000000000005efda50f22d34f262c29268506c5fa42cb56a1ce"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0x5efda50f22d34F262c29268506C5Fa42cB56A1Ce
@@ -726,7 +726,7 @@ scores:
         check:
           call: "0x37f135d7"
           expect: "0x000000000000000000000000000000000000000000000000000000000002a300"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/1/0xC503893b3e3c0C6b909222b45f2a3a259a52752D
@@ -751,7 +751,7 @@ scores:
         path: store/token.js
         detail: approvalAmount defaults to 'unlimited' (L13), which approves 2^256-1 to the router; components/ApproveModalBox.vue offers the user a choice between the deposit amount and unlimited.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/tornadocash/tornado-core/blob/1ef6a263ac6a0e476d063fcb269a9df65a1bd56a/src/cli.js#L88-L101
@@ -759,7 +759,7 @@ scores:
         path: src/cli.js
         detail: The core client approves exactly the deposit amount to the pool.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The UI asks by default for an unlimited allowance to TornadoRouter and shows the choice in its approval dialog. The router is not upgradeable, and deposit pulls only the denomination from msg.sender, but any allowance left over remains exposed to the router's fixed code. The core client approves exactly the deposit amount, which would score higher. Judgment call: we score the UI default because it is the published frontend, and take 1 (unbounded by default, disclosed).
     provider_response: null
@@ -785,7 +785,7 @@ scores:
         path: scripts/downloadKeys.js
         detail: The proving key and circuit needed to withdraw are public GitHub release assets.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Derived from S1=3, C2=3, C3=3 and O3=1. Funds sit in immutable pools that no one can redirect (S1). A note holder can withdraw by calling the pool directly with the public client and proving key (C2), and no relayer or indexer is required (C3). Settlement can continue the same way. A public frontend build exists in the archived classic UI, but we did not reproduce it (O3=1). Judgment call: 2, not 3, for that reason.
     provider_response: null
@@ -804,7 +804,7 @@ scores:
         detail: The UI builds INFURA_KEY and ALCHEMY_*_KEY from env into client-side RPC URLs, so those keys ship in the browser bundle; they authorise RPC usage only. There are no webhooks or merchant API keys.
         checked_at: "2026-10-07"
         recheck: gh api "repos/tornadocash/tornado-classic-ui/contents/networkConfig.js?ref=a83fae0772c8da084c0e76b3a756b456f5b9f5bb" --jq .content | base64 -d | sed -n 1,39p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The user secret is the note (nullifier and secret), generated and kept client-side. The protocol has no API keys or webhooks. The UI embeds RPC provider keys in its bundle, a minor issue since they grant only RPC quota. Integrity of the served frontend depends on whoever controls tornadocash.eth (TORN governance, see S2). Judgment call: 2 for the bundled RPC keys.
     provider_response: null
@@ -822,7 +822,7 @@ scores:
         path: tornado/Tornado_solidity_audit.pdf
         detail: ABDK's Solidity audit pins peppersec/tornado-mixer commit 0484408e (2019-10-17) and links fix commits such as d0e312eb (merge of PR 24, "audit-6"); circuit and cryptographic reviews sit in the same folder.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/tornadocash/tornado-core/blob/7033f34434208cde40503a8daf71c1c0f8dab578/README.md#L23-L33
@@ -860,7 +860,7 @@ availability:
       detail: The classic UI's only access check is isSanctioned(address) on the Chainalysis oracle at wallet connect; a grep of the source at this commit for country, geolocation, ipapi, ip-api and jurisdiction finds no country gate.
       checked_at: "2026-10-09"
       recheck: curl -sL https://codeload.github.com/tornadocash/tornado-classic-ui/tar.gz/a83fae0772c8da084c0e76b3a756b456f5b9f5bb | tar xz --exclude='*/static/*' && grep -rniE "countr|geoloc|ipapi|ip-api|jurisdic" --include='*.js' --include='*.vue' tornado-classic-ui-*
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-09"
 
 notes: >-

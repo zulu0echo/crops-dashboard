@@ -22,14 +22,14 @@ facts:
         detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
         checked_at: 2026-10-09
         quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: Rain privacy policy (last updated 16 July 2026), Security section.
         checked_at: 2026-10-09
         quote: Rain maintains SOC 2 Type II certification
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -52,7 +52,7 @@ facts:
         detail: Rain security page (Signify Holdings, Inc.), section "Security reports and policies"; the trust center at trust.rain.xyz is a client-rendered Vanta page and was not read.
         checked_at: 2026-10-09
         quote: Partners and prospective partners can request our SOC 2 report, PCI DSS attestation, penetration test summary, and security policies through our trust center
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -68,7 +68,7 @@ facts:
         detail: Rain security page, "Secure development".
         checked_at: 2026-10-09
         quote: Code is peer-reviewed and automatically scanned for vulnerabilities before it reaches production
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -91,7 +91,7 @@ facts:
         detail: Rain security page, "Detection and response".
         checked_at: 2026-10-09
         quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -117,7 +117,7 @@ facts:
         detail: Rain Platform Status (cState), with components for onboarding, API, card issuing, authorizations, disputes and collateral, and a paged incident history back to 2025.
         checked_at: 2026-10-09
         quote: We continuously monitor the performance and availability of our services
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: trace
         url: https://status.rain.xyz/issues/2026-09-28-api-issues-unexpected-declines/
@@ -139,7 +139,7 @@ facts:
         detail: Avici docs, Withdraw funds.
         checked_at: 2026-10-09
         quote: you will be prompted to verify the transaction using your biometric passkey
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -174,7 +174,7 @@ facts:
         detail: Avici CLI & MCP FAQ, question 13.
         checked_at: 2026-10-09
         quote: MCP authentication happens through a browser-based OAuth flow, which uses your Avici email and a one-time code
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -208,14 +208,14 @@ facts:
         detail: Avici privacy policy (last updated 7 October 2026), Security.
         checked_at: 2026-10-09
         quote: Access tokens for connected services are stored encrypted
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: "Rain privacy policy, Security section: encryption in transit and at rest, access controls, multifactor authentication, tokenization, PCI DSS for card data."
         checked_at: 2026-10-09
         quote: encryption of sensitive data in transit and at rest
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: trace
         url: https://avici.money
@@ -241,7 +241,7 @@ facts:
         detail: Avici privacy policy, Data Retention.
         checked_at: 2026-10-09
         quote: for the period required by applicable law after it ends, typically five years
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: P2
         index: 0
@@ -259,7 +259,7 @@ facts:
         detail: Avici privacy policy, Who We Are.
         checked_at: 2026-10-09
         quote: Avici Inc is responsible for the personal data described in this policy
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -286,7 +286,7 @@ facts:
         detail: Rain security page, "Detection and response".
         checked_at: 2026-10-09
         quote: Security events are monitored centrally, and a documented incident response plan guides how we act and keep partners informed
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -307,7 +307,7 @@ facts:
         detail: Avici docs, Secured Credit Cards, "This is how the contract works".
         checked_at: 2026-10-09
         quote: we put a “charge” using the spend attestation
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -322,14 +322,14 @@ facts:
         detail: Avici Terms of Use (last updated 25 June 2026), Contact.
         checked_at: 2026-10-09
         quote: 651 N Broad St, Suite 201 Middletown, Delaware 19709
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://avici.money/tosavicicard
         detail: Avici Spend Card Terms, Governing Law.
         checked_at: 2026-10-09
         quote: These Card Terms will be interpreted in accordance with the laws of Puerto Rico
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -344,7 +344,7 @@ facts:
         detail: Avici Terms of Use, opening paragraph.
         checked_at: 2026-10-09
         quote: including paid features such as Avici cards, Credit Mode, Avici Grow, Privacy Send, or Avici Biz
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -359,14 +359,14 @@ facts:
         detail: Avici Terms of Use, section 20 Termination.
         checked_at: 2026-10-09
         quote: We may terminate, restrict, or pause your use of the Site or services at our discretion
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://avici.money/tosavicicard
         detail: Avici Spend Card Terms, Termination.
         checked_at: 2026-10-09
         quote: with or without cause and with or without giving you notice
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -381,14 +381,14 @@ facts:
         detail: Avici docs, CLI & MCP.
         checked_at: 2026-10-09
         quote: All current Avici CLI and MCP capabilities are read-only
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: Rain privacy policy, Automated Processing and Decision-Making.
         checked_at: 2026-10-09
         quote: We may use automated systems to support fraud detection, sanctions screening, transaction monitoring, identity verification, biometric matching, eligibility assessments, and risk management
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Avici's documents name only the issuer, Third National; Rain's privacy policy identifies Third National as Nimbus LLC, a Rain affiliate, and Rain's security page covers "every card program", so Rain's statements are recorded as the issuer group's position (inferred link; Avici does not name Rain).
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -404,14 +404,14 @@ facts:
         detail: Avici privacy policy, How we use AI.
         checked_at: 2026-10-09
         quote: We work only with providers whose terms do not allow your content to be used to train their models
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://legal.raincards.xyz/legal/privacy-policy
         detail: "Rain privacy policy, Automated Processing and Decision-Making: available where applicable law grants the right."
         checked_at: 2026-10-09
         quote: request human review, express your point of view, and contest the decision
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -461,28 +461,28 @@ fees:
       detail: Avici docs, Secured Credit Cards, Fees and Limits (card purchase fees, transaction and forex fees, ATM table).
       checked_at: 2026-10-09
       quote: "First card costs $15. Subsequent cards: $10 one-time fee, no recurring charges."
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://avici.money/tosavicicard
       detail: "Avici Spend Card Terms (last updated 20 June 2025), Important Disclosures effective 5 December 2024: maxima, cross-border up to 3% currently 0%, late payment up to $40, returned payment up to $29."
       checked_at: 2026-10-09
       quote: "Foreign Exchange Fee (non USD): up to 3% , currently 1% (Charged by Visa"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.avici.money/getting-started/secured-credit-cards/faqs.md
       detail: Avici docs, card FAQs, disputes.
       checked_at: 2026-10-09
       quote: you will need to pay the **$35 dispute fee** in **USDC or USDT**
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.avici.money/getting-started/virtual-accounts/fees-and-limits.md
       detail: Avici docs, Virtual Accounts, Fees and Limits (USD and EUR accounts).
       checked_at: 2026-10-09
       quote: Pay Out (Withdrawal) via Wire Transfer / USD | 15 USD
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: Gas for card top-ups is covered by Avici's relayer per the docs (CROPS components) and is not listed as a user fee. Swap and bridging fees for auto-top-up through Relay are not stated.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -512,14 +512,14 @@ licences:
       detail: Avici Terms of Use, third-party services.
       checked_at: 2026-10-09
       quote: Third National (card issuance and BIN sponsorship)
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://legal.raincards.xyz/legal/privacy-policy
       detail: "Rain privacy policy, Entity Roles and Data Flows: describes Nimbus LLC, doing business as Third National, without naming a regulator, state or licence number."
       checked_at: 2026-10-09
       quote: is a licensed lender, money transmitter and Visa-authorized card issuer
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: trace
       url: https://api.fdic.gov/banks/institutions?search=NAME:%22Third%20National%22&fields=NAME,CERT,ACTIVE,CITY,STNAME&limit=20
@@ -562,28 +562,28 @@ cashout:
       detail: Avici Spend Card Terms, Defined Terms.
       checked_at: 2026-10-09
       quote: The issuer for this card program is Third National.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.avici.money/getting-started/secured-credit-cards/fees-and-limits.md
       detail: Avici docs, Fees and Limits, ATM Withdrawal table.
       checked_at: 2026-10-09
       quote: $1000 per txn
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.avici.money/getting-started/virtual-accounts/fees-and-limits.md
       detail: Avici docs, Virtual Accounts Fees and Limits; virtual accounts are fiat on- and off-ramp channels that convert to and from USDC in the Avici wallet.
       checked_at: 2026-10-09
       quote: Pay Out (Withdrawal) via ACH / USD
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://avici.money/tos
       detail: Avici Terms of Use, Introduction.
       checked_at: 2026-10-09
       quote: Fiat onramp and offramp services via Moonpay and Bridge
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: Bank payout is from the Avici wallet through a virtual account, not from the card escrow. The virtual-account country table prohibits some countries that are on the card allowlist (for example Bangladesh and Barbados) and limits others to SEPA or ACH; per-country rows were not split out, so ALL overstates bank payout availability in those countries. Which partner runs the virtual accounts is not named in the docs.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -602,7 +602,7 @@ maturity:
         detail: Avici Spend Card Terms, Important Disclosures header.
         checked_at: 2026-10-09
         quote: Effective as of 5th December 2024
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: No dated launch announcement was found on avici.money or docs.avici.money.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -620,7 +620,7 @@ maturity:
         detail: Avici privacy policy, Who We Are; the Terms give the Middletown, Delaware address.
         checked_at: 2026-10-09
         quote: operated by Avici Inc, a Delaware corporation in the United States
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Not checked in the Delaware Division of Corporations register (interactive search), so no register_url or file number.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -656,35 +656,35 @@ maturity:
         detail: Rain status incident 2026-09-28.
         checked_at: 2026-10-09
         quote: We are investigating an issue that is causing unexpected declines for transactions
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-06-25-elevated-api-error-rate/
         detail: Rain status incident 2026-06-25.
         checked_at: 2026-10-09
         quote: The issue was caused by an expired encryption certificate
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-06-03-payments-partner-outage/
         detail: Rain status incident 2026-06-03.
         checked_at: 2026-10-09
         quote: Our partner has identified the cause as operating system patching activity on their side
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-05-05-elevated-authorization-declines/
         detail: Rain status incident 2026-05-05.
         checked_at: 2026-10-09
         quote: The incident was related to our payment processor and has been mitigated
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://status.rain.xyz/issues/2026-01-02-payementology-rules-declines/
         detail: Rain status incident 2026-01-02.
         checked_at: 2026-10-09
         quote: Funds are safe and Rain infrastructure is working as intended
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: No Avici incident report found on avici.money, docs.avici.money or its legal pages. The entries are Rain platform incidents from status.rain.xyz, included because the issuer Third National is a Rain affiliate; Avici does not name Rain, and the pages do not say which programmes were affected.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -712,21 +712,21 @@ maturity:
         detail: Avici Spend Card Terms header.
         checked_at: 2026-10-09
         quote: SPEND CARD TERMS (last updated 20th June 2025)
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://avici.money/tos
         detail: Avici Terms of Use header.
         checked_at: 2026-10-09
         quote: "Last updated: June 25, 2026"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://avici.money/privacypolicy
         detail: Avici privacy policy header.
         checked_at: 2026-10-09
         quote: "Last updated: October 7, 2026."
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:

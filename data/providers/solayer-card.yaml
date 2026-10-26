@@ -54,7 +54,7 @@ scores:
         quote: "with or without cause and with or without giving you notice"
         detail: International Card Terms s9 let Solayer or the Issuer suspend, revoke or cancel the account or card, or deny any transaction, at any time in their sole discretion.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Solayer and the issuer can suspend an individual account or card, or deny any transaction, without cause or notice. Anchor 0. No settlement contract was found to assess.
     provider_response: null
@@ -71,7 +71,7 @@ scores:
         quote: "Issuer is the creditor responsible for funding your payments for goods and services"
         detail: Card Terms s2 make the issuer (Third National, s1) fund each purchase; Solayer then recovers it from the user's balance or collateral.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The issuer pays the merchant over Visa and Solayer recovers the amount. There is no direct payer or payee contract path.
     provider_response: null
@@ -88,7 +88,7 @@ scores:
         quote: "Hot wallets are what make your Solayer Pay feel instant."
         detail: The Security page says card swipes and merchant payments go through Solayer's hot-wallet layer, backed by Solayer-run cold storage.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Every payment depends on Solayer's closed wallet layer and backend, the issuer and Visa. None is public; no fallback. 0.
     provider_response: null
@@ -105,7 +105,7 @@ scores:
         quote: "Countries subject to economic or trade sanctions that prevent financial services from being offered."
         detail: The Eligibility page lists 17 restricted US states and 96 restricted countries and territories (residents or citizens), with sanctions, regulation and security as the reasons; the Card Terms require that the user is not OFAC-sanctioned.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Geographic and sanctions filtering is disclosed in docs (also versioned in the public solayer_docs repo) and enforced in closed services. It cannot be bypassed (C2 = 0). 1.
     provider_response: null
@@ -122,7 +122,7 @@ scores:
         quote: "means the Solana Blockchain and other blockchain networks"
         detail: Card Terms define Supported Blockchains as Solana plus networks the Issuer may add; the Overview says the card spends USDC and is "built on Solayer Chain". Neither names USDC's issuer freeze powers or Solayer Chain's operator assumptions.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The token (USDC) and chains are named in docs only, and the docs disagree on the chain: the Card Terms say Solana, the product pages say Solayer Chain. Freeze powers are not stated. 1.
     provider_response: null
@@ -174,7 +174,7 @@ scores:
         quote: "Hot wallets are what make your Solayer Pay feel instant."
         detail: The payment path runs on Solayer's closed wallet and backend; the public solayer_docs repo has no LICENSE file and is not needed to run the product.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Required components are closed, so 0.
     provider_response: null
@@ -197,7 +197,7 @@ scores:
         quote: "Hot wallets are what make your Solayer Pay feel instant."
         detail: Card payments need Solayer's hot-wallet layer and the issuer.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The product cannot run without proprietary hosted services. 0.
     provider_response: null
@@ -220,7 +220,7 @@ scores:
         quote: "redirected to our verification partner"
         detail: The KYC guide (Sumsub) collects country, state, city, address, postal code, occupation, annual salary, email, an identity document (front and back) and a liveness check.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       KYC plus occupation and salary goes beyond settlement needs. It is disclosed in the guide, with no stated legal basis. 1.
     provider_response: null
@@ -243,7 +243,7 @@ scores:
         quote: "The issuer for this card program is Third National."
         detail: The Card Terms name the issuer and the KYC guide names Sumsub; the FAQ says personal information is handled per the card provider's privacy policy.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The issuer, Visa and Sumsub are named in docs and are not swappable. No Solayer privacy policy was found (solayer.org/privacy returns 404). Disclosed in docs only, so 1.
     provider_response: null
@@ -266,7 +266,7 @@ scores:
         quote: "the majority of your assets live in"
         detail: The Security page says card funds sit in Solayer-run hot wallets (operational balance) and multi-signature cold storage; the US Card Terms instead say collateral is held in the user's custody in smart contracts, with no address given.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Solayer's own Security page describes provider-held hot and cold wallets. The Card Terms template's user-custody smart-contract claim names no contract and contradicts that page. Judgment call: taking the lower reading, provider-held and disclosed, so 1.
     provider_response: null
@@ -295,7 +295,7 @@ scores:
         quote: "To withdraw your Collateral, you must provide Solayer at least (3) business days prior notice."
         detail: US Card Terms make withdrawal a request to Solayer with three business days' notice; the Security page puts balances in Solayer-run wallets.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Derived: funds are provider-held (S1 = 1), there is no direct settlement path (C2 = 0), every service is closed and single-vendor (C3 = 0), and nothing can be self-hosted. Withdrawal is a request to Solayer. Funds depend on Solayer being live. 0.
     provider_response: null
@@ -333,14 +333,14 @@ availability:
       detail: The Eligibility page lists the restricted US states and 96 restricted countries and territories for the Solayer Card.
       quote: "are not eligible to sign up for the Solayer Card, regardless of their current place of residence"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.solayer.org/resources/legal/intl-card-terms
       detail: The international card terms are for non-US citizens; US users are covered by the separate US card terms.
       quote: "You attest that you are not a United States citizen"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-09"
 settlement:
   tokens:
@@ -359,14 +359,14 @@ settlement:
       detail: The Overview says the card spends directly from USDC with no pre-conversion and runs on Solayer Chain.
       quote: "Spend directly from USDC"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.solayer.org/resources/legal/us-card-terms
       detail: The US Card Terms say collateral stays in smart contracts on the Supported Blockchains and is liquidated to repay card charges.
       quote: "the Collateral will be foreclosed and liquidated by the smart contract in order to repay the outstanding balance on your Card"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-12"
 
 audits:

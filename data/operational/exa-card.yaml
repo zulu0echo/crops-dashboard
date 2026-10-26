@@ -22,27 +22,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/contents/?ref=main
         detail: "exactly/exa: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
         detail: "exactly/webauthn-owner-plugin: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
         detail: "exactly/protocol: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/contents/?ref=main
         detail: "exactly/docs: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -68,27 +68,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/contents/?ref=main
         detail: "exactly/exa: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
         detail: "exactly/webauthn-owner-plugin: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
         detail: "exactly/protocol: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/contents/?ref=main
         detail: "exactly/docs: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -114,27 +114,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/contents/?ref=main
         detail: "exactly/exa: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
         detail: "exactly/webauthn-owner-plugin: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
         detail: "exactly/protocol: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/contents/?ref=main
         detail: "exactly/docs: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -160,27 +160,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/rules/branches/main
         detail: "exactly/exa: rules: deletion, non_fast_forward, creation, required_linear_history, required_signatures, pull_request, required_status_checks, copilot_code_review"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/rules/branches/main
         detail: "exactly/webauthn-owner-plugin: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/rules/branches/main
         detail: "exactly/protocol: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/rules/branches/main
         detail: "exactly/docs: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -206,27 +206,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/contents/?ref=main
         detail: "exactly/exa: 12 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
         detail: "exactly/webauthn-owner-plugin: 1 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
         detail: "exactly/protocol: 2 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/contents/?ref=main
         detail: "exactly/docs: 1 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -252,27 +252,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/contents/?ref=main
         detail: "exactly/exa: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
         detail: "exactly/webauthn-owner-plugin: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
         detail: "exactly/protocol: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/contents/?ref=main
         detail: "exactly/docs: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -298,27 +298,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/contents/?ref=main
         detail: "exactly/exa: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
         detail: "exactly/webauthn-owner-plugin: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
         detail: "exactly/protocol: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/contents/?ref=main
         detail: "exactly/docs: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -329,7 +329,7 @@ facts:
       repos:
         - repo: exactly/exa
           ok: false
-          detail: "latest tags: @exactly/substreams@0.1.0, @exactly/server@0.2.129, @exactly/server@0.2.128"
+          detail: "latest tags: @exactly/substreams@0.1.0, @exactly/server@0.2.131, @exactly/server@0.2.130"
         - repo: exactly/webauthn-owner-plugin
           ok: false
           detail: no tags
@@ -343,28 +343,28 @@ facts:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/exa/tags
-        detail: "exactly/exa: latest tags: @exactly/substreams@0.1.0, @exactly/server@0.2.129, @exactly/server@0.2.128"
-        checked_at: 2026-10-19
+        detail: "exactly/exa: latest tags: @exactly/substreams@0.1.0, @exactly/server@0.2.131, @exactly/server@0.2.130"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/tags
         detail: "exactly/webauthn-owner-plugin: no tags"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/tags
         detail: "exactly/protocol: latest tags: v0.2.24, v0.2.23, v0.2.22"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/tags
         detail: "exactly/docs: no tags"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -375,13 +375,13 @@ facts:
       repos:
         - repo: exactly/exa
           ok: false
-          detail: 2 of 10 recent commits signed
+          detail: 0 of 10 recent commits signed
         - repo: exactly/webauthn-owner-plugin
           ok: true
           detail: 10 of 10 recent commits signed
         - repo: exactly/protocol
           ok: true
-          detail: 9 of 10 recent commits signed
+          detail: 10 of 10 recent commits signed
         - repo: exactly/docs
           ok: true
           detail: 10 of 10 recent commits signed
@@ -389,28 +389,28 @@ facts:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/exa/commits?per_page=10
-        detail: "exactly/exa: 2 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        detail: "exactly/exa: 0 of 10 recent commits signed"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/commits?per_page=10
         detail: "exactly/webauthn-owner-plugin: 10 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/commits?per_page=10
-        detail: "exactly/protocol: 9 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        detail: "exactly/protocol: 10 of 10 recent commits signed"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/commits?per_page=10
         detail: "exactly/docs: 10 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -436,27 +436,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/contents/?ref=main
         detail: "exactly/exa: CHANGELOG file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
         detail: "exactly/webauthn-owner-plugin: no changelog or release notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
         detail: "exactly/protocol: CHANGELOG file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/contents/?ref=main
         detail: "exactly/docs: no changelog or release notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -482,27 +482,27 @@ facts:
         kind: api
         url: https://api.github.com/repos/exactly/exa/contents/?ref=main
         detail: "exactly/exa: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/webauthn-owner-plugin/contents/?ref=main
         detail: "exactly/webauthn-owner-plugin: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/protocol/contents/?ref=main
         detail: "exactly/protocol: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/exactly/docs/contents/?ref=main
         detail: "exactly/docs: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -566,7 +566,7 @@ facts:
         path: security/emergency-procedure.md
         detail: Emergency checklist; communication step has no deadline.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -588,7 +588,7 @@ facts:
         path: security/emergency-procedure.md
         detail: Emergency procedure introduction and emergency definitions.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: S4
         index: 0
@@ -612,7 +612,7 @@ facts:
         detail: Help article on passkeys in the Exa App.
         checked_at: 2026-10-09
         quote: instead of typing a password, your device will communicate with the service to prove your identity
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: S4
         index: 1
@@ -631,7 +631,7 @@ facts:
         path: common/AUTH_EXPIRY.ts
         detail: AUTH_EXPIRY = 24 * 60 * 60_000 ms.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/api/auth/authentication.ts#L454-L463
@@ -655,7 +655,7 @@ facts:
         path: server/middleware/auth.ts
         detail: Auth middleware rejects requests without a valid signed credential_id cookie (401).
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/api/auth/authentication.ts#L454-L463
@@ -679,7 +679,7 @@ facts:
         path: server/hooks/panda.ts
         detail: Webhook handler verifies the signature header against each configured key and returns 401 otherwise.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: F3
         index: 0
@@ -699,7 +699,7 @@ facts:
         path: common/AUTH_EXPIRY.ts
         detail: AUTH_EXPIRY = 24 * 60 * 60_000 ms.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -714,7 +714,7 @@ facts:
         detail: Privacy Policy section 4 Data Security.
         checked_at: 2026-10-09
         quote: We use appropriate technical and organizational security measures to protect your personal data
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -729,7 +729,7 @@ facts:
         detail: Privacy Policy section 5 Duration of Data Processing.
         checked_at: 2026-10-09
         quote: Retention periods are determined based on the type of record
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: P2
         index: 0
@@ -747,7 +747,7 @@ facts:
         detail: Privacy Policy opening paragraph and KYC section.
         checked_at: 2026-10-09
         quote: a company incorporated under the laws of Uruguay
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -775,7 +775,7 @@ facts:
         path: exa-app/the-exa-tech-stack.md
         detail: Tech-stack page with a layer diagram.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -791,14 +791,14 @@ facts:
         detail: App Terms opening paragraph.
         checked_at: 2026-10-09
         quote: a corporation incorporated under the laws of Uruguay
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://help.exactly.app/en/articles/10707672-exa-card-terms-and-conditions
         detail: Card terms, definitions (Issuer) and section 14 Governing Law.
         checked_at: 2026-10-09
         quote: The issuer for this card program is Third National.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: No Uruguayan company-register entry was checked.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -814,7 +814,7 @@ facts:
         detail: Card terms section 9 Termination.
         checked_at: 2026-10-09
         quote: we may suspend, revoke or cancel your Account privileges
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: S4
         index: 0
@@ -833,7 +833,7 @@ facts:
         path: server/hooks/panda.ts
         detail: assess() posts each transaction (amount, merchant, MCC, country) to Sardine's /v1/issuing/risks endpoint.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/exactly/exa/blob/4fba32be1803f15c0db9f39a055bda4740c1fdf1/server/hooks/panda.ts#L271-L277
@@ -841,7 +841,7 @@ facts:
         path: server/hooks/panda.ts
         detail: The authorization assessment runs in a detached span; a high or very_high level only calls captureException.
         checked_at: 2026-10-09
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -882,7 +882,7 @@ fees:
       detail: Exa Labs Spend Card Terms, Important Disclosures, Fees.
       checked_at: 2026-10-09
       quote: "Foreign Exchange Fee (non USD): up to 1.5%"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/9055779-exa-card-associated-fees-and-costs
@@ -890,7 +890,7 @@ fees:
       detail: Help article "Exa Card associated fees and costs" (Oct 2024).
       checked_at: 2026-10-09
       quote: We may charge an origination fee whenever you make a loan
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/11758961-how-to-withdraw-cash-from-an-atm-with-your-exa-card
@@ -905,7 +905,7 @@ fees:
       detail: Onramping and offramping fees and limits (Bridge and Manteca).
       checked_at: 2026-10-09
       quote: Fees are deducted from the fiat amount after USDC conversion, prior to the bank transfer
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: "No issuance, monthly or annual fee is stated; the card is virtual only (no physical card). Card terms and help centre differ on FX: the terms allow up to 1.5% FX plus up to 1.5% cross-border, the help centre says 1.5%. Judgment call: first-party help-centre pricing pages are treated as documented here."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -961,7 +961,7 @@ cashout:
       detail: Card terms, purchases and restrictions; cash advances are not available under the card terms.
       checked_at: 2026-10-09
       quote: Cash advances and balance transfers are not available
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/11758961-how-to-withdraw-cash-from-an-atm-with-your-exa-card
@@ -969,7 +969,7 @@ cashout:
       detail: ATM article; withdrawal by tapping a phone wallet at a contactless ATM.
       checked_at: 2026-10-09
       quote: Up to $250 per withdrawal
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://help.exactly.app/en/articles/13862897-bridge-terms-and-conditions
@@ -977,7 +977,7 @@ cashout:
       detail: Bridge Particular Terms, section 2.2 Offramp Service.
       checked_at: 2026-10-09
       quote: The Offramp Service enables users to send funds from their Exa Account to bank accounts
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: "Contradiction: the card terms say cash advances are not available while the help centre documents ATM withdrawals with fees. Recorded as the help centre states. Manteca (ARS, USD, BRL) is a deposit service only in its Exa terms and is not listed as a cash-out route."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -1017,7 +1017,7 @@ maturity:
         detail: App Terms opening paragraph names EXA LABS S.A.S., incorporated under the laws of Uruguay.
         checked_at: 2026-10-09
         quote: a corporation incorporated under the laws of Uruguay
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: No company-register entry checked.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -1046,13 +1046,13 @@ maturity:
         detail: Card terms Important Disclosures effective date.
         checked_at: 2026-10-09
         quote: Effective as of November 12th, 2024
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
       status: pending
 volume:
-  status: unknown
+  status: evidenced
   spec:
     chain_id: 10
     addresses:
@@ -1069,4 +1069,17 @@ volume:
   assessed_by: AI research agent (operational), 2026-10-09
   review:
     status: pending
-  reason: "not computed on 2026-10-19: eth_getLogs: Your IP has exceeded its requests per second capacity. Please consider using a dedicated API provider: https://community.optimism.io/docs/useful-tools/providers"
+  value:
+    from_block: 157407470
+    to_block: 158703470
+    computed_at: 2026-10-26
+    events: 15495
+    results:
+      - token: "0x0b2c639c533813f4aa9d7837caf62653d097ff85"
+        count: 15495
+        sum: "1392716020000"
+        decimals: 6
+        symbol: USDC
+        sum_units: "1392716.02"
+    calls: 649
+    rpc: public default

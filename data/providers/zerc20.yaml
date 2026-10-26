@@ -150,7 +150,7 @@ scores:
         detail: _update() reverts with AddressIsBlocked if from or to is on BLOCKLIST, so every transfer, mint, burn and teleport of a listed address fails. This file is identical, apart from a trailing newline, to the Sourcify source of the deployed implementation 0x857a…c748.
         checked_at: "2026-10-09"
         recheck: gh api "repos/kbizikav/zERC20/contents/contracts/src/zERC20.sol?ref=b890773cf9d2ce0499181cc25989530862695980" --jq .content | base64 -d | sed -n 187,196p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/56/0x847b6E2dBB28A3a163C6e0fcA9B0222b9C1E4Df9
@@ -162,7 +162,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x00000000000000000000000043010855b94e65e77679fe81af2047719f67b1fa"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/56/0x43010855B94e65e77679FE81af2047719F67B1fa
@@ -174,7 +174,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/8453/0x6b4AafEb7746e13aAebd750418f6E9CfED6EE1c8
@@ -185,14 +185,14 @@ scores:
         check:
           call: "0x5c975abb"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://zerc20.gitbook.io/zerc20/for-users/faq
         quote: The Blocklist contract is managed by a designated owner (multisig)
         detail: The FAQ says the Blocklist follows the OFAC list and that a blocked address cannot send, receive, wrap, unwrap or teleport. The signers are not named.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The settlement contracts carry two stop powers. The Blocklist owner, a 3-of-4 Safe with undisclosed EOA signers, can add any address at once, with no timelock or notice. The token then refuses every transfer to or from that address, including funds already sitting at a burn address meant for that recipient. The Verifier owner, a second 3-of-4 Safe with the same signers, can pause all proofs and teleports with activateEmergency. Neither Safe has a module or a guard. Scored 0 because the role can target individual addresses with no notice. The docs say the list follows OFAC; that is a policy statement, not a constraint in code.
     provider_response: null
@@ -210,7 +210,7 @@ scores:
         path: contracts/src/Verifier.sol
         detail: proveTransferRoot() is gated by onlyAllowedProver, which requires msg.sender to be in an owner-managed allowlist (setAllowedProver L775-L780). Teleports verify against roots recorded only by this function or relayed from the Hub.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/8453/0x6b4AafEb7746e13aAebd750418f6E9CfED6EE1c8
@@ -236,7 +236,7 @@ scores:
         path: contracts/src/Verifier.sol
         detail: Root proving is restricted to allowlisted provers, so the provider can stop new payments from becoming redeemable.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://zerc20.gitbook.io/zerc20/for-developers/indexer-api
@@ -244,14 +244,14 @@ scores:
         detail: Recipients get Merkle proofs for their burn events from the indexer; the app bundle hardcodes https://v1.mainnet.api.zerc20.io/indexer/zbnb (archived bundle strings).
         checked_at: "2026-10-09"
         archive: data/archive/zerc20-app-bundle.txt
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://zerc20.gitbook.io/zerc20/for-users/getting-started-1
         quote: git clone https://github.com/zerc20io/zERC20.git
         detail: The docs point to github.com/zerc20io/zERC20 for the CLI, indexer and prover code, but that repository returned 404 on 2026-10-09. The org has one public repo, its profile.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Two provider services sit in the required path. The root prover is single-vendor by contract design: only allowlisted addresses can prove roots. The hosted indexer supplies the Merkle proofs recipients need. The docs invite users to run their own indexer, but the official repository is not public. A snapshot of the monorepo, BUSL-1.1, exists under a personal GitHub account; it is not linked from the org, and running a prover from it would not help, because the contract allowlist still applies. The relay node and ICP canisters are optional. Scored 0: required, closed and single-vendor.
     provider_response: null
@@ -269,14 +269,14 @@ scores:
         path: contracts/src/zERC20.sol
         detail: Address filtering sits in the token's _update(), which is the settlement layer.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://zerc20.gitbook.io/zerc20/for-users/faq
         quote: you will not be able to send, receive, wrap, unwrap, or teleport any zERC20 tokens
         detail: The FAQ and contract spec disclose the OFAC Blocklist and its effect; the app also pre-checks recipients against the Blocklist before sending (docs Private Transfer page).
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Filtering is built into the settlement contracts. The token checks every sender and recipient against an owner-maintained Blocklist, so no direct path avoids it. The filter is disclosed in the docs, and the list source is named as OFAC, but its contents are set by the owner Safe. The terms describe these parameters as operating "without human intervention or discretion by the Operator", which the owner-only blockAddress function contradicts. Judgment call: anchors 2 and 3 require a neutral settlement layer. The filtering is disclosed, so not 0. We take 1.
     provider_response: null
@@ -301,7 +301,7 @@ scores:
         quote: zBNB wrap/unwrap is only available on BNB Chain
         detail: The addresses page enumerates every token, chain and contract, and says it is derived from config/deployed JSON files.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Tokens and chains are enumerated onchain and in the docs. zBNB wraps native BNB, which has no issuer freeze. The freeze power that matters is zERC20's own Blocklist (C1), which the docs disclose. The docs do not state BNB Chain's validator-set assumptions or LayerZero's DVN trust for cross-chain roots. Scored 2: enumerated in code, chain and messaging assumptions not stated.
     provider_response: null
@@ -323,7 +323,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x000000000000000000000000857afa597b87513df9b2317a60677a617a6ac748"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/8453/0x6b4AafEb7746e13aAebd750418f6E9CfED6EE1c8
@@ -334,7 +334,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000006b4aafeb7746e13aaebd750418f6e9cfed6ee1c8"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Most of the zBNB contracts are verified on Sourcify, but the Verifier implementation, which every redeem calls, is not verified on BNB Chain. Its bytecode matches a verified deployment on Base. BscScan blocked automated access, and we did not bypass it. The official repository is not public, so there is no build script from a provider-published commit. Judgment call: 1 rather than 2, because one settlement contract is unverified on this chain.
     provider_response: null
@@ -353,7 +353,7 @@ scores:
         detail: The zerc20io org has one public repository, its profile README, which links the app, docs and website and no source repository.
         checked_at: "2026-10-09"
         recheck: gh api orgs/zerc20io/repos --jq '.[].name'
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/kbizikav/zERC20/tree/b890773cf9d2ce0499181cc25989530862695980/contracts
@@ -377,7 +377,7 @@ scores:
         quote: git clone https://github.com/zerc20io/zERC20.git
         detail: The CLI and self-host instructions start by cloning github.com/zerc20io/zERC20, which returned HTTP 404 on 2026-10-09.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The documented path to a working deployment starts from a repository that is not public, so a stranger cannot follow it. We made no reproduction attempt. Even with code, a self-hosted prover could not post roots to the deployed Verifier without being allowlisted. Scored 0, because no published path exists.
     provider_response: null
@@ -394,7 +394,7 @@ scores:
         quote: The indexer is the public read API for zERC20 transfer history
         detail: The indexer API, contract spec and events are documented on the hosted docs site; the npm SDK ships contract ABIs (BlocklistArtifact and others).
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       ABIs ship in the npm package, and the API and events are described on GitBook, but none of it is versioned in a public provider repository. We found no payee export function. Scored 1: documented only.
     provider_response: null
@@ -413,7 +413,7 @@ scores:
         detail: Business Source License 1.1, Licensor zERC20, no Additional Use Grant, Change Date 2030-04-08, Change License GPL-2.0-or-later. The deployed zERC20.sol and Verifier.sol carry SPDX BUSL-1.1 in their Sourcify source; Blocklist, Hub and LiquidityManager are MIT.
         checked_at: "2026-10-09"
         recheck: curl -s --max-time 30 https://sourcify.dev/server/v2/contract/56/0x857afA597B87513df9B2317A60677A617a6Ac748?fields=sources | jq -r '.sources["src/zERC20.sol"].content' | head -1
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The token and Verifier source is BUSL-1.1 with no additional use grant, so production use of a fork needs a commercial licence until 2030. The required root prover and indexer are not public. Scored 0: required components are closed, and the core contracts are source-available only.
     provider_response: null
@@ -439,14 +439,14 @@ scores:
         path: contracts/src/Verifier.sol
         detail: The prover allowlist is set by the owner; no open alternative can post roots to the deployed Verifier.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://zerc20.gitbook.io/zerc20/for-developers/architecture
         quote: Run your own indexer instance to avoid sender-recipient linkage leaks
         detail: The architecture page lists the indexer, Decider prover, cross-chain job and relay node as off-chain services.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Using the deployed protocol requires the provider's root prover, a hosted-only service by contract design, and the indexer code is not officially public. The docs describe both services. Scored 1: production needs a hosted service with no open alternative, documented.
     provider_response: null
@@ -491,7 +491,7 @@ scores:
         quote: Observes sender/burn-address/value; learns recipient on query
         detail: The trust model says the indexer operator sees sender, burn address and value, and learns the recipient when the recipient queries it.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Onchain, the flow needs only addresses and amounts, and burn-address secrets are delivered encrypted through ICP canisters. The required hosted indexer, however, learns which recipient is querying which burn events, and with them the IP address and timing. That is collection beyond settlement needs, disclosed only in docs. Scored 1.
     provider_response: null
@@ -516,7 +516,7 @@ scores:
         quote: Transfer and withdrawal amounts are visible on-chain
         detail: The docs state that amounts are public and suggest batching or partial withdrawals to reduce correlation.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The chain shows the sender paying an unknown burn address, and later a recipient minting via teleport, with no onchain link between the two. Amounts are plaintext and not fixed denominations, so unusual amounts and timing can link a payment to its redeem; the docs say so. Judgment call: 2 (minimal linkage, documented) rather than 3, because plaintext arbitrary amounts are revealed by the protocol itself. Anonymity-set size (17356 indexed zBNB transfers) is behavioural and not scored.
     provider_response: null
@@ -540,7 +540,7 @@ scores:
         quote: Observes sender/burn-address/value; learns recipient on query
         detail: The docs disclose what the indexer operator sees.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       In the app flow, the provider's indexer, Alchemy (or thirdweb) RPCs and ICP boundary nodes see payment requests, and WalletConnect relays see wallet sessions. The SDK leaves every endpoint to the integrator, but the indexer it needs is the provider's unless you build your own. Disclosed in docs; the app's choices are not swappable. Scored 1.
     provider_response: null
@@ -579,14 +579,14 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x00000000000000000000000043010855b94e65e77679fe81af2047719f67b1fa"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://zerc20.gitbook.io/zerc20/for-developers/architecture
         quote: Can upgrade contracts, rotate verifiers
         detail: The trust model discloses the owner's upgrade and verifier powers.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       In flight, value sits as a zBNB balance at a keyless burn address until the recipient teleports an equal amount. No provider wallet holds it, but the token and Verifier are upgradeable by 3-of-4 Safes with no timelock. The owner can also swap the Verifier or minter, which could redirect or invalidate pending balances. The BNB backing sits in an upgradeable LiquidityManager administered by the same Safe. Disclosed in docs. Scored 1: upgradeable escrow, disclosed.
     provider_response: null
@@ -608,7 +608,7 @@ scores:
         check:
           slot: "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://app.safe.global/home?safe=bnb:0xb6d8B261948B097069eF926475cbB6dd698DafCa
@@ -619,7 +619,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       All core contracts are UUPS proxies upgradeable at once by two 3-of-4 Safes that share the same undisclosed EOA signers. There is no timelock and no notice channel. Neither Safe has a module or a guard. Scored 1: multisig admin, no timelock.
     provider_response: null
@@ -702,7 +702,7 @@ availability:
       quote: (e.g., North Korea, Iran, Syria)
       detail: The Terms and Conditions define Restricted Countries and require users to warrant they are not residents of them.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://app.zerc20.io/

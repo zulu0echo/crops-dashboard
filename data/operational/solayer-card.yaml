@@ -30,7 +30,7 @@ facts:
         detail: Audits page listing the five reports with links to GitHub PDFs.
         checked_at: 2026-10-09
         quote: Solayer will conduct two audits per year on all existing contracts
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -84,7 +84,7 @@ facts:
         detail: Better Stack status page, monitors listed on 2026-10-09.
         checked_at: 2026-10-09
         quote: Deposit withdraw monitor
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -131,7 +131,7 @@ facts:
         detail: Opening Account Disclosures, Third National ("Issuer") privacy notice, What We Do.
         checked_at: 2026-10-09
         quote: These measures include computer safeguards and secured files and buildings
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -152,7 +152,7 @@ facts:
         detail: International Card Terms, Background, refer to a Solayer Privacy Policy.
         checked_at: 2026-10-09
         quote: are described in Solayer Privacy Policy
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: trace
         url: https://docs.solayer.org/llms.txt
@@ -206,7 +206,7 @@ facts:
         detail: Solayer Pay Security page.
         checked_at: 2026-10-09
         quote: Hot wallets are what make your Solayer Pay feel instant.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -221,21 +221,21 @@ facts:
         detail: Solayer Terms of Use, opening paragraph.
         checked_at: 2026-10-09
         quote: operated by or on behalf of Solayer Labs, Inc.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://solayer.org/terms
         detail: Terms of Use, copyright notice address.
         checked_at: 2026-10-09
         quote: 123 Main Street, Anytown, USA
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.solayer.org/resources/legal/intl-card-terms
         detail: International Card Terms, defined terms.
         checked_at: 2026-10-09
         quote: The issuer for this card program is Third National.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -250,7 +250,7 @@ facts:
         detail: Solayer Pay fee structure page.
         checked_at: 2026-10-09
         quote: Annual $20 / year
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -265,14 +265,14 @@ facts:
         detail: International Card Terms s9 Termination.
         checked_at: 2026-10-09
         quote: with or without cause and with or without giving you notice
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://docs.solayer.org/resources/legal/us-card-terms
         detail: US Cardholder Agreement, collateral withdrawal.
         checked_at: 2026-10-09
         quote: To withdraw your Collateral, you must provide Solayer at least (3) business days prior notice.
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -329,35 +329,35 @@ fees:
       detail: Solayer Pay fee structure page (membership, top-up and transaction fees).
       checked_at: 2026-10-09
       quote: Top-Up Fee 1% per top-up transaction
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.solayer.org/resources/legal/intl-card-terms
       detail: International Card Terms, Important Disclosures (effective 11 April 2025).
       checked_at: 2026-10-09
       quote: "Cross Border Fee: up to 3%"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.solayer.org/solayer-pay/card
       detail: Physical Card page, ATM withdrawals and shipping.
       checked_at: 2026-10-09
       quote: "Maximum withdrawal amount per transaction: $250"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.solayer.org/solayer-pay/faq
       detail: FAQ Q11, conflicting top-up and international fees.
       checked_at: 2026-10-09
       quote: Top-Up Fee – 0.5% per top-up
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.solayer.org/resources/legal/us-card-terms
       detail: US Card Account Opening Disclosures.
       checked_at: 2026-10-09
       quote: "International Transaction: 1% of each transaction in U.S. dollars"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: Solayer's own pages disagree on the top-up fee (1%, 0.5%, 0.10 USD) and the international fee (1.5% or 1.75%); the US Card Terms list no annual fee while the docs charge 20 USD a year. Network fees for deposits are not stated.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -383,7 +383,7 @@ licences:
       detail: The card terms name Third National as issuer under licence from Visa, without regulator, licence type or number; governing law Puerto Rico.
       checked_at: 2026-10-09
       quote: The issuer for this card program is Third National.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://api.fdic.gov/banks/institutions?filters=NAME:%22Third%20National%22&fields=NAME,CERT,CITY,STNAME,ACTIVE&limit=20
@@ -391,7 +391,7 @@ licences:
       detail: FDIC BankFind exact-name search for "Third National" returns no institution.
       checked_at: 2026-10-09
       quote: '"totals":{"count":0}'
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: No licence found for any party. No Solayer document names a licence, regulator or registration for Solayer Labs, Inc. Third National is not an FDIC-insured US bank by that name; the Puerto Rico OCIF register was not checked (earlier attempts from this environment failed the TLS handshake). Rain (Signify Holdings) is not named in Solayer's documents.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -419,14 +419,14 @@ cashout:
       detail: Fee structure page.
       checked_at: 2026-10-09
       quote: International Fee $0.10 + 1.5% per international transaction
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.solayer.org/solayer-pay/card
       detail: Physical Card page, ATM withdrawals.
       checked_at: 2026-10-09
       quote: Standard ATM and network fees may apply
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: ALL means every country not on the blocklist in the provider file. No bank-transfer off-ramp is documented; balances leave the card only as spend, ATM cash or a collateral withdrawal requested from Solayer (US terms, 3 business days' notice).
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -445,7 +445,7 @@ maturity:
         detail: International Card Terms header; the US Cardholder Agreement carries the same date.
         checked_at: 2026-10-09
         quote: Effective as of April 11, 2025
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: solayer.org/resources/blog lists posts back to May 2025 (a July 2025 post on card updates via Telegram) but no launch post. The docs overview says the card is live for 40,000+ users.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -460,7 +460,7 @@ maturity:
         detail: Solayer Terms of Use name Solayer Labs, Inc. as operator and choose New York law; the notice address is a placeholder.
         checked_at: 2026-10-09
         quote: These Terms are governed by the laws of the State of New York
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: The contracting entity is named (Solayer Labs, Inc.), but no document states its jurisdiction of incorporation, registration number or a real address (the Terms give "123 Main Street, Anytown, USA"). Governing law (New York) is not taken as the jurisdiction. No company register checked.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
@@ -489,7 +489,7 @@ maturity:
         detail: US Cardholder Agreement header.
         checked_at: 2026-10-09
         quote: "Last Updated: April 11, 2025"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/solayer-labs/solayer_docs/commit/7c7c549399343dcbc581dfaef0430f72c20c6913

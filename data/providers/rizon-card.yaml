@@ -65,7 +65,7 @@ scores:
         detail: The Rizon Global card terms let Rizon and the issuer block transactions and suspend account access for activity that does not fit consumer patterns.
         quote: reserve the right to block and terminate transactions and suspend access to your Account
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Rizon and the issuer can block individual cardholders' transactions and suspend accounts at their discretion. No contract-level role could be read, because no Rizon contract address is published (see notes).
     provider_response: null
@@ -82,7 +82,7 @@ scores:
         detail: The Terms say each user is assigned a smart contract managed in part by Rain to enable the card off-ramp; card spending converts collateral to fiat through Rain and its licensed partners.
         quote: which is managed in part by Rain to enable Card Off-Ramp service
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Card payments settle through Rain, the issuer Third National and Visa. Users cannot settle a card payment themselves.
     provider_response: null
@@ -99,7 +99,7 @@ scores:
         detail: Card issuance, smart contract wallets and digital asset transfers are provided solely by Rain, and wallet functionality by Privy.
         quote: are provided solely by Signify Holdings Inc. and its subsidiary Nimbus LLC (Rain)
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Every card payment depends on Rain's closed platform, Privy and the issuer. No code is public and there is no fallback. Closed, single-vendor.
     provider_response: null
@@ -116,7 +116,7 @@ scores:
         detail: The Terms exclude users in jurisdictions sanctioned under EU, OFAC or UN law and require KYC through Rain.
         quote: Users in jurisdictions subject to sanctions or restrictions under EU, OFAC, or UN laws are not allowed to access the App
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Sanctions and geographic screening is disclosed in the Terms, with the list sources named. Whether the settlement contracts filter cannot be checked, because no contract is identified. Disclosed in docs only, so 1.
     provider_response: null
@@ -133,7 +133,7 @@ scores:
         detail: The card terms define Supported Blockchains as Polygon, Optimism and Arbitrum plus any the issuer adds, and let the issuer choose which digital assets count as collateral; no tokens or freeze powers are listed.
         quote: means the Polygon Blockchain, Optimism Blockchain, Arbitrium Blockchain
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: claimed
         by: provider
         kind: document
@@ -177,7 +177,7 @@ scores:
         detail: Wallet functionality is powered by Privy and the card, smart contract wallets and transfers by Rain; both are closed third-party services.
         quote: All wallet functionality is powered by Privy
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The required components (Rain, Privy, the issuer, the Rizon app) are closed, so nothing needed to run the product can be forked.
     provider_response: null
@@ -210,7 +210,7 @@ scores:
         detail: The privacy policy describes identity verification data from partners, sanctions and PEP database checks and AML retention of up to eight years under Lithuanian law.
         quote: we collaborate with identity verification partners who provide us with access to specific personal data
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       KYC and screening data are collected beyond settlement needs and disclosed in the privacy policy only, so 1.
     provider_response: null
@@ -233,7 +233,7 @@ scores:
         detail: Names Rain (Signify Holdings, Nimbus LLC) and Privy as providers in the payment path; the identity verification partner is not named.
         quote: are provided solely by Signify Holdings Inc. and its subsidiary Nimbus LLC (Rain)
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Rain, Privy, the issuer and an unnamed KYC partner all see user and payment data. They are disclosed in docs and cannot be swapped, so 1.
     provider_response: null
@@ -296,7 +296,7 @@ availability:
       detail: Rizon's help article gives the full list of supported nationalities and says eligibility follows citizenship.
       quote: "Below is the full list of nationalities that Rizon currently support"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.getrizon.com/terms-of-service
@@ -304,14 +304,14 @@ availability:
       quote: "Afghanistan, Albania, Belarus, Bosnia, Central African Republic, Congo, Croatia, Cuba, Cyprus"
       archive: data/archive/rizon-card-terms-jurisdictions.txt
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://intercom.help/rizon/en/articles/11822548-rizon-global-inc-spend-card-terms
       detail: The Rizon Global, Inc. card terms require users to attest they are not US citizens.
       quote: "You attest that you are not a United States citizen"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-09"
 
 settlement:
@@ -334,14 +334,14 @@ settlement:
       detail: Rizon's help centre says the wallet accepts only USDC and USDT, and lists the supported networks.
       quote: "Rizon currently supports USDC and USDT only"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://intercom.help/rizon/en/articles/13441290-can-i-use-the-rizon-card-with-different-currencies
       detail: The help centre says the card uses the user's dollar balance at the moment of payment.
       quote: "We automatically use your dollar balance with the lowest available conversion fee to a local currency at the moment of payment"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.getrizon.com/terms-of-service
@@ -349,7 +349,7 @@ settlement:
       detail: The Terms describe the Rain card as converting stablecoins into fiat for spending.
       quote: "enabling Users to spend stablecoins by converting them into Fiat through Rain's and their licensed partners infrastructure"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-12"
 
 audits:

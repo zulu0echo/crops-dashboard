@@ -13,9 +13,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -32,9 +32,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: dependabot config present"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -51,9 +51,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -70,9 +70,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/rules/branches/main
         detail: "MetaMask/metamask-mobile: rules: pull_request, non_fast_forward, required_status_checks, merge_queue, pull_request"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -83,15 +83,15 @@ facts:
       repos:
         - repo: MetaMask/metamask-mobile
           ok: true
-          detail: 95 workflow file(s)
+          detail: 93 workflow file(s)
     evidence:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
-        detail: "MetaMask/metamask-mobile: 95 workflow file(s)"
-        checked_at: 2026-10-19
+        detail: "MetaMask/metamask-mobile: 93 workflow file(s)"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -108,9 +108,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -127,9 +127,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -140,15 +140,15 @@ facts:
       repos:
         - repo: MetaMask/metamask-mobile
           ok: true
-          detail: "latest tags: v8.15.0, v8.14.0, v8.13.1"
+          detail: "latest tags: v8.17.0, v8.16.1, v8.16.0"
     evidence:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/tags
-        detail: "MetaMask/metamask-mobile: latest tags: v8.15.0, v8.14.0, v8.13.1"
-        checked_at: 2026-10-19
+        detail: "MetaMask/metamask-mobile: latest tags: v8.17.0, v8.16.1, v8.16.0"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -159,15 +159,15 @@ facts:
       repos:
         - repo: MetaMask/metamask-mobile
           ok: true
-          detail: 10 of 10 recent commits signed
+          detail: 9 of 10 recent commits signed
     evidence:
       - tier: verified
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/commits?per_page=10
-        detail: "MetaMask/metamask-mobile: 10 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        detail: "MetaMask/metamask-mobile: 9 of 10 recent commits signed"
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,9 +184,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: CHANGELOG file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -203,9 +203,9 @@ facts:
         kind: api
         url: https://api.github.com/repos/MetaMask/metamask-mobile/contents/?ref=main
         detail: "MetaMask/metamask-mobile: CONTRIBUTING file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -255,7 +255,7 @@ facts:
         detail: Getting started with MetaMask Card.
         checked_at: 2026-10-09
         quote: Setting up your account involves adding an email/password, confirming your phone number
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: S5
         index: 0
@@ -313,7 +313,7 @@ facts:
         detail: MetaMask Card security and privacy page, Crypto Life KYC section.
         checked_at: 2026-10-09
         quote: MetaMask will not have access to any of the personal details you provide to Crypto Life
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -336,7 +336,7 @@ facts:
         detail: Companies House entry for company 11155611, MONAVATE ONCHAIN LTD, active, incorporated 17 Jan 2018, previous name BAANX.COM LTD until 19 Aug 2026.
         checked_at: 2026-10-09
         quote: MONAVATE ONCHAIN LTD
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -407,7 +407,7 @@ fees:
       detail: MetaMask Card limits and fees table (Free and Metal tiers) with footnotes.
       checked_at: 2026-10-09
       quote: Stablecoin denominated in currency not of cardholder country or merchant country
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: "The support site serves region-dependent guidance; the static HTML read here is the default (US) view. Metal cards are no longer offered to new UK users (UK migration guide). Judgment call: MetaMask's own support pricing page is treated as documented for fees, while the CROPS seed cited the support site as claimed."
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -447,7 +447,7 @@ licences:
       detail: Bank of Lithuania register entry for UAB Monavate, authorisation code LB002139, company code 305628001, licence valid from 2022-03-31.
       checked_at: 2026-10-09
       quote: Electronic money institution, holding a licence issued in Lithuania for non-limited activity
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://cdn.prod.website-files.com/679758c14272c334b6975a26/67ed139f59c727d6e69de3ea_CL%20Platform%20Terms%20of%20Use%20-%20Monavate%202025.pdf
@@ -483,7 +483,7 @@ cashout:
       detail: Limits and fees, transaction and ATM limits.
       checked_at: 2026-10-09
       quote: Using card with merchant located outside of cardholder country
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://support.metamask.io/trade/metamask-card/card-faq/
@@ -491,7 +491,7 @@ cashout:
       detail: Card FAQ, ATM question.
       checked_at: 2026-10-09
       quote: Card users in the United States can withdraw cash from an ATM with their card.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: No bank withdrawal through the card programme is documented; refund credits withdraw to the user's wallet as mUSD, not fiat. US is not in the availability allowlist (sign-ups paused), so the ATM row only reaches existing US cardholders.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -532,7 +532,7 @@ maturity:
         detail: Companies House, company 11155611, active, incorporated 17 Jan 2018; name BAANX.COM LTD until 19 Aug 2026.
         checked_at: 2026-10-09
         quote: MONAVATE ONCHAIN LTD
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://cdn.prod.website-files.com/679758c14272c334b6975a26/67ed139f59c727d6e69de3ea_CL%20Platform%20Terms%20of%20Use%20-%20Monavate%202025.pdf
@@ -575,7 +575,7 @@ maturity:
         detail: UK card migration guide.
         checked_at: 2026-10-09
         quote: MetaMask is now partnered with Immersve to bring MetaMask Card to users in the United Kingdom
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: US sign-ups are paused (support pages) with no date given, so it is not listed.
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09

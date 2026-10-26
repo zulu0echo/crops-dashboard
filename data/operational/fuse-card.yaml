@@ -16,15 +16,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: security policy file: SECURITY.md"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -44,15 +44,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -72,15 +72,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: deployment configuration: Dockerfile"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -100,15 +100,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/rules/branches/main
         detail: "Squads-Protocol/v4: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/rules/branches/main
         detail: "Squads-Protocol/public-v4-client: rules: deletion, non_fast_forward, pull_request"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -128,15 +128,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: 5 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: 1 workflow file(s)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -156,15 +156,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -184,15 +184,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -212,15 +212,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/tags
         detail: "Squads-Protocol/v4: latest tags: release-0.1.0"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/tags
         detail: "Squads-Protocol/public-v4-client: latest tags: v1.4.1, v1.4.0, v1.3.0"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -240,15 +240,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/commits?per_page=10
         detail: "Squads-Protocol/v4: 9 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/commits?per_page=10
         detail: "Squads-Protocol/public-v4-client: 10 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -268,15 +268,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: no changelog or release notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: CHANGELOG file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -296,15 +296,15 @@ facts:
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/v4/contents/?ref=main
         detail: "Squads-Protocol/v4: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/Squads-Protocol/public-v4-client/contents/?ref=main
         detail: "Squads-Protocol/public-v4-client: contribution section in README"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -325,7 +325,7 @@ facts:
         detail: Squads Trust Center (Comp AI) compliance overview listing SOC 2 Type 1 as the only framework, with a security questionnaire and documents on request.
         checked_at: 2026-10-09
         quote: SOC 2 Type 1
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -351,7 +351,7 @@ facts:
         detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
         checked_at: 2026-10-09
         quote: Vulnerability & Patch Management
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -367,7 +367,7 @@ facts:
         detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
         checked_at: 2026-10-09
         quote: Incident Response & Breach Notification
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -383,7 +383,7 @@ facts:
         detail: Policy titles listed on the Squads Trust Center; policy text available only on request.
         checked_at: 2026-10-09
         quote: Disaster Recovery Policy
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: S4
         index: 0
@@ -407,14 +407,14 @@ facts:
         detail: Fuse security overview, key roles and thresholds.
         checked_at: 2026-10-09
         quote: these keys operate on a 1/2 threshold
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://fusewallet.com/support/fuse-security
         detail: Fuse security overview, 2FA Key.
         checked_at: 2026-10-09
         quote: A 2FA Key that adds two-factor authentication for all transactions
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -429,7 +429,7 @@ facts:
         detail: Squads privacy policy (covers Fuse), section 7 Retention of Personal Information.
         checked_at: 2026-10-09
         quote: We retain the personal information we collect as described in this Privacy Policy for as long as you use the Services
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -444,7 +444,7 @@ facts:
         detail: Squads privacy policy, opening paragraph.
         checked_at: 2026-10-09
         quote: processing of personal information by Selimor Investments Limited d/b/a Squads
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -459,7 +459,7 @@ facts:
         detail: Fuse Pay announcement describing the Card Account and the Bridge spending limit.
         checked_at: 2026-10-09
         quote: You can set a daily Spending Limit for Bridge
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -481,7 +481,7 @@ facts:
         detail: Lead Bank Prepaid Visa Cardholder Agreement for Fuse Card.
         checked_at: 2026-10-09
         quote: issued to you by Lead Bank
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -496,14 +496,14 @@ facts:
         detail: Cardholder agreement, termination clause.
         checked_at: 2026-10-09
         quote: such amounts will be credited to your Platform Provider wallet in the form of Stablecoin
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://squads.xyz/legal/terms-of-service
         detail: Squads Terms s10.2 Termination.
         checked_at: 2026-10-09
         quote: Squads may terminate this Agreement at any time, with or without reason, upon thirty (30) days notice
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: 2026-10-09
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -543,28 +543,28 @@ fees:
       detail: Lead Bank Prepaid Visa Card long-form fee disclosure.
       checked_at: 2026-10-09
       quote: There are no fees to purchase a Card.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.bridge.xyz/card-agreements/fuse-card
       detail: Long-form disclosure, using the card outside the U.S.
       checked_at: 2026-10-09
       quote: A fee of 0% applies to the U.S. dollar amount of each transaction conducted with merchants outside of the U.S.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://fusewallet.com/support/fuse-visa-card
       detail: Fuse Card support page, card overview and FAQ.
       checked_at: 2026-10-09
       quote: No top-up fees or card transaction fees
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://fusewallet.com/support/bank-transfers
       detail: Fuse bank transfer options and fees.
       checked_at: 2026-10-09
       quote: "Fee: Zero Fuse fees. $1 ACH fees still apply."
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: The cardholder agreement leaves the annual-fee and per-transaction rows blank in its long-form table and says Platform Provider or Program Manager fees may apply to stablecoin sales; Fuse's pages state none. Spread on the USDC-to-USD conversion by Bridge is not stated.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -604,7 +604,7 @@ licences:
       checked_at: 2026-10-09
       quote: '"NAME":"Lead Bank"'
       recheck: curl -s 'https://api.fdic.gov/banks/institutions?filters=CERT:8283&fields=NAME,ACTIVE,REGAGNT,BKCLASS'
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://fusewallet.com/legal/terms-of-service
@@ -645,28 +645,28 @@ cashout:
       detail: Fuse Card support page, fees and international use.
       checked_at: 2026-10-09
       quote: There are no fees associated with using your Fuse Card.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.bridge.xyz/card-agreements/fuse-card
       detail: Cardholder agreement long-form disclosure, Get cash.
       checked_at: 2026-10-09
       quote: ATM withdrawals are not available.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://fusewallet.com/support/bank-transfers
       detail: Fuse bank transfer page with fees and the list of restricted countries of residence.
       checked_at: 2026-10-09
       quote: Bank transfers are not available for those with a primary residence in a country listed below
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://fusewallet.com/blog/fuse-off-ramp
       detail: Fuse Off-Ramp announcement, eligibility.
       checked_at: 2026-10-09
       quote: Fuse Off-Ramp is accessible to most users across the US and Europe.
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: The off-ramp announcement says US and Europe; the support page lists residence-based exclusions instead of an allowlist. Recorded as ALL with the exclusions in limits.
   checked_at: 2026-10-09
   assessed_by: AI research agent (operational), 2026-10-09
@@ -715,7 +715,7 @@ maturity:
         detail: Squads Terms (of which the Fuse Terms form part) name Selimor Investments Limited, governed by BVI law; the privacy policy gives 19 Waterfront Drive, Road Town, Tortola.
         checked_at: 2026-10-09
         quote: Selimor Investments Limited
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://fusewallet.com/legal/terms-of-service

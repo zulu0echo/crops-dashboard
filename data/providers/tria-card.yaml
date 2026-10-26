@@ -227,7 +227,7 @@ scores:
         quote: We may engage others to provide analytics services and serve advertisements across the web and/or mobile applications
         detail: Privacy Policy s4 discloses third-party analytics and advertising using cookies and persistent identifiers.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Analytics and advertising trackers are disclosed in the privacy policy; the app is closed, so default state cannot be checked. Judgment call: disclosed in docs, so 1.
     provider_response: null
@@ -244,7 +244,7 @@ scores:
         quote: We utilize a third party, Sumsub
         detail: Privacy Policy describes identity verification with Sumsub, including biometric comparison of a selfie or video with a government ID.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Collection beyond settlement needs (identity documents, biometrics) is disclosed in the privacy policy only. 1.
     provider_response: null
@@ -267,7 +267,7 @@ scores:
         quote: We utilize a third party, Sumsub
         detail: Sumsub, analytics and advertising providers, Third National and Visa are disclosed in the privacy policy and terms.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Third parties in the flow are disclosed in documents only and cannot be swapped. 1.
     provider_response: null
@@ -351,14 +351,14 @@ availability:
       detail: Section 4 (Sanctions and Restricted Jurisdictions) names the sanctioned and high-risk jurisdictions where the Tria Card may not be applied for or used.
       quote: "jurisdictions that Tria prohibits due to high money-laundering, fraud, or compliance risk, including but not limited to: Afghanistan, Belarus, Central African Republic"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.tria.so/prohibited-use-policy
       detail: The same section names the sanctioned countries and Ukrainian regions.
       quote: "Cuba, Iran, North Korea, Syria, and the Crimea, Donetsk, or Luhansk regions of Ukraine"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://docs.tria.so/card-terms-international

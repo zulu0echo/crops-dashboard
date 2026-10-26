@@ -181,7 +181,7 @@ scores:
         path: packages/smart-contracts/src/contracts/ERC20FeeProxy.sol
         detail: ERC20FeeProxy has no owner, role, pause, or blacklist; transferFromWithReferenceAndFee is external with no modifier. EthereumFeeProxy (L55-L74 of its file) is the same.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/smart-contracts/src/contracts/Erc20ConversionProxy.sol#L76-L137
@@ -189,7 +189,7 @@ scores:
         path: packages/smart-contracts/src/contracts/Erc20ConversionProxy.sol
         detail: Erc20ConversionProxy delegatecalls into paymentProxy (L77) and the owner can replace paymentProxy and chainlinkConversionPath at any time (updateConversionProxyAddress L135, updateConversionPathAddress L127), with no delay.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0x8296D56321cf207925a7804E5A8E3F579838e6Ad
@@ -201,7 +201,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x000000000000000000000000f735aff55745e00d85f30afb01e1c042d0755628"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xf735afF55745e00D85F30AFB01E1c042D0755628
@@ -213,7 +213,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000003"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0x3dF89c727eaDF67eeD7b4d09EC4F2b41f8Dec2ca
@@ -224,7 +224,7 @@ scores:
         check:
           call: "0xbb5f747b000000000000000000000000f735aff55745e00d85f30afb01e1c042d0755628"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000001"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The core payment contracts, ERC20FeeProxy and EthereumFeeProxy, have no pause, freeze, blacklist, or admin of any kind. The conversion path, used for invoices denominated in fiat, does have one. The owner of Erc20ConversionProxy can swap the code it delegatecalls into, and an admin of ChainlinkConversionPath can change or remove price feeds. Either change halts conversion payments, and new code could be written to block chosen addresses. Both roles are held by a 3-of-7 Safe with no modules and no guard. There is no timelock, and the signers are not disclosed. The Safe is named as admin in the repo (Admin artifact, smart-contracts README L282). Judgment call: we score 1 and not 0. The anchor-1 case covers a multisig with no timelock and undisclosed signers. We read anchor 0's "target individual addresses" as a native blacklist function, and none exists. Payers on non-conversion requests can avoid this role entirely by calling ERC20FeeProxy, which on its own would score 3. Outside Base, the same Safe signer set (3-of-7) can remove the open hash submitter from the Gnosis RequestHashStorage whitelist, which would stop new requests being stored (see notes).
     provider_response: null
@@ -242,7 +242,7 @@ scores:
         path: packages/smart-contracts/src/contracts/ERC20FeeProxy.sol
         detail: transferFromWithReferenceAndFee(token, to, amount, paymentReference, feeAmount, feeAddress) is external, unpermissioned, and moves tokens from msg.sender straight to the payee.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/smart-contracts/src/lib/artifacts/ERC20FeeProxy/index.ts#L162-L165
@@ -250,7 +250,7 @@ scores:
         path: packages/smart-contracts/src/lib/artifacts/ERC20FeeProxy/index.ts
         detail: The Base address of ERC20FeeProxy 0.2.0 and its ABI (0.1.0.json) are committed and published in @requestnetwork/smart-contracts.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/resources/lifecycle-of-a-request.mdx#L26-L32
@@ -258,7 +258,7 @@ scores:
         path: resources/lifecycle-of-a-request.mdx
         detail: Docs state the payer derives the paymentReference and calls the payment contract with token, to, amount and paymentReference; faq.mdx L40-L42 says the reference can be computed and paid before the request exists.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/8453/0x1892196E80C4c17ea5100Da765Ab48c1fE2Fb814
@@ -284,7 +284,7 @@ scores:
         path: packages/request-client.js/src/http-data-access-config.ts
         detail: The SDK's default Request Node is http://localhost:3000, overridden by nodeConnectionConfig; no hosted gateway or fallback is configured in the SDK.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/request-node/README.md#L145-L194
@@ -292,7 +292,7 @@ scores:
         path: packages/request-node/README.md
         detail: The Request Node README documents npm and source installation, joining the IPFS private network with the request-ipfs image, and optional TheGraph mode; request-helm-charts provides a Kubernetes deployment.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/invoicing-template/blob/6f4872a68e08a3e18a42b72fb7baa9c2ba8de253/utils/context.tsx#L39-L46
@@ -301,7 +301,7 @@ scores:
         detail: The reference frontend defaults to Request's hosted gateway https://gnosis.gateway.request.network/ unless NEXT_PUBLIC_REQUEST_NODE is set.
         checked_at: "2026-10-07"
         recheck: gh api "repos/RequestNetwork/invoicing-template/contents/utils/context.tsx?ref=6f4872a68e08a3e18a42b72fb7baa9c2ba8de253" --jq .content | base64 -d | sed -n 39,46p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       On the open path, the only required intermediary is a Request Node, which stores the request and needs IPFS and a Gnosis RPC. Its code, a README setup guide, Docker images, and a Helm chart are all public. The SDK configures no fallback node; the reference template falls back to Request's hosted Gnosis gateway. No relayer, paymaster, or bundler is needed. Request Network's current docs describe only its hosted API, which is closed and single-vendor and would score 0. Judgment call: we score the open protocol path, because a payment completes without the API. We score 2 and not 3, because the SDK itself sets no fallback. Storing a request on Gnosis also needs the open hash submitter to stay whitelisted by Request's Safe (see C1).
     provider_response: null
@@ -324,7 +324,7 @@ scores:
           version: "0.63.0"
           integrity: "sha512-3BAy/leIYSuF6vM9wQPaXLA7UGoYbyvhvmvtxQ+EvfIL+5dKqBX/xTuklqPNzYVPpkotpXhvvZt8WpZ3JS0JxQ=="
         recheck: git clone https://github.com/RequestNetwork/requestNetwork && cd requestNetwork && git checkout 749b13070bcb88be4a10b8d59fcf3705339d43e0 && grep -rniE "sanction|ofac|chainalysis|blocklist|denylist|geoblock" packages/*/src
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/tools/secure-payments.mdx#L107-L111
@@ -332,7 +332,7 @@ scores:
         path: tools/secure-payments.mdx
         detail: The only filtering found is KYT wallet screening on the hosted Secure Payment page, merchant-enabled, disclosed in the versioned docs repo, and naming its list sources (Hypernative standard policy by default, Merkle Science optional).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://sourcify.dev/server/v2/contract/8453/0x1892196E80C4c17ea5100Da765Ab48c1fE2Fb814
@@ -357,7 +357,7 @@ scores:
         path: tokens/token-list.json
         detail: Supported tokens are enumerated per chain in the token list (USDC-base 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913) and in packages/currency/src/chains/evm/data/base.ts.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/use-cases/why-request-network.mdx#L18-L26
@@ -365,7 +365,7 @@ scores:
         path: use-cases/why-request-network.mdx
         detail: Docs list "Exposure to fund freezing or seizure" as a processor risk and say that because Request never takes custody "none of these risks apply"; no docs page mentions issuer freeze powers or sequencer assumptions.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Tokens and chains are listed in code and on the supported-chains docs page. The docs then tell payees that freezing and seizure risks do not apply, although the main settlement assets, USDC and USDT, can be frozen by their issuers. Base, the primary chain, also runs on a single centralized sequencer, and the docs do not mention it. A search of the docs for freeze, blacklist, and sequencer found only the passage above. Judgment call: we score 0 and not 2. The enumeration in code would justify 2, but anchor 0 includes "misstated", and the docs misstate the freeze risk.
     provider_response: null
@@ -391,7 +391,7 @@ scores:
         path: packages/smart-contracts/hardhat.config.ts
         detail: The repo's Hardhat config pins solc 0.8.9 with the optimizer enabled (runs 200), but Sourcify metadata for all four deployments shows optimizer disabled; the optimizer was switched on in commit 77006576 (2025-11-26), after the 2024 Base deployment.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       All four settlement contracts are full matches on Sourcify and exact matches on Basescan. Their sources match the repo files at this commit, apart from a trailing newline. The repo's build config does not reproduce the deployed bytecode, because it now enables the optimizer and the deployments were compiled without it. Rebuilding would need the older config from git history, and we did not try. Judgment call: we score 2 and not 3, because anchor 3 needs a repo build script that reproduces the deployed bytecode.
     provider_response: null
@@ -417,7 +417,7 @@ scores:
         path: faq.mdx
         detail: The FAQ says the recommended way to create a request is the Request Network API; no repo in the org contains the API, the Secure Payment page, or the Dashboard, and the API schema is published only as a hosted OpenAPI page (api.request.network/open-api).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Every part of the open protocol stack is public: contracts, deploy scripts, SDK, Request Node, both indexers, deployment tooling, and reference frontends. The product Request's docs now steer integrators to is the hosted API, and its backend, Secure Payment page, and Dashboard are closed. Their API schema is published only on a hosted site. Judgment call: we score 2 and not 3. The open path alone would reach 3, but the backend behind the vendor's recommended integration is closed, which matches anchor 2's "everything except the backend".
     provider_response: null
@@ -435,7 +435,7 @@ scores:
         path: packages/request-node/README.md
         detail: The README covers installation, IPFS private-network setup, TheGraph mode, launch options, and the MNEMONIC wallet needed to pay Gnosis storage fees; contract addresses ship in @requestnetwork/smart-contracts.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The documentation needed to self-host exists: Request Node setup, the IPFS swarm image, the storage subgraph, a Helm chart, and the template's env table. We did not attempt a reproduction, so under the brief the score is capped at 1. A self-hosted node also needs xDAI to pay the per-hash storage fee, which read 0.0999 xDAI on Gnosis at block 48631765.
     provider_response: null
@@ -461,7 +461,7 @@ scores:
         detail: The Request Node HTTP API (persistTransaction, getTransactionsByChannelId, getChannelsByTopic) is specified in the repo with parameters, example bodies, and success and error responses.
         checked_at: "2026-10-07"
         recheck: gh api "repos/RequestNetwork/requestNetwork/contents/packages/request-node/README.md?ref=749b13070bcb88be4a10b8d59fcf3705339d43e0" --jq .content | base64 -d | sed -n 24,140p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/data-format/src/format/rnf_invoice/rnf_invoice-0.0.3.json#L1-L10
@@ -469,7 +469,7 @@ scores:
         path: packages/data-format/src/format/rnf_invoice/rnf_invoice-0.0.3.json
         detail: Invoice content uses a published JSON Schema (rnf_invoice), and request data comes back from any node as JSON; neither the SDK nor the frontends provide an export function (CSV, ledger, or similar) for payees.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The repo contains the ABIs, the event schemas, and a written spec of the Request Node API. Request data is stored as JSON under a public JSON Schema, so it is portable. The repo has no payee export feature. The hosted API's OpenAPI schema is not versioned in any repo. Judgment call: we treat the node API spec in the README as "or equivalent" to OpenAPI, which supports 2. We score 2 and not 3, because no export function exists.
     provider_response: null
@@ -488,7 +488,7 @@ scores:
         detail: The monorepo (contracts, SDK, request-node) is MIT; every packages/*/package.json declares MIT; payments-subgraph, storage-subgraph, request-helm-charts, invoicing-template, and easy-invoice each carry an MIT LICENSE file (GitHub API license.spdx_id MIT).
         checked_at: "2026-10-07"
         recheck: for r in requestNetwork payments-subgraph storage-subgraph request-helm-charts invoicing-template easy-invoice docker-images web-components; do echo $r $(gh api repos/RequestNetwork/$r --jq '.license.spdx_id // "none"'); done
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/web-components/tree/0ebac5e18e37fec35ba210c3361749d4d4048d98/packages
@@ -514,7 +514,7 @@ scores:
         detail: CONTRIBUTING.md has no CLA requirement, and .github contains no CLA bot config; git log -- LICENSE shows a single commit, 1da692fc (2018-01-12, MIT), so the licence has never changed.
         checked_at: "2026-10-07"
         recheck: git clone https://github.com/RequestNetwork/requestNetwork && cd requestNetwork && git log --format='%h %ad %s' --date=short -- LICENSE && grep -niE "cla|license" CONTRIBUTING.md
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       There is no CLA, and the MIT licence has not changed since 2018. The repo makes no written commitment to keep the licence stable.
     provider_response: null
@@ -533,7 +533,7 @@ scores:
         detail: Request Node defaults point to local services (Ethereum RPC localhost:8545, IPFS localhost:5001, Graph node localhost:8000); there is no hosted-only dependency or API key.
         checked_at: "2026-10-07"
         recheck: gh api "repos/RequestNetwork/requestNetwork/contents/packages/request-node/src/config.ts?ref=749b13070bcb88be4a10b8d59fcf3705339d43e0" --jq .content | base64 -d | sed -n 19,37p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/utils/src/providers.ts#L18-L23
@@ -541,7 +541,7 @@ scores:
         path: packages/utils/src/providers.ts
         detail: The SDK's default provider for Ethereum-family networks uses a built-in Infura project ID (RN_INFURA_KEY overrides it); Base defaults to the public https://mainnet.base.org (L55).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       In code, the open path needs no proprietary plugin or hosted-only service. The node, IPFS, and indexer all run locally, and the SDK accepts any RPC. The proprietary pieces (Request API, Secure Payment page, KYT vendors, Pimlico, Request Finance) are optional. Judgment call: anchor 3 also fits the code, but we score 2. We made no O3 reproduction, so we have not shown a production deployment running free of hosted services.
     provider_response: null
@@ -559,7 +559,7 @@ scores:
         path: pages/_app.tsx
         detail: The template renders GoogleTagManager on every page with gtmId from NEXT_PUBLIC_GTM_ID; @next/third-parties 15.1.0 (lockfile) builds the script tag as googletagmanager.com/gtm.js?id=${gtmId} with no check for a missing ID. easy-invoice src/app/layout.tsx L45 does the same.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/invoicing-template/blob/6f4872a68e08a3e18a42b72fb7baa9c2ba8de253/README.md#L84
@@ -567,7 +567,7 @@ scores:
         path: README.md
         detail: The README lists NEXT_PUBLIC_GTM_ID ("Google Tag Manager ID") as not required.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/payment-processor/package.json#L1-L60
@@ -575,7 +575,7 @@ scores:
         path: packages/payment-processor/package.json
         detail: No SDK package.json under packages/ names Sentry, PostHog, Segment, Mixpanel, Amplitude, Datadog, GTM, or a fingerprinting library.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://request.network/privacy-policy/
@@ -583,6 +583,7 @@ scores:
         quote: Cookies, IP address, geographical position, operating system
         checked_at: "2026-10-07"
         confirmed_at: 2026-10-19
+        drift: true
     finding: >-
       The SDK ships no analytics or telemetry. Both reference frontends ship Google Tag Manager. With an ID configured, GTM runs full tag-manager analytics, which is opt-in and visible in code. Without an ID, the script tag still loads from googletagmanager.com on every page, so Google sees each visitor's IP and page. The README presents the GTM ID as optional, and nothing tells end users. Request's own hosted apps disclose analytics in the privacy policy. Judgment call: between 2 (opt-in) and 1 we take 1, because the template calls Google by default. No trace was run, so this cell cannot reach 3.
     provider_response: null
@@ -600,7 +601,7 @@ scores:
         path: packages/types/src/client-types.ts
         detail: In the SDK, a request needs requestInfo (payee, payer, currency, amount) and a signer; contentData is optional.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/data-format/src/format/rnf_invoice/rnf_invoice-0.0.3.json#L1-L10
@@ -608,7 +609,7 @@ scores:
         path: packages/data-format/src/format/rnf_invoice/rnf_invoice-0.0.3.json
         detail: The invoice format used by the reference frontends requires invoiceNumber, creationDate, and invoiceItems (name, quantity, unitPrice, tax per item at L113), and has optional buyerInfo and sellerInfo with email, name, address, and tax ID.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://request.network/privacy-policy/
@@ -616,6 +617,7 @@ scores:
         quote: Names, email address, IP address, clicks, actions, OS type
         checked_at: "2026-10-07"
         confirmed_at: 2026-10-19
+        drift: true
     finding: >-
       The bare SDK asks only for settlement fields and makes invoice content optional, which on its own would score 2. The reference invoicing flow requires line items, and invites buyer and seller identity, beyond what settlement needs. Request's hosted services collect names, email, IP, usage data, and bank details. That collection is disclosed only in the privacy policy, and it serves analytics and marketing as well as legal duties. Judgment call: we score 1 and not 2, because the default flows go beyond settlement needs and the only disclosure is the policy.
     provider_response: null
@@ -633,7 +635,7 @@ scores:
         path: packages/smart-contracts/src/contracts/ERC20FeeProxy.sol
         detail: TransferWithReferenceAndFee emits token, payee, amount, indexed paymentReference, fee, and fee address; the paymentReference is last8Bytes(keccak(requestId + salt + payeeAddress)) (payment-detection/src/payment-reference-calculator.ts L11-L18).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/web-components/blob/0ebac5e18e37fec35ba210c3361749d4d4048d98/packages/create-invoice-form/src/lib/create-invoice-form.svelte#L319-L345
@@ -641,7 +643,7 @@ scores:
         path: packages/create-invoice-form/src/lib/create-invoice-form.svelte
         detail: The invoice form calls plain createRequest (unencrypted) unless the user ticks "Encrypt invoice", which defaults to false (utils/resetForm.ts L56).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/storage-subgraph/blob/0e970cf400bce0230d1cf736908bed4f4fc62dfa/schema.graphql#L1-L22
@@ -649,7 +651,7 @@ scores:
         path: schema.graphql
         detail: The public storage subgraph indexes each stored transaction's plaintext data next to its channelId (requestId); the IPFS "private" swarm key is committed in docker-images/request-ipfs/swarm.key, so anyone can join it.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/resources/lifecycle-of-a-request.mdx#L10-L15
@@ -657,7 +659,7 @@ scores:
         path: resources/lifecycle-of-a-request.mdx
         detail: Docs disclose that requests are stored in IPFS, with the CID onchain on Gnosis, and can optionally be encrypted.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Each payment event publishes the payee, amount, token, and a payment reference, and the token Transfer log names the payer. Request contents are unencrypted by default: payee, payer, amount, and in the invoicing flow line items and any buyer or seller contact details. They are stored in an IPFS swarm whose key is public. Their CIDs are anchored on Gnosis and indexed in plaintext by a public subgraph. Anyone can recompute the paymentReference from the stored requestId, salt, and address, and so join a Base payment to its invoice contents. Encryption (ECIES or Lit) exists, but it is opt-in. Judgment call: we score 0 and not 1. Order contents and optional emails are public by default via an onchain pointer, which matches anchor 0, even though the docs say storage is IPFS with optional encryption.
     provider_response: null
@@ -676,7 +678,7 @@ scores:
         detail: Payment detection queries Request's subgraph on The Graph Studio by default (L9-L10), or The Graph gateway when an API key is given; options.url overrides both (L157).
         checked_at: "2026-10-07"
         recheck: gh api "repos/RequestNetwork/requestNetwork/contents/packages/payment-detection/src/thegraph/client.ts?ref=749b13070bcb88be4a10b8d59fcf3705339d43e0" --jq .content | base64 -d | sed -n 1,30p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/utils/src/providers.ts#L18-L23
@@ -684,7 +686,7 @@ scores:
         path: packages/utils/src/providers.ts
         detail: Default RPC goes through Infura with a built-in project ID for Ethereum-family networks, and through mainnet.base.org for Base; setProviderFactory (L123) and RN_WEB3_RPC_URL_* replace it.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/invoicing-template/blob/6f4872a68e08a3e18a42b72fb7baa9c2ba8de253/utils/context.tsx#L50-L63
@@ -692,7 +694,7 @@ scores:
         path: utils/context.tsx
         detail: The template sends Base payment lookups to an Alchemy Subgraphs (Satsuma) endpoint unless NEXT_PUBLIC_PAYMENTS_SUBGRAPH_URL_BASE is set; requests go to Request's Gnosis gateway; WalletConnect (Reown) and Lit Protocol are also wired in.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Third parties see payer and payee data during a payment. They are the indexer host (The Graph Studio in the SDK, Alchemy Subgraphs in the template), the RPC provider (Base's public RPC, or Infura on other chains), Request's hosted Request Node, and WalletConnect. Each is named in code, and all except WalletConnect can be swapped through SDK options or env vars. The template's always-on GTM tag is counted under P1. The hosted API path adds Pimlico, Li.Fi, and KYT vendors, but it is optional. No trace was run.
     provider_response: null
@@ -711,7 +713,7 @@ scores:
         detail: Indexer URL can be set per chain through the SDK's paymentOptions.getSubgraphClient or options.url (L157).
         checked_at: "2026-10-07"
         recheck: gh api "repos/RequestNetwork/requestNetwork/contents/packages/payment-detection/src/thegraph/client.ts?ref=749b13070bcb88be4a10b8d59fcf3705339d43e0" --jq .content | base64 -d | sed -n 153,160p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/utils/src/providers.ts#L120-L135
@@ -719,7 +721,7 @@ scores:
         path: packages/utils/src/providers.ts
         detail: RPC can be set through setProviderFactory or RN_WEB3_RPC_URL_<NETWORK>, and the Request Node URL through nodeConnectionConfig.baseURL.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/payments-subgraph/blob/c176246e16061c10ca794f0ebba318ec7b70fc52/subgraph.base.yaml#L27-L46
@@ -727,7 +729,7 @@ scores:
         path: subgraph.base.yaml
         detail: Public (MIT) subgraph manifest indexes ERC20FeeProxy 0x1892196E80C4c17ea5100Da765Ab48c1fE2Fb814 on Base from block 10827274; storage-subgraph and request-node are also public.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       RPC, indexer, and Request Node URLs can all be set through SDK options, and the code for the indexer and the node is public. An integrator can keep payment detection and request storage inside their own infrastructure. The reference template exposes these settings only as env vars, and no UI offers them.
     provider_response: null
@@ -745,7 +747,7 @@ scores:
         path: packages/smart-contracts/src/contracts/ERC20FeeProxy.sol
         detail: ERC20FeeProxy calls token.transferFrom(payer, payee) and transferFrom(payer, feeAddress) in the same call; the contract never holds a balance. EthereumFeeProxy forwards msg.value and refunds the rest in the same call.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/smart-contracts/src/contracts/Erc20ConversionProxy.sol#L76-L89
@@ -753,7 +755,7 @@ scores:
         path: packages/smart-contracts/src/contracts/Erc20ConversionProxy.sol
         detail: Conversion payments delegatecall paymentProxy in the context of the contract the payer approved; the owner can point paymentProxy at arbitrary code (L135).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0x8296D56321cf207925a7804E5A8E3F579838e6Ad
@@ -764,7 +766,7 @@ scores:
         check:
           call: "0x3cd3efef"
           expect: "0x0000000000000000000000001892196e80c4c17ea5100da765ab48c1fe2fb814"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       For plain ERC-20 and native payments, funds move in one call straight from payer to payee, which on its own would score 3. Conversion payments run through Erc20ConversionProxy. Its owner, Request's Safe, can switch the delegatecall target with no delay. New code could redirect future conversion payments, or pull tokens from any wallet holding an open allowance to the proxy (see S3). The power is visible in verified source, and the Safe is named in the repo. Judgment call: we score 1 and not 0. We treat this as the "upgradeable, disclosed" case, because funds are never held between calls and the redirect needs a 3-of-7 Safe action.
     provider_response: null
@@ -785,7 +787,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://basescan.org/address/0xf735afF55745e00D85F30AFB01E1c042D0755628
@@ -797,7 +799,7 @@ scores:
         check:
           slot: "0x4a204f620c8c5ccdca3fd54d003badd85ba500436a431f0cbda4f558c93c34c8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/smart-contracts/src/lib/artifacts/Admin/index.ts#L50-L53
@@ -805,7 +807,7 @@ scores:
         path: packages/smart-contracts/src/lib/artifacts/Admin/index.ts
         detail: The repo lists 0xf735afF55745e00D85F30AFB01E1c042D0755628 as the "RN Safe" administering contracts on Base; no signer list, timelock, or notice channel appears in the repo or docs.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The two fee proxies cannot be upgraded. Erc20ConversionProxy is not a proxy contract, but its owner can repoint the delegatecall target, which in effect replaces its code. That owner is a 3-of-7 Safe with no modules or guard, no timelock, undisclosed signers, and no notice channel. Judgment call: we treat the delegatecall-target setter as upgrade authority, so the cell scores 1 ("multisig admin, no timelock"). The core FeeProxy path alone would score 3.
     provider_response: null
@@ -823,7 +825,7 @@ scores:
         path: packages/payment-processor/src/payment/erc20.ts
         detail: approveErc20IfNeeded, approveErc20, prepareApproveErc20, and encodeApproveAnyErc20 all default amount to MAX_ALLOWANCE (2^256-1, utils.ts L16); prepareApproveErc20ForProxyConversion passes no amount, so it is unbounded too.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/web-components/blob/0ebac5e18e37fec35ba210c3361749d4d4048d98/packages/single-invoice/src/lib/single-invoice.svelte#L763-L782
@@ -831,7 +833,7 @@ scores:
         path: packages/single-invoice/src/lib/single-invoice.svelte
         detail: The reference payment widget calls approveErc20(requestData, signer) and approveErc20ForProxyConversion without an amount, granting unlimited allowance to ERC20FeeProxy or Erc20ConversionProxy.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       By default the SDK and the reference widget ask the payer for an unlimited allowance. The only disclosure is a JSDoc line ("with no limit") aimed at developers, and nothing tells the payer. An integrator can pass an exact amount. Unlimited approval to the immutable ERC20FeeProxy is limited by that contract's fixed code. Unlimited approval to Erc20ConversionProxy is exposed to whatever code its owner Safe later points it at (see S1, S2). We did not assess the hosted API's approval calldata.
     provider_response: null
@@ -857,7 +859,7 @@ scores:
         path: packages/request-client.js/src/http-data-access-config.ts
         detail: The SDK can point at any Request Node, and the node, subgraphs, and invoicing-template frontend are public MIT code.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       This cell is derived from S1=1, C2=3, C3=2, and O3=1. Payees never leave funds with Request: payments land in their own wallets (S1), so nothing needs withdrawing if Request disappears. Settlement can continue by calling the immutable ERC20FeeProxy directly (C2). Request storage and detection can move to a self-hosted node and subgraph (C3), and a public frontend build exists. We did not reproduce a self-hosted deployment (O3=1), so the claim that settling continues through a public frontend is shown in code but not in a run. Judgment call: we score 2 and not 3 for that reason. S1's conversion-proxy risk only arises while the Safe is active.
     provider_response: null
@@ -875,7 +877,7 @@ scores:
         path: packages/utils/src/providers.ts
         detail: The SDK ships a built-in Infura project ID (84842078…5213), which ends up in browser bundles; it authorises only RPC usage on Request's Infura quota, not merchant actions, and RN_INFURA_KEY replaces it.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/easy-invoice/blob/42ad4d0ece43552322add9d089c9e8e8cdcca812/src/app/api/webhook/route.ts#L195-L210
@@ -884,7 +886,7 @@ scores:
         detail: The reference app verifies the x-request-network-signature HMAC-SHA256 with a server-side WEBHOOK_SECRET, but compares with !== (not constant-time) over re-serialised JSON instead of the raw body.
         checked_at: "2026-10-07"
         recheck: gh api "repos/RequestNetwork/easy-invoice/contents/src/app/api/webhook/route.ts?ref=42ad4d0ece43552322add9d089c9e8e8cdcca812" --jq .content | base64 -d | sed -n 195,210p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/RequestNetwork/mintlify-docs/blob/1845bc537542f65a5e8c9826ebccc3ba053c4fd1/tools/dashboard.mdx#L72-L74
@@ -892,7 +894,7 @@ scores:
         path: tools/dashboard.mdx
         detail: Browser-side Client IDs are scoped by allowed domains and can be revoked; webhooks are HMAC-signed (api-reference/webhooks.mdx L8).
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       No merchant secret reaches the browser. The open SDK path has no API key or webhook. The hosted API uses domain-scoped, revocable Client IDs on the client and signed webhooks, and the reference app verifies the signatures. There are two minor issues. The SDK bundles a shared Infura project ID. The reference verification uses a non-constant-time comparison on re-serialised JSON. Judgment call: we score 2 and not 3 because of these two issues.
     provider_response: null
@@ -935,7 +937,7 @@ availability:
       path: packages/smart-contracts/src/contracts/ERC20FeeProxy.sol
       detail: transferFromWithReferenceAndFee is callable by anyone and checks only that the token transfers succeed; there is no caller, address or country restriction.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: verified
       kind: repo
       url: https://github.com/RequestNetwork/requestNetwork/blob/749b13070bcb88be4a10b8d59fcf3705339d43e0/packages/payment-processor/src/payment/erc20-fee-proxy.ts#L1-L40
@@ -944,7 +946,7 @@ availability:
       detail: A search of every packages/*/src directory for sanction, OFAC, chainalysis, blocklist, denylist and geoblock finds only test mocks; the SDK has no country gate.
       checked_at: "2026-10-09"
       recheck: git clone https://github.com/RequestNetwork/requestNetwork && cd requestNetwork && git checkout 749b13070bcb88be4a10b8d59fcf3705339d43e0 && grep -rniE "sanction|ofac|chainalysis|blocklist|denylist|geoblock" packages/*/src
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-09"
 
 notes: >-

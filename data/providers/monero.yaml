@@ -83,7 +83,7 @@ scores:
         path: src/hardforks/hardforks.cpp
         detail: Rule changes are hard forks compiled into releases at fixed heights; the last mainnet fork (v16) was at height 2,689,608 in August 2022.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The consensus rules contain no admin key, pause, freeze, blacklist or allowlist role, and recipients are one-time addresses that a filter could not target. The core team runs the MoneroPulse DNS domains, which publish checkpoints; nodes look them up by default but only enforce them if the operator opts in. Rule changes need a hard fork that miners and node operators choose to run. Judgment call: the substance is anchor 3, but a 3 needs onchain evidence about a deployed contract, which a chain with no contract addresses cannot supply, so we take 2.
     provider_response: null
@@ -242,7 +242,7 @@ scores:
         detail: monero, monero-gui and monero-site carry the BSD 3-clause licence; the meta repo (process documents) has no licence file and no running component needs it.
         checked_at: "2026-10-09"
         recheck: gh api "repos/monero-project/monero-gui/contents/LICENSE?ref=d7c2f13d88e0f2f2d5d1488be64da66f698ccb7c" --jq .content | base64 -d | head -12
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Every repository needed to run the rail (node, wallet library, CLI and GUI) is BSD-3-Clause. The meta repository (process documents) has no licence file, but nothing needs it to run. It is not listed under repos because nothing runs from it.
     provider_response: null
@@ -268,7 +268,7 @@ scores:
         path: LICENSE
         detail: The LICENSE file's commit history since 2016 (14f75384) shows only copyright-year updates.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       There is no CLA, copyright stays with each contributor, and the repo's contribution contract forbids copyright assignment, so no single party can relicense the code. No relicensing has happened. Judgment call: we read the no-assignment and share-alike rules as the written licence-stability commitment anchor 3 asks for.
     provider_response: null
@@ -491,7 +491,7 @@ scores:
         path: resources/research-lab/audits/clsag.pdf
         detail: The CLSAG audit report by JP Aumasson and Antony Vennard (2020) is in the website repo; research-lab/audits/BP holds Bulletproofs audit statements of work.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/monero-project/meta/blob/97fb74b0bfffafa553b8ca6b4978218b4ca13362/VULNERABILITY_RESPONSE_PROCESS.md#L1-L30
@@ -499,7 +499,7 @@ scores:
         path: VULNERABILITY_RESPONSE_PROCESS.md
         detail: A live bug bounty paid in XMR from community donations, with scope (code only, not live sites) and HackerOne intake, is defined in the meta repo; the monero README links it.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Audit reports exist for protocol components (CLSAG, Bulletproofs), and a bug bounty with scope is in a repo. We did not read the audit PDFs for a pinned commit, and the current release has not been shown to be the audited code. Scored 1: audit reports, no pinned commit shown.
     provider_response: null

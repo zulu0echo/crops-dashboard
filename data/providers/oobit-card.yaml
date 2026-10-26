@@ -59,7 +59,7 @@ scores:
         quote: "reserve the right to block and terminate transactions and suspend access to your Account"
         detail: Card Terms s4 let Oobit and the Issuer block transactions and suspend account access; the terms may also be changed "with or without notice".
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Oobit and the issuer can block transactions and suspend an individual account. No notice period or appeal is stated. No settlement contract was found to assess. Judgment call: anchor 0 ("can target individual addresses with no notice"), applied to account-level suspension as for HesabPay.
     provider_response: null
@@ -76,7 +76,7 @@ scores:
         quote: "directly from your wallet to Oobit’s settlement layer"
         detail: The FAQ says a DePay payment moves crypto from the user's wallet to Oobit's settlement layer, and Oobit then pays the merchant over Visa.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Every payment settles into Oobit's own settlement layer and reaches the merchant through Visa and the issuer. Nothing describes a path that bypasses Oobit.
     provider_response: null
@@ -93,7 +93,7 @@ scores:
         quote: "Choose how much Oobit can use for payments"
         detail: DePay runs through the Oobit app, Oobit's wallet connection layer and its gas abstraction module; no self-host path is documented.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       All flows depend on Oobit-run services, Rain, the issuer and Visa. None is public. Closed and single-vendor.
     provider_response: null
@@ -110,7 +110,7 @@ scores:
         quote: "You are not a person who is blocked or sanctioned by the United States Government"
         detail: Card Terms require OFAC eligibility; Terms of Use exclude residents of embargoed countries; the DePay page says payments are monitored with blockchain intelligence.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Sanctions and geography screening, plus blockchain-analytics monitoring, is disclosed in the terms and on the product pages, but not in code. The settlement layer cannot be inspected. Disclosed in docs only, so 1.
     provider_response: null
@@ -127,7 +127,7 @@ scores:
         quote: "You can pay today using assets on Ethereum (ERC-20)"
         detail: The FAQ lists DePay networks (Ethereum, BNB Smart Chain, Solana, Polygon) and over 20 supported assets; the Card Terms list Ethereum, Polygon, Optimism and Arbitrum as Supported Blockchains. Neither states issuer freeze powers.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Tokens and chains are enumerated in docs only, and the two lists disagree. Freeze powers of USDT and USDC issuers are not stated. 1.
     provider_response: null
@@ -151,7 +151,7 @@ scores:
         path: README.md
         detail: The only public repo in the oobit-tech org is oobit-plugins (an AI-agent plugin manifest); the npm SDK's declared repo oobit-tech/react-native-SDK returns 404.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Nothing needed to run the product is public. The partner SDK is published to npm with an MIT tag, but it is a client shell around Oobit's hosted widget and its source repo is private. 0.
     provider_response: null
@@ -181,7 +181,7 @@ scores:
         path: README.md
         detail: oobit-plugins has no LICENSE file (GitHub reports none); no repo of the app, backend or settlement layer is public.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Required components are closed, so 0.
     provider_response: null
@@ -204,7 +204,7 @@ scores:
         quote: "directly from your wallet to Oobit’s settlement layer"
         detail: Payments require Oobit's settlement layer and card programme.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The product cannot run without Oobit's proprietary services, Rain, the issuer and Visa.
     provider_response: null
@@ -221,7 +221,7 @@ scores:
         quote: "such as cookies and personal device identifiers"
         detail: The Privacy Notice discloses automated collection through cookies and device identifiers and links a Cookie Policy.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Automated tracking is disclosed in the policy. The app is closed and no trace was run. Judgment call: disclosed, presumed on by default, so 1.
     provider_response: null
@@ -238,7 +238,7 @@ scores:
         quote: "passport number, and tax identification"
         detail: The Privacy Notice lists name, age, passport number, tax ID, addresses, phone, education, job title and source-of-funds data, and special categories for AML checks; the FAQ requires a government photo ID.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       KYC plus profile data (education, job title) goes beyond settlement needs. It is disclosed in the policy, so 1.
     provider_response: null
@@ -261,7 +261,7 @@ scores:
         quote: "may share your Personal Data with third parties acting as Personal Data processors"
         detail: Processors for payment processing, identity verification, fraud prevention and cloud storage are described by category only; Rain and Third National appear only in the Card Terms.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The KYC, fraud-prevention and blockchain-intelligence vendors in the payment flow are not named anywhere I found. Judgment call: disclosure by category only is closer to "undisclosed third parties" than to named ones, so 0.
     provider_response: null
@@ -284,7 +284,7 @@ scores:
         quote: "All cryptoassets You hold in Your account are assets held by Oobit for Your benefit on a custodial basis"
         detail: Terms of Use s7.19 make in-app balances custodial; DePay moves funds to Oobit's settlement layer at payment time.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Funds in flight, and any in-app balance, are held by Oobit. This is disclosed. Provider-held wallet, disclosed, so 1.
     provider_response: null
@@ -341,21 +341,21 @@ availability:
       quote: "Oobit is available in 75 countries and territories across six continents"
       archive: data/archive/oobit-card-availability.txt
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.oobit.com/legal/terms-of-use
       detail: The Terms of Use bar nationals and residents of named embargoed countries.
       quote: "national or resident of Russia, Cuba, Iran, North Korea, Sudan, or Syria"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.oobit.com/legal/card-terms
       detail: The card terms require the user to attest they are not a US citizen.
       quote: "You attest that you are not a United States citizen"
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-09"
 
 settlement:
@@ -420,21 +420,21 @@ settlement:
       detail: The FAQ lists the assets Oobit supports for payments and transfers.
       quote: "Oobit supports USDC, USDT, BNB, USDR, EURR, BTC, DOGE, ETH, SOL, TRX, XRP, XTZ, TON, VET, XAUT, LTC, XLM, TRUMP, ADA, BCH, and SHIB for payments and transfers"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.oobit.com/faq
       detail: The FAQ says crypto is converted at the time of payment, with USD as the base currency.
       quote: "Simply use your Oobit virtual card and the crypto is converted at the time of payment"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://www.oobit.com/depay
       detail: With DePay the token moves from the user's own wallet to Oobit's settlement layer only when a payment is authorised.
       quote: "directly from your wallet to Oobit's settlement layer"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-12"
 
 audits:

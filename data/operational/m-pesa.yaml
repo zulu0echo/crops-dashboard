@@ -31,45 +31,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
         detail: "safaricom/mpesa-node-library: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
         detail: "safaricom/LNMOnlineAndroidSample: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
         detail: "safaricom/mpesa_listener: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
         detail: "safaricom/mpesa-php-sdk: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
         detail: "safaricom/mpesa-java-sdk: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
         detail: "safaricom/mpesa-api-C-Sharp: no security policy file"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -104,45 +104,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
         detail: "safaricom/mpesa-node-library: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
         detail: "safaricom/LNMOnlineAndroidSample: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
         detail: "safaricom/mpesa_listener: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
         detail: "safaricom/mpesa-php-sdk: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
         detail: "safaricom/mpesa-java-sdk: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
         detail: "safaricom/mpesa-api-C-Sharp: no scanning config or workflow step found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -177,45 +177,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
         detail: "safaricom/mpesa-node-library: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
         detail: "safaricom/LNMOnlineAndroidSample: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
         detail: "safaricom/mpesa_listener: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
         detail: "safaricom/mpesa-php-sdk: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
         detail: "safaricom/mpesa-java-sdk: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
         detail: "safaricom/mpesa-api-C-Sharp: no deployment configuration"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -250,45 +250,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/rules/branches/master
         detail: "safaricom/mpesa-node-library: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/rules/branches/master
         detail: "safaricom/LNMOnlineAndroidSample: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/rules/branches/master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/rules/branches/master
         detail: "safaricom/mpesa_listener: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/rules/branches/master
         detail: "safaricom/mpesa-php-sdk: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/rules/branches/master
         detail: "safaricom/mpesa-java-sdk: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/rules/branches/master
         detail: "safaricom/mpesa-api-C-Sharp: no branch rules visible (classic branch protection is not readable without push access)"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -323,45 +323,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
         detail: "safaricom/mpesa-node-library: no .github/workflows"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
         detail: "safaricom/LNMOnlineAndroidSample: no .github/workflows"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: no .github/workflows"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
         detail: "safaricom/mpesa_listener: no .github/workflows"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
         detail: "safaricom/mpesa-php-sdk: no .github/workflows"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
         detail: "safaricom/mpesa-java-sdk: no .github/workflows"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
         detail: "safaricom/mpesa-api-C-Sharp: no .github/workflows"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -396,45 +396,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
         detail: "safaricom/mpesa-node-library: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
         detail: "safaricom/LNMOnlineAndroidSample: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
         detail: "safaricom/mpesa_listener: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
         detail: "safaricom/mpesa-php-sdk: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
         detail: "safaricom/mpesa-java-sdk: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
         detail: "safaricom/mpesa-api-C-Sharp: test command in a workflow"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -469,45 +469,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
         detail: "safaricom/mpesa-node-library: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
         detail: "safaricom/LNMOnlineAndroidSample: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
         detail: "safaricom/mpesa_listener: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
         detail: "safaricom/mpesa-php-sdk: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
         detail: "safaricom/mpesa-java-sdk: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
         detail: "safaricom/mpesa-api-C-Sharp: coverage tooling referenced"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -542,45 +542,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/tags
         detail: "safaricom/mpesa-node-library: latest tags: v0.1.3"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/tags
         detail: "safaricom/LNMOnlineAndroidSample: no tags"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/tags
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: no tags"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/tags
         detail: "safaricom/mpesa_listener: no tags"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/tags
         detail: "safaricom/mpesa-php-sdk: latest tags: 1.0.8, 1.0.7, 1.0.6"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/tags
         detail: "safaricom/mpesa-java-sdk: no tags"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/tags
         detail: "safaricom/mpesa-api-C-Sharp: no tags"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -615,45 +615,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/commits?per_page=10
         detail: "safaricom/mpesa-node-library: 9 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/commits?per_page=10
         detail: "safaricom/LNMOnlineAndroidSample: 2 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/commits?per_page=10
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: 0 of 3 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/commits?per_page=10
         detail: "safaricom/mpesa_listener: 4 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/commits?per_page=10
         detail: "safaricom/mpesa-php-sdk: 8 of 10 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/commits?per_page=10
         detail: "safaricom/mpesa-java-sdk: 4 of 8 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/commits?per_page=10
         detail: "safaricom/mpesa-api-C-Sharp: 1 of 4 recent commits signed"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -688,45 +688,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
         detail: "safaricom/mpesa-node-library: 1 release(s) with notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
         detail: "safaricom/LNMOnlineAndroidSample: no changelog or release notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: no changelog or release notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
         detail: "safaricom/mpesa_listener: no changelog or release notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
         detail: "safaricom/mpesa-php-sdk: 3 release(s) with notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
         detail: "safaricom/mpesa-java-sdk: no changelog or release notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
         detail: "safaricom/mpesa-api-C-Sharp: no changelog or release notes"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending
@@ -761,45 +761,45 @@ facts:
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-node-library/contents/?ref=master
         detail: "safaricom/mpesa-node-library: contribution section in README"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/LNMOnlineAndroidSample/contents/?ref=master
         detail: "safaricom/LNMOnlineAndroidSample: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_c2b_php_confirmation_validation/contents/?ref=master
         detail: "safaricom/mpesa_c2b_php_confirmation_validation: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa_listener/contents/?ref=master
         detail: "safaricom/mpesa_listener: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-php-sdk/contents/?ref=master
         detail: "safaricom/mpesa-php-sdk: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-java-sdk/contents/?ref=master
         detail: "safaricom/mpesa-java-sdk: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
       - tier: verified
         kind: api
         url: https://api.github.com/repos/safaricom/mpesa-api-C-Sharp/contents/?ref=master
         detail: "safaricom/mpesa-api-C-Sharp: none found"
-        checked_at: 2026-10-19
+        checked_at: 2026-10-26
         recheck: GITHUB_TOKEN=... node scripts/repo-facts.mjs <slug>
-    checked_at: 2026-10-19
+    checked_at: 2026-10-26
     assessed_by: repo-facts bot (scripts/repo-facts.mjs)
     review:
       status: pending

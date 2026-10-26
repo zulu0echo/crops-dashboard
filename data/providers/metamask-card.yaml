@@ -129,7 +129,7 @@ scores:
           call: "0x8da5cb5b"
           expect: "0x0000000000000000000000001b7a8ff58b58ad2abfd731a164298a06a82d9c99"
         recheck: cast call 0x9dd23A4a0845f10d65D293776B792af1131c7B30 "getWithdrawOperators()(address[])" --rpc-url https://rpc.linea.build --block 32253699
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://lineascan.build/address/0x1b7A8fF58B58Ad2ABFd731A164298A06A82D9c99
@@ -140,7 +140,7 @@ scores:
         check:
           call: "0xe75235b8"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000002"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://lineascan.build/address/0xA90b298d05C2667dDC64e2A4e17111357c215dD2
@@ -151,7 +151,7 @@ scores:
         check:
           call: "0x8da5cb5b"
           expect: "0x0000000000000000000000000ab5e068fa215ba0a317c93dcaf73fcddf9c814a"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://public.withcl.com/Monavate-Issuer-Terms-2023-Nov.pdf
@@ -200,7 +200,7 @@ scores:
         path: app/core/Engine/controllers/card-controller/services/baanx-config.ts
         detail: The card provider's base URL and API key come from build-time env (BAANX_API_URL, MM_CARD_BAANX_API_CLIENT_KEY); builds.yml#L44 sets production to https://api.baanx.com. No Baanx backend code is public.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: claimed
         by: provider
         kind: document
@@ -208,7 +208,7 @@ scores:
         detail: MetaMask's FAQ names Crypto Life as the card provider, Monavate (spelled Monovate) as issuer and Mastercard as network.
         quote: "Crypto Life is the provider of the MetaMask Card"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Every card payment needs Baanx's closed authorisation backend and its operator keys, plus Monavate and Mastercard. None of these is public and none has a fallback, so the card path is closed and single-vendor.
     provider_response: null
@@ -252,7 +252,7 @@ scores:
         detail: The Linea card config enumerates eight tokens by address (USDC, USDT, WETH, EURe, GBPe, aUSDC, mUSD, amUSD). Base, Monad and Solana are enumerated in the same file.
         checked_at: "2026-10-07"
         recheck: curl -s https://raw.githubusercontent.com/MetaMask/metamask-mobile/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/selectors/featureFlagController/card/defaults.ts | sed -n 37,102p
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://lineascan.build/address/0x176211869cA2b568f2A7D4EE941E073a821EE1ff
@@ -263,7 +263,7 @@ scores:
         check:
           call: "0xbd102430"
           expect: "0x000000000000000000000000349570f5dab10ba630fcd4050fbfcdffcda42ba5"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://repo.sourcify.dev/59144/0x58a3a9c561591bab0dd11110eca755ea455f1841
@@ -274,7 +274,7 @@ scores:
         check:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x00000000000000000000000058a3a9c561591bab0dd11110eca755ea455f1841"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Tokens and chains are enumerated in code. The tokens carry issuer controls: USDC has a blacklister and a pauser, and mUSD can freeze accounts and force transfers. Linea also runs a centralised sequencer. None of these assumptions appears in the MetaMask support pages or the Crypto Life terms I read. Enumerated in code, assumptions not stated, so 2.
     provider_response: null
@@ -334,7 +334,7 @@ scores:
         path: README.md
         detail: The README covers building the app (Infura key, .js.env, Expo, yarn setup). The card needs MM_CARD_BAANX_API_CLIENT_KEY and the hosted Baanx API, which the README does not provide.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Build docs exist for the client. Reproduction not attempted. The README alone shows blockers: card features need a Baanx-issued client key and Baanx's hosted API, and there is no self-host path for the card backend.
     provider_response: null
@@ -359,7 +359,7 @@ scores:
         path: app/components/UI/Card/sdk/balanceScannerAbi.json
         detail: The only card ABI committed in the client repo is the read-only balance scanner's. No Baanx API schema or cardholder export was found in the repo.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Interfaces are available only through verification metadata, not versioned in a provider repo. There is no API schema, and I found no payee or cardholder export in the repo. Judgment call: between "documented only" and "none"; ABIs are recoverable, so 1.
     provider_response: null
@@ -430,7 +430,7 @@ scores:
         path: app/core/Engine/controllers/card-controller/services/baanx-config.ts
         detail: The card controller cannot run without a Baanx API key and base URL; the Baanx service has no open implementation.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Card payments cannot run without Baanx's proprietary backend and operators, Monavate and Mastercard.
     provider_response: null
@@ -448,7 +448,7 @@ scores:
         path: app/util/sentry/utils.ts
         detail: Sentry initialises with enabled = forceEnabled || hasConsent. captureExceptionForced() turns it on without consent for critical errors.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/hooks/useSpendingLimit.ts#L549-L563
@@ -456,7 +456,7 @@ scores:
         path: app/components/UI/Card/hooks/useSpendingLimit.ts
         detail: Card screens emit MetaMetrics events (e.g. CARD_BUTTON_CLICKED via trackEvent), which go through MetaMask's consent-gated analytics.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       Analytics (MetaMetrics) and error reporting (Sentry) ship in the app and are consent-gated, but a forced Sentry path reports critical errors before consent. The Baanx-hosted KYC and web dashboard were not inspected, and no trace was run. Judgment call: mostly opt-in (2), but the forced pre-consent path and the unseen hosted flows put this between anchors, so I took the lower one, 1.
     provider_response: null
@@ -506,7 +506,7 @@ scores:
         detail: Crypto Life tells cardholders that each payment is recorded onchain.
         quote: "Every payment creates a blockchain record."
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       No merchant or order data goes onchain. Every card spend is still a public transfer from the cardholder's everyday wallet to a known Baanx address, and the FoxConnect approval flags the wallet as a MetaMask Card holder. Anyone can read spend amounts and timing. There are no fresh addresses. Minimal linkage that the provider discloses, so 2.
     provider_response: null
@@ -524,7 +524,7 @@ scores:
         path: app/components/UI/Card/constants.ts
         detail: Card reads go to Infura URLs built from MM_INFURA_PROJECT_ID (Linea falls back to rpc.linea.build). These are hardcoded constants, not user settings.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: claimed
         by: provider
         kind: document
@@ -532,7 +532,7 @@ scores:
         detail: MetaMask's support page says Crypto Life runs KYC and processes personal data under its own privacy policy, and that MetaMask does not see it.
         quote: "Crypto Life manages this step"
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       A card payment is seen by Baanx/Crypto Life, Monavate and Mastercard; the app also reads through Infura. These parties are named in docs and code but cannot be swapped. The KYC vendor behind Crypto Life is not named. No trace was run. Present and disclosed, not swappable, so 1.
     provider_response: null
@@ -550,7 +550,7 @@ scores:
         path: app/components/UI/Card/constants.ts
         detail: Card RPC URLs are constants. Linea uses Infura or rpc.linea.build, and Base and Monad use Infura only.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/core/Engine/controllers/card-controller/services/baanx-config.ts#L13-L20
@@ -558,7 +558,7 @@ scores:
         path: app/core/Engine/controllers/card-controller/services/baanx-config.ts
         detail: Card transaction history and balances come from the Baanx API, set at build time.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       The card module's RPC endpoints are hardcoded constants. Card data comes from Baanx's closed API, which is fixed at build time and has no public indexer. A user cannot point the card at their own endpoints.
     provider_response: null
@@ -587,7 +587,7 @@ scores:
           call: "0x565a2e2c"
           expect: "0x0000000000000000000000008dfe562cbb4e93d5029f39da26bb6b501a8d1d3e"
         recheck: cast call 0x9dd23A4a0845f10d65D293776B792af1131c7B30 "getBeneficiary()(address)" --rpc-url https://rpc.linea.build --block 32253699
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       At rest, tokens stay in the cardholder's own wallet. Any of 33 Baanx operator EOAs can pull up to the full approved allowance from any approving wallet at any time, without a cardholder signature. The owner Safe can change where pulled funds go. Pulled funds then sit in a Baanx-held Safe and settle offchain. The provider can redirect funds within the allowance, which meets anchor 0.
     provider_response: null
@@ -609,7 +609,7 @@ scores:
           slot: "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
           expect: "0x0000000000000000000000000000000000000000000000000000000000000000"
         recheck: cast storage 0x9dd23A4a0845f10d65D293776B792af1131c7B30 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url https://rpc.linea.build --block 32253699
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       FoxConnect is not upgradeable, and the same holds for the US deployment. Its owner can still change operators, signer, treasury and beneficiary, which is scored under C1 and S1, not here. The tokens are upgradeable by their issuers (USDC and mUSD are proxies), which is covered under C5.
     provider_response: null
@@ -627,7 +627,7 @@ scores:
         path: app/components/UI/Card/hooks/useSpendingLimit.ts
         detail: Limit type defaults to 'full'; at L516-L520 'full' maps to BAANX_MAX_LIMIT = '2199023255551' tokens (constants.ts#L43). 'restricted' (a custom amount) is opt-in. The UI labels the full option "Full access".
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: repo
         url: https://github.com/MetaMask/metamask-mobile/blob/b513a4b65ab0a9f84ff0913108a19deb43003e98/app/components/UI/Card/hooks/useCardDelegation.ts#L104-L136
@@ -635,7 +635,7 @@ scores:
         path: app/components/UI/Card/hooks/useCardDelegation.ts
         detail: The amount is sent as a plain ERC-20 approve(delegationContract, amount); there is no expiry and no permit.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: verified
         kind: onchain
         url: https://lineascan.build/address/0xacA92E438df0B2401fF60dA7E4337B687a2435DA
@@ -679,7 +679,7 @@ scores:
         path: app/core/Engine/controllers/card-controller/providers/BaanxProvider.ts
         detail: The build-time MM_CARD_BAANX_API_CLIENT_KEY is sent as both client_id and client_secret, and elsewhere as an x-secret-key header, from the mobile app. The OAuth flow uses PKCE (S256) and user email, password and OTP.
         checked_at: "2026-10-07"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     finding: >-
       A key labelled as a secret ships in every app bundle. What it authorises on Baanx's side is not visible. The code shows a mitigation: PKCE plus per-user credentials, so the key works as a public client identifier. There are no webhooks in the client. Judgment call: "secrets in client with a mitigation" (1). Whether the mitigation is disclosed beyond the code is unknown.
     provider_response: null
@@ -710,7 +710,7 @@ availability:
       detail: MetaMask support article "What is MetaMask Card?" lists 48 countries under "What countries are eligible to sign up for MetaMask Card?" and says US sign-ups are not currently available.
       checked_at: "2026-10-09"
       quote: What countries are eligible to sign up for MetaMask Card?
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://cdn.prod.website-files.com/679758c14272c334b6975a26/67ed139f59c727d6e69de3ea_CL%20Platform%20Terms%20of%20Use%20-%20Monavate%202025.pdf
@@ -776,7 +776,7 @@ settlement:
       path: app/selectors/featureFlagController/card/defaults.ts
       detail: The Linea card config enumerates eight spendable tokens by address (USDC, USDT, WETH, EURe, GBPe, aUSDC, mUSD, amUSD) next to the FoxConnect spender addresses.
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: claimed
       by: provider
       kind: document
@@ -785,7 +785,7 @@ settlement:
       detail: MetaMask's support article says the card converts the user's tokens into fiat at the time of the transaction.
       quote: "At the time of your transaction, the MetaMask Card converts your available tokens into fiat currency"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: claimed
       by: provider
       kind: document
@@ -794,7 +794,7 @@ settlement:
       detail: The card FAQ says the balance reflects the highest-priority token the user sets in Manage.
       quote: "Your MetaMask Card balance reflects the balance of the highest priority token you have set in"
       checked_at: "2026-10-12"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   checked_at: "2026-10-12"
 
 audits:

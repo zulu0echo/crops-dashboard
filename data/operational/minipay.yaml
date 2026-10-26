@@ -34,21 +34,21 @@ fees:
       quote: "there are very low network fees (typically less than $0.01) charged on every transaction"
       detail: MiniPay FAQ, "Does MiniPay charge fees?".
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://minipay.to/faq
       quote: "there is a $1 + 1% fee charged on deposits to your USD account"
       detail: MiniPay FAQ, "Are there any fees for receiving payments?" (virtual accounts).
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
     - tier: documented
       kind: document
       url: https://minipay.to/faq
       quote: "No, there are no monthly card fees or subscriptions for the MiniPay card."
       detail: MiniPay FAQ, card fees.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: Judgment call. The provider file treats the FAQ as claimed (support content) for CROPS scores, but here it is cited as documented because it is the operator's only published pricing statement. Ramp-partner fees are unknown.
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -87,7 +87,7 @@ cashout:
       quote: "You can withdraw funds from MiniPay to your local currency and preferred payment method"
       detail: MiniPay FAQ, "How can I withdraw my funds from MiniPay?"; top-ups and withdrawals are provided by third parties.
       checked_at: "2026-10-09"
-      confirmed_at: 2026-10-19
+      confirmed_at: 2026-10-26
   note: The payout method (bank, mobile money or other) depends on the ramp partner in each country, and MiniPay publishes no per-country partner list, so the method is recorded as exchange through a ramp. Because the wallet is self-custodial, a user can also move stablecoins to any exchange on Celo. The MiniPay Card is digital-only, and no ATM withdrawal is documented.
   checked_at: "2026-10-09"
   assessed_by: AI research agent (operational), 2026-10-09
@@ -106,7 +106,7 @@ maturity:
         quote: "MiniPay’s rollout begins in Nigeria"
         detail: Opera press release dated Oslo, September 13, 2023.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -123,7 +123,7 @@ maturity:
         quote: "form a legally binding contract between you and Blueboard Limited"
         detail: MiniPay terms of service (last update April 27, 2026); governed by Norwegian law with the Oslo City Court as venue.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Jurisdiction IE comes from Opera Ltd's Form 20-F for 2020 (SEC accession 0001437749-21-014514, exhibit 8.1 list of subsidiaries, "Blueboard Limited Ireland"), read 2026-10-09. sec.gov returns 403 to the validator's user agent, so it is not cited as an evidence URL. The Irish Companies Registration Office entry was not read, so no registration number is recorded.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -152,14 +152,14 @@ maturity:
         quote: "Our initial month-long rollout of MiniPay has proven to be a big hit"
         detail: Opera Africa blog, October 18th, 2023.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
       - tier: documented
         kind: document
         url: https://blogs.opera.com/africa/2023/11/minipay-now-available-to-all-users-in-kenya/
         quote: "we are delighted to launch our innovative stablecoin wallet, MiniPay, to all Opera Mini users in Kenya"
         detail: Opera Africa blog, November 6th, 2023.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     note: Later changes (standalone apps, virtual accounts, MiniPay Card) were not dated from a primary source here.
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
@@ -255,7 +255,7 @@ facts:
         quote: "Only you have access to your funds through your secure Google Account login."
         detail: MiniPay FAQ, "Your Wallet's Security".
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -333,7 +333,7 @@ facts:
         quote: "Transactional Data is retained for as long as a Crypto Assets or transaction is active, and for a period of two years thereafter."
         detail: MiniPay privacy statement section 4, Retention (last update Sep 7, 2026).
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -348,7 +348,7 @@ facts:
         quote: "We act as a Data controller of Personal data that Process via Services."
         detail: MiniPay privacy statement sections 1 and 6-7.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -387,7 +387,7 @@ facts:
         quote: "MiniPay injects an Ethereum provider when it loads your app"
         detail: MiniPay developer docs, technical references.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -402,7 +402,7 @@ facts:
         quote: "These General Terms are governed by the laws of Norway"
         detail: MiniPay terms of service, general terms.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     checked_at: "2026-10-09"
     assessed_by: AI research agent (operational), 2026-10-09
     review:
@@ -424,7 +424,7 @@ facts:
         quote: "to terminate your access to the Services at any time, with or without notice"
         detail: MiniPay terms of service, general terms.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-10-19
+        confirmed_at: 2026-10-26
     refs:
       - criterion: S4
         index: 0
