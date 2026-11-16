@@ -128,7 +128,7 @@ scores:
         detail: ZIP 257 records that from Mainnet height 3363426 until NU6.2 activated at height 3364600, transactions MUST NOT contain Orchard Actions; the rule shipped as an emergency hotfix in zcashd v6.12.5 and zebra v4.5.3 after an Orchard circuit soundness bug was reported on 2026-05-29, and a first attempt 60 blocks earlier failed because some mining pools had not upgraded.
         checked_at: "2026-10-09"
         recheck: gh api "repos/zcash/zips/contents/zips/zip-0257.md?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 51,75p
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
       - tier: verified
         kind: repo
         url: https://github.com/ZcashFoundation/zebra/blob/e3eef2f37c35127ad1769f19a1ebc7eaa5d5d291/zebrad/src/components/sync/end_of_support.rs#L15-L41
@@ -188,7 +188,7 @@ scores:
         path: README.md
         detail: The lightwalletd README documents production self-hosting against a local zebrad; Zaino (zingolabs/zaino, Apache-2.0) is a second implementation.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       No hosted service is required. A full-node user (Zebra plus Zallet) needs only peers. A light-wallet user needs a lightwalletd-compatible server; the code is public and self-hostable, and the reference wallet ships several independent default servers, picks one automatically, broadcasts each transaction to more than one, and accepts a custom server.
     provider_response: null
@@ -206,7 +206,7 @@ scores:
         path: zips/zip-0224.rst
         detail: Shielded actions carry encrypted notes; consensus checks proofs, nullifiers and pool balances, so validators cannot see or filter shielded senders and recipients.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
       - tier: verified
         kind: repo
         url: https://github.com/zodl-inc/zodl-android/blob/4248d469c74a9a70c32c229ebb0600a4dd539689/ui-lib/src/main/java/co/electriccoin/zcash/ui/common/provider/LightWalletEndpointProvider.kt#L13-L28
@@ -234,7 +234,7 @@ scores:
         detail: Value moves only in ZEC across the transparent, Sprout, Sapling, Orchard and (since NU6.3) Ironwood pools, with per-pool turnstiles; there is no issued token with a freeze function and no sequencer.
         checked_at: "2026-10-09"
         recheck: gh api "repos/zcash/zips/contents/zips/zip-0258.md?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 85,100p
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       The rail carries one asset, ZEC, on one proof-of-work chain, so there is no issuer freeze and no sequencer to inherit. Pool-level changes are the inherited risk: after NU6.3 the Orchard pool is spend-only (ZIP 258 L85-L100), and in June 2026 Orchard was disabled for about a day (see C1). The reference wallet does not state these assumptions to payees. Scored 2: enumerated in code, assumptions not stated.
     provider_response: null
@@ -278,7 +278,7 @@ scores:
         path: README.md
         detail: The Zebra README gives Docker and manual build steps; the lightwalletd README L92-L128 covers production setup; Zodl and Zallet READMEs cover building the wallets.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       Build and run documentation exists for the node, the light-wallet server and the wallets. Reproduction not attempted, so the score is capped at 1.
     provider_response: null
@@ -316,7 +316,7 @@ scores:
         detail: orchard, librustzcash, sapling-crypto and halo2 are MIT or Apache-2.0; Zebra is MIT or Apache-2.0; lightwalletd, zips and the archived zcashd are MIT; Zaino and Zallet Apache-2.0; Zodl apps MIT; the Zodl Android SDK AGPL-3.0-only.
         checked_at: "2026-10-09"
         recheck: for r in ZcashFoundation/zebra zcash/librustzcash zcash/orchard zcash/zips zcash/lightwalletd zingolabs/zaino zcash/zallet zodl-inc/zodl-android zodl-inc/zodl-ios zodl-inc/zodl-android-wallet-sdk zcash/zcash; do echo $r $(gh api repos/$r/contents --jq '[.[].name|select(test("^(LICEN|COPYING)";"i"))]|join(",")'); done
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       Every repository listed carries an OSI-approved licence, including the required node and protocol libraries. The Zodl Android SDK is AGPL-3.0-only, which is OSI-approved but copyleft, and is also sold under commercial terms.
     provider_response: null
@@ -335,7 +335,7 @@ scores:
         detail: The Zodl Android SDK requires a signed CLA assigning or broadly licensing contributions to Znewco, Inc. to support dual licensing; its LICENSE changed from MIT to AGPL-3.0-only in commit 9ff67a5e (2026-08-24).
         checked_at: "2026-10-09"
         recheck: gh api "repos/zodl-inc/zodl-android-wallet-sdk/commits?path=LICENSE&per_page=5" --jq '.[]|[.sha[0:8],.commit.author.date,.commit.message[0:60]]|@tsv'
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
       - tier: verified
         kind: repo
         url: https://github.com/zcash/orchard/blob/616a669df8c9a59c33d47064d3ce04b25d026b2e/COPYING.md#L17-L22
@@ -343,7 +343,7 @@ scores:
         path: COPYING.md
         detail: orchard notes its licence changed from the Bootstrap Open Source License to MIT or Apache-2.0 in release 0.7.0 (commit ac4b5218, 2023-12-19). librustzcash, Zebra and lightwalletd CONTRIBUTING files mention no CLA.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       The required node and protocol libraries have no CLA. There have been two relicensing events: orchard moved from the Bootstrap Open Source License to MIT or Apache-2.0 in 2023, which widened rights, and the Zodl Android SDK moved from MIT to AGPL-3.0-only in August 2026 under a CLA that lets Znewco sell commercial licences. No licence-stability commitment exists. Judgment call: anchor 0 names any prior relicense event; the Zodl change concerns an optional wallet SDK and the orchard change was permissive, but under the take-the-lower-anchor rule we score 0.
     provider_response: null
@@ -362,7 +362,7 @@ scores:
         detail: The foss build flavour registers only the local crash reporter; Firebase, Flexa and CoinMarketCap are store-flavour integrations, and the README says the f-droid.org build omits them.
         checked_at: "2026-10-09"
         recheck: gh api "repos/zodl-inc/zodl-android/contents/crash-android-lib/src/foss/kotlin/co/electriccoin/zcash/crash/android/internal/ListCrashReportersImpl.kt?ref=4248d469c74a9a70c32c229ebb0600a4dd539689" --jq .content | base64 -d
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       A production deployment (Zebra node, light-wallet server or Zallet, and a wallet) needs no proprietary component. The mobile wallet's store builds add optional proprietary services, and a FOSS flavour builds without them. Judgment call: the code supports 3, but with no O3 reproduction we take 2.
     provider_response: null
@@ -389,7 +389,7 @@ scores:
         path: crash-android-lib/src/zcashmainnetStoreRelease/kotlin/co/electriccoin/zcash/crash/android/internal/ListCrashReportersImpl.kt
         detail: The Mainnet store release registers Firebase Crashlytics alongside the local reporter.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       The reference mobile wallet's store build includes Firebase Crashlytics, off by default and enabled only through an opt-in screen; the FOSS build has none. Zebra and Zallet are server software with no analytics SDK found. We ran no trace and did not inspect the iOS app in the same depth. Scored 2: present, off by default, opt-in visible in code.
     provider_response: null
@@ -427,7 +427,7 @@ scores:
         detail: Within a shielded pool, actions hide sender, recipient and value; moving value across the transparent turnstile reveals the amount, and wallets should warn users about this.
         checked_at: "2026-10-09"
         recheck: gh api "repos/zcash/zips/contents/zips/zip-0224.rst?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 232,257p
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
       - tier: verified
         kind: repo
         url: https://github.com/zcash/zips/blob/3af03aa3ad991874d86b8cf35919bc9b4671e8ba/zips/zip-0258.md#L85-L100
@@ -435,7 +435,7 @@ scores:
         path: zips/zip-0258.md
         detail: Since NU6.3 (height 3,428,143), new shielded value goes to the Ironwood pool and Orchard is spend-only, so Orchard-to-Ironwood migrations cross a turnstile.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       A fully shielded payment reveals no payer, payee, amount or memo onchain; the fee, timing, transaction size and the number of actions are visible. Transparent addresses are fully public, as on Bitcoin, and moving between pools reveals the amount. The anonymity set depends on how many users stay shielded and on pool migrations, which we do not score. Judgment call: we score what the protocol reveals for a shielded transfer, which is anchor 3.
     provider_response: null
@@ -500,7 +500,7 @@ scores:
         detail: A transaction spends notes the payer controls and creates notes only the recipient's keys can spend; there is no escrow or intermediary account.
         checked_at: "2026-10-09"
         recheck: gh api "repos/zcash/zips/contents/zips/zip-0224.rst?ref=3af03aa3ad991874d86b8cf35919bc9b4671e8ba" --jq .content | base64 -d | sed -n 232,257p
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       Value moves directly from notes the payer controls to notes the payee controls, in one transaction; wallets hold keys on the user's device. No one holds funds in flight. Judgment call: this is anchor 3 in substance, but 3 needs onchain evidence about a deployed contract, which this chain has none of, so we take 2.
     provider_response: null
@@ -526,7 +526,7 @@ scores:
         path: zips/zip-0257.md
         detail: The June 2026 Orchard disabling was deployed as an emergency hotfix and documented retrospectively; ZIP 258 (NU6.3) was published on 2026-06-19 ahead of its 2026-07 activation.
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-09
+        confirmed_at: 2026-11-16
     finding: >-
       No key can change the rules. Network upgrades are specified as ZIPs, compiled into node releases with fixed activation heights, and take effect only if miners and node operators run them; scheduled upgrades are announced weeks ahead in the ZIPs and release notes. The emergency soft fork of June 2026 had no advance notice, and the 84-day end-of-support halt pushes operators onto new releases. Judgment call: scheduled upgrades give notice but there is no enforced delay, and emergency changes give none; that resembles anchor 2 more than 3, and 3 would also need onchain evidence this chain cannot supply.
     provider_response: null
