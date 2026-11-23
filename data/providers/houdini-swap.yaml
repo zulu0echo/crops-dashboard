@@ -137,7 +137,7 @@ scores:
         detail: "DEFAULT_BASE_URL is https://api-partner.houdiniswap.com/v2. config.baseUrl can override it, but no other server implements the API: the org's two public repos are clients."
         checked_at: "2026-10-09"
         recheck: "gh api 'repos/HoudiniSwap/houdiniswap-agent/contents/packages/shared/src/client.ts?ref=b29c75d9c3b2afeaa04e534a4a374f08292cb88f' --jq .content | base64 -d | sed -n 5,19p"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/developer-hub/overview/architecture
@@ -160,7 +160,7 @@ scores:
         quote: "Access to the website is restricted for users located in countries that are subject to sanctions imposed by the United States or the European Union"
         detail: "Privacy and Compliance page: the website geo-blocks US- and EU-sanctioned countries (not named) and blocks Tor. Partners must screen all incoming deposits with tools like Chainalysis."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://cdn.prod.website-files.com/69143df941a2491956546ef7/6a579a7d3db98c279dc6020b_Houdini%20Swap%20-%20Terms%20of%20Service-14673161-v6.pdf
@@ -183,7 +183,7 @@ scores:
         quote: "Houdini offers bridging or swaps between most EVM chains, native Bitcoin, Solana and SUI"
         detail: "Chain Coverage and Partners page: supported chains are listed in a table, and the page names the API as the up-to-date token list. No issuer freeze powers or sequencer assumptions are stated."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       Supported chains are enumerated in docs, and tokens through the hosted API. Issuer freeze or blacklist powers (USDT, USDC) and L2 sequencer assumptions are not stated to payees. Docs only, so 1.
     provider_response: null
@@ -235,7 +235,7 @@ scores:
         path: packages/mcp-server/src/resources/openapi.ts
         detail: "The MCP server fetches the spec at runtime from `${baseUrl}/openapi.json` instead of shipping a versioned copy."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       An OpenAPI schema is published, but only on the hosted API, not versioned in a repo. No payee data export exists, and the privacy notice says transaction data is deleted after 72 hours. Documented only, so 1.
     provider_response: null
@@ -259,7 +259,7 @@ scores:
         path: README.md
         detail: "houdini-api-examples has no LICENSE file at this commit (root: .gitignore, README.md, nextjs-example, node-examples). houdiniswap-agent carries MIT."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       The components needed to run a Houdini swap (API, routing engine, exchange partners) are closed, so nothing that runs the rail can be forked. Of the two public client repos, one is MIT and one is unlicensed.
     provider_response: null
@@ -281,7 +281,7 @@ scores:
         path: packages/shared/src/client.ts
         detail: "The open-source client is a wrapper around the hosted API at api-partner.houdiniswap.com/v2; it has no local routing or execution logic."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/developer-hub/getting-started/authentication
@@ -304,14 +304,14 @@ scores:
         quote: "All analytics are self-hosted and never shared with third parties"
         detail: "Privacy and Compliance page: aggregated analytics, self-hosted."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/products/swap-transfer/privacy-notice
         quote: "analytics data and general geographic location data"
         detail: "Privacy Notice (last updated 2024-01-25): automatically collected browsing data includes OS, browser type and ID, URLs, visit times, analytics data and general location; it also states 'We do not use cookies.'"
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       Analytics run in the web app by default, and this is disclosed in docs and the privacy notice. Houdini states they are self-hosted. The web app could not be inspected: houdiniswap.com answers curl with a Cloudflare challenge, which we did not bypass, and no trace was run. Which SDKs ship, and whether they can be switched off, is not known. Documented only, so 1.
     provider_response: null
@@ -327,7 +327,7 @@ scores:
         quote: "the receiving wallet address, types and quantity of token sent and types and quantity of token received and internet protocol (IP) address"
         detail: "Privacy Notice: Transaction Data includes the sending and receiving addresses, tokens and amounts, and the IP address. It is kept for 72 hours by default (longer for open support cases), and users can opt for immediate deletion."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: verified
         kind: repo
         url: https://github.com/HoudiniSwap/houdini-api-examples/blob/a536b91111f7a4d13145e03791a8b5ffe28b8028/nextjs-example/lib/helpers.ts#L55-L60
@@ -335,7 +335,7 @@ scores:
         path: nextjs-example/lib/helpers.ts
         detail: "The reference integration sends x-user-ip, x-user-agent and x-user-timezone headers to the Houdini API on each request (placeholder values in the example)."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/support-and-faqs/faqs
@@ -359,14 +359,14 @@ scores:
         quote: "routing the transaction through two separate non-custodial exchanges"
         detail: "Private Swap: the payer deposits to exchange 1, which converts into an unnamed privacy-centric L1 token, and exchange 2 pays the recipient. Onchain, the payer sends to a deposit address and the payee receives from an exchange wallet."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/overview/getting-started/privacy-and-compliance
         quote: "these partners can reconcile their leg of a swap and provide the trace forward"
         detail: "Privacy and Compliance page: exchange partners keep internal logs linking each leg and disclose them on valid legal request."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       By design, the chain shows a plain transfer from the payer to a one-time partner deposit address and a separate payout from a partner wallet to the payee. There is no contract call or memo linking the two. The link exists off-chain, in partner logs and in Houdini's 72-hour transaction data. Amount and timing correlation remain possible, and the docs say so for the single-hop flow. We examined no sample transactions, so this rests on docs only and is capped at 1. Judgment call: the substance looks like anchor 2 (minimal onchain linkage, documented), held at the documented cap.
     provider_response: null
@@ -382,14 +382,14 @@ scores:
         quote: "Houdini does not execute swaps itself"
         detail: "Chain Coverage and Partners page names the 12 CEX partners (ChangeNow, SimpleSwap, StealthEx, Swapuz, LetsExchange, ChangeHero, Changelly, Swapter, EasyBit, Nexchange, Coincraddle, QuickEx) and the DEX and bridge partners."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/overview/getting-started/privacy-and-compliance
         quote: "Partners must use tools like Chainalysis to screen all incoming deposits"
         detail: "Partners run third-party AML screening on every deposit; the screening vendors are not fully named."
         checked_at: "2026-10-09"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       Each private swap exposes the deposit, amounts and payout address to two exchange partners and their screening vendors, plus Houdini itself. The partners are named in docs, while the screening vendors are named only by example. Houdini's engine picks the partners; the docs describe no user-side configuration that removes them. Disclosed in docs only, so 1.
     provider_response: null
@@ -476,7 +476,7 @@ scores:
         detail: "The reference Next.js integration calls the Houdini API only from server-side API routes, with the comment 'API_KEY and API_SECRET must never be exposed to the browser'; .env.example L4-L6 marks the credentials server-side only."
         checked_at: "2026-10-09"
         recheck: "gh api 'repos/HoudiniSwap/houdini-api-examples/contents/nextjs-example/lib/helpers.ts?ref=a536b91111f7a4d13145e03791a8b5ffe28b8028' --jq .content | base64 -d | sed -n 39,60p"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://docs.houdiniswap.com/developer-hub/getting-started/authentication
@@ -516,7 +516,7 @@ availability:
       quote: "We proactively block access from the Tor network and restricted jurisdictions"
       detail: "Privacy and Compliance page: Tor and restricted jurisdictions are blocked, and the website geo-blocks countries under US or EU sanctions."
       checked_at: "2026-10-09"
-      confirmed_at: 2026-11-16
+      confirmed_at: 2026-11-23
   checked_at: "2026-10-09"
 
 notes: >-

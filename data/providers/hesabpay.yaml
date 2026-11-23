@@ -136,7 +136,7 @@ scores:
         detail: "Privacy Policy s2 'Identity Verification': data is used for KYC and AML compliance 'as required by Da Afghanistan Bank and applicable laws'; s4.2 lists automated fraud detection and real-time transaction monitoring."
         checked_at: "2026-10-07"
         quote: "Automated fraud detection and real-time transaction monitoring."
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://hesab.com/terms
@@ -200,7 +200,7 @@ scores:
         detail: "Privacy Policy s5 'Data Portability': users may download transaction history and account statements 'in standard formats'."
         checked_at: "2026-10-07"
         quote: "Download your transaction history and account statements in standard formats"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       A REST API and a statement export are documented. Nothing is versioned in a public repo, and the export format is not named. Judgment call: the API reference at developers.hesab.com is a client-rendered app whose docs routes appear to sit behind login, so this score rests on the terms and policy text, not on a published API schema.
     provider_response: null
@@ -248,7 +248,7 @@ scores:
         detail: "Privacy Policy s6: the website uses 'analytics cookies to understand visitor behavior'; s1.2 lists automatically collected device identifiers, IP address and app usage patterns."
         checked_at: "2026-10-07"
         quote: "analytics cookies to understand visitor behavior"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       Google Analytics loads by default on hesab.com and the privacy policy discloses analytics in general terms without naming Google. Google reCAPTCHA also loads on the page and is not named in the policy. The mobile app and web.hesab.com were not inspected at a pinned source, so the score covers the website plus the policy. Judgment call: 1 (present, on by default, disclosed) rather than 0, because analytics collection is disclosed even though the vendor is not named.
     provider_response: null
@@ -264,14 +264,14 @@ scores:
         detail: "Privacy Policy s1.1: registration collects full name, phone, email, date of birth, and national ID or passport for KYC; s1.2 collects device identifiers, IP, usage data and location; s1.3 adds data from identity-verification services and government databases. s2 states the KYC basis: AML/KYC regulations 'as required by Da Afghanistan Bank and applicable laws'."
         checked_at: "2026-10-07"
         quote: "national ID or passport details for identity verification (KYC)"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://hesab.com/privacy
         detail: "Privacy Policy s1.2 'Usage Data': app usage patterns, features accessed, transaction frequency, session duration and interaction with notifications are collected automatically; s2 'Improvement' uses them to improve app performance and develop new features, a purpose with no stated legal basis."
         checked_at: "2026-10-07"
         quote: "Analyzing usage patterns to improve app performance, develop new features, and enhance user experience."
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
       - tier: documented
         kind: document
         url: https://hesab.com/terms
@@ -300,7 +300,7 @@ scores:
         detail: "Privacy Policy s3 names recipients: banking partners, card networks (Visa, Mastercard, American Express), payment processors, Duffel and other booking/delivery partners, AI language-model providers, regulators, and agents/merchants."
         checked_at: "2026-10-07"
         quote: "Flight booking (Duffel), hotel reservations, food delivery, and gift card partners"
-        confirmed_at: 2026-11-16
+        confirmed_at: 2026-11-23
     finding: >-
       Third parties see transaction data and are disclosed only in the policy. Most are named by category, a few by name. Nothing shows whether they can be swapped.
     provider_response: null
